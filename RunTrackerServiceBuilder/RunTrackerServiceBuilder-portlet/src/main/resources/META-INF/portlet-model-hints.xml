@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="es.eina.tfg.model.Device">
+		<field name="deviceId" type="long" />
+		<field name="userId" type="long" />
+		<field name="deviceUUID" type="String" />
+		<field name="description" type="String" />
+		<field name="status" type="String" />
+		<field name="phoneNumber" type="String" />
+		<field name="serverPhoneNumber" type="String" />
+		<field name="smsPollTime" type="String" />
+		<field name="smsTransmitPeriod" type="String" />
+		<field name="cloudId" type="String" />
+		<field name="serverIp" type="String" />
+		<field name="httpTransmitPeriod" type="String" />
+	</model>
+	<model name="es.eina.tfg.model.Device_Sensor">
+		<field name="deviceId" type="long" />
+		<field name="sensorId" type="long" />
+		<field name="status" type="boolean" />
+	</model>
+	<model name="es.eina.tfg.model.Location">
+		<field name="measurementId" type="long" />
+		<field name="raceId" type="Long" />
+		<field name="userId" type="long" />
+		<field name="deviceId" type="long" />
+		<field name="sensorId" type="long" />
+		<field name="time" type="Date" />
+		<field name="sensorMode" type="String" />
+		<field name="sysRef" type="int" />
+		<field name="latitude" type="double" />
+		<field name="longitude" type="double" />
+		<field name="speed" type="double" />
+		<field name="distance" type="double" />
+		<field name="altitude" type="double" />
+	</model>
+	<model name="es.eina.tfg.model.Power">
+		<field name="measurementId" type="long" />
+		<field name="raceId" type="long" />
+		<field name="userId" type="long" />
+		<field name="deviceId" type="long" />
+		<field name="sensorId" type="long" />
+		<field name="time" type="Date" />
+		<field name="sensorMode" type="String" />
+		<field name="level" type="int" />
+	</model>
+	<model name="es.eina.tfg.model.Race">
+		<field name="raceId" type="long" />
+		<field name="userId" type="long" />
+		<field name="routeId" type="long" />
+		<field name="type" type="String" />
+		<field name="userHeight" type="int" />
+		<field name="userWeight" type="int" />
+	</model>
+	<model name="es.eina.tfg.model.Route">
+		<field name="routeId" type="long" />
+		<field name="type" type="String" />
+		<field name="name" type="String" />
+		<field name="description" type="String" />
+		<field name="authorId" type="long" />
+		<field name="isPublic" type="boolean" />
+		<field name="startingTime" type="Date" />
+		<field name="creationTime" type="Date" />
+	</model>
+	<model name="es.eina.tfg.model.RouteLocation">
+		<field name="routePositionId" type="long" />
+		<field name="routeId" type="long" />
+		<field name="latitude" type="double" />
+		<field name="longitude" type="double" />
+	</model>
+	<model name="es.eina.tfg.model.Sensor">
+		<field name="sensorId" type="long" />
+		<field name="type" type="int" />
+		<field name="description" type="String" />
+		<field name="dataUnits" type="String" />
+		<field name="dataType" type="String" />
+		<field name="dataUncertainity" type="String" />
+		<field name="dataLowerRange" type="String" />
+		<field name="dataUpperRange" type="String" />
+		<field name="dataPacketFormat" type="String" />
+	</model>
+	<model name="es.eina.tfg.model.UserAdditionalData">
+		<field name="userId" type="long" />
+		<field name="registerType" type="String" />
+		<field name="weight" type="int" />
+		<field name="height" type="int" />
+		<field name="smsCounter" type="long" />
+	</model>
+	<model name="es.eina.tfg.model.UserSelectedRoutes">
+		<field name="userId" type="long" />
+		<field name="routeId" type="long" />
+	</model>
+</model-hints>

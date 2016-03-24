@@ -1,0 +1,214 @@
+<?xml version="1.0"?>
+
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
+	<persistence-unit-metadata>
+		<xml-mapping-metadata-complete/>
+		<persistence-unit-defaults>
+			<access>PROPERTY</access>
+		</persistence-unit-defaults>
+	</persistence-unit-metadata>
+	<mapped-superclass class="es.eina.tfg.model.impl.DeviceModelImpl">
+		<attributes>
+			<id name="deviceId" />
+			<basic name="userId" />
+			<basic name="deviceUUID" />
+			<basic name="description" />
+			<basic name="status" />
+			<basic name="phoneNumber" />
+			<basic name="serverPhoneNumber" />
+			<basic name="smsPollTime" />
+			<basic name="smsTransmitPeriod" />
+			<basic name="cloudId" />
+			<basic name="serverIp" />
+			<basic name="httpTransmitPeriod" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="es.eina.tfg.model.impl.Device_SensorModelImpl">
+		<id-class class="es.eina.tfg.service.persistence.Device_SensorPK" />
+		<attributes>
+			<id name="deviceId" />
+			<id name="sensorId" />
+			<basic name="status" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="es.eina.tfg.model.impl.LocationModelImpl">
+		<attributes>
+			<id name="measurementId" />
+			<basic name="raceId" />
+			<basic name="userId" />
+			<basic name="deviceId" />
+			<basic name="sensorId" />
+			<basic name="time">
+				<column name="TIME_" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="sensorMode" />
+			<basic name="sysRef" />
+			<basic name="latitude" />
+			<basic name="longitude" />
+			<basic name="speed" />
+			<basic name="distance" />
+			<basic name="altitude" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="es.eina.tfg.model.impl.PowerModelImpl">
+		<attributes>
+			<id name="measurementId" />
+			<basic name="raceId" />
+			<basic name="userId" />
+			<basic name="deviceId" />
+			<basic name="sensorId" />
+			<basic name="time">
+				<column name="TIME_" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="sensorMode" />
+			<basic name="level" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="es.eina.tfg.model.impl.RaceModelImpl">
+		<attributes>
+			<id name="raceId" />
+			<basic name="userId" />
+			<basic name="routeId" />
+			<basic name="type">
+				<column name="TYPE_" />
+			</basic>
+			<basic name="userHeight" />
+			<basic name="userWeight" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="es.eina.tfg.model.impl.RouteModelImpl">
+		<attributes>
+			<id name="routeId" />
+			<basic name="type">
+				<column name="TYPE_" />
+			</basic>
+			<basic name="name" />
+			<basic name="description" />
+			<basic name="authorId" />
+			<basic name="isPublic" />
+			<basic name="startingTime">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="creationTime">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="es.eina.tfg.model.impl.RouteLocationModelImpl">
+		<attributes>
+			<id name="routePositionId" />
+			<basic name="routeId" />
+			<basic name="latitude" />
+			<basic name="longitude" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="es.eina.tfg.model.impl.SensorModelImpl">
+		<attributes>
+			<id name="sensorId" />
+			<basic name="type">
+				<column name="TYPE_" />
+			</basic>
+			<basic name="description" />
+			<basic name="dataUnits" />
+			<basic name="dataType" />
+			<basic name="dataUncertainity" />
+			<basic name="dataLowerRange" />
+			<basic name="dataUpperRange" />
+			<basic name="dataPacketFormat" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="es.eina.tfg.model.impl.UserAdditionalDataModelImpl">
+		<attributes>
+			<id name="userId" />
+			<basic name="registerType" />
+			<basic name="weight" />
+			<basic name="height" />
+			<basic name="smsCounter" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="es.eina.tfg.model.impl.UserSelectedRoutesModelImpl">
+		<id-class class="es.eina.tfg.service.persistence.UserSelectedRoutesPK" />
+		<attributes>
+			<id name="userId" />
+			<id name="routeId" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<entity class="es.eina.tfg.model.impl.DeviceImpl" name="Device">
+		<table name="GL_Device" />
+		<attributes />
+	</entity>
+	<entity class="es.eina.tfg.model.impl.Device_SensorImpl" name="Device_Sensor">
+		<table name="GL_Device_Sensor" />
+		<attributes />
+	</entity>
+	<entity class="es.eina.tfg.model.impl.LocationImpl" name="Location">
+		<table name="GL_Location" />
+		<attributes />
+	</entity>
+	<entity class="es.eina.tfg.model.impl.PowerImpl" name="Power">
+		<table name="GL_Power" />
+		<attributes />
+	</entity>
+	<entity class="es.eina.tfg.model.impl.RaceImpl" name="Race">
+		<table name="GL_Race" />
+		<attributes />
+	</entity>
+	<entity class="es.eina.tfg.model.impl.RouteImpl" name="Route">
+		<table name="GL_Route" />
+		<attributes />
+	</entity>
+	<entity class="es.eina.tfg.model.impl.RouteLocationImpl" name="RouteLocation">
+		<table name="GL_RouteLocation" />
+		<attributes />
+	</entity>
+	<entity class="es.eina.tfg.model.impl.SensorImpl" name="Sensor">
+		<table name="GL_Sensor" />
+		<attributes />
+	</entity>
+	<entity class="es.eina.tfg.model.impl.UserAdditionalDataImpl" name="UserAdditionalData">
+		<table name="GL_UserAdditionalData" />
+		<attributes />
+	</entity>
+	<entity class="es.eina.tfg.model.impl.UserSelectedRoutesImpl" name="UserSelectedRoutes">
+		<table name="GL_UserSelectedRoutes" />
+		<attributes />
+	</entity>
+</entity-mappings>

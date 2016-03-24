@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+	<service name="Plugin_GL_DeviceService" provider="java:RPC" style="rpc" use="encoded">
+		<arrayMapping xmlns:ns="urn:http.service.tfg.eina.es" xmlns:cmp-ns="http://model.tfg.eina.es" qname="ns:ArrayOf_tns2_DeviceSoap" type="java:es.eina.tfg.model.DeviceSoap[]" innerType="cmp-ns:DeviceSoap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></arrayMapping>
+		<arrayMapping xmlns:ns="urn:http.service.tfg.eina.es" xmlns:cmp-ns="http://model.tfg.eina.es" qname="ns:ArrayOf_tns2_SensorSoap" type="java:es.eina.tfg.model.SensorSoap[]" innerType="cmp-ns:SensorSoap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></arrayMapping>
+		<typeMapping xmlns:ns="http://model.tfg.eina.es" qname="ns:DeviceSoap" type="java:es.eina.tfg.model.DeviceSoap" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
+		<typeMapping xmlns:ns="http://model.tfg.eina.es" qname="ns:SensorSoap" type="java:es.eina.tfg.model.SensorSoap" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="add" qname="operNS:add" returnQName="addReturn" returnType="rtns:DeviceSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceUUID" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="description" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="status" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="phoneNumber" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="serverPhoneNumber" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="smsPollTime" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="smsTransmitPeriod" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="cloudId" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="serverIp" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="httpTransmitPeriod" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="delete" qname="operNS:delete" returnQName="deleteReturn" returnType="rtns:DeviceSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="findByDeviceUUID" qname="operNS:findByDeviceUUID" returnQName="findByDeviceUUIDReturn" returnType="rtns:DeviceSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceUUID" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="findByStatus" qname="operNS:findByStatus" returnQName="findByStatusReturn" returnType="rtns:ArrayOf_tns2_DeviceSoap" returnItemType="tns2:DeviceSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="status" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="findByStatus" qname="operNS:findByStatus" returnQName="findByStatusReturn" returnType="rtns:ArrayOf_tns2_DeviceSoap" returnItemType="tns2:DeviceSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="status" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="start" type="tns:int"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="end" type="tns:int"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="findByUserId" qname="operNS:findByUserId" returnQName="findByUserIdReturn" returnType="rtns:ArrayOf_tns2_DeviceSoap" returnItemType="tns2:DeviceSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="getActiveSensors" qname="operNS:getActiveSensors" returnQName="getActiveSensorsReturn" returnType="rtns:ArrayOf_tns2_SensorSoap" returnItemType="tns2:SensorSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="getDeviceByPhoneNumber" qname="operNS:getDeviceByPhoneNumber" returnQName="getDeviceByPhoneNumberReturn" returnType="rtns:DeviceSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="phoneNumber" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="getDevice" qname="operNS:getDevice" returnQName="getDeviceReturn" returnType="rtns:DeviceSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="getSensors" qname="operNS:getSensors" returnQName="getSensorsReturn" returnType="rtns:ArrayOf_tns2_SensorSoap" returnItemType="tns2:SensorSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="update" qname="operNS:update" returnQName="updateReturn" returnType="rtns:DeviceSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceUUID" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="description" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="status" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="phoneNumber" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="serverPhoneNumber" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="smsPollTime" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="smsTransmitPeriod" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="cloudId" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="serverIp" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="httpTransmitPeriod" type="tns:string"></parameter>
+		</operation>
+		<parameter name="allowedMethods" value="add delete findByDeviceUUID findByStatus findByUserId getActiveSensors getDevice getDeviceByPhoneNumber getSensors update" />
+		<parameter name="className" value="es.eina.tfg.service.http.DeviceServiceSoap" />
+		<parameter name="schemaUnqualified" value="http://model.tfg.eina.es,urn:http.service.tfg.eina.es" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="DeviceServiceSoap" />
+		<parameter name="wsdlServiceElement" value="DeviceServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_GL_DeviceService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.tfg.eina.es" />
+	</service>
+</deployment>

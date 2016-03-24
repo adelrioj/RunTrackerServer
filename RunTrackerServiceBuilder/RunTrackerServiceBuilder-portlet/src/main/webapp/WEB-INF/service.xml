@@ -1,0 +1,266 @@
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+
+<service-builder package-path="es.eina.tfg">
+	<author>adelrioj</author>
+	<namespace>GL</namespace>
+
+	<entity name="Device" uuid="false" local-service="true" remote-service="true">
+		<!-- PK fields -->
+		<column name="deviceId" type="long" primary="true" />
+
+		<!-- Audit fields -->
+		<column name="userId" type="long" />
+
+		<!-- Other fields -->
+		<column name="deviceUUID" type="String" />
+		<column name="description" type="String" />
+		<column name="status" type="String" />
+		<column name="phoneNumber" type="String" />
+		<column name="serverPhoneNumber" type="String" />
+		<column name="smsPollTime" type="String" />
+		<column name="smsTransmitPeriod" type="String" />
+		<column name="cloudId" type="String" />
+		<column name="serverIp" type="String" />
+		<column name="httpTransmitPeriod" type="String" />
+
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="userId" />
+		</order>
+
+		<!-- Finder methods -->
+		<finder name="userId" return-type="Collection">
+			<finder-column name="userId" />
+		</finder>
+		<finder name="deviceUUID" return-type="Device">
+			<finder-column name="deviceUUID" />
+		</finder>
+		<finder name="phoneNumber" return-type="Device">
+			<finder-column name="phoneNumber" />
+		</finder>
+		<finder name="status" return-type="Collection">
+			<finder-column name="status" />
+		</finder>
+	</entity>
+
+	<entity name="Sensor" uuid="false" local-service="true" remote-service="true">
+		<!-- PK fields -->
+		<column name="sensorId" type="long" primary="true" />
+
+		<!-- Other fields -->
+		<column name="type" type="int" />
+		<column name="description" type="String" />
+		<column name="dataUnits" type="String" />
+		<column name="dataType" type="String" />
+		<column name="dataUncertainity" type="String" />
+		<column name="dataLowerRange" type="String" />
+		<column name="dataUpperRange" type="String" />
+		<column name="dataPacketFormat" type="String" />
+
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="type" />
+		</order>
+
+		<!-- Finder -->
+		<finder name="type" return-type="Collection">
+			<finder-column name="type" />
+		</finder>
+	</entity>
+
+	<entity name="Device_Sensor" uuid="false" local-service="true" remote-service="true" >
+		<!-- PK fields -->
+		<column name="deviceId" type="long" primary="true" />
+		<column name="sensorId" type="long" primary="true" />
+
+		<!-- Other fields -->
+		<column name="status" type="boolean" />
+
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="deviceId" />
+		</order>
+
+		<!-- Finder methods -->
+		<finder name="deviceId" return-type="Collection">
+			<finder-column name="deviceId" />
+		</finder>
+		<finder name="activeSensors" return-type="Collection" where="status = true">
+			<finder-column name="deviceId" />
+		</finder>
+	</entity>
+
+	<entity name="Location" uuid="false" local-service="true" remote-service="true" >
+		<!-- PK fields -->
+		<column name="measurementId" type="long" primary="true" />
+
+		<!--  Foreign keys -->
+		<column name="raceId" type="Long" convert-null="false" />
+		<column name="userId" type="long" />
+		<column name="deviceId" type="long" />
+		<column name="sensorId" type="long" />
+
+		<!-- Measurement fields -->
+		<column name="time" type="Date" />
+		<column name="sensorMode" type="String" />
+
+		<!-- Other fields -->
+		<column name="sysRef" type="int" />
+		<column name="latitude" type="double" />
+		<column name="longitude" type="double" />
+		<column name="speed" type="double" />
+		<column name="distance" type="double" />
+		<column name="altitude" type="double" />
+
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="time" />
+		</order>
+
+		<!-- Finder methods -->
+		<finder name="raceId" return-type="Collection">
+			<finder-column name="raceId" />
+		</finder>
+	</entity>
+
+	<entity name="Power" uuid="false" local-service="true" remote-service="true">
+		<!-- PK fields -->
+		<column name="measurementId" type="long" primary="true"/>
+
+		<!--  Foreign keys -->
+		<column name="raceId" type="long" />
+		<column name="userId" type="long" />
+		<column name="deviceId" type="long" />
+		<column name="sensorId" type="long" />
+
+		<!-- Measurement fields -->
+		<column name="time" type="Date" />
+		<column name="sensorMode" type="String" />
+
+		<!-- Other fields -->
+		<column name="level" type="int" />
+
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="time" />
+		</order>
+
+		<!-- Finder methods -->
+		<finder name="raceId" return-type="Collection">
+			<finder-column name="raceId" />
+		</finder>
+	</entity>
+
+	<entity name="Race" uuid="false" local-service="true" remote-service="true" >
+		<!-- PK fields -->
+		<column name="raceId" type="long" primary="true" />
+
+		<!-- Foreign keys -->
+		<column name="userId" type="long" />
+		<column name="routeId" type="long" />
+
+		<!-- Other fields -->
+		<column name="type" type="String" />
+		<column name="userHeight" type="int" />
+		<column name="userWeight" type="int" />
+
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="userId" />
+		</order>
+
+		<!-- Finder methods -->
+		<finder name="userId" return-type="Collection">
+			<finder-column name="userId" />
+		</finder>
+	</entity>
+
+	<entity name="Route" uuid="false" local-service="true" remote-service="true">
+		<!-- PK fields -->
+		<column name="routeId" type="long" primary="true"/>
+
+		<!-- Other fields -->
+		<column name="type" type="String" convert-null="true"/>
+		<column name="name" type="String" />
+		<column name="description" type="String" convert-null="true"/>
+		<column name="authorId" type="long" convert-null="true"/>
+		<column name="isPublic" type="boolean" convert-null="true"/>
+		<column name="startingTime" type="Date" convert-null="true"/>
+		<column name="creationTime" type="Date" />
+
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="creationTime" />
+		</order>
+
+		<!-- Finder methods -->
+		<finder name="userId" return-type="Collection">
+			<finder-column name="authorId" />
+		</finder>
+		<finder name="isPublic" return-type="Collection">
+			<finder-column name="isPublic" />
+		</finder>
+	</entity>
+
+	<entity name="RouteLocation" uuid="false" local-service="true" remote-service="true">
+		<!-- PK fields -->
+		<column name="routePositionId" type="long" primary="true"/>
+
+		<!-- Foreign keys -->
+		<column name="routeId" type="long"/>
+
+		<!-- Other fields -->
+		<column name="latitude" type="double" />
+		<column name="longitude" type="double" />
+
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="routeId" />
+		</order>
+
+		<!-- Finder methods -->
+		<finder name="routeId" return-type="Collection">
+			<finder-column name="routeId" />
+		</finder>
+	</entity>
+
+	<entity name="UserAdditionalData" uuid="false" local-service="true" remote-service="true" >
+		<!-- PK fields -->
+		<column name="userId" type="long" primary="true" />
+
+		<!-- Other fields -->
+		<column name="registerType" type="String" />
+		<column name="weight" type="int" />
+		<column name="height" type="int" />
+		<column name="smsCounter" type="long" />
+	</entity>
+	
+	<entity name="UserSelectedRoutes" uuid="false" local-service="true" remote-service="true">
+		<!-- PK fields -->
+		<column name="userId" type="long" primary="true" />
+		<column name="routeId" type="long" primary="true" />
+
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="userId" />
+		</order>
+
+		<!-- Finder methods -->
+		<finder name="userId" return-type="Collection">
+			<finder-column name="userId" />
+		</finder>
+	</entity>
+
+	<exceptions>
+		<exception>NonExistingUser</exception>
+		<exception>NonExistingDevice</exception>
+		<exception>NonExistingDeviceAndSensorRelation</exception>
+		<exception>NonExistingMeasurement</exception>
+		<exception>NonExistingRace</exception>
+		<exception>NonExistingRoute</exception>
+		<exception>NonExistingRouteLocation</exception>
+		<exception>NonExistingSensor</exception>
+		<exception>RouteAlreadySelectedByUser</exception>
+		<exception>NonExistingRouteAndUserRelation</exception>
+	</exceptions>
+</service-builder>

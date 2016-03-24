@@ -1,0 +1,438 @@
+<?xml version="1.0"?>
+
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+	<globalConfiguration>
+		<parameter name="adminPassword" value="admin" />
+		<parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl" />
+		<parameter name="sendXsiTypes" value="true" />
+		<parameter name="sendMultiRefs" value="true" />
+		<parameter name="sendXMLDeclaration" value="true" />
+		<parameter name="axis.sendMinimizedElements" value="true" />
+		<requestFlow>
+			<handler type="java:org.apache.axis.handlers.JWSHandler">
+				<parameter name="scope" value="session" />
+			</handler>
+			<handler type="java:org.apache.axis.handlers.JWSHandler">
+				<parameter name="scope" value="request" />
+				<parameter name="extension" value=".jwr" />
+			</handler>
+		</requestFlow>
+	</globalConfiguration>
+	<handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder" />
+	<handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper" />
+	<handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler" />
+	<transport name="http">
+		<requestFlow>
+			<handler type="URLMapper" />
+			<handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler" />
+		</requestFlow>
+	</transport>
+	<transport name="local">
+		<responseFlow>
+			<handler type="LocalResponder" />
+		</responseFlow>
+	</transport>
+	<service name="Plugin_GL_DeviceService" provider="java:RPC" style="rpc" use="encoded">
+		<arrayMapping xmlns:ns="urn:http.service.tfg.eina.es" xmlns:cmp-ns="http://model.tfg.eina.es" qname="ns:ArrayOf_tns2_DeviceSoap" type="java:es.eina.tfg.model.DeviceSoap[]" innerType="cmp-ns:DeviceSoap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></arrayMapping>
+		<arrayMapping xmlns:ns="urn:http.service.tfg.eina.es" xmlns:cmp-ns="http://model.tfg.eina.es" qname="ns:ArrayOf_tns2_SensorSoap" type="java:es.eina.tfg.model.SensorSoap[]" innerType="cmp-ns:SensorSoap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></arrayMapping>
+		<typeMapping xmlns:ns="http://model.tfg.eina.es" qname="ns:DeviceSoap" type="java:es.eina.tfg.model.DeviceSoap" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
+		<typeMapping xmlns:ns="http://model.tfg.eina.es" qname="ns:SensorSoap" type="java:es.eina.tfg.model.SensorSoap" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="add" qname="operNS:add" returnQName="addReturn" returnType="rtns:DeviceSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceUUID" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="description" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="status" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="phoneNumber" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="serverPhoneNumber" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="smsPollTime" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="smsTransmitPeriod" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="cloudId" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="serverIp" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="httpTransmitPeriod" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="delete" qname="operNS:delete" returnQName="deleteReturn" returnType="rtns:DeviceSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="findByDeviceUUID" qname="operNS:findByDeviceUUID" returnQName="findByDeviceUUIDReturn" returnType="rtns:DeviceSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceUUID" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="findByStatus" qname="operNS:findByStatus" returnQName="findByStatusReturn" returnType="rtns:ArrayOf_tns2_DeviceSoap" returnItemType="tns2:DeviceSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="status" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="findByStatus" qname="operNS:findByStatus" returnQName="findByStatusReturn" returnType="rtns:ArrayOf_tns2_DeviceSoap" returnItemType="tns2:DeviceSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="status" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="start" type="tns:int"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="end" type="tns:int"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="findByUserId" qname="operNS:findByUserId" returnQName="findByUserIdReturn" returnType="rtns:ArrayOf_tns2_DeviceSoap" returnItemType="tns2:DeviceSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="getActiveSensors" qname="operNS:getActiveSensors" returnQName="getActiveSensorsReturn" returnType="rtns:ArrayOf_tns2_SensorSoap" returnItemType="tns2:SensorSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="getDeviceByPhoneNumber" qname="operNS:getDeviceByPhoneNumber" returnQName="getDeviceByPhoneNumberReturn" returnType="rtns:DeviceSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="phoneNumber" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="getDevice" qname="operNS:getDevice" returnQName="getDeviceReturn" returnType="rtns:DeviceSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="getSensors" qname="operNS:getSensors" returnQName="getSensorsReturn" returnType="rtns:ArrayOf_tns2_SensorSoap" returnItemType="tns2:SensorSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="update" qname="operNS:update" returnQName="updateReturn" returnType="rtns:DeviceSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceUUID" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="description" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="status" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="phoneNumber" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="serverPhoneNumber" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="smsPollTime" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="smsTransmitPeriod" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="cloudId" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="serverIp" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="httpTransmitPeriod" type="tns:string"></parameter>
+		</operation>
+		<parameter name="allowedMethods" value="add delete findByDeviceUUID findByStatus findByUserId getActiveSensors getDevice getDeviceByPhoneNumber getSensors update" />
+		<parameter name="className" value="es.eina.tfg.service.http.DeviceServiceSoap" />
+		<parameter name="schemaUnqualified" value="http://model.tfg.eina.es,urn:http.service.tfg.eina.es" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="DeviceServiceSoap" />
+		<parameter name="wsdlServiceElement" value="DeviceServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_GL_DeviceService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.tfg.eina.es" />
+	</service>
+	<service name="Plugin_GL_Device_SensorService" provider="java:RPC" style="rpc" use="encoded">
+		<arrayMapping xmlns:ns="urn:http.service.tfg.eina.es" xmlns:cmp-ns="http://model.tfg.eina.es" qname="ns:ArrayOf_tns2_Device_SensorSoap" type="java:es.eina.tfg.model.Device_SensorSoap[]" innerType="cmp-ns:Device_SensorSoap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></arrayMapping>
+		<typeMapping xmlns:ns="http://model.tfg.eina.es" qname="ns:Device_SensorSoap" type="java:es.eina.tfg.model.Device_SensorSoap" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
+		<typeMapping xmlns:ns="http://persistence.service.tfg.eina.es" qname="ns:Device_SensorPK" type="java:es.eina.tfg.service.persistence.Device_SensorPK" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="add" qname="operNS:add" returnQName="addReturn" returnType="rtns:Device_SensorSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="sensorId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="status" type="tns:boolean"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="delete" qname="operNS:delete" returnQName="deleteReturn" returnType="rtns:Device_SensorSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="sensorId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="findActiveSensors" qname="operNS:findActiveSensors" returnQName="findActiveSensorsReturn" returnType="rtns:ArrayOf_tns2_Device_SensorSoap" returnItemType="tns2:Device_SensorSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="findByDeviceId" qname="operNS:findByDeviceId" returnQName="findByDeviceIdReturn" returnType="rtns:ArrayOf_tns2_Device_SensorSoap" returnItemType="tns2:Device_SensorSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="getDeviceSensor" qname="operNS:getDeviceSensor" returnQName="getDeviceSensorReturn" returnType="rtns:Device_SensorSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="sensorId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="update" qname="operNS:update" returnQName="updateReturn" returnType="rtns:Device_SensorSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="sensorId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="status" type="tns:boolean"></parameter>
+		</operation>
+		<parameter name="allowedMethods" value="add delete findActiveSensors findByDeviceId getDeviceSensor update" />
+		<parameter name="className" value="es.eina.tfg.service.http.Device_SensorServiceSoap" />
+		<parameter name="schemaUnqualified" value="http://model.tfg.eina.es,http://persistence.service.tfg.eina.es,urn:http.service.tfg.eina.es" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="Device_SensorServiceSoap" />
+		<parameter name="wsdlServiceElement" value="Device_SensorServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_GL_Device_SensorService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.tfg.eina.es" />
+	</service>
+	<service name="Plugin_GL_LocationService" provider="java:RPC" style="rpc" use="encoded">
+		<arrayMapping xmlns:ns="urn:http.service.tfg.eina.es" xmlns:cmp-ns="http://model.tfg.eina.es" qname="ns:ArrayOf_tns2_LocationSoap" type="java:es.eina.tfg.model.LocationSoap[]" innerType="cmp-ns:LocationSoap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></arrayMapping>
+		<typeMapping xmlns:ns="http://model.tfg.eina.es" qname="ns:LocationSoap" type="java:es.eina.tfg.model.LocationSoap" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="add" qname="operNS:add" returnQName="addReturn" returnType="rtns:LocationSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="raceId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="sensorId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="time" type="tns:dateTime"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="sensorMode" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="sysRef" type="tns:int"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="latitude" type="tns:double"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="longitude" type="tns:double"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="speed" type="tns:double"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="distance" type="tns:double"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="altitude" type="tns:double"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="delete" qname="operNS:delete" returnQName="deleteReturn" returnType="rtns:LocationSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="measurementId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="findByRaceId" qname="operNS:findByRaceId" returnQName="findByRaceIdReturn" returnType="rtns:ArrayOf_tns2_LocationSoap" returnItemType="tns2:LocationSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="raceId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="getLocation" qname="operNS:getLocation" returnQName="getLocationReturn" returnType="rtns:LocationSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="measurementId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="update" qname="operNS:update" returnQName="updateReturn" returnType="rtns:LocationSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="measurementId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="raceId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="sensorId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="time" type="tns:dateTime"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="sensorMode" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="sysRef" type="tns:int"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="latitude" type="tns:double"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="longitude" type="tns:double"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="speed" type="tns:double"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="distance" type="tns:double"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="altitude" type="tns:double"></parameter>
+		</operation>
+		<parameter name="allowedMethods" value="add delete findByRaceId getLocation update" />
+		<parameter name="className" value="es.eina.tfg.service.http.LocationServiceSoap" />
+		<parameter name="schemaUnqualified" value="http://model.tfg.eina.es,urn:http.service.tfg.eina.es" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="LocationServiceSoap" />
+		<parameter name="wsdlServiceElement" value="LocationServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_GL_LocationService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.tfg.eina.es" />
+	</service>
+	<service name="Plugin_GL_PowerService" provider="java:RPC" style="rpc" use="encoded">
+		<typeMapping xmlns:ns="http://model.tfg.eina.es" qname="ns:PowerSoap" type="java:es.eina.tfg.model.PowerSoap" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="add" qname="operNS:add" returnQName="addReturn" returnType="rtns:PowerSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="raceId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="sensorId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="time" type="tns:dateTime"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="sensorMode" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="level" type="tns:int"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="delete" qname="operNS:delete" returnQName="deleteReturn" returnType="rtns:PowerSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="measurementId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="getPower" qname="operNS:getPower" returnQName="getPowerReturn" returnType="rtns:PowerSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="measurementId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="update" qname="operNS:update" returnQName="updateReturn" returnType="rtns:PowerSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="measurementId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="raceId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="sensorId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="time" type="tns:dateTime"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="sensorMode" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="level" type="tns:int"></parameter>
+		</operation>
+		<parameter name="allowedMethods" value="add delete getPower update" />
+		<parameter name="className" value="es.eina.tfg.service.http.PowerServiceSoap" />
+		<parameter name="schemaUnqualified" value="http://model.tfg.eina.es" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="PowerServiceSoap" />
+		<parameter name="wsdlServiceElement" value="PowerServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_GL_PowerService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.tfg.eina.es" />
+	</service>
+	<service name="Plugin_GL_RaceService" provider="java:RPC" style="rpc" use="encoded">
+		<arrayMapping xmlns:ns="urn:http.service.tfg.eina.es" xmlns:cmp-ns="http://model.tfg.eina.es" qname="ns:ArrayOf_tns2_RaceSoap" type="java:es.eina.tfg.model.RaceSoap[]" innerType="cmp-ns:RaceSoap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></arrayMapping>
+		<typeMapping xmlns:ns="http://model.tfg.eina.es" qname="ns:RaceSoap" type="java:es.eina.tfg.model.RaceSoap" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="add" qname="operNS:add" returnQName="addReturn" returnType="rtns:RaceSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="routeId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="type" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userHeight" type="tns:int"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userWeight" type="tns:int"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="delete" qname="operNS:delete" returnQName="deleteReturn" returnType="rtns:RaceSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="raceId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="findByUserId" qname="operNS:findByUserId" returnQName="findByUserIdReturn" returnType="rtns:ArrayOf_tns2_RaceSoap" returnItemType="tns2:RaceSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="getRace" qname="operNS:getRace" returnQName="getRaceReturn" returnType="rtns:RaceSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="raceId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="update" qname="operNS:update" returnQName="updateReturn" returnType="rtns:RaceSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="raceId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="routeId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="type" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userHeight" type="tns:int"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userWeight" type="tns:int"></parameter>
+		</operation>
+		<parameter name="allowedMethods" value="add delete findByUserId getRace update" />
+		<parameter name="className" value="es.eina.tfg.service.http.RaceServiceSoap" />
+		<parameter name="schemaUnqualified" value="http://model.tfg.eina.es,urn:http.service.tfg.eina.es" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="RaceServiceSoap" />
+		<parameter name="wsdlServiceElement" value="RaceServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_GL_RaceService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.tfg.eina.es" />
+	</service>
+	<service name="Plugin_GL_RouteLocationService" provider="java:RPC" style="rpc" use="encoded">
+		<arrayMapping xmlns:ns="urn:http.service.tfg.eina.es" xmlns:cmp-ns="http://model.tfg.eina.es" qname="ns:ArrayOf_tns2_RouteLocationSoap" type="java:es.eina.tfg.model.RouteLocationSoap[]" innerType="cmp-ns:RouteLocationSoap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></arrayMapping>
+		<typeMapping xmlns:ns="http://model.tfg.eina.es" qname="ns:RouteLocationSoap" type="java:es.eina.tfg.model.RouteLocationSoap" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="add" qname="operNS:add" returnQName="addReturn" returnType="rtns:RouteLocationSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="routeId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="latitude" type="tns:double"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="longitude" type="tns:double"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="delete" qname="operNS:delete" returnQName="deleteReturn" returnType="rtns:RouteLocationSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="routeLocationId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="findByRouteId" qname="operNS:findByRouteId" returnQName="findByRouteIdReturn" returnType="rtns:ArrayOf_tns2_RouteLocationSoap" returnItemType="tns2:RouteLocationSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="routeId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="getRouteLocation" qname="operNS:getRouteLocation" returnQName="getRouteLocationReturn" returnType="rtns:RouteLocationSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="routeLocationId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="update" qname="operNS:update" returnQName="updateReturn" returnType="rtns:RouteLocationSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="routeLocationId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="routeId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="latitude" type="tns:double"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="longitude" type="tns:double"></parameter>
+		</operation>
+		<parameter name="allowedMethods" value="add delete findByRouteId getRouteLocation update" />
+		<parameter name="className" value="es.eina.tfg.service.http.RouteLocationServiceSoap" />
+		<parameter name="schemaUnqualified" value="http://model.tfg.eina.es,urn:http.service.tfg.eina.es" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="RouteLocationServiceSoap" />
+		<parameter name="wsdlServiceElement" value="RouteLocationServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_GL_RouteLocationService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.tfg.eina.es" />
+	</service>
+	<service name="Plugin_GL_RouteService" provider="java:RPC" style="rpc" use="encoded">
+		<arrayMapping xmlns:ns="urn:http.service.tfg.eina.es" xmlns:cmp-ns="http://model.tfg.eina.es" qname="ns:ArrayOf_tns2_RouteSoap" type="java:es.eina.tfg.model.RouteSoap[]" innerType="cmp-ns:RouteSoap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></arrayMapping>
+		<typeMapping xmlns:ns="http://model.tfg.eina.es" qname="ns:RouteSoap" type="java:es.eina.tfg.model.RouteSoap" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="add" qname="operNS:add" returnQName="addReturn" returnType="rtns:RouteSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="type" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="name" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="description" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="authorId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="isPublic" type="tns:boolean"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="startingTime" type="tns:dateTime"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="delete" qname="operNS:delete" returnQName="deleteReturn" returnType="rtns:RouteSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="routeId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="findByAuthor" qname="operNS:findByAuthor" returnQName="findByAuthorReturn" returnType="rtns:ArrayOf_tns2_RouteSoap" returnItemType="tns2:RouteSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="getPublicRoutes" qname="operNS:getPublicRoutes" returnQName="getPublicRoutesReturn" returnType="rtns:ArrayOf_tns2_RouteSoap" returnItemType="tns2:RouteSoap" soapAction=""> </operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="getPublicRoutes" qname="operNS:getPublicRoutes" returnQName="getPublicRoutesReturn" returnType="rtns:ArrayOf_tns2_RouteSoap" returnItemType="tns2:RouteSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="start" type="tns:int"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="end" type="tns:int"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="getRoute" qname="operNS:getRoute" returnQName="getRouteReturn" returnType="rtns:RouteSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="routeId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="update" qname="operNS:update" returnQName="updateReturn" returnType="rtns:RouteSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="routeId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="type" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="name" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="description" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="authorId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="isPublic" type="tns:boolean"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="startingTime" type="tns:dateTime"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="creationTime" type="tns:dateTime"></parameter>
+		</operation>
+		<parameter name="allowedMethods" value="add delete findByAuthor getPublicRoutes getRoute update" />
+		<parameter name="className" value="es.eina.tfg.service.http.RouteServiceSoap" />
+		<parameter name="schemaUnqualified" value="http://model.tfg.eina.es,urn:http.service.tfg.eina.es" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="RouteServiceSoap" />
+		<parameter name="wsdlServiceElement" value="RouteServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_GL_RouteService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.tfg.eina.es" />
+	</service>
+	<service name="Plugin_GL_SensorService" provider="java:RPC" style="rpc" use="encoded">
+		<typeMapping xmlns:ns="http://model.tfg.eina.es" qname="ns:SensorSoap" type="java:es.eina.tfg.model.SensorSoap" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="add" qname="operNS:add" returnQName="addReturn" returnType="rtns:SensorSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="type" type="tns:int"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="description" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dataUnits" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dataType" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dataUncertainity" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dataLowerRange" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dataUpperRange" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dataPacketFormat" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="delete" qname="operNS:delete" returnQName="deleteReturn" returnType="rtns:SensorSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="sensorId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="getSensor" qname="operNS:getSensor" returnQName="getSensorReturn" returnType="rtns:SensorSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="sensorId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="update" qname="operNS:update" returnQName="updateReturn" returnType="rtns:SensorSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="sensorId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="type" type="tns:int"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="description" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dataUnits" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dataType" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dataUncertainity" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dataLowerRange" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dataUpperRange" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dataPacketFormat" type="tns:string"></parameter>
+		</operation>
+		<parameter name="allowedMethods" value="add delete getSensor update" />
+		<parameter name="className" value="es.eina.tfg.service.http.SensorServiceSoap" />
+		<parameter name="schemaUnqualified" value="http://model.tfg.eina.es" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="SensorServiceSoap" />
+		<parameter name="wsdlServiceElement" value="SensorServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_GL_SensorService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.tfg.eina.es" />
+	</service>
+	<service name="Plugin_GL_UserAdditionalDataService" provider="java:RPC" style="rpc" use="encoded">
+		<arrayMapping xmlns:ns="urn:http.service.tfg.eina.es" xmlns:cmp-ns="http://model.tfg.eina.es" qname="ns:ArrayOf_tns2_UserSelectedRoutesSoap" type="java:es.eina.tfg.model.UserSelectedRoutesSoap[]" innerType="cmp-ns:UserSelectedRoutesSoap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></arrayMapping>
+		<typeMapping xmlns:ns="http://model.tfg.eina.es" qname="ns:UserAdditionalDataSoap" type="java:es.eina.tfg.model.UserAdditionalDataSoap" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
+		<typeMapping xmlns:ns="http://model.tfg.eina.es" qname="ns:UserSelectedRoutesSoap" type="java:es.eina.tfg.model.UserSelectedRoutesSoap" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
+		<typeMapping xmlns:ns="http://persistence.service.tfg.eina.es" qname="ns:UserSelectedRoutesPK" type="java:es.eina.tfg.service.persistence.UserSelectedRoutesPK" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="add" qname="operNS:add" returnQName="addReturn" returnType="rtns:UserAdditionalDataSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="weight" type="tns:int"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="height" type="tns:int"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="registerType" type="tns:string"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="delete" qname="operNS:delete" returnQName="deleteReturn" returnType="rtns:UserAdditionalDataSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="getUserAdditionalData" qname="operNS:getUserAdditionalData" returnQName="getUserAdditionalDataReturn" returnType="rtns:UserAdditionalDataSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="getUserSelectedRoutes" qname="operNS:getUserSelectedRoutes" returnQName="getUserSelectedRoutesReturn" returnType="rtns:ArrayOf_tns2_UserSelectedRoutesSoap" returnItemType="tns2:UserSelectedRoutesSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="update" qname="operNS:update" returnQName="updateReturn" returnType="rtns:UserAdditionalDataSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="weight" type="tns:int"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="height" type="tns:int"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="registerType" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="smsCount" type="tns:long"></parameter>
+		</operation>
+		<parameter name="allowedMethods" value="add delete getUserAdditionalData getUserSelectedRoutes update" />
+		<parameter name="className" value="es.eina.tfg.service.http.UserAdditionalDataServiceSoap" />
+		<parameter name="schemaUnqualified" value="http://model.tfg.eina.es,http://persistence.service.tfg.eina.es,urn:http.service.tfg.eina.es" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="UserAdditionalDataServiceSoap" />
+		<parameter name="wsdlServiceElement" value="UserAdditionalDataServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_GL_UserAdditionalDataService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.tfg.eina.es" />
+	</service>
+	<service name="Plugin_GL_UserSelectedRoutesService" provider="java:RPC" style="rpc" use="encoded">
+		<typeMapping xmlns:ns="http://model.tfg.eina.es" qname="ns:UserSelectedRoutesSoap" type="java:es.eina.tfg.model.UserSelectedRoutesSoap" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
+		<typeMapping xmlns:ns="http://persistence.service.tfg.eina.es" qname="ns:UserSelectedRoutesPK" type="java:es.eina.tfg.service.persistence.UserSelectedRoutesPK" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="add" qname="operNS:add" returnQName="addReturn" returnType="rtns:UserSelectedRoutesSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="routeId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="delete" qname="operNS:delete" returnQName="deleteReturn" returnType="rtns:UserSelectedRoutesSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="routeId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="getUserSelectedRoute" qname="operNS:getUserSelectedRoute" returnQName="getUserSelectedRouteReturn" returnType="rtns:UserSelectedRoutesSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="routeId" type="tns:long"></parameter>
+		</operation>
+		<parameter name="allowedMethods" value="add delete getUserSelectedRoute" />
+		<parameter name="className" value="es.eina.tfg.service.http.UserSelectedRoutesServiceSoap" />
+		<parameter name="schemaUnqualified" value="http://model.tfg.eina.es,http://persistence.service.tfg.eina.es" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="UserSelectedRoutesServiceSoap" />
+		<parameter name="wsdlServiceElement" value="UserSelectedRoutesServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_GL_UserSelectedRoutesService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.tfg.eina.es" />
+	</service>
+</deployment>

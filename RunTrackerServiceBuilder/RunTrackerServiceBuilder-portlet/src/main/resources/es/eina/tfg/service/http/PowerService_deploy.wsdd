@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+	<service name="Plugin_GL_PowerService" provider="java:RPC" style="rpc" use="encoded">
+		<typeMapping xmlns:ns="http://model.tfg.eina.es" qname="ns:PowerSoap" type="java:es.eina.tfg.model.PowerSoap" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="add" qname="operNS:add" returnQName="addReturn" returnType="rtns:PowerSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="raceId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="sensorId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="time" type="tns:dateTime"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="sensorMode" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="level" type="tns:int"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="delete" qname="operNS:delete" returnQName="deleteReturn" returnType="rtns:PowerSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="measurementId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="getPower" qname="operNS:getPower" returnQName="getPowerReturn" returnType="rtns:PowerSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="measurementId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="update" qname="operNS:update" returnQName="updateReturn" returnType="rtns:PowerSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="measurementId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="raceId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="sensorId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="time" type="tns:dateTime"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="sensorMode" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="level" type="tns:int"></parameter>
+		</operation>
+		<parameter name="allowedMethods" value="add delete getPower update" />
+		<parameter name="className" value="es.eina.tfg.service.http.PowerServiceSoap" />
+		<parameter name="schemaUnqualified" value="http://model.tfg.eina.es" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="PowerServiceSoap" />
+		<parameter name="wsdlServiceElement" value="PowerServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_GL_PowerService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.tfg.eina.es" />
+	</service>
+</deployment>
