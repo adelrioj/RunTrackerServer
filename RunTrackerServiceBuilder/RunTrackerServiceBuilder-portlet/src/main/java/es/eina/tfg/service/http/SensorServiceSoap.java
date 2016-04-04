@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.service.http;
 
 import com.liferay.portal.kernel.log.Log;
@@ -62,72 +48,68 @@ import java.rmi.RemoteException;
  * @generated
  */
 public class SensorServiceSoap {
-	public static es.eina.tfg.model.SensorSoap add(java.lang.Integer type,
-		java.lang.String description, java.lang.String dataUnits,
-		java.lang.String dataType, java.lang.String dataUncertainity,
-		java.lang.String dataLowerRange, java.lang.String dataUpperRange,
-		java.lang.String dataPacketFormat) throws RemoteException {
-		try {
-			es.eina.tfg.model.Sensor returnValue = SensorServiceUtil.add(type,
-					description, dataUnits, dataType, dataUncertainity,
-					dataLowerRange, dataUpperRange, dataPacketFormat);
+    private static Log _log = LogFactoryUtil.getLog(SensorServiceSoap.class);
 
-			return es.eina.tfg.model.SensorSoap.toSoapModel(returnValue);
-		}
-		catch (Exception e) {
-			_log.error(e, e);
+    public static es.eina.tfg.model.SensorSoap add(java.lang.Integer type,
+        java.lang.String description, java.lang.String dataUnits,
+        java.lang.String dataType, java.lang.String dataUncertainity,
+        java.lang.String dataLowerRange, java.lang.String dataUpperRange,
+        java.lang.String dataPacketFormat) throws RemoteException {
+        try {
+            es.eina.tfg.model.Sensor returnValue = SensorServiceUtil.add(type,
+                    description, dataUnits, dataType, dataUncertainity,
+                    dataLowerRange, dataUpperRange, dataPacketFormat);
 
-			throw new RemoteException(e.getMessage());
-		}
-	}
+            return es.eina.tfg.model.SensorSoap.toSoapModel(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
 
-	public static es.eina.tfg.model.SensorSoap update(java.lang.Long sensorId,
-		java.lang.Integer type, java.lang.String description,
-		java.lang.String dataUnits, java.lang.String dataType,
-		java.lang.String dataUncertainity, java.lang.String dataLowerRange,
-		java.lang.String dataUpperRange, java.lang.String dataPacketFormat)
-		throws RemoteException {
-		try {
-			es.eina.tfg.model.Sensor returnValue = SensorServiceUtil.update(sensorId,
-					type, description, dataUnits, dataType, dataUncertainity,
-					dataLowerRange, dataUpperRange, dataPacketFormat);
+            throw new RemoteException(e.getMessage());
+        }
+    }
 
-			return es.eina.tfg.model.SensorSoap.toSoapModel(returnValue);
-		}
-		catch (Exception e) {
-			_log.error(e, e);
+    public static es.eina.tfg.model.SensorSoap update(java.lang.Long sensorId,
+        java.lang.Integer type, java.lang.String description,
+        java.lang.String dataUnits, java.lang.String dataType,
+        java.lang.String dataUncertainity, java.lang.String dataLowerRange,
+        java.lang.String dataUpperRange, java.lang.String dataPacketFormat)
+        throws RemoteException {
+        try {
+            es.eina.tfg.model.Sensor returnValue = SensorServiceUtil.update(sensorId,
+                    type, description, dataUnits, dataType, dataUncertainity,
+                    dataLowerRange, dataUpperRange, dataPacketFormat);
 
-			throw new RemoteException(e.getMessage());
-		}
-	}
+            return es.eina.tfg.model.SensorSoap.toSoapModel(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
 
-	public static es.eina.tfg.model.SensorSoap delete(java.lang.Long sensorId)
-		throws RemoteException {
-		try {
-			es.eina.tfg.model.Sensor returnValue = SensorServiceUtil.delete(sensorId);
+            throw new RemoteException(e.getMessage());
+        }
+    }
 
-			return es.eina.tfg.model.SensorSoap.toSoapModel(returnValue);
-		}
-		catch (Exception e) {
-			_log.error(e, e);
+    public static es.eina.tfg.model.SensorSoap delete(java.lang.Long sensorId)
+        throws RemoteException {
+        try {
+            es.eina.tfg.model.Sensor returnValue = SensorServiceUtil.delete(sensorId);
 
-			throw new RemoteException(e.getMessage());
-		}
-	}
+            return es.eina.tfg.model.SensorSoap.toSoapModel(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
 
-	public static es.eina.tfg.model.SensorSoap getSensor(
-		java.lang.Long sensorId) throws RemoteException {
-		try {
-			es.eina.tfg.model.Sensor returnValue = SensorServiceUtil.getSensor(sensorId);
+            throw new RemoteException(e.getMessage());
+        }
+    }
 
-			return es.eina.tfg.model.SensorSoap.toSoapModel(returnValue);
-		}
-		catch (Exception e) {
-			_log.error(e, e);
+    public static es.eina.tfg.model.SensorSoap getSensor(
+        java.lang.Long sensorId) throws RemoteException {
+        try {
+            es.eina.tfg.model.Sensor returnValue = SensorServiceUtil.getSensor(sensorId);
 
-			throw new RemoteException(e.getMessage());
-		}
-	}
+            return es.eina.tfg.model.SensorSoap.toSoapModel(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
 
-	private static Log _log = LogFactoryUtil.getLog(SensorServiceSoap.class);
+            throw new RemoteException(e.getMessage());
+        }
+    }
 }

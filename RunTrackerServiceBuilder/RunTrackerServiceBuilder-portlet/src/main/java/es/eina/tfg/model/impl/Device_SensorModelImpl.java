@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model.impl;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
@@ -51,344 +37,339 @@ import java.util.Map;
  */
 @JSON(strict = true)
 public class Device_SensorModelImpl extends BaseModelImpl<Device_Sensor>
-	implements Device_SensorModel {
-	/*
-	 * NOTE FOR DEVELOPERS:
-	 *
-	 * Never modify or reference this class directly. All methods that expect a device_ sensor model instance should use the {@link es.eina.tfg.model.Device_Sensor} interface instead.
-	 */
-	public static final String TABLE_NAME = "GL_Device_Sensor";
-	public static final Object[][] TABLE_COLUMNS = {
-			{ "deviceId", Types.BIGINT },
-			{ "sensorId", Types.BIGINT },
-			{ "status", Types.BOOLEAN }
-		};
-	public static final String TABLE_SQL_CREATE = "create table GL_Device_Sensor (deviceId LONG not null,sensorId LONG not null,status BOOLEAN,primary key (deviceId, sensorId))";
-	public static final String TABLE_SQL_DROP = "drop table GL_Device_Sensor";
-	public static final String ORDER_BY_JPQL = " ORDER BY device_Sensor.id.deviceId ASC";
-	public static final String ORDER_BY_SQL = " ORDER BY GL_Device_Sensor.deviceId ASC";
-	public static final String DATA_SOURCE = "liferayDataSource";
-	public static final String SESSION_FACTORY = "liferaySessionFactory";
-	public static final String TX_MANAGER = "liferayTransactionManager";
-	public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
-				"value.object.entity.cache.enabled.es.eina.tfg.model.Device_Sensor"),
-			true);
-	public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
-				"value.object.finder.cache.enabled.es.eina.tfg.model.Device_Sensor"),
-			true);
-	public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
-				"value.object.column.bitmask.enabled.es.eina.tfg.model.Device_Sensor"),
-			true);
-	public static long DEVICEID_COLUMN_BITMASK = 1L;
-
-	/**
-	 * Converts the soap model instance into a normal model instance.
-	 *
-	 * @param soapModel the soap model instance to convert
-	 * @return the normal model instance
-	 */
-	public static Device_Sensor toModel(Device_SensorSoap soapModel) {
-		if (soapModel == null) {
-			return null;
-		}
-
-		Device_Sensor model = new Device_SensorImpl();
-
-		model.setDeviceId(soapModel.getDeviceId());
-		model.setSensorId(soapModel.getSensorId());
-		model.setStatus(soapModel.getStatus());
-
-		return model;
-	}
-
-	/**
-	 * Converts the soap model instances into normal model instances.
-	 *
-	 * @param soapModels the soap model instances to convert
-	 * @return the normal model instances
-	 */
-	public static List<Device_Sensor> toModels(Device_SensorSoap[] soapModels) {
-		if (soapModels == null) {
-			return null;
-		}
-
-		List<Device_Sensor> models = new ArrayList<Device_Sensor>(soapModels.length);
-
-		for (Device_SensorSoap soapModel : soapModels) {
-			models.add(toModel(soapModel));
-		}
-
-		return models;
-	}
-
-	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
-				"lock.expiration.time.es.eina.tfg.model.Device_Sensor"));
-
-	public Device_SensorModelImpl() {
-	}
-
-	@Override
-	public Device_SensorPK getPrimaryKey() {
-		return new Device_SensorPK(_deviceId, _sensorId);
-	}
-
-	@Override
-	public void setPrimaryKey(Device_SensorPK primaryKey) {
-		setDeviceId(primaryKey.deviceId);
-		setSensorId(primaryKey.sensorId);
-	}
-
-	@Override
-	public Serializable getPrimaryKeyObj() {
-		return new Device_SensorPK(_deviceId, _sensorId);
-	}
-
-	@Override
-	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
-		setPrimaryKey((Device_SensorPK)primaryKeyObj);
-	}
-
-	@Override
-	public Class<?> getModelClass() {
-		return Device_Sensor.class;
-	}
-
-	@Override
-	public String getModelClassName() {
-		return Device_Sensor.class.getName();
-	}
-
-	@Override
-	public Map<String, Object> getModelAttributes() {
-		Map<String, Object> attributes = new HashMap<String, Object>();
-
-		attributes.put("deviceId", getDeviceId());
-		attributes.put("sensorId", getSensorId());
-		attributes.put("status", getStatus());
-
-		return attributes;
-	}
-
-	@Override
-	public void setModelAttributes(Map<String, Object> attributes) {
-		Long deviceId = (Long)attributes.get("deviceId");
-
-		if (deviceId != null) {
-			setDeviceId(deviceId);
-		}
-
-		Long sensorId = (Long)attributes.get("sensorId");
-
-		if (sensorId != null) {
-			setSensorId(sensorId);
-		}
-
-		Boolean status = (Boolean)attributes.get("status");
-
-		if (status != null) {
-			setStatus(status);
-		}
-	}
-
-	@JSON
-	@Override
-	public long getDeviceId() {
-		return _deviceId;
-	}
-
-	@Override
-	public void setDeviceId(long deviceId) {
-		_columnBitmask = -1L;
-
-		if (!_setOriginalDeviceId) {
-			_setOriginalDeviceId = true;
-
-			_originalDeviceId = _deviceId;
-		}
-
-		_deviceId = deviceId;
-	}
-
-	public long getOriginalDeviceId() {
-		return _originalDeviceId;
-	}
-
-	@JSON
-	@Override
-	public long getSensorId() {
-		return _sensorId;
-	}
-
-	@Override
-	public void setSensorId(long sensorId) {
-		_sensorId = sensorId;
-	}
-
-	@JSON
-	@Override
-	public boolean getStatus() {
-		return _status;
-	}
-
-	@Override
-	public boolean isStatus() {
-		return _status;
-	}
+    implements Device_SensorModel {
+    /*
+     * NOTE FOR DEVELOPERS:
+     *
+     * Never modify or reference this class directly. All methods that expect a device_ sensor model instance should use the {@link es.eina.tfg.model.Device_Sensor} interface instead.
+     */
+    public static final String TABLE_NAME = "GL_Device_Sensor";
+    public static final Object[][] TABLE_COLUMNS = {
+            { "deviceId", Types.BIGINT },
+            { "sensorId", Types.BIGINT },
+            { "status", Types.BOOLEAN }
+        };
+    public static final String TABLE_SQL_CREATE = "create table GL_Device_Sensor (deviceId LONG not null,sensorId LONG not null,status BOOLEAN,primary key (deviceId, sensorId))";
+    public static final String TABLE_SQL_DROP = "drop table GL_Device_Sensor";
+    public static final String ORDER_BY_JPQL = " ORDER BY device_Sensor.id.deviceId ASC";
+    public static final String ORDER_BY_SQL = " ORDER BY GL_Device_Sensor.deviceId ASC";
+    public static final String DATA_SOURCE = "liferayDataSource";
+    public static final String SESSION_FACTORY = "liferaySessionFactory";
+    public static final String TX_MANAGER = "liferayTransactionManager";
+    public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
+                "value.object.entity.cache.enabled.es.eina.tfg.model.Device_Sensor"),
+            true);
+    public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
+                "value.object.finder.cache.enabled.es.eina.tfg.model.Device_Sensor"),
+            true);
+    public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
+                "value.object.column.bitmask.enabled.es.eina.tfg.model.Device_Sensor"),
+            true);
+    public static long DEVICEID_COLUMN_BITMASK = 1L;
+    public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
+                "lock.expiration.time.es.eina.tfg.model.Device_Sensor"));
+    private static ClassLoader _classLoader = Device_Sensor.class.getClassLoader();
+    private static Class<?>[] _escapedModelInterfaces = new Class[] {
+            Device_Sensor.class
+        };
+    private long _deviceId;
+    private long _originalDeviceId;
+    private boolean _setOriginalDeviceId;
+    private long _sensorId;
+    private boolean _status;
+    private long _columnBitmask;
+    private Device_Sensor _escapedModel;
+
+    public Device_SensorModelImpl() {
+    }
+
+    /**
+     * Converts the soap model instance into a normal model instance.
+     *
+     * @param soapModel the soap model instance to convert
+     * @return the normal model instance
+     */
+    public static Device_Sensor toModel(Device_SensorSoap soapModel) {
+        if (soapModel == null) {
+            return null;
+        }
+
+        Device_Sensor model = new Device_SensorImpl();
+
+        model.setDeviceId(soapModel.getDeviceId());
+        model.setSensorId(soapModel.getSensorId());
+        model.setStatus(soapModel.getStatus());
+
+        return model;
+    }
+
+    /**
+     * Converts the soap model instances into normal model instances.
+     *
+     * @param soapModels the soap model instances to convert
+     * @return the normal model instances
+     */
+    public static List<Device_Sensor> toModels(Device_SensorSoap[] soapModels) {
+        if (soapModels == null) {
+            return null;
+        }
+
+        List<Device_Sensor> models = new ArrayList<Device_Sensor>(soapModels.length);
+
+        for (Device_SensorSoap soapModel : soapModels) {
+            models.add(toModel(soapModel));
+        }
+
+        return models;
+    }
+
+    @Override
+    public Device_SensorPK getPrimaryKey() {
+        return new Device_SensorPK(_deviceId, _sensorId);
+    }
+
+    @Override
+    public void setPrimaryKey(Device_SensorPK primaryKey) {
+        setDeviceId(primaryKey.deviceId);
+        setSensorId(primaryKey.sensorId);
+    }
+
+    @Override
+    public Serializable getPrimaryKeyObj() {
+        return new Device_SensorPK(_deviceId, _sensorId);
+    }
+
+    @Override
+    public void setPrimaryKeyObj(Serializable primaryKeyObj) {
+        setPrimaryKey((Device_SensorPK) primaryKeyObj);
+    }
+
+    @Override
+    public Class<?> getModelClass() {
+        return Device_Sensor.class;
+    }
+
+    @Override
+    public String getModelClassName() {
+        return Device_Sensor.class.getName();
+    }
+
+    @Override
+    public Map<String, Object> getModelAttributes() {
+        Map<String, Object> attributes = new HashMap<String, Object>();
+
+        attributes.put("deviceId", getDeviceId());
+        attributes.put("sensorId", getSensorId());
+        attributes.put("status", getStatus());
+
+        return attributes;
+    }
+
+    @Override
+    public void setModelAttributes(Map<String, Object> attributes) {
+        Long deviceId = (Long) attributes.get("deviceId");
+
+        if (deviceId != null) {
+            setDeviceId(deviceId);
+        }
+
+        Long sensorId = (Long) attributes.get("sensorId");
+
+        if (sensorId != null) {
+            setSensorId(sensorId);
+        }
+
+        Boolean status = (Boolean) attributes.get("status");
+
+        if (status != null) {
+            setStatus(status);
+        }
+    }
+
+    @JSON
+    @Override
+    public long getDeviceId() {
+        return _deviceId;
+    }
+
+    @Override
+    public void setDeviceId(long deviceId) {
+        _columnBitmask = -1L;
+
+        if (!_setOriginalDeviceId) {
+            _setOriginalDeviceId = true;
+
+            _originalDeviceId = _deviceId;
+        }
+
+        _deviceId = deviceId;
+    }
+
+    public long getOriginalDeviceId() {
+        return _originalDeviceId;
+    }
+
+    @JSON
+    @Override
+    public long getSensorId() {
+        return _sensorId;
+    }
+
+    @Override
+    public void setSensorId(long sensorId) {
+        _sensorId = sensorId;
+    }
+
+    @JSON
+    @Override
+    public boolean getStatus() {
+        return _status;
+    }
 
-	@Override
-	public void setStatus(boolean status) {
-		_status = status;
-	}
+    @Override
+    public boolean isStatus() {
+        return _status;
+    }
 
-	public long getColumnBitmask() {
-		return _columnBitmask;
-	}
+    @Override
+    public void setStatus(boolean status) {
+        _status = status;
+    }
 
-	@Override
-	public Device_Sensor toEscapedModel() {
-		if (_escapedModel == null) {
-			_escapedModel = (Device_Sensor)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
-		}
-
-		return _escapedModel;
-	}
-
-	@Override
-	public Object clone() {
-		Device_SensorImpl device_SensorImpl = new Device_SensorImpl();
-
-		device_SensorImpl.setDeviceId(getDeviceId());
-		device_SensorImpl.setSensorId(getSensorId());
-		device_SensorImpl.setStatus(getStatus());
-
-		device_SensorImpl.resetOriginalValues();
+    public long getColumnBitmask() {
+        return _columnBitmask;
+    }
 
-		return device_SensorImpl;
-	}
-
-	@Override
-	public int compareTo(Device_Sensor device_Sensor) {
-		int value = 0;
-
-		if (getDeviceId() < device_Sensor.getDeviceId()) {
-			value = -1;
-		}
-		else if (getDeviceId() > device_Sensor.getDeviceId()) {
-			value = 1;
-		}
-		else {
-			value = 0;
-		}
-
-		if (value != 0) {
-			return value;
-		}
-
-		return 0;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-
-		if (!(obj instanceof Device_Sensor)) {
-			return false;
-		}
-
-		Device_Sensor device_Sensor = (Device_Sensor)obj;
-
-		Device_SensorPK primaryKey = device_Sensor.getPrimaryKey();
-
-		if (getPrimaryKey().equals(primaryKey)) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-
-	@Override
-	public int hashCode() {
-		return getPrimaryKey().hashCode();
-	}
-
-	@Override
-	public void resetOriginalValues() {
-		Device_SensorModelImpl device_SensorModelImpl = this;
-
-		device_SensorModelImpl._originalDeviceId = device_SensorModelImpl._deviceId;
-
-		device_SensorModelImpl._setOriginalDeviceId = false;
-
-		device_SensorModelImpl._columnBitmask = 0;
-	}
-
-	@Override
-	public CacheModel<Device_Sensor> toCacheModel() {
-		Device_SensorCacheModel device_SensorCacheModel = new Device_SensorCacheModel();
-
-		device_SensorCacheModel.deviceId = getDeviceId();
-
-		device_SensorCacheModel.sensorId = getSensorId();
-
-		device_SensorCacheModel.status = getStatus();
-
-		return device_SensorCacheModel;
-	}
-
-	@Override
-	public String toString() {
-		StringBundler sb = new StringBundler(7);
-
-		sb.append("{deviceId=");
-		sb.append(getDeviceId());
-		sb.append(", sensorId=");
-		sb.append(getSensorId());
-		sb.append(", status=");
-		sb.append(getStatus());
-		sb.append("}");
-
-		return sb.toString();
-	}
-
-	@Override
-	public String toXmlString() {
-		StringBundler sb = new StringBundler(13);
-
-		sb.append("<model><model-name>");
-		sb.append("es.eina.tfg.model.Device_Sensor");
-		sb.append("</model-name>");
-
-		sb.append(
-			"<column><column-name>deviceId</column-name><column-value><![CDATA[");
-		sb.append(getDeviceId());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>sensorId</column-name><column-value><![CDATA[");
-		sb.append(getSensorId());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>status</column-name><column-value><![CDATA[");
-		sb.append(getStatus());
-		sb.append("]]></column-value></column>");
-
-		sb.append("</model>");
-
-		return sb.toString();
-	}
-
-	private static ClassLoader _classLoader = Device_Sensor.class.getClassLoader();
-	private static Class<?>[] _escapedModelInterfaces = new Class[] {
-			Device_Sensor.class
-		};
-	private long _deviceId;
-	private long _originalDeviceId;
-	private boolean _setOriginalDeviceId;
-	private long _sensorId;
-	private boolean _status;
-	private long _columnBitmask;
-	private Device_Sensor _escapedModel;
+    @Override
+    public Device_Sensor toEscapedModel() {
+        if (_escapedModel == null) {
+            _escapedModel = (Device_Sensor) ProxyUtil.newProxyInstance(_classLoader,
+                    _escapedModelInterfaces, new AutoEscapeBeanHandler(this));
+        }
+
+        return _escapedModel;
+    }
+
+    @Override
+    public Object clone() {
+        Device_SensorImpl device_SensorImpl = new Device_SensorImpl();
+
+        device_SensorImpl.setDeviceId(getDeviceId());
+        device_SensorImpl.setSensorId(getSensorId());
+        device_SensorImpl.setStatus(getStatus());
+
+        device_SensorImpl.resetOriginalValues();
+
+        return device_SensorImpl;
+    }
+
+    @Override
+    public int compareTo(Device_Sensor device_Sensor) {
+        int value = 0;
+
+        if (getDeviceId() < device_Sensor.getDeviceId()) {
+            value = -1;
+        } else if (getDeviceId() > device_Sensor.getDeviceId()) {
+            value = 1;
+        } else {
+            value = 0;
+        }
+
+        if (value != 0) {
+            return value;
+        }
+
+        return 0;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof Device_Sensor)) {
+            return false;
+        }
+
+        Device_Sensor device_Sensor = (Device_Sensor) obj;
+
+        Device_SensorPK primaryKey = device_Sensor.getPrimaryKey();
+
+        if (getPrimaryKey().equals(primaryKey)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        return getPrimaryKey().hashCode();
+    }
+
+    @Override
+    public void resetOriginalValues() {
+        Device_SensorModelImpl device_SensorModelImpl = this;
+
+        device_SensorModelImpl._originalDeviceId = device_SensorModelImpl._deviceId;
+
+        device_SensorModelImpl._setOriginalDeviceId = false;
+
+        device_SensorModelImpl._columnBitmask = 0;
+    }
+
+    @Override
+    public CacheModel<Device_Sensor> toCacheModel() {
+        Device_SensorCacheModel device_SensorCacheModel = new Device_SensorCacheModel();
+
+        device_SensorCacheModel.deviceId = getDeviceId();
+
+        device_SensorCacheModel.sensorId = getSensorId();
+
+        device_SensorCacheModel.status = getStatus();
+
+        return device_SensorCacheModel;
+    }
+
+    @Override
+    public String toString() {
+        StringBundler sb = new StringBundler(7);
+
+        sb.append("{deviceId=");
+        sb.append(getDeviceId());
+        sb.append(", sensorId=");
+        sb.append(getSensorId());
+        sb.append(", status=");
+        sb.append(getStatus());
+        sb.append("}");
+
+        return sb.toString();
+    }
+
+    @Override
+    public String toXmlString() {
+        StringBundler sb = new StringBundler(13);
+
+        sb.append("<model><model-name>");
+        sb.append("es.eina.tfg.model.Device_Sensor");
+        sb.append("</model-name>");
+
+        sb.append(
+            "<column><column-name>deviceId</column-name><column-value><![CDATA[");
+        sb.append(getDeviceId());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>sensorId</column-name><column-value><![CDATA[");
+        sb.append(getSensorId());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>status</column-name><column-value><![CDATA[");
+        sb.append(getStatus());
+        sb.append("]]></column-value></column>");
+
+        sb.append("</model>");
+
+        return sb.toString();
+    }
 }

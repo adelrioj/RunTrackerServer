@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model;
 
 import com.liferay.portal.kernel.util.Validator;
@@ -30,270 +16,270 @@ import java.util.Map;
  * @generated
  */
 public class UserSelectedRoutesWrapper implements UserSelectedRoutes,
-	ModelWrapper<UserSelectedRoutes> {
-	public UserSelectedRoutesWrapper(UserSelectedRoutes userSelectedRoutes) {
-		_userSelectedRoutes = userSelectedRoutes;
-	}
+    ModelWrapper<UserSelectedRoutes> {
+    private UserSelectedRoutes _userSelectedRoutes;
 
-	@Override
-	public Class<?> getModelClass() {
-		return UserSelectedRoutes.class;
-	}
+    public UserSelectedRoutesWrapper(UserSelectedRoutes userSelectedRoutes) {
+        _userSelectedRoutes = userSelectedRoutes;
+    }
 
-	@Override
-	public String getModelClassName() {
-		return UserSelectedRoutes.class.getName();
-	}
+    @Override
+    public Class<?> getModelClass() {
+        return UserSelectedRoutes.class;
+    }
 
-	@Override
-	public Map<String, Object> getModelAttributes() {
-		Map<String, Object> attributes = new HashMap<String, Object>();
+    @Override
+    public String getModelClassName() {
+        return UserSelectedRoutes.class.getName();
+    }
 
-		attributes.put("userId", getUserId());
-		attributes.put("routeId", getRouteId());
+    @Override
+    public Map<String, Object> getModelAttributes() {
+        Map<String, Object> attributes = new HashMap<String, Object>();
 
-		return attributes;
-	}
+        attributes.put("userId", getUserId());
+        attributes.put("routeId", getRouteId());
 
-	@Override
-	public void setModelAttributes(Map<String, Object> attributes) {
-		Long userId = (Long)attributes.get("userId");
+        return attributes;
+    }
 
-		if (userId != null) {
-			setUserId(userId);
-		}
+    @Override
+    public void setModelAttributes(Map<String, Object> attributes) {
+        Long userId = (Long) attributes.get("userId");
 
-		Long routeId = (Long)attributes.get("routeId");
+        if (userId != null) {
+            setUserId(userId);
+        }
 
-		if (routeId != null) {
-			setRouteId(routeId);
-		}
-	}
+        Long routeId = (Long) attributes.get("routeId");
 
-	/**
-	* Returns the primary key of this user selected routes.
-	*
-	* @return the primary key of this user selected routes
-	*/
-	@Override
-	public es.eina.tfg.service.persistence.UserSelectedRoutesPK getPrimaryKey() {
-		return _userSelectedRoutes.getPrimaryKey();
-	}
+        if (routeId != null) {
+            setRouteId(routeId);
+        }
+    }
 
-	/**
-	* Sets the primary key of this user selected routes.
-	*
-	* @param primaryKey the primary key of this user selected routes
-	*/
-	@Override
-	public void setPrimaryKey(
-		es.eina.tfg.service.persistence.UserSelectedRoutesPK primaryKey) {
-		_userSelectedRoutes.setPrimaryKey(primaryKey);
-	}
+    /**
+    * Returns the primary key of this user selected routes.
+    *
+    * @return the primary key of this user selected routes
+    */
+    @Override
+    public es.eina.tfg.service.persistence.UserSelectedRoutesPK getPrimaryKey() {
+        return _userSelectedRoutes.getPrimaryKey();
+    }
 
-	/**
-	* Returns the user ID of this user selected routes.
-	*
-	* @return the user ID of this user selected routes
-	*/
-	@Override
-	public long getUserId() {
-		return _userSelectedRoutes.getUserId();
-	}
+    /**
+    * Sets the primary key of this user selected routes.
+    *
+    * @param primaryKey the primary key of this user selected routes
+    */
+    @Override
+    public void setPrimaryKey(
+        es.eina.tfg.service.persistence.UserSelectedRoutesPK primaryKey) {
+        _userSelectedRoutes.setPrimaryKey(primaryKey);
+    }
 
-	/**
-	* Sets the user ID of this user selected routes.
-	*
-	* @param userId the user ID of this user selected routes
-	*/
-	@Override
-	public void setUserId(long userId) {
-		_userSelectedRoutes.setUserId(userId);
-	}
+    /**
+    * Returns the user ID of this user selected routes.
+    *
+    * @return the user ID of this user selected routes
+    */
+    @Override
+    public long getUserId() {
+        return _userSelectedRoutes.getUserId();
+    }
 
-	/**
-	* Returns the user uuid of this user selected routes.
-	*
-	* @return the user uuid of this user selected routes
-	* @throws SystemException if a system exception occurred
-	*/
-	@Override
-	public java.lang.String getUserUuid()
-		throws com.liferay.portal.kernel.exception.SystemException {
-		return _userSelectedRoutes.getUserUuid();
-	}
+    /**
+    * Sets the user ID of this user selected routes.
+    *
+    * @param userId the user ID of this user selected routes
+    */
+    @Override
+    public void setUserId(long userId) {
+        _userSelectedRoutes.setUserId(userId);
+    }
 
-	/**
-	* Sets the user uuid of this user selected routes.
-	*
-	* @param userUuid the user uuid of this user selected routes
-	*/
-	@Override
-	public void setUserUuid(java.lang.String userUuid) {
-		_userSelectedRoutes.setUserUuid(userUuid);
-	}
+    /**
+    * Returns the user uuid of this user selected routes.
+    *
+    * @return the user uuid of this user selected routes
+    * @throws SystemException if a system exception occurred
+    */
+    @Override
+    public java.lang.String getUserUuid()
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _userSelectedRoutes.getUserUuid();
+    }
 
-	/**
-	* Returns the route ID of this user selected routes.
-	*
-	* @return the route ID of this user selected routes
-	*/
-	@Override
-	public long getRouteId() {
-		return _userSelectedRoutes.getRouteId();
-	}
+    /**
+    * Sets the user uuid of this user selected routes.
+    *
+    * @param userUuid the user uuid of this user selected routes
+    */
+    @Override
+    public void setUserUuid(java.lang.String userUuid) {
+        _userSelectedRoutes.setUserUuid(userUuid);
+    }
 
-	/**
-	* Sets the route ID of this user selected routes.
-	*
-	* @param routeId the route ID of this user selected routes
-	*/
-	@Override
-	public void setRouteId(long routeId) {
-		_userSelectedRoutes.setRouteId(routeId);
-	}
+    /**
+    * Returns the route ID of this user selected routes.
+    *
+    * @return the route ID of this user selected routes
+    */
+    @Override
+    public long getRouteId() {
+        return _userSelectedRoutes.getRouteId();
+    }
 
-	@Override
-	public boolean isNew() {
-		return _userSelectedRoutes.isNew();
-	}
+    /**
+    * Sets the route ID of this user selected routes.
+    *
+    * @param routeId the route ID of this user selected routes
+    */
+    @Override
+    public void setRouteId(long routeId) {
+        _userSelectedRoutes.setRouteId(routeId);
+    }
 
-	@Override
-	public void setNew(boolean n) {
-		_userSelectedRoutes.setNew(n);
-	}
+    @Override
+    public boolean isNew() {
+        return _userSelectedRoutes.isNew();
+    }
 
-	@Override
-	public boolean isCachedModel() {
-		return _userSelectedRoutes.isCachedModel();
-	}
+    @Override
+    public void setNew(boolean n) {
+        _userSelectedRoutes.setNew(n);
+    }
 
-	@Override
-	public void setCachedModel(boolean cachedModel) {
-		_userSelectedRoutes.setCachedModel(cachedModel);
-	}
+    @Override
+    public boolean isCachedModel() {
+        return _userSelectedRoutes.isCachedModel();
+    }
 
-	@Override
-	public boolean isEscapedModel() {
-		return _userSelectedRoutes.isEscapedModel();
-	}
+    @Override
+    public void setCachedModel(boolean cachedModel) {
+        _userSelectedRoutes.setCachedModel(cachedModel);
+    }
 
-	@Override
-	public java.io.Serializable getPrimaryKeyObj() {
-		return _userSelectedRoutes.getPrimaryKeyObj();
-	}
+    @Override
+    public boolean isEscapedModel() {
+        return _userSelectedRoutes.isEscapedModel();
+    }
 
-	@Override
-	public void setPrimaryKeyObj(java.io.Serializable primaryKeyObj) {
-		_userSelectedRoutes.setPrimaryKeyObj(primaryKeyObj);
-	}
+    @Override
+    public java.io.Serializable getPrimaryKeyObj() {
+        return _userSelectedRoutes.getPrimaryKeyObj();
+    }
 
-	@Override
-	public com.liferay.portlet.expando.model.ExpandoBridge getExpandoBridge() {
-		return _userSelectedRoutes.getExpandoBridge();
-	}
+    @Override
+    public void setPrimaryKeyObj(java.io.Serializable primaryKeyObj) {
+        _userSelectedRoutes.setPrimaryKeyObj(primaryKeyObj);
+    }
 
-	@Override
-	public void setExpandoBridgeAttributes(
-		com.liferay.portal.model.BaseModel<?> baseModel) {
-		_userSelectedRoutes.setExpandoBridgeAttributes(baseModel);
-	}
+    @Override
+    public com.liferay.portlet.expando.model.ExpandoBridge getExpandoBridge() {
+        return _userSelectedRoutes.getExpandoBridge();
+    }
 
-	@Override
-	public void setExpandoBridgeAttributes(
-		com.liferay.portlet.expando.model.ExpandoBridge expandoBridge) {
-		_userSelectedRoutes.setExpandoBridgeAttributes(expandoBridge);
-	}
+    @Override
+    public void setExpandoBridgeAttributes(
+        com.liferay.portal.model.BaseModel<?> baseModel) {
+        _userSelectedRoutes.setExpandoBridgeAttributes(baseModel);
+    }
 
-	@Override
-	public void setExpandoBridgeAttributes(
-		com.liferay.portal.service.ServiceContext serviceContext) {
-		_userSelectedRoutes.setExpandoBridgeAttributes(serviceContext);
-	}
+    @Override
+    public void setExpandoBridgeAttributes(
+        com.liferay.portlet.expando.model.ExpandoBridge expandoBridge) {
+        _userSelectedRoutes.setExpandoBridgeAttributes(expandoBridge);
+    }
 
-	@Override
-	public java.lang.Object clone() {
-		return new UserSelectedRoutesWrapper((UserSelectedRoutes)_userSelectedRoutes.clone());
-	}
+    @Override
+    public void setExpandoBridgeAttributes(
+        com.liferay.portal.service.ServiceContext serviceContext) {
+        _userSelectedRoutes.setExpandoBridgeAttributes(serviceContext);
+    }
 
-	@Override
-	public int compareTo(
-		es.eina.tfg.model.UserSelectedRoutes userSelectedRoutes) {
-		return _userSelectedRoutes.compareTo(userSelectedRoutes);
-	}
+    @Override
+    public java.lang.Object clone() {
+        return new UserSelectedRoutesWrapper((UserSelectedRoutes) _userSelectedRoutes.clone());
+    }
 
-	@Override
-	public int hashCode() {
-		return _userSelectedRoutes.hashCode();
-	}
+    @Override
+    public int compareTo(
+        es.eina.tfg.model.UserSelectedRoutes userSelectedRoutes) {
+        return _userSelectedRoutes.compareTo(userSelectedRoutes);
+    }
 
-	@Override
-	public com.liferay.portal.model.CacheModel<es.eina.tfg.model.UserSelectedRoutes> toCacheModel() {
-		return _userSelectedRoutes.toCacheModel();
-	}
+    @Override
+    public int hashCode() {
+        return _userSelectedRoutes.hashCode();
+    }
 
-	@Override
-	public es.eina.tfg.model.UserSelectedRoutes toEscapedModel() {
-		return new UserSelectedRoutesWrapper(_userSelectedRoutes.toEscapedModel());
-	}
+    @Override
+    public com.liferay.portal.model.CacheModel<es.eina.tfg.model.UserSelectedRoutes> toCacheModel() {
+        return _userSelectedRoutes.toCacheModel();
+    }
 
-	@Override
-	public es.eina.tfg.model.UserSelectedRoutes toUnescapedModel() {
-		return new UserSelectedRoutesWrapper(_userSelectedRoutes.toUnescapedModel());
-	}
+    @Override
+    public es.eina.tfg.model.UserSelectedRoutes toEscapedModel() {
+        return new UserSelectedRoutesWrapper(_userSelectedRoutes.toEscapedModel());
+    }
 
-	@Override
-	public java.lang.String toString() {
-		return _userSelectedRoutes.toString();
-	}
+    @Override
+    public es.eina.tfg.model.UserSelectedRoutes toUnescapedModel() {
+        return new UserSelectedRoutesWrapper(_userSelectedRoutes.toUnescapedModel());
+    }
 
-	@Override
-	public java.lang.String toXmlString() {
-		return _userSelectedRoutes.toXmlString();
-	}
+    @Override
+    public java.lang.String toString() {
+        return _userSelectedRoutes.toString();
+    }
 
-	@Override
-	public void persist()
-		throws com.liferay.portal.kernel.exception.SystemException {
-		_userSelectedRoutes.persist();
-	}
+    @Override
+    public java.lang.String toXmlString() {
+        return _userSelectedRoutes.toXmlString();
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
+    @Override
+    public void persist()
+        throws com.liferay.portal.kernel.exception.SystemException {
+        _userSelectedRoutes.persist();
+    }
 
-		if (!(obj instanceof UserSelectedRoutesWrapper)) {
-			return false;
-		}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
 
-		UserSelectedRoutesWrapper userSelectedRoutesWrapper = (UserSelectedRoutesWrapper)obj;
+        if (!(obj instanceof UserSelectedRoutesWrapper)) {
+            return false;
+        }
 
-		if (Validator.equals(_userSelectedRoutes,
-					userSelectedRoutesWrapper._userSelectedRoutes)) {
-			return true;
-		}
+        UserSelectedRoutesWrapper userSelectedRoutesWrapper = (UserSelectedRoutesWrapper) obj;
 
-		return false;
-	}
+        if (Validator.equals(_userSelectedRoutes,
+                    userSelectedRoutesWrapper._userSelectedRoutes)) {
+            return true;
+        }
 
-	/**
-	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedModel}
-	 */
-	public UserSelectedRoutes getWrappedUserSelectedRoutes() {
-		return _userSelectedRoutes;
-	}
+        return false;
+    }
 
-	@Override
-	public UserSelectedRoutes getWrappedModel() {
-		return _userSelectedRoutes;
-	}
+    /**
+     * @deprecated As of 6.1.0, replaced by {@link #getWrappedModel}
+     */
+    public UserSelectedRoutes getWrappedUserSelectedRoutes() {
+        return _userSelectedRoutes;
+    }
 
-	@Override
-	public void resetOriginalValues() {
-		_userSelectedRoutes.resetOriginalValues();
-	}
+    @Override
+    public UserSelectedRoutes getWrappedModel() {
+        return _userSelectedRoutes;
+    }
 
-	private UserSelectedRoutes _userSelectedRoutes;
+    @Override
+    public void resetOriginalValues() {
+        _userSelectedRoutes.resetOriginalValues();
+    }
 }

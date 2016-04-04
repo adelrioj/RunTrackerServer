@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model;
 
 import java.io.Serializable;
@@ -27,149 +13,148 @@ import java.util.List;
  * @generated
  */
 public class SensorSoap implements Serializable {
-	public static SensorSoap toSoapModel(Sensor model) {
-		SensorSoap soapModel = new SensorSoap();
+    private long _sensorId;
+    private int _type;
+    private String _description;
+    private String _dataUnits;
+    private String _dataType;
+    private String _dataUncertainity;
+    private String _dataLowerRange;
+    private String _dataUpperRange;
+    private String _dataPacketFormat;
 
-		soapModel.setSensorId(model.getSensorId());
-		soapModel.setType(model.getType());
-		soapModel.setDescription(model.getDescription());
-		soapModel.setDataUnits(model.getDataUnits());
-		soapModel.setDataType(model.getDataType());
-		soapModel.setDataUncertainity(model.getDataUncertainity());
-		soapModel.setDataLowerRange(model.getDataLowerRange());
-		soapModel.setDataUpperRange(model.getDataUpperRange());
-		soapModel.setDataPacketFormat(model.getDataPacketFormat());
+    public SensorSoap() {
+    }
 
-		return soapModel;
-	}
+    public static SensorSoap toSoapModel(Sensor model) {
+        SensorSoap soapModel = new SensorSoap();
 
-	public static SensorSoap[] toSoapModels(Sensor[] models) {
-		SensorSoap[] soapModels = new SensorSoap[models.length];
+        soapModel.setSensorId(model.getSensorId());
+        soapModel.setType(model.getType());
+        soapModel.setDescription(model.getDescription());
+        soapModel.setDataUnits(model.getDataUnits());
+        soapModel.setDataType(model.getDataType());
+        soapModel.setDataUncertainity(model.getDataUncertainity());
+        soapModel.setDataLowerRange(model.getDataLowerRange());
+        soapModel.setDataUpperRange(model.getDataUpperRange());
+        soapModel.setDataPacketFormat(model.getDataPacketFormat());
 
-		for (int i = 0; i < models.length; i++) {
-			soapModels[i] = toSoapModel(models[i]);
-		}
+        return soapModel;
+    }
 
-		return soapModels;
-	}
+    public static SensorSoap[] toSoapModels(Sensor[] models) {
+        SensorSoap[] soapModels = new SensorSoap[models.length];
 
-	public static SensorSoap[][] toSoapModels(Sensor[][] models) {
-		SensorSoap[][] soapModels = null;
+        for (int i = 0; i < models.length; i++) {
+            soapModels[i] = toSoapModel(models[i]);
+        }
 
-		if (models.length > 0) {
-			soapModels = new SensorSoap[models.length][models[0].length];
-		}
-		else {
-			soapModels = new SensorSoap[0][0];
-		}
+        return soapModels;
+    }
 
-		for (int i = 0; i < models.length; i++) {
-			soapModels[i] = toSoapModels(models[i]);
-		}
+    public static SensorSoap[][] toSoapModels(Sensor[][] models) {
+        SensorSoap[][] soapModels = null;
 
-		return soapModels;
-	}
+        if (models.length > 0) {
+            soapModels = new SensorSoap[models.length][models[0].length];
+        } else {
+            soapModels = new SensorSoap[0][0];
+        }
 
-	public static SensorSoap[] toSoapModels(List<Sensor> models) {
-		List<SensorSoap> soapModels = new ArrayList<SensorSoap>(models.size());
+        for (int i = 0; i < models.length; i++) {
+            soapModels[i] = toSoapModels(models[i]);
+        }
 
-		for (Sensor model : models) {
-			soapModels.add(toSoapModel(model));
-		}
+        return soapModels;
+    }
 
-		return soapModels.toArray(new SensorSoap[soapModels.size()]);
-	}
+    public static SensorSoap[] toSoapModels(List<Sensor> models) {
+        List<SensorSoap> soapModels = new ArrayList<SensorSoap>(models.size());
 
-	public SensorSoap() {
-	}
+        for (Sensor model : models) {
+            soapModels.add(toSoapModel(model));
+        }
 
-	public long getPrimaryKey() {
-		return _sensorId;
-	}
+        return soapModels.toArray(new SensorSoap[soapModels.size()]);
+    }
 
-	public void setPrimaryKey(long pk) {
-		setSensorId(pk);
-	}
+    public long getPrimaryKey() {
+        return _sensorId;
+    }
 
-	public long getSensorId() {
-		return _sensorId;
-	}
+    public void setPrimaryKey(long pk) {
+        setSensorId(pk);
+    }
 
-	public void setSensorId(long sensorId) {
-		_sensorId = sensorId;
-	}
+    public long getSensorId() {
+        return _sensorId;
+    }
 
-	public int getType() {
-		return _type;
-	}
+    public void setSensorId(long sensorId) {
+        _sensorId = sensorId;
+    }
 
-	public void setType(int type) {
-		_type = type;
-	}
+    public int getType() {
+        return _type;
+    }
 
-	public String getDescription() {
-		return _description;
-	}
+    public void setType(int type) {
+        _type = type;
+    }
 
-	public void setDescription(String description) {
-		_description = description;
-	}
+    public String getDescription() {
+        return _description;
+    }
 
-	public String getDataUnits() {
-		return _dataUnits;
-	}
+    public void setDescription(String description) {
+        _description = description;
+    }
 
-	public void setDataUnits(String dataUnits) {
-		_dataUnits = dataUnits;
-	}
+    public String getDataUnits() {
+        return _dataUnits;
+    }
 
-	public String getDataType() {
-		return _dataType;
-	}
+    public void setDataUnits(String dataUnits) {
+        _dataUnits = dataUnits;
+    }
 
-	public void setDataType(String dataType) {
-		_dataType = dataType;
-	}
+    public String getDataType() {
+        return _dataType;
+    }
 
-	public String getDataUncertainity() {
-		return _dataUncertainity;
-	}
+    public void setDataType(String dataType) {
+        _dataType = dataType;
+    }
 
-	public void setDataUncertainity(String dataUncertainity) {
-		_dataUncertainity = dataUncertainity;
-	}
+    public String getDataUncertainity() {
+        return _dataUncertainity;
+    }
 
-	public String getDataLowerRange() {
-		return _dataLowerRange;
-	}
+    public void setDataUncertainity(String dataUncertainity) {
+        _dataUncertainity = dataUncertainity;
+    }
 
-	public void setDataLowerRange(String dataLowerRange) {
-		_dataLowerRange = dataLowerRange;
-	}
+    public String getDataLowerRange() {
+        return _dataLowerRange;
+    }
 
-	public String getDataUpperRange() {
-		return _dataUpperRange;
-	}
+    public void setDataLowerRange(String dataLowerRange) {
+        _dataLowerRange = dataLowerRange;
+    }
 
-	public void setDataUpperRange(String dataUpperRange) {
-		_dataUpperRange = dataUpperRange;
-	}
+    public String getDataUpperRange() {
+        return _dataUpperRange;
+    }
 
-	public String getDataPacketFormat() {
-		return _dataPacketFormat;
-	}
+    public void setDataUpperRange(String dataUpperRange) {
+        _dataUpperRange = dataUpperRange;
+    }
 
-	public void setDataPacketFormat(String dataPacketFormat) {
-		_dataPacketFormat = dataPacketFormat;
-	}
+    public String getDataPacketFormat() {
+        return _dataPacketFormat;
+    }
 
-	private long _sensorId;
-	private int _type;
-	private String _description;
-	private String _dataUnits;
-	private String _dataType;
-	private String _dataUncertainity;
-	private String _dataLowerRange;
-	private String _dataUpperRange;
-	private String _dataPacketFormat;
+    public void setDataPacketFormat(String dataPacketFormat) {
+        _dataPacketFormat = dataPacketFormat;
+    }
 }

@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.service;
 
 import com.liferay.portal.service.ServiceWrapper;
@@ -24,106 +10,106 @@ import com.liferay.portal.service.ServiceWrapper;
  * @generated
  */
 public class RouteLocationServiceWrapper implements RouteLocationService,
-	ServiceWrapper<RouteLocationService> {
-	public RouteLocationServiceWrapper(
-		RouteLocationService routeLocationService) {
-		_routeLocationService = routeLocationService;
-	}
+    ServiceWrapper<RouteLocationService> {
+    private RouteLocationService _routeLocationService;
 
-	/**
-	* Returns the Spring bean ID for this bean.
-	*
-	* @return the Spring bean ID for this bean
-	*/
-	@Override
-	public java.lang.String getBeanIdentifier() {
-		return _routeLocationService.getBeanIdentifier();
-	}
+    public RouteLocationServiceWrapper(
+        RouteLocationService routeLocationService) {
+        _routeLocationService = routeLocationService;
+    }
 
-	/**
-	* Sets the Spring bean ID for this bean.
-	*
-	* @param beanIdentifier the Spring bean ID for this bean
-	*/
-	@Override
-	public void setBeanIdentifier(java.lang.String beanIdentifier) {
-		_routeLocationService.setBeanIdentifier(beanIdentifier);
-	}
+    /**
+    * Returns the Spring bean ID for this bean.
+    *
+    * @return the Spring bean ID for this bean
+    */
+    @Override
+    public java.lang.String getBeanIdentifier() {
+        return _routeLocationService.getBeanIdentifier();
+    }
 
-	@Override
-	public java.lang.Object invokeMethod(java.lang.String name,
-		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
-		throws java.lang.Throwable {
-		return _routeLocationService.invokeMethod(name, parameterTypes,
-			arguments);
-	}
+    /**
+    * Sets the Spring bean ID for this bean.
+    *
+    * @param beanIdentifier the Spring bean ID for this bean
+    */
+    @Override
+    public void setBeanIdentifier(java.lang.String beanIdentifier) {
+        _routeLocationService.setBeanIdentifier(beanIdentifier);
+    }
 
-	@Override
-	public es.eina.tfg.model.RouteLocation add(java.lang.Long routeId,
-		java.lang.Double latitude, java.lang.Double longitude)
-		throws com.liferay.portal.kernel.exception.SystemException,
-			es.eina.tfg.NonExistingRouteException {
-		return _routeLocationService.add(routeId, latitude, longitude);
-	}
+    @Override
+    public java.lang.Object invokeMethod(java.lang.String name,
+        java.lang.String[] parameterTypes, java.lang.Object[] arguments)
+        throws java.lang.Throwable {
+        return _routeLocationService.invokeMethod(name, parameterTypes,
+            arguments);
+    }
 
-	@Override
-	public es.eina.tfg.model.RouteLocation update(
-		java.lang.Long routeLocationId, java.lang.Long routeId,
-		java.lang.Double latitude, java.lang.Double longitude)
-		throws com.liferay.portal.kernel.exception.SystemException,
-			es.eina.tfg.NonExistingRouteException,
-			es.eina.tfg.NonExistingRouteLocationException {
-		return _routeLocationService.update(routeLocationId, routeId, latitude,
-			longitude);
-	}
+    @Override
+    public es.eina.tfg.model.RouteLocation add(java.lang.Long routeId,
+        java.lang.Double latitude, java.lang.Double longitude)
+        throws com.liferay.portal.kernel.exception.SystemException,
+            es.eina.tfg.NonExistingRouteException {
+        return _routeLocationService.add(routeId, latitude, longitude);
+    }
 
-	@Override
-	public es.eina.tfg.model.RouteLocation delete(
-		java.lang.Long routeLocationId)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException {
-		return _routeLocationService.delete(routeLocationId);
-	}
+    @Override
+    public es.eina.tfg.model.RouteLocation update(
+        java.lang.Long routeLocationId, java.lang.Long routeId,
+        java.lang.Double latitude, java.lang.Double longitude)
+        throws com.liferay.portal.kernel.exception.SystemException,
+            es.eina.tfg.NonExistingRouteException,
+            es.eina.tfg.NonExistingRouteLocationException {
+        return _routeLocationService.update(routeLocationId, routeId, latitude,
+            longitude);
+    }
 
-	@Override
-	public es.eina.tfg.model.RouteLocation getRouteLocation(
-		java.lang.Long routeLocationId)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException {
-		return _routeLocationService.getRouteLocation(routeLocationId);
-	}
+    @Override
+    public es.eina.tfg.model.RouteLocation delete(
+        java.lang.Long routeLocationId)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        return _routeLocationService.delete(routeLocationId);
+    }
 
-	@Override
-	public java.util.List<es.eina.tfg.model.RouteLocation> findByRouteId(
-		java.lang.Long routeId)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		return _routeLocationService.findByRouteId(routeId);
-	}
+    @Override
+    public es.eina.tfg.model.RouteLocation getRouteLocation(
+        java.lang.Long routeLocationId)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        return _routeLocationService.getRouteLocation(routeLocationId);
+    }
 
-	/**
-	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
-	 */
-	public RouteLocationService getWrappedRouteLocationService() {
-		return _routeLocationService;
-	}
+    @Override
+    public java.util.List<es.eina.tfg.model.RouteLocation> findByRouteId(
+        java.lang.Long routeId)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _routeLocationService.findByRouteId(routeId);
+    }
 
-	/**
-	 * @deprecated As of 6.1.0, replaced by {@link #setWrappedService}
-	 */
-	public void setWrappedRouteLocationService(
-		RouteLocationService routeLocationService) {
-		_routeLocationService = routeLocationService;
-	}
+    /**
+     * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
+     */
+    public RouteLocationService getWrappedRouteLocationService() {
+        return _routeLocationService;
+    }
 
-	@Override
-	public RouteLocationService getWrappedService() {
-		return _routeLocationService;
-	}
+    /**
+     * @deprecated As of 6.1.0, replaced by {@link #setWrappedService}
+     */
+    public void setWrappedRouteLocationService(
+        RouteLocationService routeLocationService) {
+        _routeLocationService = routeLocationService;
+    }
 
-	@Override
-	public void setWrappedService(RouteLocationService routeLocationService) {
-		_routeLocationService = routeLocationService;
-	}
+    @Override
+    public RouteLocationService getWrappedService() {
+        return _routeLocationService;
+    }
 
-	private RouteLocationService _routeLocationService;
+    @Override
+    public void setWrappedService(RouteLocationService routeLocationService) {
+        _routeLocationService = routeLocationService;
+    }
 }

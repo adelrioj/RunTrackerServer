@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model.impl;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
@@ -54,381 +40,376 @@ import java.util.Map;
  */
 @JSON(strict = true)
 public class RouteLocationModelImpl extends BaseModelImpl<RouteLocation>
-	implements RouteLocationModel {
-	/*
-	 * NOTE FOR DEVELOPERS:
-	 *
-	 * Never modify or reference this class directly. All methods that expect a route location model instance should use the {@link es.eina.tfg.model.RouteLocation} interface instead.
-	 */
-	public static final String TABLE_NAME = "GL_RouteLocation";
-	public static final Object[][] TABLE_COLUMNS = {
-			{ "routePositionId", Types.BIGINT },
-			{ "routeId", Types.BIGINT },
-			{ "latitude", Types.DOUBLE },
-			{ "longitude", Types.DOUBLE }
-		};
-	public static final String TABLE_SQL_CREATE = "create table GL_RouteLocation (routePositionId LONG not null primary key,routeId LONG,latitude DOUBLE,longitude DOUBLE)";
-	public static final String TABLE_SQL_DROP = "drop table GL_RouteLocation";
-	public static final String ORDER_BY_JPQL = " ORDER BY routeLocation.routeId ASC";
-	public static final String ORDER_BY_SQL = " ORDER BY GL_RouteLocation.routeId ASC";
-	public static final String DATA_SOURCE = "liferayDataSource";
-	public static final String SESSION_FACTORY = "liferaySessionFactory";
-	public static final String TX_MANAGER = "liferayTransactionManager";
-	public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
-				"value.object.entity.cache.enabled.es.eina.tfg.model.RouteLocation"),
-			true);
-	public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
-				"value.object.finder.cache.enabled.es.eina.tfg.model.RouteLocation"),
-			true);
-	public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
-				"value.object.column.bitmask.enabled.es.eina.tfg.model.RouteLocation"),
-			true);
-	public static long ROUTEID_COLUMN_BITMASK = 1L;
-
-	/**
-	 * Converts the soap model instance into a normal model instance.
-	 *
-	 * @param soapModel the soap model instance to convert
-	 * @return the normal model instance
-	 */
-	public static RouteLocation toModel(RouteLocationSoap soapModel) {
-		if (soapModel == null) {
-			return null;
-		}
-
-		RouteLocation model = new RouteLocationImpl();
-
-		model.setRoutePositionId(soapModel.getRoutePositionId());
-		model.setRouteId(soapModel.getRouteId());
-		model.setLatitude(soapModel.getLatitude());
-		model.setLongitude(soapModel.getLongitude());
-
-		return model;
-	}
-
-	/**
-	 * Converts the soap model instances into normal model instances.
-	 *
-	 * @param soapModels the soap model instances to convert
-	 * @return the normal model instances
-	 */
-	public static List<RouteLocation> toModels(RouteLocationSoap[] soapModels) {
-		if (soapModels == null) {
-			return null;
-		}
-
-		List<RouteLocation> models = new ArrayList<RouteLocation>(soapModels.length);
-
-		for (RouteLocationSoap soapModel : soapModels) {
-			models.add(toModel(soapModel));
-		}
-
-		return models;
-	}
-
-	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
-				"lock.expiration.time.es.eina.tfg.model.RouteLocation"));
-
-	public RouteLocationModelImpl() {
-	}
-
-	@Override
-	public long getPrimaryKey() {
-		return _routePositionId;
-	}
-
-	@Override
-	public void setPrimaryKey(long primaryKey) {
-		setRoutePositionId(primaryKey);
-	}
-
-	@Override
-	public Serializable getPrimaryKeyObj() {
-		return _routePositionId;
-	}
-
-	@Override
-	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
-		setPrimaryKey(((Long)primaryKeyObj).longValue());
-	}
-
-	@Override
-	public Class<?> getModelClass() {
-		return RouteLocation.class;
-	}
-
-	@Override
-	public String getModelClassName() {
-		return RouteLocation.class.getName();
-	}
-
-	@Override
-	public Map<String, Object> getModelAttributes() {
-		Map<String, Object> attributes = new HashMap<String, Object>();
-
-		attributes.put("routePositionId", getRoutePositionId());
-		attributes.put("routeId", getRouteId());
-		attributes.put("latitude", getLatitude());
-		attributes.put("longitude", getLongitude());
-
-		return attributes;
-	}
-
-	@Override
-	public void setModelAttributes(Map<String, Object> attributes) {
-		Long routePositionId = (Long)attributes.get("routePositionId");
-
-		if (routePositionId != null) {
-			setRoutePositionId(routePositionId);
-		}
-
-		Long routeId = (Long)attributes.get("routeId");
-
-		if (routeId != null) {
-			setRouteId(routeId);
-		}
-
-		Double latitude = (Double)attributes.get("latitude");
-
-		if (latitude != null) {
-			setLatitude(latitude);
-		}
-
-		Double longitude = (Double)attributes.get("longitude");
-
-		if (longitude != null) {
-			setLongitude(longitude);
-		}
-	}
-
-	@JSON
-	@Override
-	public long getRoutePositionId() {
-		return _routePositionId;
-	}
-
-	@Override
-	public void setRoutePositionId(long routePositionId) {
-		_routePositionId = routePositionId;
-	}
-
-	@JSON
-	@Override
-	public long getRouteId() {
-		return _routeId;
-	}
-
-	@Override
-	public void setRouteId(long routeId) {
-		_columnBitmask = -1L;
-
-		if (!_setOriginalRouteId) {
-			_setOriginalRouteId = true;
-
-			_originalRouteId = _routeId;
-		}
-
-		_routeId = routeId;
-	}
-
-	public long getOriginalRouteId() {
-		return _originalRouteId;
-	}
-
-	@JSON
-	@Override
-	public double getLatitude() {
-		return _latitude;
-	}
-
-	@Override
-	public void setLatitude(double latitude) {
-		_latitude = latitude;
-	}
-
-	@JSON
-	@Override
-	public double getLongitude() {
-		return _longitude;
-	}
-
-	@Override
-	public void setLongitude(double longitude) {
-		_longitude = longitude;
-	}
-
-	public long getColumnBitmask() {
-		return _columnBitmask;
-	}
-
-	@Override
-	public ExpandoBridge getExpandoBridge() {
-		return ExpandoBridgeFactoryUtil.getExpandoBridge(0,
-			RouteLocation.class.getName(), getPrimaryKey());
-	}
-
-	@Override
-	public void setExpandoBridgeAttributes(ServiceContext serviceContext) {
-		ExpandoBridge expandoBridge = getExpandoBridge();
+    implements RouteLocationModel {
+    /*
+     * NOTE FOR DEVELOPERS:
+     *
+     * Never modify or reference this class directly. All methods that expect a route location model instance should use the {@link es.eina.tfg.model.RouteLocation} interface instead.
+     */
+    public static final String TABLE_NAME = "GL_RouteLocation";
+    public static final Object[][] TABLE_COLUMNS = {
+            { "routePositionId", Types.BIGINT },
+            { "routeId", Types.BIGINT },
+            { "latitude", Types.DOUBLE },
+            { "longitude", Types.DOUBLE }
+        };
+    public static final String TABLE_SQL_CREATE = "create table GL_RouteLocation (routePositionId LONG not null primary key,routeId LONG,latitude DOUBLE,longitude DOUBLE)";
+    public static final String TABLE_SQL_DROP = "drop table GL_RouteLocation";
+    public static final String ORDER_BY_JPQL = " ORDER BY routeLocation.routeId ASC";
+    public static final String ORDER_BY_SQL = " ORDER BY GL_RouteLocation.routeId ASC";
+    public static final String DATA_SOURCE = "liferayDataSource";
+    public static final String SESSION_FACTORY = "liferaySessionFactory";
+    public static final String TX_MANAGER = "liferayTransactionManager";
+    public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
+                "value.object.entity.cache.enabled.es.eina.tfg.model.RouteLocation"),
+            true);
+    public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
+                "value.object.finder.cache.enabled.es.eina.tfg.model.RouteLocation"),
+            true);
+    public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
+                "value.object.column.bitmask.enabled.es.eina.tfg.model.RouteLocation"),
+            true);
+    public static long ROUTEID_COLUMN_BITMASK = 1L;
+    public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
+                "lock.expiration.time.es.eina.tfg.model.RouteLocation"));
+    private static ClassLoader _classLoader = RouteLocation.class.getClassLoader();
+    private static Class<?>[] _escapedModelInterfaces = new Class[] {
+            RouteLocation.class
+        };
+    private long _routePositionId;
+    private long _routeId;
+    private long _originalRouteId;
+    private boolean _setOriginalRouteId;
+    private double _latitude;
+    private double _longitude;
+    private long _columnBitmask;
+    private RouteLocation _escapedModel;
+
+    public RouteLocationModelImpl() {
+    }
+
+    /**
+     * Converts the soap model instance into a normal model instance.
+     *
+     * @param soapModel the soap model instance to convert
+     * @return the normal model instance
+     */
+    public static RouteLocation toModel(RouteLocationSoap soapModel) {
+        if (soapModel == null) {
+            return null;
+        }
+
+        RouteLocation model = new RouteLocationImpl();
+
+        model.setRoutePositionId(soapModel.getRoutePositionId());
+        model.setRouteId(soapModel.getRouteId());
+        model.setLatitude(soapModel.getLatitude());
+        model.setLongitude(soapModel.getLongitude());
+
+        return model;
+    }
+
+    /**
+     * Converts the soap model instances into normal model instances.
+     *
+     * @param soapModels the soap model instances to convert
+     * @return the normal model instances
+     */
+    public static List<RouteLocation> toModels(RouteLocationSoap[] soapModels) {
+        if (soapModels == null) {
+            return null;
+        }
+
+        List<RouteLocation> models = new ArrayList<RouteLocation>(soapModels.length);
+
+        for (RouteLocationSoap soapModel : soapModels) {
+            models.add(toModel(soapModel));
+        }
+
+        return models;
+    }
+
+    @Override
+    public long getPrimaryKey() {
+        return _routePositionId;
+    }
+
+    @Override
+    public void setPrimaryKey(long primaryKey) {
+        setRoutePositionId(primaryKey);
+    }
+
+    @Override
+    public Serializable getPrimaryKeyObj() {
+        return _routePositionId;
+    }
+
+    @Override
+    public void setPrimaryKeyObj(Serializable primaryKeyObj) {
+        setPrimaryKey(((Long) primaryKeyObj).longValue());
+    }
+
+    @Override
+    public Class<?> getModelClass() {
+        return RouteLocation.class;
+    }
+
+    @Override
+    public String getModelClassName() {
+        return RouteLocation.class.getName();
+    }
+
+    @Override
+    public Map<String, Object> getModelAttributes() {
+        Map<String, Object> attributes = new HashMap<String, Object>();
+
+        attributes.put("routePositionId", getRoutePositionId());
+        attributes.put("routeId", getRouteId());
+        attributes.put("latitude", getLatitude());
+        attributes.put("longitude", getLongitude());
+
+        return attributes;
+    }
+
+    @Override
+    public void setModelAttributes(Map<String, Object> attributes) {
+        Long routePositionId = (Long) attributes.get("routePositionId");
+
+        if (routePositionId != null) {
+            setRoutePositionId(routePositionId);
+        }
+
+        Long routeId = (Long) attributes.get("routeId");
+
+        if (routeId != null) {
+            setRouteId(routeId);
+        }
+
+        Double latitude = (Double) attributes.get("latitude");
+
+        if (latitude != null) {
+            setLatitude(latitude);
+        }
+
+        Double longitude = (Double) attributes.get("longitude");
+
+        if (longitude != null) {
+            setLongitude(longitude);
+        }
+    }
+
+    @JSON
+    @Override
+    public long getRoutePositionId() {
+        return _routePositionId;
+    }
+
+    @Override
+    public void setRoutePositionId(long routePositionId) {
+        _routePositionId = routePositionId;
+    }
+
+    @JSON
+    @Override
+    public long getRouteId() {
+        return _routeId;
+    }
+
+    @Override
+    public void setRouteId(long routeId) {
+        _columnBitmask = -1L;
+
+        if (!_setOriginalRouteId) {
+            _setOriginalRouteId = true;
+
+            _originalRouteId = _routeId;
+        }
+
+        _routeId = routeId;
+    }
+
+    public long getOriginalRouteId() {
+        return _originalRouteId;
+    }
+
+    @JSON
+    @Override
+    public double getLatitude() {
+        return _latitude;
+    }
+
+    @Override
+    public void setLatitude(double latitude) {
+        _latitude = latitude;
+    }
+
+    @JSON
+    @Override
+    public double getLongitude() {
+        return _longitude;
+    }
+
+    @Override
+    public void setLongitude(double longitude) {
+        _longitude = longitude;
+    }
+
+    public long getColumnBitmask() {
+        return _columnBitmask;
+    }
+
+    @Override
+    public ExpandoBridge getExpandoBridge() {
+        return ExpandoBridgeFactoryUtil.getExpandoBridge(0,
+            RouteLocation.class.getName(), getPrimaryKey());
+    }
 
-		expandoBridge.setAttributes(serviceContext);
-	}
+    @Override
+    public void setExpandoBridgeAttributes(ServiceContext serviceContext) {
+        ExpandoBridge expandoBridge = getExpandoBridge();
 
-	@Override
-	public RouteLocation toEscapedModel() {
-		if (_escapedModel == null) {
-			_escapedModel = (RouteLocation)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
-		}
-
-		return _escapedModel;
-	}
-
-	@Override
-	public Object clone() {
-		RouteLocationImpl routeLocationImpl = new RouteLocationImpl();
-
-		routeLocationImpl.setRoutePositionId(getRoutePositionId());
-		routeLocationImpl.setRouteId(getRouteId());
-		routeLocationImpl.setLatitude(getLatitude());
-		routeLocationImpl.setLongitude(getLongitude());
-
-		routeLocationImpl.resetOriginalValues();
-
-		return routeLocationImpl;
-	}
-
-	@Override
-	public int compareTo(RouteLocation routeLocation) {
-		int value = 0;
-
-		if (getRouteId() < routeLocation.getRouteId()) {
-			value = -1;
-		}
-		else if (getRouteId() > routeLocation.getRouteId()) {
-			value = 1;
-		}
-		else {
-			value = 0;
-		}
-
-		if (value != 0) {
-			return value;
-		}
-
-		return 0;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-
-		if (!(obj instanceof RouteLocation)) {
-			return false;
-		}
-
-		RouteLocation routeLocation = (RouteLocation)obj;
-
-		long primaryKey = routeLocation.getPrimaryKey();
-
-		if (getPrimaryKey() == primaryKey) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-
-	@Override
-	public int hashCode() {
-		return (int)getPrimaryKey();
-	}
-
-	@Override
-	public void resetOriginalValues() {
-		RouteLocationModelImpl routeLocationModelImpl = this;
-
-		routeLocationModelImpl._originalRouteId = routeLocationModelImpl._routeId;
-
-		routeLocationModelImpl._setOriginalRouteId = false;
-
-		routeLocationModelImpl._columnBitmask = 0;
-	}
-
-	@Override
-	public CacheModel<RouteLocation> toCacheModel() {
-		RouteLocationCacheModel routeLocationCacheModel = new RouteLocationCacheModel();
-
-		routeLocationCacheModel.routePositionId = getRoutePositionId();
-
-		routeLocationCacheModel.routeId = getRouteId();
-
-		routeLocationCacheModel.latitude = getLatitude();
-
-		routeLocationCacheModel.longitude = getLongitude();
-
-		return routeLocationCacheModel;
-	}
-
-	@Override
-	public String toString() {
-		StringBundler sb = new StringBundler(9);
-
-		sb.append("{routePositionId=");
-		sb.append(getRoutePositionId());
-		sb.append(", routeId=");
-		sb.append(getRouteId());
-		sb.append(", latitude=");
-		sb.append(getLatitude());
-		sb.append(", longitude=");
-		sb.append(getLongitude());
-		sb.append("}");
-
-		return sb.toString();
-	}
-
-	@Override
-	public String toXmlString() {
-		StringBundler sb = new StringBundler(16);
-
-		sb.append("<model><model-name>");
-		sb.append("es.eina.tfg.model.RouteLocation");
-		sb.append("</model-name>");
-
-		sb.append(
-			"<column><column-name>routePositionId</column-name><column-value><![CDATA[");
-		sb.append(getRoutePositionId());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>routeId</column-name><column-value><![CDATA[");
-		sb.append(getRouteId());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>latitude</column-name><column-value><![CDATA[");
-		sb.append(getLatitude());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>longitude</column-name><column-value><![CDATA[");
-		sb.append(getLongitude());
-		sb.append("]]></column-value></column>");
-
-		sb.append("</model>");
-
-		return sb.toString();
-	}
-
-	private static ClassLoader _classLoader = RouteLocation.class.getClassLoader();
-	private static Class<?>[] _escapedModelInterfaces = new Class[] {
-			RouteLocation.class
-		};
-	private long _routePositionId;
-	private long _routeId;
-	private long _originalRouteId;
-	private boolean _setOriginalRouteId;
-	private double _latitude;
-	private double _longitude;
-	private long _columnBitmask;
-	private RouteLocation _escapedModel;
+        expandoBridge.setAttributes(serviceContext);
+    }
+
+    @Override
+    public RouteLocation toEscapedModel() {
+        if (_escapedModel == null) {
+            _escapedModel = (RouteLocation) ProxyUtil.newProxyInstance(_classLoader,
+                    _escapedModelInterfaces, new AutoEscapeBeanHandler(this));
+        }
+
+        return _escapedModel;
+    }
+
+    @Override
+    public Object clone() {
+        RouteLocationImpl routeLocationImpl = new RouteLocationImpl();
+
+        routeLocationImpl.setRoutePositionId(getRoutePositionId());
+        routeLocationImpl.setRouteId(getRouteId());
+        routeLocationImpl.setLatitude(getLatitude());
+        routeLocationImpl.setLongitude(getLongitude());
+
+        routeLocationImpl.resetOriginalValues();
+
+        return routeLocationImpl;
+    }
+
+    @Override
+    public int compareTo(RouteLocation routeLocation) {
+        int value = 0;
+
+        if (getRouteId() < routeLocation.getRouteId()) {
+            value = -1;
+        } else if (getRouteId() > routeLocation.getRouteId()) {
+            value = 1;
+        } else {
+            value = 0;
+        }
+
+        if (value != 0) {
+            return value;
+        }
+
+        return 0;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof RouteLocation)) {
+            return false;
+        }
+
+        RouteLocation routeLocation = (RouteLocation) obj;
+
+        long primaryKey = routeLocation.getPrimaryKey();
+
+        if (getPrimaryKey() == primaryKey) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) getPrimaryKey();
+    }
+
+    @Override
+    public void resetOriginalValues() {
+        RouteLocationModelImpl routeLocationModelImpl = this;
+
+        routeLocationModelImpl._originalRouteId = routeLocationModelImpl._routeId;
+
+        routeLocationModelImpl._setOriginalRouteId = false;
+
+        routeLocationModelImpl._columnBitmask = 0;
+    }
+
+    @Override
+    public CacheModel<RouteLocation> toCacheModel() {
+        RouteLocationCacheModel routeLocationCacheModel = new RouteLocationCacheModel();
+
+        routeLocationCacheModel.routePositionId = getRoutePositionId();
+
+        routeLocationCacheModel.routeId = getRouteId();
+
+        routeLocationCacheModel.latitude = getLatitude();
+
+        routeLocationCacheModel.longitude = getLongitude();
+
+        return routeLocationCacheModel;
+    }
+
+    @Override
+    public String toString() {
+        StringBundler sb = new StringBundler(9);
+
+        sb.append("{routePositionId=");
+        sb.append(getRoutePositionId());
+        sb.append(", routeId=");
+        sb.append(getRouteId());
+        sb.append(", latitude=");
+        sb.append(getLatitude());
+        sb.append(", longitude=");
+        sb.append(getLongitude());
+        sb.append("}");
+
+        return sb.toString();
+    }
+
+    @Override
+    public String toXmlString() {
+        StringBundler sb = new StringBundler(16);
+
+        sb.append("<model><model-name>");
+        sb.append("es.eina.tfg.model.RouteLocation");
+        sb.append("</model-name>");
+
+        sb.append(
+            "<column><column-name>routePositionId</column-name><column-value><![CDATA[");
+        sb.append(getRoutePositionId());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>routeId</column-name><column-value><![CDATA[");
+        sb.append(getRouteId());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>latitude</column-name><column-value><![CDATA[");
+        sb.append(getLatitude());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>longitude</column-name><column-value><![CDATA[");
+        sb.append(getLongitude());
+        sb.append("]]></column-value></column>");
+
+        sb.append("</model>");
+
+        return sb.toString();
+    }
 }

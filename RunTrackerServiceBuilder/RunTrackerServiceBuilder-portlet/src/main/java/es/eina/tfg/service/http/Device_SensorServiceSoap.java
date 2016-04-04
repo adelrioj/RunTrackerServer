@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.service.http;
 
 import com.liferay.portal.kernel.log.Log;
@@ -62,97 +48,91 @@ import java.rmi.RemoteException;
  * @generated
  */
 public class Device_SensorServiceSoap {
-	public static es.eina.tfg.model.Device_SensorSoap add(
-		java.lang.Long deviceId, java.lang.Long sensorId, boolean status)
-		throws RemoteException {
-		try {
-			es.eina.tfg.model.Device_Sensor returnValue = Device_SensorServiceUtil.add(deviceId,
-					sensorId, status);
+    private static Log _log = LogFactoryUtil.getLog(Device_SensorServiceSoap.class);
 
-			return es.eina.tfg.model.Device_SensorSoap.toSoapModel(returnValue);
-		}
-		catch (Exception e) {
-			_log.error(e, e);
+    public static es.eina.tfg.model.Device_SensorSoap add(
+        java.lang.Long deviceId, java.lang.Long sensorId, boolean status)
+        throws RemoteException {
+        try {
+            es.eina.tfg.model.Device_Sensor returnValue = Device_SensorServiceUtil.add(deviceId,
+                    sensorId, status);
 
-			throw new RemoteException(e.getMessage());
-		}
-	}
+            return es.eina.tfg.model.Device_SensorSoap.toSoapModel(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
 
-	public static es.eina.tfg.model.Device_SensorSoap update(
-		java.lang.Long deviceId, java.lang.Long sensorId, boolean status)
-		throws RemoteException {
-		try {
-			es.eina.tfg.model.Device_Sensor returnValue = Device_SensorServiceUtil.update(deviceId,
-					sensorId, status);
+            throw new RemoteException(e.getMessage());
+        }
+    }
 
-			return es.eina.tfg.model.Device_SensorSoap.toSoapModel(returnValue);
-		}
-		catch (Exception e) {
-			_log.error(e, e);
+    public static es.eina.tfg.model.Device_SensorSoap update(
+        java.lang.Long deviceId, java.lang.Long sensorId, boolean status)
+        throws RemoteException {
+        try {
+            es.eina.tfg.model.Device_Sensor returnValue = Device_SensorServiceUtil.update(deviceId,
+                    sensorId, status);
 
-			throw new RemoteException(e.getMessage());
-		}
-	}
+            return es.eina.tfg.model.Device_SensorSoap.toSoapModel(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
 
-	public static es.eina.tfg.model.Device_SensorSoap delete(
-		java.lang.Long deviceId, java.lang.Long sensorId)
-		throws RemoteException {
-		try {
-			es.eina.tfg.model.Device_Sensor returnValue = Device_SensorServiceUtil.delete(deviceId,
-					sensorId);
+            throw new RemoteException(e.getMessage());
+        }
+    }
 
-			return es.eina.tfg.model.Device_SensorSoap.toSoapModel(returnValue);
-		}
-		catch (Exception e) {
-			_log.error(e, e);
+    public static es.eina.tfg.model.Device_SensorSoap delete(
+        java.lang.Long deviceId, java.lang.Long sensorId)
+        throws RemoteException {
+        try {
+            es.eina.tfg.model.Device_Sensor returnValue = Device_SensorServiceUtil.delete(deviceId,
+                    sensorId);
 
-			throw new RemoteException(e.getMessage());
-		}
-	}
+            return es.eina.tfg.model.Device_SensorSoap.toSoapModel(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
 
-	public static es.eina.tfg.model.Device_SensorSoap getDeviceSensor(
-		java.lang.Long deviceId, java.lang.Long sensorId)
-		throws RemoteException {
-		try {
-			es.eina.tfg.model.Device_Sensor returnValue = Device_SensorServiceUtil.getDeviceSensor(deviceId,
-					sensorId);
+            throw new RemoteException(e.getMessage());
+        }
+    }
 
-			return es.eina.tfg.model.Device_SensorSoap.toSoapModel(returnValue);
-		}
-		catch (Exception e) {
-			_log.error(e, e);
+    public static es.eina.tfg.model.Device_SensorSoap getDeviceSensor(
+        java.lang.Long deviceId, java.lang.Long sensorId)
+        throws RemoteException {
+        try {
+            es.eina.tfg.model.Device_Sensor returnValue = Device_SensorServiceUtil.getDeviceSensor(deviceId,
+                    sensorId);
 
-			throw new RemoteException(e.getMessage());
-		}
-	}
+            return es.eina.tfg.model.Device_SensorSoap.toSoapModel(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
 
-	public static es.eina.tfg.model.Device_SensorSoap[] findByDeviceId(
-		java.lang.Long deviceId) throws RemoteException {
-		try {
-			java.util.List<es.eina.tfg.model.Device_Sensor> returnValue = Device_SensorServiceUtil.findByDeviceId(deviceId);
+            throw new RemoteException(e.getMessage());
+        }
+    }
 
-			return es.eina.tfg.model.Device_SensorSoap.toSoapModels(returnValue);
-		}
-		catch (Exception e) {
-			_log.error(e, e);
+    public static es.eina.tfg.model.Device_SensorSoap[] findByDeviceId(
+        java.lang.Long deviceId) throws RemoteException {
+        try {
+            java.util.List<es.eina.tfg.model.Device_Sensor> returnValue = Device_SensorServiceUtil.findByDeviceId(deviceId);
 
-			throw new RemoteException(e.getMessage());
-		}
-	}
+            return es.eina.tfg.model.Device_SensorSoap.toSoapModels(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
 
-	public static es.eina.tfg.model.Device_SensorSoap[] findActiveSensors(
-		java.lang.Long deviceId) throws RemoteException {
-		try {
-			java.util.List<es.eina.tfg.model.Device_Sensor> returnValue = Device_SensorServiceUtil.findActiveSensors(deviceId);
+            throw new RemoteException(e.getMessage());
+        }
+    }
 
-			return es.eina.tfg.model.Device_SensorSoap.toSoapModels(returnValue);
-		}
-		catch (Exception e) {
-			_log.error(e, e);
+    public static es.eina.tfg.model.Device_SensorSoap[] findActiveSensors(
+        java.lang.Long deviceId) throws RemoteException {
+        try {
+            java.util.List<es.eina.tfg.model.Device_Sensor> returnValue = Device_SensorServiceUtil.findActiveSensors(deviceId);
 
-			throw new RemoteException(e.getMessage());
-		}
-	}
+            return es.eina.tfg.model.Device_SensorSoap.toSoapModels(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
 
-	private static Log _log = LogFactoryUtil.getLog(Device_SensorServiceSoap.class);
+            throw new RemoteException(e.getMessage());
+        }
+    }
 }

@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
@@ -33,293 +19,284 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @author adelrioj
- */
+
 public class UserSelectedRoutesClp extends BaseModelImpl<UserSelectedRoutes>
-	implements UserSelectedRoutes {
-	public UserSelectedRoutesClp() {
-	}
+    implements UserSelectedRoutes {
+    private long _userId;
+    private String _userUuid;
+    private long _routeId;
+    private BaseModel<?> _userSelectedRoutesRemoteModel;
+    private Class<?> _clpSerializerClass = es.eina.tfg.service.ClpSerializer.class;
 
-	@Override
-	public Class<?> getModelClass() {
-		return UserSelectedRoutes.class;
-	}
+    public UserSelectedRoutesClp() {
+    }
 
-	@Override
-	public String getModelClassName() {
-		return UserSelectedRoutes.class.getName();
-	}
+    @Override
+    public Class<?> getModelClass() {
+        return UserSelectedRoutes.class;
+    }
 
-	@Override
-	public UserSelectedRoutesPK getPrimaryKey() {
-		return new UserSelectedRoutesPK(_userId, _routeId);
-	}
+    @Override
+    public String getModelClassName() {
+        return UserSelectedRoutes.class.getName();
+    }
 
-	@Override
-	public void setPrimaryKey(UserSelectedRoutesPK primaryKey) {
-		setUserId(primaryKey.userId);
-		setRouteId(primaryKey.routeId);
-	}
+    @Override
+    public UserSelectedRoutesPK getPrimaryKey() {
+        return new UserSelectedRoutesPK(_userId, _routeId);
+    }
 
-	@Override
-	public Serializable getPrimaryKeyObj() {
-		return new UserSelectedRoutesPK(_userId, _routeId);
-	}
+    @Override
+    public void setPrimaryKey(UserSelectedRoutesPK primaryKey) {
+        setUserId(primaryKey.userId);
+        setRouteId(primaryKey.routeId);
+    }
 
-	@Override
-	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
-		setPrimaryKey((UserSelectedRoutesPK)primaryKeyObj);
-	}
+    @Override
+    public Serializable getPrimaryKeyObj() {
+        return new UserSelectedRoutesPK(_userId, _routeId);
+    }
 
-	@Override
-	public Map<String, Object> getModelAttributes() {
-		Map<String, Object> attributes = new HashMap<String, Object>();
+    @Override
+    public void setPrimaryKeyObj(Serializable primaryKeyObj) {
+        setPrimaryKey((UserSelectedRoutesPK) primaryKeyObj);
+    }
 
-		attributes.put("userId", getUserId());
-		attributes.put("routeId", getRouteId());
+    @Override
+    public Map<String, Object> getModelAttributes() {
+        Map<String, Object> attributes = new HashMap<String, Object>();
 
-		return attributes;
-	}
+        attributes.put("userId", getUserId());
+        attributes.put("routeId", getRouteId());
 
-	@Override
-	public void setModelAttributes(Map<String, Object> attributes) {
-		Long userId = (Long)attributes.get("userId");
+        return attributes;
+    }
 
-		if (userId != null) {
-			setUserId(userId);
-		}
+    @Override
+    public void setModelAttributes(Map<String, Object> attributes) {
+        Long userId = (Long) attributes.get("userId");
 
-		Long routeId = (Long)attributes.get("routeId");
+        if (userId != null) {
+            setUserId(userId);
+        }
 
-		if (routeId != null) {
-			setRouteId(routeId);
-		}
-	}
+        Long routeId = (Long) attributes.get("routeId");
 
-	@Override
-	public long getUserId() {
-		return _userId;
-	}
+        if (routeId != null) {
+            setRouteId(routeId);
+        }
+    }
 
-	@Override
-	public void setUserId(long userId) {
-		_userId = userId;
+    @Override
+    public long getUserId() {
+        return _userId;
+    }
 
-		if (_userSelectedRoutesRemoteModel != null) {
-			try {
-				Class<?> clazz = _userSelectedRoutesRemoteModel.getClass();
+    @Override
+    public void setUserId(long userId) {
+        _userId = userId;
 
-				Method method = clazz.getMethod("setUserId", long.class);
+        if (_userSelectedRoutesRemoteModel != null) {
+            try {
+                Class<?> clazz = _userSelectedRoutesRemoteModel.getClass();
 
-				method.invoke(_userSelectedRoutesRemoteModel, userId);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
+                Method method = clazz.getMethod("setUserId", long.class);
 
-	@Override
-	public String getUserUuid() throws SystemException {
-		return PortalUtil.getUserValue(getUserId(), "uuid", _userUuid);
-	}
+                method.invoke(_userSelectedRoutesRemoteModel, userId);
+            } catch (Exception e) {
+                throw new UnsupportedOperationException(e);
+            }
+        }
+    }
 
-	@Override
-	public void setUserUuid(String userUuid) {
-		_userUuid = userUuid;
-	}
+    @Override
+    public String getUserUuid() throws SystemException {
+        return PortalUtil.getUserValue(getUserId(), "uuid", _userUuid);
+    }
 
-	@Override
-	public long getRouteId() {
-		return _routeId;
-	}
+    @Override
+    public void setUserUuid(String userUuid) {
+        _userUuid = userUuid;
+    }
 
-	@Override
-	public void setRouteId(long routeId) {
-		_routeId = routeId;
+    @Override
+    public long getRouteId() {
+        return _routeId;
+    }
 
-		if (_userSelectedRoutesRemoteModel != null) {
-			try {
-				Class<?> clazz = _userSelectedRoutesRemoteModel.getClass();
+    @Override
+    public void setRouteId(long routeId) {
+        _routeId = routeId;
 
-				Method method = clazz.getMethod("setRouteId", long.class);
+        if (_userSelectedRoutesRemoteModel != null) {
+            try {
+                Class<?> clazz = _userSelectedRoutesRemoteModel.getClass();
 
-				method.invoke(_userSelectedRoutesRemoteModel, routeId);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
+                Method method = clazz.getMethod("setRouteId", long.class);
 
-	public BaseModel<?> getUserSelectedRoutesRemoteModel() {
-		return _userSelectedRoutesRemoteModel;
-	}
+                method.invoke(_userSelectedRoutesRemoteModel, routeId);
+            } catch (Exception e) {
+                throw new UnsupportedOperationException(e);
+            }
+        }
+    }
 
-	public void setUserSelectedRoutesRemoteModel(
-		BaseModel<?> userSelectedRoutesRemoteModel) {
-		_userSelectedRoutesRemoteModel = userSelectedRoutesRemoteModel;
-	}
+    public BaseModel<?> getUserSelectedRoutesRemoteModel() {
+        return _userSelectedRoutesRemoteModel;
+    }
 
-	public Object invokeOnRemoteModel(String methodName,
-		Class<?>[] parameterTypes, Object[] parameterValues)
-		throws Exception {
-		Object[] remoteParameterValues = new Object[parameterValues.length];
+    public void setUserSelectedRoutesRemoteModel(
+        BaseModel<?> userSelectedRoutesRemoteModel) {
+        _userSelectedRoutesRemoteModel = userSelectedRoutesRemoteModel;
+    }
 
-		for (int i = 0; i < parameterValues.length; i++) {
-			if (parameterValues[i] != null) {
-				remoteParameterValues[i] = ClpSerializer.translateInput(parameterValues[i]);
-			}
-		}
+    public Object invokeOnRemoteModel(String methodName,
+        Class<?>[] parameterTypes, Object[] parameterValues)
+        throws Exception {
+        Object[] remoteParameterValues = new Object[parameterValues.length];
 
-		Class<?> remoteModelClass = _userSelectedRoutesRemoteModel.getClass();
+        for (int i = 0; i < parameterValues.length; i++) {
+            if (parameterValues[i] != null) {
+                remoteParameterValues[i] = ClpSerializer.translateInput(parameterValues[i]);
+            }
+        }
 
-		ClassLoader remoteModelClassLoader = remoteModelClass.getClassLoader();
+        Class<?> remoteModelClass = _userSelectedRoutesRemoteModel.getClass();
 
-		Class<?>[] remoteParameterTypes = new Class[parameterTypes.length];
+        ClassLoader remoteModelClassLoader = remoteModelClass.getClassLoader();
 
-		for (int i = 0; i < parameterTypes.length; i++) {
-			if (parameterTypes[i].isPrimitive()) {
-				remoteParameterTypes[i] = parameterTypes[i];
-			}
-			else {
-				String parameterTypeName = parameterTypes[i].getName();
+        Class<?>[] remoteParameterTypes = new Class[parameterTypes.length];
 
-				remoteParameterTypes[i] = remoteModelClassLoader.loadClass(parameterTypeName);
-			}
-		}
+        for (int i = 0; i < parameterTypes.length; i++) {
+            if (parameterTypes[i].isPrimitive()) {
+                remoteParameterTypes[i] = parameterTypes[i];
+            } else {
+                String parameterTypeName = parameterTypes[i].getName();
 
-		Method method = remoteModelClass.getMethod(methodName,
-				remoteParameterTypes);
+                remoteParameterTypes[i] = remoteModelClassLoader.loadClass(parameterTypeName);
+            }
+        }
 
-		Object returnValue = method.invoke(_userSelectedRoutesRemoteModel,
-				remoteParameterValues);
+        Method method = remoteModelClass.getMethod(methodName,
+                remoteParameterTypes);
 
-		if (returnValue != null) {
-			returnValue = ClpSerializer.translateOutput(returnValue);
-		}
+        Object returnValue = method.invoke(_userSelectedRoutesRemoteModel,
+                remoteParameterValues);
 
-		return returnValue;
-	}
+        if (returnValue != null) {
+            returnValue = ClpSerializer.translateOutput(returnValue);
+        }
 
-	@Override
-	public void persist() throws SystemException {
-		if (this.isNew()) {
-			UserSelectedRoutesLocalServiceUtil.addUserSelectedRoutes(this);
-		}
-		else {
-			UserSelectedRoutesLocalServiceUtil.updateUserSelectedRoutes(this);
-		}
-	}
+        return returnValue;
+    }
 
-	@Override
-	public UserSelectedRoutes toEscapedModel() {
-		return (UserSelectedRoutes)ProxyUtil.newProxyInstance(UserSelectedRoutes.class.getClassLoader(),
-			new Class[] { UserSelectedRoutes.class },
-			new AutoEscapeBeanHandler(this));
-	}
+    @Override
+    public void persist() throws SystemException {
+        if (this.isNew()) {
+            UserSelectedRoutesLocalServiceUtil.addUserSelectedRoutes(this);
+        } else {
+            UserSelectedRoutesLocalServiceUtil.updateUserSelectedRoutes(this);
+        }
+    }
 
-	@Override
-	public Object clone() {
-		UserSelectedRoutesClp clone = new UserSelectedRoutesClp();
+    @Override
+    public UserSelectedRoutes toEscapedModel() {
+        return (UserSelectedRoutes) ProxyUtil.newProxyInstance(UserSelectedRoutes.class.getClassLoader(),
+            new Class[] { UserSelectedRoutes.class },
+            new AutoEscapeBeanHandler(this));
+    }
 
-		clone.setUserId(getUserId());
-		clone.setRouteId(getRouteId());
+    @Override
+    public Object clone() {
+        UserSelectedRoutesClp clone = new UserSelectedRoutesClp();
 
-		return clone;
-	}
+        clone.setUserId(getUserId());
+        clone.setRouteId(getRouteId());
 
-	@Override
-	public int compareTo(UserSelectedRoutes userSelectedRoutes) {
-		int value = 0;
+        return clone;
+    }
 
-		if (getUserId() < userSelectedRoutes.getUserId()) {
-			value = -1;
-		}
-		else if (getUserId() > userSelectedRoutes.getUserId()) {
-			value = 1;
-		}
-		else {
-			value = 0;
-		}
+    @Override
+    public int compareTo(UserSelectedRoutes userSelectedRoutes) {
+        int value = 0;
 
-		if (value != 0) {
-			return value;
-		}
+        if (getUserId() < userSelectedRoutes.getUserId()) {
+            value = -1;
+        } else if (getUserId() > userSelectedRoutes.getUserId()) {
+            value = 1;
+        } else {
+            value = 0;
+        }
 
-		return 0;
-	}
+        if (value != 0) {
+            return value;
+        }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
+        return 0;
+    }
 
-		if (!(obj instanceof UserSelectedRoutesClp)) {
-			return false;
-		}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
 
-		UserSelectedRoutesClp userSelectedRoutes = (UserSelectedRoutesClp)obj;
+        if (!(obj instanceof UserSelectedRoutesClp)) {
+            return false;
+        }
 
-		UserSelectedRoutesPK primaryKey = userSelectedRoutes.getPrimaryKey();
+        UserSelectedRoutesClp userSelectedRoutes = (UserSelectedRoutesClp) obj;
 
-		if (getPrimaryKey().equals(primaryKey)) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
+        UserSelectedRoutesPK primaryKey = userSelectedRoutes.getPrimaryKey();
 
-	public Class<?> getClpSerializerClass() {
-		return _clpSerializerClass;
-	}
+        if (getPrimaryKey().equals(primaryKey)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-	@Override
-	public int hashCode() {
-		return getPrimaryKey().hashCode();
-	}
+    public Class<?> getClpSerializerClass() {
+        return _clpSerializerClass;
+    }
 
-	@Override
-	public String toString() {
-		StringBundler sb = new StringBundler(5);
+    @Override
+    public int hashCode() {
+        return getPrimaryKey().hashCode();
+    }
 
-		sb.append("{userId=");
-		sb.append(getUserId());
-		sb.append(", routeId=");
-		sb.append(getRouteId());
-		sb.append("}");
+    @Override
+    public String toString() {
+        StringBundler sb = new StringBundler(5);
 
-		return sb.toString();
-	}
+        sb.append("{userId=");
+        sb.append(getUserId());
+        sb.append(", routeId=");
+        sb.append(getRouteId());
+        sb.append("}");
 
-	@Override
-	public String toXmlString() {
-		StringBundler sb = new StringBundler(10);
+        return sb.toString();
+    }
 
-		sb.append("<model><model-name>");
-		sb.append("es.eina.tfg.model.UserSelectedRoutes");
-		sb.append("</model-name>");
+    @Override
+    public String toXmlString() {
+        StringBundler sb = new StringBundler(10);
 
-		sb.append(
-			"<column><column-name>userId</column-name><column-value><![CDATA[");
-		sb.append(getUserId());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>routeId</column-name><column-value><![CDATA[");
-		sb.append(getRouteId());
-		sb.append("]]></column-value></column>");
+        sb.append("<model><model-name>");
+        sb.append("es.eina.tfg.model.UserSelectedRoutes");
+        sb.append("</model-name>");
 
-		sb.append("</model>");
+        sb.append(
+            "<column><column-name>userId</column-name><column-value><![CDATA[");
+        sb.append(getUserId());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>routeId</column-name><column-value><![CDATA[");
+        sb.append(getRouteId());
+        sb.append("]]></column-value></column>");
 
-		return sb.toString();
-	}
+        sb.append("</model>");
 
-	private long _userId;
-	private String _userUuid;
-	private long _routeId;
-	private BaseModel<?> _userSelectedRoutesRemoteModel;
-	private Class<?> _clpSerializerClass = es.eina.tfg.service.ClpSerializer.class;
+        return sb.toString();
+    }
 }

@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model;
 
 import com.liferay.portal.kernel.util.Validator;
@@ -30,374 +16,374 @@ import java.util.Map;
  * @generated
  */
 public class RaceWrapper implements Race, ModelWrapper<Race> {
-	public RaceWrapper(Race race) {
-		_race = race;
-	}
+    private Race _race;
 
-	@Override
-	public Class<?> getModelClass() {
-		return Race.class;
-	}
+    public RaceWrapper(Race race) {
+        _race = race;
+    }
 
-	@Override
-	public String getModelClassName() {
-		return Race.class.getName();
-	}
+    @Override
+    public Class<?> getModelClass() {
+        return Race.class;
+    }
 
-	@Override
-	public Map<String, Object> getModelAttributes() {
-		Map<String, Object> attributes = new HashMap<String, Object>();
+    @Override
+    public String getModelClassName() {
+        return Race.class.getName();
+    }
 
-		attributes.put("raceId", getRaceId());
-		attributes.put("userId", getUserId());
-		attributes.put("routeId", getRouteId());
-		attributes.put("type", getType());
-		attributes.put("userHeight", getUserHeight());
-		attributes.put("userWeight", getUserWeight());
+    @Override
+    public Map<String, Object> getModelAttributes() {
+        Map<String, Object> attributes = new HashMap<String, Object>();
 
-		return attributes;
-	}
+        attributes.put("raceId", getRaceId());
+        attributes.put("userId", getUserId());
+        attributes.put("routeId", getRouteId());
+        attributes.put("type", getType());
+        attributes.put("userHeight", getUserHeight());
+        attributes.put("userWeight", getUserWeight());
 
-	@Override
-	public void setModelAttributes(Map<String, Object> attributes) {
-		Long raceId = (Long)attributes.get("raceId");
+        return attributes;
+    }
 
-		if (raceId != null) {
-			setRaceId(raceId);
-		}
+    @Override
+    public void setModelAttributes(Map<String, Object> attributes) {
+        Long raceId = (Long) attributes.get("raceId");
 
-		Long userId = (Long)attributes.get("userId");
+        if (raceId != null) {
+            setRaceId(raceId);
+        }
 
-		if (userId != null) {
-			setUserId(userId);
-		}
+        Long userId = (Long) attributes.get("userId");
 
-		Long routeId = (Long)attributes.get("routeId");
+        if (userId != null) {
+            setUserId(userId);
+        }
 
-		if (routeId != null) {
-			setRouteId(routeId);
-		}
+        Long routeId = (Long) attributes.get("routeId");
 
-		String type = (String)attributes.get("type");
+        if (routeId != null) {
+            setRouteId(routeId);
+        }
 
-		if (type != null) {
-			setType(type);
-		}
+        String type = (String) attributes.get("type");
 
-		Integer userHeight = (Integer)attributes.get("userHeight");
+        if (type != null) {
+            setType(type);
+        }
 
-		if (userHeight != null) {
-			setUserHeight(userHeight);
-		}
+        Integer userHeight = (Integer) attributes.get("userHeight");
 
-		Integer userWeight = (Integer)attributes.get("userWeight");
+        if (userHeight != null) {
+            setUserHeight(userHeight);
+        }
 
-		if (userWeight != null) {
-			setUserWeight(userWeight);
-		}
-	}
+        Integer userWeight = (Integer) attributes.get("userWeight");
 
-	/**
-	* Returns the primary key of this race.
-	*
-	* @return the primary key of this race
-	*/
-	@Override
-	public long getPrimaryKey() {
-		return _race.getPrimaryKey();
-	}
+        if (userWeight != null) {
+            setUserWeight(userWeight);
+        }
+    }
 
-	/**
-	* Sets the primary key of this race.
-	*
-	* @param primaryKey the primary key of this race
-	*/
-	@Override
-	public void setPrimaryKey(long primaryKey) {
-		_race.setPrimaryKey(primaryKey);
-	}
+    /**
+    * Returns the primary key of this race.
+    *
+    * @return the primary key of this race
+    */
+    @Override
+    public long getPrimaryKey() {
+        return _race.getPrimaryKey();
+    }
 
-	/**
-	* Returns the race ID of this race.
-	*
-	* @return the race ID of this race
-	*/
-	@Override
-	public long getRaceId() {
-		return _race.getRaceId();
-	}
+    /**
+    * Sets the primary key of this race.
+    *
+    * @param primaryKey the primary key of this race
+    */
+    @Override
+    public void setPrimaryKey(long primaryKey) {
+        _race.setPrimaryKey(primaryKey);
+    }
 
-	/**
-	* Sets the race ID of this race.
-	*
-	* @param raceId the race ID of this race
-	*/
-	@Override
-	public void setRaceId(long raceId) {
-		_race.setRaceId(raceId);
-	}
+    /**
+    * Returns the race ID of this race.
+    *
+    * @return the race ID of this race
+    */
+    @Override
+    public long getRaceId() {
+        return _race.getRaceId();
+    }
 
-	/**
-	* Returns the user ID of this race.
-	*
-	* @return the user ID of this race
-	*/
-	@Override
-	public long getUserId() {
-		return _race.getUserId();
-	}
+    /**
+    * Sets the race ID of this race.
+    *
+    * @param raceId the race ID of this race
+    */
+    @Override
+    public void setRaceId(long raceId) {
+        _race.setRaceId(raceId);
+    }
 
-	/**
-	* Sets the user ID of this race.
-	*
-	* @param userId the user ID of this race
-	*/
-	@Override
-	public void setUserId(long userId) {
-		_race.setUserId(userId);
-	}
+    /**
+    * Returns the user ID of this race.
+    *
+    * @return the user ID of this race
+    */
+    @Override
+    public long getUserId() {
+        return _race.getUserId();
+    }
 
-	/**
-	* Returns the user uuid of this race.
-	*
-	* @return the user uuid of this race
-	* @throws SystemException if a system exception occurred
-	*/
-	@Override
-	public java.lang.String getUserUuid()
-		throws com.liferay.portal.kernel.exception.SystemException {
-		return _race.getUserUuid();
-	}
+    /**
+    * Sets the user ID of this race.
+    *
+    * @param userId the user ID of this race
+    */
+    @Override
+    public void setUserId(long userId) {
+        _race.setUserId(userId);
+    }
 
-	/**
-	* Sets the user uuid of this race.
-	*
-	* @param userUuid the user uuid of this race
-	*/
-	@Override
-	public void setUserUuid(java.lang.String userUuid) {
-		_race.setUserUuid(userUuid);
-	}
+    /**
+    * Returns the user uuid of this race.
+    *
+    * @return the user uuid of this race
+    * @throws SystemException if a system exception occurred
+    */
+    @Override
+    public java.lang.String getUserUuid()
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _race.getUserUuid();
+    }
 
-	/**
-	* Returns the route ID of this race.
-	*
-	* @return the route ID of this race
-	*/
-	@Override
-	public long getRouteId() {
-		return _race.getRouteId();
-	}
+    /**
+    * Sets the user uuid of this race.
+    *
+    * @param userUuid the user uuid of this race
+    */
+    @Override
+    public void setUserUuid(java.lang.String userUuid) {
+        _race.setUserUuid(userUuid);
+    }
 
-	/**
-	* Sets the route ID of this race.
-	*
-	* @param routeId the route ID of this race
-	*/
-	@Override
-	public void setRouteId(long routeId) {
-		_race.setRouteId(routeId);
-	}
+    /**
+    * Returns the route ID of this race.
+    *
+    * @return the route ID of this race
+    */
+    @Override
+    public long getRouteId() {
+        return _race.getRouteId();
+    }
 
-	/**
-	* Returns the type of this race.
-	*
-	* @return the type of this race
-	*/
-	@Override
-	public java.lang.String getType() {
-		return _race.getType();
-	}
+    /**
+    * Sets the route ID of this race.
+    *
+    * @param routeId the route ID of this race
+    */
+    @Override
+    public void setRouteId(long routeId) {
+        _race.setRouteId(routeId);
+    }
 
-	/**
-	* Sets the type of this race.
-	*
-	* @param type the type of this race
-	*/
-	@Override
-	public void setType(java.lang.String type) {
-		_race.setType(type);
-	}
+    /**
+    * Returns the type of this race.
+    *
+    * @return the type of this race
+    */
+    @Override
+    public java.lang.String getType() {
+        return _race.getType();
+    }
 
-	/**
-	* Returns the user height of this race.
-	*
-	* @return the user height of this race
-	*/
-	@Override
-	public int getUserHeight() {
-		return _race.getUserHeight();
-	}
+    /**
+    * Sets the type of this race.
+    *
+    * @param type the type of this race
+    */
+    @Override
+    public void setType(java.lang.String type) {
+        _race.setType(type);
+    }
 
-	/**
-	* Sets the user height of this race.
-	*
-	* @param userHeight the user height of this race
-	*/
-	@Override
-	public void setUserHeight(int userHeight) {
-		_race.setUserHeight(userHeight);
-	}
+    /**
+    * Returns the user height of this race.
+    *
+    * @return the user height of this race
+    */
+    @Override
+    public int getUserHeight() {
+        return _race.getUserHeight();
+    }
 
-	/**
-	* Returns the user weight of this race.
-	*
-	* @return the user weight of this race
-	*/
-	@Override
-	public int getUserWeight() {
-		return _race.getUserWeight();
-	}
+    /**
+    * Sets the user height of this race.
+    *
+    * @param userHeight the user height of this race
+    */
+    @Override
+    public void setUserHeight(int userHeight) {
+        _race.setUserHeight(userHeight);
+    }
 
-	/**
-	* Sets the user weight of this race.
-	*
-	* @param userWeight the user weight of this race
-	*/
-	@Override
-	public void setUserWeight(int userWeight) {
-		_race.setUserWeight(userWeight);
-	}
+    /**
+    * Returns the user weight of this race.
+    *
+    * @return the user weight of this race
+    */
+    @Override
+    public int getUserWeight() {
+        return _race.getUserWeight();
+    }
 
-	@Override
-	public boolean isNew() {
-		return _race.isNew();
-	}
+    /**
+    * Sets the user weight of this race.
+    *
+    * @param userWeight the user weight of this race
+    */
+    @Override
+    public void setUserWeight(int userWeight) {
+        _race.setUserWeight(userWeight);
+    }
 
-	@Override
-	public void setNew(boolean n) {
-		_race.setNew(n);
-	}
+    @Override
+    public boolean isNew() {
+        return _race.isNew();
+    }
 
-	@Override
-	public boolean isCachedModel() {
-		return _race.isCachedModel();
-	}
+    @Override
+    public void setNew(boolean n) {
+        _race.setNew(n);
+    }
 
-	@Override
-	public void setCachedModel(boolean cachedModel) {
-		_race.setCachedModel(cachedModel);
-	}
+    @Override
+    public boolean isCachedModel() {
+        return _race.isCachedModel();
+    }
 
-	@Override
-	public boolean isEscapedModel() {
-		return _race.isEscapedModel();
-	}
+    @Override
+    public void setCachedModel(boolean cachedModel) {
+        _race.setCachedModel(cachedModel);
+    }
 
-	@Override
-	public java.io.Serializable getPrimaryKeyObj() {
-		return _race.getPrimaryKeyObj();
-	}
+    @Override
+    public boolean isEscapedModel() {
+        return _race.isEscapedModel();
+    }
 
-	@Override
-	public void setPrimaryKeyObj(java.io.Serializable primaryKeyObj) {
-		_race.setPrimaryKeyObj(primaryKeyObj);
-	}
+    @Override
+    public java.io.Serializable getPrimaryKeyObj() {
+        return _race.getPrimaryKeyObj();
+    }
 
-	@Override
-	public com.liferay.portlet.expando.model.ExpandoBridge getExpandoBridge() {
-		return _race.getExpandoBridge();
-	}
+    @Override
+    public void setPrimaryKeyObj(java.io.Serializable primaryKeyObj) {
+        _race.setPrimaryKeyObj(primaryKeyObj);
+    }
 
-	@Override
-	public void setExpandoBridgeAttributes(
-		com.liferay.portal.model.BaseModel<?> baseModel) {
-		_race.setExpandoBridgeAttributes(baseModel);
-	}
+    @Override
+    public com.liferay.portlet.expando.model.ExpandoBridge getExpandoBridge() {
+        return _race.getExpandoBridge();
+    }
 
-	@Override
-	public void setExpandoBridgeAttributes(
-		com.liferay.portlet.expando.model.ExpandoBridge expandoBridge) {
-		_race.setExpandoBridgeAttributes(expandoBridge);
-	}
+    @Override
+    public void setExpandoBridgeAttributes(
+        com.liferay.portal.model.BaseModel<?> baseModel) {
+        _race.setExpandoBridgeAttributes(baseModel);
+    }
 
-	@Override
-	public void setExpandoBridgeAttributes(
-		com.liferay.portal.service.ServiceContext serviceContext) {
-		_race.setExpandoBridgeAttributes(serviceContext);
-	}
+    @Override
+    public void setExpandoBridgeAttributes(
+        com.liferay.portlet.expando.model.ExpandoBridge expandoBridge) {
+        _race.setExpandoBridgeAttributes(expandoBridge);
+    }
 
-	@Override
-	public java.lang.Object clone() {
-		return new RaceWrapper((Race)_race.clone());
-	}
+    @Override
+    public void setExpandoBridgeAttributes(
+        com.liferay.portal.service.ServiceContext serviceContext) {
+        _race.setExpandoBridgeAttributes(serviceContext);
+    }
 
-	@Override
-	public int compareTo(es.eina.tfg.model.Race race) {
-		return _race.compareTo(race);
-	}
+    @Override
+    public java.lang.Object clone() {
+        return new RaceWrapper((Race) _race.clone());
+    }
 
-	@Override
-	public int hashCode() {
-		return _race.hashCode();
-	}
+    @Override
+    public int compareTo(es.eina.tfg.model.Race race) {
+        return _race.compareTo(race);
+    }
 
-	@Override
-	public com.liferay.portal.model.CacheModel<es.eina.tfg.model.Race> toCacheModel() {
-		return _race.toCacheModel();
-	}
+    @Override
+    public int hashCode() {
+        return _race.hashCode();
+    }
 
-	@Override
-	public es.eina.tfg.model.Race toEscapedModel() {
-		return new RaceWrapper(_race.toEscapedModel());
-	}
+    @Override
+    public com.liferay.portal.model.CacheModel<es.eina.tfg.model.Race> toCacheModel() {
+        return _race.toCacheModel();
+    }
 
-	@Override
-	public es.eina.tfg.model.Race toUnescapedModel() {
-		return new RaceWrapper(_race.toUnescapedModel());
-	}
+    @Override
+    public es.eina.tfg.model.Race toEscapedModel() {
+        return new RaceWrapper(_race.toEscapedModel());
+    }
 
-	@Override
-	public java.lang.String toString() {
-		return _race.toString();
-	}
+    @Override
+    public es.eina.tfg.model.Race toUnescapedModel() {
+        return new RaceWrapper(_race.toUnescapedModel());
+    }
 
-	@Override
-	public java.lang.String toXmlString() {
-		return _race.toXmlString();
-	}
+    @Override
+    public java.lang.String toString() {
+        return _race.toString();
+    }
 
-	@Override
-	public void persist()
-		throws com.liferay.portal.kernel.exception.SystemException {
-		_race.persist();
-	}
+    @Override
+    public java.lang.String toXmlString() {
+        return _race.toXmlString();
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
+    @Override
+    public void persist()
+        throws com.liferay.portal.kernel.exception.SystemException {
+        _race.persist();
+    }
 
-		if (!(obj instanceof RaceWrapper)) {
-			return false;
-		}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
 
-		RaceWrapper raceWrapper = (RaceWrapper)obj;
+        if (!(obj instanceof RaceWrapper)) {
+            return false;
+        }
 
-		if (Validator.equals(_race, raceWrapper._race)) {
-			return true;
-		}
+        RaceWrapper raceWrapper = (RaceWrapper) obj;
 
-		return false;
-	}
+        if (Validator.equals(_race, raceWrapper._race)) {
+            return true;
+        }
 
-	/**
-	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedModel}
-	 */
-	public Race getWrappedRace() {
-		return _race;
-	}
+        return false;
+    }
 
-	@Override
-	public Race getWrappedModel() {
-		return _race;
-	}
+    /**
+     * @deprecated As of 6.1.0, replaced by {@link #getWrappedModel}
+     */
+    public Race getWrappedRace() {
+        return _race;
+    }
 
-	@Override
-	public void resetOriginalValues() {
-		_race.resetOriginalValues();
-	}
+    @Override
+    public Race getWrappedModel() {
+        return _race;
+    }
 
-	private Race _race;
+    @Override
+    public void resetOriginalValues() {
+        _race.resetOriginalValues();
+    }
 }

@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model.impl;
 
 import com.liferay.portal.kernel.util.StringBundler;
@@ -33,77 +19,75 @@ import java.io.ObjectOutput;
  * @generated
  */
 public class UserAdditionalDataCacheModel implements CacheModel<UserAdditionalData>,
-	Externalizable {
-	@Override
-	public String toString() {
-		StringBundler sb = new StringBundler(11);
+    Externalizable {
+    public long userId;
+    public String registerType;
+    public int weight;
+    public int height;
+    public long smsCounter;
 
-		sb.append("{userId=");
-		sb.append(userId);
-		sb.append(", registerType=");
-		sb.append(registerType);
-		sb.append(", weight=");
-		sb.append(weight);
-		sb.append(", height=");
-		sb.append(height);
-		sb.append(", smsCounter=");
-		sb.append(smsCounter);
-		sb.append("}");
+    @Override
+    public String toString() {
+        StringBundler sb = new StringBundler(11);
 
-		return sb.toString();
-	}
+        sb.append("{userId=");
+        sb.append(userId);
+        sb.append(", registerType=");
+        sb.append(registerType);
+        sb.append(", weight=");
+        sb.append(weight);
+        sb.append(", height=");
+        sb.append(height);
+        sb.append(", smsCounter=");
+        sb.append(smsCounter);
+        sb.append("}");
 
-	@Override
-	public UserAdditionalData toEntityModel() {
-		UserAdditionalDataImpl userAdditionalDataImpl = new UserAdditionalDataImpl();
+        return sb.toString();
+    }
 
-		userAdditionalDataImpl.setUserId(userId);
+    @Override
+    public UserAdditionalData toEntityModel() {
+        UserAdditionalDataImpl userAdditionalDataImpl = new UserAdditionalDataImpl();
 
-		if (registerType == null) {
-			userAdditionalDataImpl.setRegisterType(StringPool.BLANK);
-		}
-		else {
-			userAdditionalDataImpl.setRegisterType(registerType);
-		}
+        userAdditionalDataImpl.setUserId(userId);
 
-		userAdditionalDataImpl.setWeight(weight);
-		userAdditionalDataImpl.setHeight(height);
-		userAdditionalDataImpl.setSmsCounter(smsCounter);
+        if (registerType == null) {
+            userAdditionalDataImpl.setRegisterType(StringPool.BLANK);
+        } else {
+            userAdditionalDataImpl.setRegisterType(registerType);
+        }
 
-		userAdditionalDataImpl.resetOriginalValues();
+        userAdditionalDataImpl.setWeight(weight);
+        userAdditionalDataImpl.setHeight(height);
+        userAdditionalDataImpl.setSmsCounter(smsCounter);
 
-		return userAdditionalDataImpl;
-	}
+        userAdditionalDataImpl.resetOriginalValues();
 
-	@Override
-	public void readExternal(ObjectInput objectInput) throws IOException {
-		userId = objectInput.readLong();
-		registerType = objectInput.readUTF();
-		weight = objectInput.readInt();
-		height = objectInput.readInt();
-		smsCounter = objectInput.readLong();
-	}
+        return userAdditionalDataImpl;
+    }
 
-	@Override
-	public void writeExternal(ObjectOutput objectOutput)
-		throws IOException {
-		objectOutput.writeLong(userId);
+    @Override
+    public void readExternal(ObjectInput objectInput) throws IOException {
+        userId = objectInput.readLong();
+        registerType = objectInput.readUTF();
+        weight = objectInput.readInt();
+        height = objectInput.readInt();
+        smsCounter = objectInput.readLong();
+    }
 
-		if (registerType == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(registerType);
-		}
+    @Override
+    public void writeExternal(ObjectOutput objectOutput)
+        throws IOException {
+        objectOutput.writeLong(userId);
 
-		objectOutput.writeInt(weight);
-		objectOutput.writeInt(height);
-		objectOutput.writeLong(smsCounter);
-	}
+        if (registerType == null) {
+            objectOutput.writeUTF(StringPool.BLANK);
+        } else {
+            objectOutput.writeUTF(registerType);
+        }
 
-	public long userId;
-	public String registerType;
-	public int weight;
-	public int height;
-	public long smsCounter;
+        objectOutput.writeInt(weight);
+        objectOutput.writeInt(height);
+        objectOutput.writeLong(smsCounter);
+    }
 }

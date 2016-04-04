@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model;
 
 import java.io.Serializable;
@@ -28,139 +14,138 @@ import java.util.List;
  * @generated
  */
 public class PowerSoap implements Serializable {
-	public static PowerSoap toSoapModel(Power model) {
-		PowerSoap soapModel = new PowerSoap();
+    private long _measurementId;
+    private long _raceId;
+    private long _userId;
+    private long _deviceId;
+    private long _sensorId;
+    private Date _time;
+    private String _sensorMode;
+    private int _level;
 
-		soapModel.setMeasurementId(model.getMeasurementId());
-		soapModel.setRaceId(model.getRaceId());
-		soapModel.setUserId(model.getUserId());
-		soapModel.setDeviceId(model.getDeviceId());
-		soapModel.setSensorId(model.getSensorId());
-		soapModel.setTime(model.getTime());
-		soapModel.setSensorMode(model.getSensorMode());
-		soapModel.setLevel(model.getLevel());
+    public PowerSoap() {
+    }
 
-		return soapModel;
-	}
+    public static PowerSoap toSoapModel(Power model) {
+        PowerSoap soapModel = new PowerSoap();
 
-	public static PowerSoap[] toSoapModels(Power[] models) {
-		PowerSoap[] soapModels = new PowerSoap[models.length];
+        soapModel.setMeasurementId(model.getMeasurementId());
+        soapModel.setRaceId(model.getRaceId());
+        soapModel.setUserId(model.getUserId());
+        soapModel.setDeviceId(model.getDeviceId());
+        soapModel.setSensorId(model.getSensorId());
+        soapModel.setTime(model.getTime());
+        soapModel.setSensorMode(model.getSensorMode());
+        soapModel.setLevel(model.getLevel());
 
-		for (int i = 0; i < models.length; i++) {
-			soapModels[i] = toSoapModel(models[i]);
-		}
+        return soapModel;
+    }
 
-		return soapModels;
-	}
+    public static PowerSoap[] toSoapModels(Power[] models) {
+        PowerSoap[] soapModels = new PowerSoap[models.length];
 
-	public static PowerSoap[][] toSoapModels(Power[][] models) {
-		PowerSoap[][] soapModels = null;
+        for (int i = 0; i < models.length; i++) {
+            soapModels[i] = toSoapModel(models[i]);
+        }
 
-		if (models.length > 0) {
-			soapModels = new PowerSoap[models.length][models[0].length];
-		}
-		else {
-			soapModels = new PowerSoap[0][0];
-		}
+        return soapModels;
+    }
 
-		for (int i = 0; i < models.length; i++) {
-			soapModels[i] = toSoapModels(models[i]);
-		}
+    public static PowerSoap[][] toSoapModels(Power[][] models) {
+        PowerSoap[][] soapModels = null;
 
-		return soapModels;
-	}
+        if (models.length > 0) {
+            soapModels = new PowerSoap[models.length][models[0].length];
+        } else {
+            soapModels = new PowerSoap[0][0];
+        }
 
-	public static PowerSoap[] toSoapModels(List<Power> models) {
-		List<PowerSoap> soapModels = new ArrayList<PowerSoap>(models.size());
+        for (int i = 0; i < models.length; i++) {
+            soapModels[i] = toSoapModels(models[i]);
+        }
 
-		for (Power model : models) {
-			soapModels.add(toSoapModel(model));
-		}
+        return soapModels;
+    }
 
-		return soapModels.toArray(new PowerSoap[soapModels.size()]);
-	}
+    public static PowerSoap[] toSoapModels(List<Power> models) {
+        List<PowerSoap> soapModels = new ArrayList<PowerSoap>(models.size());
 
-	public PowerSoap() {
-	}
+        for (Power model : models) {
+            soapModels.add(toSoapModel(model));
+        }
 
-	public long getPrimaryKey() {
-		return _measurementId;
-	}
+        return soapModels.toArray(new PowerSoap[soapModels.size()]);
+    }
 
-	public void setPrimaryKey(long pk) {
-		setMeasurementId(pk);
-	}
+    public long getPrimaryKey() {
+        return _measurementId;
+    }
 
-	public long getMeasurementId() {
-		return _measurementId;
-	}
+    public void setPrimaryKey(long pk) {
+        setMeasurementId(pk);
+    }
 
-	public void setMeasurementId(long measurementId) {
-		_measurementId = measurementId;
-	}
+    public long getMeasurementId() {
+        return _measurementId;
+    }
 
-	public long getRaceId() {
-		return _raceId;
-	}
+    public void setMeasurementId(long measurementId) {
+        _measurementId = measurementId;
+    }
 
-	public void setRaceId(long raceId) {
-		_raceId = raceId;
-	}
+    public long getRaceId() {
+        return _raceId;
+    }
 
-	public long getUserId() {
-		return _userId;
-	}
+    public void setRaceId(long raceId) {
+        _raceId = raceId;
+    }
 
-	public void setUserId(long userId) {
-		_userId = userId;
-	}
+    public long getUserId() {
+        return _userId;
+    }
 
-	public long getDeviceId() {
-		return _deviceId;
-	}
+    public void setUserId(long userId) {
+        _userId = userId;
+    }
 
-	public void setDeviceId(long deviceId) {
-		_deviceId = deviceId;
-	}
+    public long getDeviceId() {
+        return _deviceId;
+    }
 
-	public long getSensorId() {
-		return _sensorId;
-	}
+    public void setDeviceId(long deviceId) {
+        _deviceId = deviceId;
+    }
 
-	public void setSensorId(long sensorId) {
-		_sensorId = sensorId;
-	}
+    public long getSensorId() {
+        return _sensorId;
+    }
 
-	public Date getTime() {
-		return _time;
-	}
+    public void setSensorId(long sensorId) {
+        _sensorId = sensorId;
+    }
 
-	public void setTime(Date time) {
-		_time = time;
-	}
+    public Date getTime() {
+        return _time;
+    }
 
-	public String getSensorMode() {
-		return _sensorMode;
-	}
+    public void setTime(Date time) {
+        _time = time;
+    }
 
-	public void setSensorMode(String sensorMode) {
-		_sensorMode = sensorMode;
-	}
+    public String getSensorMode() {
+        return _sensorMode;
+    }
 
-	public int getLevel() {
-		return _level;
-	}
+    public void setSensorMode(String sensorMode) {
+        _sensorMode = sensorMode;
+    }
 
-	public void setLevel(int level) {
-		_level = level;
-	}
+    public int getLevel() {
+        return _level;
+    }
 
-	private long _measurementId;
-	private long _raceId;
-	private long _userId;
-	private long _deviceId;
-	private long _sensorId;
-	private Date _time;
-	private String _sensorMode;
-	private int _level;
+    public void setLevel(int level) {
+        _level = level;
+    }
 }

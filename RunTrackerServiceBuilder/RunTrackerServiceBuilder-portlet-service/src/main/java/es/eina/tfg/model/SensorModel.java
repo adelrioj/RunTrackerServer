@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model;
 
 import com.liferay.portal.kernel.bean.AutoEscape;
@@ -37,213 +23,213 @@ import java.io.Serializable;
  * @generated
  */
 public interface SensorModel extends BaseModel<Sensor> {
-	/*
-	 * NOTE FOR DEVELOPERS:
-	 *
-	 * Never modify or reference this interface directly. All methods that expect a sensor model instance should use the {@link Sensor} interface instead.
-	 */
+    /*
+     * NOTE FOR DEVELOPERS:
+     *
+     * Never modify or reference this interface directly. All methods that expect a sensor model instance should use the {@link Sensor} interface instead.
+     */
 
-	/**
-	 * Returns the primary key of this sensor.
-	 *
-	 * @return the primary key of this sensor
-	 */
-	public long getPrimaryKey();
+    /**
+     * Returns the primary key of this sensor.
+     *
+     * @return the primary key of this sensor
+     */
+    public long getPrimaryKey();
 
-	/**
-	 * Sets the primary key of this sensor.
-	 *
-	 * @param primaryKey the primary key of this sensor
-	 */
-	public void setPrimaryKey(long primaryKey);
+    /**
+     * Sets the primary key of this sensor.
+     *
+     * @param primaryKey the primary key of this sensor
+     */
+    public void setPrimaryKey(long primaryKey);
 
-	/**
-	 * Returns the sensor ID of this sensor.
-	 *
-	 * @return the sensor ID of this sensor
-	 */
-	public long getSensorId();
+    /**
+     * Returns the sensor ID of this sensor.
+     *
+     * @return the sensor ID of this sensor
+     */
+    public long getSensorId();
 
-	/**
-	 * Sets the sensor ID of this sensor.
-	 *
-	 * @param sensorId the sensor ID of this sensor
-	 */
-	public void setSensorId(long sensorId);
+    /**
+     * Sets the sensor ID of this sensor.
+     *
+     * @param sensorId the sensor ID of this sensor
+     */
+    public void setSensorId(long sensorId);
 
-	/**
-	 * Returns the type of this sensor.
-	 *
-	 * @return the type of this sensor
-	 */
-	public int getType();
+    /**
+     * Returns the type of this sensor.
+     *
+     * @return the type of this sensor
+     */
+    public int getType();
 
-	/**
-	 * Sets the type of this sensor.
-	 *
-	 * @param type the type of this sensor
-	 */
-	public void setType(int type);
+    /**
+     * Sets the type of this sensor.
+     *
+     * @param type the type of this sensor
+     */
+    public void setType(int type);
 
-	/**
-	 * Returns the description of this sensor.
-	 *
-	 * @return the description of this sensor
-	 */
-	@AutoEscape
-	public String getDescription();
+    /**
+     * Returns the description of this sensor.
+     *
+     * @return the description of this sensor
+     */
+    @AutoEscape
+    public String getDescription();
 
-	/**
-	 * Sets the description of this sensor.
-	 *
-	 * @param description the description of this sensor
-	 */
-	public void setDescription(String description);
+    /**
+     * Sets the description of this sensor.
+     *
+     * @param description the description of this sensor
+     */
+    public void setDescription(String description);
 
-	/**
-	 * Returns the data units of this sensor.
-	 *
-	 * @return the data units of this sensor
-	 */
-	@AutoEscape
-	public String getDataUnits();
+    /**
+     * Returns the data units of this sensor.
+     *
+     * @return the data units of this sensor
+     */
+    @AutoEscape
+    public String getDataUnits();
 
-	/**
-	 * Sets the data units of this sensor.
-	 *
-	 * @param dataUnits the data units of this sensor
-	 */
-	public void setDataUnits(String dataUnits);
+    /**
+     * Sets the data units of this sensor.
+     *
+     * @param dataUnits the data units of this sensor
+     */
+    public void setDataUnits(String dataUnits);
 
-	/**
-	 * Returns the data type of this sensor.
-	 *
-	 * @return the data type of this sensor
-	 */
-	@AutoEscape
-	public String getDataType();
+    /**
+     * Returns the data type of this sensor.
+     *
+     * @return the data type of this sensor
+     */
+    @AutoEscape
+    public String getDataType();
 
-	/**
-	 * Sets the data type of this sensor.
-	 *
-	 * @param dataType the data type of this sensor
-	 */
-	public void setDataType(String dataType);
+    /**
+     * Sets the data type of this sensor.
+     *
+     * @param dataType the data type of this sensor
+     */
+    public void setDataType(String dataType);
 
-	/**
-	 * Returns the data uncertainity of this sensor.
-	 *
-	 * @return the data uncertainity of this sensor
-	 */
-	@AutoEscape
-	public String getDataUncertainity();
+    /**
+     * Returns the data uncertainity of this sensor.
+     *
+     * @return the data uncertainity of this sensor
+     */
+    @AutoEscape
+    public String getDataUncertainity();
 
-	/**
-	 * Sets the data uncertainity of this sensor.
-	 *
-	 * @param dataUncertainity the data uncertainity of this sensor
-	 */
-	public void setDataUncertainity(String dataUncertainity);
+    /**
+     * Sets the data uncertainity of this sensor.
+     *
+     * @param dataUncertainity the data uncertainity of this sensor
+     */
+    public void setDataUncertainity(String dataUncertainity);
 
-	/**
-	 * Returns the data lower range of this sensor.
-	 *
-	 * @return the data lower range of this sensor
-	 */
-	@AutoEscape
-	public String getDataLowerRange();
+    /**
+     * Returns the data lower range of this sensor.
+     *
+     * @return the data lower range of this sensor
+     */
+    @AutoEscape
+    public String getDataLowerRange();
 
-	/**
-	 * Sets the data lower range of this sensor.
-	 *
-	 * @param dataLowerRange the data lower range of this sensor
-	 */
-	public void setDataLowerRange(String dataLowerRange);
+    /**
+     * Sets the data lower range of this sensor.
+     *
+     * @param dataLowerRange the data lower range of this sensor
+     */
+    public void setDataLowerRange(String dataLowerRange);
 
-	/**
-	 * Returns the data upper range of this sensor.
-	 *
-	 * @return the data upper range of this sensor
-	 */
-	@AutoEscape
-	public String getDataUpperRange();
+    /**
+     * Returns the data upper range of this sensor.
+     *
+     * @return the data upper range of this sensor
+     */
+    @AutoEscape
+    public String getDataUpperRange();
 
-	/**
-	 * Sets the data upper range of this sensor.
-	 *
-	 * @param dataUpperRange the data upper range of this sensor
-	 */
-	public void setDataUpperRange(String dataUpperRange);
+    /**
+     * Sets the data upper range of this sensor.
+     *
+     * @param dataUpperRange the data upper range of this sensor
+     */
+    public void setDataUpperRange(String dataUpperRange);
 
-	/**
-	 * Returns the data packet format of this sensor.
-	 *
-	 * @return the data packet format of this sensor
-	 */
-	@AutoEscape
-	public String getDataPacketFormat();
+    /**
+     * Returns the data packet format of this sensor.
+     *
+     * @return the data packet format of this sensor
+     */
+    @AutoEscape
+    public String getDataPacketFormat();
 
-	/**
-	 * Sets the data packet format of this sensor.
-	 *
-	 * @param dataPacketFormat the data packet format of this sensor
-	 */
-	public void setDataPacketFormat(String dataPacketFormat);
+    /**
+     * Sets the data packet format of this sensor.
+     *
+     * @param dataPacketFormat the data packet format of this sensor
+     */
+    public void setDataPacketFormat(String dataPacketFormat);
 
-	@Override
-	public boolean isNew();
+    @Override
+    public boolean isNew();
 
-	@Override
-	public void setNew(boolean n);
+    @Override
+    public void setNew(boolean n);
 
-	@Override
-	public boolean isCachedModel();
+    @Override
+    public boolean isCachedModel();
 
-	@Override
-	public void setCachedModel(boolean cachedModel);
+    @Override
+    public void setCachedModel(boolean cachedModel);
 
-	@Override
-	public boolean isEscapedModel();
+    @Override
+    public boolean isEscapedModel();
 
-	@Override
-	public Serializable getPrimaryKeyObj();
+    @Override
+    public Serializable getPrimaryKeyObj();
 
-	@Override
-	public void setPrimaryKeyObj(Serializable primaryKeyObj);
+    @Override
+    public void setPrimaryKeyObj(Serializable primaryKeyObj);
 
-	@Override
-	public ExpandoBridge getExpandoBridge();
+    @Override
+    public ExpandoBridge getExpandoBridge();
 
-	@Override
-	public void setExpandoBridgeAttributes(BaseModel<?> baseModel);
+    @Override
+    public void setExpandoBridgeAttributes(BaseModel<?> baseModel);
 
-	@Override
-	public void setExpandoBridgeAttributes(ExpandoBridge expandoBridge);
+    @Override
+    public void setExpandoBridgeAttributes(ExpandoBridge expandoBridge);
 
-	@Override
-	public void setExpandoBridgeAttributes(ServiceContext serviceContext);
+    @Override
+    public void setExpandoBridgeAttributes(ServiceContext serviceContext);
 
-	@Override
-	public Object clone();
+    @Override
+    public Object clone();
 
-	@Override
-	public int compareTo(es.eina.tfg.model.Sensor sensor);
+    @Override
+    public int compareTo(es.eina.tfg.model.Sensor sensor);
 
-	@Override
-	public int hashCode();
+    @Override
+    public int hashCode();
 
-	@Override
-	public CacheModel<es.eina.tfg.model.Sensor> toCacheModel();
+    @Override
+    public CacheModel<es.eina.tfg.model.Sensor> toCacheModel();
 
-	@Override
-	public es.eina.tfg.model.Sensor toEscapedModel();
+    @Override
+    public es.eina.tfg.model.Sensor toEscapedModel();
 
-	@Override
-	public es.eina.tfg.model.Sensor toUnescapedModel();
+    @Override
+    public es.eina.tfg.model.Sensor toUnescapedModel();
 
-	@Override
-	public String toString();
+    @Override
+    public String toString();
 
-	@Override
-	public String toXmlString();
+    @Override
+    public String toXmlString();
 }

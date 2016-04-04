@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model.impl;
 
 import com.liferay.portal.kernel.util.StringBundler;
@@ -32,57 +18,57 @@ import java.io.ObjectOutput;
  * @generated
  */
 public class RouteLocationCacheModel implements CacheModel<RouteLocation>,
-	Externalizable {
-	@Override
-	public String toString() {
-		StringBundler sb = new StringBundler(9);
+    Externalizable {
+    public long routePositionId;
+    public long routeId;
+    public double latitude;
+    public double longitude;
 
-		sb.append("{routePositionId=");
-		sb.append(routePositionId);
-		sb.append(", routeId=");
-		sb.append(routeId);
-		sb.append(", latitude=");
-		sb.append(latitude);
-		sb.append(", longitude=");
-		sb.append(longitude);
-		sb.append("}");
+    @Override
+    public String toString() {
+        StringBundler sb = new StringBundler(9);
 
-		return sb.toString();
-	}
+        sb.append("{routePositionId=");
+        sb.append(routePositionId);
+        sb.append(", routeId=");
+        sb.append(routeId);
+        sb.append(", latitude=");
+        sb.append(latitude);
+        sb.append(", longitude=");
+        sb.append(longitude);
+        sb.append("}");
 
-	@Override
-	public RouteLocation toEntityModel() {
-		RouteLocationImpl routeLocationImpl = new RouteLocationImpl();
+        return sb.toString();
+    }
 
-		routeLocationImpl.setRoutePositionId(routePositionId);
-		routeLocationImpl.setRouteId(routeId);
-		routeLocationImpl.setLatitude(latitude);
-		routeLocationImpl.setLongitude(longitude);
+    @Override
+    public RouteLocation toEntityModel() {
+        RouteLocationImpl routeLocationImpl = new RouteLocationImpl();
 
-		routeLocationImpl.resetOriginalValues();
+        routeLocationImpl.setRoutePositionId(routePositionId);
+        routeLocationImpl.setRouteId(routeId);
+        routeLocationImpl.setLatitude(latitude);
+        routeLocationImpl.setLongitude(longitude);
 
-		return routeLocationImpl;
-	}
+        routeLocationImpl.resetOriginalValues();
 
-	@Override
-	public void readExternal(ObjectInput objectInput) throws IOException {
-		routePositionId = objectInput.readLong();
-		routeId = objectInput.readLong();
-		latitude = objectInput.readDouble();
-		longitude = objectInput.readDouble();
-	}
+        return routeLocationImpl;
+    }
 
-	@Override
-	public void writeExternal(ObjectOutput objectOutput)
-		throws IOException {
-		objectOutput.writeLong(routePositionId);
-		objectOutput.writeLong(routeId);
-		objectOutput.writeDouble(latitude);
-		objectOutput.writeDouble(longitude);
-	}
+    @Override
+    public void readExternal(ObjectInput objectInput) throws IOException {
+        routePositionId = objectInput.readLong();
+        routeId = objectInput.readLong();
+        latitude = objectInput.readDouble();
+        longitude = objectInput.readDouble();
+    }
 
-	public long routePositionId;
-	public long routeId;
-	public double latitude;
-	public double longitude;
+    @Override
+    public void writeExternal(ObjectOutput objectOutput)
+        throws IOException {
+        objectOutput.writeLong(routePositionId);
+        objectOutput.writeLong(routeId);
+        objectOutput.writeDouble(latitude);
+        objectOutput.writeDouble(longitude);
+    }
 }

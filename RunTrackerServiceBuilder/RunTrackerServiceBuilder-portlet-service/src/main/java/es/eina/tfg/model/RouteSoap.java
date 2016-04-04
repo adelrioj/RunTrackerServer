@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model;
 
 import java.io.Serializable;
@@ -28,143 +14,142 @@ import java.util.List;
  * @generated
  */
 public class RouteSoap implements Serializable {
-	public static RouteSoap toSoapModel(Route model) {
-		RouteSoap soapModel = new RouteSoap();
+    private long _routeId;
+    private String _type;
+    private String _name;
+    private String _description;
+    private long _authorId;
+    private boolean _isPublic;
+    private Date _startingTime;
+    private Date _creationTime;
 
-		soapModel.setRouteId(model.getRouteId());
-		soapModel.setType(model.getType());
-		soapModel.setName(model.getName());
-		soapModel.setDescription(model.getDescription());
-		soapModel.setAuthorId(model.getAuthorId());
-		soapModel.setIsPublic(model.getIsPublic());
-		soapModel.setStartingTime(model.getStartingTime());
-		soapModel.setCreationTime(model.getCreationTime());
+    public RouteSoap() {
+    }
 
-		return soapModel;
-	}
+    public static RouteSoap toSoapModel(Route model) {
+        RouteSoap soapModel = new RouteSoap();
 
-	public static RouteSoap[] toSoapModels(Route[] models) {
-		RouteSoap[] soapModels = new RouteSoap[models.length];
+        soapModel.setRouteId(model.getRouteId());
+        soapModel.setType(model.getType());
+        soapModel.setName(model.getName());
+        soapModel.setDescription(model.getDescription());
+        soapModel.setAuthorId(model.getAuthorId());
+        soapModel.setIsPublic(model.getIsPublic());
+        soapModel.setStartingTime(model.getStartingTime());
+        soapModel.setCreationTime(model.getCreationTime());
 
-		for (int i = 0; i < models.length; i++) {
-			soapModels[i] = toSoapModel(models[i]);
-		}
+        return soapModel;
+    }
 
-		return soapModels;
-	}
+    public static RouteSoap[] toSoapModels(Route[] models) {
+        RouteSoap[] soapModels = new RouteSoap[models.length];
 
-	public static RouteSoap[][] toSoapModels(Route[][] models) {
-		RouteSoap[][] soapModels = null;
+        for (int i = 0; i < models.length; i++) {
+            soapModels[i] = toSoapModel(models[i]);
+        }
 
-		if (models.length > 0) {
-			soapModels = new RouteSoap[models.length][models[0].length];
-		}
-		else {
-			soapModels = new RouteSoap[0][0];
-		}
+        return soapModels;
+    }
 
-		for (int i = 0; i < models.length; i++) {
-			soapModels[i] = toSoapModels(models[i]);
-		}
+    public static RouteSoap[][] toSoapModels(Route[][] models) {
+        RouteSoap[][] soapModels = null;
 
-		return soapModels;
-	}
+        if (models.length > 0) {
+            soapModels = new RouteSoap[models.length][models[0].length];
+        } else {
+            soapModels = new RouteSoap[0][0];
+        }
 
-	public static RouteSoap[] toSoapModels(List<Route> models) {
-		List<RouteSoap> soapModels = new ArrayList<RouteSoap>(models.size());
+        for (int i = 0; i < models.length; i++) {
+            soapModels[i] = toSoapModels(models[i]);
+        }
 
-		for (Route model : models) {
-			soapModels.add(toSoapModel(model));
-		}
+        return soapModels;
+    }
 
-		return soapModels.toArray(new RouteSoap[soapModels.size()]);
-	}
+    public static RouteSoap[] toSoapModels(List<Route> models) {
+        List<RouteSoap> soapModels = new ArrayList<RouteSoap>(models.size());
 
-	public RouteSoap() {
-	}
+        for (Route model : models) {
+            soapModels.add(toSoapModel(model));
+        }
 
-	public long getPrimaryKey() {
-		return _routeId;
-	}
+        return soapModels.toArray(new RouteSoap[soapModels.size()]);
+    }
 
-	public void setPrimaryKey(long pk) {
-		setRouteId(pk);
-	}
+    public long getPrimaryKey() {
+        return _routeId;
+    }
 
-	public long getRouteId() {
-		return _routeId;
-	}
+    public void setPrimaryKey(long pk) {
+        setRouteId(pk);
+    }
 
-	public void setRouteId(long routeId) {
-		_routeId = routeId;
-	}
+    public long getRouteId() {
+        return _routeId;
+    }
 
-	public String getType() {
-		return _type;
-	}
+    public void setRouteId(long routeId) {
+        _routeId = routeId;
+    }
 
-	public void setType(String type) {
-		_type = type;
-	}
+    public String getType() {
+        return _type;
+    }
 
-	public String getName() {
-		return _name;
-	}
+    public void setType(String type) {
+        _type = type;
+    }
 
-	public void setName(String name) {
-		_name = name;
-	}
+    public String getName() {
+        return _name;
+    }
 
-	public String getDescription() {
-		return _description;
-	}
+    public void setName(String name) {
+        _name = name;
+    }
 
-	public void setDescription(String description) {
-		_description = description;
-	}
+    public String getDescription() {
+        return _description;
+    }
 
-	public long getAuthorId() {
-		return _authorId;
-	}
+    public void setDescription(String description) {
+        _description = description;
+    }
 
-	public void setAuthorId(long authorId) {
-		_authorId = authorId;
-	}
+    public long getAuthorId() {
+        return _authorId;
+    }
 
-	public boolean getIsPublic() {
-		return _isPublic;
-	}
+    public void setAuthorId(long authorId) {
+        _authorId = authorId;
+    }
 
-	public boolean isIsPublic() {
-		return _isPublic;
-	}
+    public boolean getIsPublic() {
+        return _isPublic;
+    }
 
-	public void setIsPublic(boolean isPublic) {
-		_isPublic = isPublic;
-	}
+    public boolean isIsPublic() {
+        return _isPublic;
+    }
 
-	public Date getStartingTime() {
-		return _startingTime;
-	}
+    public void setIsPublic(boolean isPublic) {
+        _isPublic = isPublic;
+    }
 
-	public void setStartingTime(Date startingTime) {
-		_startingTime = startingTime;
-	}
+    public Date getStartingTime() {
+        return _startingTime;
+    }
 
-	public Date getCreationTime() {
-		return _creationTime;
-	}
+    public void setStartingTime(Date startingTime) {
+        _startingTime = startingTime;
+    }
 
-	public void setCreationTime(Date creationTime) {
-		_creationTime = creationTime;
-	}
+    public Date getCreationTime() {
+        return _creationTime;
+    }
 
-	private long _routeId;
-	private String _type;
-	private String _name;
-	private String _description;
-	private long _authorId;
-	private boolean _isPublic;
-	private Date _startingTime;
-	private Date _creationTime;
+    public void setCreationTime(Date creationTime) {
+        _creationTime = creationTime;
+    }
 }

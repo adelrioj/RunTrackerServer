@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model.impl;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
@@ -53,321 +39,316 @@ import java.util.Map;
  */
 @JSON(strict = true)
 public class UserSelectedRoutesModelImpl extends BaseModelImpl<UserSelectedRoutes>
-	implements UserSelectedRoutesModel {
-	/*
-	 * NOTE FOR DEVELOPERS:
-	 *
-	 * Never modify or reference this class directly. All methods that expect a user selected routes model instance should use the {@link es.eina.tfg.model.UserSelectedRoutes} interface instead.
-	 */
-	public static final String TABLE_NAME = "GL_UserSelectedRoutes";
-	public static final Object[][] TABLE_COLUMNS = {
-			{ "userId", Types.BIGINT },
-			{ "routeId", Types.BIGINT }
-		};
-	public static final String TABLE_SQL_CREATE = "create table GL_UserSelectedRoutes (userId LONG not null,routeId LONG not null,primary key (userId, routeId))";
-	public static final String TABLE_SQL_DROP = "drop table GL_UserSelectedRoutes";
-	public static final String ORDER_BY_JPQL = " ORDER BY userSelectedRoutes.id.userId ASC";
-	public static final String ORDER_BY_SQL = " ORDER BY GL_UserSelectedRoutes.userId ASC";
-	public static final String DATA_SOURCE = "liferayDataSource";
-	public static final String SESSION_FACTORY = "liferaySessionFactory";
-	public static final String TX_MANAGER = "liferayTransactionManager";
-	public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
-				"value.object.entity.cache.enabled.es.eina.tfg.model.UserSelectedRoutes"),
-			true);
-	public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
-				"value.object.finder.cache.enabled.es.eina.tfg.model.UserSelectedRoutes"),
-			true);
-	public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
-				"value.object.column.bitmask.enabled.es.eina.tfg.model.UserSelectedRoutes"),
-			true);
-	public static long USERID_COLUMN_BITMASK = 1L;
-
-	/**
-	 * Converts the soap model instance into a normal model instance.
-	 *
-	 * @param soapModel the soap model instance to convert
-	 * @return the normal model instance
-	 */
-	public static UserSelectedRoutes toModel(UserSelectedRoutesSoap soapModel) {
-		if (soapModel == null) {
-			return null;
-		}
-
-		UserSelectedRoutes model = new UserSelectedRoutesImpl();
-
-		model.setUserId(soapModel.getUserId());
-		model.setRouteId(soapModel.getRouteId());
-
-		return model;
-	}
-
-	/**
-	 * Converts the soap model instances into normal model instances.
-	 *
-	 * @param soapModels the soap model instances to convert
-	 * @return the normal model instances
-	 */
-	public static List<UserSelectedRoutes> toModels(
-		UserSelectedRoutesSoap[] soapModels) {
-		if (soapModels == null) {
-			return null;
-		}
-
-		List<UserSelectedRoutes> models = new ArrayList<UserSelectedRoutes>(soapModels.length);
-
-		for (UserSelectedRoutesSoap soapModel : soapModels) {
-			models.add(toModel(soapModel));
-		}
-
-		return models;
-	}
-
-	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
-				"lock.expiration.time.es.eina.tfg.model.UserSelectedRoutes"));
-
-	public UserSelectedRoutesModelImpl() {
-	}
-
-	@Override
-	public UserSelectedRoutesPK getPrimaryKey() {
-		return new UserSelectedRoutesPK(_userId, _routeId);
-	}
-
-	@Override
-	public void setPrimaryKey(UserSelectedRoutesPK primaryKey) {
-		setUserId(primaryKey.userId);
-		setRouteId(primaryKey.routeId);
-	}
-
-	@Override
-	public Serializable getPrimaryKeyObj() {
-		return new UserSelectedRoutesPK(_userId, _routeId);
-	}
-
-	@Override
-	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
-		setPrimaryKey((UserSelectedRoutesPK)primaryKeyObj);
-	}
-
-	@Override
-	public Class<?> getModelClass() {
-		return UserSelectedRoutes.class;
-	}
-
-	@Override
-	public String getModelClassName() {
-		return UserSelectedRoutes.class.getName();
-	}
+    implements UserSelectedRoutesModel {
+    /*
+     * NOTE FOR DEVELOPERS:
+     *
+     * Never modify or reference this class directly. All methods that expect a user selected routes model instance should use the {@link es.eina.tfg.model.UserSelectedRoutes} interface instead.
+     */
+    public static final String TABLE_NAME = "GL_UserSelectedRoutes";
+    public static final Object[][] TABLE_COLUMNS = {
+            { "userId", Types.BIGINT },
+            { "routeId", Types.BIGINT }
+        };
+    public static final String TABLE_SQL_CREATE = "create table GL_UserSelectedRoutes (userId LONG not null,routeId LONG not null,primary key (userId, routeId))";
+    public static final String TABLE_SQL_DROP = "drop table GL_UserSelectedRoutes";
+    public static final String ORDER_BY_JPQL = " ORDER BY userSelectedRoutes.id.userId ASC";
+    public static final String ORDER_BY_SQL = " ORDER BY GL_UserSelectedRoutes.userId ASC";
+    public static final String DATA_SOURCE = "liferayDataSource";
+    public static final String SESSION_FACTORY = "liferaySessionFactory";
+    public static final String TX_MANAGER = "liferayTransactionManager";
+    public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
+                "value.object.entity.cache.enabled.es.eina.tfg.model.UserSelectedRoutes"),
+            true);
+    public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
+                "value.object.finder.cache.enabled.es.eina.tfg.model.UserSelectedRoutes"),
+            true);
+    public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
+                "value.object.column.bitmask.enabled.es.eina.tfg.model.UserSelectedRoutes"),
+            true);
+    public static long USERID_COLUMN_BITMASK = 1L;
+    public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
+                "lock.expiration.time.es.eina.tfg.model.UserSelectedRoutes"));
+    private static ClassLoader _classLoader = UserSelectedRoutes.class.getClassLoader();
+    private static Class<?>[] _escapedModelInterfaces = new Class[] {
+            UserSelectedRoutes.class
+        };
+    private long _userId;
+    private String _userUuid;
+    private long _originalUserId;
+    private boolean _setOriginalUserId;
+    private long _routeId;
+    private long _columnBitmask;
+    private UserSelectedRoutes _escapedModel;
+
+    public UserSelectedRoutesModelImpl() {
+    }
+
+    /**
+     * Converts the soap model instance into a normal model instance.
+     *
+     * @param soapModel the soap model instance to convert
+     * @return the normal model instance
+     */
+    public static UserSelectedRoutes toModel(UserSelectedRoutesSoap soapModel) {
+        if (soapModel == null) {
+            return null;
+        }
+
+        UserSelectedRoutes model = new UserSelectedRoutesImpl();
+
+        model.setUserId(soapModel.getUserId());
+        model.setRouteId(soapModel.getRouteId());
+
+        return model;
+    }
+
+    /**
+     * Converts the soap model instances into normal model instances.
+     *
+     * @param soapModels the soap model instances to convert
+     * @return the normal model instances
+     */
+    public static List<UserSelectedRoutes> toModels(
+        UserSelectedRoutesSoap[] soapModels) {
+        if (soapModels == null) {
+            return null;
+        }
+
+        List<UserSelectedRoutes> models = new ArrayList<UserSelectedRoutes>(soapModels.length);
+
+        for (UserSelectedRoutesSoap soapModel : soapModels) {
+            models.add(toModel(soapModel));
+        }
+
+        return models;
+    }
+
+    @Override
+    public UserSelectedRoutesPK getPrimaryKey() {
+        return new UserSelectedRoutesPK(_userId, _routeId);
+    }
+
+    @Override
+    public void setPrimaryKey(UserSelectedRoutesPK primaryKey) {
+        setUserId(primaryKey.userId);
+        setRouteId(primaryKey.routeId);
+    }
+
+    @Override
+    public Serializable getPrimaryKeyObj() {
+        return new UserSelectedRoutesPK(_userId, _routeId);
+    }
+
+    @Override
+    public void setPrimaryKeyObj(Serializable primaryKeyObj) {
+        setPrimaryKey((UserSelectedRoutesPK) primaryKeyObj);
+    }
+
+    @Override
+    public Class<?> getModelClass() {
+        return UserSelectedRoutes.class;
+    }
+
+    @Override
+    public String getModelClassName() {
+        return UserSelectedRoutes.class.getName();
+    }
 
-	@Override
-	public Map<String, Object> getModelAttributes() {
-		Map<String, Object> attributes = new HashMap<String, Object>();
-
-		attributes.put("userId", getUserId());
-		attributes.put("routeId", getRouteId());
-
-		return attributes;
-	}
-
-	@Override
-	public void setModelAttributes(Map<String, Object> attributes) {
-		Long userId = (Long)attributes.get("userId");
-
-		if (userId != null) {
-			setUserId(userId);
-		}
-
-		Long routeId = (Long)attributes.get("routeId");
-
-		if (routeId != null) {
-			setRouteId(routeId);
-		}
-	}
-
-	@JSON
-	@Override
-	public long getUserId() {
-		return _userId;
-	}
+    @Override
+    public Map<String, Object> getModelAttributes() {
+        Map<String, Object> attributes = new HashMap<String, Object>();
+
+        attributes.put("userId", getUserId());
+        attributes.put("routeId", getRouteId());
+
+        return attributes;
+    }
+
+    @Override
+    public void setModelAttributes(Map<String, Object> attributes) {
+        Long userId = (Long) attributes.get("userId");
+
+        if (userId != null) {
+            setUserId(userId);
+        }
+
+        Long routeId = (Long) attributes.get("routeId");
+
+        if (routeId != null) {
+            setRouteId(routeId);
+        }
+    }
+
+    @JSON
+    @Override
+    public long getUserId() {
+        return _userId;
+    }
+
+    @Override
+    public void setUserId(long userId) {
+        _columnBitmask = -1L;
+
+        if (!_setOriginalUserId) {
+            _setOriginalUserId = true;
+
+            _originalUserId = _userId;
+        }
+
+        _userId = userId;
+    }
+
+    @Override
+    public String getUserUuid() throws SystemException {
+        return PortalUtil.getUserValue(getUserId(), "uuid", _userUuid);
+    }
 
-	@Override
-	public void setUserId(long userId) {
-		_columnBitmask = -1L;
-
-		if (!_setOriginalUserId) {
-			_setOriginalUserId = true;
-
-			_originalUserId = _userId;
-		}
-
-		_userId = userId;
-	}
-
-	@Override
-	public String getUserUuid() throws SystemException {
-		return PortalUtil.getUserValue(getUserId(), "uuid", _userUuid);
-	}
-
-	@Override
-	public void setUserUuid(String userUuid) {
-		_userUuid = userUuid;
-	}
-
-	public long getOriginalUserId() {
-		return _originalUserId;
-	}
-
-	@JSON
-	@Override
-	public long getRouteId() {
-		return _routeId;
-	}
+    @Override
+    public void setUserUuid(String userUuid) {
+        _userUuid = userUuid;
+    }
+
+    public long getOriginalUserId() {
+        return _originalUserId;
+    }
 
-	@Override
-	public void setRouteId(long routeId) {
-		_routeId = routeId;
-	}
+    @JSON
+    @Override
+    public long getRouteId() {
+        return _routeId;
+    }
 
-	public long getColumnBitmask() {
-		return _columnBitmask;
-	}
+    @Override
+    public void setRouteId(long routeId) {
+        _routeId = routeId;
+    }
 
-	@Override
-	public UserSelectedRoutes toEscapedModel() {
-		if (_escapedModel == null) {
-			_escapedModel = (UserSelectedRoutes)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
-		}
+    public long getColumnBitmask() {
+        return _columnBitmask;
+    }
 
-		return _escapedModel;
-	}
+    @Override
+    public UserSelectedRoutes toEscapedModel() {
+        if (_escapedModel == null) {
+            _escapedModel = (UserSelectedRoutes) ProxyUtil.newProxyInstance(_classLoader,
+                    _escapedModelInterfaces, new AutoEscapeBeanHandler(this));
+        }
 
-	@Override
-	public Object clone() {
-		UserSelectedRoutesImpl userSelectedRoutesImpl = new UserSelectedRoutesImpl();
+        return _escapedModel;
+    }
 
-		userSelectedRoutesImpl.setUserId(getUserId());
-		userSelectedRoutesImpl.setRouteId(getRouteId());
+    @Override
+    public Object clone() {
+        UserSelectedRoutesImpl userSelectedRoutesImpl = new UserSelectedRoutesImpl();
 
-		userSelectedRoutesImpl.resetOriginalValues();
-
-		return userSelectedRoutesImpl;
-	}
-
-	@Override
-	public int compareTo(UserSelectedRoutes userSelectedRoutes) {
-		int value = 0;
+        userSelectedRoutesImpl.setUserId(getUserId());
+        userSelectedRoutesImpl.setRouteId(getRouteId());
+
+        userSelectedRoutesImpl.resetOriginalValues();
+
+        return userSelectedRoutesImpl;
+    }
 
-		if (getUserId() < userSelectedRoutes.getUserId()) {
-			value = -1;
-		}
-		else if (getUserId() > userSelectedRoutes.getUserId()) {
-			value = 1;
-		}
-		else {
-			value = 0;
-		}
-
-		if (value != 0) {
-			return value;
-		}
-
-		return 0;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-
-		if (!(obj instanceof UserSelectedRoutes)) {
-			return false;
-		}
-
-		UserSelectedRoutes userSelectedRoutes = (UserSelectedRoutes)obj;
-
-		UserSelectedRoutesPK primaryKey = userSelectedRoutes.getPrimaryKey();
-
-		if (getPrimaryKey().equals(primaryKey)) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-
-	@Override
-	public int hashCode() {
-		return getPrimaryKey().hashCode();
-	}
-
-	@Override
-	public void resetOriginalValues() {
-		UserSelectedRoutesModelImpl userSelectedRoutesModelImpl = this;
-
-		userSelectedRoutesModelImpl._originalUserId = userSelectedRoutesModelImpl._userId;
-
-		userSelectedRoutesModelImpl._setOriginalUserId = false;
-
-		userSelectedRoutesModelImpl._columnBitmask = 0;
-	}
-
-	@Override
-	public CacheModel<UserSelectedRoutes> toCacheModel() {
-		UserSelectedRoutesCacheModel userSelectedRoutesCacheModel = new UserSelectedRoutesCacheModel();
-
-		userSelectedRoutesCacheModel.userId = getUserId();
-
-		userSelectedRoutesCacheModel.routeId = getRouteId();
-
-		return userSelectedRoutesCacheModel;
-	}
-
-	@Override
-	public String toString() {
-		StringBundler sb = new StringBundler(5);
-
-		sb.append("{userId=");
-		sb.append(getUserId());
-		sb.append(", routeId=");
-		sb.append(getRouteId());
-		sb.append("}");
-
-		return sb.toString();
-	}
-
-	@Override
-	public String toXmlString() {
-		StringBundler sb = new StringBundler(10);
-
-		sb.append("<model><model-name>");
-		sb.append("es.eina.tfg.model.UserSelectedRoutes");
-		sb.append("</model-name>");
-
-		sb.append(
-			"<column><column-name>userId</column-name><column-value><![CDATA[");
-		sb.append(getUserId());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>routeId</column-name><column-value><![CDATA[");
-		sb.append(getRouteId());
-		sb.append("]]></column-value></column>");
-
-		sb.append("</model>");
-
-		return sb.toString();
-	}
-
-	private static ClassLoader _classLoader = UserSelectedRoutes.class.getClassLoader();
-	private static Class<?>[] _escapedModelInterfaces = new Class[] {
-			UserSelectedRoutes.class
-		};
-	private long _userId;
-	private String _userUuid;
-	private long _originalUserId;
-	private boolean _setOriginalUserId;
-	private long _routeId;
-	private long _columnBitmask;
-	private UserSelectedRoutes _escapedModel;
+    @Override
+    public int compareTo(UserSelectedRoutes userSelectedRoutes) {
+        int value = 0;
+
+        if (getUserId() < userSelectedRoutes.getUserId()) {
+            value = -1;
+        } else if (getUserId() > userSelectedRoutes.getUserId()) {
+            value = 1;
+        } else {
+            value = 0;
+        }
+
+        if (value != 0) {
+            return value;
+        }
+
+        return 0;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof UserSelectedRoutes)) {
+            return false;
+        }
+
+        UserSelectedRoutes userSelectedRoutes = (UserSelectedRoutes) obj;
+
+        UserSelectedRoutesPK primaryKey = userSelectedRoutes.getPrimaryKey();
+
+        if (getPrimaryKey().equals(primaryKey)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        return getPrimaryKey().hashCode();
+    }
+
+    @Override
+    public void resetOriginalValues() {
+        UserSelectedRoutesModelImpl userSelectedRoutesModelImpl = this;
+
+        userSelectedRoutesModelImpl._originalUserId = userSelectedRoutesModelImpl._userId;
+
+        userSelectedRoutesModelImpl._setOriginalUserId = false;
+
+        userSelectedRoutesModelImpl._columnBitmask = 0;
+    }
+
+    @Override
+    public CacheModel<UserSelectedRoutes> toCacheModel() {
+        UserSelectedRoutesCacheModel userSelectedRoutesCacheModel = new UserSelectedRoutesCacheModel();
+
+        userSelectedRoutesCacheModel.userId = getUserId();
+
+        userSelectedRoutesCacheModel.routeId = getRouteId();
+
+        return userSelectedRoutesCacheModel;
+    }
+
+    @Override
+    public String toString() {
+        StringBundler sb = new StringBundler(5);
+
+        sb.append("{userId=");
+        sb.append(getUserId());
+        sb.append(", routeId=");
+        sb.append(getRouteId());
+        sb.append("}");
+
+        return sb.toString();
+    }
+
+    @Override
+    public String toXmlString() {
+        StringBundler sb = new StringBundler(10);
+
+        sb.append("<model><model-name>");
+        sb.append("es.eina.tfg.model.UserSelectedRoutes");
+        sb.append("</model-name>");
+
+        sb.append(
+            "<column><column-name>userId</column-name><column-value><![CDATA[");
+        sb.append(getUserId());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>routeId</column-name><column-value><![CDATA[");
+        sb.append(getRouteId());
+        sb.append("]]></column-value></column>");
+
+        sb.append("</model>");
+
+        return sb.toString();
+    }
 }

@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model;
 
 import com.liferay.portal.kernel.bean.AutoEscape;
@@ -40,278 +26,278 @@ import java.util.Date;
  * @generated
  */
 public interface LocationModel extends BaseModel<Location> {
-	/*
-	 * NOTE FOR DEVELOPERS:
-	 *
-	 * Never modify or reference this interface directly. All methods that expect a location model instance should use the {@link Location} interface instead.
-	 */
+    /*
+     * NOTE FOR DEVELOPERS:
+     *
+     * Never modify or reference this interface directly. All methods that expect a location model instance should use the {@link Location} interface instead.
+     */
 
-	/**
-	 * Returns the primary key of this location.
-	 *
-	 * @return the primary key of this location
-	 */
-	public long getPrimaryKey();
+    /**
+     * Returns the primary key of this location.
+     *
+     * @return the primary key of this location
+     */
+    public long getPrimaryKey();
 
-	/**
-	 * Sets the primary key of this location.
-	 *
-	 * @param primaryKey the primary key of this location
-	 */
-	public void setPrimaryKey(long primaryKey);
+    /**
+     * Sets the primary key of this location.
+     *
+     * @param primaryKey the primary key of this location
+     */
+    public void setPrimaryKey(long primaryKey);
 
-	/**
-	 * Returns the measurement ID of this location.
-	 *
-	 * @return the measurement ID of this location
-	 */
-	public long getMeasurementId();
+    /**
+     * Returns the measurement ID of this location.
+     *
+     * @return the measurement ID of this location
+     */
+    public long getMeasurementId();
 
-	/**
-	 * Sets the measurement ID of this location.
-	 *
-	 * @param measurementId the measurement ID of this location
-	 */
-	public void setMeasurementId(long measurementId);
+    /**
+     * Sets the measurement ID of this location.
+     *
+     * @param measurementId the measurement ID of this location
+     */
+    public void setMeasurementId(long measurementId);
 
-	/**
-	 * Returns the race ID of this location.
-	 *
-	 * @return the race ID of this location
-	 */
-	public Long getRaceId();
+    /**
+     * Returns the race ID of this location.
+     *
+     * @return the race ID of this location
+     */
+    public Long getRaceId();
 
-	/**
-	 * Sets the race ID of this location.
-	 *
-	 * @param raceId the race ID of this location
-	 */
-	public void setRaceId(Long raceId);
+    /**
+     * Sets the race ID of this location.
+     *
+     * @param raceId the race ID of this location
+     */
+    public void setRaceId(Long raceId);
 
-	/**
-	 * Returns the user ID of this location.
-	 *
-	 * @return the user ID of this location
-	 */
-	public long getUserId();
+    /**
+     * Returns the user ID of this location.
+     *
+     * @return the user ID of this location
+     */
+    public long getUserId();
 
-	/**
-	 * Sets the user ID of this location.
-	 *
-	 * @param userId the user ID of this location
-	 */
-	public void setUserId(long userId);
+    /**
+     * Sets the user ID of this location.
+     *
+     * @param userId the user ID of this location
+     */
+    public void setUserId(long userId);
 
-	/**
-	 * Returns the user uuid of this location.
-	 *
-	 * @return the user uuid of this location
-	 * @throws SystemException if a system exception occurred
-	 */
-	public String getUserUuid() throws SystemException;
+    /**
+     * Returns the user uuid of this location.
+     *
+     * @return the user uuid of this location
+     * @throws SystemException if a system exception occurred
+     */
+    public String getUserUuid() throws SystemException;
 
-	/**
-	 * Sets the user uuid of this location.
-	 *
-	 * @param userUuid the user uuid of this location
-	 */
-	public void setUserUuid(String userUuid);
+    /**
+     * Sets the user uuid of this location.
+     *
+     * @param userUuid the user uuid of this location
+     */
+    public void setUserUuid(String userUuid);
 
-	/**
-	 * Returns the device ID of this location.
-	 *
-	 * @return the device ID of this location
-	 */
-	public long getDeviceId();
+    /**
+     * Returns the device ID of this location.
+     *
+     * @return the device ID of this location
+     */
+    public long getDeviceId();
 
-	/**
-	 * Sets the device ID of this location.
-	 *
-	 * @param deviceId the device ID of this location
-	 */
-	public void setDeviceId(long deviceId);
+    /**
+     * Sets the device ID of this location.
+     *
+     * @param deviceId the device ID of this location
+     */
+    public void setDeviceId(long deviceId);
 
-	/**
-	 * Returns the sensor ID of this location.
-	 *
-	 * @return the sensor ID of this location
-	 */
-	public long getSensorId();
+    /**
+     * Returns the sensor ID of this location.
+     *
+     * @return the sensor ID of this location
+     */
+    public long getSensorId();
 
-	/**
-	 * Sets the sensor ID of this location.
-	 *
-	 * @param sensorId the sensor ID of this location
-	 */
-	public void setSensorId(long sensorId);
+    /**
+     * Sets the sensor ID of this location.
+     *
+     * @param sensorId the sensor ID of this location
+     */
+    public void setSensorId(long sensorId);
 
-	/**
-	 * Returns the time of this location.
-	 *
-	 * @return the time of this location
-	 */
-	public Date getTime();
+    /**
+     * Returns the time of this location.
+     *
+     * @return the time of this location
+     */
+    public Date getTime();
 
-	/**
-	 * Sets the time of this location.
-	 *
-	 * @param time the time of this location
-	 */
-	public void setTime(Date time);
+    /**
+     * Sets the time of this location.
+     *
+     * @param time the time of this location
+     */
+    public void setTime(Date time);
 
-	/**
-	 * Returns the sensor mode of this location.
-	 *
-	 * @return the sensor mode of this location
-	 */
-	@AutoEscape
-	public String getSensorMode();
+    /**
+     * Returns the sensor mode of this location.
+     *
+     * @return the sensor mode of this location
+     */
+    @AutoEscape
+    public String getSensorMode();
 
-	/**
-	 * Sets the sensor mode of this location.
-	 *
-	 * @param sensorMode the sensor mode of this location
-	 */
-	public void setSensorMode(String sensorMode);
+    /**
+     * Sets the sensor mode of this location.
+     *
+     * @param sensorMode the sensor mode of this location
+     */
+    public void setSensorMode(String sensorMode);
 
-	/**
-	 * Returns the sys ref of this location.
-	 *
-	 * @return the sys ref of this location
-	 */
-	public int getSysRef();
+    /**
+     * Returns the sys ref of this location.
+     *
+     * @return the sys ref of this location
+     */
+    public int getSysRef();
 
-	/**
-	 * Sets the sys ref of this location.
-	 *
-	 * @param sysRef the sys ref of this location
-	 */
-	public void setSysRef(int sysRef);
+    /**
+     * Sets the sys ref of this location.
+     *
+     * @param sysRef the sys ref of this location
+     */
+    public void setSysRef(int sysRef);
 
-	/**
-	 * Returns the latitude of this location.
-	 *
-	 * @return the latitude of this location
-	 */
-	public double getLatitude();
+    /**
+     * Returns the latitude of this location.
+     *
+     * @return the latitude of this location
+     */
+    public double getLatitude();
 
-	/**
-	 * Sets the latitude of this location.
-	 *
-	 * @param latitude the latitude of this location
-	 */
-	public void setLatitude(double latitude);
+    /**
+     * Sets the latitude of this location.
+     *
+     * @param latitude the latitude of this location
+     */
+    public void setLatitude(double latitude);
 
-	/**
-	 * Returns the longitude of this location.
-	 *
-	 * @return the longitude of this location
-	 */
-	public double getLongitude();
+    /**
+     * Returns the longitude of this location.
+     *
+     * @return the longitude of this location
+     */
+    public double getLongitude();
 
-	/**
-	 * Sets the longitude of this location.
-	 *
-	 * @param longitude the longitude of this location
-	 */
-	public void setLongitude(double longitude);
+    /**
+     * Sets the longitude of this location.
+     *
+     * @param longitude the longitude of this location
+     */
+    public void setLongitude(double longitude);
 
-	/**
-	 * Returns the speed of this location.
-	 *
-	 * @return the speed of this location
-	 */
-	public double getSpeed();
+    /**
+     * Returns the speed of this location.
+     *
+     * @return the speed of this location
+     */
+    public double getSpeed();
 
-	/**
-	 * Sets the speed of this location.
-	 *
-	 * @param speed the speed of this location
-	 */
-	public void setSpeed(double speed);
+    /**
+     * Sets the speed of this location.
+     *
+     * @param speed the speed of this location
+     */
+    public void setSpeed(double speed);
 
-	/**
-	 * Returns the distance of this location.
-	 *
-	 * @return the distance of this location
-	 */
-	public double getDistance();
+    /**
+     * Returns the distance of this location.
+     *
+     * @return the distance of this location
+     */
+    public double getDistance();
 
-	/**
-	 * Sets the distance of this location.
-	 *
-	 * @param distance the distance of this location
-	 */
-	public void setDistance(double distance);
+    /**
+     * Sets the distance of this location.
+     *
+     * @param distance the distance of this location
+     */
+    public void setDistance(double distance);
 
-	/**
-	 * Returns the altitude of this location.
-	 *
-	 * @return the altitude of this location
-	 */
-	public double getAltitude();
+    /**
+     * Returns the altitude of this location.
+     *
+     * @return the altitude of this location
+     */
+    public double getAltitude();
 
-	/**
-	 * Sets the altitude of this location.
-	 *
-	 * @param altitude the altitude of this location
-	 */
-	public void setAltitude(double altitude);
+    /**
+     * Sets the altitude of this location.
+     *
+     * @param altitude the altitude of this location
+     */
+    public void setAltitude(double altitude);
 
-	@Override
-	public boolean isNew();
+    @Override
+    public boolean isNew();
 
-	@Override
-	public void setNew(boolean n);
+    @Override
+    public void setNew(boolean n);
 
-	@Override
-	public boolean isCachedModel();
+    @Override
+    public boolean isCachedModel();
 
-	@Override
-	public void setCachedModel(boolean cachedModel);
+    @Override
+    public void setCachedModel(boolean cachedModel);
 
-	@Override
-	public boolean isEscapedModel();
+    @Override
+    public boolean isEscapedModel();
 
-	@Override
-	public Serializable getPrimaryKeyObj();
+    @Override
+    public Serializable getPrimaryKeyObj();
 
-	@Override
-	public void setPrimaryKeyObj(Serializable primaryKeyObj);
+    @Override
+    public void setPrimaryKeyObj(Serializable primaryKeyObj);
 
-	@Override
-	public ExpandoBridge getExpandoBridge();
+    @Override
+    public ExpandoBridge getExpandoBridge();
 
-	@Override
-	public void setExpandoBridgeAttributes(BaseModel<?> baseModel);
+    @Override
+    public void setExpandoBridgeAttributes(BaseModel<?> baseModel);
 
-	@Override
-	public void setExpandoBridgeAttributes(ExpandoBridge expandoBridge);
+    @Override
+    public void setExpandoBridgeAttributes(ExpandoBridge expandoBridge);
 
-	@Override
-	public void setExpandoBridgeAttributes(ServiceContext serviceContext);
+    @Override
+    public void setExpandoBridgeAttributes(ServiceContext serviceContext);
 
-	@Override
-	public Object clone();
+    @Override
+    public Object clone();
 
-	@Override
-	public int compareTo(es.eina.tfg.model.Location location);
+    @Override
+    public int compareTo(es.eina.tfg.model.Location location);
 
-	@Override
-	public int hashCode();
+    @Override
+    public int hashCode();
 
-	@Override
-	public CacheModel<es.eina.tfg.model.Location> toCacheModel();
+    @Override
+    public CacheModel<es.eina.tfg.model.Location> toCacheModel();
 
-	@Override
-	public es.eina.tfg.model.Location toEscapedModel();
+    @Override
+    public es.eina.tfg.model.Location toEscapedModel();
 
-	@Override
-	public es.eina.tfg.model.Location toUnescapedModel();
+    @Override
+    public es.eina.tfg.model.Location toUnescapedModel();
 
-	@Override
-	public String toString();
+    @Override
+    public String toString();
 
-	@Override
-	public String toXmlString();
+    @Override
+    public String toXmlString();
 }

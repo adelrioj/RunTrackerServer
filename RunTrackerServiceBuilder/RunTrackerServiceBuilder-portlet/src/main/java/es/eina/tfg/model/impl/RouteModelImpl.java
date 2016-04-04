@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model.impl;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
@@ -57,564 +43,556 @@ import java.util.Map;
  */
 @JSON(strict = true)
 public class RouteModelImpl extends BaseModelImpl<Route> implements RouteModel {
-	/*
-	 * NOTE FOR DEVELOPERS:
-	 *
-	 * Never modify or reference this class directly. All methods that expect a route model instance should use the {@link es.eina.tfg.model.Route} interface instead.
-	 */
-	public static final String TABLE_NAME = "GL_Route";
-	public static final Object[][] TABLE_COLUMNS = {
-			{ "routeId", Types.BIGINT },
-			{ "type_", Types.VARCHAR },
-			{ "name", Types.VARCHAR },
-			{ "description", Types.VARCHAR },
-			{ "authorId", Types.BIGINT },
-			{ "isPublic", Types.BOOLEAN },
-			{ "startingTime", Types.TIMESTAMP },
-			{ "creationTime", Types.TIMESTAMP }
-		};
-	public static final String TABLE_SQL_CREATE = "create table GL_Route (routeId LONG not null primary key,type_ VARCHAR(75) null,name VARCHAR(75) null,description VARCHAR(75) null,authorId LONG,isPublic BOOLEAN,startingTime DATE null,creationTime DATE null)";
-	public static final String TABLE_SQL_DROP = "drop table GL_Route";
-	public static final String ORDER_BY_JPQL = " ORDER BY route.creationTime ASC";
-	public static final String ORDER_BY_SQL = " ORDER BY GL_Route.creationTime ASC";
-	public static final String DATA_SOURCE = "liferayDataSource";
-	public static final String SESSION_FACTORY = "liferaySessionFactory";
-	public static final String TX_MANAGER = "liferayTransactionManager";
-	public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
-				"value.object.entity.cache.enabled.es.eina.tfg.model.Route"),
-			true);
-	public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
-				"value.object.finder.cache.enabled.es.eina.tfg.model.Route"),
-			true);
-	public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
-				"value.object.column.bitmask.enabled.es.eina.tfg.model.Route"),
-			true);
-	public static long AUTHORID_COLUMN_BITMASK = 1L;
-	public static long ISPUBLIC_COLUMN_BITMASK = 2L;
-	public static long CREATIONTIME_COLUMN_BITMASK = 4L;
-
-	/**
-	 * Converts the soap model instance into a normal model instance.
-	 *
-	 * @param soapModel the soap model instance to convert
-	 * @return the normal model instance
-	 */
-	public static Route toModel(RouteSoap soapModel) {
-		if (soapModel == null) {
-			return null;
-		}
-
-		Route model = new RouteImpl();
-
-		model.setRouteId(soapModel.getRouteId());
-		model.setType(soapModel.getType());
-		model.setName(soapModel.getName());
-		model.setDescription(soapModel.getDescription());
-		model.setAuthorId(soapModel.getAuthorId());
-		model.setIsPublic(soapModel.getIsPublic());
-		model.setStartingTime(soapModel.getStartingTime());
-		model.setCreationTime(soapModel.getCreationTime());
-
-		return model;
-	}
-
-	/**
-	 * Converts the soap model instances into normal model instances.
-	 *
-	 * @param soapModels the soap model instances to convert
-	 * @return the normal model instances
-	 */
-	public static List<Route> toModels(RouteSoap[] soapModels) {
-		if (soapModels == null) {
-			return null;
-		}
-
-		List<Route> models = new ArrayList<Route>(soapModels.length);
-
-		for (RouteSoap soapModel : soapModels) {
-			models.add(toModel(soapModel));
-		}
-
-		return models;
-	}
-
-	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
-				"lock.expiration.time.es.eina.tfg.model.Route"));
-
-	public RouteModelImpl() {
-	}
-
-	@Override
-	public long getPrimaryKey() {
-		return _routeId;
-	}
-
-	@Override
-	public void setPrimaryKey(long primaryKey) {
-		setRouteId(primaryKey);
-	}
-
-	@Override
-	public Serializable getPrimaryKeyObj() {
-		return _routeId;
-	}
-
-	@Override
-	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
-		setPrimaryKey(((Long)primaryKeyObj).longValue());
-	}
-
-	@Override
-	public Class<?> getModelClass() {
-		return Route.class;
-	}
-
-	@Override
-	public String getModelClassName() {
-		return Route.class.getName();
-	}
-
-	@Override
-	public Map<String, Object> getModelAttributes() {
-		Map<String, Object> attributes = new HashMap<String, Object>();
-
-		attributes.put("routeId", getRouteId());
-		attributes.put("type", getType());
-		attributes.put("name", getName());
-		attributes.put("description", getDescription());
-		attributes.put("authorId", getAuthorId());
-		attributes.put("isPublic", getIsPublic());
-		attributes.put("startingTime", getStartingTime());
-		attributes.put("creationTime", getCreationTime());
-
-		return attributes;
-	}
-
-	@Override
-	public void setModelAttributes(Map<String, Object> attributes) {
-		Long routeId = (Long)attributes.get("routeId");
-
-		if (routeId != null) {
-			setRouteId(routeId);
-		}
-
-		String type = (String)attributes.get("type");
-
-		if (type != null) {
-			setType(type);
-		}
-
-		String name = (String)attributes.get("name");
-
-		if (name != null) {
-			setName(name);
-		}
-
-		String description = (String)attributes.get("description");
-
-		if (description != null) {
-			setDescription(description);
-		}
-
-		Long authorId = (Long)attributes.get("authorId");
-
-		if (authorId != null) {
-			setAuthorId(authorId);
-		}
-
-		Boolean isPublic = (Boolean)attributes.get("isPublic");
-
-		if (isPublic != null) {
-			setIsPublic(isPublic);
-		}
-
-		Date startingTime = (Date)attributes.get("startingTime");
-
-		if (startingTime != null) {
-			setStartingTime(startingTime);
-		}
-
-		Date creationTime = (Date)attributes.get("creationTime");
-
-		if (creationTime != null) {
-			setCreationTime(creationTime);
-		}
-	}
-
-	@JSON
-	@Override
-	public long getRouteId() {
-		return _routeId;
-	}
-
-	@Override
-	public void setRouteId(long routeId) {
-		_routeId = routeId;
-	}
-
-	@JSON
-	@Override
-	public String getType() {
-		if (_type == null) {
-			return StringPool.BLANK;
-		}
-		else {
-			return _type;
-		}
-	}
-
-	@Override
-	public void setType(String type) {
-		_type = type;
-	}
-
-	@JSON
-	@Override
-	public String getName() {
-		if (_name == null) {
-			return StringPool.BLANK;
-		}
-		else {
-			return _name;
-		}
-	}
-
-	@Override
-	public void setName(String name) {
-		_name = name;
-	}
-
-	@JSON
-	@Override
-	public String getDescription() {
-		if (_description == null) {
-			return StringPool.BLANK;
-		}
-		else {
-			return _description;
-		}
-	}
-
-	@Override
-	public void setDescription(String description) {
-		_description = description;
-	}
-
-	@JSON
-	@Override
-	public long getAuthorId() {
-		return _authorId;
-	}
-
-	@Override
-	public void setAuthorId(long authorId) {
-		_columnBitmask |= AUTHORID_COLUMN_BITMASK;
-
-		if (!_setOriginalAuthorId) {
-			_setOriginalAuthorId = true;
-
-			_originalAuthorId = _authorId;
-		}
-
-		_authorId = authorId;
-	}
-
-	public long getOriginalAuthorId() {
-		return _originalAuthorId;
-	}
-
-	@JSON
-	@Override
-	public boolean getIsPublic() {
-		return _isPublic;
-	}
-
-	@Override
-	public boolean isIsPublic() {
-		return _isPublic;
-	}
-
-	@Override
-	public void setIsPublic(boolean isPublic) {
-		_columnBitmask |= ISPUBLIC_COLUMN_BITMASK;
-
-		if (!_setOriginalIsPublic) {
-			_setOriginalIsPublic = true;
-
-			_originalIsPublic = _isPublic;
-		}
-
-		_isPublic = isPublic;
-	}
-
-	public boolean getOriginalIsPublic() {
-		return _originalIsPublic;
-	}
-
-	@JSON
-	@Override
-	public Date getStartingTime() {
-		return _startingTime;
-	}
-
-	@Override
-	public void setStartingTime(Date startingTime) {
-		_startingTime = startingTime;
-	}
-
-	@JSON
-	@Override
-	public Date getCreationTime() {
-		return _creationTime;
-	}
-
-	@Override
-	public void setCreationTime(Date creationTime) {
-		_columnBitmask = -1L;
-
-		_creationTime = creationTime;
-	}
-
-	public long getColumnBitmask() {
-		return _columnBitmask;
-	}
-
-	@Override
-	public ExpandoBridge getExpandoBridge() {
-		return ExpandoBridgeFactoryUtil.getExpandoBridge(0,
-			Route.class.getName(), getPrimaryKey());
-	}
-
-	@Override
-	public void setExpandoBridgeAttributes(ServiceContext serviceContext) {
-		ExpandoBridge expandoBridge = getExpandoBridge();
-
-		expandoBridge.setAttributes(serviceContext);
-	}
-
-	@Override
-	public Route toEscapedModel() {
-		if (_escapedModel == null) {
-			_escapedModel = (Route)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
-		}
-
-		return _escapedModel;
-	}
-
-	@Override
-	public Object clone() {
-		RouteImpl routeImpl = new RouteImpl();
-
-		routeImpl.setRouteId(getRouteId());
-		routeImpl.setType(getType());
-		routeImpl.setName(getName());
-		routeImpl.setDescription(getDescription());
-		routeImpl.setAuthorId(getAuthorId());
-		routeImpl.setIsPublic(getIsPublic());
-		routeImpl.setStartingTime(getStartingTime());
-		routeImpl.setCreationTime(getCreationTime());
-
-		routeImpl.resetOriginalValues();
-
-		return routeImpl;
-	}
-
-	@Override
-	public int compareTo(Route route) {
-		int value = 0;
-
-		value = DateUtil.compareTo(getCreationTime(), route.getCreationTime());
-
-		if (value != 0) {
-			return value;
-		}
-
-		return 0;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-
-		if (!(obj instanceof Route)) {
-			return false;
-		}
-
-		Route route = (Route)obj;
-
-		long primaryKey = route.getPrimaryKey();
-
-		if (getPrimaryKey() == primaryKey) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-
-	@Override
-	public int hashCode() {
-		return (int)getPrimaryKey();
-	}
-
-	@Override
-	public void resetOriginalValues() {
-		RouteModelImpl routeModelImpl = this;
-
-		routeModelImpl._originalAuthorId = routeModelImpl._authorId;
-
-		routeModelImpl._setOriginalAuthorId = false;
-
-		routeModelImpl._originalIsPublic = routeModelImpl._isPublic;
-
-		routeModelImpl._setOriginalIsPublic = false;
-
-		routeModelImpl._columnBitmask = 0;
-	}
-
-	@Override
-	public CacheModel<Route> toCacheModel() {
-		RouteCacheModel routeCacheModel = new RouteCacheModel();
-
-		routeCacheModel.routeId = getRouteId();
-
-		routeCacheModel.type = getType();
-
-		String type = routeCacheModel.type;
-
-		if ((type != null) && (type.length() == 0)) {
-			routeCacheModel.type = null;
-		}
-
-		routeCacheModel.name = getName();
-
-		String name = routeCacheModel.name;
-
-		if ((name != null) && (name.length() == 0)) {
-			routeCacheModel.name = null;
-		}
-
-		routeCacheModel.description = getDescription();
-
-		String description = routeCacheModel.description;
-
-		if ((description != null) && (description.length() == 0)) {
-			routeCacheModel.description = null;
-		}
-
-		routeCacheModel.authorId = getAuthorId();
-
-		routeCacheModel.isPublic = getIsPublic();
-
-		Date startingTime = getStartingTime();
-
-		if (startingTime != null) {
-			routeCacheModel.startingTime = startingTime.getTime();
-		}
-		else {
-			routeCacheModel.startingTime = Long.MIN_VALUE;
-		}
-
-		Date creationTime = getCreationTime();
-
-		if (creationTime != null) {
-			routeCacheModel.creationTime = creationTime.getTime();
-		}
-		else {
-			routeCacheModel.creationTime = Long.MIN_VALUE;
-		}
-
-		return routeCacheModel;
-	}
-
-	@Override
-	public String toString() {
-		StringBundler sb = new StringBundler(17);
-
-		sb.append("{routeId=");
-		sb.append(getRouteId());
-		sb.append(", type=");
-		sb.append(getType());
-		sb.append(", name=");
-		sb.append(getName());
-		sb.append(", description=");
-		sb.append(getDescription());
-		sb.append(", authorId=");
-		sb.append(getAuthorId());
-		sb.append(", isPublic=");
-		sb.append(getIsPublic());
-		sb.append(", startingTime=");
-		sb.append(getStartingTime());
-		sb.append(", creationTime=");
-		sb.append(getCreationTime());
-		sb.append("}");
-
-		return sb.toString();
-	}
-
-	@Override
-	public String toXmlString() {
-		StringBundler sb = new StringBundler(28);
-
-		sb.append("<model><model-name>");
-		sb.append("es.eina.tfg.model.Route");
-		sb.append("</model-name>");
-
-		sb.append(
-			"<column><column-name>routeId</column-name><column-value><![CDATA[");
-		sb.append(getRouteId());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>type</column-name><column-value><![CDATA[");
-		sb.append(getType());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>name</column-name><column-value><![CDATA[");
-		sb.append(getName());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>description</column-name><column-value><![CDATA[");
-		sb.append(getDescription());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>authorId</column-name><column-value><![CDATA[");
-		sb.append(getAuthorId());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>isPublic</column-name><column-value><![CDATA[");
-		sb.append(getIsPublic());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>startingTime</column-name><column-value><![CDATA[");
-		sb.append(getStartingTime());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>creationTime</column-name><column-value><![CDATA[");
-		sb.append(getCreationTime());
-		sb.append("]]></column-value></column>");
-
-		sb.append("</model>");
-
-		return sb.toString();
-	}
-
-	private static ClassLoader _classLoader = Route.class.getClassLoader();
-	private static Class<?>[] _escapedModelInterfaces = new Class[] { Route.class };
-	private long _routeId;
-	private String _type;
-	private String _name;
-	private String _description;
-	private long _authorId;
-	private long _originalAuthorId;
-	private boolean _setOriginalAuthorId;
-	private boolean _isPublic;
-	private boolean _originalIsPublic;
-	private boolean _setOriginalIsPublic;
-	private Date _startingTime;
-	private Date _creationTime;
-	private long _columnBitmask;
-	private Route _escapedModel;
+    /*
+     * NOTE FOR DEVELOPERS:
+     *
+     * Never modify or reference this class directly. All methods that expect a route model instance should use the {@link es.eina.tfg.model.Route} interface instead.
+     */
+    public static final String TABLE_NAME = "GL_Route";
+    public static final Object[][] TABLE_COLUMNS = {
+            { "routeId", Types.BIGINT },
+            { "type_", Types.VARCHAR },
+            { "name", Types.VARCHAR },
+            { "description", Types.VARCHAR },
+            { "authorId", Types.BIGINT },
+            { "isPublic", Types.BOOLEAN },
+            { "startingTime", Types.TIMESTAMP },
+            { "creationTime", Types.TIMESTAMP }
+        };
+    public static final String TABLE_SQL_CREATE = "create table GL_Route (routeId LONG not null primary key,type_ VARCHAR(75) null,name VARCHAR(75) null,description VARCHAR(75) null,authorId LONG,isPublic BOOLEAN,startingTime DATE null,creationTime DATE null)";
+    public static final String TABLE_SQL_DROP = "drop table GL_Route";
+    public static final String ORDER_BY_JPQL = " ORDER BY route.creationTime ASC";
+    public static final String ORDER_BY_SQL = " ORDER BY GL_Route.creationTime ASC";
+    public static final String DATA_SOURCE = "liferayDataSource";
+    public static final String SESSION_FACTORY = "liferaySessionFactory";
+    public static final String TX_MANAGER = "liferayTransactionManager";
+    public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
+                "value.object.entity.cache.enabled.es.eina.tfg.model.Route"),
+            true);
+    public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
+                "value.object.finder.cache.enabled.es.eina.tfg.model.Route"),
+            true);
+    public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
+                "value.object.column.bitmask.enabled.es.eina.tfg.model.Route"),
+            true);
+    public static long AUTHORID_COLUMN_BITMASK = 1L;
+    public static long ISPUBLIC_COLUMN_BITMASK = 2L;
+    public static long CREATIONTIME_COLUMN_BITMASK = 4L;
+    public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
+                "lock.expiration.time.es.eina.tfg.model.Route"));
+    private static ClassLoader _classLoader = Route.class.getClassLoader();
+    private static Class<?>[] _escapedModelInterfaces = new Class[] { Route.class };
+    private long _routeId;
+    private String _type;
+    private String _name;
+    private String _description;
+    private long _authorId;
+    private long _originalAuthorId;
+    private boolean _setOriginalAuthorId;
+    private boolean _isPublic;
+    private boolean _originalIsPublic;
+    private boolean _setOriginalIsPublic;
+    private Date _startingTime;
+    private Date _creationTime;
+    private long _columnBitmask;
+    private Route _escapedModel;
+
+    public RouteModelImpl() {
+    }
+
+    /**
+     * Converts the soap model instance into a normal model instance.
+     *
+     * @param soapModel the soap model instance to convert
+     * @return the normal model instance
+     */
+    public static Route toModel(RouteSoap soapModel) {
+        if (soapModel == null) {
+            return null;
+        }
+
+        Route model = new RouteImpl();
+
+        model.setRouteId(soapModel.getRouteId());
+        model.setType(soapModel.getType());
+        model.setName(soapModel.getName());
+        model.setDescription(soapModel.getDescription());
+        model.setAuthorId(soapModel.getAuthorId());
+        model.setIsPublic(soapModel.getIsPublic());
+        model.setStartingTime(soapModel.getStartingTime());
+        model.setCreationTime(soapModel.getCreationTime());
+
+        return model;
+    }
+
+    /**
+     * Converts the soap model instances into normal model instances.
+     *
+     * @param soapModels the soap model instances to convert
+     * @return the normal model instances
+     */
+    public static List<Route> toModels(RouteSoap[] soapModels) {
+        if (soapModels == null) {
+            return null;
+        }
+
+        List<Route> models = new ArrayList<Route>(soapModels.length);
+
+        for (RouteSoap soapModel : soapModels) {
+            models.add(toModel(soapModel));
+        }
+
+        return models;
+    }
+
+    @Override
+    public long getPrimaryKey() {
+        return _routeId;
+    }
+
+    @Override
+    public void setPrimaryKey(long primaryKey) {
+        setRouteId(primaryKey);
+    }
+
+    @Override
+    public Serializable getPrimaryKeyObj() {
+        return _routeId;
+    }
+
+    @Override
+    public void setPrimaryKeyObj(Serializable primaryKeyObj) {
+        setPrimaryKey(((Long) primaryKeyObj).longValue());
+    }
+
+    @Override
+    public Class<?> getModelClass() {
+        return Route.class;
+    }
+
+    @Override
+    public String getModelClassName() {
+        return Route.class.getName();
+    }
+
+    @Override
+    public Map<String, Object> getModelAttributes() {
+        Map<String, Object> attributes = new HashMap<String, Object>();
+
+        attributes.put("routeId", getRouteId());
+        attributes.put("type", getType());
+        attributes.put("name", getName());
+        attributes.put("description", getDescription());
+        attributes.put("authorId", getAuthorId());
+        attributes.put("isPublic", getIsPublic());
+        attributes.put("startingTime", getStartingTime());
+        attributes.put("creationTime", getCreationTime());
+
+        return attributes;
+    }
+
+    @Override
+    public void setModelAttributes(Map<String, Object> attributes) {
+        Long routeId = (Long) attributes.get("routeId");
+
+        if (routeId != null) {
+            setRouteId(routeId);
+        }
+
+        String type = (String) attributes.get("type");
+
+        if (type != null) {
+            setType(type);
+        }
+
+        String name = (String) attributes.get("name");
+
+        if (name != null) {
+            setName(name);
+        }
+
+        String description = (String) attributes.get("description");
+
+        if (description != null) {
+            setDescription(description);
+        }
+
+        Long authorId = (Long) attributes.get("authorId");
+
+        if (authorId != null) {
+            setAuthorId(authorId);
+        }
+
+        Boolean isPublic = (Boolean) attributes.get("isPublic");
+
+        if (isPublic != null) {
+            setIsPublic(isPublic);
+        }
+
+        Date startingTime = (Date) attributes.get("startingTime");
+
+        if (startingTime != null) {
+            setStartingTime(startingTime);
+        }
+
+        Date creationTime = (Date) attributes.get("creationTime");
+
+        if (creationTime != null) {
+            setCreationTime(creationTime);
+        }
+    }
+
+    @JSON
+    @Override
+    public long getRouteId() {
+        return _routeId;
+    }
+
+    @Override
+    public void setRouteId(long routeId) {
+        _routeId = routeId;
+    }
+
+    @JSON
+    @Override
+    public String getType() {
+        if (_type == null) {
+            return StringPool.BLANK;
+        } else {
+            return _type;
+        }
+    }
+
+    @Override
+    public void setType(String type) {
+        _type = type;
+    }
+
+    @JSON
+    @Override
+    public String getName() {
+        if (_name == null) {
+            return StringPool.BLANK;
+        } else {
+            return _name;
+        }
+    }
+
+    @Override
+    public void setName(String name) {
+        _name = name;
+    }
+
+    @JSON
+    @Override
+    public String getDescription() {
+        if (_description == null) {
+            return StringPool.BLANK;
+        } else {
+            return _description;
+        }
+    }
+
+    @Override
+    public void setDescription(String description) {
+        _description = description;
+    }
+
+    @JSON
+    @Override
+    public long getAuthorId() {
+        return _authorId;
+    }
+
+    @Override
+    public void setAuthorId(long authorId) {
+        _columnBitmask |= AUTHORID_COLUMN_BITMASK;
+
+        if (!_setOriginalAuthorId) {
+            _setOriginalAuthorId = true;
+
+            _originalAuthorId = _authorId;
+        }
+
+        _authorId = authorId;
+    }
+
+    public long getOriginalAuthorId() {
+        return _originalAuthorId;
+    }
+
+    @JSON
+    @Override
+    public boolean getIsPublic() {
+        return _isPublic;
+    }
+
+    @Override
+    public boolean isIsPublic() {
+        return _isPublic;
+    }
+
+    @Override
+    public void setIsPublic(boolean isPublic) {
+        _columnBitmask |= ISPUBLIC_COLUMN_BITMASK;
+
+        if (!_setOriginalIsPublic) {
+            _setOriginalIsPublic = true;
+
+            _originalIsPublic = _isPublic;
+        }
+
+        _isPublic = isPublic;
+    }
+
+    public boolean getOriginalIsPublic() {
+        return _originalIsPublic;
+    }
+
+    @JSON
+    @Override
+    public Date getStartingTime() {
+        return _startingTime;
+    }
+
+    @Override
+    public void setStartingTime(Date startingTime) {
+        _startingTime = startingTime;
+    }
+
+    @JSON
+    @Override
+    public Date getCreationTime() {
+        return _creationTime;
+    }
+
+    @Override
+    public void setCreationTime(Date creationTime) {
+        _columnBitmask = -1L;
+
+        _creationTime = creationTime;
+    }
+
+    public long getColumnBitmask() {
+        return _columnBitmask;
+    }
+
+    @Override
+    public ExpandoBridge getExpandoBridge() {
+        return ExpandoBridgeFactoryUtil.getExpandoBridge(0,
+            Route.class.getName(), getPrimaryKey());
+    }
+
+    @Override
+    public void setExpandoBridgeAttributes(ServiceContext serviceContext) {
+        ExpandoBridge expandoBridge = getExpandoBridge();
+
+        expandoBridge.setAttributes(serviceContext);
+    }
+
+    @Override
+    public Route toEscapedModel() {
+        if (_escapedModel == null) {
+            _escapedModel = (Route) ProxyUtil.newProxyInstance(_classLoader,
+                    _escapedModelInterfaces, new AutoEscapeBeanHandler(this));
+        }
+
+        return _escapedModel;
+    }
+
+    @Override
+    public Object clone() {
+        RouteImpl routeImpl = new RouteImpl();
+
+        routeImpl.setRouteId(getRouteId());
+        routeImpl.setType(getType());
+        routeImpl.setName(getName());
+        routeImpl.setDescription(getDescription());
+        routeImpl.setAuthorId(getAuthorId());
+        routeImpl.setIsPublic(getIsPublic());
+        routeImpl.setStartingTime(getStartingTime());
+        routeImpl.setCreationTime(getCreationTime());
+
+        routeImpl.resetOriginalValues();
+
+        return routeImpl;
+    }
+
+    @Override
+    public int compareTo(Route route) {
+        int value = 0;
+
+        value = DateUtil.compareTo(getCreationTime(), route.getCreationTime());
+
+        if (value != 0) {
+            return value;
+        }
+
+        return 0;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof Route)) {
+            return false;
+        }
+
+        Route route = (Route) obj;
+
+        long primaryKey = route.getPrimaryKey();
+
+        if (getPrimaryKey() == primaryKey) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) getPrimaryKey();
+    }
+
+    @Override
+    public void resetOriginalValues() {
+        RouteModelImpl routeModelImpl = this;
+
+        routeModelImpl._originalAuthorId = routeModelImpl._authorId;
+
+        routeModelImpl._setOriginalAuthorId = false;
+
+        routeModelImpl._originalIsPublic = routeModelImpl._isPublic;
+
+        routeModelImpl._setOriginalIsPublic = false;
+
+        routeModelImpl._columnBitmask = 0;
+    }
+
+    @Override
+    public CacheModel<Route> toCacheModel() {
+        RouteCacheModel routeCacheModel = new RouteCacheModel();
+
+        routeCacheModel.routeId = getRouteId();
+
+        routeCacheModel.type = getType();
+
+        String type = routeCacheModel.type;
+
+        if ((type != null) && (type.length() == 0)) {
+            routeCacheModel.type = null;
+        }
+
+        routeCacheModel.name = getName();
+
+        String name = routeCacheModel.name;
+
+        if ((name != null) && (name.length() == 0)) {
+            routeCacheModel.name = null;
+        }
+
+        routeCacheModel.description = getDescription();
+
+        String description = routeCacheModel.description;
+
+        if ((description != null) && (description.length() == 0)) {
+            routeCacheModel.description = null;
+        }
+
+        routeCacheModel.authorId = getAuthorId();
+
+        routeCacheModel.isPublic = getIsPublic();
+
+        Date startingTime = getStartingTime();
+
+        if (startingTime != null) {
+            routeCacheModel.startingTime = startingTime.getTime();
+        } else {
+            routeCacheModel.startingTime = Long.MIN_VALUE;
+        }
+
+        Date creationTime = getCreationTime();
+
+        if (creationTime != null) {
+            routeCacheModel.creationTime = creationTime.getTime();
+        } else {
+            routeCacheModel.creationTime = Long.MIN_VALUE;
+        }
+
+        return routeCacheModel;
+    }
+
+    @Override
+    public String toString() {
+        StringBundler sb = new StringBundler(17);
+
+        sb.append("{routeId=");
+        sb.append(getRouteId());
+        sb.append(", type=");
+        sb.append(getType());
+        sb.append(", name=");
+        sb.append(getName());
+        sb.append(", description=");
+        sb.append(getDescription());
+        sb.append(", authorId=");
+        sb.append(getAuthorId());
+        sb.append(", isPublic=");
+        sb.append(getIsPublic());
+        sb.append(", startingTime=");
+        sb.append(getStartingTime());
+        sb.append(", creationTime=");
+        sb.append(getCreationTime());
+        sb.append("}");
+
+        return sb.toString();
+    }
+
+    @Override
+    public String toXmlString() {
+        StringBundler sb = new StringBundler(28);
+
+        sb.append("<model><model-name>");
+        sb.append("es.eina.tfg.model.Route");
+        sb.append("</model-name>");
+
+        sb.append(
+            "<column><column-name>routeId</column-name><column-value><![CDATA[");
+        sb.append(getRouteId());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>type</column-name><column-value><![CDATA[");
+        sb.append(getType());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>name</column-name><column-value><![CDATA[");
+        sb.append(getName());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>description</column-name><column-value><![CDATA[");
+        sb.append(getDescription());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>authorId</column-name><column-value><![CDATA[");
+        sb.append(getAuthorId());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>isPublic</column-name><column-value><![CDATA[");
+        sb.append(getIsPublic());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>startingTime</column-name><column-value><![CDATA[");
+        sb.append(getStartingTime());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>creationTime</column-name><column-value><![CDATA[");
+        sb.append(getCreationTime());
+        sb.append("]]></column-value></column>");
+
+        sb.append("</model>");
+
+        return sb.toString();
+    }
 }

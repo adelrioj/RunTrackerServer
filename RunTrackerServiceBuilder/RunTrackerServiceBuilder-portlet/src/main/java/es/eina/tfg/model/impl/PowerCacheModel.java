@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model.impl;
 
 import com.liferay.portal.kernel.util.StringBundler;
@@ -35,100 +21,97 @@ import java.util.Date;
  * @generated
  */
 public class PowerCacheModel implements CacheModel<Power>, Externalizable {
-	@Override
-	public String toString() {
-		StringBundler sb = new StringBundler(17);
+    public long measurementId;
+    public long raceId;
+    public long userId;
+    public long deviceId;
+    public long sensorId;
+    public long time;
+    public String sensorMode;
+    public int level;
 
-		sb.append("{measurementId=");
-		sb.append(measurementId);
-		sb.append(", raceId=");
-		sb.append(raceId);
-		sb.append(", userId=");
-		sb.append(userId);
-		sb.append(", deviceId=");
-		sb.append(deviceId);
-		sb.append(", sensorId=");
-		sb.append(sensorId);
-		sb.append(", time=");
-		sb.append(time);
-		sb.append(", sensorMode=");
-		sb.append(sensorMode);
-		sb.append(", level=");
-		sb.append(level);
-		sb.append("}");
+    @Override
+    public String toString() {
+        StringBundler sb = new StringBundler(17);
 
-		return sb.toString();
-	}
+        sb.append("{measurementId=");
+        sb.append(measurementId);
+        sb.append(", raceId=");
+        sb.append(raceId);
+        sb.append(", userId=");
+        sb.append(userId);
+        sb.append(", deviceId=");
+        sb.append(deviceId);
+        sb.append(", sensorId=");
+        sb.append(sensorId);
+        sb.append(", time=");
+        sb.append(time);
+        sb.append(", sensorMode=");
+        sb.append(sensorMode);
+        sb.append(", level=");
+        sb.append(level);
+        sb.append("}");
 
-	@Override
-	public Power toEntityModel() {
-		PowerImpl powerImpl = new PowerImpl();
+        return sb.toString();
+    }
 
-		powerImpl.setMeasurementId(measurementId);
-		powerImpl.setRaceId(raceId);
-		powerImpl.setUserId(userId);
-		powerImpl.setDeviceId(deviceId);
-		powerImpl.setSensorId(sensorId);
+    @Override
+    public Power toEntityModel() {
+        PowerImpl powerImpl = new PowerImpl();
 
-		if (time == Long.MIN_VALUE) {
-			powerImpl.setTime(null);
-		}
-		else {
-			powerImpl.setTime(new Date(time));
-		}
+        powerImpl.setMeasurementId(measurementId);
+        powerImpl.setRaceId(raceId);
+        powerImpl.setUserId(userId);
+        powerImpl.setDeviceId(deviceId);
+        powerImpl.setSensorId(sensorId);
 
-		if (sensorMode == null) {
-			powerImpl.setSensorMode(StringPool.BLANK);
-		}
-		else {
-			powerImpl.setSensorMode(sensorMode);
-		}
+        if (time == Long.MIN_VALUE) {
+            powerImpl.setTime(null);
+        } else {
+            powerImpl.setTime(new Date(time));
+        }
 
-		powerImpl.setLevel(level);
+        if (sensorMode == null) {
+            powerImpl.setSensorMode(StringPool.BLANK);
+        } else {
+            powerImpl.setSensorMode(sensorMode);
+        }
 
-		powerImpl.resetOriginalValues();
+        powerImpl.setLevel(level);
 
-		return powerImpl;
-	}
+        powerImpl.resetOriginalValues();
 
-	@Override
-	public void readExternal(ObjectInput objectInput) throws IOException {
-		measurementId = objectInput.readLong();
-		raceId = objectInput.readLong();
-		userId = objectInput.readLong();
-		deviceId = objectInput.readLong();
-		sensorId = objectInput.readLong();
-		time = objectInput.readLong();
-		sensorMode = objectInput.readUTF();
-		level = objectInput.readInt();
-	}
+        return powerImpl;
+    }
 
-	@Override
-	public void writeExternal(ObjectOutput objectOutput)
-		throws IOException {
-		objectOutput.writeLong(measurementId);
-		objectOutput.writeLong(raceId);
-		objectOutput.writeLong(userId);
-		objectOutput.writeLong(deviceId);
-		objectOutput.writeLong(sensorId);
-		objectOutput.writeLong(time);
+    @Override
+    public void readExternal(ObjectInput objectInput) throws IOException {
+        measurementId = objectInput.readLong();
+        raceId = objectInput.readLong();
+        userId = objectInput.readLong();
+        deviceId = objectInput.readLong();
+        sensorId = objectInput.readLong();
+        time = objectInput.readLong();
+        sensorMode = objectInput.readUTF();
+        level = objectInput.readInt();
+    }
 
-		if (sensorMode == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(sensorMode);
-		}
+    @Override
+    public void writeExternal(ObjectOutput objectOutput)
+        throws IOException {
+        objectOutput.writeLong(measurementId);
+        objectOutput.writeLong(raceId);
+        objectOutput.writeLong(userId);
+        objectOutput.writeLong(deviceId);
+        objectOutput.writeLong(sensorId);
+        objectOutput.writeLong(time);
 
-		objectOutput.writeInt(level);
-	}
+        if (sensorMode == null) {
+            objectOutput.writeUTF(StringPool.BLANK);
+        } else {
+            objectOutput.writeUTF(sensorMode);
+        }
 
-	public long measurementId;
-	public long raceId;
-	public long userId;
-	public long deviceId;
-	public long sensorId;
-	public long time;
-	public String sensorMode;
-	public int level;
+        objectOutput.writeInt(level);
+    }
 }

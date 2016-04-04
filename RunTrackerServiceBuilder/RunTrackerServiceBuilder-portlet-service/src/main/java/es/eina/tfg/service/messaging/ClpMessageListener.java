@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.service.messaging;
 
 import com.liferay.portal.kernel.messaging.BaseMessageListener;
@@ -39,51 +25,49 @@ import es.eina.tfg.service.UserAdditionalDataServiceUtil;
 import es.eina.tfg.service.UserSelectedRoutesLocalServiceUtil;
 import es.eina.tfg.service.UserSelectedRoutesServiceUtil;
 
-/**
- * @author adelrioj
- */
+
 public class ClpMessageListener extends BaseMessageListener {
-	public static String getServletContextName() {
-		return ClpSerializer.getServletContextName();
-	}
+    public static String getServletContextName() {
+        return ClpSerializer.getServletContextName();
+    }
 
-	@Override
-	protected void doReceive(Message message) throws Exception {
-		String command = message.getString("command");
-		String servletContextName = message.getString("servletContextName");
+    @Override
+    protected void doReceive(Message message) throws Exception {
+        String command = message.getString("command");
+        String servletContextName = message.getString("servletContextName");
 
-		if (command.equals("undeploy") &&
-				servletContextName.equals(getServletContextName())) {
-			DeviceLocalServiceUtil.clearService();
+        if (command.equals("undeploy") &&
+                servletContextName.equals(getServletContextName())) {
+            DeviceLocalServiceUtil.clearService();
 
-			DeviceServiceUtil.clearService();
-			Device_SensorLocalServiceUtil.clearService();
+            DeviceServiceUtil.clearService();
+            Device_SensorLocalServiceUtil.clearService();
 
-			Device_SensorServiceUtil.clearService();
-			LocationLocalServiceUtil.clearService();
+            Device_SensorServiceUtil.clearService();
+            LocationLocalServiceUtil.clearService();
 
-			LocationServiceUtil.clearService();
-			PowerLocalServiceUtil.clearService();
+            LocationServiceUtil.clearService();
+            PowerLocalServiceUtil.clearService();
 
-			PowerServiceUtil.clearService();
-			RaceLocalServiceUtil.clearService();
+            PowerServiceUtil.clearService();
+            RaceLocalServiceUtil.clearService();
 
-			RaceServiceUtil.clearService();
-			RouteLocalServiceUtil.clearService();
+            RaceServiceUtil.clearService();
+            RouteLocalServiceUtil.clearService();
 
-			RouteServiceUtil.clearService();
-			RouteLocationLocalServiceUtil.clearService();
+            RouteServiceUtil.clearService();
+            RouteLocationLocalServiceUtil.clearService();
 
-			RouteLocationServiceUtil.clearService();
-			SensorLocalServiceUtil.clearService();
+            RouteLocationServiceUtil.clearService();
+            SensorLocalServiceUtil.clearService();
 
-			SensorServiceUtil.clearService();
-			UserAdditionalDataLocalServiceUtil.clearService();
+            SensorServiceUtil.clearService();
+            UserAdditionalDataLocalServiceUtil.clearService();
 
-			UserAdditionalDataServiceUtil.clearService();
-			UserSelectedRoutesLocalServiceUtil.clearService();
+            UserAdditionalDataServiceUtil.clearService();
+            UserSelectedRoutesLocalServiceUtil.clearService();
 
-			UserSelectedRoutesServiceUtil.clearService();
-		}
-	}
+            UserSelectedRoutesServiceUtil.clearService();
+        }
+    }
 }

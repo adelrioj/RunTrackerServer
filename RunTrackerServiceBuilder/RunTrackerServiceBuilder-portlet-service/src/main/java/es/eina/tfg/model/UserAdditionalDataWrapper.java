@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model;
 
 import com.liferay.portal.kernel.util.Validator;
@@ -30,350 +16,350 @@ import java.util.Map;
  * @generated
  */
 public class UserAdditionalDataWrapper implements UserAdditionalData,
-	ModelWrapper<UserAdditionalData> {
-	public UserAdditionalDataWrapper(UserAdditionalData userAdditionalData) {
-		_userAdditionalData = userAdditionalData;
-	}
+    ModelWrapper<UserAdditionalData> {
+    private UserAdditionalData _userAdditionalData;
 
-	@Override
-	public Class<?> getModelClass() {
-		return UserAdditionalData.class;
-	}
+    public UserAdditionalDataWrapper(UserAdditionalData userAdditionalData) {
+        _userAdditionalData = userAdditionalData;
+    }
 
-	@Override
-	public String getModelClassName() {
-		return UserAdditionalData.class.getName();
-	}
+    @Override
+    public Class<?> getModelClass() {
+        return UserAdditionalData.class;
+    }
 
-	@Override
-	public Map<String, Object> getModelAttributes() {
-		Map<String, Object> attributes = new HashMap<String, Object>();
+    @Override
+    public String getModelClassName() {
+        return UserAdditionalData.class.getName();
+    }
 
-		attributes.put("userId", getUserId());
-		attributes.put("registerType", getRegisterType());
-		attributes.put("weight", getWeight());
-		attributes.put("height", getHeight());
-		attributes.put("smsCounter", getSmsCounter());
+    @Override
+    public Map<String, Object> getModelAttributes() {
+        Map<String, Object> attributes = new HashMap<String, Object>();
 
-		return attributes;
-	}
+        attributes.put("userId", getUserId());
+        attributes.put("registerType", getRegisterType());
+        attributes.put("weight", getWeight());
+        attributes.put("height", getHeight());
+        attributes.put("smsCounter", getSmsCounter());
 
-	@Override
-	public void setModelAttributes(Map<String, Object> attributes) {
-		Long userId = (Long)attributes.get("userId");
+        return attributes;
+    }
 
-		if (userId != null) {
-			setUserId(userId);
-		}
+    @Override
+    public void setModelAttributes(Map<String, Object> attributes) {
+        Long userId = (Long) attributes.get("userId");
 
-		String registerType = (String)attributes.get("registerType");
+        if (userId != null) {
+            setUserId(userId);
+        }
 
-		if (registerType != null) {
-			setRegisterType(registerType);
-		}
+        String registerType = (String) attributes.get("registerType");
 
-		Integer weight = (Integer)attributes.get("weight");
+        if (registerType != null) {
+            setRegisterType(registerType);
+        }
 
-		if (weight != null) {
-			setWeight(weight);
-		}
+        Integer weight = (Integer) attributes.get("weight");
 
-		Integer height = (Integer)attributes.get("height");
+        if (weight != null) {
+            setWeight(weight);
+        }
 
-		if (height != null) {
-			setHeight(height);
-		}
+        Integer height = (Integer) attributes.get("height");
 
-		Long smsCounter = (Long)attributes.get("smsCounter");
+        if (height != null) {
+            setHeight(height);
+        }
 
-		if (smsCounter != null) {
-			setSmsCounter(smsCounter);
-		}
-	}
+        Long smsCounter = (Long) attributes.get("smsCounter");
 
-	/**
-	* Returns the primary key of this user additional data.
-	*
-	* @return the primary key of this user additional data
-	*/
-	@Override
-	public long getPrimaryKey() {
-		return _userAdditionalData.getPrimaryKey();
-	}
+        if (smsCounter != null) {
+            setSmsCounter(smsCounter);
+        }
+    }
 
-	/**
-	* Sets the primary key of this user additional data.
-	*
-	* @param primaryKey the primary key of this user additional data
-	*/
-	@Override
-	public void setPrimaryKey(long primaryKey) {
-		_userAdditionalData.setPrimaryKey(primaryKey);
-	}
+    /**
+    * Returns the primary key of this user additional data.
+    *
+    * @return the primary key of this user additional data
+    */
+    @Override
+    public long getPrimaryKey() {
+        return _userAdditionalData.getPrimaryKey();
+    }
 
-	/**
-	* Returns the user ID of this user additional data.
-	*
-	* @return the user ID of this user additional data
-	*/
-	@Override
-	public long getUserId() {
-		return _userAdditionalData.getUserId();
-	}
+    /**
+    * Sets the primary key of this user additional data.
+    *
+    * @param primaryKey the primary key of this user additional data
+    */
+    @Override
+    public void setPrimaryKey(long primaryKey) {
+        _userAdditionalData.setPrimaryKey(primaryKey);
+    }
 
-	/**
-	* Sets the user ID of this user additional data.
-	*
-	* @param userId the user ID of this user additional data
-	*/
-	@Override
-	public void setUserId(long userId) {
-		_userAdditionalData.setUserId(userId);
-	}
+    /**
+    * Returns the user ID of this user additional data.
+    *
+    * @return the user ID of this user additional data
+    */
+    @Override
+    public long getUserId() {
+        return _userAdditionalData.getUserId();
+    }
 
-	/**
-	* Returns the user uuid of this user additional data.
-	*
-	* @return the user uuid of this user additional data
-	* @throws SystemException if a system exception occurred
-	*/
-	@Override
-	public java.lang.String getUserUuid()
-		throws com.liferay.portal.kernel.exception.SystemException {
-		return _userAdditionalData.getUserUuid();
-	}
+    /**
+    * Sets the user ID of this user additional data.
+    *
+    * @param userId the user ID of this user additional data
+    */
+    @Override
+    public void setUserId(long userId) {
+        _userAdditionalData.setUserId(userId);
+    }
 
-	/**
-	* Sets the user uuid of this user additional data.
-	*
-	* @param userUuid the user uuid of this user additional data
-	*/
-	@Override
-	public void setUserUuid(java.lang.String userUuid) {
-		_userAdditionalData.setUserUuid(userUuid);
-	}
+    /**
+    * Returns the user uuid of this user additional data.
+    *
+    * @return the user uuid of this user additional data
+    * @throws SystemException if a system exception occurred
+    */
+    @Override
+    public java.lang.String getUserUuid()
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _userAdditionalData.getUserUuid();
+    }
 
-	/**
-	* Returns the register type of this user additional data.
-	*
-	* @return the register type of this user additional data
-	*/
-	@Override
-	public java.lang.String getRegisterType() {
-		return _userAdditionalData.getRegisterType();
-	}
+    /**
+    * Sets the user uuid of this user additional data.
+    *
+    * @param userUuid the user uuid of this user additional data
+    */
+    @Override
+    public void setUserUuid(java.lang.String userUuid) {
+        _userAdditionalData.setUserUuid(userUuid);
+    }
 
-	/**
-	* Sets the register type of this user additional data.
-	*
-	* @param registerType the register type of this user additional data
-	*/
-	@Override
-	public void setRegisterType(java.lang.String registerType) {
-		_userAdditionalData.setRegisterType(registerType);
-	}
+    /**
+    * Returns the register type of this user additional data.
+    *
+    * @return the register type of this user additional data
+    */
+    @Override
+    public java.lang.String getRegisterType() {
+        return _userAdditionalData.getRegisterType();
+    }
 
-	/**
-	* Returns the weight of this user additional data.
-	*
-	* @return the weight of this user additional data
-	*/
-	@Override
-	public int getWeight() {
-		return _userAdditionalData.getWeight();
-	}
+    /**
+    * Sets the register type of this user additional data.
+    *
+    * @param registerType the register type of this user additional data
+    */
+    @Override
+    public void setRegisterType(java.lang.String registerType) {
+        _userAdditionalData.setRegisterType(registerType);
+    }
 
-	/**
-	* Sets the weight of this user additional data.
-	*
-	* @param weight the weight of this user additional data
-	*/
-	@Override
-	public void setWeight(int weight) {
-		_userAdditionalData.setWeight(weight);
-	}
+    /**
+    * Returns the weight of this user additional data.
+    *
+    * @return the weight of this user additional data
+    */
+    @Override
+    public int getWeight() {
+        return _userAdditionalData.getWeight();
+    }
 
-	/**
-	* Returns the height of this user additional data.
-	*
-	* @return the height of this user additional data
-	*/
-	@Override
-	public int getHeight() {
-		return _userAdditionalData.getHeight();
-	}
+    /**
+    * Sets the weight of this user additional data.
+    *
+    * @param weight the weight of this user additional data
+    */
+    @Override
+    public void setWeight(int weight) {
+        _userAdditionalData.setWeight(weight);
+    }
 
-	/**
-	* Sets the height of this user additional data.
-	*
-	* @param height the height of this user additional data
-	*/
-	@Override
-	public void setHeight(int height) {
-		_userAdditionalData.setHeight(height);
-	}
+    /**
+    * Returns the height of this user additional data.
+    *
+    * @return the height of this user additional data
+    */
+    @Override
+    public int getHeight() {
+        return _userAdditionalData.getHeight();
+    }
 
-	/**
-	* Returns the sms counter of this user additional data.
-	*
-	* @return the sms counter of this user additional data
-	*/
-	@Override
-	public long getSmsCounter() {
-		return _userAdditionalData.getSmsCounter();
-	}
+    /**
+    * Sets the height of this user additional data.
+    *
+    * @param height the height of this user additional data
+    */
+    @Override
+    public void setHeight(int height) {
+        _userAdditionalData.setHeight(height);
+    }
 
-	/**
-	* Sets the sms counter of this user additional data.
-	*
-	* @param smsCounter the sms counter of this user additional data
-	*/
-	@Override
-	public void setSmsCounter(long smsCounter) {
-		_userAdditionalData.setSmsCounter(smsCounter);
-	}
+    /**
+    * Returns the sms counter of this user additional data.
+    *
+    * @return the sms counter of this user additional data
+    */
+    @Override
+    public long getSmsCounter() {
+        return _userAdditionalData.getSmsCounter();
+    }
 
-	@Override
-	public boolean isNew() {
-		return _userAdditionalData.isNew();
-	}
+    /**
+    * Sets the sms counter of this user additional data.
+    *
+    * @param smsCounter the sms counter of this user additional data
+    */
+    @Override
+    public void setSmsCounter(long smsCounter) {
+        _userAdditionalData.setSmsCounter(smsCounter);
+    }
 
-	@Override
-	public void setNew(boolean n) {
-		_userAdditionalData.setNew(n);
-	}
+    @Override
+    public boolean isNew() {
+        return _userAdditionalData.isNew();
+    }
 
-	@Override
-	public boolean isCachedModel() {
-		return _userAdditionalData.isCachedModel();
-	}
+    @Override
+    public void setNew(boolean n) {
+        _userAdditionalData.setNew(n);
+    }
 
-	@Override
-	public void setCachedModel(boolean cachedModel) {
-		_userAdditionalData.setCachedModel(cachedModel);
-	}
+    @Override
+    public boolean isCachedModel() {
+        return _userAdditionalData.isCachedModel();
+    }
 
-	@Override
-	public boolean isEscapedModel() {
-		return _userAdditionalData.isEscapedModel();
-	}
+    @Override
+    public void setCachedModel(boolean cachedModel) {
+        _userAdditionalData.setCachedModel(cachedModel);
+    }
 
-	@Override
-	public java.io.Serializable getPrimaryKeyObj() {
-		return _userAdditionalData.getPrimaryKeyObj();
-	}
+    @Override
+    public boolean isEscapedModel() {
+        return _userAdditionalData.isEscapedModel();
+    }
 
-	@Override
-	public void setPrimaryKeyObj(java.io.Serializable primaryKeyObj) {
-		_userAdditionalData.setPrimaryKeyObj(primaryKeyObj);
-	}
+    @Override
+    public java.io.Serializable getPrimaryKeyObj() {
+        return _userAdditionalData.getPrimaryKeyObj();
+    }
 
-	@Override
-	public com.liferay.portlet.expando.model.ExpandoBridge getExpandoBridge() {
-		return _userAdditionalData.getExpandoBridge();
-	}
+    @Override
+    public void setPrimaryKeyObj(java.io.Serializable primaryKeyObj) {
+        _userAdditionalData.setPrimaryKeyObj(primaryKeyObj);
+    }
 
-	@Override
-	public void setExpandoBridgeAttributes(
-		com.liferay.portal.model.BaseModel<?> baseModel) {
-		_userAdditionalData.setExpandoBridgeAttributes(baseModel);
-	}
+    @Override
+    public com.liferay.portlet.expando.model.ExpandoBridge getExpandoBridge() {
+        return _userAdditionalData.getExpandoBridge();
+    }
 
-	@Override
-	public void setExpandoBridgeAttributes(
-		com.liferay.portlet.expando.model.ExpandoBridge expandoBridge) {
-		_userAdditionalData.setExpandoBridgeAttributes(expandoBridge);
-	}
+    @Override
+    public void setExpandoBridgeAttributes(
+        com.liferay.portal.model.BaseModel<?> baseModel) {
+        _userAdditionalData.setExpandoBridgeAttributes(baseModel);
+    }
 
-	@Override
-	public void setExpandoBridgeAttributes(
-		com.liferay.portal.service.ServiceContext serviceContext) {
-		_userAdditionalData.setExpandoBridgeAttributes(serviceContext);
-	}
+    @Override
+    public void setExpandoBridgeAttributes(
+        com.liferay.portlet.expando.model.ExpandoBridge expandoBridge) {
+        _userAdditionalData.setExpandoBridgeAttributes(expandoBridge);
+    }
 
-	@Override
-	public java.lang.Object clone() {
-		return new UserAdditionalDataWrapper((UserAdditionalData)_userAdditionalData.clone());
-	}
+    @Override
+    public void setExpandoBridgeAttributes(
+        com.liferay.portal.service.ServiceContext serviceContext) {
+        _userAdditionalData.setExpandoBridgeAttributes(serviceContext);
+    }
 
-	@Override
-	public int compareTo(
-		es.eina.tfg.model.UserAdditionalData userAdditionalData) {
-		return _userAdditionalData.compareTo(userAdditionalData);
-	}
+    @Override
+    public java.lang.Object clone() {
+        return new UserAdditionalDataWrapper((UserAdditionalData) _userAdditionalData.clone());
+    }
 
-	@Override
-	public int hashCode() {
-		return _userAdditionalData.hashCode();
-	}
+    @Override
+    public int compareTo(
+        es.eina.tfg.model.UserAdditionalData userAdditionalData) {
+        return _userAdditionalData.compareTo(userAdditionalData);
+    }
 
-	@Override
-	public com.liferay.portal.model.CacheModel<es.eina.tfg.model.UserAdditionalData> toCacheModel() {
-		return _userAdditionalData.toCacheModel();
-	}
+    @Override
+    public int hashCode() {
+        return _userAdditionalData.hashCode();
+    }
 
-	@Override
-	public es.eina.tfg.model.UserAdditionalData toEscapedModel() {
-		return new UserAdditionalDataWrapper(_userAdditionalData.toEscapedModel());
-	}
+    @Override
+    public com.liferay.portal.model.CacheModel<es.eina.tfg.model.UserAdditionalData> toCacheModel() {
+        return _userAdditionalData.toCacheModel();
+    }
 
-	@Override
-	public es.eina.tfg.model.UserAdditionalData toUnescapedModel() {
-		return new UserAdditionalDataWrapper(_userAdditionalData.toUnescapedModel());
-	}
+    @Override
+    public es.eina.tfg.model.UserAdditionalData toEscapedModel() {
+        return new UserAdditionalDataWrapper(_userAdditionalData.toEscapedModel());
+    }
 
-	@Override
-	public java.lang.String toString() {
-		return _userAdditionalData.toString();
-	}
+    @Override
+    public es.eina.tfg.model.UserAdditionalData toUnescapedModel() {
+        return new UserAdditionalDataWrapper(_userAdditionalData.toUnescapedModel());
+    }
 
-	@Override
-	public java.lang.String toXmlString() {
-		return _userAdditionalData.toXmlString();
-	}
+    @Override
+    public java.lang.String toString() {
+        return _userAdditionalData.toString();
+    }
 
-	@Override
-	public void persist()
-		throws com.liferay.portal.kernel.exception.SystemException {
-		_userAdditionalData.persist();
-	}
+    @Override
+    public java.lang.String toXmlString() {
+        return _userAdditionalData.toXmlString();
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
+    @Override
+    public void persist()
+        throws com.liferay.portal.kernel.exception.SystemException {
+        _userAdditionalData.persist();
+    }
 
-		if (!(obj instanceof UserAdditionalDataWrapper)) {
-			return false;
-		}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
 
-		UserAdditionalDataWrapper userAdditionalDataWrapper = (UserAdditionalDataWrapper)obj;
+        if (!(obj instanceof UserAdditionalDataWrapper)) {
+            return false;
+        }
 
-		if (Validator.equals(_userAdditionalData,
-					userAdditionalDataWrapper._userAdditionalData)) {
-			return true;
-		}
+        UserAdditionalDataWrapper userAdditionalDataWrapper = (UserAdditionalDataWrapper) obj;
 
-		return false;
-	}
+        if (Validator.equals(_userAdditionalData,
+                    userAdditionalDataWrapper._userAdditionalData)) {
+            return true;
+        }
 
-	/**
-	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedModel}
-	 */
-	public UserAdditionalData getWrappedUserAdditionalData() {
-		return _userAdditionalData;
-	}
+        return false;
+    }
 
-	@Override
-	public UserAdditionalData getWrappedModel() {
-		return _userAdditionalData;
-	}
+    /**
+     * @deprecated As of 6.1.0, replaced by {@link #getWrappedModel}
+     */
+    public UserAdditionalData getWrappedUserAdditionalData() {
+        return _userAdditionalData;
+    }
 
-	@Override
-	public void resetOriginalValues() {
-		_userAdditionalData.resetOriginalValues();
-	}
+    @Override
+    public UserAdditionalData getWrappedModel() {
+        return _userAdditionalData;
+    }
 
-	private UserAdditionalData _userAdditionalData;
+    @Override
+    public void resetOriginalValues() {
+        _userAdditionalData.resetOriginalValues();
+    }
 }

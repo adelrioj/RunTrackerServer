@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model.impl;
 
 import com.liferay.portal.kernel.util.StringBundler;
@@ -35,130 +21,122 @@ import java.util.Date;
  * @generated
  */
 public class RouteCacheModel implements CacheModel<Route>, Externalizable {
-	@Override
-	public String toString() {
-		StringBundler sb = new StringBundler(17);
+    public long routeId;
+    public String type;
+    public String name;
+    public String description;
+    public long authorId;
+    public boolean isPublic;
+    public long startingTime;
+    public long creationTime;
 
-		sb.append("{routeId=");
-		sb.append(routeId);
-		sb.append(", type=");
-		sb.append(type);
-		sb.append(", name=");
-		sb.append(name);
-		sb.append(", description=");
-		sb.append(description);
-		sb.append(", authorId=");
-		sb.append(authorId);
-		sb.append(", isPublic=");
-		sb.append(isPublic);
-		sb.append(", startingTime=");
-		sb.append(startingTime);
-		sb.append(", creationTime=");
-		sb.append(creationTime);
-		sb.append("}");
+    @Override
+    public String toString() {
+        StringBundler sb = new StringBundler(17);
 
-		return sb.toString();
-	}
+        sb.append("{routeId=");
+        sb.append(routeId);
+        sb.append(", type=");
+        sb.append(type);
+        sb.append(", name=");
+        sb.append(name);
+        sb.append(", description=");
+        sb.append(description);
+        sb.append(", authorId=");
+        sb.append(authorId);
+        sb.append(", isPublic=");
+        sb.append(isPublic);
+        sb.append(", startingTime=");
+        sb.append(startingTime);
+        sb.append(", creationTime=");
+        sb.append(creationTime);
+        sb.append("}");
 
-	@Override
-	public Route toEntityModel() {
-		RouteImpl routeImpl = new RouteImpl();
+        return sb.toString();
+    }
 
-		routeImpl.setRouteId(routeId);
+    @Override
+    public Route toEntityModel() {
+        RouteImpl routeImpl = new RouteImpl();
 
-		if (type == null) {
-			routeImpl.setType(StringPool.BLANK);
-		}
-		else {
-			routeImpl.setType(type);
-		}
+        routeImpl.setRouteId(routeId);
 
-		if (name == null) {
-			routeImpl.setName(StringPool.BLANK);
-		}
-		else {
-			routeImpl.setName(name);
-		}
+        if (type == null) {
+            routeImpl.setType(StringPool.BLANK);
+        } else {
+            routeImpl.setType(type);
+        }
 
-		if (description == null) {
-			routeImpl.setDescription(StringPool.BLANK);
-		}
-		else {
-			routeImpl.setDescription(description);
-		}
+        if (name == null) {
+            routeImpl.setName(StringPool.BLANK);
+        } else {
+            routeImpl.setName(name);
+        }
 
-		routeImpl.setAuthorId(authorId);
-		routeImpl.setIsPublic(isPublic);
+        if (description == null) {
+            routeImpl.setDescription(StringPool.BLANK);
+        } else {
+            routeImpl.setDescription(description);
+        }
 
-		if (startingTime == Long.MIN_VALUE) {
-			routeImpl.setStartingTime(null);
-		}
-		else {
-			routeImpl.setStartingTime(new Date(startingTime));
-		}
+        routeImpl.setAuthorId(authorId);
+        routeImpl.setIsPublic(isPublic);
 
-		if (creationTime == Long.MIN_VALUE) {
-			routeImpl.setCreationTime(null);
-		}
-		else {
-			routeImpl.setCreationTime(new Date(creationTime));
-		}
+        if (startingTime == Long.MIN_VALUE) {
+            routeImpl.setStartingTime(null);
+        } else {
+            routeImpl.setStartingTime(new Date(startingTime));
+        }
 
-		routeImpl.resetOriginalValues();
+        if (creationTime == Long.MIN_VALUE) {
+            routeImpl.setCreationTime(null);
+        } else {
+            routeImpl.setCreationTime(new Date(creationTime));
+        }
 
-		return routeImpl;
-	}
+        routeImpl.resetOriginalValues();
 
-	@Override
-	public void readExternal(ObjectInput objectInput) throws IOException {
-		routeId = objectInput.readLong();
-		type = objectInput.readUTF();
-		name = objectInput.readUTF();
-		description = objectInput.readUTF();
-		authorId = objectInput.readLong();
-		isPublic = objectInput.readBoolean();
-		startingTime = objectInput.readLong();
-		creationTime = objectInput.readLong();
-	}
+        return routeImpl;
+    }
 
-	@Override
-	public void writeExternal(ObjectOutput objectOutput)
-		throws IOException {
-		objectOutput.writeLong(routeId);
+    @Override
+    public void readExternal(ObjectInput objectInput) throws IOException {
+        routeId = objectInput.readLong();
+        type = objectInput.readUTF();
+        name = objectInput.readUTF();
+        description = objectInput.readUTF();
+        authorId = objectInput.readLong();
+        isPublic = objectInput.readBoolean();
+        startingTime = objectInput.readLong();
+        creationTime = objectInput.readLong();
+    }
 
-		if (type == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(type);
-		}
+    @Override
+    public void writeExternal(ObjectOutput objectOutput)
+        throws IOException {
+        objectOutput.writeLong(routeId);
 
-		if (name == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(name);
-		}
+        if (type == null) {
+            objectOutput.writeUTF(StringPool.BLANK);
+        } else {
+            objectOutput.writeUTF(type);
+        }
 
-		if (description == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(description);
-		}
+        if (name == null) {
+            objectOutput.writeUTF(StringPool.BLANK);
+        } else {
+            objectOutput.writeUTF(name);
+        }
 
-		objectOutput.writeLong(authorId);
-		objectOutput.writeBoolean(isPublic);
-		objectOutput.writeLong(startingTime);
-		objectOutput.writeLong(creationTime);
-	}
+        if (description == null) {
+            objectOutput.writeUTF(StringPool.BLANK);
+        } else {
+            objectOutput.writeUTF(description);
+        }
 
-	public long routeId;
-	public String type;
-	public String name;
-	public String description;
-	public long authorId;
-	public boolean isPublic;
-	public long startingTime;
-	public long creationTime;
+        objectOutput.writeLong(authorId);
+        objectOutput.writeBoolean(isPublic);
+        objectOutput.writeLong(startingTime);
+        objectOutput.writeLong(creationTime);
+    }
 }

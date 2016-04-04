@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.service.http;
 
 import com.liferay.portal.kernel.log.Log;
@@ -62,112 +48,105 @@ import java.rmi.RemoteException;
  * @generated
  */
 public class RouteServiceSoap {
-	public static es.eina.tfg.model.RouteSoap add(java.lang.String type,
-		java.lang.String name, java.lang.String description,
-		java.lang.Long authorId, boolean isPublic, java.util.Date startingTime)
-		throws RemoteException {
-		try {
-			es.eina.tfg.model.Route returnValue = RouteServiceUtil.add(type,
-					name, description, authorId, isPublic, startingTime);
+    private static Log _log = LogFactoryUtil.getLog(RouteServiceSoap.class);
 
-			return es.eina.tfg.model.RouteSoap.toSoapModel(returnValue);
-		}
-		catch (Exception e) {
-			_log.error(e, e);
+    public static es.eina.tfg.model.RouteSoap add(java.lang.String type,
+        java.lang.String name, java.lang.String description,
+        java.lang.Long authorId, boolean isPublic, java.util.Date startingTime)
+        throws RemoteException {
+        try {
+            es.eina.tfg.model.Route returnValue = RouteServiceUtil.add(type,
+                    name, description, authorId, isPublic, startingTime);
 
-			throw new RemoteException(e.getMessage());
-		}
-	}
+            return es.eina.tfg.model.RouteSoap.toSoapModel(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
 
-	public static es.eina.tfg.model.RouteSoap update(java.lang.Long routeId,
-		java.lang.String type, java.lang.String name,
-		java.lang.String description, java.lang.Long authorId,
-		boolean isPublic, java.util.Date startingTime,
-		java.util.Date creationTime) throws RemoteException {
-		try {
-			es.eina.tfg.model.Route returnValue = RouteServiceUtil.update(routeId,
-					type, name, description, authorId, isPublic, startingTime,
-					creationTime);
+            throw new RemoteException(e.getMessage());
+        }
+    }
 
-			return es.eina.tfg.model.RouteSoap.toSoapModel(returnValue);
-		}
-		catch (Exception e) {
-			_log.error(e, e);
+    public static es.eina.tfg.model.RouteSoap update(java.lang.Long routeId,
+        java.lang.String type, java.lang.String name,
+        java.lang.String description, java.lang.Long authorId,
+        boolean isPublic, java.util.Date startingTime,
+        java.util.Date creationTime) throws RemoteException {
+        try {
+            es.eina.tfg.model.Route returnValue = RouteServiceUtil.update(routeId,
+                    type, name, description, authorId, isPublic, startingTime,
+                    creationTime);
 
-			throw new RemoteException(e.getMessage());
-		}
-	}
+            return es.eina.tfg.model.RouteSoap.toSoapModel(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
 
-	public static es.eina.tfg.model.RouteSoap delete(java.lang.Long routeId)
-		throws RemoteException {
-		try {
-			es.eina.tfg.model.Route returnValue = RouteServiceUtil.delete(routeId);
+            throw new RemoteException(e.getMessage());
+        }
+    }
 
-			return es.eina.tfg.model.RouteSoap.toSoapModel(returnValue);
-		}
-		catch (Exception e) {
-			_log.error(e, e);
+    public static es.eina.tfg.model.RouteSoap delete(java.lang.Long routeId)
+        throws RemoteException {
+        try {
+            es.eina.tfg.model.Route returnValue = RouteServiceUtil.delete(routeId);
 
-			throw new RemoteException(e.getMessage());
-		}
-	}
+            return es.eina.tfg.model.RouteSoap.toSoapModel(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
 
-	public static es.eina.tfg.model.RouteSoap getRoute(java.lang.Long routeId)
-		throws RemoteException {
-		try {
-			es.eina.tfg.model.Route returnValue = RouteServiceUtil.getRoute(routeId);
+            throw new RemoteException(e.getMessage());
+        }
+    }
 
-			return es.eina.tfg.model.RouteSoap.toSoapModel(returnValue);
-		}
-		catch (Exception e) {
-			_log.error(e, e);
+    public static es.eina.tfg.model.RouteSoap getRoute(java.lang.Long routeId)
+        throws RemoteException {
+        try {
+            es.eina.tfg.model.Route returnValue = RouteServiceUtil.getRoute(routeId);
 
-			throw new RemoteException(e.getMessage());
-		}
-	}
+            return es.eina.tfg.model.RouteSoap.toSoapModel(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
 
-	public static es.eina.tfg.model.RouteSoap[] findByAuthor(
-		java.lang.Long userId) throws RemoteException {
-		try {
-			java.util.List<es.eina.tfg.model.Route> returnValue = RouteServiceUtil.findByAuthor(userId);
+            throw new RemoteException(e.getMessage());
+        }
+    }
 
-			return es.eina.tfg.model.RouteSoap.toSoapModels(returnValue);
-		}
-		catch (Exception e) {
-			_log.error(e, e);
+    public static es.eina.tfg.model.RouteSoap[] findByAuthor(
+        java.lang.Long userId) throws RemoteException {
+        try {
+            java.util.List<es.eina.tfg.model.Route> returnValue = RouteServiceUtil.findByAuthor(userId);
 
-			throw new RemoteException(e.getMessage());
-		}
-	}
+            return es.eina.tfg.model.RouteSoap.toSoapModels(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
 
-	public static es.eina.tfg.model.RouteSoap[] getPublicRoutes()
-		throws RemoteException {
-		try {
-			java.util.List<es.eina.tfg.model.Route> returnValue = RouteServiceUtil.getPublicRoutes();
+            throw new RemoteException(e.getMessage());
+        }
+    }
 
-			return es.eina.tfg.model.RouteSoap.toSoapModels(returnValue);
-		}
-		catch (Exception e) {
-			_log.error(e, e);
+    public static es.eina.tfg.model.RouteSoap[] getPublicRoutes()
+        throws RemoteException {
+        try {
+            java.util.List<es.eina.tfg.model.Route> returnValue = RouteServiceUtil.getPublicRoutes();
 
-			throw new RemoteException(e.getMessage());
-		}
-	}
+            return es.eina.tfg.model.RouteSoap.toSoapModels(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
 
-	public static es.eina.tfg.model.RouteSoap[] getPublicRoutes(int start,
-		int end) throws RemoteException {
-		try {
-			java.util.List<es.eina.tfg.model.Route> returnValue = RouteServiceUtil.getPublicRoutes(start,
-					end);
+            throw new RemoteException(e.getMessage());
+        }
+    }
 
-			return es.eina.tfg.model.RouteSoap.toSoapModels(returnValue);
-		}
-		catch (Exception e) {
-			_log.error(e, e);
+    public static es.eina.tfg.model.RouteSoap[] getPublicRoutes(int start,
+        int end) throws RemoteException {
+        try {
+            java.util.List<es.eina.tfg.model.Route> returnValue = RouteServiceUtil.getPublicRoutes(start,
+                    end);
 
-			throw new RemoteException(e.getMessage());
-		}
-	}
+            return es.eina.tfg.model.RouteSoap.toSoapModels(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
 
-	private static Log _log = LogFactoryUtil.getLog(RouteServiceSoap.class);
+            throw new RemoteException(e.getMessage());
+        }
+    }
 }

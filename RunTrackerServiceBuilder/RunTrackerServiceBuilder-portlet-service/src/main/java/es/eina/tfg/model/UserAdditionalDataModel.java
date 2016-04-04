@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model;
 
 import com.liferay.portal.kernel.bean.AutoEscape;
@@ -38,167 +24,167 @@ import java.io.Serializable;
  * @generated
  */
 public interface UserAdditionalDataModel extends BaseModel<UserAdditionalData> {
-	/*
-	 * NOTE FOR DEVELOPERS:
-	 *
-	 * Never modify or reference this interface directly. All methods that expect a user additional data model instance should use the {@link UserAdditionalData} interface instead.
-	 */
+    /*
+     * NOTE FOR DEVELOPERS:
+     *
+     * Never modify or reference this interface directly. All methods that expect a user additional data model instance should use the {@link UserAdditionalData} interface instead.
+     */
 
-	/**
-	 * Returns the primary key of this user additional data.
-	 *
-	 * @return the primary key of this user additional data
-	 */
-	public long getPrimaryKey();
+    /**
+     * Returns the primary key of this user additional data.
+     *
+     * @return the primary key of this user additional data
+     */
+    public long getPrimaryKey();
 
-	/**
-	 * Sets the primary key of this user additional data.
-	 *
-	 * @param primaryKey the primary key of this user additional data
-	 */
-	public void setPrimaryKey(long primaryKey);
+    /**
+     * Sets the primary key of this user additional data.
+     *
+     * @param primaryKey the primary key of this user additional data
+     */
+    public void setPrimaryKey(long primaryKey);
 
-	/**
-	 * Returns the user ID of this user additional data.
-	 *
-	 * @return the user ID of this user additional data
-	 */
-	public long getUserId();
+    /**
+     * Returns the user ID of this user additional data.
+     *
+     * @return the user ID of this user additional data
+     */
+    public long getUserId();
 
-	/**
-	 * Sets the user ID of this user additional data.
-	 *
-	 * @param userId the user ID of this user additional data
-	 */
-	public void setUserId(long userId);
+    /**
+     * Sets the user ID of this user additional data.
+     *
+     * @param userId the user ID of this user additional data
+     */
+    public void setUserId(long userId);
 
-	/**
-	 * Returns the user uuid of this user additional data.
-	 *
-	 * @return the user uuid of this user additional data
-	 * @throws SystemException if a system exception occurred
-	 */
-	public String getUserUuid() throws SystemException;
+    /**
+     * Returns the user uuid of this user additional data.
+     *
+     * @return the user uuid of this user additional data
+     * @throws SystemException if a system exception occurred
+     */
+    public String getUserUuid() throws SystemException;
 
-	/**
-	 * Sets the user uuid of this user additional data.
-	 *
-	 * @param userUuid the user uuid of this user additional data
-	 */
-	public void setUserUuid(String userUuid);
+    /**
+     * Sets the user uuid of this user additional data.
+     *
+     * @param userUuid the user uuid of this user additional data
+     */
+    public void setUserUuid(String userUuid);
 
-	/**
-	 * Returns the register type of this user additional data.
-	 *
-	 * @return the register type of this user additional data
-	 */
-	@AutoEscape
-	public String getRegisterType();
+    /**
+     * Returns the register type of this user additional data.
+     *
+     * @return the register type of this user additional data
+     */
+    @AutoEscape
+    public String getRegisterType();
 
-	/**
-	 * Sets the register type of this user additional data.
-	 *
-	 * @param registerType the register type of this user additional data
-	 */
-	public void setRegisterType(String registerType);
+    /**
+     * Sets the register type of this user additional data.
+     *
+     * @param registerType the register type of this user additional data
+     */
+    public void setRegisterType(String registerType);
 
-	/**
-	 * Returns the weight of this user additional data.
-	 *
-	 * @return the weight of this user additional data
-	 */
-	public int getWeight();
+    /**
+     * Returns the weight of this user additional data.
+     *
+     * @return the weight of this user additional data
+     */
+    public int getWeight();
 
-	/**
-	 * Sets the weight of this user additional data.
-	 *
-	 * @param weight the weight of this user additional data
-	 */
-	public void setWeight(int weight);
+    /**
+     * Sets the weight of this user additional data.
+     *
+     * @param weight the weight of this user additional data
+     */
+    public void setWeight(int weight);
 
-	/**
-	 * Returns the height of this user additional data.
-	 *
-	 * @return the height of this user additional data
-	 */
-	public int getHeight();
+    /**
+     * Returns the height of this user additional data.
+     *
+     * @return the height of this user additional data
+     */
+    public int getHeight();
 
-	/**
-	 * Sets the height of this user additional data.
-	 *
-	 * @param height the height of this user additional data
-	 */
-	public void setHeight(int height);
+    /**
+     * Sets the height of this user additional data.
+     *
+     * @param height the height of this user additional data
+     */
+    public void setHeight(int height);
 
-	/**
-	 * Returns the sms counter of this user additional data.
-	 *
-	 * @return the sms counter of this user additional data
-	 */
-	public long getSmsCounter();
+    /**
+     * Returns the sms counter of this user additional data.
+     *
+     * @return the sms counter of this user additional data
+     */
+    public long getSmsCounter();
 
-	/**
-	 * Sets the sms counter of this user additional data.
-	 *
-	 * @param smsCounter the sms counter of this user additional data
-	 */
-	public void setSmsCounter(long smsCounter);
+    /**
+     * Sets the sms counter of this user additional data.
+     *
+     * @param smsCounter the sms counter of this user additional data
+     */
+    public void setSmsCounter(long smsCounter);
 
-	@Override
-	public boolean isNew();
+    @Override
+    public boolean isNew();
 
-	@Override
-	public void setNew(boolean n);
+    @Override
+    public void setNew(boolean n);
 
-	@Override
-	public boolean isCachedModel();
+    @Override
+    public boolean isCachedModel();
 
-	@Override
-	public void setCachedModel(boolean cachedModel);
+    @Override
+    public void setCachedModel(boolean cachedModel);
 
-	@Override
-	public boolean isEscapedModel();
+    @Override
+    public boolean isEscapedModel();
 
-	@Override
-	public Serializable getPrimaryKeyObj();
+    @Override
+    public Serializable getPrimaryKeyObj();
 
-	@Override
-	public void setPrimaryKeyObj(Serializable primaryKeyObj);
+    @Override
+    public void setPrimaryKeyObj(Serializable primaryKeyObj);
 
-	@Override
-	public ExpandoBridge getExpandoBridge();
+    @Override
+    public ExpandoBridge getExpandoBridge();
 
-	@Override
-	public void setExpandoBridgeAttributes(BaseModel<?> baseModel);
+    @Override
+    public void setExpandoBridgeAttributes(BaseModel<?> baseModel);
 
-	@Override
-	public void setExpandoBridgeAttributes(ExpandoBridge expandoBridge);
+    @Override
+    public void setExpandoBridgeAttributes(ExpandoBridge expandoBridge);
 
-	@Override
-	public void setExpandoBridgeAttributes(ServiceContext serviceContext);
+    @Override
+    public void setExpandoBridgeAttributes(ServiceContext serviceContext);
 
-	@Override
-	public Object clone();
+    @Override
+    public Object clone();
 
-	@Override
-	public int compareTo(
-		es.eina.tfg.model.UserAdditionalData userAdditionalData);
+    @Override
+    public int compareTo(
+        es.eina.tfg.model.UserAdditionalData userAdditionalData);
 
-	@Override
-	public int hashCode();
+    @Override
+    public int hashCode();
 
-	@Override
-	public CacheModel<es.eina.tfg.model.UserAdditionalData> toCacheModel();
+    @Override
+    public CacheModel<es.eina.tfg.model.UserAdditionalData> toCacheModel();
 
-	@Override
-	public es.eina.tfg.model.UserAdditionalData toEscapedModel();
+    @Override
+    public es.eina.tfg.model.UserAdditionalData toEscapedModel();
 
-	@Override
-	public es.eina.tfg.model.UserAdditionalData toUnescapedModel();
+    @Override
+    public es.eina.tfg.model.UserAdditionalData toUnescapedModel();
 
-	@Override
-	public String toString();
+    @Override
+    public String toString();
 
-	@Override
-	public String toXmlString();
+    @Override
+    public String toXmlString();
 }

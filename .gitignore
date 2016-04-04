@@ -72,6 +72,10 @@ local.properties
 # TeXlipse plugin
 .texlipse
 
+#Visual Paradigm security copy
+*.vpp~*
+*.vpp.bak~*
+
 #Project-specific targets
 /RouteViewer/target
 /RunTrackerServiceBuilder/RunTrackerServiceBuilder-portlet-service/target

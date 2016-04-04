@@ -76,7 +76,7 @@
 			<version>1.1.6</version>
 		</dependency>
 		<dependency>
-			<groupId>es.eina.tfg</groupId>
+			<groupId>com.hs</groupId>
 			<artifactId>gpxparser</artifactId>
 			<version>0.9</version>
 		</dependency>

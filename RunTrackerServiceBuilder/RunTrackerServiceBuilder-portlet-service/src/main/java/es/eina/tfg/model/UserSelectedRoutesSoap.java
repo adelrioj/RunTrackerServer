@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model;
 
 import es.eina.tfg.service.persistence.UserSelectedRoutesPK;
@@ -29,83 +15,82 @@ import java.util.List;
  * @generated
  */
 public class UserSelectedRoutesSoap implements Serializable {
-	public static UserSelectedRoutesSoap toSoapModel(UserSelectedRoutes model) {
-		UserSelectedRoutesSoap soapModel = new UserSelectedRoutesSoap();
+    private long _userId;
+    private long _routeId;
 
-		soapModel.setUserId(model.getUserId());
-		soapModel.setRouteId(model.getRouteId());
+    public UserSelectedRoutesSoap() {
+    }
 
-		return soapModel;
-	}
+    public static UserSelectedRoutesSoap toSoapModel(UserSelectedRoutes model) {
+        UserSelectedRoutesSoap soapModel = new UserSelectedRoutesSoap();
 
-	public static UserSelectedRoutesSoap[] toSoapModels(
-		UserSelectedRoutes[] models) {
-		UserSelectedRoutesSoap[] soapModels = new UserSelectedRoutesSoap[models.length];
+        soapModel.setUserId(model.getUserId());
+        soapModel.setRouteId(model.getRouteId());
 
-		for (int i = 0; i < models.length; i++) {
-			soapModels[i] = toSoapModel(models[i]);
-		}
+        return soapModel;
+    }
 
-		return soapModels;
-	}
+    public static UserSelectedRoutesSoap[] toSoapModels(
+        UserSelectedRoutes[] models) {
+        UserSelectedRoutesSoap[] soapModels = new UserSelectedRoutesSoap[models.length];
 
-	public static UserSelectedRoutesSoap[][] toSoapModels(
-		UserSelectedRoutes[][] models) {
-		UserSelectedRoutesSoap[][] soapModels = null;
+        for (int i = 0; i < models.length; i++) {
+            soapModels[i] = toSoapModel(models[i]);
+        }
 
-		if (models.length > 0) {
-			soapModels = new UserSelectedRoutesSoap[models.length][models[0].length];
-		}
-		else {
-			soapModels = new UserSelectedRoutesSoap[0][0];
-		}
+        return soapModels;
+    }
 
-		for (int i = 0; i < models.length; i++) {
-			soapModels[i] = toSoapModels(models[i]);
-		}
+    public static UserSelectedRoutesSoap[][] toSoapModels(
+        UserSelectedRoutes[][] models) {
+        UserSelectedRoutesSoap[][] soapModels = null;
 
-		return soapModels;
-	}
+        if (models.length > 0) {
+            soapModels = new UserSelectedRoutesSoap[models.length][models[0].length];
+        } else {
+            soapModels = new UserSelectedRoutesSoap[0][0];
+        }
 
-	public static UserSelectedRoutesSoap[] toSoapModels(
-		List<UserSelectedRoutes> models) {
-		List<UserSelectedRoutesSoap> soapModels = new ArrayList<UserSelectedRoutesSoap>(models.size());
+        for (int i = 0; i < models.length; i++) {
+            soapModels[i] = toSoapModels(models[i]);
+        }
 
-		for (UserSelectedRoutes model : models) {
-			soapModels.add(toSoapModel(model));
-		}
+        return soapModels;
+    }
 
-		return soapModels.toArray(new UserSelectedRoutesSoap[soapModels.size()]);
-	}
+    public static UserSelectedRoutesSoap[] toSoapModels(
+        List<UserSelectedRoutes> models) {
+        List<UserSelectedRoutesSoap> soapModels = new ArrayList<UserSelectedRoutesSoap>(models.size());
 
-	public UserSelectedRoutesSoap() {
-	}
+        for (UserSelectedRoutes model : models) {
+            soapModels.add(toSoapModel(model));
+        }
 
-	public UserSelectedRoutesPK getPrimaryKey() {
-		return new UserSelectedRoutesPK(_userId, _routeId);
-	}
+        return soapModels.toArray(new UserSelectedRoutesSoap[soapModels.size()]);
+    }
 
-	public void setPrimaryKey(UserSelectedRoutesPK pk) {
-		setUserId(pk.userId);
-		setRouteId(pk.routeId);
-	}
+    public UserSelectedRoutesPK getPrimaryKey() {
+        return new UserSelectedRoutesPK(_userId, _routeId);
+    }
 
-	public long getUserId() {
-		return _userId;
-	}
+    public void setPrimaryKey(UserSelectedRoutesPK pk) {
+        setUserId(pk.userId);
+        setRouteId(pk.routeId);
+    }
 
-	public void setUserId(long userId) {
-		_userId = userId;
-	}
+    public long getUserId() {
+        return _userId;
+    }
 
-	public long getRouteId() {
-		return _routeId;
-	}
+    public void setUserId(long userId) {
+        _userId = userId;
+    }
 
-	public void setRouteId(long routeId) {
-		_routeId = routeId;
-	}
+    public long getRouteId() {
+        return _routeId;
+    }
 
-	private long _userId;
-	private long _routeId;
+    public void setRouteId(long routeId) {
+        _routeId = routeId;
+    }
 }

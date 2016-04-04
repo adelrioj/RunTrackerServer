@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.service;
 
 import com.liferay.portal.kernel.bean.PortletBeanLocatorUtil;
@@ -33,86 +19,85 @@ import com.liferay.portal.service.InvokableService;
  * @generated
  */
 public class UserSelectedRoutesServiceUtil {
-	/*
-	 * NOTE FOR DEVELOPERS:
-	 *
-	 * Never modify this class directly. Add custom service methods to {@link es.eina.tfg.service.impl.UserSelectedRoutesServiceImpl} and rerun ServiceBuilder to regenerate this class.
-	 */
+    private static UserSelectedRoutesService _service;
 
-	/**
-	* Returns the Spring bean ID for this bean.
-	*
-	* @return the Spring bean ID for this bean
-	*/
-	public static java.lang.String getBeanIdentifier() {
-		return getService().getBeanIdentifier();
-	}
+    /*
+     * NOTE FOR DEVELOPERS:
+     *
+     * Never modify this class directly. Add custom service methods to {@link es.eina.tfg.service.impl.UserSelectedRoutesServiceImpl} and rerun ServiceBuilder to regenerate this class.
+     */
 
-	/**
-	* Sets the Spring bean ID for this bean.
-	*
-	* @param beanIdentifier the Spring bean ID for this bean
-	*/
-	public static void setBeanIdentifier(java.lang.String beanIdentifier) {
-		getService().setBeanIdentifier(beanIdentifier);
-	}
+    /**
+    * Returns the Spring bean ID for this bean.
+    *
+    * @return the Spring bean ID for this bean
+    */
+    public static java.lang.String getBeanIdentifier() {
+        return getService().getBeanIdentifier();
+    }
 
-	public static java.lang.Object invokeMethod(java.lang.String name,
-		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
-		throws java.lang.Throwable {
-		return getService().invokeMethod(name, parameterTypes, arguments);
-	}
+    /**
+    * Sets the Spring bean ID for this bean.
+    *
+    * @param beanIdentifier the Spring bean ID for this bean
+    */
+    public static void setBeanIdentifier(java.lang.String beanIdentifier) {
+        getService().setBeanIdentifier(beanIdentifier);
+    }
 
-	public static es.eina.tfg.model.UserSelectedRoutes add(
-		java.lang.Long userId, java.lang.Long routeId)
-		throws com.liferay.portal.kernel.exception.SystemException,
-			es.eina.tfg.NonExistingUserException,
-			es.eina.tfg.RouteAlreadySelectedByUserException {
-		return getService().add(userId, routeId);
-	}
+    public static java.lang.Object invokeMethod(java.lang.String name,
+        java.lang.String[] parameterTypes, java.lang.Object[] arguments)
+        throws java.lang.Throwable {
+        return getService().invokeMethod(name, parameterTypes, arguments);
+    }
 
-	public static es.eina.tfg.model.UserSelectedRoutes delete(
-		java.lang.Long userId, java.lang.Long routeId)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException {
-		return getService().delete(userId, routeId);
-	}
+    public static es.eina.tfg.model.UserSelectedRoutes add(
+        java.lang.Long userId, java.lang.Long routeId)
+        throws com.liferay.portal.kernel.exception.SystemException,
+            es.eina.tfg.NonExistingUserException,
+            es.eina.tfg.RouteAlreadySelectedByUserException {
+        return getService().add(userId, routeId);
+    }
 
-	public static es.eina.tfg.model.UserSelectedRoutes getUserSelectedRoute(
-		java.lang.Long userId, java.lang.Long routeId)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException {
-		return getService().getUserSelectedRoute(userId, routeId);
-	}
+    public static es.eina.tfg.model.UserSelectedRoutes delete(
+        java.lang.Long userId, java.lang.Long routeId)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        return getService().delete(userId, routeId);
+    }
 
-	public static void clearService() {
-		_service = null;
-	}
+    public static es.eina.tfg.model.UserSelectedRoutes getUserSelectedRoute(
+        java.lang.Long userId, java.lang.Long routeId)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        return getService().getUserSelectedRoute(userId, routeId);
+    }
 
-	public static UserSelectedRoutesService getService() {
-		if (_service == null) {
-			InvokableService invokableService = (InvokableService)PortletBeanLocatorUtil.locate(ClpSerializer.getServletContextName(),
-					UserSelectedRoutesService.class.getName());
+    public static void clearService() {
+        _service = null;
+    }
 
-			if (invokableService instanceof UserSelectedRoutesService) {
-				_service = (UserSelectedRoutesService)invokableService;
-			}
-			else {
-				_service = new UserSelectedRoutesServiceClp(invokableService);
-			}
+    public static UserSelectedRoutesService getService() {
+        if (_service == null) {
+            InvokableService invokableService = (InvokableService) PortletBeanLocatorUtil.locate(ClpSerializer.getServletContextName(),
+                    UserSelectedRoutesService.class.getName());
 
-			ReferenceRegistry.registerReference(UserSelectedRoutesServiceUtil.class,
-				"_service");
-		}
+            if (invokableService instanceof UserSelectedRoutesService) {
+                _service = (UserSelectedRoutesService) invokableService;
+            } else {
+                _service = new UserSelectedRoutesServiceClp(invokableService);
+            }
 
-		return _service;
-	}
+            ReferenceRegistry.registerReference(UserSelectedRoutesServiceUtil.class,
+                "_service");
+        }
 
-	/**
-	 * @deprecated As of 6.2.0
-	 */
-	public void setService(UserSelectedRoutesService service) {
-	}
+        return _service;
+    }
 
-	private static UserSelectedRoutesService _service;
+    /**
+     * @deprecated As of 6.2.0
+     */
+    public void setService(UserSelectedRoutesService service) {
+    }
 }

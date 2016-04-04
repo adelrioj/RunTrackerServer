@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model;
 
 import com.liferay.portal.model.BaseModel;
@@ -38,129 +24,129 @@ import java.io.Serializable;
  * @generated
  */
 public interface Device_SensorModel extends BaseModel<Device_Sensor> {
-	/*
-	 * NOTE FOR DEVELOPERS:
-	 *
-	 * Never modify or reference this interface directly. All methods that expect a device_ sensor model instance should use the {@link Device_Sensor} interface instead.
-	 */
+    /*
+     * NOTE FOR DEVELOPERS:
+     *
+     * Never modify or reference this interface directly. All methods that expect a device_ sensor model instance should use the {@link Device_Sensor} interface instead.
+     */
 
-	/**
-	 * Returns the primary key of this device_ sensor.
-	 *
-	 * @return the primary key of this device_ sensor
-	 */
-	public Device_SensorPK getPrimaryKey();
+    /**
+     * Returns the primary key of this device_ sensor.
+     *
+     * @return the primary key of this device_ sensor
+     */
+    public Device_SensorPK getPrimaryKey();
 
-	/**
-	 * Sets the primary key of this device_ sensor.
-	 *
-	 * @param primaryKey the primary key of this device_ sensor
-	 */
-	public void setPrimaryKey(Device_SensorPK primaryKey);
+    /**
+     * Sets the primary key of this device_ sensor.
+     *
+     * @param primaryKey the primary key of this device_ sensor
+     */
+    public void setPrimaryKey(Device_SensorPK primaryKey);
 
-	/**
-	 * Returns the device ID of this device_ sensor.
-	 *
-	 * @return the device ID of this device_ sensor
-	 */
-	public long getDeviceId();
+    /**
+     * Returns the device ID of this device_ sensor.
+     *
+     * @return the device ID of this device_ sensor
+     */
+    public long getDeviceId();
 
-	/**
-	 * Sets the device ID of this device_ sensor.
-	 *
-	 * @param deviceId the device ID of this device_ sensor
-	 */
-	public void setDeviceId(long deviceId);
+    /**
+     * Sets the device ID of this device_ sensor.
+     *
+     * @param deviceId the device ID of this device_ sensor
+     */
+    public void setDeviceId(long deviceId);
 
-	/**
-	 * Returns the sensor ID of this device_ sensor.
-	 *
-	 * @return the sensor ID of this device_ sensor
-	 */
-	public long getSensorId();
+    /**
+     * Returns the sensor ID of this device_ sensor.
+     *
+     * @return the sensor ID of this device_ sensor
+     */
+    public long getSensorId();
 
-	/**
-	 * Sets the sensor ID of this device_ sensor.
-	 *
-	 * @param sensorId the sensor ID of this device_ sensor
-	 */
-	public void setSensorId(long sensorId);
+    /**
+     * Sets the sensor ID of this device_ sensor.
+     *
+     * @param sensorId the sensor ID of this device_ sensor
+     */
+    public void setSensorId(long sensorId);
 
-	/**
-	 * Returns the status of this device_ sensor.
-	 *
-	 * @return the status of this device_ sensor
-	 */
-	public boolean getStatus();
+    /**
+     * Returns the status of this device_ sensor.
+     *
+     * @return the status of this device_ sensor
+     */
+    public boolean getStatus();
 
-	/**
-	 * Returns <code>true</code> if this device_ sensor is status.
-	 *
-	 * @return <code>true</code> if this device_ sensor is status; <code>false</code> otherwise
-	 */
-	public boolean isStatus();
+    /**
+     * Returns <code>true</code> if this device_ sensor is status.
+     *
+     * @return <code>true</code> if this device_ sensor is status; <code>false</code> otherwise
+     */
+    public boolean isStatus();
 
-	/**
-	 * Sets whether this device_ sensor is status.
-	 *
-	 * @param status the status of this device_ sensor
-	 */
-	public void setStatus(boolean status);
+    /**
+     * Sets whether this device_ sensor is status.
+     *
+     * @param status the status of this device_ sensor
+     */
+    public void setStatus(boolean status);
 
-	@Override
-	public boolean isNew();
+    @Override
+    public boolean isNew();
 
-	@Override
-	public void setNew(boolean n);
+    @Override
+    public void setNew(boolean n);
 
-	@Override
-	public boolean isCachedModel();
+    @Override
+    public boolean isCachedModel();
 
-	@Override
-	public void setCachedModel(boolean cachedModel);
+    @Override
+    public void setCachedModel(boolean cachedModel);
 
-	@Override
-	public boolean isEscapedModel();
+    @Override
+    public boolean isEscapedModel();
 
-	@Override
-	public Serializable getPrimaryKeyObj();
+    @Override
+    public Serializable getPrimaryKeyObj();
 
-	@Override
-	public void setPrimaryKeyObj(Serializable primaryKeyObj);
+    @Override
+    public void setPrimaryKeyObj(Serializable primaryKeyObj);
 
-	@Override
-	public ExpandoBridge getExpandoBridge();
+    @Override
+    public ExpandoBridge getExpandoBridge();
 
-	@Override
-	public void setExpandoBridgeAttributes(BaseModel<?> baseModel);
+    @Override
+    public void setExpandoBridgeAttributes(BaseModel<?> baseModel);
 
-	@Override
-	public void setExpandoBridgeAttributes(ExpandoBridge expandoBridge);
+    @Override
+    public void setExpandoBridgeAttributes(ExpandoBridge expandoBridge);
 
-	@Override
-	public void setExpandoBridgeAttributes(ServiceContext serviceContext);
+    @Override
+    public void setExpandoBridgeAttributes(ServiceContext serviceContext);
 
-	@Override
-	public Object clone();
+    @Override
+    public Object clone();
 
-	@Override
-	public int compareTo(es.eina.tfg.model.Device_Sensor device_Sensor);
+    @Override
+    public int compareTo(es.eina.tfg.model.Device_Sensor device_Sensor);
 
-	@Override
-	public int hashCode();
+    @Override
+    public int hashCode();
 
-	@Override
-	public CacheModel<es.eina.tfg.model.Device_Sensor> toCacheModel();
+    @Override
+    public CacheModel<es.eina.tfg.model.Device_Sensor> toCacheModel();
 
-	@Override
-	public es.eina.tfg.model.Device_Sensor toEscapedModel();
+    @Override
+    public es.eina.tfg.model.Device_Sensor toEscapedModel();
 
-	@Override
-	public es.eina.tfg.model.Device_Sensor toUnescapedModel();
+    @Override
+    public es.eina.tfg.model.Device_Sensor toUnescapedModel();
 
-	@Override
-	public String toString();
+    @Override
+    public String toString();
 
-	@Override
-	public String toXmlString();
+    @Override
+    public String toXmlString();
 }

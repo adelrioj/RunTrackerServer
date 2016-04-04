@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model;
 
 import java.io.Serializable;
@@ -28,189 +14,188 @@ import java.util.List;
  * @generated
  */
 public class LocationSoap implements Serializable {
-	public static LocationSoap toSoapModel(Location model) {
-		LocationSoap soapModel = new LocationSoap();
+    private long _measurementId;
+    private Long _raceId;
+    private long _userId;
+    private long _deviceId;
+    private long _sensorId;
+    private Date _time;
+    private String _sensorMode;
+    private int _sysRef;
+    private double _latitude;
+    private double _longitude;
+    private double _speed;
+    private double _distance;
+    private double _altitude;
 
-		soapModel.setMeasurementId(model.getMeasurementId());
-		soapModel.setRaceId(model.getRaceId());
-		soapModel.setUserId(model.getUserId());
-		soapModel.setDeviceId(model.getDeviceId());
-		soapModel.setSensorId(model.getSensorId());
-		soapModel.setTime(model.getTime());
-		soapModel.setSensorMode(model.getSensorMode());
-		soapModel.setSysRef(model.getSysRef());
-		soapModel.setLatitude(model.getLatitude());
-		soapModel.setLongitude(model.getLongitude());
-		soapModel.setSpeed(model.getSpeed());
-		soapModel.setDistance(model.getDistance());
-		soapModel.setAltitude(model.getAltitude());
+    public LocationSoap() {
+    }
 
-		return soapModel;
-	}
+    public static LocationSoap toSoapModel(Location model) {
+        LocationSoap soapModel = new LocationSoap();
 
-	public static LocationSoap[] toSoapModels(Location[] models) {
-		LocationSoap[] soapModels = new LocationSoap[models.length];
+        soapModel.setMeasurementId(model.getMeasurementId());
+        soapModel.setRaceId(model.getRaceId());
+        soapModel.setUserId(model.getUserId());
+        soapModel.setDeviceId(model.getDeviceId());
+        soapModel.setSensorId(model.getSensorId());
+        soapModel.setTime(model.getTime());
+        soapModel.setSensorMode(model.getSensorMode());
+        soapModel.setSysRef(model.getSysRef());
+        soapModel.setLatitude(model.getLatitude());
+        soapModel.setLongitude(model.getLongitude());
+        soapModel.setSpeed(model.getSpeed());
+        soapModel.setDistance(model.getDistance());
+        soapModel.setAltitude(model.getAltitude());
 
-		for (int i = 0; i < models.length; i++) {
-			soapModels[i] = toSoapModel(models[i]);
-		}
+        return soapModel;
+    }
 
-		return soapModels;
-	}
+    public static LocationSoap[] toSoapModels(Location[] models) {
+        LocationSoap[] soapModels = new LocationSoap[models.length];
 
-	public static LocationSoap[][] toSoapModels(Location[][] models) {
-		LocationSoap[][] soapModels = null;
+        for (int i = 0; i < models.length; i++) {
+            soapModels[i] = toSoapModel(models[i]);
+        }
 
-		if (models.length > 0) {
-			soapModels = new LocationSoap[models.length][models[0].length];
-		}
-		else {
-			soapModels = new LocationSoap[0][0];
-		}
+        return soapModels;
+    }
 
-		for (int i = 0; i < models.length; i++) {
-			soapModels[i] = toSoapModels(models[i]);
-		}
+    public static LocationSoap[][] toSoapModels(Location[][] models) {
+        LocationSoap[][] soapModels = null;
 
-		return soapModels;
-	}
+        if (models.length > 0) {
+            soapModels = new LocationSoap[models.length][models[0].length];
+        } else {
+            soapModels = new LocationSoap[0][0];
+        }
 
-	public static LocationSoap[] toSoapModels(List<Location> models) {
-		List<LocationSoap> soapModels = new ArrayList<LocationSoap>(models.size());
+        for (int i = 0; i < models.length; i++) {
+            soapModels[i] = toSoapModels(models[i]);
+        }
 
-		for (Location model : models) {
-			soapModels.add(toSoapModel(model));
-		}
+        return soapModels;
+    }
 
-		return soapModels.toArray(new LocationSoap[soapModels.size()]);
-	}
+    public static LocationSoap[] toSoapModels(List<Location> models) {
+        List<LocationSoap> soapModels = new ArrayList<LocationSoap>(models.size());
 
-	public LocationSoap() {
-	}
+        for (Location model : models) {
+            soapModels.add(toSoapModel(model));
+        }
 
-	public long getPrimaryKey() {
-		return _measurementId;
-	}
+        return soapModels.toArray(new LocationSoap[soapModels.size()]);
+    }
 
-	public void setPrimaryKey(long pk) {
-		setMeasurementId(pk);
-	}
+    public long getPrimaryKey() {
+        return _measurementId;
+    }
 
-	public long getMeasurementId() {
-		return _measurementId;
-	}
+    public void setPrimaryKey(long pk) {
+        setMeasurementId(pk);
+    }
 
-	public void setMeasurementId(long measurementId) {
-		_measurementId = measurementId;
-	}
+    public long getMeasurementId() {
+        return _measurementId;
+    }
 
-	public Long getRaceId() {
-		return _raceId;
-	}
+    public void setMeasurementId(long measurementId) {
+        _measurementId = measurementId;
+    }
 
-	public void setRaceId(Long raceId) {
-		_raceId = raceId;
-	}
+    public Long getRaceId() {
+        return _raceId;
+    }
 
-	public long getUserId() {
-		return _userId;
-	}
+    public void setRaceId(Long raceId) {
+        _raceId = raceId;
+    }
 
-	public void setUserId(long userId) {
-		_userId = userId;
-	}
+    public long getUserId() {
+        return _userId;
+    }
 
-	public long getDeviceId() {
-		return _deviceId;
-	}
+    public void setUserId(long userId) {
+        _userId = userId;
+    }
 
-	public void setDeviceId(long deviceId) {
-		_deviceId = deviceId;
-	}
+    public long getDeviceId() {
+        return _deviceId;
+    }
 
-	public long getSensorId() {
-		return _sensorId;
-	}
+    public void setDeviceId(long deviceId) {
+        _deviceId = deviceId;
+    }
 
-	public void setSensorId(long sensorId) {
-		_sensorId = sensorId;
-	}
+    public long getSensorId() {
+        return _sensorId;
+    }
 
-	public Date getTime() {
-		return _time;
-	}
+    public void setSensorId(long sensorId) {
+        _sensorId = sensorId;
+    }
 
-	public void setTime(Date time) {
-		_time = time;
-	}
+    public Date getTime() {
+        return _time;
+    }
 
-	public String getSensorMode() {
-		return _sensorMode;
-	}
+    public void setTime(Date time) {
+        _time = time;
+    }
 
-	public void setSensorMode(String sensorMode) {
-		_sensorMode = sensorMode;
-	}
+    public String getSensorMode() {
+        return _sensorMode;
+    }
 
-	public int getSysRef() {
-		return _sysRef;
-	}
+    public void setSensorMode(String sensorMode) {
+        _sensorMode = sensorMode;
+    }
 
-	public void setSysRef(int sysRef) {
-		_sysRef = sysRef;
-	}
+    public int getSysRef() {
+        return _sysRef;
+    }
 
-	public double getLatitude() {
-		return _latitude;
-	}
+    public void setSysRef(int sysRef) {
+        _sysRef = sysRef;
+    }
 
-	public void setLatitude(double latitude) {
-		_latitude = latitude;
-	}
+    public double getLatitude() {
+        return _latitude;
+    }
 
-	public double getLongitude() {
-		return _longitude;
-	}
+    public void setLatitude(double latitude) {
+        _latitude = latitude;
+    }
 
-	public void setLongitude(double longitude) {
-		_longitude = longitude;
-	}
+    public double getLongitude() {
+        return _longitude;
+    }
 
-	public double getSpeed() {
-		return _speed;
-	}
+    public void setLongitude(double longitude) {
+        _longitude = longitude;
+    }
 
-	public void setSpeed(double speed) {
-		_speed = speed;
-	}
+    public double getSpeed() {
+        return _speed;
+    }
 
-	public double getDistance() {
-		return _distance;
-	}
+    public void setSpeed(double speed) {
+        _speed = speed;
+    }
 
-	public void setDistance(double distance) {
-		_distance = distance;
-	}
+    public double getDistance() {
+        return _distance;
+    }
 
-	public double getAltitude() {
-		return _altitude;
-	}
+    public void setDistance(double distance) {
+        _distance = distance;
+    }
 
-	public void setAltitude(double altitude) {
-		_altitude = altitude;
-	}
+    public double getAltitude() {
+        return _altitude;
+    }
 
-	private long _measurementId;
-	private Long _raceId;
-	private long _userId;
-	private long _deviceId;
-	private long _sensorId;
-	private Date _time;
-	private String _sensorMode;
-	private int _sysRef;
-	private double _latitude;
-	private double _longitude;
-	private double _speed;
-	private double _distance;
-	private double _altitude;
+    public void setAltitude(double altitude) {
+        _altitude = altitude;
+    }
 }

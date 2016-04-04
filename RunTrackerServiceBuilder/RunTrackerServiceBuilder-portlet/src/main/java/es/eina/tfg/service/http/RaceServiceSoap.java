@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.service.http;
 
 import com.liferay.portal.kernel.log.Log;
@@ -62,81 +48,76 @@ import java.rmi.RemoteException;
  * @generated
  */
 public class RaceServiceSoap {
-	public static es.eina.tfg.model.RaceSoap add(java.lang.Long userId,
-		java.lang.Long routeId, java.lang.String type,
-		java.lang.Integer userHeight, java.lang.Integer userWeight)
-		throws RemoteException {
-		try {
-			es.eina.tfg.model.Race returnValue = RaceServiceUtil.add(userId,
-					routeId, type, userHeight, userWeight);
+    private static Log _log = LogFactoryUtil.getLog(RaceServiceSoap.class);
 
-			return es.eina.tfg.model.RaceSoap.toSoapModel(returnValue);
-		}
-		catch (Exception e) {
-			_log.error(e, e);
+    public static es.eina.tfg.model.RaceSoap add(java.lang.Long userId,
+        java.lang.Long routeId, java.lang.String type,
+        java.lang.Integer userHeight, java.lang.Integer userWeight)
+        throws RemoteException {
+        try {
+            es.eina.tfg.model.Race returnValue = RaceServiceUtil.add(userId,
+                    routeId, type, userHeight, userWeight);
 
-			throw new RemoteException(e.getMessage());
-		}
-	}
+            return es.eina.tfg.model.RaceSoap.toSoapModel(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
 
-	public static es.eina.tfg.model.RaceSoap update(java.lang.Long raceId,
-		java.lang.Long userId, java.lang.Long routeId, java.lang.String type,
-		java.lang.Integer userHeight, java.lang.Integer userWeight)
-		throws RemoteException {
-		try {
-			es.eina.tfg.model.Race returnValue = RaceServiceUtil.update(raceId,
-					userId, routeId, type, userHeight, userWeight);
+            throw new RemoteException(e.getMessage());
+        }
+    }
 
-			return es.eina.tfg.model.RaceSoap.toSoapModel(returnValue);
-		}
-		catch (Exception e) {
-			_log.error(e, e);
+    public static es.eina.tfg.model.RaceSoap update(java.lang.Long raceId,
+        java.lang.Long userId, java.lang.Long routeId, java.lang.String type,
+        java.lang.Integer userHeight, java.lang.Integer userWeight)
+        throws RemoteException {
+        try {
+            es.eina.tfg.model.Race returnValue = RaceServiceUtil.update(raceId,
+                    userId, routeId, type, userHeight, userWeight);
 
-			throw new RemoteException(e.getMessage());
-		}
-	}
+            return es.eina.tfg.model.RaceSoap.toSoapModel(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
 
-	public static es.eina.tfg.model.RaceSoap delete(java.lang.Long raceId)
-		throws RemoteException {
-		try {
-			es.eina.tfg.model.Race returnValue = RaceServiceUtil.delete(raceId);
+            throw new RemoteException(e.getMessage());
+        }
+    }
 
-			return es.eina.tfg.model.RaceSoap.toSoapModel(returnValue);
-		}
-		catch (Exception e) {
-			_log.error(e, e);
+    public static es.eina.tfg.model.RaceSoap delete(java.lang.Long raceId)
+        throws RemoteException {
+        try {
+            es.eina.tfg.model.Race returnValue = RaceServiceUtil.delete(raceId);
 
-			throw new RemoteException(e.getMessage());
-		}
-	}
+            return es.eina.tfg.model.RaceSoap.toSoapModel(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
 
-	public static es.eina.tfg.model.RaceSoap getRace(java.lang.Long raceId)
-		throws RemoteException {
-		try {
-			es.eina.tfg.model.Race returnValue = RaceServiceUtil.getRace(raceId);
+            throw new RemoteException(e.getMessage());
+        }
+    }
 
-			return es.eina.tfg.model.RaceSoap.toSoapModel(returnValue);
-		}
-		catch (Exception e) {
-			_log.error(e, e);
+    public static es.eina.tfg.model.RaceSoap getRace(java.lang.Long raceId)
+        throws RemoteException {
+        try {
+            es.eina.tfg.model.Race returnValue = RaceServiceUtil.getRace(raceId);
 
-			throw new RemoteException(e.getMessage());
-		}
-	}
+            return es.eina.tfg.model.RaceSoap.toSoapModel(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
 
-	public static es.eina.tfg.model.RaceSoap[] findByUserId(
-		java.lang.Long userId) throws RemoteException {
-		try {
-			java.util.List<es.eina.tfg.model.Race> returnValue = RaceServiceUtil.findByUserId(userId);
+            throw new RemoteException(e.getMessage());
+        }
+    }
 
-			return es.eina.tfg.model.RaceSoap.toSoapModels(returnValue);
-		}
-		catch (Exception e) {
-			_log.error(e, e);
+    public static es.eina.tfg.model.RaceSoap[] findByUserId(
+        java.lang.Long userId) throws RemoteException {
+        try {
+            java.util.List<es.eina.tfg.model.Race> returnValue = RaceServiceUtil.findByUserId(userId);
 
-			throw new RemoteException(e.getMessage());
-		}
-	}
+            return es.eina.tfg.model.RaceSoap.toSoapModels(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
 
-	private static Log _log = LogFactoryUtil.getLog(RaceServiceSoap.class);
+            throw new RemoteException(e.getMessage());
+        }
+    }
 }

@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model.impl;
 
 import com.liferay.portal.kernel.util.StringBundler;
@@ -33,224 +19,204 @@ import java.io.ObjectOutput;
  * @generated
  */
 public class DeviceCacheModel implements CacheModel<Device>, Externalizable {
-	@Override
-	public String toString() {
-		StringBundler sb = new StringBundler(25);
+    public long deviceId;
+    public long userId;
+    public String deviceUUID;
+    public String description;
+    public String status;
+    public String phoneNumber;
+    public String serverPhoneNumber;
+    public String smsPollTime;
+    public String smsTransmitPeriod;
+    public String cloudId;
+    public String serverIp;
+    public String httpTransmitPeriod;
 
-		sb.append("{deviceId=");
-		sb.append(deviceId);
-		sb.append(", userId=");
-		sb.append(userId);
-		sb.append(", deviceUUID=");
-		sb.append(deviceUUID);
-		sb.append(", description=");
-		sb.append(description);
-		sb.append(", status=");
-		sb.append(status);
-		sb.append(", phoneNumber=");
-		sb.append(phoneNumber);
-		sb.append(", serverPhoneNumber=");
-		sb.append(serverPhoneNumber);
-		sb.append(", smsPollTime=");
-		sb.append(smsPollTime);
-		sb.append(", smsTransmitPeriod=");
-		sb.append(smsTransmitPeriod);
-		sb.append(", cloudId=");
-		sb.append(cloudId);
-		sb.append(", serverIp=");
-		sb.append(serverIp);
-		sb.append(", httpTransmitPeriod=");
-		sb.append(httpTransmitPeriod);
-		sb.append("}");
+    @Override
+    public String toString() {
+        StringBundler sb = new StringBundler(25);
 
-		return sb.toString();
-	}
+        sb.append("{deviceId=");
+        sb.append(deviceId);
+        sb.append(", userId=");
+        sb.append(userId);
+        sb.append(", deviceUUID=");
+        sb.append(deviceUUID);
+        sb.append(", description=");
+        sb.append(description);
+        sb.append(", status=");
+        sb.append(status);
+        sb.append(", phoneNumber=");
+        sb.append(phoneNumber);
+        sb.append(", serverPhoneNumber=");
+        sb.append(serverPhoneNumber);
+        sb.append(", smsPollTime=");
+        sb.append(smsPollTime);
+        sb.append(", smsTransmitPeriod=");
+        sb.append(smsTransmitPeriod);
+        sb.append(", cloudId=");
+        sb.append(cloudId);
+        sb.append(", serverIp=");
+        sb.append(serverIp);
+        sb.append(", httpTransmitPeriod=");
+        sb.append(httpTransmitPeriod);
+        sb.append("}");
 
-	@Override
-	public Device toEntityModel() {
-		DeviceImpl deviceImpl = new DeviceImpl();
+        return sb.toString();
+    }
 
-		deviceImpl.setDeviceId(deviceId);
-		deviceImpl.setUserId(userId);
+    @Override
+    public Device toEntityModel() {
+        DeviceImpl deviceImpl = new DeviceImpl();
 
-		if (deviceUUID == null) {
-			deviceImpl.setDeviceUUID(StringPool.BLANK);
-		}
-		else {
-			deviceImpl.setDeviceUUID(deviceUUID);
-		}
+        deviceImpl.setDeviceId(deviceId);
+        deviceImpl.setUserId(userId);
 
-		if (description == null) {
-			deviceImpl.setDescription(StringPool.BLANK);
-		}
-		else {
-			deviceImpl.setDescription(description);
-		}
+        if (deviceUUID == null) {
+            deviceImpl.setDeviceUUID(StringPool.BLANK);
+        } else {
+            deviceImpl.setDeviceUUID(deviceUUID);
+        }
 
-		if (status == null) {
-			deviceImpl.setStatus(StringPool.BLANK);
-		}
-		else {
-			deviceImpl.setStatus(status);
-		}
+        if (description == null) {
+            deviceImpl.setDescription(StringPool.BLANK);
+        } else {
+            deviceImpl.setDescription(description);
+        }
 
-		if (phoneNumber == null) {
-			deviceImpl.setPhoneNumber(StringPool.BLANK);
-		}
-		else {
-			deviceImpl.setPhoneNumber(phoneNumber);
-		}
+        if (status == null) {
+            deviceImpl.setStatus(StringPool.BLANK);
+        } else {
+            deviceImpl.setStatus(status);
+        }
 
-		if (serverPhoneNumber == null) {
-			deviceImpl.setServerPhoneNumber(StringPool.BLANK);
-		}
-		else {
-			deviceImpl.setServerPhoneNumber(serverPhoneNumber);
-		}
+        if (phoneNumber == null) {
+            deviceImpl.setPhoneNumber(StringPool.BLANK);
+        } else {
+            deviceImpl.setPhoneNumber(phoneNumber);
+        }
 
-		if (smsPollTime == null) {
-			deviceImpl.setSmsPollTime(StringPool.BLANK);
-		}
-		else {
-			deviceImpl.setSmsPollTime(smsPollTime);
-		}
+        if (serverPhoneNumber == null) {
+            deviceImpl.setServerPhoneNumber(StringPool.BLANK);
+        } else {
+            deviceImpl.setServerPhoneNumber(serverPhoneNumber);
+        }
 
-		if (smsTransmitPeriod == null) {
-			deviceImpl.setSmsTransmitPeriod(StringPool.BLANK);
-		}
-		else {
-			deviceImpl.setSmsTransmitPeriod(smsTransmitPeriod);
-		}
+        if (smsPollTime == null) {
+            deviceImpl.setSmsPollTime(StringPool.BLANK);
+        } else {
+            deviceImpl.setSmsPollTime(smsPollTime);
+        }
 
-		if (cloudId == null) {
-			deviceImpl.setCloudId(StringPool.BLANK);
-		}
-		else {
-			deviceImpl.setCloudId(cloudId);
-		}
+        if (smsTransmitPeriod == null) {
+            deviceImpl.setSmsTransmitPeriod(StringPool.BLANK);
+        } else {
+            deviceImpl.setSmsTransmitPeriod(smsTransmitPeriod);
+        }
 
-		if (serverIp == null) {
-			deviceImpl.setServerIp(StringPool.BLANK);
-		}
-		else {
-			deviceImpl.setServerIp(serverIp);
-		}
+        if (cloudId == null) {
+            deviceImpl.setCloudId(StringPool.BLANK);
+        } else {
+            deviceImpl.setCloudId(cloudId);
+        }
 
-		if (httpTransmitPeriod == null) {
-			deviceImpl.setHttpTransmitPeriod(StringPool.BLANK);
-		}
-		else {
-			deviceImpl.setHttpTransmitPeriod(httpTransmitPeriod);
-		}
+        if (serverIp == null) {
+            deviceImpl.setServerIp(StringPool.BLANK);
+        } else {
+            deviceImpl.setServerIp(serverIp);
+        }
 
-		deviceImpl.resetOriginalValues();
+        if (httpTransmitPeriod == null) {
+            deviceImpl.setHttpTransmitPeriod(StringPool.BLANK);
+        } else {
+            deviceImpl.setHttpTransmitPeriod(httpTransmitPeriod);
+        }
 
-		return deviceImpl;
-	}
+        deviceImpl.resetOriginalValues();
 
-	@Override
-	public void readExternal(ObjectInput objectInput) throws IOException {
-		deviceId = objectInput.readLong();
-		userId = objectInput.readLong();
-		deviceUUID = objectInput.readUTF();
-		description = objectInput.readUTF();
-		status = objectInput.readUTF();
-		phoneNumber = objectInput.readUTF();
-		serverPhoneNumber = objectInput.readUTF();
-		smsPollTime = objectInput.readUTF();
-		smsTransmitPeriod = objectInput.readUTF();
-		cloudId = objectInput.readUTF();
-		serverIp = objectInput.readUTF();
-		httpTransmitPeriod = objectInput.readUTF();
-	}
+        return deviceImpl;
+    }
 
-	@Override
-	public void writeExternal(ObjectOutput objectOutput)
-		throws IOException {
-		objectOutput.writeLong(deviceId);
-		objectOutput.writeLong(userId);
+    @Override
+    public void readExternal(ObjectInput objectInput) throws IOException {
+        deviceId = objectInput.readLong();
+        userId = objectInput.readLong();
+        deviceUUID = objectInput.readUTF();
+        description = objectInput.readUTF();
+        status = objectInput.readUTF();
+        phoneNumber = objectInput.readUTF();
+        serverPhoneNumber = objectInput.readUTF();
+        smsPollTime = objectInput.readUTF();
+        smsTransmitPeriod = objectInput.readUTF();
+        cloudId = objectInput.readUTF();
+        serverIp = objectInput.readUTF();
+        httpTransmitPeriod = objectInput.readUTF();
+    }
 
-		if (deviceUUID == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(deviceUUID);
-		}
+    @Override
+    public void writeExternal(ObjectOutput objectOutput)
+        throws IOException {
+        objectOutput.writeLong(deviceId);
+        objectOutput.writeLong(userId);
 
-		if (description == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(description);
-		}
+        if (deviceUUID == null) {
+            objectOutput.writeUTF(StringPool.BLANK);
+        } else {
+            objectOutput.writeUTF(deviceUUID);
+        }
 
-		if (status == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(status);
-		}
+        if (description == null) {
+            objectOutput.writeUTF(StringPool.BLANK);
+        } else {
+            objectOutput.writeUTF(description);
+        }
 
-		if (phoneNumber == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(phoneNumber);
-		}
+        if (status == null) {
+            objectOutput.writeUTF(StringPool.BLANK);
+        } else {
+            objectOutput.writeUTF(status);
+        }
 
-		if (serverPhoneNumber == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(serverPhoneNumber);
-		}
+        if (phoneNumber == null) {
+            objectOutput.writeUTF(StringPool.BLANK);
+        } else {
+            objectOutput.writeUTF(phoneNumber);
+        }
 
-		if (smsPollTime == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(smsPollTime);
-		}
+        if (serverPhoneNumber == null) {
+            objectOutput.writeUTF(StringPool.BLANK);
+        } else {
+            objectOutput.writeUTF(serverPhoneNumber);
+        }
 
-		if (smsTransmitPeriod == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(smsTransmitPeriod);
-		}
+        if (smsPollTime == null) {
+            objectOutput.writeUTF(StringPool.BLANK);
+        } else {
+            objectOutput.writeUTF(smsPollTime);
+        }
 
-		if (cloudId == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(cloudId);
-		}
+        if (smsTransmitPeriod == null) {
+            objectOutput.writeUTF(StringPool.BLANK);
+        } else {
+            objectOutput.writeUTF(smsTransmitPeriod);
+        }
 
-		if (serverIp == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(serverIp);
-		}
+        if (cloudId == null) {
+            objectOutput.writeUTF(StringPool.BLANK);
+        } else {
+            objectOutput.writeUTF(cloudId);
+        }
 
-		if (httpTransmitPeriod == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(httpTransmitPeriod);
-		}
-	}
+        if (serverIp == null) {
+            objectOutput.writeUTF(StringPool.BLANK);
+        } else {
+            objectOutput.writeUTF(serverIp);
+        }
 
-	public long deviceId;
-	public long userId;
-	public String deviceUUID;
-	public String description;
-	public String status;
-	public String phoneNumber;
-	public String serverPhoneNumber;
-	public String smsPollTime;
-	public String smsTransmitPeriod;
-	public String cloudId;
-	public String serverIp;
-	public String httpTransmitPeriod;
+        if (httpTransmitPeriod == null) {
+            objectOutput.writeUTF(StringPool.BLANK);
+        } else {
+            objectOutput.writeUTF(httpTransmitPeriod);
+        }
+    }
 }

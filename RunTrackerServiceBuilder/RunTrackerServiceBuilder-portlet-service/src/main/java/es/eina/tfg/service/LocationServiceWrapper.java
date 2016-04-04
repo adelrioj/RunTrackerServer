@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.service;
 
 import com.liferay.portal.service.ServiceWrapper;
@@ -24,109 +10,109 @@ import com.liferay.portal.service.ServiceWrapper;
  * @generated
  */
 public class LocationServiceWrapper implements LocationService,
-	ServiceWrapper<LocationService> {
-	public LocationServiceWrapper(LocationService locationService) {
-		_locationService = locationService;
-	}
+    ServiceWrapper<LocationService> {
+    private LocationService _locationService;
 
-	/**
-	* Returns the Spring bean ID for this bean.
-	*
-	* @return the Spring bean ID for this bean
-	*/
-	@Override
-	public java.lang.String getBeanIdentifier() {
-		return _locationService.getBeanIdentifier();
-	}
+    public LocationServiceWrapper(LocationService locationService) {
+        _locationService = locationService;
+    }
 
-	/**
-	* Sets the Spring bean ID for this bean.
-	*
-	* @param beanIdentifier the Spring bean ID for this bean
-	*/
-	@Override
-	public void setBeanIdentifier(java.lang.String beanIdentifier) {
-		_locationService.setBeanIdentifier(beanIdentifier);
-	}
+    /**
+    * Returns the Spring bean ID for this bean.
+    *
+    * @return the Spring bean ID for this bean
+    */
+    @Override
+    public java.lang.String getBeanIdentifier() {
+        return _locationService.getBeanIdentifier();
+    }
 
-	@Override
-	public java.lang.Object invokeMethod(java.lang.String name,
-		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
-		throws java.lang.Throwable {
-		return _locationService.invokeMethod(name, parameterTypes, arguments);
-	}
+    /**
+    * Sets the Spring bean ID for this bean.
+    *
+    * @param beanIdentifier the Spring bean ID for this bean
+    */
+    @Override
+    public void setBeanIdentifier(java.lang.String beanIdentifier) {
+        _locationService.setBeanIdentifier(beanIdentifier);
+    }
 
-	@Override
-	public es.eina.tfg.model.Location add(java.lang.Long raceId,
-		java.lang.Long userId, java.lang.Long deviceId,
-		java.lang.Long sensorId, java.util.Date time,
-		java.lang.String sensorMode, int sysRef, double latitude,
-		double longitude, double speed, double distance, double altitude)
-		throws com.liferay.portal.kernel.exception.SystemException,
-			es.eina.tfg.NonExistingDeviceAndSensorRelationException,
-			es.eina.tfg.NonExistingRaceException,
-			es.eina.tfg.NonExistingUserException {
-		return _locationService.add(raceId, userId, deviceId, sensorId, time,
-			sensorMode, sysRef, latitude, longitude, speed, distance, altitude);
-	}
+    @Override
+    public java.lang.Object invokeMethod(java.lang.String name,
+        java.lang.String[] parameterTypes, java.lang.Object[] arguments)
+        throws java.lang.Throwable {
+        return _locationService.invokeMethod(name, parameterTypes, arguments);
+    }
 
-	@Override
-	public es.eina.tfg.model.Location update(java.lang.Long measurementId,
-		java.lang.Long raceId, java.lang.Long userId, java.lang.Long deviceId,
-		java.lang.Long sensorId, java.util.Date time,
-		java.lang.String sensorMode, int sysRef, double latitude,
-		double longitude, double speed, double distance, double altitude)
-		throws com.liferay.portal.kernel.exception.SystemException,
-			es.eina.tfg.NonExistingMeasurementException {
-		return _locationService.update(measurementId, raceId, userId, deviceId,
-			sensorId, time, sensorMode, sysRef, latitude, longitude, speed,
-			distance, altitude);
-	}
+    @Override
+    public es.eina.tfg.model.Location add(java.lang.Long raceId,
+        java.lang.Long userId, java.lang.Long deviceId,
+        java.lang.Long sensorId, java.util.Date time,
+        java.lang.String sensorMode, int sysRef, double latitude,
+        double longitude, double speed, double distance, double altitude)
+        throws com.liferay.portal.kernel.exception.SystemException,
+            es.eina.tfg.NonExistingDeviceAndSensorRelationException,
+            es.eina.tfg.NonExistingRaceException,
+            es.eina.tfg.NonExistingUserException {
+        return _locationService.add(raceId, userId, deviceId, sensorId, time,
+            sensorMode, sysRef, latitude, longitude, speed, distance, altitude);
+    }
 
-	@Override
-	public es.eina.tfg.model.Location delete(java.lang.Long measurementId)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException {
-		return _locationService.delete(measurementId);
-	}
+    @Override
+    public es.eina.tfg.model.Location update(java.lang.Long measurementId,
+        java.lang.Long raceId, java.lang.Long userId, java.lang.Long deviceId,
+        java.lang.Long sensorId, java.util.Date time,
+        java.lang.String sensorMode, int sysRef, double latitude,
+        double longitude, double speed, double distance, double altitude)
+        throws com.liferay.portal.kernel.exception.SystemException,
+            es.eina.tfg.NonExistingMeasurementException {
+        return _locationService.update(measurementId, raceId, userId, deviceId,
+            sensorId, time, sensorMode, sysRef, latitude, longitude, speed,
+            distance, altitude);
+    }
 
-	@Override
-	public es.eina.tfg.model.Location getLocation(java.lang.Long measurementId)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException {
-		return _locationService.getLocation(measurementId);
-	}
+    @Override
+    public es.eina.tfg.model.Location delete(java.lang.Long measurementId)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        return _locationService.delete(measurementId);
+    }
 
-	@Override
-	public java.util.List<es.eina.tfg.model.Location> findByRaceId(
-		java.lang.Long raceId)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		return _locationService.findByRaceId(raceId);
-	}
+    @Override
+    public es.eina.tfg.model.Location getLocation(java.lang.Long measurementId)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        return _locationService.getLocation(measurementId);
+    }
 
-	/**
-	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
-	 */
-	public LocationService getWrappedLocationService() {
-		return _locationService;
-	}
+    @Override
+    public java.util.List<es.eina.tfg.model.Location> findByRaceId(
+        java.lang.Long raceId)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _locationService.findByRaceId(raceId);
+    }
 
-	/**
-	 * @deprecated As of 6.1.0, replaced by {@link #setWrappedService}
-	 */
-	public void setWrappedLocationService(LocationService locationService) {
-		_locationService = locationService;
-	}
+    /**
+     * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
+     */
+    public LocationService getWrappedLocationService() {
+        return _locationService;
+    }
 
-	@Override
-	public LocationService getWrappedService() {
-		return _locationService;
-	}
+    /**
+     * @deprecated As of 6.1.0, replaced by {@link #setWrappedService}
+     */
+    public void setWrappedLocationService(LocationService locationService) {
+        _locationService = locationService;
+    }
 
-	@Override
-	public void setWrappedService(LocationService locationService) {
-		_locationService = locationService;
-	}
+    @Override
+    public LocationService getWrappedService() {
+        return _locationService;
+    }
 
-	private LocationService _locationService;
+    @Override
+    public void setWrappedService(LocationService locationService) {
+        _locationService = locationService;
+    }
 }

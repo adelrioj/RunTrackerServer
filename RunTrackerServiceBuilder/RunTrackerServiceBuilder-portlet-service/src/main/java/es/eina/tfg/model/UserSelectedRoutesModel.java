@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model;
 
 import com.liferay.portal.kernel.exception.SystemException;
@@ -39,124 +25,124 @@ import java.io.Serializable;
  * @generated
  */
 public interface UserSelectedRoutesModel extends BaseModel<UserSelectedRoutes> {
-	/*
-	 * NOTE FOR DEVELOPERS:
-	 *
-	 * Never modify or reference this interface directly. All methods that expect a user selected routes model instance should use the {@link UserSelectedRoutes} interface instead.
-	 */
+    /*
+     * NOTE FOR DEVELOPERS:
+     *
+     * Never modify or reference this interface directly. All methods that expect a user selected routes model instance should use the {@link UserSelectedRoutes} interface instead.
+     */
 
-	/**
-	 * Returns the primary key of this user selected routes.
-	 *
-	 * @return the primary key of this user selected routes
-	 */
-	public UserSelectedRoutesPK getPrimaryKey();
+    /**
+     * Returns the primary key of this user selected routes.
+     *
+     * @return the primary key of this user selected routes
+     */
+    public UserSelectedRoutesPK getPrimaryKey();
 
-	/**
-	 * Sets the primary key of this user selected routes.
-	 *
-	 * @param primaryKey the primary key of this user selected routes
-	 */
-	public void setPrimaryKey(UserSelectedRoutesPK primaryKey);
+    /**
+     * Sets the primary key of this user selected routes.
+     *
+     * @param primaryKey the primary key of this user selected routes
+     */
+    public void setPrimaryKey(UserSelectedRoutesPK primaryKey);
 
-	/**
-	 * Returns the user ID of this user selected routes.
-	 *
-	 * @return the user ID of this user selected routes
-	 */
-	public long getUserId();
+    /**
+     * Returns the user ID of this user selected routes.
+     *
+     * @return the user ID of this user selected routes
+     */
+    public long getUserId();
 
-	/**
-	 * Sets the user ID of this user selected routes.
-	 *
-	 * @param userId the user ID of this user selected routes
-	 */
-	public void setUserId(long userId);
+    /**
+     * Sets the user ID of this user selected routes.
+     *
+     * @param userId the user ID of this user selected routes
+     */
+    public void setUserId(long userId);
 
-	/**
-	 * Returns the user uuid of this user selected routes.
-	 *
-	 * @return the user uuid of this user selected routes
-	 * @throws SystemException if a system exception occurred
-	 */
-	public String getUserUuid() throws SystemException;
+    /**
+     * Returns the user uuid of this user selected routes.
+     *
+     * @return the user uuid of this user selected routes
+     * @throws SystemException if a system exception occurred
+     */
+    public String getUserUuid() throws SystemException;
 
-	/**
-	 * Sets the user uuid of this user selected routes.
-	 *
-	 * @param userUuid the user uuid of this user selected routes
-	 */
-	public void setUserUuid(String userUuid);
+    /**
+     * Sets the user uuid of this user selected routes.
+     *
+     * @param userUuid the user uuid of this user selected routes
+     */
+    public void setUserUuid(String userUuid);
 
-	/**
-	 * Returns the route ID of this user selected routes.
-	 *
-	 * @return the route ID of this user selected routes
-	 */
-	public long getRouteId();
+    /**
+     * Returns the route ID of this user selected routes.
+     *
+     * @return the route ID of this user selected routes
+     */
+    public long getRouteId();
 
-	/**
-	 * Sets the route ID of this user selected routes.
-	 *
-	 * @param routeId the route ID of this user selected routes
-	 */
-	public void setRouteId(long routeId);
+    /**
+     * Sets the route ID of this user selected routes.
+     *
+     * @param routeId the route ID of this user selected routes
+     */
+    public void setRouteId(long routeId);
 
-	@Override
-	public boolean isNew();
+    @Override
+    public boolean isNew();
 
-	@Override
-	public void setNew(boolean n);
+    @Override
+    public void setNew(boolean n);
 
-	@Override
-	public boolean isCachedModel();
+    @Override
+    public boolean isCachedModel();
 
-	@Override
-	public void setCachedModel(boolean cachedModel);
+    @Override
+    public void setCachedModel(boolean cachedModel);
 
-	@Override
-	public boolean isEscapedModel();
+    @Override
+    public boolean isEscapedModel();
 
-	@Override
-	public Serializable getPrimaryKeyObj();
+    @Override
+    public Serializable getPrimaryKeyObj();
 
-	@Override
-	public void setPrimaryKeyObj(Serializable primaryKeyObj);
+    @Override
+    public void setPrimaryKeyObj(Serializable primaryKeyObj);
 
-	@Override
-	public ExpandoBridge getExpandoBridge();
+    @Override
+    public ExpandoBridge getExpandoBridge();
 
-	@Override
-	public void setExpandoBridgeAttributes(BaseModel<?> baseModel);
+    @Override
+    public void setExpandoBridgeAttributes(BaseModel<?> baseModel);
 
-	@Override
-	public void setExpandoBridgeAttributes(ExpandoBridge expandoBridge);
+    @Override
+    public void setExpandoBridgeAttributes(ExpandoBridge expandoBridge);
 
-	@Override
-	public void setExpandoBridgeAttributes(ServiceContext serviceContext);
+    @Override
+    public void setExpandoBridgeAttributes(ServiceContext serviceContext);
 
-	@Override
-	public Object clone();
+    @Override
+    public Object clone();
 
-	@Override
-	public int compareTo(
-		es.eina.tfg.model.UserSelectedRoutes userSelectedRoutes);
+    @Override
+    public int compareTo(
+        es.eina.tfg.model.UserSelectedRoutes userSelectedRoutes);
 
-	@Override
-	public int hashCode();
+    @Override
+    public int hashCode();
 
-	@Override
-	public CacheModel<es.eina.tfg.model.UserSelectedRoutes> toCacheModel();
+    @Override
+    public CacheModel<es.eina.tfg.model.UserSelectedRoutes> toCacheModel();
 
-	@Override
-	public es.eina.tfg.model.UserSelectedRoutes toEscapedModel();
+    @Override
+    public es.eina.tfg.model.UserSelectedRoutes toEscapedModel();
 
-	@Override
-	public es.eina.tfg.model.UserSelectedRoutes toUnescapedModel();
+    @Override
+    public es.eina.tfg.model.UserSelectedRoutes toUnescapedModel();
 
-	@Override
-	public String toString();
+    @Override
+    public String toString();
 
-	@Override
-	public String toXmlString();
+    @Override
+    public String toXmlString();
 }

@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model.impl;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
@@ -59,522 +45,517 @@ import java.util.Map;
  */
 @JSON(strict = true)
 public class PowerModelImpl extends BaseModelImpl<Power> implements PowerModel {
-	/*
-	 * NOTE FOR DEVELOPERS:
-	 *
-	 * Never modify or reference this class directly. All methods that expect a power model instance should use the {@link es.eina.tfg.model.Power} interface instead.
-	 */
-	public static final String TABLE_NAME = "GL_Power";
-	public static final Object[][] TABLE_COLUMNS = {
-			{ "measurementId", Types.BIGINT },
-			{ "raceId", Types.BIGINT },
-			{ "userId", Types.BIGINT },
-			{ "deviceId", Types.BIGINT },
-			{ "sensorId", Types.BIGINT },
-			{ "time_", Types.TIMESTAMP },
-			{ "sensorMode", Types.VARCHAR },
-			{ "level", Types.INTEGER }
-		};
-	public static final String TABLE_SQL_CREATE = "create table GL_Power (measurementId LONG not null primary key,raceId LONG,userId LONG,deviceId LONG,sensorId LONG,time_ DATE null,sensorMode VARCHAR(75) null,level INTEGER)";
-	public static final String TABLE_SQL_DROP = "drop table GL_Power";
-	public static final String ORDER_BY_JPQL = " ORDER BY power.time ASC";
-	public static final String ORDER_BY_SQL = " ORDER BY GL_Power.time_ ASC";
-	public static final String DATA_SOURCE = "liferayDataSource";
-	public static final String SESSION_FACTORY = "liferaySessionFactory";
-	public static final String TX_MANAGER = "liferayTransactionManager";
-	public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
-				"value.object.entity.cache.enabled.es.eina.tfg.model.Power"),
-			true);
-	public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
-				"value.object.finder.cache.enabled.es.eina.tfg.model.Power"),
-			true);
-	public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
-				"value.object.column.bitmask.enabled.es.eina.tfg.model.Power"),
-			true);
-	public static long RACEID_COLUMN_BITMASK = 1L;
-	public static long TIME_COLUMN_BITMASK = 2L;
-
-	/**
-	 * Converts the soap model instance into a normal model instance.
-	 *
-	 * @param soapModel the soap model instance to convert
-	 * @return the normal model instance
-	 */
-	public static Power toModel(PowerSoap soapModel) {
-		if (soapModel == null) {
-			return null;
-		}
-
-		Power model = new PowerImpl();
-
-		model.setMeasurementId(soapModel.getMeasurementId());
-		model.setRaceId(soapModel.getRaceId());
-		model.setUserId(soapModel.getUserId());
-		model.setDeviceId(soapModel.getDeviceId());
-		model.setSensorId(soapModel.getSensorId());
-		model.setTime(soapModel.getTime());
-		model.setSensorMode(soapModel.getSensorMode());
-		model.setLevel(soapModel.getLevel());
-
-		return model;
-	}
-
-	/**
-	 * Converts the soap model instances into normal model instances.
-	 *
-	 * @param soapModels the soap model instances to convert
-	 * @return the normal model instances
-	 */
-	public static List<Power> toModels(PowerSoap[] soapModels) {
-		if (soapModels == null) {
-			return null;
-		}
-
-		List<Power> models = new ArrayList<Power>(soapModels.length);
-
-		for (PowerSoap soapModel : soapModels) {
-			models.add(toModel(soapModel));
-		}
-
-		return models;
-	}
-
-	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
-				"lock.expiration.time.es.eina.tfg.model.Power"));
-
-	public PowerModelImpl() {
-	}
-
-	@Override
-	public long getPrimaryKey() {
-		return _measurementId;
-	}
-
-	@Override
-	public void setPrimaryKey(long primaryKey) {
-		setMeasurementId(primaryKey);
-	}
-
-	@Override
-	public Serializable getPrimaryKeyObj() {
-		return _measurementId;
-	}
-
-	@Override
-	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
-		setPrimaryKey(((Long)primaryKeyObj).longValue());
-	}
+    /*
+     * NOTE FOR DEVELOPERS:
+     *
+     * Never modify or reference this class directly. All methods that expect a power model instance should use the {@link es.eina.tfg.model.Power} interface instead.
+     */
+    public static final String TABLE_NAME = "GL_Power";
+    public static final Object[][] TABLE_COLUMNS = {
+            { "measurementId", Types.BIGINT },
+            { "raceId", Types.BIGINT },
+            { "userId", Types.BIGINT },
+            { "deviceId", Types.BIGINT },
+            { "sensorId", Types.BIGINT },
+            { "time_", Types.TIMESTAMP },
+            { "sensorMode", Types.VARCHAR },
+            { "level", Types.INTEGER }
+        };
+    public static final String TABLE_SQL_CREATE = "create table GL_Power (measurementId LONG not null primary key,raceId LONG,userId LONG,deviceId LONG,sensorId LONG,time_ DATE null,sensorMode VARCHAR(75) null,level INTEGER)";
+    public static final String TABLE_SQL_DROP = "drop table GL_Power";
+    public static final String ORDER_BY_JPQL = " ORDER BY power.time ASC";
+    public static final String ORDER_BY_SQL = " ORDER BY GL_Power.time_ ASC";
+    public static final String DATA_SOURCE = "liferayDataSource";
+    public static final String SESSION_FACTORY = "liferaySessionFactory";
+    public static final String TX_MANAGER = "liferayTransactionManager";
+    public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
+                "value.object.entity.cache.enabled.es.eina.tfg.model.Power"),
+            true);
+    public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
+                "value.object.finder.cache.enabled.es.eina.tfg.model.Power"),
+            true);
+    public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
+                "value.object.column.bitmask.enabled.es.eina.tfg.model.Power"),
+            true);
+    public static long RACEID_COLUMN_BITMASK = 1L;
+    public static long TIME_COLUMN_BITMASK = 2L;
+    public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
+                "lock.expiration.time.es.eina.tfg.model.Power"));
+    private static ClassLoader _classLoader = Power.class.getClassLoader();
+    private static Class<?>[] _escapedModelInterfaces = new Class[] { Power.class };
+    private long _measurementId;
+    private long _raceId;
+    private long _originalRaceId;
+    private boolean _setOriginalRaceId;
+    private long _userId;
+    private String _userUuid;
+    private long _deviceId;
+    private long _sensorId;
+    private Date _time;
+    private String _sensorMode;
+    private int _level;
+    private long _columnBitmask;
+    private Power _escapedModel;
+
+    public PowerModelImpl() {
+    }
+
+    /**
+     * Converts the soap model instance into a normal model instance.
+     *
+     * @param soapModel the soap model instance to convert
+     * @return the normal model instance
+     */
+    public static Power toModel(PowerSoap soapModel) {
+        if (soapModel == null) {
+            return null;
+        }
+
+        Power model = new PowerImpl();
+
+        model.setMeasurementId(soapModel.getMeasurementId());
+        model.setRaceId(soapModel.getRaceId());
+        model.setUserId(soapModel.getUserId());
+        model.setDeviceId(soapModel.getDeviceId());
+        model.setSensorId(soapModel.getSensorId());
+        model.setTime(soapModel.getTime());
+        model.setSensorMode(soapModel.getSensorMode());
+        model.setLevel(soapModel.getLevel());
+
+        return model;
+    }
+
+    /**
+     * Converts the soap model instances into normal model instances.
+     *
+     * @param soapModels the soap model instances to convert
+     * @return the normal model instances
+     */
+    public static List<Power> toModels(PowerSoap[] soapModels) {
+        if (soapModels == null) {
+            return null;
+        }
+
+        List<Power> models = new ArrayList<Power>(soapModels.length);
+
+        for (PowerSoap soapModel : soapModels) {
+            models.add(toModel(soapModel));
+        }
+
+        return models;
+    }
+
+    @Override
+    public long getPrimaryKey() {
+        return _measurementId;
+    }
 
-	@Override
-	public Class<?> getModelClass() {
-		return Power.class;
-	}
+    @Override
+    public void setPrimaryKey(long primaryKey) {
+        setMeasurementId(primaryKey);
+    }
+
+    @Override
+    public Serializable getPrimaryKeyObj() {
+        return _measurementId;
+    }
+
+    @Override
+    public void setPrimaryKeyObj(Serializable primaryKeyObj) {
+        setPrimaryKey(((Long) primaryKeyObj).longValue());
+    }
+
+    @Override
+    public Class<?> getModelClass() {
+        return Power.class;
+    }
 
-	@Override
-	public String getModelClassName() {
-		return Power.class.getName();
-	}
-
-	@Override
-	public Map<String, Object> getModelAttributes() {
-		Map<String, Object> attributes = new HashMap<String, Object>();
-
-		attributes.put("measurementId", getMeasurementId());
-		attributes.put("raceId", getRaceId());
-		attributes.put("userId", getUserId());
-		attributes.put("deviceId", getDeviceId());
-		attributes.put("sensorId", getSensorId());
-		attributes.put("time", getTime());
-		attributes.put("sensorMode", getSensorMode());
-		attributes.put("level", getLevel());
-
-		return attributes;
-	}
-
-	@Override
-	public void setModelAttributes(Map<String, Object> attributes) {
-		Long measurementId = (Long)attributes.get("measurementId");
-
-		if (measurementId != null) {
-			setMeasurementId(measurementId);
-		}
-
-		Long raceId = (Long)attributes.get("raceId");
-
-		if (raceId != null) {
-			setRaceId(raceId);
-		}
-
-		Long userId = (Long)attributes.get("userId");
-
-		if (userId != null) {
-			setUserId(userId);
-		}
-
-		Long deviceId = (Long)attributes.get("deviceId");
-
-		if (deviceId != null) {
-			setDeviceId(deviceId);
-		}
-
-		Long sensorId = (Long)attributes.get("sensorId");
-
-		if (sensorId != null) {
-			setSensorId(sensorId);
-		}
-
-		Date time = (Date)attributes.get("time");
-
-		if (time != null) {
-			setTime(time);
-		}
-
-		String sensorMode = (String)attributes.get("sensorMode");
-
-		if (sensorMode != null) {
-			setSensorMode(sensorMode);
-		}
-
-		Integer level = (Integer)attributes.get("level");
-
-		if (level != null) {
-			setLevel(level);
-		}
-	}
-
-	@JSON
-	@Override
-	public long getMeasurementId() {
-		return _measurementId;
-	}
-
-	@Override
-	public void setMeasurementId(long measurementId) {
-		_measurementId = measurementId;
-	}
-
-	@JSON
-	@Override
-	public long getRaceId() {
-		return _raceId;
-	}
-
-	@Override
-	public void setRaceId(long raceId) {
-		_columnBitmask |= RACEID_COLUMN_BITMASK;
-
-		if (!_setOriginalRaceId) {
-			_setOriginalRaceId = true;
-
-			_originalRaceId = _raceId;
-		}
-
-		_raceId = raceId;
-	}
-
-	public long getOriginalRaceId() {
-		return _originalRaceId;
-	}
-
-	@JSON
-	@Override
-	public long getUserId() {
-		return _userId;
-	}
-
-	@Override
-	public void setUserId(long userId) {
-		_userId = userId;
-	}
-
-	@Override
-	public String getUserUuid() throws SystemException {
-		return PortalUtil.getUserValue(getUserId(), "uuid", _userUuid);
-	}
-
-	@Override
-	public void setUserUuid(String userUuid) {
-		_userUuid = userUuid;
-	}
-
-	@JSON
-	@Override
-	public long getDeviceId() {
-		return _deviceId;
-	}
-
-	@Override
-	public void setDeviceId(long deviceId) {
-		_deviceId = deviceId;
-	}
-
-	@JSON
-	@Override
-	public long getSensorId() {
-		return _sensorId;
-	}
-
-	@Override
-	public void setSensorId(long sensorId) {
-		_sensorId = sensorId;
-	}
-
-	@JSON
-	@Override
-	public Date getTime() {
-		return _time;
-	}
-
-	@Override
-	public void setTime(Date time) {
-		_columnBitmask = -1L;
-
-		_time = time;
-	}
-
-	@JSON
-	@Override
-	public String getSensorMode() {
-		if (_sensorMode == null) {
-			return StringPool.BLANK;
-		}
-		else {
-			return _sensorMode;
-		}
-	}
-
-	@Override
-	public void setSensorMode(String sensorMode) {
-		_sensorMode = sensorMode;
-	}
-
-	@JSON
-	@Override
-	public int getLevel() {
-		return _level;
-	}
-
-	@Override
-	public void setLevel(int level) {
-		_level = level;
-	}
-
-	public long getColumnBitmask() {
-		return _columnBitmask;
-	}
-
-	@Override
-	public ExpandoBridge getExpandoBridge() {
-		return ExpandoBridgeFactoryUtil.getExpandoBridge(0,
-			Power.class.getName(), getPrimaryKey());
-	}
-
-	@Override
-	public void setExpandoBridgeAttributes(ServiceContext serviceContext) {
-		ExpandoBridge expandoBridge = getExpandoBridge();
-
-		expandoBridge.setAttributes(serviceContext);
-	}
-
-	@Override
-	public Power toEscapedModel() {
-		if (_escapedModel == null) {
-			_escapedModel = (Power)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
-		}
-
-		return _escapedModel;
-	}
-
-	@Override
-	public Object clone() {
-		PowerImpl powerImpl = new PowerImpl();
-
-		powerImpl.setMeasurementId(getMeasurementId());
-		powerImpl.setRaceId(getRaceId());
-		powerImpl.setUserId(getUserId());
-		powerImpl.setDeviceId(getDeviceId());
-		powerImpl.setSensorId(getSensorId());
-		powerImpl.setTime(getTime());
-		powerImpl.setSensorMode(getSensorMode());
-		powerImpl.setLevel(getLevel());
-
-		powerImpl.resetOriginalValues();
-
-		return powerImpl;
-	}
-
-	@Override
-	public int compareTo(Power power) {
-		int value = 0;
-
-		value = DateUtil.compareTo(getTime(), power.getTime());
-
-		if (value != 0) {
-			return value;
-		}
-
-		return 0;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-
-		if (!(obj instanceof Power)) {
-			return false;
-		}
-
-		Power power = (Power)obj;
-
-		long primaryKey = power.getPrimaryKey();
-
-		if (getPrimaryKey() == primaryKey) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-
-	@Override
-	public int hashCode() {
-		return (int)getPrimaryKey();
-	}
-
-	@Override
-	public void resetOriginalValues() {
-		PowerModelImpl powerModelImpl = this;
-
-		powerModelImpl._originalRaceId = powerModelImpl._raceId;
-
-		powerModelImpl._setOriginalRaceId = false;
-
-		powerModelImpl._columnBitmask = 0;
-	}
-
-	@Override
-	public CacheModel<Power> toCacheModel() {
-		PowerCacheModel powerCacheModel = new PowerCacheModel();
-
-		powerCacheModel.measurementId = getMeasurementId();
-
-		powerCacheModel.raceId = getRaceId();
-
-		powerCacheModel.userId = getUserId();
-
-		powerCacheModel.deviceId = getDeviceId();
-
-		powerCacheModel.sensorId = getSensorId();
-
-		Date time = getTime();
-
-		if (time != null) {
-			powerCacheModel.time = time.getTime();
-		}
-		else {
-			powerCacheModel.time = Long.MIN_VALUE;
-		}
-
-		powerCacheModel.sensorMode = getSensorMode();
-
-		String sensorMode = powerCacheModel.sensorMode;
-
-		if ((sensorMode != null) && (sensorMode.length() == 0)) {
-			powerCacheModel.sensorMode = null;
-		}
-
-		powerCacheModel.level = getLevel();
-
-		return powerCacheModel;
-	}
-
-	@Override
-	public String toString() {
-		StringBundler sb = new StringBundler(17);
-
-		sb.append("{measurementId=");
-		sb.append(getMeasurementId());
-		sb.append(", raceId=");
-		sb.append(getRaceId());
-		sb.append(", userId=");
-		sb.append(getUserId());
-		sb.append(", deviceId=");
-		sb.append(getDeviceId());
-		sb.append(", sensorId=");
-		sb.append(getSensorId());
-		sb.append(", time=");
-		sb.append(getTime());
-		sb.append(", sensorMode=");
-		sb.append(getSensorMode());
-		sb.append(", level=");
-		sb.append(getLevel());
-		sb.append("}");
-
-		return sb.toString();
-	}
-
-	@Override
-	public String toXmlString() {
-		StringBundler sb = new StringBundler(28);
-
-		sb.append("<model><model-name>");
-		sb.append("es.eina.tfg.model.Power");
-		sb.append("</model-name>");
-
-		sb.append(
-			"<column><column-name>measurementId</column-name><column-value><![CDATA[");
-		sb.append(getMeasurementId());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>raceId</column-name><column-value><![CDATA[");
-		sb.append(getRaceId());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>userId</column-name><column-value><![CDATA[");
-		sb.append(getUserId());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>deviceId</column-name><column-value><![CDATA[");
-		sb.append(getDeviceId());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>sensorId</column-name><column-value><![CDATA[");
-		sb.append(getSensorId());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>time</column-name><column-value><![CDATA[");
-		sb.append(getTime());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>sensorMode</column-name><column-value><![CDATA[");
-		sb.append(getSensorMode());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>level</column-name><column-value><![CDATA[");
-		sb.append(getLevel());
-		sb.append("]]></column-value></column>");
-
-		sb.append("</model>");
-
-		return sb.toString();
-	}
-
-	private static ClassLoader _classLoader = Power.class.getClassLoader();
-	private static Class<?>[] _escapedModelInterfaces = new Class[] { Power.class };
-	private long _measurementId;
-	private long _raceId;
-	private long _originalRaceId;
-	private boolean _setOriginalRaceId;
-	private long _userId;
-	private String _userUuid;
-	private long _deviceId;
-	private long _sensorId;
-	private Date _time;
-	private String _sensorMode;
-	private int _level;
-	private long _columnBitmask;
-	private Power _escapedModel;
+    @Override
+    public String getModelClassName() {
+        return Power.class.getName();
+    }
+
+    @Override
+    public Map<String, Object> getModelAttributes() {
+        Map<String, Object> attributes = new HashMap<String, Object>();
+
+        attributes.put("measurementId", getMeasurementId());
+        attributes.put("raceId", getRaceId());
+        attributes.put("userId", getUserId());
+        attributes.put("deviceId", getDeviceId());
+        attributes.put("sensorId", getSensorId());
+        attributes.put("time", getTime());
+        attributes.put("sensorMode", getSensorMode());
+        attributes.put("level", getLevel());
+
+        return attributes;
+    }
+
+    @Override
+    public void setModelAttributes(Map<String, Object> attributes) {
+        Long measurementId = (Long) attributes.get("measurementId");
+
+        if (measurementId != null) {
+            setMeasurementId(measurementId);
+        }
+
+        Long raceId = (Long) attributes.get("raceId");
+
+        if (raceId != null) {
+            setRaceId(raceId);
+        }
+
+        Long userId = (Long) attributes.get("userId");
+
+        if (userId != null) {
+            setUserId(userId);
+        }
+
+        Long deviceId = (Long) attributes.get("deviceId");
+
+        if (deviceId != null) {
+            setDeviceId(deviceId);
+        }
+
+        Long sensorId = (Long) attributes.get("sensorId");
+
+        if (sensorId != null) {
+            setSensorId(sensorId);
+        }
+
+        Date time = (Date) attributes.get("time");
+
+        if (time != null) {
+            setTime(time);
+        }
+
+        String sensorMode = (String) attributes.get("sensorMode");
+
+        if (sensorMode != null) {
+            setSensorMode(sensorMode);
+        }
+
+        Integer level = (Integer) attributes.get("level");
+
+        if (level != null) {
+            setLevel(level);
+        }
+    }
+
+    @JSON
+    @Override
+    public long getMeasurementId() {
+        return _measurementId;
+    }
+
+    @Override
+    public void setMeasurementId(long measurementId) {
+        _measurementId = measurementId;
+    }
+
+    @JSON
+    @Override
+    public long getRaceId() {
+        return _raceId;
+    }
+
+    @Override
+    public void setRaceId(long raceId) {
+        _columnBitmask |= RACEID_COLUMN_BITMASK;
+
+        if (!_setOriginalRaceId) {
+            _setOriginalRaceId = true;
+
+            _originalRaceId = _raceId;
+        }
+
+        _raceId = raceId;
+    }
+
+    public long getOriginalRaceId() {
+        return _originalRaceId;
+    }
+
+    @JSON
+    @Override
+    public long getUserId() {
+        return _userId;
+    }
+
+    @Override
+    public void setUserId(long userId) {
+        _userId = userId;
+    }
+
+    @Override
+    public String getUserUuid() throws SystemException {
+        return PortalUtil.getUserValue(getUserId(), "uuid", _userUuid);
+    }
+
+    @Override
+    public void setUserUuid(String userUuid) {
+        _userUuid = userUuid;
+    }
+
+    @JSON
+    @Override
+    public long getDeviceId() {
+        return _deviceId;
+    }
+
+    @Override
+    public void setDeviceId(long deviceId) {
+        _deviceId = deviceId;
+    }
+
+    @JSON
+    @Override
+    public long getSensorId() {
+        return _sensorId;
+    }
+
+    @Override
+    public void setSensorId(long sensorId) {
+        _sensorId = sensorId;
+    }
+
+    @JSON
+    @Override
+    public Date getTime() {
+        return _time;
+    }
+
+    @Override
+    public void setTime(Date time) {
+        _columnBitmask = -1L;
+
+        _time = time;
+    }
+
+    @JSON
+    @Override
+    public String getSensorMode() {
+        if (_sensorMode == null) {
+            return StringPool.BLANK;
+        } else {
+            return _sensorMode;
+        }
+    }
+
+    @Override
+    public void setSensorMode(String sensorMode) {
+        _sensorMode = sensorMode;
+    }
+
+    @JSON
+    @Override
+    public int getLevel() {
+        return _level;
+    }
+
+    @Override
+    public void setLevel(int level) {
+        _level = level;
+    }
+
+    public long getColumnBitmask() {
+        return _columnBitmask;
+    }
+
+    @Override
+    public ExpandoBridge getExpandoBridge() {
+        return ExpandoBridgeFactoryUtil.getExpandoBridge(0,
+            Power.class.getName(), getPrimaryKey());
+    }
+
+    @Override
+    public void setExpandoBridgeAttributes(ServiceContext serviceContext) {
+        ExpandoBridge expandoBridge = getExpandoBridge();
+
+        expandoBridge.setAttributes(serviceContext);
+    }
+
+    @Override
+    public Power toEscapedModel() {
+        if (_escapedModel == null) {
+            _escapedModel = (Power) ProxyUtil.newProxyInstance(_classLoader,
+                    _escapedModelInterfaces, new AutoEscapeBeanHandler(this));
+        }
+
+        return _escapedModel;
+    }
+
+    @Override
+    public Object clone() {
+        PowerImpl powerImpl = new PowerImpl();
+
+        powerImpl.setMeasurementId(getMeasurementId());
+        powerImpl.setRaceId(getRaceId());
+        powerImpl.setUserId(getUserId());
+        powerImpl.setDeviceId(getDeviceId());
+        powerImpl.setSensorId(getSensorId());
+        powerImpl.setTime(getTime());
+        powerImpl.setSensorMode(getSensorMode());
+        powerImpl.setLevel(getLevel());
+
+        powerImpl.resetOriginalValues();
+
+        return powerImpl;
+    }
+
+    @Override
+    public int compareTo(Power power) {
+        int value = 0;
+
+        value = DateUtil.compareTo(getTime(), power.getTime());
+
+        if (value != 0) {
+            return value;
+        }
+
+        return 0;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof Power)) {
+            return false;
+        }
+
+        Power power = (Power) obj;
+
+        long primaryKey = power.getPrimaryKey();
+
+        if (getPrimaryKey() == primaryKey) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) getPrimaryKey();
+    }
+
+    @Override
+    public void resetOriginalValues() {
+        PowerModelImpl powerModelImpl = this;
+
+        powerModelImpl._originalRaceId = powerModelImpl._raceId;
+
+        powerModelImpl._setOriginalRaceId = false;
+
+        powerModelImpl._columnBitmask = 0;
+    }
+
+    @Override
+    public CacheModel<Power> toCacheModel() {
+        PowerCacheModel powerCacheModel = new PowerCacheModel();
+
+        powerCacheModel.measurementId = getMeasurementId();
+
+        powerCacheModel.raceId = getRaceId();
+
+        powerCacheModel.userId = getUserId();
+
+        powerCacheModel.deviceId = getDeviceId();
+
+        powerCacheModel.sensorId = getSensorId();
+
+        Date time = getTime();
+
+        if (time != null) {
+            powerCacheModel.time = time.getTime();
+        } else {
+            powerCacheModel.time = Long.MIN_VALUE;
+        }
+
+        powerCacheModel.sensorMode = getSensorMode();
+
+        String sensorMode = powerCacheModel.sensorMode;
+
+        if ((sensorMode != null) && (sensorMode.length() == 0)) {
+            powerCacheModel.sensorMode = null;
+        }
+
+        powerCacheModel.level = getLevel();
+
+        return powerCacheModel;
+    }
+
+    @Override
+    public String toString() {
+        StringBundler sb = new StringBundler(17);
+
+        sb.append("{measurementId=");
+        sb.append(getMeasurementId());
+        sb.append(", raceId=");
+        sb.append(getRaceId());
+        sb.append(", userId=");
+        sb.append(getUserId());
+        sb.append(", deviceId=");
+        sb.append(getDeviceId());
+        sb.append(", sensorId=");
+        sb.append(getSensorId());
+        sb.append(", time=");
+        sb.append(getTime());
+        sb.append(", sensorMode=");
+        sb.append(getSensorMode());
+        sb.append(", level=");
+        sb.append(getLevel());
+        sb.append("}");
+
+        return sb.toString();
+    }
+
+    @Override
+    public String toXmlString() {
+        StringBundler sb = new StringBundler(28);
+
+        sb.append("<model><model-name>");
+        sb.append("es.eina.tfg.model.Power");
+        sb.append("</model-name>");
+
+        sb.append(
+            "<column><column-name>measurementId</column-name><column-value><![CDATA[");
+        sb.append(getMeasurementId());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>raceId</column-name><column-value><![CDATA[");
+        sb.append(getRaceId());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>userId</column-name><column-value><![CDATA[");
+        sb.append(getUserId());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>deviceId</column-name><column-value><![CDATA[");
+        sb.append(getDeviceId());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>sensorId</column-name><column-value><![CDATA[");
+        sb.append(getSensorId());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>time</column-name><column-value><![CDATA[");
+        sb.append(getTime());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>sensorMode</column-name><column-value><![CDATA[");
+        sb.append(getSensorMode());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>level</column-name><column-value><![CDATA[");
+        sb.append(getLevel());
+        sb.append("]]></column-value></column>");
+
+        sb.append("</model>");
+
+        return sb.toString();
+    }
 }

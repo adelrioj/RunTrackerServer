@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model;
 
 import com.liferay.portal.kernel.bean.AutoEscape;
@@ -39,202 +25,202 @@ import java.util.Date;
  * @generated
  */
 public interface RouteModel extends BaseModel<Route> {
-	/*
-	 * NOTE FOR DEVELOPERS:
-	 *
-	 * Never modify or reference this interface directly. All methods that expect a route model instance should use the {@link Route} interface instead.
-	 */
+    /*
+     * NOTE FOR DEVELOPERS:
+     *
+     * Never modify or reference this interface directly. All methods that expect a route model instance should use the {@link Route} interface instead.
+     */
 
-	/**
-	 * Returns the primary key of this route.
-	 *
-	 * @return the primary key of this route
-	 */
-	public long getPrimaryKey();
+    /**
+     * Returns the primary key of this route.
+     *
+     * @return the primary key of this route
+     */
+    public long getPrimaryKey();
 
-	/**
-	 * Sets the primary key of this route.
-	 *
-	 * @param primaryKey the primary key of this route
-	 */
-	public void setPrimaryKey(long primaryKey);
+    /**
+     * Sets the primary key of this route.
+     *
+     * @param primaryKey the primary key of this route
+     */
+    public void setPrimaryKey(long primaryKey);
 
-	/**
-	 * Returns the route ID of this route.
-	 *
-	 * @return the route ID of this route
-	 */
-	public long getRouteId();
+    /**
+     * Returns the route ID of this route.
+     *
+     * @return the route ID of this route
+     */
+    public long getRouteId();
 
-	/**
-	 * Sets the route ID of this route.
-	 *
-	 * @param routeId the route ID of this route
-	 */
-	public void setRouteId(long routeId);
+    /**
+     * Sets the route ID of this route.
+     *
+     * @param routeId the route ID of this route
+     */
+    public void setRouteId(long routeId);
 
-	/**
-	 * Returns the type of this route.
-	 *
-	 * @return the type of this route
-	 */
-	@AutoEscape
-	public String getType();
+    /**
+     * Returns the type of this route.
+     *
+     * @return the type of this route
+     */
+    @AutoEscape
+    public String getType();
 
-	/**
-	 * Sets the type of this route.
-	 *
-	 * @param type the type of this route
-	 */
-	public void setType(String type);
+    /**
+     * Sets the type of this route.
+     *
+     * @param type the type of this route
+     */
+    public void setType(String type);
 
-	/**
-	 * Returns the name of this route.
-	 *
-	 * @return the name of this route
-	 */
-	@AutoEscape
-	public String getName();
+    /**
+     * Returns the name of this route.
+     *
+     * @return the name of this route
+     */
+    @AutoEscape
+    public String getName();
 
-	/**
-	 * Sets the name of this route.
-	 *
-	 * @param name the name of this route
-	 */
-	public void setName(String name);
+    /**
+     * Sets the name of this route.
+     *
+     * @param name the name of this route
+     */
+    public void setName(String name);
 
-	/**
-	 * Returns the description of this route.
-	 *
-	 * @return the description of this route
-	 */
-	@AutoEscape
-	public String getDescription();
+    /**
+     * Returns the description of this route.
+     *
+     * @return the description of this route
+     */
+    @AutoEscape
+    public String getDescription();
 
-	/**
-	 * Sets the description of this route.
-	 *
-	 * @param description the description of this route
-	 */
-	public void setDescription(String description);
+    /**
+     * Sets the description of this route.
+     *
+     * @param description the description of this route
+     */
+    public void setDescription(String description);
 
-	/**
-	 * Returns the author ID of this route.
-	 *
-	 * @return the author ID of this route
-	 */
-	public long getAuthorId();
+    /**
+     * Returns the author ID of this route.
+     *
+     * @return the author ID of this route
+     */
+    public long getAuthorId();
 
-	/**
-	 * Sets the author ID of this route.
-	 *
-	 * @param authorId the author ID of this route
-	 */
-	public void setAuthorId(long authorId);
+    /**
+     * Sets the author ID of this route.
+     *
+     * @param authorId the author ID of this route
+     */
+    public void setAuthorId(long authorId);
 
-	/**
-	 * Returns the is public of this route.
-	 *
-	 * @return the is public of this route
-	 */
-	public boolean getIsPublic();
+    /**
+     * Returns the is public of this route.
+     *
+     * @return the is public of this route
+     */
+    public boolean getIsPublic();
 
-	/**
-	 * Returns <code>true</code> if this route is is public.
-	 *
-	 * @return <code>true</code> if this route is is public; <code>false</code> otherwise
-	 */
-	public boolean isIsPublic();
+    /**
+     * Returns <code>true</code> if this route is is public.
+     *
+     * @return <code>true</code> if this route is is public; <code>false</code> otherwise
+     */
+    public boolean isIsPublic();
 
-	/**
-	 * Sets whether this route is is public.
-	 *
-	 * @param isPublic the is public of this route
-	 */
-	public void setIsPublic(boolean isPublic);
+    /**
+     * Sets whether this route is is public.
+     *
+     * @param isPublic the is public of this route
+     */
+    public void setIsPublic(boolean isPublic);
 
-	/**
-	 * Returns the starting time of this route.
-	 *
-	 * @return the starting time of this route
-	 */
-	public Date getStartingTime();
+    /**
+     * Returns the starting time of this route.
+     *
+     * @return the starting time of this route
+     */
+    public Date getStartingTime();
 
-	/**
-	 * Sets the starting time of this route.
-	 *
-	 * @param startingTime the starting time of this route
-	 */
-	public void setStartingTime(Date startingTime);
+    /**
+     * Sets the starting time of this route.
+     *
+     * @param startingTime the starting time of this route
+     */
+    public void setStartingTime(Date startingTime);
 
-	/**
-	 * Returns the creation time of this route.
-	 *
-	 * @return the creation time of this route
-	 */
-	public Date getCreationTime();
+    /**
+     * Returns the creation time of this route.
+     *
+     * @return the creation time of this route
+     */
+    public Date getCreationTime();
 
-	/**
-	 * Sets the creation time of this route.
-	 *
-	 * @param creationTime the creation time of this route
-	 */
-	public void setCreationTime(Date creationTime);
+    /**
+     * Sets the creation time of this route.
+     *
+     * @param creationTime the creation time of this route
+     */
+    public void setCreationTime(Date creationTime);
 
-	@Override
-	public boolean isNew();
+    @Override
+    public boolean isNew();
 
-	@Override
-	public void setNew(boolean n);
+    @Override
+    public void setNew(boolean n);
 
-	@Override
-	public boolean isCachedModel();
+    @Override
+    public boolean isCachedModel();
 
-	@Override
-	public void setCachedModel(boolean cachedModel);
+    @Override
+    public void setCachedModel(boolean cachedModel);
 
-	@Override
-	public boolean isEscapedModel();
+    @Override
+    public boolean isEscapedModel();
 
-	@Override
-	public Serializable getPrimaryKeyObj();
+    @Override
+    public Serializable getPrimaryKeyObj();
 
-	@Override
-	public void setPrimaryKeyObj(Serializable primaryKeyObj);
+    @Override
+    public void setPrimaryKeyObj(Serializable primaryKeyObj);
 
-	@Override
-	public ExpandoBridge getExpandoBridge();
+    @Override
+    public ExpandoBridge getExpandoBridge();
 
-	@Override
-	public void setExpandoBridgeAttributes(BaseModel<?> baseModel);
+    @Override
+    public void setExpandoBridgeAttributes(BaseModel<?> baseModel);
 
-	@Override
-	public void setExpandoBridgeAttributes(ExpandoBridge expandoBridge);
+    @Override
+    public void setExpandoBridgeAttributes(ExpandoBridge expandoBridge);
 
-	@Override
-	public void setExpandoBridgeAttributes(ServiceContext serviceContext);
+    @Override
+    public void setExpandoBridgeAttributes(ServiceContext serviceContext);
 
-	@Override
-	public Object clone();
+    @Override
+    public Object clone();
 
-	@Override
-	public int compareTo(es.eina.tfg.model.Route route);
+    @Override
+    public int compareTo(es.eina.tfg.model.Route route);
 
-	@Override
-	public int hashCode();
+    @Override
+    public int hashCode();
 
-	@Override
-	public CacheModel<es.eina.tfg.model.Route> toCacheModel();
+    @Override
+    public CacheModel<es.eina.tfg.model.Route> toCacheModel();
 
-	@Override
-	public es.eina.tfg.model.Route toEscapedModel();
+    @Override
+    public es.eina.tfg.model.Route toEscapedModel();
 
-	@Override
-	public es.eina.tfg.model.Route toUnescapedModel();
+    @Override
+    public es.eina.tfg.model.Route toUnescapedModel();
 
-	@Override
-	public String toString();
+    @Override
+    public String toString();
 
-	@Override
-	public String toXmlString();
+    @Override
+    public String toXmlString();
 }

@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model.impl;
 
 import com.liferay.portal.kernel.util.StringBundler;
@@ -35,130 +21,127 @@ import java.util.Date;
  * @generated
  */
 public class LocationCacheModel implements CacheModel<Location>, Externalizable {
-	@Override
-	public String toString() {
-		StringBundler sb = new StringBundler(27);
+    public long measurementId;
+    public Long raceId;
+    public long userId;
+    public long deviceId;
+    public long sensorId;
+    public long time;
+    public String sensorMode;
+    public int sysRef;
+    public double latitude;
+    public double longitude;
+    public double speed;
+    public double distance;
+    public double altitude;
 
-		sb.append("{measurementId=");
-		sb.append(measurementId);
-		sb.append(", raceId=");
-		sb.append(raceId);
-		sb.append(", userId=");
-		sb.append(userId);
-		sb.append(", deviceId=");
-		sb.append(deviceId);
-		sb.append(", sensorId=");
-		sb.append(sensorId);
-		sb.append(", time=");
-		sb.append(time);
-		sb.append(", sensorMode=");
-		sb.append(sensorMode);
-		sb.append(", sysRef=");
-		sb.append(sysRef);
-		sb.append(", latitude=");
-		sb.append(latitude);
-		sb.append(", longitude=");
-		sb.append(longitude);
-		sb.append(", speed=");
-		sb.append(speed);
-		sb.append(", distance=");
-		sb.append(distance);
-		sb.append(", altitude=");
-		sb.append(altitude);
-		sb.append("}");
+    @Override
+    public String toString() {
+        StringBundler sb = new StringBundler(27);
 
-		return sb.toString();
-	}
+        sb.append("{measurementId=");
+        sb.append(measurementId);
+        sb.append(", raceId=");
+        sb.append(raceId);
+        sb.append(", userId=");
+        sb.append(userId);
+        sb.append(", deviceId=");
+        sb.append(deviceId);
+        sb.append(", sensorId=");
+        sb.append(sensorId);
+        sb.append(", time=");
+        sb.append(time);
+        sb.append(", sensorMode=");
+        sb.append(sensorMode);
+        sb.append(", sysRef=");
+        sb.append(sysRef);
+        sb.append(", latitude=");
+        sb.append(latitude);
+        sb.append(", longitude=");
+        sb.append(longitude);
+        sb.append(", speed=");
+        sb.append(speed);
+        sb.append(", distance=");
+        sb.append(distance);
+        sb.append(", altitude=");
+        sb.append(altitude);
+        sb.append("}");
 
-	@Override
-	public Location toEntityModel() {
-		LocationImpl locationImpl = new LocationImpl();
+        return sb.toString();
+    }
 
-		locationImpl.setMeasurementId(measurementId);
-		locationImpl.setRaceId(raceId);
-		locationImpl.setUserId(userId);
-		locationImpl.setDeviceId(deviceId);
-		locationImpl.setSensorId(sensorId);
+    @Override
+    public Location toEntityModel() {
+        LocationImpl locationImpl = new LocationImpl();
 
-		if (time == Long.MIN_VALUE) {
-			locationImpl.setTime(null);
-		}
-		else {
-			locationImpl.setTime(new Date(time));
-		}
+        locationImpl.setMeasurementId(measurementId);
+        locationImpl.setRaceId(raceId);
+        locationImpl.setUserId(userId);
+        locationImpl.setDeviceId(deviceId);
+        locationImpl.setSensorId(sensorId);
 
-		if (sensorMode == null) {
-			locationImpl.setSensorMode(StringPool.BLANK);
-		}
-		else {
-			locationImpl.setSensorMode(sensorMode);
-		}
+        if (time == Long.MIN_VALUE) {
+            locationImpl.setTime(null);
+        } else {
+            locationImpl.setTime(new Date(time));
+        }
 
-		locationImpl.setSysRef(sysRef);
-		locationImpl.setLatitude(latitude);
-		locationImpl.setLongitude(longitude);
-		locationImpl.setSpeed(speed);
-		locationImpl.setDistance(distance);
-		locationImpl.setAltitude(altitude);
+        if (sensorMode == null) {
+            locationImpl.setSensorMode(StringPool.BLANK);
+        } else {
+            locationImpl.setSensorMode(sensorMode);
+        }
 
-		locationImpl.resetOriginalValues();
+        locationImpl.setSysRef(sysRef);
+        locationImpl.setLatitude(latitude);
+        locationImpl.setLongitude(longitude);
+        locationImpl.setSpeed(speed);
+        locationImpl.setDistance(distance);
+        locationImpl.setAltitude(altitude);
 
-		return locationImpl;
-	}
+        locationImpl.resetOriginalValues();
 
-	@Override
-	public void readExternal(ObjectInput objectInput) throws IOException {
-		measurementId = objectInput.readLong();
-		raceId = objectInput.readLong();
-		userId = objectInput.readLong();
-		deviceId = objectInput.readLong();
-		sensorId = objectInput.readLong();
-		time = objectInput.readLong();
-		sensorMode = objectInput.readUTF();
-		sysRef = objectInput.readInt();
-		latitude = objectInput.readDouble();
-		longitude = objectInput.readDouble();
-		speed = objectInput.readDouble();
-		distance = objectInput.readDouble();
-		altitude = objectInput.readDouble();
-	}
+        return locationImpl;
+    }
 
-	@Override
-	public void writeExternal(ObjectOutput objectOutput)
-		throws IOException {
-		objectOutput.writeLong(measurementId);
-		objectOutput.writeLong(raceId);
-		objectOutput.writeLong(userId);
-		objectOutput.writeLong(deviceId);
-		objectOutput.writeLong(sensorId);
-		objectOutput.writeLong(time);
+    @Override
+    public void readExternal(ObjectInput objectInput) throws IOException {
+        measurementId = objectInput.readLong();
+        raceId = objectInput.readLong();
+        userId = objectInput.readLong();
+        deviceId = objectInput.readLong();
+        sensorId = objectInput.readLong();
+        time = objectInput.readLong();
+        sensorMode = objectInput.readUTF();
+        sysRef = objectInput.readInt();
+        latitude = objectInput.readDouble();
+        longitude = objectInput.readDouble();
+        speed = objectInput.readDouble();
+        distance = objectInput.readDouble();
+        altitude = objectInput.readDouble();
+    }
 
-		if (sensorMode == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(sensorMode);
-		}
+    @Override
+    public void writeExternal(ObjectOutput objectOutput)
+        throws IOException {
+        objectOutput.writeLong(measurementId);
+        objectOutput.writeLong(raceId);
+        objectOutput.writeLong(userId);
+        objectOutput.writeLong(deviceId);
+        objectOutput.writeLong(sensorId);
+        objectOutput.writeLong(time);
 
-		objectOutput.writeInt(sysRef);
-		objectOutput.writeDouble(latitude);
-		objectOutput.writeDouble(longitude);
-		objectOutput.writeDouble(speed);
-		objectOutput.writeDouble(distance);
-		objectOutput.writeDouble(altitude);
-	}
+        if (sensorMode == null) {
+            objectOutput.writeUTF(StringPool.BLANK);
+        } else {
+            objectOutput.writeUTF(sensorMode);
+        }
 
-	public long measurementId;
-	public Long raceId;
-	public long userId;
-	public long deviceId;
-	public long sensorId;
-	public long time;
-	public String sensorMode;
-	public int sysRef;
-	public double latitude;
-	public double longitude;
-	public double speed;
-	public double distance;
-	public double altitude;
+        objectOutput.writeInt(sysRef);
+        objectOutput.writeDouble(latitude);
+        objectOutput.writeDouble(longitude);
+        objectOutput.writeDouble(speed);
+        objectOutput.writeDouble(distance);
+        objectOutput.writeDouble(altitude);
+    }
 }

@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model;
 
 import com.liferay.portal.kernel.bean.AutoEscape;
@@ -38,180 +24,180 @@ import java.io.Serializable;
  * @generated
  */
 public interface RaceModel extends BaseModel<Race> {
-	/*
-	 * NOTE FOR DEVELOPERS:
-	 *
-	 * Never modify or reference this interface directly. All methods that expect a race model instance should use the {@link Race} interface instead.
-	 */
+    /*
+     * NOTE FOR DEVELOPERS:
+     *
+     * Never modify or reference this interface directly. All methods that expect a race model instance should use the {@link Race} interface instead.
+     */
 
-	/**
-	 * Returns the primary key of this race.
-	 *
-	 * @return the primary key of this race
-	 */
-	public long getPrimaryKey();
+    /**
+     * Returns the primary key of this race.
+     *
+     * @return the primary key of this race
+     */
+    public long getPrimaryKey();
 
-	/**
-	 * Sets the primary key of this race.
-	 *
-	 * @param primaryKey the primary key of this race
-	 */
-	public void setPrimaryKey(long primaryKey);
+    /**
+     * Sets the primary key of this race.
+     *
+     * @param primaryKey the primary key of this race
+     */
+    public void setPrimaryKey(long primaryKey);
 
-	/**
-	 * Returns the race ID of this race.
-	 *
-	 * @return the race ID of this race
-	 */
-	public long getRaceId();
+    /**
+     * Returns the race ID of this race.
+     *
+     * @return the race ID of this race
+     */
+    public long getRaceId();
 
-	/**
-	 * Sets the race ID of this race.
-	 *
-	 * @param raceId the race ID of this race
-	 */
-	public void setRaceId(long raceId);
+    /**
+     * Sets the race ID of this race.
+     *
+     * @param raceId the race ID of this race
+     */
+    public void setRaceId(long raceId);
 
-	/**
-	 * Returns the user ID of this race.
-	 *
-	 * @return the user ID of this race
-	 */
-	public long getUserId();
+    /**
+     * Returns the user ID of this race.
+     *
+     * @return the user ID of this race
+     */
+    public long getUserId();
 
-	/**
-	 * Sets the user ID of this race.
-	 *
-	 * @param userId the user ID of this race
-	 */
-	public void setUserId(long userId);
+    /**
+     * Sets the user ID of this race.
+     *
+     * @param userId the user ID of this race
+     */
+    public void setUserId(long userId);
 
-	/**
-	 * Returns the user uuid of this race.
-	 *
-	 * @return the user uuid of this race
-	 * @throws SystemException if a system exception occurred
-	 */
-	public String getUserUuid() throws SystemException;
+    /**
+     * Returns the user uuid of this race.
+     *
+     * @return the user uuid of this race
+     * @throws SystemException if a system exception occurred
+     */
+    public String getUserUuid() throws SystemException;
 
-	/**
-	 * Sets the user uuid of this race.
-	 *
-	 * @param userUuid the user uuid of this race
-	 */
-	public void setUserUuid(String userUuid);
+    /**
+     * Sets the user uuid of this race.
+     *
+     * @param userUuid the user uuid of this race
+     */
+    public void setUserUuid(String userUuid);
 
-	/**
-	 * Returns the route ID of this race.
-	 *
-	 * @return the route ID of this race
-	 */
-	public long getRouteId();
+    /**
+     * Returns the route ID of this race.
+     *
+     * @return the route ID of this race
+     */
+    public long getRouteId();
 
-	/**
-	 * Sets the route ID of this race.
-	 *
-	 * @param routeId the route ID of this race
-	 */
-	public void setRouteId(long routeId);
+    /**
+     * Sets the route ID of this race.
+     *
+     * @param routeId the route ID of this race
+     */
+    public void setRouteId(long routeId);
 
-	/**
-	 * Returns the type of this race.
-	 *
-	 * @return the type of this race
-	 */
-	@AutoEscape
-	public String getType();
+    /**
+     * Returns the type of this race.
+     *
+     * @return the type of this race
+     */
+    @AutoEscape
+    public String getType();
 
-	/**
-	 * Sets the type of this race.
-	 *
-	 * @param type the type of this race
-	 */
-	public void setType(String type);
+    /**
+     * Sets the type of this race.
+     *
+     * @param type the type of this race
+     */
+    public void setType(String type);
 
-	/**
-	 * Returns the user height of this race.
-	 *
-	 * @return the user height of this race
-	 */
-	public int getUserHeight();
+    /**
+     * Returns the user height of this race.
+     *
+     * @return the user height of this race
+     */
+    public int getUserHeight();
 
-	/**
-	 * Sets the user height of this race.
-	 *
-	 * @param userHeight the user height of this race
-	 */
-	public void setUserHeight(int userHeight);
+    /**
+     * Sets the user height of this race.
+     *
+     * @param userHeight the user height of this race
+     */
+    public void setUserHeight(int userHeight);
 
-	/**
-	 * Returns the user weight of this race.
-	 *
-	 * @return the user weight of this race
-	 */
-	public int getUserWeight();
+    /**
+     * Returns the user weight of this race.
+     *
+     * @return the user weight of this race
+     */
+    public int getUserWeight();
 
-	/**
-	 * Sets the user weight of this race.
-	 *
-	 * @param userWeight the user weight of this race
-	 */
-	public void setUserWeight(int userWeight);
+    /**
+     * Sets the user weight of this race.
+     *
+     * @param userWeight the user weight of this race
+     */
+    public void setUserWeight(int userWeight);
 
-	@Override
-	public boolean isNew();
+    @Override
+    public boolean isNew();
 
-	@Override
-	public void setNew(boolean n);
+    @Override
+    public void setNew(boolean n);
 
-	@Override
-	public boolean isCachedModel();
+    @Override
+    public boolean isCachedModel();
 
-	@Override
-	public void setCachedModel(boolean cachedModel);
+    @Override
+    public void setCachedModel(boolean cachedModel);
 
-	@Override
-	public boolean isEscapedModel();
+    @Override
+    public boolean isEscapedModel();
 
-	@Override
-	public Serializable getPrimaryKeyObj();
+    @Override
+    public Serializable getPrimaryKeyObj();
 
-	@Override
-	public void setPrimaryKeyObj(Serializable primaryKeyObj);
+    @Override
+    public void setPrimaryKeyObj(Serializable primaryKeyObj);
 
-	@Override
-	public ExpandoBridge getExpandoBridge();
+    @Override
+    public ExpandoBridge getExpandoBridge();
 
-	@Override
-	public void setExpandoBridgeAttributes(BaseModel<?> baseModel);
+    @Override
+    public void setExpandoBridgeAttributes(BaseModel<?> baseModel);
 
-	@Override
-	public void setExpandoBridgeAttributes(ExpandoBridge expandoBridge);
+    @Override
+    public void setExpandoBridgeAttributes(ExpandoBridge expandoBridge);
 
-	@Override
-	public void setExpandoBridgeAttributes(ServiceContext serviceContext);
+    @Override
+    public void setExpandoBridgeAttributes(ServiceContext serviceContext);
 
-	@Override
-	public Object clone();
+    @Override
+    public Object clone();
 
-	@Override
-	public int compareTo(es.eina.tfg.model.Race race);
+    @Override
+    public int compareTo(es.eina.tfg.model.Race race);
 
-	@Override
-	public int hashCode();
+    @Override
+    public int hashCode();
 
-	@Override
-	public CacheModel<es.eina.tfg.model.Race> toCacheModel();
+    @Override
+    public CacheModel<es.eina.tfg.model.Race> toCacheModel();
 
-	@Override
-	public es.eina.tfg.model.Race toEscapedModel();
+    @Override
+    public es.eina.tfg.model.Race toEscapedModel();
 
-	@Override
-	public es.eina.tfg.model.Race toUnescapedModel();
+    @Override
+    public es.eina.tfg.model.Race toUnescapedModel();
 
-	@Override
-	public String toString();
+    @Override
+    public String toString();
 
-	@Override
-	public String toXmlString();
+    @Override
+    public String toXmlString();
 }

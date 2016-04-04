@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.service.http;
 
 import com.liferay.portal.kernel.log.Log;
@@ -62,81 +48,76 @@ import java.rmi.RemoteException;
  * @generated
  */
 public class UserAdditionalDataServiceSoap {
-	public static es.eina.tfg.model.UserAdditionalDataSoap add(
-		java.lang.Long userId, java.lang.Integer weight,
-		java.lang.Integer height, java.lang.String registerType)
-		throws RemoteException {
-		try {
-			es.eina.tfg.model.UserAdditionalData returnValue = UserAdditionalDataServiceUtil.add(userId,
-					weight, height, registerType);
+    private static Log _log = LogFactoryUtil.getLog(UserAdditionalDataServiceSoap.class);
 
-			return es.eina.tfg.model.UserAdditionalDataSoap.toSoapModel(returnValue);
-		}
-		catch (Exception e) {
-			_log.error(e, e);
+    public static es.eina.tfg.model.UserAdditionalDataSoap add(
+        java.lang.Long userId, java.lang.Integer weight,
+        java.lang.Integer height, java.lang.String registerType)
+        throws RemoteException {
+        try {
+            es.eina.tfg.model.UserAdditionalData returnValue = UserAdditionalDataServiceUtil.add(userId,
+                    weight, height, registerType);
 
-			throw new RemoteException(e.getMessage());
-		}
-	}
+            return es.eina.tfg.model.UserAdditionalDataSoap.toSoapModel(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
 
-	public static es.eina.tfg.model.UserAdditionalDataSoap update(
-		java.lang.Long userId, java.lang.Integer weight,
-		java.lang.Integer height, java.lang.String registerType,
-		java.lang.Long smsCount) throws RemoteException {
-		try {
-			es.eina.tfg.model.UserAdditionalData returnValue = UserAdditionalDataServiceUtil.update(userId,
-					weight, height, registerType, smsCount);
+            throw new RemoteException(e.getMessage());
+        }
+    }
 
-			return es.eina.tfg.model.UserAdditionalDataSoap.toSoapModel(returnValue);
-		}
-		catch (Exception e) {
-			_log.error(e, e);
+    public static es.eina.tfg.model.UserAdditionalDataSoap update(
+        java.lang.Long userId, java.lang.Integer weight,
+        java.lang.Integer height, java.lang.String registerType,
+        java.lang.Long smsCount) throws RemoteException {
+        try {
+            es.eina.tfg.model.UserAdditionalData returnValue = UserAdditionalDataServiceUtil.update(userId,
+                    weight, height, registerType, smsCount);
 
-			throw new RemoteException(e.getMessage());
-		}
-	}
+            return es.eina.tfg.model.UserAdditionalDataSoap.toSoapModel(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
 
-	public static es.eina.tfg.model.UserAdditionalDataSoap delete(
-		java.lang.Long userId) throws RemoteException {
-		try {
-			es.eina.tfg.model.UserAdditionalData returnValue = UserAdditionalDataServiceUtil.delete(userId);
+            throw new RemoteException(e.getMessage());
+        }
+    }
 
-			return es.eina.tfg.model.UserAdditionalDataSoap.toSoapModel(returnValue);
-		}
-		catch (Exception e) {
-			_log.error(e, e);
+    public static es.eina.tfg.model.UserAdditionalDataSoap delete(
+        java.lang.Long userId) throws RemoteException {
+        try {
+            es.eina.tfg.model.UserAdditionalData returnValue = UserAdditionalDataServiceUtil.delete(userId);
 
-			throw new RemoteException(e.getMessage());
-		}
-	}
+            return es.eina.tfg.model.UserAdditionalDataSoap.toSoapModel(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
 
-	public static es.eina.tfg.model.UserAdditionalDataSoap getUserAdditionalData(
-		java.lang.Long userId) throws RemoteException {
-		try {
-			es.eina.tfg.model.UserAdditionalData returnValue = UserAdditionalDataServiceUtil.getUserAdditionalData(userId);
+            throw new RemoteException(e.getMessage());
+        }
+    }
 
-			return es.eina.tfg.model.UserAdditionalDataSoap.toSoapModel(returnValue);
-		}
-		catch (Exception e) {
-			_log.error(e, e);
+    public static es.eina.tfg.model.UserAdditionalDataSoap getUserAdditionalData(
+        java.lang.Long userId) throws RemoteException {
+        try {
+            es.eina.tfg.model.UserAdditionalData returnValue = UserAdditionalDataServiceUtil.getUserAdditionalData(userId);
 
-			throw new RemoteException(e.getMessage());
-		}
-	}
+            return es.eina.tfg.model.UserAdditionalDataSoap.toSoapModel(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
 
-	public static es.eina.tfg.model.UserSelectedRoutesSoap[] getUserSelectedRoutes(
-		java.lang.Long userId) throws RemoteException {
-		try {
-			java.util.List<es.eina.tfg.model.UserSelectedRoutes> returnValue = UserAdditionalDataServiceUtil.getUserSelectedRoutes(userId);
+            throw new RemoteException(e.getMessage());
+        }
+    }
 
-			return es.eina.tfg.model.UserSelectedRoutesSoap.toSoapModels(returnValue);
-		}
-		catch (Exception e) {
-			_log.error(e, e);
+    public static es.eina.tfg.model.UserSelectedRoutesSoap[] getUserSelectedRoutes(
+        java.lang.Long userId) throws RemoteException {
+        try {
+            java.util.List<es.eina.tfg.model.UserSelectedRoutes> returnValue = UserAdditionalDataServiceUtil.getUserSelectedRoutes(userId);
 
-			throw new RemoteException(e.getMessage());
-		}
-	}
+            return es.eina.tfg.model.UserSelectedRoutesSoap.toSoapModels(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
 
-	private static Log _log = LogFactoryUtil.getLog(UserAdditionalDataServiceSoap.class);
+            throw new RemoteException(e.getMessage());
+        }
+    }
 }

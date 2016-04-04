@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model.impl;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
@@ -57,399 +43,393 @@ import java.util.Map;
  */
 @JSON(strict = true)
 public class UserAdditionalDataModelImpl extends BaseModelImpl<UserAdditionalData>
-	implements UserAdditionalDataModel {
-	/*
-	 * NOTE FOR DEVELOPERS:
-	 *
-	 * Never modify or reference this class directly. All methods that expect a user additional data model instance should use the {@link es.eina.tfg.model.UserAdditionalData} interface instead.
-	 */
-	public static final String TABLE_NAME = "GL_UserAdditionalData";
-	public static final Object[][] TABLE_COLUMNS = {
-			{ "userId", Types.BIGINT },
-			{ "registerType", Types.VARCHAR },
-			{ "weight", Types.INTEGER },
-			{ "height", Types.INTEGER },
-			{ "smsCounter", Types.BIGINT }
-		};
-	public static final String TABLE_SQL_CREATE = "create table GL_UserAdditionalData (userId LONG not null primary key,registerType VARCHAR(75) null,weight INTEGER,height INTEGER,smsCounter LONG)";
-	public static final String TABLE_SQL_DROP = "drop table GL_UserAdditionalData";
-	public static final String ORDER_BY_JPQL = " ORDER BY userAdditionalData.userId ASC";
-	public static final String ORDER_BY_SQL = " ORDER BY GL_UserAdditionalData.userId ASC";
-	public static final String DATA_SOURCE = "liferayDataSource";
-	public static final String SESSION_FACTORY = "liferaySessionFactory";
-	public static final String TX_MANAGER = "liferayTransactionManager";
-	public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
-				"value.object.entity.cache.enabled.es.eina.tfg.model.UserAdditionalData"),
-			true);
-	public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
-				"value.object.finder.cache.enabled.es.eina.tfg.model.UserAdditionalData"),
-			true);
-	public static final boolean COLUMN_BITMASK_ENABLED = false;
-
-	/**
-	 * Converts the soap model instance into a normal model instance.
-	 *
-	 * @param soapModel the soap model instance to convert
-	 * @return the normal model instance
-	 */
-	public static UserAdditionalData toModel(UserAdditionalDataSoap soapModel) {
-		if (soapModel == null) {
-			return null;
-		}
-
-		UserAdditionalData model = new UserAdditionalDataImpl();
-
-		model.setUserId(soapModel.getUserId());
-		model.setRegisterType(soapModel.getRegisterType());
-		model.setWeight(soapModel.getWeight());
-		model.setHeight(soapModel.getHeight());
-		model.setSmsCounter(soapModel.getSmsCounter());
-
-		return model;
-	}
-
-	/**
-	 * Converts the soap model instances into normal model instances.
-	 *
-	 * @param soapModels the soap model instances to convert
-	 * @return the normal model instances
-	 */
-	public static List<UserAdditionalData> toModels(
-		UserAdditionalDataSoap[] soapModels) {
-		if (soapModels == null) {
-			return null;
-		}
-
-		List<UserAdditionalData> models = new ArrayList<UserAdditionalData>(soapModels.length);
-
-		for (UserAdditionalDataSoap soapModel : soapModels) {
-			models.add(toModel(soapModel));
-		}
-
-		return models;
-	}
-
-	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
-				"lock.expiration.time.es.eina.tfg.model.UserAdditionalData"));
-
-	public UserAdditionalDataModelImpl() {
-	}
-
-	@Override
-	public long getPrimaryKey() {
-		return _userId;
-	}
-
-	@Override
-	public void setPrimaryKey(long primaryKey) {
-		setUserId(primaryKey);
-	}
-
-	@Override
-	public Serializable getPrimaryKeyObj() {
-		return _userId;
-	}
-
-	@Override
-	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
-		setPrimaryKey(((Long)primaryKeyObj).longValue());
-	}
-
-	@Override
-	public Class<?> getModelClass() {
-		return UserAdditionalData.class;
-	}
-
-	@Override
-	public String getModelClassName() {
-		return UserAdditionalData.class.getName();
-	}
-
-	@Override
-	public Map<String, Object> getModelAttributes() {
-		Map<String, Object> attributes = new HashMap<String, Object>();
-
-		attributes.put("userId", getUserId());
-		attributes.put("registerType", getRegisterType());
-		attributes.put("weight", getWeight());
-		attributes.put("height", getHeight());
-		attributes.put("smsCounter", getSmsCounter());
-
-		return attributes;
-	}
-
-	@Override
-	public void setModelAttributes(Map<String, Object> attributes) {
-		Long userId = (Long)attributes.get("userId");
-
-		if (userId != null) {
-			setUserId(userId);
-		}
-
-		String registerType = (String)attributes.get("registerType");
-
-		if (registerType != null) {
-			setRegisterType(registerType);
-		}
-
-		Integer weight = (Integer)attributes.get("weight");
-
-		if (weight != null) {
-			setWeight(weight);
-		}
-
-		Integer height = (Integer)attributes.get("height");
-
-		if (height != null) {
-			setHeight(height);
-		}
-
-		Long smsCounter = (Long)attributes.get("smsCounter");
-
-		if (smsCounter != null) {
-			setSmsCounter(smsCounter);
-		}
-	}
-
-	@JSON
-	@Override
-	public long getUserId() {
-		return _userId;
-	}
-
-	@Override
-	public void setUserId(long userId) {
-		_userId = userId;
-	}
-
-	@Override
-	public String getUserUuid() throws SystemException {
-		return PortalUtil.getUserValue(getUserId(), "uuid", _userUuid);
-	}
-
-	@Override
-	public void setUserUuid(String userUuid) {
-		_userUuid = userUuid;
-	}
-
-	@JSON
-	@Override
-	public String getRegisterType() {
-		if (_registerType == null) {
-			return StringPool.BLANK;
-		}
-		else {
-			return _registerType;
-		}
-	}
-
-	@Override
-	public void setRegisterType(String registerType) {
-		_registerType = registerType;
-	}
-
-	@JSON
-	@Override
-	public int getWeight() {
-		return _weight;
-	}
-
-	@Override
-	public void setWeight(int weight) {
-		_weight = weight;
-	}
-
-	@JSON
-	@Override
-	public int getHeight() {
-		return _height;
-	}
-
-	@Override
-	public void setHeight(int height) {
-		_height = height;
-	}
-
-	@JSON
-	@Override
-	public long getSmsCounter() {
-		return _smsCounter;
-	}
-
-	@Override
-	public void setSmsCounter(long smsCounter) {
-		_smsCounter = smsCounter;
-	}
-
-	@Override
-	public ExpandoBridge getExpandoBridge() {
-		return ExpandoBridgeFactoryUtil.getExpandoBridge(0,
-			UserAdditionalData.class.getName(), getPrimaryKey());
-	}
-
-	@Override
-	public void setExpandoBridgeAttributes(ServiceContext serviceContext) {
-		ExpandoBridge expandoBridge = getExpandoBridge();
-
-		expandoBridge.setAttributes(serviceContext);
-	}
-
-	@Override
-	public UserAdditionalData toEscapedModel() {
-		if (_escapedModel == null) {
-			_escapedModel = (UserAdditionalData)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
-		}
-
-		return _escapedModel;
-	}
-
-	@Override
-	public Object clone() {
-		UserAdditionalDataImpl userAdditionalDataImpl = new UserAdditionalDataImpl();
-
-		userAdditionalDataImpl.setUserId(getUserId());
-		userAdditionalDataImpl.setRegisterType(getRegisterType());
-		userAdditionalDataImpl.setWeight(getWeight());
-		userAdditionalDataImpl.setHeight(getHeight());
-		userAdditionalDataImpl.setSmsCounter(getSmsCounter());
-
-		userAdditionalDataImpl.resetOriginalValues();
-
-		return userAdditionalDataImpl;
-	}
-
-	@Override
-	public int compareTo(UserAdditionalData userAdditionalData) {
-		long primaryKey = userAdditionalData.getPrimaryKey();
-
-		if (getPrimaryKey() < primaryKey) {
-			return -1;
-		}
-		else if (getPrimaryKey() > primaryKey) {
-			return 1;
-		}
-		else {
-			return 0;
-		}
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-
-		if (!(obj instanceof UserAdditionalData)) {
-			return false;
-		}
-
-		UserAdditionalData userAdditionalData = (UserAdditionalData)obj;
-
-		long primaryKey = userAdditionalData.getPrimaryKey();
-
-		if (getPrimaryKey() == primaryKey) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-
-	@Override
-	public int hashCode() {
-		return (int)getPrimaryKey();
-	}
-
-	@Override
-	public void resetOriginalValues() {
-	}
-
-	@Override
-	public CacheModel<UserAdditionalData> toCacheModel() {
-		UserAdditionalDataCacheModel userAdditionalDataCacheModel = new UserAdditionalDataCacheModel();
-
-		userAdditionalDataCacheModel.userId = getUserId();
-
-		userAdditionalDataCacheModel.registerType = getRegisterType();
-
-		String registerType = userAdditionalDataCacheModel.registerType;
-
-		if ((registerType != null) && (registerType.length() == 0)) {
-			userAdditionalDataCacheModel.registerType = null;
-		}
-
-		userAdditionalDataCacheModel.weight = getWeight();
-
-		userAdditionalDataCacheModel.height = getHeight();
-
-		userAdditionalDataCacheModel.smsCounter = getSmsCounter();
-
-		return userAdditionalDataCacheModel;
-	}
-
-	@Override
-	public String toString() {
-		StringBundler sb = new StringBundler(11);
-
-		sb.append("{userId=");
-		sb.append(getUserId());
-		sb.append(", registerType=");
-		sb.append(getRegisterType());
-		sb.append(", weight=");
-		sb.append(getWeight());
-		sb.append(", height=");
-		sb.append(getHeight());
-		sb.append(", smsCounter=");
-		sb.append(getSmsCounter());
-		sb.append("}");
-
-		return sb.toString();
-	}
-
-	@Override
-	public String toXmlString() {
-		StringBundler sb = new StringBundler(19);
-
-		sb.append("<model><model-name>");
-		sb.append("es.eina.tfg.model.UserAdditionalData");
-		sb.append("</model-name>");
-
-		sb.append(
-			"<column><column-name>userId</column-name><column-value><![CDATA[");
-		sb.append(getUserId());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>registerType</column-name><column-value><![CDATA[");
-		sb.append(getRegisterType());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>weight</column-name><column-value><![CDATA[");
-		sb.append(getWeight());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>height</column-name><column-value><![CDATA[");
-		sb.append(getHeight());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>smsCounter</column-name><column-value><![CDATA[");
-		sb.append(getSmsCounter());
-		sb.append("]]></column-value></column>");
-
-		sb.append("</model>");
-
-		return sb.toString();
-	}
-
-	private static ClassLoader _classLoader = UserAdditionalData.class.getClassLoader();
-	private static Class<?>[] _escapedModelInterfaces = new Class[] {
-			UserAdditionalData.class
-		};
-	private long _userId;
-	private String _userUuid;
-	private String _registerType;
-	private int _weight;
-	private int _height;
-	private long _smsCounter;
-	private UserAdditionalData _escapedModel;
+    implements UserAdditionalDataModel {
+    /*
+     * NOTE FOR DEVELOPERS:
+     *
+     * Never modify or reference this class directly. All methods that expect a user additional data model instance should use the {@link es.eina.tfg.model.UserAdditionalData} interface instead.
+     */
+    public static final String TABLE_NAME = "GL_UserAdditionalData";
+    public static final Object[][] TABLE_COLUMNS = {
+            { "userId", Types.BIGINT },
+            { "registerType", Types.VARCHAR },
+            { "weight", Types.INTEGER },
+            { "height", Types.INTEGER },
+            { "smsCounter", Types.BIGINT }
+        };
+    public static final String TABLE_SQL_CREATE = "create table GL_UserAdditionalData (userId LONG not null primary key,registerType VARCHAR(75) null,weight INTEGER,height INTEGER,smsCounter LONG)";
+    public static final String TABLE_SQL_DROP = "drop table GL_UserAdditionalData";
+    public static final String ORDER_BY_JPQL = " ORDER BY userAdditionalData.userId ASC";
+    public static final String ORDER_BY_SQL = " ORDER BY GL_UserAdditionalData.userId ASC";
+    public static final String DATA_SOURCE = "liferayDataSource";
+    public static final String SESSION_FACTORY = "liferaySessionFactory";
+    public static final String TX_MANAGER = "liferayTransactionManager";
+    public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
+                "value.object.entity.cache.enabled.es.eina.tfg.model.UserAdditionalData"),
+            true);
+    public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
+                "value.object.finder.cache.enabled.es.eina.tfg.model.UserAdditionalData"),
+            true);
+    public static final boolean COLUMN_BITMASK_ENABLED = false;
+    public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
+                "lock.expiration.time.es.eina.tfg.model.UserAdditionalData"));
+    private static ClassLoader _classLoader = UserAdditionalData.class.getClassLoader();
+    private static Class<?>[] _escapedModelInterfaces = new Class[] {
+            UserAdditionalData.class
+        };
+    private long _userId;
+    private String _userUuid;
+    private String _registerType;
+    private int _weight;
+    private int _height;
+    private long _smsCounter;
+    private UserAdditionalData _escapedModel;
+
+    public UserAdditionalDataModelImpl() {
+    }
+
+    /**
+     * Converts the soap model instance into a normal model instance.
+     *
+     * @param soapModel the soap model instance to convert
+     * @return the normal model instance
+     */
+    public static UserAdditionalData toModel(UserAdditionalDataSoap soapModel) {
+        if (soapModel == null) {
+            return null;
+        }
+
+        UserAdditionalData model = new UserAdditionalDataImpl();
+
+        model.setUserId(soapModel.getUserId());
+        model.setRegisterType(soapModel.getRegisterType());
+        model.setWeight(soapModel.getWeight());
+        model.setHeight(soapModel.getHeight());
+        model.setSmsCounter(soapModel.getSmsCounter());
+
+        return model;
+    }
+
+    /**
+     * Converts the soap model instances into normal model instances.
+     *
+     * @param soapModels the soap model instances to convert
+     * @return the normal model instances
+     */
+    public static List<UserAdditionalData> toModels(
+        UserAdditionalDataSoap[] soapModels) {
+        if (soapModels == null) {
+            return null;
+        }
+
+        List<UserAdditionalData> models = new ArrayList<UserAdditionalData>(soapModels.length);
+
+        for (UserAdditionalDataSoap soapModel : soapModels) {
+            models.add(toModel(soapModel));
+        }
+
+        return models;
+    }
+
+    @Override
+    public long getPrimaryKey() {
+        return _userId;
+    }
+
+    @Override
+    public void setPrimaryKey(long primaryKey) {
+        setUserId(primaryKey);
+    }
+
+    @Override
+    public Serializable getPrimaryKeyObj() {
+        return _userId;
+    }
+
+    @Override
+    public void setPrimaryKeyObj(Serializable primaryKeyObj) {
+        setPrimaryKey(((Long) primaryKeyObj).longValue());
+    }
+
+    @Override
+    public Class<?> getModelClass() {
+        return UserAdditionalData.class;
+    }
+
+    @Override
+    public String getModelClassName() {
+        return UserAdditionalData.class.getName();
+    }
+
+    @Override
+    public Map<String, Object> getModelAttributes() {
+        Map<String, Object> attributes = new HashMap<String, Object>();
+
+        attributes.put("userId", getUserId());
+        attributes.put("registerType", getRegisterType());
+        attributes.put("weight", getWeight());
+        attributes.put("height", getHeight());
+        attributes.put("smsCounter", getSmsCounter());
+
+        return attributes;
+    }
+
+    @Override
+    public void setModelAttributes(Map<String, Object> attributes) {
+        Long userId = (Long) attributes.get("userId");
+
+        if (userId != null) {
+            setUserId(userId);
+        }
+
+        String registerType = (String) attributes.get("registerType");
+
+        if (registerType != null) {
+            setRegisterType(registerType);
+        }
+
+        Integer weight = (Integer) attributes.get("weight");
+
+        if (weight != null) {
+            setWeight(weight);
+        }
+
+        Integer height = (Integer) attributes.get("height");
+
+        if (height != null) {
+            setHeight(height);
+        }
+
+        Long smsCounter = (Long) attributes.get("smsCounter");
+
+        if (smsCounter != null) {
+            setSmsCounter(smsCounter);
+        }
+    }
+
+    @JSON
+    @Override
+    public long getUserId() {
+        return _userId;
+    }
+
+    @Override
+    public void setUserId(long userId) {
+        _userId = userId;
+    }
+
+    @Override
+    public String getUserUuid() throws SystemException {
+        return PortalUtil.getUserValue(getUserId(), "uuid", _userUuid);
+    }
+
+    @Override
+    public void setUserUuid(String userUuid) {
+        _userUuid = userUuid;
+    }
+
+    @JSON
+    @Override
+    public String getRegisterType() {
+        if (_registerType == null) {
+            return StringPool.BLANK;
+        } else {
+            return _registerType;
+        }
+    }
+
+    @Override
+    public void setRegisterType(String registerType) {
+        _registerType = registerType;
+    }
+
+    @JSON
+    @Override
+    public int getWeight() {
+        return _weight;
+    }
+
+    @Override
+    public void setWeight(int weight) {
+        _weight = weight;
+    }
+
+    @JSON
+    @Override
+    public int getHeight() {
+        return _height;
+    }
+
+    @Override
+    public void setHeight(int height) {
+        _height = height;
+    }
+
+    @JSON
+    @Override
+    public long getSmsCounter() {
+        return _smsCounter;
+    }
+
+    @Override
+    public void setSmsCounter(long smsCounter) {
+        _smsCounter = smsCounter;
+    }
+
+    @Override
+    public ExpandoBridge getExpandoBridge() {
+        return ExpandoBridgeFactoryUtil.getExpandoBridge(0,
+            UserAdditionalData.class.getName(), getPrimaryKey());
+    }
+
+    @Override
+    public void setExpandoBridgeAttributes(ServiceContext serviceContext) {
+        ExpandoBridge expandoBridge = getExpandoBridge();
+
+        expandoBridge.setAttributes(serviceContext);
+    }
+
+    @Override
+    public UserAdditionalData toEscapedModel() {
+        if (_escapedModel == null) {
+            _escapedModel = (UserAdditionalData) ProxyUtil.newProxyInstance(_classLoader,
+                    _escapedModelInterfaces, new AutoEscapeBeanHandler(this));
+        }
+
+        return _escapedModel;
+    }
+
+    @Override
+    public Object clone() {
+        UserAdditionalDataImpl userAdditionalDataImpl = new UserAdditionalDataImpl();
+
+        userAdditionalDataImpl.setUserId(getUserId());
+        userAdditionalDataImpl.setRegisterType(getRegisterType());
+        userAdditionalDataImpl.setWeight(getWeight());
+        userAdditionalDataImpl.setHeight(getHeight());
+        userAdditionalDataImpl.setSmsCounter(getSmsCounter());
+
+        userAdditionalDataImpl.resetOriginalValues();
+
+        return userAdditionalDataImpl;
+    }
+
+    @Override
+    public int compareTo(UserAdditionalData userAdditionalData) {
+        long primaryKey = userAdditionalData.getPrimaryKey();
+
+        if (getPrimaryKey() < primaryKey) {
+            return -1;
+        } else if (getPrimaryKey() > primaryKey) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof UserAdditionalData)) {
+            return false;
+        }
+
+        UserAdditionalData userAdditionalData = (UserAdditionalData) obj;
+
+        long primaryKey = userAdditionalData.getPrimaryKey();
+
+        if (getPrimaryKey() == primaryKey) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) getPrimaryKey();
+    }
+
+    @Override
+    public void resetOriginalValues() {
+    }
+
+    @Override
+    public CacheModel<UserAdditionalData> toCacheModel() {
+        UserAdditionalDataCacheModel userAdditionalDataCacheModel = new UserAdditionalDataCacheModel();
+
+        userAdditionalDataCacheModel.userId = getUserId();
+
+        userAdditionalDataCacheModel.registerType = getRegisterType();
+
+        String registerType = userAdditionalDataCacheModel.registerType;
+
+        if ((registerType != null) && (registerType.length() == 0)) {
+            userAdditionalDataCacheModel.registerType = null;
+        }
+
+        userAdditionalDataCacheModel.weight = getWeight();
+
+        userAdditionalDataCacheModel.height = getHeight();
+
+        userAdditionalDataCacheModel.smsCounter = getSmsCounter();
+
+        return userAdditionalDataCacheModel;
+    }
+
+    @Override
+    public String toString() {
+        StringBundler sb = new StringBundler(11);
+
+        sb.append("{userId=");
+        sb.append(getUserId());
+        sb.append(", registerType=");
+        sb.append(getRegisterType());
+        sb.append(", weight=");
+        sb.append(getWeight());
+        sb.append(", height=");
+        sb.append(getHeight());
+        sb.append(", smsCounter=");
+        sb.append(getSmsCounter());
+        sb.append("}");
+
+        return sb.toString();
+    }
+
+    @Override
+    public String toXmlString() {
+        StringBundler sb = new StringBundler(19);
+
+        sb.append("<model><model-name>");
+        sb.append("es.eina.tfg.model.UserAdditionalData");
+        sb.append("</model-name>");
+
+        sb.append(
+            "<column><column-name>userId</column-name><column-value><![CDATA[");
+        sb.append(getUserId());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>registerType</column-name><column-value><![CDATA[");
+        sb.append(getRegisterType());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>weight</column-name><column-value><![CDATA[");
+        sb.append(getWeight());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>height</column-name><column-value><![CDATA[");
+        sb.append(getHeight());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>smsCounter</column-name><column-value><![CDATA[");
+        sb.append(getSmsCounter());
+        sb.append("]]></column-value></column>");
+
+        sb.append("</model>");
+
+        return sb.toString();
+    }
 }

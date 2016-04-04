@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model.impl;
 
 import com.liferay.portal.kernel.util.StringBundler;
@@ -32,45 +18,45 @@ import java.io.ObjectOutput;
  * @generated
  */
 public class UserSelectedRoutesCacheModel implements CacheModel<UserSelectedRoutes>,
-	Externalizable {
-	@Override
-	public String toString() {
-		StringBundler sb = new StringBundler(5);
+    Externalizable {
+    public long userId;
+    public long routeId;
 
-		sb.append("{userId=");
-		sb.append(userId);
-		sb.append(", routeId=");
-		sb.append(routeId);
-		sb.append("}");
+    @Override
+    public String toString() {
+        StringBundler sb = new StringBundler(5);
 
-		return sb.toString();
-	}
+        sb.append("{userId=");
+        sb.append(userId);
+        sb.append(", routeId=");
+        sb.append(routeId);
+        sb.append("}");
 
-	@Override
-	public UserSelectedRoutes toEntityModel() {
-		UserSelectedRoutesImpl userSelectedRoutesImpl = new UserSelectedRoutesImpl();
+        return sb.toString();
+    }
 
-		userSelectedRoutesImpl.setUserId(userId);
-		userSelectedRoutesImpl.setRouteId(routeId);
+    @Override
+    public UserSelectedRoutes toEntityModel() {
+        UserSelectedRoutesImpl userSelectedRoutesImpl = new UserSelectedRoutesImpl();
 
-		userSelectedRoutesImpl.resetOriginalValues();
+        userSelectedRoutesImpl.setUserId(userId);
+        userSelectedRoutesImpl.setRouteId(routeId);
 
-		return userSelectedRoutesImpl;
-	}
+        userSelectedRoutesImpl.resetOriginalValues();
 
-	@Override
-	public void readExternal(ObjectInput objectInput) throws IOException {
-		userId = objectInput.readLong();
-		routeId = objectInput.readLong();
-	}
+        return userSelectedRoutesImpl;
+    }
 
-	@Override
-	public void writeExternal(ObjectOutput objectOutput)
-		throws IOException {
-		objectOutput.writeLong(userId);
-		objectOutput.writeLong(routeId);
-	}
+    @Override
+    public void readExternal(ObjectInput objectInput) throws IOException {
+        userId = objectInput.readLong();
+        routeId = objectInput.readLong();
+    }
 
-	public long userId;
-	public long routeId;
+    @Override
+    public void writeExternal(ObjectOutput objectOutput)
+        throws IOException {
+        objectOutput.writeLong(userId);
+        objectOutput.writeLong(routeId);
+    }
 }

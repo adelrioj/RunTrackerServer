@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model.impl;
 
 import com.liferay.portal.kernel.util.StringBundler;
@@ -33,170 +19,156 @@ import java.io.ObjectOutput;
  * @generated
  */
 public class SensorCacheModel implements CacheModel<Sensor>, Externalizable {
-	@Override
-	public String toString() {
-		StringBundler sb = new StringBundler(19);
+    public long sensorId;
+    public int type;
+    public String description;
+    public String dataUnits;
+    public String dataType;
+    public String dataUncertainity;
+    public String dataLowerRange;
+    public String dataUpperRange;
+    public String dataPacketFormat;
 
-		sb.append("{sensorId=");
-		sb.append(sensorId);
-		sb.append(", type=");
-		sb.append(type);
-		sb.append(", description=");
-		sb.append(description);
-		sb.append(", dataUnits=");
-		sb.append(dataUnits);
-		sb.append(", dataType=");
-		sb.append(dataType);
-		sb.append(", dataUncertainity=");
-		sb.append(dataUncertainity);
-		sb.append(", dataLowerRange=");
-		sb.append(dataLowerRange);
-		sb.append(", dataUpperRange=");
-		sb.append(dataUpperRange);
-		sb.append(", dataPacketFormat=");
-		sb.append(dataPacketFormat);
-		sb.append("}");
+    @Override
+    public String toString() {
+        StringBundler sb = new StringBundler(19);
 
-		return sb.toString();
-	}
+        sb.append("{sensorId=");
+        sb.append(sensorId);
+        sb.append(", type=");
+        sb.append(type);
+        sb.append(", description=");
+        sb.append(description);
+        sb.append(", dataUnits=");
+        sb.append(dataUnits);
+        sb.append(", dataType=");
+        sb.append(dataType);
+        sb.append(", dataUncertainity=");
+        sb.append(dataUncertainity);
+        sb.append(", dataLowerRange=");
+        sb.append(dataLowerRange);
+        sb.append(", dataUpperRange=");
+        sb.append(dataUpperRange);
+        sb.append(", dataPacketFormat=");
+        sb.append(dataPacketFormat);
+        sb.append("}");
 
-	@Override
-	public Sensor toEntityModel() {
-		SensorImpl sensorImpl = new SensorImpl();
+        return sb.toString();
+    }
 
-		sensorImpl.setSensorId(sensorId);
-		sensorImpl.setType(type);
+    @Override
+    public Sensor toEntityModel() {
+        SensorImpl sensorImpl = new SensorImpl();
 
-		if (description == null) {
-			sensorImpl.setDescription(StringPool.BLANK);
-		}
-		else {
-			sensorImpl.setDescription(description);
-		}
+        sensorImpl.setSensorId(sensorId);
+        sensorImpl.setType(type);
 
-		if (dataUnits == null) {
-			sensorImpl.setDataUnits(StringPool.BLANK);
-		}
-		else {
-			sensorImpl.setDataUnits(dataUnits);
-		}
+        if (description == null) {
+            sensorImpl.setDescription(StringPool.BLANK);
+        } else {
+            sensorImpl.setDescription(description);
+        }
 
-		if (dataType == null) {
-			sensorImpl.setDataType(StringPool.BLANK);
-		}
-		else {
-			sensorImpl.setDataType(dataType);
-		}
+        if (dataUnits == null) {
+            sensorImpl.setDataUnits(StringPool.BLANK);
+        } else {
+            sensorImpl.setDataUnits(dataUnits);
+        }
 
-		if (dataUncertainity == null) {
-			sensorImpl.setDataUncertainity(StringPool.BLANK);
-		}
-		else {
-			sensorImpl.setDataUncertainity(dataUncertainity);
-		}
+        if (dataType == null) {
+            sensorImpl.setDataType(StringPool.BLANK);
+        } else {
+            sensorImpl.setDataType(dataType);
+        }
 
-		if (dataLowerRange == null) {
-			sensorImpl.setDataLowerRange(StringPool.BLANK);
-		}
-		else {
-			sensorImpl.setDataLowerRange(dataLowerRange);
-		}
+        if (dataUncertainity == null) {
+            sensorImpl.setDataUncertainity(StringPool.BLANK);
+        } else {
+            sensorImpl.setDataUncertainity(dataUncertainity);
+        }
 
-		if (dataUpperRange == null) {
-			sensorImpl.setDataUpperRange(StringPool.BLANK);
-		}
-		else {
-			sensorImpl.setDataUpperRange(dataUpperRange);
-		}
+        if (dataLowerRange == null) {
+            sensorImpl.setDataLowerRange(StringPool.BLANK);
+        } else {
+            sensorImpl.setDataLowerRange(dataLowerRange);
+        }
 
-		if (dataPacketFormat == null) {
-			sensorImpl.setDataPacketFormat(StringPool.BLANK);
-		}
-		else {
-			sensorImpl.setDataPacketFormat(dataPacketFormat);
-		}
+        if (dataUpperRange == null) {
+            sensorImpl.setDataUpperRange(StringPool.BLANK);
+        } else {
+            sensorImpl.setDataUpperRange(dataUpperRange);
+        }
 
-		sensorImpl.resetOriginalValues();
+        if (dataPacketFormat == null) {
+            sensorImpl.setDataPacketFormat(StringPool.BLANK);
+        } else {
+            sensorImpl.setDataPacketFormat(dataPacketFormat);
+        }
 
-		return sensorImpl;
-	}
+        sensorImpl.resetOriginalValues();
 
-	@Override
-	public void readExternal(ObjectInput objectInput) throws IOException {
-		sensorId = objectInput.readLong();
-		type = objectInput.readInt();
-		description = objectInput.readUTF();
-		dataUnits = objectInput.readUTF();
-		dataType = objectInput.readUTF();
-		dataUncertainity = objectInput.readUTF();
-		dataLowerRange = objectInput.readUTF();
-		dataUpperRange = objectInput.readUTF();
-		dataPacketFormat = objectInput.readUTF();
-	}
+        return sensorImpl;
+    }
 
-	@Override
-	public void writeExternal(ObjectOutput objectOutput)
-		throws IOException {
-		objectOutput.writeLong(sensorId);
-		objectOutput.writeInt(type);
+    @Override
+    public void readExternal(ObjectInput objectInput) throws IOException {
+        sensorId = objectInput.readLong();
+        type = objectInput.readInt();
+        description = objectInput.readUTF();
+        dataUnits = objectInput.readUTF();
+        dataType = objectInput.readUTF();
+        dataUncertainity = objectInput.readUTF();
+        dataLowerRange = objectInput.readUTF();
+        dataUpperRange = objectInput.readUTF();
+        dataPacketFormat = objectInput.readUTF();
+    }
 
-		if (description == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(description);
-		}
+    @Override
+    public void writeExternal(ObjectOutput objectOutput)
+        throws IOException {
+        objectOutput.writeLong(sensorId);
+        objectOutput.writeInt(type);
 
-		if (dataUnits == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(dataUnits);
-		}
+        if (description == null) {
+            objectOutput.writeUTF(StringPool.BLANK);
+        } else {
+            objectOutput.writeUTF(description);
+        }
 
-		if (dataType == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(dataType);
-		}
+        if (dataUnits == null) {
+            objectOutput.writeUTF(StringPool.BLANK);
+        } else {
+            objectOutput.writeUTF(dataUnits);
+        }
 
-		if (dataUncertainity == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(dataUncertainity);
-		}
+        if (dataType == null) {
+            objectOutput.writeUTF(StringPool.BLANK);
+        } else {
+            objectOutput.writeUTF(dataType);
+        }
 
-		if (dataLowerRange == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(dataLowerRange);
-		}
+        if (dataUncertainity == null) {
+            objectOutput.writeUTF(StringPool.BLANK);
+        } else {
+            objectOutput.writeUTF(dataUncertainity);
+        }
 
-		if (dataUpperRange == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(dataUpperRange);
-		}
+        if (dataLowerRange == null) {
+            objectOutput.writeUTF(StringPool.BLANK);
+        } else {
+            objectOutput.writeUTF(dataLowerRange);
+        }
 
-		if (dataPacketFormat == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(dataPacketFormat);
-		}
-	}
+        if (dataUpperRange == null) {
+            objectOutput.writeUTF(StringPool.BLANK);
+        } else {
+            objectOutput.writeUTF(dataUpperRange);
+        }
 
-	public long sensorId;
-	public int type;
-	public String description;
-	public String dataUnits;
-	public String dataType;
-	public String dataUncertainity;
-	public String dataLowerRange;
-	public String dataUpperRange;
-	public String dataPacketFormat;
+        if (dataPacketFormat == null) {
+            objectOutput.writeUTF(StringPool.BLANK);
+        } else {
+            objectOutput.writeUTF(dataPacketFormat);
+        }
+    }
 }

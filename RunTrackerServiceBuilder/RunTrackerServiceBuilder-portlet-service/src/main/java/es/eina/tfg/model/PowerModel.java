@@ -1,17 +1,3 @@
-/**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-
 package es.eina.tfg.model;
 
 import com.liferay.portal.kernel.bean.AutoEscape;
@@ -40,208 +26,208 @@ import java.util.Date;
  * @generated
  */
 public interface PowerModel extends BaseModel<Power> {
-	/*
-	 * NOTE FOR DEVELOPERS:
-	 *
-	 * Never modify or reference this interface directly. All methods that expect a power model instance should use the {@link Power} interface instead.
-	 */
+    /*
+     * NOTE FOR DEVELOPERS:
+     *
+     * Never modify or reference this interface directly. All methods that expect a power model instance should use the {@link Power} interface instead.
+     */
 
-	/**
-	 * Returns the primary key of this power.
-	 *
-	 * @return the primary key of this power
-	 */
-	public long getPrimaryKey();
+    /**
+     * Returns the primary key of this power.
+     *
+     * @return the primary key of this power
+     */
+    public long getPrimaryKey();
 
-	/**
-	 * Sets the primary key of this power.
-	 *
-	 * @param primaryKey the primary key of this power
-	 */
-	public void setPrimaryKey(long primaryKey);
+    /**
+     * Sets the primary key of this power.
+     *
+     * @param primaryKey the primary key of this power
+     */
+    public void setPrimaryKey(long primaryKey);
 
-	/**
-	 * Returns the measurement ID of this power.
-	 *
-	 * @return the measurement ID of this power
-	 */
-	public long getMeasurementId();
+    /**
+     * Returns the measurement ID of this power.
+     *
+     * @return the measurement ID of this power
+     */
+    public long getMeasurementId();
 
-	/**
-	 * Sets the measurement ID of this power.
-	 *
-	 * @param measurementId the measurement ID of this power
-	 */
-	public void setMeasurementId(long measurementId);
+    /**
+     * Sets the measurement ID of this power.
+     *
+     * @param measurementId the measurement ID of this power
+     */
+    public void setMeasurementId(long measurementId);
 
-	/**
-	 * Returns the race ID of this power.
-	 *
-	 * @return the race ID of this power
-	 */
-	public long getRaceId();
+    /**
+     * Returns the race ID of this power.
+     *
+     * @return the race ID of this power
+     */
+    public long getRaceId();
 
-	/**
-	 * Sets the race ID of this power.
-	 *
-	 * @param raceId the race ID of this power
-	 */
-	public void setRaceId(long raceId);
+    /**
+     * Sets the race ID of this power.
+     *
+     * @param raceId the race ID of this power
+     */
+    public void setRaceId(long raceId);
 
-	/**
-	 * Returns the user ID of this power.
-	 *
-	 * @return the user ID of this power
-	 */
-	public long getUserId();
+    /**
+     * Returns the user ID of this power.
+     *
+     * @return the user ID of this power
+     */
+    public long getUserId();
 
-	/**
-	 * Sets the user ID of this power.
-	 *
-	 * @param userId the user ID of this power
-	 */
-	public void setUserId(long userId);
+    /**
+     * Sets the user ID of this power.
+     *
+     * @param userId the user ID of this power
+     */
+    public void setUserId(long userId);
 
-	/**
-	 * Returns the user uuid of this power.
-	 *
-	 * @return the user uuid of this power
-	 * @throws SystemException if a system exception occurred
-	 */
-	public String getUserUuid() throws SystemException;
+    /**
+     * Returns the user uuid of this power.
+     *
+     * @return the user uuid of this power
+     * @throws SystemException if a system exception occurred
+     */
+    public String getUserUuid() throws SystemException;
 
-	/**
-	 * Sets the user uuid of this power.
-	 *
-	 * @param userUuid the user uuid of this power
-	 */
-	public void setUserUuid(String userUuid);
+    /**
+     * Sets the user uuid of this power.
+     *
+     * @param userUuid the user uuid of this power
+     */
+    public void setUserUuid(String userUuid);
 
-	/**
-	 * Returns the device ID of this power.
-	 *
-	 * @return the device ID of this power
-	 */
-	public long getDeviceId();
+    /**
+     * Returns the device ID of this power.
+     *
+     * @return the device ID of this power
+     */
+    public long getDeviceId();
 
-	/**
-	 * Sets the device ID of this power.
-	 *
-	 * @param deviceId the device ID of this power
-	 */
-	public void setDeviceId(long deviceId);
+    /**
+     * Sets the device ID of this power.
+     *
+     * @param deviceId the device ID of this power
+     */
+    public void setDeviceId(long deviceId);
 
-	/**
-	 * Returns the sensor ID of this power.
-	 *
-	 * @return the sensor ID of this power
-	 */
-	public long getSensorId();
+    /**
+     * Returns the sensor ID of this power.
+     *
+     * @return the sensor ID of this power
+     */
+    public long getSensorId();
 
-	/**
-	 * Sets the sensor ID of this power.
-	 *
-	 * @param sensorId the sensor ID of this power
-	 */
-	public void setSensorId(long sensorId);
+    /**
+     * Sets the sensor ID of this power.
+     *
+     * @param sensorId the sensor ID of this power
+     */
+    public void setSensorId(long sensorId);
 
-	/**
-	 * Returns the time of this power.
-	 *
-	 * @return the time of this power
-	 */
-	public Date getTime();
+    /**
+     * Returns the time of this power.
+     *
+     * @return the time of this power
+     */
+    public Date getTime();
 
-	/**
-	 * Sets the time of this power.
-	 *
-	 * @param time the time of this power
-	 */
-	public void setTime(Date time);
+    /**
+     * Sets the time of this power.
+     *
+     * @param time the time of this power
+     */
+    public void setTime(Date time);
 
-	/**
-	 * Returns the sensor mode of this power.
-	 *
-	 * @return the sensor mode of this power
-	 */
-	@AutoEscape
-	public String getSensorMode();
+    /**
+     * Returns the sensor mode of this power.
+     *
+     * @return the sensor mode of this power
+     */
+    @AutoEscape
+    public String getSensorMode();
 
-	/**
-	 * Sets the sensor mode of this power.
-	 *
-	 * @param sensorMode the sensor mode of this power
-	 */
-	public void setSensorMode(String sensorMode);
+    /**
+     * Sets the sensor mode of this power.
+     *
+     * @param sensorMode the sensor mode of this power
+     */
+    public void setSensorMode(String sensorMode);
 
-	/**
-	 * Returns the level of this power.
-	 *
-	 * @return the level of this power
-	 */
-	public int getLevel();
+    /**
+     * Returns the level of this power.
+     *
+     * @return the level of this power
+     */
+    public int getLevel();
 
-	/**
-	 * Sets the level of this power.
-	 *
-	 * @param level the level of this power
-	 */
-	public void setLevel(int level);
+    /**
+     * Sets the level of this power.
+     *
+     * @param level the level of this power
+     */
+    public void setLevel(int level);
 
-	@Override
-	public boolean isNew();
+    @Override
+    public boolean isNew();
 
-	@Override
-	public void setNew(boolean n);
+    @Override
+    public void setNew(boolean n);
 
-	@Override
-	public boolean isCachedModel();
+    @Override
+    public boolean isCachedModel();
 
-	@Override
-	public void setCachedModel(boolean cachedModel);
+    @Override
+    public void setCachedModel(boolean cachedModel);
 
-	@Override
-	public boolean isEscapedModel();
+    @Override
+    public boolean isEscapedModel();
 
-	@Override
-	public Serializable getPrimaryKeyObj();
+    @Override
+    public Serializable getPrimaryKeyObj();
 
-	@Override
-	public void setPrimaryKeyObj(Serializable primaryKeyObj);
+    @Override
+    public void setPrimaryKeyObj(Serializable primaryKeyObj);
 
-	@Override
-	public ExpandoBridge getExpandoBridge();
+    @Override
+    public ExpandoBridge getExpandoBridge();
 
-	@Override
-	public void setExpandoBridgeAttributes(BaseModel<?> baseModel);
+    @Override
+    public void setExpandoBridgeAttributes(BaseModel<?> baseModel);
 
-	@Override
-	public void setExpandoBridgeAttributes(ExpandoBridge expandoBridge);
+    @Override
+    public void setExpandoBridgeAttributes(ExpandoBridge expandoBridge);
 
-	@Override
-	public void setExpandoBridgeAttributes(ServiceContext serviceContext);
+    @Override
+    public void setExpandoBridgeAttributes(ServiceContext serviceContext);
 
-	@Override
-	public Object clone();
+    @Override
+    public Object clone();
 
-	@Override
-	public int compareTo(es.eina.tfg.model.Power power);
+    @Override
+    public int compareTo(es.eina.tfg.model.Power power);
 
-	@Override
-	public int hashCode();
+    @Override
+    public int hashCode();
 
-	@Override
-	public CacheModel<es.eina.tfg.model.Power> toCacheModel();
+    @Override
+    public CacheModel<es.eina.tfg.model.Power> toCacheModel();
 
-	@Override
-	public es.eina.tfg.model.Power toEscapedModel();
+    @Override
+    public es.eina.tfg.model.Power toEscapedModel();
 
-	@Override
-	public es.eina.tfg.model.Power toUnescapedModel();
+    @Override
+    public es.eina.tfg.model.Power toUnescapedModel();
 
-	@Override
-	public String toString();
+    @Override
+    public String toString();
 
-	@Override
-	public String toXmlString();
+    @Override
+    public String toXmlString();
 }
