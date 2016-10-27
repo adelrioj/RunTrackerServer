@@ -30,9 +30,14 @@
             <%
                 DisplayTerms displayTerms =searchContainer.getDisplayTerms();
                 String searchkeywords = displayTerms.getKeywords();
-                searchContainer.setResults(RouteLocalServiceUtil.getRoutesByName(searchkeywords,
-                        searchContainer.getStart(), searchContainer.getEnd(), new RouteNameComparator()));
-                searchContainer.setTotal(RouteLocalServiceUtil.getRoutesByNameCount(searchkeywords));
+                searchContainer.setResults(
+                        RouteLocalServiceUtil.getRoutesByName(
+                                searchkeywords,
+                                searchContainer.getStart(),
+                                searchContainer.getEnd(),
+                                new RouteNameComparator()));
+                searchContainer.setTotal(
+                        RouteLocalServiceUtil.getRoutesByNameCount(searchkeywords));
             %>
         </liferay-ui:search-container-results>
 

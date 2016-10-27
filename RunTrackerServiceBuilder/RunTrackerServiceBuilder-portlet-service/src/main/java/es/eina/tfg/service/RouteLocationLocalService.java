@@ -241,6 +241,9 @@ public interface RouteLocationLocalService extends BaseLocalService,
         java.lang.String[] parameterTypes, java.lang.Object[] arguments)
         throws java.lang.Throwable;
 
+    public es.eina.tfg.model.RouteLocation createRouteLocation()
+        throws com.liferay.portal.kernel.exception.SystemException;
+
     public es.eina.tfg.model.RouteLocation add(java.lang.Long routeId,
         java.lang.Double latitude, java.lang.Double longitude)
         throws com.liferay.portal.kernel.exception.SystemException,

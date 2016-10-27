@@ -59,6 +59,8 @@ public class RouteLocalServiceClpInvoker {
     private String[] _methodParameterTypes99;
     private String _methodName100;
     private String[] _methodParameterTypes100;
+    private String _methodName101;
+    private String[] _methodParameterTypes101;
 
     public RouteLocalServiceClpInvoker() {
         _methodName0 = "addRoute";
@@ -145,43 +147,47 @@ public class RouteLocalServiceClpInvoker {
 
         _methodParameterTypes89 = new String[] { "java.lang.String" };
 
-        _methodName94 = "add";
+        _methodName94 = "createRoute";
 
-        _methodParameterTypes94 = new String[] {
+        _methodParameterTypes94 = new String[] {  };
+
+        _methodName95 = "add";
+
+        _methodParameterTypes95 = new String[] {
                 "java.lang.String", "java.lang.String", "java.lang.String",
                 "java.lang.Long", "boolean", "java.util.Date"
             };
 
-        _methodName95 = "update";
+        _methodName96 = "update";
 
-        _methodParameterTypes95 = new String[] {
+        _methodParameterTypes96 = new String[] {
                 "java.lang.Long", "java.lang.String", "java.lang.String",
                 "java.lang.String", "java.lang.Long", "boolean",
                 "java.util.Date", "java.util.Date"
             };
 
-        _methodName96 = "findByAuthor";
+        _methodName97 = "findByAuthor";
 
-        _methodParameterTypes96 = new String[] { "java.lang.Long" };
-
-        _methodName97 = "getPublicRoutes";
-
-        _methodParameterTypes97 = new String[] {  };
+        _methodParameterTypes97 = new String[] { "java.lang.Long" };
 
         _methodName98 = "getPublicRoutes";
 
-        _methodParameterTypes98 = new String[] { "int", "int" };
+        _methodParameterTypes98 = new String[] {  };
 
-        _methodName99 = "getRoutesByName";
+        _methodName99 = "getPublicRoutes";
 
-        _methodParameterTypes99 = new String[] {
+        _methodParameterTypes99 = new String[] { "int", "int" };
+
+        _methodName100 = "getRoutesByName";
+
+        _methodParameterTypes100 = new String[] {
                 "java.lang.String", "int", "int",
                 "com.liferay.portal.kernel.util.OrderByComparator"
             };
 
-        _methodName100 = "getRoutesByNameCount";
+        _methodName101 = "getRoutesByNameCount";
 
-        _methodParameterTypes100 = new String[] { "java.lang.String" };
+        _methodParameterTypes101 = new String[] { "java.lang.String" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -287,6 +293,11 @@ public class RouteLocalServiceClpInvoker {
 
         if (_methodName94.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
+            return RouteLocalServiceUtil.createRoute();
+        }
+
+        if (_methodName95.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes95, parameterTypes)) {
             return RouteLocalServiceUtil.add((java.lang.String) arguments[0],
                 (java.lang.String) arguments[1],
                 (java.lang.String) arguments[2], (java.lang.Long) arguments[3],
@@ -294,8 +305,8 @@ public class RouteLocalServiceClpInvoker {
                 (java.util.Date) arguments[5]);
         }
 
-        if (_methodName95.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes95, parameterTypes)) {
+        if (_methodName96.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes96, parameterTypes)) {
             return RouteLocalServiceUtil.update((java.lang.Long) arguments[0],
                 (java.lang.String) arguments[1],
                 (java.lang.String) arguments[2],
@@ -304,32 +315,32 @@ public class RouteLocalServiceClpInvoker {
                 (java.util.Date) arguments[6], (java.util.Date) arguments[7]);
         }
 
-        if (_methodName96.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes96, parameterTypes)) {
-            return RouteLocalServiceUtil.findByAuthor((java.lang.Long) arguments[0]);
-        }
-
         if (_methodName97.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes97, parameterTypes)) {
-            return RouteLocalServiceUtil.getPublicRoutes();
+            return RouteLocalServiceUtil.findByAuthor((java.lang.Long) arguments[0]);
         }
 
         if (_methodName98.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes98, parameterTypes)) {
-            return RouteLocalServiceUtil.getPublicRoutes(((Integer) arguments[0]).intValue(),
-                ((Integer) arguments[1]).intValue());
+            return RouteLocalServiceUtil.getPublicRoutes();
         }
 
         if (_methodName99.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes99, parameterTypes)) {
+            return RouteLocalServiceUtil.getPublicRoutes(((Integer) arguments[0]).intValue(),
+                ((Integer) arguments[1]).intValue());
+        }
+
+        if (_methodName100.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes100, parameterTypes)) {
             return RouteLocalServiceUtil.getRoutesByName((java.lang.String) arguments[0],
                 ((Integer) arguments[1]).intValue(),
                 ((Integer) arguments[2]).intValue(),
                 (com.liferay.portal.kernel.util.OrderByComparator) arguments[3]);
         }
 
-        if (_methodName100.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes100, parameterTypes)) {
+        if (_methodName101.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes101, parameterTypes)) {
             return RouteLocalServiceUtil.getRoutesByNameCount((java.lang.String) arguments[0]);
         }
 

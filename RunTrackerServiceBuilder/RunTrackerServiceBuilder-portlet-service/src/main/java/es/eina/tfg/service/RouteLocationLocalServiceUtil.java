@@ -263,6 +263,11 @@ public class RouteLocationLocalServiceUtil {
         return getService().invokeMethod(name, parameterTypes, arguments);
     }
 
+    public static es.eina.tfg.model.RouteLocation createRouteLocation()
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService().createRouteLocation();
+    }
+
     public static es.eina.tfg.model.RouteLocation add(java.lang.Long routeId,
         java.lang.Double latitude, java.lang.Double longitude)
         throws com.liferay.portal.kernel.exception.SystemException,

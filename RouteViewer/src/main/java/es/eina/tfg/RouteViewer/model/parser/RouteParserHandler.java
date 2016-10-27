@@ -10,7 +10,7 @@ import java.io.File;
  *
  * Created by adelrioj on 09/10/2015.
  */
-public interface GenericRouteParserHandler {
+public interface RouteParserHandler {
     Route addRouteFromLocationListFile(File inputFile, String name, String description, boolean isPublic, String type,
                                        Long authorId, DateTime startingDate) throws Exception;
 }

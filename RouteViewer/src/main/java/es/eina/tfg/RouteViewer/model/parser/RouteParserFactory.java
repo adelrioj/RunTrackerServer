@@ -10,11 +10,13 @@ import org.apache.commons.io.FilenameUtils;
  */
 public class RouteParserFactory {
 
-    public static GenericRouteParserHandler getSAXHandler (String fileNameIncludingExtension){
+    public static RouteParserHandler getSAXHandler(String fileNameIncludingExtension){
         String extension = FilenameUtils.getExtension(fileNameIncludingExtension);
         if ("GPX".equalsIgnoreCase(extension)){
             return new GPXRouteParserHandler();
         }
-        return null;
+
+        //Default handler
+        return new GPXRouteParserHandler();
     }
 }

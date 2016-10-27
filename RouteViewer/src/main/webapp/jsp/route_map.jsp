@@ -1,20 +1,14 @@
-<%@ page import="com.liferay.docs.route.util.WebKeys" %>
-<%@ page import="com.liferay.portal.kernel.util.Validator" %>
-<%@ page import="es.eina.tfg.model.RouteLocation" %>
-<%@ page import="es.eina.tfg.service.RouteLocationLocalServiceUtil" %>
-<%@ page import="java.util.List" %>
-
 <%@include file="custom_init.jsp"%>
-
-<%
-    List<RouteLocation> selectedRouteLocations = RouteLocationLocalServiceUtil.findByRouteId(selectedRouteId);
-%>
 
 <script type="text/javascript">
     var map;
 
     function initialize() {
-        var myLatlng = new google.maps.LatLng(<%= selectedRouteLocations.get(0).getLatitude()%>, <%= selectedRouteLocations.get(0).getLongitude()%>);
+
+        var myLatlng = new google.maps.LatLng(
+                ${requestScope.routeToEditLocations[0].latitude},
+                ${requestScope.routeToEditLocations[0].longitude}
+        );
         var myOptions = {
             zoom: 14,
             center: myLatlng,
@@ -22,39 +16,32 @@
         };
 
         map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-
         var routeCoordinates = [
-            <%
-              for (RouteLocation selectedRouteLocation : selectedRouteLocations) {
-            %>
-            {lat: <%= selectedRouteLocation.getLatitude()%>, lng: <%= selectedRouteLocation.getLongitude()%>},
-            <%
-              }
-            %>
+            <c:forEach items="${requestScope.routeToEditLocations}" var="routeLocation" >
+                {lat: ${routeLocation.latitude}, lng:${routeLocation.longitude}},
+            </c:forEach>
         ];
         setPolyLine(routeCoordinates);
-        setMarker(<%= selectedRouteLocations.get(0).getLatitude()%>,
-                <%= selectedRouteLocations.get(0).getLongitude()%>,
-                "Inicio",
-                '<%= WebKeys.MARKER_GEEEN%>');
-        setMarker(<%= selectedRouteLocations.get(selectedRouteLocations.size()-1).getLatitude()%>,
-                <%= selectedRouteLocations.get(selectedRouteLocations.size()-1).getLongitude()%>,
-                "Final",
-                '<%= WebKeys.MARKER_YELLOW%>');
-        <%
-            Long selectedRouteLocationId = (Long) request.getAttribute("selectedRouteLocationId");
-            if (Validator.isNotNull(selectedRouteLocationId)){
-                RouteLocation selectedLocation = RouteLocationLocalServiceUtil.getRouteLocation(selectedRouteLocationId);
-                if (Validator.isNotNull(selectedLocation)){
-        %>
-        setMarker(<%= selectedLocation.getLatitude()%>,
-                <%= selectedLocation.getLongitude()%>,
-                "Seleccionado",
-                '<%= WebKeys.MARKER_RED%>');
-        <%
-                }
-            }
-        %>
+
+        setMarker(
+                ${requestScope.routeToEditLocations[0].latitude},
+                ${requestScope.routeToEditLocations[0].longitude},
+                '<liferay-ui:message key="startLocationMarkerLabel" />',
+                '${constants.MARKER_GEEEN}');
+
+        setMarker(
+                ${requestScope.routeToEditLocations[fn:length(requestScope.routeToEditLocations)-1].latitude},
+                ${requestScope.routeToEditLocations[fn:length(requestScope.routeToEditLocations)-1].longitude},
+                '<liferay-ui:message key="finishLocationMarkerLabel" />',
+                '${constants.MARKER_YELLOW}');
+
+        <c:if test="${not empty requestScope.routeLocationSelected}">
+        setMarker(
+                ${requestScope.routeLocationSelected.latitude},
+                ${requestScope.routeLocationSelected.longitude},
+                '<liferay-ui:message key="selectedLocationMarkerLabel" />',
+                '${constants.MARKER_RED}');
+        </c:if>
     }
 
     function setMarker(latitude, longitude, title, iconPath) {
@@ -62,7 +49,7 @@
         var marker = new google.maps.Marker({
             position: myLatlng,
             title: title,
-            icon: '<%= renderRequest.getContextPath()%>' + iconPath
+            icon: '${renderRequest.contextPath}' + iconPath
         });
         marker.setMap(map);
     }
@@ -82,7 +69,7 @@
     function loadScript() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "http://maps.google.com/maps/api/js?callback=initialize";
+        script.src = "http://maps.google.com/maps/api/js?callback=initialize&key=AIzaSyDHGIgNTF3GMNjx6JjcNAisC5MoT0ebom0";
         document.body.appendChild(script);
     }
 

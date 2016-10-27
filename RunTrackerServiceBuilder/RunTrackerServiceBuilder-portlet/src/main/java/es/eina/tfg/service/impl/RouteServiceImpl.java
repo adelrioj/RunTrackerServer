@@ -58,14 +58,4 @@ public class RouteServiceImpl extends RouteServiceBaseImpl {
     public List<Route> getPublicRoutes(int start, int end) throws SystemException {
         return RouteLocalServiceUtil.getPublicRoutes(start,end);
     }
-
-    public static final String DEFAULT_NAME = RouteLocalServiceImpl.DEFAULT_NAME;
-    public static final String DEFAULT_DESC = RouteLocalServiceImpl.DEFAULT_DESC;
-    public static final String DEFAULT_TYPE = RouteLocalServiceImpl.DEFAULT_TYPE;
-    public static final boolean DEFAULT_ISPUBLIC = RouteLocalServiceImpl.DEFAULT_ISPUBLIC;
-    public static final Date DEFAULT_STARTINGTIME = RouteLocalServiceImpl.DEFAULT_STARTINGTIME;
-
-    public static final String TYPE_WALKING = RouteLocalServiceImpl.TYPE_WALKING;
-    public static final String TYPE_RUNNING = RouteLocalServiceImpl.TYPE_RUNNING;
-    public static final String TYPE_CYCLING = RouteLocalServiceImpl.TYPE_CYCLING;
 }

@@ -11,12 +11,14 @@
 <liferay-ui:icon-menu>
     <!-- View section -->
     <portlet:renderURL var="viewRouteLocationURL">
-        <portlet:param name="selectedRouteLocationId" value="<%= String.valueOf(routeLocationSelect.getRoutePositionId()) %>" />
+        <portlet:param name="${constants.PARAM_SELECTEDROUTELOCATIONID}"
+                       value="<%= String.valueOf(routeLocationSelect.getRoutePositionId()) %>" />
     </portlet:renderURL>
     <liferay-ui:icon image="view" message="view" url="${viewRouteLocationURL}" />
     <!-- Delete section -->
     <portlet:actionURL name="deleteRoutePositionAction" var="deleteRouteLocationURL">
-        <portlet:param name="deleteRoutePositionId" value="<%= String.valueOf(routeLocationSelect.getRoutePositionId()) %>" />
+        <portlet:param name="${constants.PARAM_DELETEROUTELOCATIONID}"
+                       value="<%= String.valueOf(routeLocationSelect.getRoutePositionId()) %>" />
     </portlet:actionURL>
     <liferay-ui:icon-delete url="${deleteRouteLocationURL}" />
 </liferay-ui:icon-menu>

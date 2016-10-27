@@ -1,4 +1,6 @@
 <%@ page import="es.eina.tfg.service.RouteLocationLocalServiceUtil" %>
+<%@ page import="es.eina.tfg.model.Route" %>
+<%@ page import="com.liferay.docs.route.util.WebKeys" %>
 <%@include file="custom_init.jsp"%>
 
 <liferay-ui:search-container
@@ -7,6 +9,8 @@
         curParam="selectedRoutePositionCurParam" >
     <liferay-ui:search-container-results >
         <%
+            Route route = (Route) request.getAttribute(WebKeys.PARAM_ROUTE_TO_EDIT);
+            Long selectedRouteId = route.getRouteId();
             searchContainer.setResults(RouteLocationLocalServiceUtil.findByRouteId(selectedRouteId, searchContainer.getStart(), searchContainer.getEnd()));
             searchContainer.setTotal(RouteLocationLocalServiceUtil.findByRouteIdCount(selectedRouteId));
         %>

@@ -21,7 +21,7 @@ import java.util.Date;
  * @see <a href="http://www.topografix.com/GPX/1/1/">GPX documentation</a>
  * Created by adelrioj on 09/10/2015.
  */
-public class GPXRouteParserHandler implements GenericRouteParserHandler {
+public class GPXRouteParserHandler implements RouteParserHandler {
 
     @Override
     public Route addRouteFromLocationListFile(File inputFile, String name, String description, boolean isPublic,

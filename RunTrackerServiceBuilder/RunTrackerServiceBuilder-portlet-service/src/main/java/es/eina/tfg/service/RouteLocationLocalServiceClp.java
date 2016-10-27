@@ -54,6 +54,8 @@ public class RouteLocationLocalServiceClp implements RouteLocationLocalService {
     private String[] _methodParameterTypes22;
     private String _methodName23;
     private String[] _methodParameterTypes23;
+    private String _methodName24;
+    private String[] _methodParameterTypes24;
 
     public RouteLocationLocalServiceClp(
         InvokableLocalService invokableLocalService) {
@@ -143,30 +145,34 @@ public class RouteLocationLocalServiceClp implements RouteLocationLocalService {
 
         _methodParameterTypes17 = new String[] { "java.lang.String" };
 
-        _methodName19 = "add";
+        _methodName19 = "createRouteLocation";
 
-        _methodParameterTypes19 = new String[] {
+        _methodParameterTypes19 = new String[] {  };
+
+        _methodName20 = "add";
+
+        _methodParameterTypes20 = new String[] {
                 "java.lang.Long", "java.lang.Double", "java.lang.Double"
             };
 
-        _methodName20 = "update";
+        _methodName21 = "update";
 
-        _methodParameterTypes20 = new String[] {
+        _methodParameterTypes21 = new String[] {
                 "java.lang.Long", "java.lang.Long", "java.lang.Double",
                 "java.lang.Double"
             };
 
-        _methodName21 = "findByRouteId";
-
-        _methodParameterTypes21 = new String[] { "java.lang.Long" };
-
         _methodName22 = "findByRouteId";
 
-        _methodParameterTypes22 = new String[] { "long", "int", "int" };
+        _methodParameterTypes22 = new String[] { "java.lang.Long" };
 
-        _methodName23 = "findByRouteIdCount";
+        _methodName23 = "findByRouteId";
 
-        _methodParameterTypes23 = new String[] { "java.lang.Long" };
+        _methodParameterTypes23 = new String[] { "long", "int", "int" };
+
+        _methodName24 = "findByRouteIdCount";
+
+        _methodParameterTypes24 = new String[] { "java.lang.Long" };
     }
 
     @Override
@@ -684,6 +690,32 @@ public class RouteLocationLocalServiceClp implements RouteLocationLocalService {
     }
 
     @Override
+    public es.eina.tfg.model.RouteLocation createRouteLocation()
+        throws com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName19,
+                    _methodParameterTypes19, new Object[] {  });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (es.eina.tfg.model.RouteLocation) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
     public es.eina.tfg.model.RouteLocation add(java.lang.Long routeId,
         java.lang.Double latitude, java.lang.Double longitude)
         throws com.liferay.portal.kernel.exception.SystemException,
@@ -691,8 +723,8 @@ public class RouteLocationLocalServiceClp implements RouteLocationLocalService {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName19,
-                    _methodParameterTypes19,
+            returnObj = _invokableLocalService.invokeMethod(_methodName20,
+                    _methodParameterTypes20,
                     new Object[] {
                         ClpSerializer.translateInput(routeId),
                         
@@ -732,8 +764,8 @@ public class RouteLocationLocalServiceClp implements RouteLocationLocalService {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName20,
-                    _methodParameterTypes20,
+            returnObj = _invokableLocalService.invokeMethod(_methodName21,
+                    _methodParameterTypes21,
                     new Object[] {
                         ClpSerializer.translateInput(routeLocationId),
                         
@@ -776,8 +808,8 @@ public class RouteLocationLocalServiceClp implements RouteLocationLocalService {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName21,
-                    _methodParameterTypes21,
+            returnObj = _invokableLocalService.invokeMethod(_methodName22,
+                    _methodParameterTypes22,
                     new Object[] { ClpSerializer.translateInput(routeId) });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
@@ -804,8 +836,8 @@ public class RouteLocationLocalServiceClp implements RouteLocationLocalService {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName22,
-                    _methodParameterTypes22,
+            returnObj = _invokableLocalService.invokeMethod(_methodName23,
+                    _methodParameterTypes23,
                     new Object[] { routeId, start, end });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
@@ -831,8 +863,8 @@ public class RouteLocationLocalServiceClp implements RouteLocationLocalService {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName23,
-                    _methodParameterTypes23,
+            returnObj = _invokableLocalService.invokeMethod(_methodName24,
+                    _methodParameterTypes24,
                     new Object[] { ClpSerializer.translateInput(routeId) });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);

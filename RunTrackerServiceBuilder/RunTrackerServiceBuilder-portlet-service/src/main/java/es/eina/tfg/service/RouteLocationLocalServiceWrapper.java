@@ -277,6 +277,12 @@ public class RouteLocationLocalServiceWrapper
     }
 
     @Override
+    public es.eina.tfg.model.RouteLocation createRouteLocation()
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _routeLocationLocalService.createRouteLocation();
+    }
+
+    @Override
     public es.eina.tfg.model.RouteLocation add(java.lang.Long routeId,
         java.lang.Double latitude, java.lang.Double longitude)
         throws com.liferay.portal.kernel.exception.SystemException,

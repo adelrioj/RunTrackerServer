@@ -1,6 +1,8 @@
 package es.eina.tfg.service.impl;
 
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import es.eina.tfg.NonExistingRouteException;
 import es.eina.tfg.NonExistingRouteLocationException;
 import es.eina.tfg.model.Route;
@@ -29,6 +31,19 @@ import java.util.List;
  * @see es.eina.tfg.service.RouteLocationLocalServiceUtil
  */
 public class RouteLocationLocalServiceImpl extends RouteLocationLocalServiceBaseImpl {
+
+    public RouteLocation createRouteLocation()
+            throws SystemException {
+        Long routePositionId;
+        try {
+            routePositionId = counterLocalService.increment();
+        } catch (SystemException e) {
+            _log.error("SystemException while calling counterLocalService.increment()", e);
+            throw e;
+        }
+        return createRouteLocation(routePositionId);
+    }
+
     public RouteLocation add(Long routeId, Double latitude, Double longitude)
             throws SystemException, NonExistingRouteException {
         Long routePositionId = counterLocalService.increment();
@@ -75,4 +90,6 @@ public class RouteLocationLocalServiceImpl extends RouteLocationLocalServiceBase
     public int findByRouteIdCount (Long routeId) throws SystemException {
         return RouteLocationUtil.findByrouteId(routeId).size();
     }
+
+    private static Log _log = LogFactoryUtil.getLog(RouteLocationLocalServiceImpl.class);
 }

@@ -58,6 +58,8 @@ public class RouteLocalServiceClp implements RouteLocalService {
     private String[] _methodParameterTypes24;
     private String _methodName25;
     private String[] _methodParameterTypes25;
+    private String _methodName26;
+    private String[] _methodParameterTypes26;
 
     public RouteLocalServiceClp(InvokableLocalService invokableLocalService) {
         _invokableLocalService = invokableLocalService;
@@ -146,43 +148,47 @@ public class RouteLocalServiceClp implements RouteLocalService {
 
         _methodParameterTypes17 = new String[] { "java.lang.String" };
 
-        _methodName19 = "add";
+        _methodName19 = "createRoute";
 
-        _methodParameterTypes19 = new String[] {
+        _methodParameterTypes19 = new String[] {  };
+
+        _methodName20 = "add";
+
+        _methodParameterTypes20 = new String[] {
                 "java.lang.String", "java.lang.String", "java.lang.String",
                 "java.lang.Long", "boolean", "java.util.Date"
             };
 
-        _methodName20 = "update";
+        _methodName21 = "update";
 
-        _methodParameterTypes20 = new String[] {
+        _methodParameterTypes21 = new String[] {
                 "java.lang.Long", "java.lang.String", "java.lang.String",
                 "java.lang.String", "java.lang.Long", "boolean",
                 "java.util.Date", "java.util.Date"
             };
 
-        _methodName21 = "findByAuthor";
+        _methodName22 = "findByAuthor";
 
-        _methodParameterTypes21 = new String[] { "java.lang.Long" };
-
-        _methodName22 = "getPublicRoutes";
-
-        _methodParameterTypes22 = new String[] {  };
+        _methodParameterTypes22 = new String[] { "java.lang.Long" };
 
         _methodName23 = "getPublicRoutes";
 
-        _methodParameterTypes23 = new String[] { "int", "int" };
+        _methodParameterTypes23 = new String[] {  };
 
-        _methodName24 = "getRoutesByName";
+        _methodName24 = "getPublicRoutes";
 
-        _methodParameterTypes24 = new String[] {
+        _methodParameterTypes24 = new String[] { "int", "int" };
+
+        _methodName25 = "getRoutesByName";
+
+        _methodParameterTypes25 = new String[] {
                 "java.lang.String", "int", "int",
                 "com.liferay.portal.kernel.util.OrderByComparator"
             };
 
-        _methodName25 = "getRoutesByNameCount";
+        _methodName26 = "getRoutesByNameCount";
 
-        _methodParameterTypes25 = new String[] { "java.lang.String" };
+        _methodParameterTypes26 = new String[] { "java.lang.String" };
     }
 
     @Override
@@ -692,6 +698,32 @@ public class RouteLocalServiceClp implements RouteLocalService {
     }
 
     @Override
+    public es.eina.tfg.model.Route createRoute()
+        throws com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName19,
+                    _methodParameterTypes19, new Object[] {  });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (es.eina.tfg.model.Route) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
     public es.eina.tfg.model.Route add(java.lang.String type,
         java.lang.String name, java.lang.String description,
         java.lang.Long authorId, boolean isPublic, java.util.Date startingTime)
@@ -699,8 +731,8 @@ public class RouteLocalServiceClp implements RouteLocalService {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName19,
-                    _methodParameterTypes19,
+            returnObj = _invokableLocalService.invokeMethod(_methodName20,
+                    _methodParameterTypes20,
                     new Object[] {
                         ClpSerializer.translateInput(type),
                         
@@ -743,8 +775,8 @@ public class RouteLocalServiceClp implements RouteLocalService {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName20,
-                    _methodParameterTypes20,
+            returnObj = _invokableLocalService.invokeMethod(_methodName21,
+                    _methodParameterTypes21,
                     new Object[] {
                         ClpSerializer.translateInput(routeId),
                         
@@ -791,8 +823,8 @@ public class RouteLocalServiceClp implements RouteLocalService {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName21,
-                    _methodParameterTypes21,
+            returnObj = _invokableLocalService.invokeMethod(_methodName22,
+                    _methodParameterTypes22,
                     new Object[] { ClpSerializer.translateInput(userId) });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
@@ -818,8 +850,8 @@ public class RouteLocalServiceClp implements RouteLocalService {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName22,
-                    _methodParameterTypes22, new Object[] {  });
+            returnObj = _invokableLocalService.invokeMethod(_methodName23,
+                    _methodParameterTypes23, new Object[] {  });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -844,8 +876,8 @@ public class RouteLocalServiceClp implements RouteLocalService {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName23,
-                    _methodParameterTypes23, new Object[] { start, end });
+            returnObj = _invokableLocalService.invokeMethod(_methodName24,
+                    _methodParameterTypes24, new Object[] { start, end });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -872,8 +904,8 @@ public class RouteLocalServiceClp implements RouteLocalService {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName24,
-                    _methodParameterTypes24,
+            returnObj = _invokableLocalService.invokeMethod(_methodName25,
+                    _methodParameterTypes25,
                     new Object[] {
                         ClpSerializer.translateInput(name),
                         
@@ -907,8 +939,8 @@ public class RouteLocalServiceClp implements RouteLocalService {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName25,
-                    _methodParameterTypes25,
+            returnObj = _invokableLocalService.invokeMethod(_methodName26,
+                    _methodParameterTypes26,
                     new Object[] { ClpSerializer.translateInput(name) });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);

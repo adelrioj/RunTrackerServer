@@ -8,12 +8,16 @@ import es.eina.tfg.model.Route;
  *
  * Created by adelrioj on 13/01/2016.
  */
-public class RouteNameComparator extends OrderByComparator{
+public class RouteNameComparator
+        extends OrderByComparator {
+
     public static final String ORDER_BY_ASC = "Route_.name ASC";
 
     public static final String ORDER_BY_DESC = "Route_.name DESC";
 
     public static final String[] ORDER_BY_FIELDS = {"name"};
+
+    private boolean _ascending;
 
     public RouteNameComparator() {
         this(false);
@@ -33,22 +37,12 @@ public class RouteNameComparator extends OrderByComparator{
 
         int value = name1.compareTo(name2);
 
-        if (_ascending) {
-            return value;
-        }
-        else {
-            return -value;
-        }
+        return _ascending ? value : -value;
     }
 
     @Override
     public String getOrderBy() {
-        if (_ascending) {
-            return ORDER_BY_ASC;
-        }
-        else {
-            return ORDER_BY_DESC;
-        }
+        return _ascending ? ORDER_BY_ASC : ORDER_BY_DESC;
     }
 
     @Override
@@ -61,5 +55,5 @@ public class RouteNameComparator extends OrderByComparator{
         return _ascending;
     }
 
-    private boolean _ascending;
+
 }

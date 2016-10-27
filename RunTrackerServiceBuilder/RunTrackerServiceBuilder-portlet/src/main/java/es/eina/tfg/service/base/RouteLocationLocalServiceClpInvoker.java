@@ -55,6 +55,8 @@ public class RouteLocationLocalServiceClpInvoker {
     private String[] _methodParameterTypes97;
     private String _methodName98;
     private String[] _methodParameterTypes98;
+    private String _methodName99;
+    private String[] _methodParameterTypes99;
 
     public RouteLocationLocalServiceClpInvoker() {
         _methodName0 = "addRouteLocation";
@@ -141,30 +143,34 @@ public class RouteLocationLocalServiceClpInvoker {
 
         _methodParameterTypes89 = new String[] { "java.lang.String" };
 
-        _methodName94 = "add";
+        _methodName94 = "createRouteLocation";
 
-        _methodParameterTypes94 = new String[] {
+        _methodParameterTypes94 = new String[] {  };
+
+        _methodName95 = "add";
+
+        _methodParameterTypes95 = new String[] {
                 "java.lang.Long", "java.lang.Double", "java.lang.Double"
             };
 
-        _methodName95 = "update";
+        _methodName96 = "update";
 
-        _methodParameterTypes95 = new String[] {
+        _methodParameterTypes96 = new String[] {
                 "java.lang.Long", "java.lang.Long", "java.lang.Double",
                 "java.lang.Double"
             };
 
-        _methodName96 = "findByRouteId";
-
-        _methodParameterTypes96 = new String[] { "java.lang.Long" };
-
         _methodName97 = "findByRouteId";
 
-        _methodParameterTypes97 = new String[] { "long", "int", "int" };
+        _methodParameterTypes97 = new String[] { "java.lang.Long" };
 
-        _methodName98 = "findByRouteIdCount";
+        _methodName98 = "findByRouteId";
 
-        _methodParameterTypes98 = new String[] { "java.lang.Long" };
+        _methodParameterTypes98 = new String[] { "long", "int", "int" };
+
+        _methodName99 = "findByRouteIdCount";
+
+        _methodParameterTypes99 = new String[] { "java.lang.Long" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -270,31 +276,36 @@ public class RouteLocationLocalServiceClpInvoker {
 
         if (_methodName94.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
-            return RouteLocationLocalServiceUtil.add((java.lang.Long) arguments[0],
-                (java.lang.Double) arguments[1], (java.lang.Double) arguments[2]);
+            return RouteLocationLocalServiceUtil.createRouteLocation();
         }
 
         if (_methodName95.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes95, parameterTypes)) {
+            return RouteLocationLocalServiceUtil.add((java.lang.Long) arguments[0],
+                (java.lang.Double) arguments[1], (java.lang.Double) arguments[2]);
+        }
+
+        if (_methodName96.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes96, parameterTypes)) {
             return RouteLocationLocalServiceUtil.update((java.lang.Long) arguments[0],
                 (java.lang.Long) arguments[1], (java.lang.Double) arguments[2],
                 (java.lang.Double) arguments[3]);
         }
 
-        if (_methodName96.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes96, parameterTypes)) {
+        if (_methodName97.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes97, parameterTypes)) {
             return RouteLocationLocalServiceUtil.findByRouteId((java.lang.Long) arguments[0]);
         }
 
-        if (_methodName97.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes97, parameterTypes)) {
+        if (_methodName98.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes98, parameterTypes)) {
             return RouteLocationLocalServiceUtil.findByRouteId(((Long) arguments[0]).longValue(),
                 ((Integer) arguments[1]).intValue(),
                 ((Integer) arguments[2]).intValue());
         }
 
-        if (_methodName98.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes98, parameterTypes)) {
+        if (_methodName99.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes99, parameterTypes)) {
             return RouteLocationLocalServiceUtil.findByRouteIdCount((java.lang.Long) arguments[0]);
         }
 
