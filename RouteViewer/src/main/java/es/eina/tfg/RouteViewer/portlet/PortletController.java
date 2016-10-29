@@ -6,6 +6,7 @@ import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.servlet.SessionErrors;
+import com.liferay.portal.kernel.servlet.SessionMessages;
 import com.liferay.portal.kernel.upload.UploadPortletRequest;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.StringPool;
@@ -74,6 +75,8 @@ public class PortletController extends MVCPortlet{
         }
 
         request.setAttribute(WebKeys.PARAM_ROUTE_TO_EDIT, route);
+
+        SessionMessages.add(request, WebKeys.MESSAGE_ADD_ROUTE_ACTION_SUCCESS);
     }
 
     public void editRouteAction(ActionRequest request, ActionResponse response) {
@@ -97,6 +100,8 @@ public class PortletController extends MVCPortlet{
         }
 
         request.setAttribute(WebKeys.PARAM_ROUTE_TO_EDIT, route);
+
+        SessionMessages.add(request, WebKeys.MESSAGE_EDIT_ROUTE_ACTION_SUCCESS);
     }
 
     public void deleteRouteAction(ActionRequest request, ActionResponse response) {
@@ -114,6 +119,8 @@ public class PortletController extends MVCPortlet{
             _log.error("SystemException when trying to delete Route " + routeID);
             SessionErrors.add(request, MESSAGE_ROUTE_DELETE_ERROR);
         }
+
+        SessionMessages.add(request, WebKeys.MESSAGE_DELETE_ROUTE_ACTION_SUCCESS);
     }
 
     public void deleteRoutePositionAction(ActionRequest request, ActionResponse response) {
@@ -130,6 +137,8 @@ public class PortletController extends MVCPortlet{
             _log.error("SystemException when trying to delete RouteLocation " + routePositionId);
             SessionErrors.add(request, MESSAGE_ROUTEPOSITION_DELETE_ERROR);
         }
+
+        SessionMessages.add(request, WebKeys.MESSAGE_DELETE_LOCATION_ACTION_SUCCESS);
     }
 
     private void renderRouteLocationMarker(RenderRequest request) {

@@ -1,7 +1,5 @@
 package com.liferay.docs.route.util;
 
-import es.eina.tfg.service.RouteLocalService;
-
 /**
  * This class holds constants that contain the names of objects used to pass info between request or session operations.
  * It uses the convention in Liferay applications.
@@ -9,6 +7,11 @@ import es.eina.tfg.service.RouteLocalService;
  * Created by adelrioj on 04/11/2015.
  */
 public class WebKeys implements com.liferay.portal.kernel.util.WebKeys {
+
+    public static final String MESSAGE_ADD_ROUTE_ACTION_SUCCESS = "addRouteActionSuccess";
+    public static final String MESSAGE_EDIT_ROUTE_ACTION_SUCCESS = "editRouteActionSuccess";
+    public static final String MESSAGE_DELETE_ROUTE_ACTION_SUCCESS = "deleteRouteActionSuccess";
+    public static final String MESSAGE_DELETE_LOCATION_ACTION_SUCCESS = "deleteLocationActionSuccess";
 
     public static final String PARAM_ROUTE_TO_EDIT = "routeToEdit";
     public static final String PARAM_ROUTE_TO_EDIT_LOCATION_LIST = "routeToEditLocations";
