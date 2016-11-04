@@ -35,7 +35,7 @@ import static es.eina.tfg.RouteViewer.util.FileValidator.validateFileParamNotEmp
  *
  * @author adelrioj.
  */
-public class PortletController extends MVCPortlet{
+public class PortletController extends MVCPortlet {
 
     private static final String MESSAGE_ROUTEPOSITION_DELETE_ERROR = "Ha ocurrido un error al borrar la posición de la ruta";
     private static final String MESSAGE_ROUTE_DELETE_ERROR = "Ha ocurrido un error al borrar la ruta";

@@ -3,11 +3,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>es.eina.tfg</groupId>
-	<artifactId>RouteViewer</artifactId>
+	<artifactId>LiveRouteTracker</artifactId>
 	<packaging>war</packaging>
-	<name>RouteViewer</name>
+	<name>LiveRouteTracker</name>
 	<version>1.0</version>
-
 	<build>
 		<finalName>${project.name}-portlet</finalName>
 		<plugins>
@@ -80,7 +79,7 @@
 		<dependency>
 			<groupId>org.bibeault.jrjournal</groupId>
 			<artifactId>ccc</artifactId>
-            <version>1.0</version>
+			<version>1.0</version>
 		</dependency>
 
 		<!-- ServiceBuilder dependencies -->
@@ -146,5 +145,5 @@
 			<version>2.0</version>
 			<scope>provided</scope>
 		</dependency>
-    </dependencies>
+	</dependencies>
 </project>
