@@ -9,6 +9,7 @@
 	<version>1.0</version>
 
 	<build>
+		<finalName>${project.name}-portlet</finalName>
 		<plugins>
 			<plugin>
 				<groupId>com.liferay.maven.plugins</groupId>
