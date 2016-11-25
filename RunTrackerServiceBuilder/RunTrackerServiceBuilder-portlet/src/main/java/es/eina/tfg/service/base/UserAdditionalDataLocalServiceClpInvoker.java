@@ -41,16 +41,20 @@ public class UserAdditionalDataLocalServiceClpInvoker {
     private String[] _methodParameterTypes14;
     private String _methodName15;
     private String[] _methodParameterTypes15;
-    private String _methodName88;
-    private String[] _methodParameterTypes88;
-    private String _methodName89;
-    private String[] _methodParameterTypes89;
     private String _methodName94;
     private String[] _methodParameterTypes94;
     private String _methodName95;
     private String[] _methodParameterTypes95;
-    private String _methodName96;
-    private String[] _methodParameterTypes96;
+    private String _methodName100;
+    private String[] _methodParameterTypes100;
+    private String _methodName101;
+    private String[] _methodParameterTypes101;
+    private String _methodName103;
+    private String[] _methodParameterTypes103;
+    private String _methodName104;
+    private String[] _methodParameterTypes104;
+    private String _methodName105;
+    private String[] _methodParameterTypes105;
 
     public UserAdditionalDataLocalServiceClpInvoker() {
         _methodName0 = "addUserAdditionalData";
@@ -135,31 +139,37 @@ public class UserAdditionalDataLocalServiceClpInvoker {
                 "es.eina.tfg.model.UserAdditionalData"
             };
 
-        _methodName88 = "getBeanIdentifier";
+        _methodName94 = "getBeanIdentifier";
 
-        _methodParameterTypes88 = new String[] {  };
+        _methodParameterTypes94 = new String[] {  };
 
-        _methodName89 = "setBeanIdentifier";
+        _methodName95 = "setBeanIdentifier";
 
-        _methodParameterTypes89 = new String[] { "java.lang.String" };
+        _methodParameterTypes95 = new String[] { "java.lang.String" };
 
-        _methodName94 = "add";
+        _methodName100 = "addUserAdditionalData";
 
-        _methodParameterTypes94 = new String[] {
-                "java.lang.Long", "java.lang.Integer", "java.lang.Integer",
-                "java.lang.String"
+        _methodParameterTypes100 = new String[] {
+                "es.eina.tfg.model.UserAdditionalData"
             };
 
-        _methodName95 = "update";
+        _methodName101 = "updateUserAdditionalData";
 
-        _methodParameterTypes95 = new String[] {
-                "java.lang.Long", "java.lang.Integer", "java.lang.Integer",
-                "java.lang.String", "java.lang.Long"
+        _methodParameterTypes101 = new String[] {
+                "es.eina.tfg.model.UserAdditionalData"
             };
 
-        _methodName96 = "getUserSelectedRoutes";
+        _methodName103 = "getUserAndRoute";
 
-        _methodParameterTypes96 = new String[] { "java.lang.Long" };
+        _methodParameterTypes103 = new String[] { "java.lang.Long" };
+
+        _methodName104 = "getAssociatedRoutes";
+
+        _methodParameterTypes104 = new String[] { "java.lang.Long" };
+
+        _methodName105 = "getAssociatedEvents";
+
+        _methodParameterTypes105 = new String[] { "java.lang.Long" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -251,37 +261,41 @@ public class UserAdditionalDataLocalServiceClpInvoker {
             return UserAdditionalDataLocalServiceUtil.updateUserAdditionalData((es.eina.tfg.model.UserAdditionalData) arguments[0]);
         }
 
-        if (_methodName88.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes88, parameterTypes)) {
+        if (_methodName94.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
             return UserAdditionalDataLocalServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName89.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes89, parameterTypes)) {
+        if (_methodName95.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes95, parameterTypes)) {
             UserAdditionalDataLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }
 
-        if (_methodName94.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
-            return UserAdditionalDataLocalServiceUtil.add((java.lang.Long) arguments[0],
-                (java.lang.Integer) arguments[1],
-                (java.lang.Integer) arguments[2],
-                (java.lang.String) arguments[3]);
+        if (_methodName100.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes100, parameterTypes)) {
+            return UserAdditionalDataLocalServiceUtil.addUserAdditionalData((es.eina.tfg.model.UserAdditionalData) arguments[0]);
         }
 
-        if (_methodName95.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes95, parameterTypes)) {
-            return UserAdditionalDataLocalServiceUtil.update((java.lang.Long) arguments[0],
-                (java.lang.Integer) arguments[1],
-                (java.lang.Integer) arguments[2],
-                (java.lang.String) arguments[3], (java.lang.Long) arguments[4]);
+        if (_methodName101.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes101, parameterTypes)) {
+            return UserAdditionalDataLocalServiceUtil.updateUserAdditionalData((es.eina.tfg.model.UserAdditionalData) arguments[0]);
         }
 
-        if (_methodName96.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes96, parameterTypes)) {
-            return UserAdditionalDataLocalServiceUtil.getUserSelectedRoutes((java.lang.Long) arguments[0]);
+        if (_methodName103.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes103, parameterTypes)) {
+            return UserAdditionalDataLocalServiceUtil.getUserAndRoute((java.lang.Long) arguments[0]);
+        }
+
+        if (_methodName104.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes104, parameterTypes)) {
+            return UserAdditionalDataLocalServiceUtil.getAssociatedRoutes((java.lang.Long) arguments[0]);
+        }
+
+        if (_methodName105.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes105, parameterTypes)) {
+            return UserAdditionalDataLocalServiceUtil.getAssociatedEvents((java.lang.Long) arguments[0]);
         }
 
         throw new UnsupportedOperationException();

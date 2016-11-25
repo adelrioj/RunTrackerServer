@@ -1,7 +1,6 @@
 package es.eina.tfg.model.impl;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
-import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.json.JSON;
 import com.liferay.portal.kernel.util.DateUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
@@ -10,15 +9,11 @@ import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.model.CacheModel;
 import com.liferay.portal.model.impl.BaseModelImpl;
-import com.liferay.portal.service.ServiceContext;
-import com.liferay.portal.util.PortalUtil;
-
-import com.liferay.portlet.expando.model.ExpandoBridge;
-import com.liferay.portlet.expando.util.ExpandoBridgeFactoryUtil;
 
 import es.eina.tfg.model.Power;
 import es.eina.tfg.model.PowerModel;
 import es.eina.tfg.model.PowerSoap;
+import es.eina.tfg.service.persistence.PowerPK;
 
 import java.io.Serializable;
 
@@ -52,16 +47,15 @@ public class PowerModelImpl extends BaseModelImpl<Power> implements PowerModel {
      */
     public static final String TABLE_NAME = "GL_Power";
     public static final Object[][] TABLE_COLUMNS = {
-            { "measurementId", Types.BIGINT },
-            { "raceId", Types.BIGINT },
-            { "userId", Types.BIGINT },
-            { "deviceId", Types.BIGINT },
-            { "sensorId", Types.BIGINT },
+            { "idMeasurement", Types.BIGINT },
+            { "idRace", Types.BIGINT },
+            { "idDevice", Types.BIGINT },
+            { "idSensor", Types.BIGINT },
             { "time_", Types.TIMESTAMP },
             { "sensorMode", Types.VARCHAR },
             { "level", Types.INTEGER }
         };
-    public static final String TABLE_SQL_CREATE = "create table GL_Power (measurementId LONG not null primary key,raceId LONG,userId LONG,deviceId LONG,sensorId LONG,time_ DATE null,sensorMode VARCHAR(75) null,level INTEGER)";
+    public static final String TABLE_SQL_CREATE = "create table GL_Power (idMeasurement LONG not null,idRace LONG not null,idDevice LONG,idSensor LONG,time_ DATE null,sensorMode VARCHAR(75) null,level INTEGER,primary key (idMeasurement, idRace))";
     public static final String TABLE_SQL_DROP = "drop table GL_Power";
     public static final String ORDER_BY_JPQL = " ORDER BY power.time ASC";
     public static final String ORDER_BY_SQL = " ORDER BY GL_Power.time_ ASC";
@@ -77,20 +71,18 @@ public class PowerModelImpl extends BaseModelImpl<Power> implements PowerModel {
     public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
                 "value.object.column.bitmask.enabled.es.eina.tfg.model.Power"),
             true);
-    public static long RACEID_COLUMN_BITMASK = 1L;
+    public static long IDRACE_COLUMN_BITMASK = 1L;
     public static long TIME_COLUMN_BITMASK = 2L;
     public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
                 "lock.expiration.time.es.eina.tfg.model.Power"));
     private static ClassLoader _classLoader = Power.class.getClassLoader();
     private static Class<?>[] _escapedModelInterfaces = new Class[] { Power.class };
-    private long _measurementId;
-    private long _raceId;
-    private long _originalRaceId;
-    private boolean _setOriginalRaceId;
-    private long _userId;
-    private String _userUuid;
-    private long _deviceId;
-    private long _sensorId;
+    private long _idMeasurement;
+    private Long _idRace;
+    private Long _originalIdRace;
+    private boolean _setOriginalIdRace;
+    private long _idDevice;
+    private long _idSensor;
     private Date _time;
     private String _sensorMode;
     private int _level;
@@ -113,11 +105,10 @@ public class PowerModelImpl extends BaseModelImpl<Power> implements PowerModel {
 
         Power model = new PowerImpl();
 
-        model.setMeasurementId(soapModel.getMeasurementId());
-        model.setRaceId(soapModel.getRaceId());
-        model.setUserId(soapModel.getUserId());
-        model.setDeviceId(soapModel.getDeviceId());
-        model.setSensorId(soapModel.getSensorId());
+        model.setIdMeasurement(soapModel.getIdMeasurement());
+        model.setIdRace(soapModel.getIdRace());
+        model.setIdDevice(soapModel.getIdDevice());
+        model.setIdSensor(soapModel.getIdSensor());
         model.setTime(soapModel.getTime());
         model.setSensorMode(soapModel.getSensorMode());
         model.setLevel(soapModel.getLevel());
@@ -146,23 +137,24 @@ public class PowerModelImpl extends BaseModelImpl<Power> implements PowerModel {
     }
 
     @Override
-    public long getPrimaryKey() {
-        return _measurementId;
+    public PowerPK getPrimaryKey() {
+        return new PowerPK(_idMeasurement, _idRace);
     }
 
     @Override
-    public void setPrimaryKey(long primaryKey) {
-        setMeasurementId(primaryKey);
+    public void setPrimaryKey(PowerPK primaryKey) {
+        setIdMeasurement(primaryKey.idMeasurement);
+        setIdRace(primaryKey.idRace);
     }
 
     @Override
     public Serializable getPrimaryKeyObj() {
-        return _measurementId;
+        return new PowerPK(_idMeasurement, _idRace);
     }
 
     @Override
     public void setPrimaryKeyObj(Serializable primaryKeyObj) {
-        setPrimaryKey(((Long) primaryKeyObj).longValue());
+        setPrimaryKey((PowerPK) primaryKeyObj);
     }
 
     @Override
@@ -179,11 +171,10 @@ public class PowerModelImpl extends BaseModelImpl<Power> implements PowerModel {
     public Map<String, Object> getModelAttributes() {
         Map<String, Object> attributes = new HashMap<String, Object>();
 
-        attributes.put("measurementId", getMeasurementId());
-        attributes.put("raceId", getRaceId());
-        attributes.put("userId", getUserId());
-        attributes.put("deviceId", getDeviceId());
-        attributes.put("sensorId", getSensorId());
+        attributes.put("idMeasurement", getIdMeasurement());
+        attributes.put("idRace", getIdRace());
+        attributes.put("idDevice", getIdDevice());
+        attributes.put("idSensor", getIdSensor());
         attributes.put("time", getTime());
         attributes.put("sensorMode", getSensorMode());
         attributes.put("level", getLevel());
@@ -193,34 +184,28 @@ public class PowerModelImpl extends BaseModelImpl<Power> implements PowerModel {
 
     @Override
     public void setModelAttributes(Map<String, Object> attributes) {
-        Long measurementId = (Long) attributes.get("measurementId");
+        Long idMeasurement = (Long) attributes.get("idMeasurement");
 
-        if (measurementId != null) {
-            setMeasurementId(measurementId);
+        if (idMeasurement != null) {
+            setIdMeasurement(idMeasurement);
         }
 
-        Long raceId = (Long) attributes.get("raceId");
+        Long idRace = (Long) attributes.get("idRace");
 
-        if (raceId != null) {
-            setRaceId(raceId);
+        if (idRace != null) {
+            setIdRace(idRace);
         }
 
-        Long userId = (Long) attributes.get("userId");
+        Long idDevice = (Long) attributes.get("idDevice");
 
-        if (userId != null) {
-            setUserId(userId);
+        if (idDevice != null) {
+            setIdDevice(idDevice);
         }
 
-        Long deviceId = (Long) attributes.get("deviceId");
+        Long idSensor = (Long) attributes.get("idSensor");
 
-        if (deviceId != null) {
-            setDeviceId(deviceId);
-        }
-
-        Long sensorId = (Long) attributes.get("sensorId");
-
-        if (sensorId != null) {
-            setSensorId(sensorId);
+        if (idSensor != null) {
+            setIdSensor(idSensor);
         }
 
         Date time = (Date) attributes.get("time");
@@ -244,79 +229,58 @@ public class PowerModelImpl extends BaseModelImpl<Power> implements PowerModel {
 
     @JSON
     @Override
-    public long getMeasurementId() {
-        return _measurementId;
+    public long getIdMeasurement() {
+        return _idMeasurement;
     }
 
     @Override
-    public void setMeasurementId(long measurementId) {
-        _measurementId = measurementId;
+    public void setIdMeasurement(long idMeasurement) {
+        _idMeasurement = idMeasurement;
     }
 
     @JSON
     @Override
-    public long getRaceId() {
-        return _raceId;
+    public Long getIdRace() {
+        return _idRace;
     }
 
     @Override
-    public void setRaceId(long raceId) {
-        _columnBitmask |= RACEID_COLUMN_BITMASK;
+    public void setIdRace(Long idRace) {
+        _columnBitmask |= IDRACE_COLUMN_BITMASK;
 
-        if (!_setOriginalRaceId) {
-            _setOriginalRaceId = true;
+        if (!_setOriginalIdRace) {
+            _setOriginalIdRace = true;
 
-            _originalRaceId = _raceId;
+            _originalIdRace = _idRace;
         }
 
-        _raceId = raceId;
+        _idRace = idRace;
     }
 
-    public long getOriginalRaceId() {
-        return _originalRaceId;
-    }
-
-    @JSON
-    @Override
-    public long getUserId() {
-        return _userId;
-    }
-
-    @Override
-    public void setUserId(long userId) {
-        _userId = userId;
-    }
-
-    @Override
-    public String getUserUuid() throws SystemException {
-        return PortalUtil.getUserValue(getUserId(), "uuid", _userUuid);
-    }
-
-    @Override
-    public void setUserUuid(String userUuid) {
-        _userUuid = userUuid;
+    public Long getOriginalIdRace() {
+        return _originalIdRace;
     }
 
     @JSON
     @Override
-    public long getDeviceId() {
-        return _deviceId;
+    public long getIdDevice() {
+        return _idDevice;
     }
 
     @Override
-    public void setDeviceId(long deviceId) {
-        _deviceId = deviceId;
+    public void setIdDevice(long idDevice) {
+        _idDevice = idDevice;
     }
 
     @JSON
     @Override
-    public long getSensorId() {
-        return _sensorId;
+    public long getIdSensor() {
+        return _idSensor;
     }
 
     @Override
-    public void setSensorId(long sensorId) {
-        _sensorId = sensorId;
+    public void setIdSensor(long idSensor) {
+        _idSensor = idSensor;
     }
 
     @JSON
@@ -363,19 +327,6 @@ public class PowerModelImpl extends BaseModelImpl<Power> implements PowerModel {
     }
 
     @Override
-    public ExpandoBridge getExpandoBridge() {
-        return ExpandoBridgeFactoryUtil.getExpandoBridge(0,
-            Power.class.getName(), getPrimaryKey());
-    }
-
-    @Override
-    public void setExpandoBridgeAttributes(ServiceContext serviceContext) {
-        ExpandoBridge expandoBridge = getExpandoBridge();
-
-        expandoBridge.setAttributes(serviceContext);
-    }
-
-    @Override
     public Power toEscapedModel() {
         if (_escapedModel == null) {
             _escapedModel = (Power) ProxyUtil.newProxyInstance(_classLoader,
@@ -389,11 +340,10 @@ public class PowerModelImpl extends BaseModelImpl<Power> implements PowerModel {
     public Object clone() {
         PowerImpl powerImpl = new PowerImpl();
 
-        powerImpl.setMeasurementId(getMeasurementId());
-        powerImpl.setRaceId(getRaceId());
-        powerImpl.setUserId(getUserId());
-        powerImpl.setDeviceId(getDeviceId());
-        powerImpl.setSensorId(getSensorId());
+        powerImpl.setIdMeasurement(getIdMeasurement());
+        powerImpl.setIdRace(getIdRace());
+        powerImpl.setIdDevice(getIdDevice());
+        powerImpl.setIdSensor(getIdSensor());
         powerImpl.setTime(getTime());
         powerImpl.setSensorMode(getSensorMode());
         powerImpl.setLevel(getLevel());
@@ -428,9 +378,9 @@ public class PowerModelImpl extends BaseModelImpl<Power> implements PowerModel {
 
         Power power = (Power) obj;
 
-        long primaryKey = power.getPrimaryKey();
+        PowerPK primaryKey = power.getPrimaryKey();
 
-        if (getPrimaryKey() == primaryKey) {
+        if (getPrimaryKey().equals(primaryKey)) {
             return true;
         } else {
             return false;
@@ -439,16 +389,16 @@ public class PowerModelImpl extends BaseModelImpl<Power> implements PowerModel {
 
     @Override
     public int hashCode() {
-        return (int) getPrimaryKey();
+        return getPrimaryKey().hashCode();
     }
 
     @Override
     public void resetOriginalValues() {
         PowerModelImpl powerModelImpl = this;
 
-        powerModelImpl._originalRaceId = powerModelImpl._raceId;
+        powerModelImpl._originalIdRace = powerModelImpl._idRace;
 
-        powerModelImpl._setOriginalRaceId = false;
+        powerModelImpl._setOriginalIdRace = false;
 
         powerModelImpl._columnBitmask = 0;
     }
@@ -457,15 +407,13 @@ public class PowerModelImpl extends BaseModelImpl<Power> implements PowerModel {
     public CacheModel<Power> toCacheModel() {
         PowerCacheModel powerCacheModel = new PowerCacheModel();
 
-        powerCacheModel.measurementId = getMeasurementId();
+        powerCacheModel.idMeasurement = getIdMeasurement();
 
-        powerCacheModel.raceId = getRaceId();
+        powerCacheModel.idRace = getIdRace();
 
-        powerCacheModel.userId = getUserId();
+        powerCacheModel.idDevice = getIdDevice();
 
-        powerCacheModel.deviceId = getDeviceId();
-
-        powerCacheModel.sensorId = getSensorId();
+        powerCacheModel.idSensor = getIdSensor();
 
         Date time = getTime();
 
@@ -490,18 +438,16 @@ public class PowerModelImpl extends BaseModelImpl<Power> implements PowerModel {
 
     @Override
     public String toString() {
-        StringBundler sb = new StringBundler(17);
+        StringBundler sb = new StringBundler(15);
 
-        sb.append("{measurementId=");
-        sb.append(getMeasurementId());
-        sb.append(", raceId=");
-        sb.append(getRaceId());
-        sb.append(", userId=");
-        sb.append(getUserId());
-        sb.append(", deviceId=");
-        sb.append(getDeviceId());
-        sb.append(", sensorId=");
-        sb.append(getSensorId());
+        sb.append("{idMeasurement=");
+        sb.append(getIdMeasurement());
+        sb.append(", idRace=");
+        sb.append(getIdRace());
+        sb.append(", idDevice=");
+        sb.append(getIdDevice());
+        sb.append(", idSensor=");
+        sb.append(getIdSensor());
         sb.append(", time=");
         sb.append(getTime());
         sb.append(", sensorMode=");
@@ -515,31 +461,27 @@ public class PowerModelImpl extends BaseModelImpl<Power> implements PowerModel {
 
     @Override
     public String toXmlString() {
-        StringBundler sb = new StringBundler(28);
+        StringBundler sb = new StringBundler(25);
 
         sb.append("<model><model-name>");
         sb.append("es.eina.tfg.model.Power");
         sb.append("</model-name>");
 
         sb.append(
-            "<column><column-name>measurementId</column-name><column-value><![CDATA[");
-        sb.append(getMeasurementId());
+            "<column><column-name>idMeasurement</column-name><column-value><![CDATA[");
+        sb.append(getIdMeasurement());
         sb.append("]]></column-value></column>");
         sb.append(
-            "<column><column-name>raceId</column-name><column-value><![CDATA[");
-        sb.append(getRaceId());
+            "<column><column-name>idRace</column-name><column-value><![CDATA[");
+        sb.append(getIdRace());
         sb.append("]]></column-value></column>");
         sb.append(
-            "<column><column-name>userId</column-name><column-value><![CDATA[");
-        sb.append(getUserId());
+            "<column><column-name>idDevice</column-name><column-value><![CDATA[");
+        sb.append(getIdDevice());
         sb.append("]]></column-value></column>");
         sb.append(
-            "<column><column-name>deviceId</column-name><column-value><![CDATA[");
-        sb.append(getDeviceId());
-        sb.append("]]></column-value></column>");
-        sb.append(
-            "<column><column-name>sensorId</column-name><column-value><![CDATA[");
-        sb.append(getSensorId());
+            "<column><column-name>idSensor</column-name><column-value><![CDATA[");
+        sb.append(getIdSensor());
         sb.append("]]></column-value></column>");
         sb.append(
             "<column><column-name>time</column-name><column-value><![CDATA[");

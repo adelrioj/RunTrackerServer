@@ -51,13 +51,12 @@ public class PowerServiceSoap {
     private static Log _log = LogFactoryUtil.getLog(PowerServiceSoap.class);
 
     public static es.eina.tfg.model.PowerSoap add(java.lang.Long raceId,
-        java.lang.Long userId, java.lang.Long deviceId,
-        java.lang.Long sensorId, java.util.Date time,
+        java.lang.Long deviceId, java.lang.Long sensorId, java.util.Date time,
         java.lang.String sensorMode, java.lang.Integer level)
         throws RemoteException {
         try {
             es.eina.tfg.model.Power returnValue = PowerServiceUtil.add(raceId,
-                    userId, deviceId, sensorId, time, sensorMode, level);
+                    deviceId, sensorId, time, sensorMode, level);
 
             return es.eina.tfg.model.PowerSoap.toSoapModel(returnValue);
         } catch (Exception e) {
@@ -67,15 +66,11 @@ public class PowerServiceSoap {
         }
     }
 
-    public static es.eina.tfg.model.PowerSoap update(
-        java.lang.Long measurementId, java.lang.Long raceId,
-        java.lang.Long userId, java.lang.Long deviceId,
-        java.lang.Long sensorId, java.util.Date time,
-        java.lang.String sensorMode, java.lang.Integer level)
-        throws RemoteException {
+    public static es.eina.tfg.model.PowerSoap getPower(long idMeasurement,
+        long idRace) throws RemoteException {
         try {
-            es.eina.tfg.model.Power returnValue = PowerServiceUtil.update(measurementId,
-                    raceId, userId, deviceId, sensorId, time, sensorMode, level);
+            es.eina.tfg.model.Power returnValue = PowerServiceUtil.getPower(idMeasurement,
+                    idRace);
 
             return es.eina.tfg.model.PowerSoap.toSoapModel(returnValue);
         } catch (Exception e) {
@@ -85,25 +80,12 @@ public class PowerServiceSoap {
         }
     }
 
-    public static es.eina.tfg.model.PowerSoap delete(
-        java.lang.Long measurementId) throws RemoteException {
+    public static es.eina.tfg.model.LocationSoap[] getByidRace(
+        java.lang.Long idRace) throws RemoteException {
         try {
-            es.eina.tfg.model.Power returnValue = PowerServiceUtil.delete(measurementId);
+            java.util.List<es.eina.tfg.model.Location> returnValue = PowerServiceUtil.getByidRace(idRace);
 
-            return es.eina.tfg.model.PowerSoap.toSoapModel(returnValue);
-        } catch (Exception e) {
-            _log.error(e, e);
-
-            throw new RemoteException(e.getMessage());
-        }
-    }
-
-    public static es.eina.tfg.model.PowerSoap getPower(
-        java.lang.Long measurementId) throws RemoteException {
-        try {
-            es.eina.tfg.model.Power returnValue = PowerServiceUtil.getPower(measurementId);
-
-            return es.eina.tfg.model.PowerSoap.toSoapModel(returnValue);
+            return es.eina.tfg.model.LocationSoap.toSoapModels(returnValue);
         } catch (Exception e) {
             _log.error(e, e);
 

@@ -1,7 +1,5 @@
 package es.eina.tfg.model;
 
-import com.liferay.portal.kernel.bean.AutoEscape;
-import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.CacheModel;
 import com.liferay.portal.service.ServiceContext;
@@ -45,48 +43,18 @@ public interface UserAdditionalDataModel extends BaseModel<UserAdditionalData> {
     public void setPrimaryKey(long primaryKey);
 
     /**
-     * Returns the user ID of this user additional data.
+     * Returns the id user of this user additional data.
      *
-     * @return the user ID of this user additional data
+     * @return the id user of this user additional data
      */
-    public long getUserId();
+    public long getIdUser();
 
     /**
-     * Sets the user ID of this user additional data.
+     * Sets the id user of this user additional data.
      *
-     * @param userId the user ID of this user additional data
+     * @param idUser the id user of this user additional data
      */
-    public void setUserId(long userId);
-
-    /**
-     * Returns the user uuid of this user additional data.
-     *
-     * @return the user uuid of this user additional data
-     * @throws SystemException if a system exception occurred
-     */
-    public String getUserUuid() throws SystemException;
-
-    /**
-     * Sets the user uuid of this user additional data.
-     *
-     * @param userUuid the user uuid of this user additional data
-     */
-    public void setUserUuid(String userUuid);
-
-    /**
-     * Returns the register type of this user additional data.
-     *
-     * @return the register type of this user additional data
-     */
-    @AutoEscape
-    public String getRegisterType();
-
-    /**
-     * Sets the register type of this user additional data.
-     *
-     * @param registerType the register type of this user additional data
-     */
-    public void setRegisterType(String registerType);
+    public void setIdUser(long idUser);
 
     /**
      * Returns the weight of this user additional data.
@@ -117,18 +85,18 @@ public interface UserAdditionalDataModel extends BaseModel<UserAdditionalData> {
     public void setHeight(int height);
 
     /**
-     * Returns the sms counter of this user additional data.
+     * Returns the sms count of this user additional data.
      *
-     * @return the sms counter of this user additional data
+     * @return the sms count of this user additional data
      */
-    public long getSmsCounter();
+    public long getSmsCount();
 
     /**
-     * Sets the sms counter of this user additional data.
+     * Sets the sms count of this user additional data.
      *
-     * @param smsCounter the sms counter of this user additional data
+     * @param smsCount the sms count of this user additional data
      */
-    public void setSmsCounter(long smsCounter);
+    public void setSmsCount(long smsCount);
 
     @Override
     public boolean isNew();

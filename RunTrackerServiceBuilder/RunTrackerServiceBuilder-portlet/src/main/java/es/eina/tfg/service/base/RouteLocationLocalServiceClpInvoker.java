@@ -41,22 +41,22 @@ public class RouteLocationLocalServiceClpInvoker {
     private String[] _methodParameterTypes14;
     private String _methodName15;
     private String[] _methodParameterTypes15;
-    private String _methodName88;
-    private String[] _methodParameterTypes88;
-    private String _methodName89;
-    private String[] _methodParameterTypes89;
     private String _methodName94;
     private String[] _methodParameterTypes94;
     private String _methodName95;
     private String[] _methodParameterTypes95;
-    private String _methodName96;
-    private String[] _methodParameterTypes96;
-    private String _methodName97;
-    private String[] _methodParameterTypes97;
-    private String _methodName98;
-    private String[] _methodParameterTypes98;
-    private String _methodName99;
-    private String[] _methodParameterTypes99;
+    private String _methodName100;
+    private String[] _methodParameterTypes100;
+    private String _methodName101;
+    private String[] _methodParameterTypes101;
+    private String _methodName102;
+    private String[] _methodParameterTypes102;
+    private String _methodName104;
+    private String[] _methodParameterTypes104;
+    private String _methodName105;
+    private String[] _methodParameterTypes105;
+    private String _methodName106;
+    private String[] _methodParameterTypes106;
 
     public RouteLocationLocalServiceClpInvoker() {
         _methodName0 = "addRouteLocation";
@@ -65,11 +65,15 @@ public class RouteLocationLocalServiceClpInvoker {
 
         _methodName1 = "createRouteLocation";
 
-        _methodParameterTypes1 = new String[] { "long" };
+        _methodParameterTypes1 = new String[] {
+                "es.eina.tfg.service.persistence.RouteLocationPK"
+            };
 
         _methodName2 = "deleteRouteLocation";
 
-        _methodParameterTypes2 = new String[] { "long" };
+        _methodParameterTypes2 = new String[] {
+                "es.eina.tfg.service.persistence.RouteLocationPK"
+            };
 
         _methodName3 = "deleteRouteLocation";
 
@@ -113,11 +117,15 @@ public class RouteLocationLocalServiceClpInvoker {
 
         _methodName10 = "fetchRouteLocation";
 
-        _methodParameterTypes10 = new String[] { "long" };
+        _methodParameterTypes10 = new String[] {
+                "es.eina.tfg.service.persistence.RouteLocationPK"
+            };
 
         _methodName11 = "getRouteLocation";
 
-        _methodParameterTypes11 = new String[] { "long" };
+        _methodParameterTypes11 = new String[] {
+                "es.eina.tfg.service.persistence.RouteLocationPK"
+            };
 
         _methodName12 = "getPersistedModel";
 
@@ -135,42 +143,41 @@ public class RouteLocationLocalServiceClpInvoker {
 
         _methodParameterTypes15 = new String[] { "es.eina.tfg.model.RouteLocation" };
 
-        _methodName88 = "getBeanIdentifier";
-
-        _methodParameterTypes88 = new String[] {  };
-
-        _methodName89 = "setBeanIdentifier";
-
-        _methodParameterTypes89 = new String[] { "java.lang.String" };
-
-        _methodName94 = "createRouteLocation";
+        _methodName94 = "getBeanIdentifier";
 
         _methodParameterTypes94 = new String[] {  };
 
-        _methodName95 = "add";
+        _methodName95 = "setBeanIdentifier";
 
-        _methodParameterTypes95 = new String[] {
-                "java.lang.Long", "java.lang.Double", "java.lang.Double"
+        _methodParameterTypes95 = new String[] { "java.lang.String" };
+
+        _methodName100 = "generateNewIdRouteLocation";
+
+        _methodParameterTypes100 = new String[] { "long" };
+
+        _methodName101 = "addRouteLocation";
+
+        _methodParameterTypes101 = new String[] {
+                "es.eina.tfg.model.RouteLocation"
             };
 
-        _methodName96 = "update";
+        _methodName102 = "updateRouteLocation";
 
-        _methodParameterTypes96 = new String[] {
-                "java.lang.Long", "java.lang.Long", "java.lang.Double",
-                "java.lang.Double"
+        _methodParameterTypes102 = new String[] {
+                "es.eina.tfg.model.RouteLocation"
             };
 
-        _methodName97 = "findByRouteId";
+        _methodName104 = "getByidRoute";
 
-        _methodParameterTypes97 = new String[] { "java.lang.Long" };
+        _methodParameterTypes104 = new String[] { "java.lang.Long" };
 
-        _methodName98 = "findByRouteId";
+        _methodName105 = "getByidRoute";
 
-        _methodParameterTypes98 = new String[] { "long", "int", "int" };
+        _methodParameterTypes105 = new String[] { "long", "int", "int" };
 
-        _methodName99 = "findByRouteIdCount";
+        _methodName106 = "getByidRouteCount";
 
-        _methodParameterTypes99 = new String[] { "java.lang.Long" };
+        _methodParameterTypes106 = new String[] { "java.lang.Long" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -182,12 +189,12 @@ public class RouteLocationLocalServiceClpInvoker {
 
         if (_methodName1.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes1, parameterTypes)) {
-            return RouteLocationLocalServiceUtil.createRouteLocation(((Long) arguments[0]).longValue());
+            return RouteLocationLocalServiceUtil.createRouteLocation((es.eina.tfg.service.persistence.RouteLocationPK) arguments[0]);
         }
 
         if (_methodName2.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes2, parameterTypes)) {
-            return RouteLocationLocalServiceUtil.deleteRouteLocation(((Long) arguments[0]).longValue());
+            return RouteLocationLocalServiceUtil.deleteRouteLocation((es.eina.tfg.service.persistence.RouteLocationPK) arguments[0]);
         }
 
         if (_methodName3.equals(name) &&
@@ -233,12 +240,12 @@ public class RouteLocationLocalServiceClpInvoker {
 
         if (_methodName10.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes10, parameterTypes)) {
-            return RouteLocationLocalServiceUtil.fetchRouteLocation(((Long) arguments[0]).longValue());
+            return RouteLocationLocalServiceUtil.fetchRouteLocation((es.eina.tfg.service.persistence.RouteLocationPK) arguments[0]);
         }
 
         if (_methodName11.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes11, parameterTypes)) {
-            return RouteLocationLocalServiceUtil.getRouteLocation(((Long) arguments[0]).longValue());
+            return RouteLocationLocalServiceUtil.getRouteLocation((es.eina.tfg.service.persistence.RouteLocationPK) arguments[0]);
         }
 
         if (_methodName12.equals(name) &&
@@ -262,51 +269,48 @@ public class RouteLocationLocalServiceClpInvoker {
             return RouteLocationLocalServiceUtil.updateRouteLocation((es.eina.tfg.model.RouteLocation) arguments[0]);
         }
 
-        if (_methodName88.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes88, parameterTypes)) {
+        if (_methodName94.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
             return RouteLocationLocalServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName89.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes89, parameterTypes)) {
+        if (_methodName95.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes95, parameterTypes)) {
             RouteLocationLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }
 
-        if (_methodName94.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
-            return RouteLocationLocalServiceUtil.createRouteLocation();
+        if (_methodName100.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes100, parameterTypes)) {
+            return RouteLocationLocalServiceUtil.generateNewIdRouteLocation(((Long) arguments[0]).longValue());
         }
 
-        if (_methodName95.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes95, parameterTypes)) {
-            return RouteLocationLocalServiceUtil.add((java.lang.Long) arguments[0],
-                (java.lang.Double) arguments[1], (java.lang.Double) arguments[2]);
+        if (_methodName101.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes101, parameterTypes)) {
+            return RouteLocationLocalServiceUtil.addRouteLocation((es.eina.tfg.model.RouteLocation) arguments[0]);
         }
 
-        if (_methodName96.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes96, parameterTypes)) {
-            return RouteLocationLocalServiceUtil.update((java.lang.Long) arguments[0],
-                (java.lang.Long) arguments[1], (java.lang.Double) arguments[2],
-                (java.lang.Double) arguments[3]);
+        if (_methodName102.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes102, parameterTypes)) {
+            return RouteLocationLocalServiceUtil.updateRouteLocation((es.eina.tfg.model.RouteLocation) arguments[0]);
         }
 
-        if (_methodName97.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes97, parameterTypes)) {
-            return RouteLocationLocalServiceUtil.findByRouteId((java.lang.Long) arguments[0]);
+        if (_methodName104.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes104, parameterTypes)) {
+            return RouteLocationLocalServiceUtil.getByidRoute((java.lang.Long) arguments[0]);
         }
 
-        if (_methodName98.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes98, parameterTypes)) {
-            return RouteLocationLocalServiceUtil.findByRouteId(((Long) arguments[0]).longValue(),
+        if (_methodName105.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes105, parameterTypes)) {
+            return RouteLocationLocalServiceUtil.getByidRoute(((Long) arguments[0]).longValue(),
                 ((Integer) arguments[1]).intValue(),
                 ((Integer) arguments[2]).intValue());
         }
 
-        if (_methodName99.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes99, parameterTypes)) {
-            return RouteLocationLocalServiceUtil.findByRouteIdCount((java.lang.Long) arguments[0]);
+        if (_methodName106.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes106, parameterTypes)) {
+            return RouteLocationLocalServiceUtil.getByidRouteCount((java.lang.Long) arguments[0]);
         }
 
         throw new UnsupportedOperationException();

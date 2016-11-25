@@ -53,33 +53,19 @@ public interface LocationService extends BaseService, InvokableService {
         throws java.lang.Throwable;
 
     public es.eina.tfg.model.Location add(java.lang.Long raceId,
-        java.lang.Long userId, java.lang.Long deviceId,
-        java.lang.Long sensorId, java.util.Date time,
+        java.lang.Long deviceId, java.lang.Long sensorId, java.util.Date time,
         java.lang.String sensorMode, int sysRef, double latitude,
         double longitude, double speed, double distance, double altitude)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingDeviceAndSensorRelationException,
-            es.eina.tfg.NonExistingRaceException,
-            es.eina.tfg.NonExistingUserException;
+        throws com.liferay.portal.kernel.exception.SystemException;
 
-    public es.eina.tfg.model.Location update(java.lang.Long measurementId,
-        java.lang.Long raceId, java.lang.Long userId, java.lang.Long deviceId,
-        java.lang.Long sensorId, java.util.Date time,
-        java.lang.String sensorMode, int sysRef, double latitude,
-        double longitude, double speed, double distance, double altitude)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingMeasurementException;
-
-    public es.eina.tfg.model.Location delete(java.lang.Long measurementId)
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public es.eina.tfg.model.Location getByidLocation(long idMeasurement,
+        long idRace)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException;
 
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public es.eina.tfg.model.Location getLocation(java.lang.Long measurementId)
-        throws com.liferay.portal.kernel.exception.PortalException,
-            com.liferay.portal.kernel.exception.SystemException;
-
-    public java.util.List<es.eina.tfg.model.Location> findByRaceId(
-        java.lang.Long raceId)
+    public java.util.List<es.eina.tfg.model.Location> getByidRace(
+        java.lang.Long idRace)
         throws com.liferay.portal.kernel.exception.SystemException;
 }

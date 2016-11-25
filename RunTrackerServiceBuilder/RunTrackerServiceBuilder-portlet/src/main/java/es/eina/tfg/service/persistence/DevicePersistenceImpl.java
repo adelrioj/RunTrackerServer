@@ -84,12 +84,12 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
             DeviceModelImpl.FINDER_CACHE_ENABLED, DeviceImpl.class,
             FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByuserId",
             new String[] { Long.class.getName() },
-            DeviceModelImpl.USERID_COLUMN_BITMASK);
+            DeviceModelImpl.IDUSER_COLUMN_BITMASK);
     public static final FinderPath FINDER_PATH_COUNT_BY_USERID = new FinderPath(DeviceModelImpl.ENTITY_CACHE_ENABLED,
             DeviceModelImpl.FINDER_CACHE_ENABLED, Long.class,
             FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByuserId",
             new String[] { Long.class.getName() });
-    private static final String _FINDER_COLUMN_USERID_USERID_2 = "device.userId = ?";
+    private static final String _FINDER_COLUMN_USERID_IDUSER_2 = "device.idUser = ?";
     public static final FinderPath FINDER_PATH_FETCH_BY_DEVICEUUID = new FinderPath(DeviceModelImpl.ENTITY_CACHE_ENABLED,
             DeviceModelImpl.FINDER_CACHE_ENABLED, DeviceImpl.class,
             FINDER_CLASS_NAME_ENTITY, "fetchBydeviceUUID",
@@ -129,7 +129,7 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
             FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findBystatus",
             new String[] { String.class.getName() },
             DeviceModelImpl.STATUS_COLUMN_BITMASK |
-            DeviceModelImpl.USERID_COLUMN_BITMASK);
+            DeviceModelImpl.IDUSER_COLUMN_BITMASK);
     public static final FinderPath FINDER_PATH_COUNT_BY_STATUS = new FinderPath(DeviceModelImpl.ENTITY_CACHE_ENABLED,
             DeviceModelImpl.FINDER_CACHE_ENABLED, Long.class,
             FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countBystatus",
@@ -171,44 +171,44 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
     }
 
     /**
-     * Returns all the devices where userId = &#63;.
+     * Returns all the devices where idUser = &#63;.
      *
-     * @param userId the user ID
+     * @param idUser the id user
      * @return the matching devices
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public List<Device> findByuserId(long userId) throws SystemException {
-        return findByuserId(userId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+    public List<Device> findByuserId(long idUser) throws SystemException {
+        return findByuserId(idUser, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
     }
 
     /**
-     * Returns a range of all the devices where userId = &#63;.
+     * Returns a range of all the devices where idUser = &#63;.
      *
      * <p>
      * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link es.eina.tfg.model.impl.DeviceModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
      * </p>
      *
-     * @param userId the user ID
+     * @param idUser the id user
      * @param start the lower bound of the range of devices
      * @param end the upper bound of the range of devices (not inclusive)
      * @return the range of matching devices
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public List<Device> findByuserId(long userId, int start, int end)
+    public List<Device> findByuserId(long idUser, int start, int end)
         throws SystemException {
-        return findByuserId(userId, start, end, null);
+        return findByuserId(idUser, start, end, null);
     }
 
     /**
-     * Returns an ordered range of all the devices where userId = &#63;.
+     * Returns an ordered range of all the devices where idUser = &#63;.
      *
      * <p>
      * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link es.eina.tfg.model.impl.DeviceModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
      * </p>
      *
-     * @param userId the user ID
+     * @param idUser the id user
      * @param start the lower bound of the range of devices
      * @param end the upper bound of the range of devices (not inclusive)
      * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
@@ -216,7 +216,7 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public List<Device> findByuserId(long userId, int start, int end,
+    public List<Device> findByuserId(long idUser, int start, int end,
         OrderByComparator orderByComparator) throws SystemException {
         boolean pagination = true;
         FinderPath finderPath = null;
@@ -226,10 +226,10 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
                 (orderByComparator == null)) {
             pagination = false;
             finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERID;
-            finderArgs = new Object[] { userId };
+            finderArgs = new Object[] { idUser };
         } else {
             finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_USERID;
-            finderArgs = new Object[] { userId, start, end, orderByComparator };
+            finderArgs = new Object[] { idUser, start, end, orderByComparator };
         }
 
         List<Device> list = (List<Device>) FinderCacheUtil.getResult(finderPath,
@@ -237,7 +237,7 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
 
         if ((list != null) && !list.isEmpty()) {
             for (Device device : list) {
-                if ((userId != device.getUserId())) {
+                if ((idUser != device.getIdUser())) {
                     list = null;
 
                     break;
@@ -257,7 +257,7 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
 
             query.append(_SQL_SELECT_DEVICE_WHERE);
 
-            query.append(_FINDER_COLUMN_USERID_USERID_2);
+            query.append(_FINDER_COLUMN_USERID_IDUSER_2);
 
             if (orderByComparator != null) {
                 appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
@@ -278,7 +278,7 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
 
                 QueryPos qPos = QueryPos.getInstance(q);
 
-                qPos.add(userId);
+                qPos.add(idUser);
 
                 if (!pagination) {
                     list = (List<Device>) QueryUtil.list(q, getDialect(),
@@ -308,19 +308,19 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
     }
 
     /**
-     * Returns the first device in the ordered set where userId = &#63;.
+     * Returns the first device in the ordered set where idUser = &#63;.
      *
-     * @param userId the user ID
+     * @param idUser the id user
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the first matching device
      * @throws es.eina.tfg.NoSuchDeviceException if a matching device could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Device findByuserId_First(long userId,
+    public Device findByuserId_First(long idUser,
         OrderByComparator orderByComparator)
         throws NoSuchDeviceException, SystemException {
-        Device device = fetchByuserId_First(userId, orderByComparator);
+        Device device = fetchByuserId_First(idUser, orderByComparator);
 
         if (device != null) {
             return device;
@@ -330,8 +330,8 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
 
         msg.append(_NO_SUCH_ENTITY_WITH_KEY);
 
-        msg.append("userId=");
-        msg.append(userId);
+        msg.append("idUser=");
+        msg.append(idUser);
 
         msg.append(StringPool.CLOSE_CURLY_BRACE);
 
@@ -339,17 +339,17 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
     }
 
     /**
-     * Returns the first device in the ordered set where userId = &#63;.
+     * Returns the first device in the ordered set where idUser = &#63;.
      *
-     * @param userId the user ID
+     * @param idUser the id user
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the first matching device, or <code>null</code> if a matching device could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Device fetchByuserId_First(long userId,
+    public Device fetchByuserId_First(long idUser,
         OrderByComparator orderByComparator) throws SystemException {
-        List<Device> list = findByuserId(userId, 0, 1, orderByComparator);
+        List<Device> list = findByuserId(idUser, 0, 1, orderByComparator);
 
         if (!list.isEmpty()) {
             return list.get(0);
@@ -359,19 +359,19 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
     }
 
     /**
-     * Returns the last device in the ordered set where userId = &#63;.
+     * Returns the last device in the ordered set where idUser = &#63;.
      *
-     * @param userId the user ID
+     * @param idUser the id user
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the last matching device
      * @throws es.eina.tfg.NoSuchDeviceException if a matching device could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Device findByuserId_Last(long userId,
+    public Device findByuserId_Last(long idUser,
         OrderByComparator orderByComparator)
         throws NoSuchDeviceException, SystemException {
-        Device device = fetchByuserId_Last(userId, orderByComparator);
+        Device device = fetchByuserId_Last(idUser, orderByComparator);
 
         if (device != null) {
             return device;
@@ -381,8 +381,8 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
 
         msg.append(_NO_SUCH_ENTITY_WITH_KEY);
 
-        msg.append("userId=");
-        msg.append(userId);
+        msg.append("idUser=");
+        msg.append(idUser);
 
         msg.append(StringPool.CLOSE_CURLY_BRACE);
 
@@ -390,23 +390,23 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
     }
 
     /**
-     * Returns the last device in the ordered set where userId = &#63;.
+     * Returns the last device in the ordered set where idUser = &#63;.
      *
-     * @param userId the user ID
+     * @param idUser the id user
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the last matching device, or <code>null</code> if a matching device could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Device fetchByuserId_Last(long userId,
+    public Device fetchByuserId_Last(long idUser,
         OrderByComparator orderByComparator) throws SystemException {
-        int count = countByuserId(userId);
+        int count = countByuserId(idUser);
 
         if (count == 0) {
             return null;
         }
 
-        List<Device> list = findByuserId(userId, count - 1, count,
+        List<Device> list = findByuserId(idUser, count - 1, count,
                 orderByComparator);
 
         if (!list.isEmpty()) {
@@ -417,20 +417,20 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
     }
 
     /**
-     * Returns the devices before and after the current device in the ordered set where userId = &#63;.
+     * Returns the devices before and after the current device in the ordered set where idUser = &#63;.
      *
-     * @param deviceId the primary key of the current device
-     * @param userId the user ID
+     * @param idDevice the primary key of the current device
+     * @param idUser the id user
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the previous, current, and next device
      * @throws es.eina.tfg.NoSuchDeviceException if a device with the primary key could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Device[] findByuserId_PrevAndNext(long deviceId, long userId,
+    public Device[] findByuserId_PrevAndNext(long idDevice, long idUser,
         OrderByComparator orderByComparator)
         throws NoSuchDeviceException, SystemException {
-        Device device = findByPrimaryKey(deviceId);
+        Device device = findByPrimaryKey(idDevice);
 
         Session session = null;
 
@@ -439,12 +439,12 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
 
             Device[] array = new DeviceImpl[3];
 
-            array[0] = getByuserId_PrevAndNext(session, device, userId,
+            array[0] = getByuserId_PrevAndNext(session, device, idUser,
                     orderByComparator, true);
 
             array[1] = device;
 
-            array[2] = getByuserId_PrevAndNext(session, device, userId,
+            array[2] = getByuserId_PrevAndNext(session, device, idUser,
                     orderByComparator, false);
 
             return array;
@@ -456,7 +456,7 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
     }
 
     protected Device getByuserId_PrevAndNext(Session session, Device device,
-        long userId, OrderByComparator orderByComparator, boolean previous) {
+        long idUser, OrderByComparator orderByComparator, boolean previous) {
         StringBundler query = null;
 
         if (orderByComparator != null) {
@@ -468,7 +468,7 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
 
         query.append(_SQL_SELECT_DEVICE_WHERE);
 
-        query.append(_FINDER_COLUMN_USERID_USERID_2);
+        query.append(_FINDER_COLUMN_USERID_IDUSER_2);
 
         if (orderByComparator != null) {
             String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
@@ -531,7 +531,7 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
 
         QueryPos qPos = QueryPos.getInstance(q);
 
-        qPos.add(userId);
+        qPos.add(idUser);
 
         if (orderByComparator != null) {
             Object[] values = orderByComparator.getOrderByConditionValues(device);
@@ -551,31 +551,31 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
     }
 
     /**
-     * Removes all the devices where userId = &#63; from the database.
+     * Removes all the devices where idUser = &#63; from the database.
      *
-     * @param userId the user ID
+     * @param idUser the id user
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public void removeByuserId(long userId) throws SystemException {
-        for (Device device : findByuserId(userId, QueryUtil.ALL_POS,
+    public void removeByuserId(long idUser) throws SystemException {
+        for (Device device : findByuserId(idUser, QueryUtil.ALL_POS,
                 QueryUtil.ALL_POS, null)) {
             remove(device);
         }
     }
 
     /**
-     * Returns the number of devices where userId = &#63;.
+     * Returns the number of devices where idUser = &#63;.
      *
-     * @param userId the user ID
+     * @param idUser the id user
      * @return the number of matching devices
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public int countByuserId(long userId) throws SystemException {
+    public int countByuserId(long idUser) throws SystemException {
         FinderPath finderPath = FINDER_PATH_COUNT_BY_USERID;
 
-        Object[] finderArgs = new Object[] { userId };
+        Object[] finderArgs = new Object[] { idUser };
 
         Long count = (Long) FinderCacheUtil.getResult(finderPath, finderArgs,
                 this);
@@ -585,7 +585,7 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
 
             query.append(_SQL_COUNT_DEVICE_WHERE);
 
-            query.append(_FINDER_COLUMN_USERID_USERID_2);
+            query.append(_FINDER_COLUMN_USERID_IDUSER_2);
 
             String sql = query.toString();
 
@@ -598,7 +598,7 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
 
                 QueryPos qPos = QueryPos.getInstance(q);
 
-                qPos.add(userId);
+                qPos.add(idUser);
 
                 count = (Long) q.uniqueResult();
 
@@ -1328,7 +1328,7 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
     /**
      * Returns the devices before and after the current device in the ordered set where status = &#63;.
      *
-     * @param deviceId the primary key of the current device
+     * @param idDevice the primary key of the current device
      * @param status the status
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the previous, current, and next device
@@ -1336,10 +1336,10 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Device[] findBystatus_PrevAndNext(long deviceId, String status,
+    public Device[] findBystatus_PrevAndNext(long idDevice, String status,
         OrderByComparator orderByComparator)
         throws NoSuchDeviceException, SystemException {
-        Device device = findByPrimaryKey(deviceId);
+        Device device = findByPrimaryKey(idDevice);
 
         Session session = null;
 
@@ -1709,15 +1709,15 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
     /**
      * Creates a new device with the primary key. Does not add the device to the database.
      *
-     * @param deviceId the primary key for the new device
+     * @param idDevice the primary key for the new device
      * @return the new device
      */
     @Override
-    public Device create(long deviceId) {
+    public Device create(long idDevice) {
         Device device = new DeviceImpl();
 
         device.setNew(true);
-        device.setPrimaryKey(deviceId);
+        device.setPrimaryKey(idDevice);
 
         return device;
     }
@@ -1725,15 +1725,15 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
     /**
      * Removes the device with the primary key from the database. Also notifies the appropriate model listeners.
      *
-     * @param deviceId the primary key of the device
+     * @param idDevice the primary key of the device
      * @return the device that was removed
      * @throws es.eina.tfg.NoSuchDeviceException if a device with the primary key could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Device remove(long deviceId)
+    public Device remove(long idDevice)
         throws NoSuchDeviceException, SystemException {
-        return remove((Serializable) deviceId);
+        return remove((Serializable) idDevice);
     }
 
     /**
@@ -1838,13 +1838,13 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
         else {
             if ((deviceModelImpl.getColumnBitmask() &
                     FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERID.getColumnBitmask()) != 0) {
-                Object[] args = new Object[] { deviceModelImpl.getOriginalUserId() };
+                Object[] args = new Object[] { deviceModelImpl.getOriginalIdUser() };
 
                 FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_USERID, args);
                 FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERID,
                     args);
 
-                args = new Object[] { deviceModelImpl.getUserId() };
+                args = new Object[] { deviceModelImpl.getIdUser() };
 
                 FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_USERID, args);
                 FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERID,
@@ -1886,8 +1886,8 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
         deviceImpl.setNew(device.isNew());
         deviceImpl.setPrimaryKey(device.getPrimaryKey());
 
-        deviceImpl.setDeviceId(device.getDeviceId());
-        deviceImpl.setUserId(device.getUserId());
+        deviceImpl.setIdDevice(device.getIdDevice());
+        deviceImpl.setIdUser(device.getIdUser());
         deviceImpl.setDeviceUUID(device.getDeviceUUID());
         deviceImpl.setDescription(device.getDescription());
         deviceImpl.setStatus(device.getStatus());
@@ -1930,15 +1930,15 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
     /**
      * Returns the device with the primary key or throws a {@link es.eina.tfg.NoSuchDeviceException} if it could not be found.
      *
-     * @param deviceId the primary key of the device
+     * @param idDevice the primary key of the device
      * @return the device
      * @throws es.eina.tfg.NoSuchDeviceException if a device with the primary key could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Device findByPrimaryKey(long deviceId)
+    public Device findByPrimaryKey(long idDevice)
         throws NoSuchDeviceException, SystemException {
-        return findByPrimaryKey((Serializable) deviceId);
+        return findByPrimaryKey((Serializable) idDevice);
     }
 
     /**
@@ -1988,13 +1988,13 @@ public class DevicePersistenceImpl extends BasePersistenceImpl<Device>
     /**
      * Returns the device with the primary key or returns <code>null</code> if it could not be found.
      *
-     * @param deviceId the primary key of the device
+     * @param idDevice the primary key of the device
      * @return the device, or <code>null</code> if a device with the primary key could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Device fetchByPrimaryKey(long deviceId) throws SystemException {
-        return fetchByPrimaryKey((Serializable) deviceId);
+    public Device fetchByPrimaryKey(long idDevice) throws SystemException {
+        return fetchByPrimaryKey((Serializable) idDevice);
     }
 
     /**

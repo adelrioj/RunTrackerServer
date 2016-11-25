@@ -4,10 +4,11 @@ import com.liferay.portal.kernel.messaging.BaseMessageListener;
 import com.liferay.portal.kernel.messaging.Message;
 
 import es.eina.tfg.service.ClpSerializer;
+import es.eina.tfg.service.DeviceAndSensorLocalServiceUtil;
 import es.eina.tfg.service.DeviceLocalServiceUtil;
 import es.eina.tfg.service.DeviceServiceUtil;
-import es.eina.tfg.service.Device_SensorLocalServiceUtil;
-import es.eina.tfg.service.Device_SensorServiceUtil;
+import es.eina.tfg.service.EventLocalServiceUtil;
+import es.eina.tfg.service.EventServiceUtil;
 import es.eina.tfg.service.LocationLocalServiceUtil;
 import es.eina.tfg.service.LocationServiceUtil;
 import es.eina.tfg.service.PowerLocalServiceUtil;
@@ -22,8 +23,8 @@ import es.eina.tfg.service.SensorLocalServiceUtil;
 import es.eina.tfg.service.SensorServiceUtil;
 import es.eina.tfg.service.UserAdditionalDataLocalServiceUtil;
 import es.eina.tfg.service.UserAdditionalDataServiceUtil;
-import es.eina.tfg.service.UserSelectedRoutesLocalServiceUtil;
-import es.eina.tfg.service.UserSelectedRoutesServiceUtil;
+import es.eina.tfg.service.UserAndEventLocalServiceUtil;
+import es.eina.tfg.service.UserAndRouteLocalServiceUtil;
 
 
 public class ClpMessageListener extends BaseMessageListener {
@@ -41,9 +42,11 @@ public class ClpMessageListener extends BaseMessageListener {
             DeviceLocalServiceUtil.clearService();
 
             DeviceServiceUtil.clearService();
-            Device_SensorLocalServiceUtil.clearService();
+            DeviceAndSensorLocalServiceUtil.clearService();
 
-            Device_SensorServiceUtil.clearService();
+            EventLocalServiceUtil.clearService();
+
+            EventServiceUtil.clearService();
             LocationLocalServiceUtil.clearService();
 
             LocationServiceUtil.clearService();
@@ -65,9 +68,9 @@ public class ClpMessageListener extends BaseMessageListener {
             UserAdditionalDataLocalServiceUtil.clearService();
 
             UserAdditionalDataServiceUtil.clearService();
-            UserSelectedRoutesLocalServiceUtil.clearService();
+            UserAndEventLocalServiceUtil.clearService();
 
-            UserSelectedRoutesServiceUtil.clearService();
+            UserAndRouteLocalServiceUtil.clearService();
         }
     }
 }

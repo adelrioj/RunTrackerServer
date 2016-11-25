@@ -52,21 +52,9 @@ public class RaceServiceUtil {
     }
 
     public static es.eina.tfg.model.Race add(java.lang.Long userId,
-        java.lang.Long routeId, java.lang.String type,
-        java.lang.Integer userHeight, java.lang.Integer userWeight)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingUserException {
-        return getService().add(userId, routeId, type, userHeight, userWeight);
-    }
-
-    public static es.eina.tfg.model.Race update(java.lang.Long raceId,
-        java.lang.Long userId, java.lang.Long routeId, java.lang.String type,
-        java.lang.Integer userHeight, java.lang.Integer userWeight)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingRaceException,
-            es.eina.tfg.NonExistingUserException {
-        return getService()
-                   .update(raceId, userId, routeId, type, userHeight, userWeight);
+        java.lang.Long routeId, java.lang.String type)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService().add(userId, routeId, type);
     }
 
     public static es.eina.tfg.model.Race delete(java.lang.Long raceId)

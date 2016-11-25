@@ -44,18 +44,18 @@ public interface SensorModel extends BaseModel<Sensor> {
     public void setPrimaryKey(long primaryKey);
 
     /**
-     * Returns the sensor ID of this sensor.
+     * Returns the id sensor of this sensor.
      *
-     * @return the sensor ID of this sensor
+     * @return the id sensor of this sensor
      */
-    public long getSensorId();
+    public long getIdSensor();
 
     /**
-     * Sets the sensor ID of this sensor.
+     * Sets the id sensor of this sensor.
      *
-     * @param sensorId the sensor ID of this sensor
+     * @param idSensor the id sensor of this sensor
      */
-    public void setSensorId(long sensorId);
+    public void setIdSensor(long idSensor);
 
     /**
      * Returns the type of this sensor.

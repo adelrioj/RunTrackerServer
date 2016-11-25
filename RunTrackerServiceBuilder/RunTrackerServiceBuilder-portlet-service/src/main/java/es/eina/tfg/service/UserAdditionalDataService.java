@@ -55,16 +55,11 @@ public interface UserAdditionalDataService extends BaseService, InvokableService
     public es.eina.tfg.model.UserAdditionalData add(java.lang.Long userId,
         java.lang.Integer weight, java.lang.Integer height,
         java.lang.String registerType)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingUserException;
+        throws com.liferay.portal.kernel.exception.SystemException;
 
     public es.eina.tfg.model.UserAdditionalData update(java.lang.Long userId,
         java.lang.Integer weight, java.lang.Integer height,
-        java.lang.String registerType, java.lang.Long smsCount)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingUserException;
-
-    public es.eina.tfg.model.UserAdditionalData delete(java.lang.Long userId)
+        java.lang.Long smsCount)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException;
 
@@ -75,7 +70,7 @@ public interface UserAdditionalDataService extends BaseService, InvokableService
             com.liferay.portal.kernel.exception.SystemException;
 
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public java.util.List<es.eina.tfg.model.UserSelectedRoutes> getUserSelectedRoutes(
+    public java.util.List<es.eina.tfg.model.UserAndRoute> getUserSelectedRoutes(
         java.lang.Long userId)
         throws com.liferay.portal.kernel.exception.SystemException;
 }

@@ -37,11 +37,10 @@ public class PowerWrapper implements Power, ModelWrapper<Power> {
     public Map<String, Object> getModelAttributes() {
         Map<String, Object> attributes = new HashMap<String, Object>();
 
-        attributes.put("measurementId", getMeasurementId());
-        attributes.put("raceId", getRaceId());
-        attributes.put("userId", getUserId());
-        attributes.put("deviceId", getDeviceId());
-        attributes.put("sensorId", getSensorId());
+        attributes.put("idMeasurement", getIdMeasurement());
+        attributes.put("idRace", getIdRace());
+        attributes.put("idDevice", getIdDevice());
+        attributes.put("idSensor", getIdSensor());
         attributes.put("time", getTime());
         attributes.put("sensorMode", getSensorMode());
         attributes.put("level", getLevel());
@@ -51,34 +50,28 @@ public class PowerWrapper implements Power, ModelWrapper<Power> {
 
     @Override
     public void setModelAttributes(Map<String, Object> attributes) {
-        Long measurementId = (Long) attributes.get("measurementId");
+        Long idMeasurement = (Long) attributes.get("idMeasurement");
 
-        if (measurementId != null) {
-            setMeasurementId(measurementId);
+        if (idMeasurement != null) {
+            setIdMeasurement(idMeasurement);
         }
 
-        Long raceId = (Long) attributes.get("raceId");
+        Long idRace = (Long) attributes.get("idRace");
 
-        if (raceId != null) {
-            setRaceId(raceId);
+        if (idRace != null) {
+            setIdRace(idRace);
         }
 
-        Long userId = (Long) attributes.get("userId");
+        Long idDevice = (Long) attributes.get("idDevice");
 
-        if (userId != null) {
-            setUserId(userId);
+        if (idDevice != null) {
+            setIdDevice(idDevice);
         }
 
-        Long deviceId = (Long) attributes.get("deviceId");
+        Long idSensor = (Long) attributes.get("idSensor");
 
-        if (deviceId != null) {
-            setDeviceId(deviceId);
-        }
-
-        Long sensorId = (Long) attributes.get("sensorId");
-
-        if (sensorId != null) {
-            setSensorId(sensorId);
+        if (idSensor != null) {
+            setIdSensor(idSensor);
         }
 
         Date time = (Date) attributes.get("time");
@@ -106,7 +99,7 @@ public class PowerWrapper implements Power, ModelWrapper<Power> {
     * @return the primary key of this power
     */
     @Override
-    public long getPrimaryKey() {
+    public es.eina.tfg.service.persistence.PowerPK getPrimaryKey() {
         return _power.getPrimaryKey();
     }
 
@@ -116,130 +109,89 @@ public class PowerWrapper implements Power, ModelWrapper<Power> {
     * @param primaryKey the primary key of this power
     */
     @Override
-    public void setPrimaryKey(long primaryKey) {
+    public void setPrimaryKey(
+        es.eina.tfg.service.persistence.PowerPK primaryKey) {
         _power.setPrimaryKey(primaryKey);
     }
 
     /**
-    * Returns the measurement ID of this power.
+    * Returns the id measurement of this power.
     *
-    * @return the measurement ID of this power
+    * @return the id measurement of this power
     */
     @Override
-    public long getMeasurementId() {
-        return _power.getMeasurementId();
+    public long getIdMeasurement() {
+        return _power.getIdMeasurement();
     }
 
     /**
-    * Sets the measurement ID of this power.
+    * Sets the id measurement of this power.
     *
-    * @param measurementId the measurement ID of this power
+    * @param idMeasurement the id measurement of this power
     */
     @Override
-    public void setMeasurementId(long measurementId) {
-        _power.setMeasurementId(measurementId);
+    public void setIdMeasurement(long idMeasurement) {
+        _power.setIdMeasurement(idMeasurement);
     }
 
     /**
-    * Returns the race ID of this power.
+    * Returns the id race of this power.
     *
-    * @return the race ID of this power
+    * @return the id race of this power
     */
     @Override
-    public long getRaceId() {
-        return _power.getRaceId();
+    public java.lang.Long getIdRace() {
+        return _power.getIdRace();
     }
 
     /**
-    * Sets the race ID of this power.
+    * Sets the id race of this power.
     *
-    * @param raceId the race ID of this power
+    * @param idRace the id race of this power
     */
     @Override
-    public void setRaceId(long raceId) {
-        _power.setRaceId(raceId);
+    public void setIdRace(java.lang.Long idRace) {
+        _power.setIdRace(idRace);
     }
 
     /**
-    * Returns the user ID of this power.
+    * Returns the id device of this power.
     *
-    * @return the user ID of this power
+    * @return the id device of this power
     */
     @Override
-    public long getUserId() {
-        return _power.getUserId();
+    public long getIdDevice() {
+        return _power.getIdDevice();
     }
 
     /**
-    * Sets the user ID of this power.
+    * Sets the id device of this power.
     *
-    * @param userId the user ID of this power
+    * @param idDevice the id device of this power
     */
     @Override
-    public void setUserId(long userId) {
-        _power.setUserId(userId);
+    public void setIdDevice(long idDevice) {
+        _power.setIdDevice(idDevice);
     }
 
     /**
-    * Returns the user uuid of this power.
+    * Returns the id sensor of this power.
     *
-    * @return the user uuid of this power
-    * @throws SystemException if a system exception occurred
+    * @return the id sensor of this power
     */
     @Override
-    public java.lang.String getUserUuid()
-        throws com.liferay.portal.kernel.exception.SystemException {
-        return _power.getUserUuid();
+    public long getIdSensor() {
+        return _power.getIdSensor();
     }
 
     /**
-    * Sets the user uuid of this power.
+    * Sets the id sensor of this power.
     *
-    * @param userUuid the user uuid of this power
+    * @param idSensor the id sensor of this power
     */
     @Override
-    public void setUserUuid(java.lang.String userUuid) {
-        _power.setUserUuid(userUuid);
-    }
-
-    /**
-    * Returns the device ID of this power.
-    *
-    * @return the device ID of this power
-    */
-    @Override
-    public long getDeviceId() {
-        return _power.getDeviceId();
-    }
-
-    /**
-    * Sets the device ID of this power.
-    *
-    * @param deviceId the device ID of this power
-    */
-    @Override
-    public void setDeviceId(long deviceId) {
-        _power.setDeviceId(deviceId);
-    }
-
-    /**
-    * Returns the sensor ID of this power.
-    *
-    * @return the sensor ID of this power
-    */
-    @Override
-    public long getSensorId() {
-        return _power.getSensorId();
-    }
-
-    /**
-    * Sets the sensor ID of this power.
-    *
-    * @param sensorId the sensor ID of this power
-    */
-    @Override
-    public void setSensorId(long sensorId) {
-        _power.setSensorId(sensorId);
+    public void setIdSensor(long idSensor) {
+        _power.setIdSensor(idSensor);
     }
 
     /**

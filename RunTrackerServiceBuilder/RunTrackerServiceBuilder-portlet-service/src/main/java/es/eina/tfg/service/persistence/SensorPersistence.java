@@ -124,14 +124,14 @@ public interface SensorPersistence extends BasePersistence<Sensor> {
     /**
     * Returns the sensors before and after the current sensor in the ordered set where type = &#63;.
     *
-    * @param sensorId the primary key of the current sensor
+    * @param idSensor the primary key of the current sensor
     * @param type the type
     * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
     * @return the previous, current, and next sensor
     * @throws es.eina.tfg.NoSuchSensorException if a sensor with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
-    public es.eina.tfg.model.Sensor[] findBytype_PrevAndNext(long sensorId,
+    public es.eina.tfg.model.Sensor[] findBytype_PrevAndNext(long idSensor,
         int type,
         com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException,
@@ -173,20 +173,20 @@ public interface SensorPersistence extends BasePersistence<Sensor> {
     /**
     * Creates a new sensor with the primary key. Does not add the sensor to the database.
     *
-    * @param sensorId the primary key for the new sensor
+    * @param idSensor the primary key for the new sensor
     * @return the new sensor
     */
-    public es.eina.tfg.model.Sensor create(long sensorId);
+    public es.eina.tfg.model.Sensor create(long idSensor);
 
     /**
     * Removes the sensor with the primary key from the database. Also notifies the appropriate model listeners.
     *
-    * @param sensorId the primary key of the sensor
+    * @param idSensor the primary key of the sensor
     * @return the sensor that was removed
     * @throws es.eina.tfg.NoSuchSensorException if a sensor with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
-    public es.eina.tfg.model.Sensor remove(long sensorId)
+    public es.eina.tfg.model.Sensor remove(long idSensor)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchSensorException;
 
@@ -196,23 +196,23 @@ public interface SensorPersistence extends BasePersistence<Sensor> {
     /**
     * Returns the sensor with the primary key or throws a {@link es.eina.tfg.NoSuchSensorException} if it could not be found.
     *
-    * @param sensorId the primary key of the sensor
+    * @param idSensor the primary key of the sensor
     * @return the sensor
     * @throws es.eina.tfg.NoSuchSensorException if a sensor with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
-    public es.eina.tfg.model.Sensor findByPrimaryKey(long sensorId)
+    public es.eina.tfg.model.Sensor findByPrimaryKey(long idSensor)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchSensorException;
 
     /**
     * Returns the sensor with the primary key or returns <code>null</code> if it could not be found.
     *
-    * @param sensorId the primary key of the sensor
+    * @param idSensor the primary key of the sensor
     * @return the sensor, or <code>null</code> if a sensor with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
-    public es.eina.tfg.model.Sensor fetchByPrimaryKey(long sensorId)
+    public es.eina.tfg.model.Sensor fetchByPrimaryKey(long idSensor)
         throws com.liferay.portal.kernel.exception.SystemException;
 
     /**

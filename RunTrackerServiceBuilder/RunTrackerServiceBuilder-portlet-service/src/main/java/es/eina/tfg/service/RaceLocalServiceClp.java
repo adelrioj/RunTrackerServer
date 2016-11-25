@@ -50,6 +50,8 @@ public class RaceLocalServiceClp implements RaceLocalService {
     private String[] _methodParameterTypes20;
     private String _methodName21;
     private String[] _methodParameterTypes21;
+    private String _methodName22;
+    private String[] _methodParameterTypes22;
 
     public RaceLocalServiceClp(InvokableLocalService invokableLocalService) {
         _invokableLocalService = invokableLocalService;
@@ -138,23 +140,21 @@ public class RaceLocalServiceClp implements RaceLocalService {
 
         _methodParameterTypes17 = new String[] { "java.lang.String" };
 
-        _methodName19 = "add";
+        _methodName19 = "generateNewIdRace";
 
-        _methodParameterTypes19 = new String[] {
-                "java.lang.Long", "java.lang.Long", "java.lang.String",
-                "java.lang.Integer", "java.lang.Integer"
-            };
+        _methodParameterTypes19 = new String[] {  };
 
-        _methodName20 = "update";
+        _methodName20 = "getByUserId";
 
-        _methodParameterTypes20 = new String[] {
-                "java.lang.Long", "java.lang.Long", "java.lang.Long",
-                "java.lang.String", "java.lang.Integer", "java.lang.Integer"
-            };
+        _methodParameterTypes20 = new String[] { "java.lang.Long" };
 
-        _methodName21 = "findByUserId";
+        _methodName21 = "getLocations";
 
-        _methodParameterTypes21 = new String[] { "java.lang.Long" };
+        _methodParameterTypes21 = new String[] { "long" };
+
+        _methodName22 = "getPowerMeasurements";
+
+        _methodParameterTypes22 = new String[] { "long" };
     }
 
     @Override
@@ -185,12 +185,12 @@ public class RaceLocalServiceClp implements RaceLocalService {
     }
 
     @Override
-    public es.eina.tfg.model.Race createRace(long raceId) {
+    public es.eina.tfg.model.Race createRace(long idRace) {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName1,
-                    _methodParameterTypes1, new Object[] { raceId });
+                    _methodParameterTypes1, new Object[] { idRace });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -206,14 +206,14 @@ public class RaceLocalServiceClp implements RaceLocalService {
     }
 
     @Override
-    public es.eina.tfg.model.Race deleteRace(long raceId)
+    public es.eina.tfg.model.Race deleteRace(long idRace)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName2,
-                    _methodParameterTypes2, new Object[] { raceId });
+                    _methodParameterTypes2, new Object[] { idRace });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -449,13 +449,13 @@ public class RaceLocalServiceClp implements RaceLocalService {
     }
 
     @Override
-    public es.eina.tfg.model.Race fetchRace(long raceId)
+    public es.eina.tfg.model.Race fetchRace(long idRace)
         throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName10,
-                    _methodParameterTypes10, new Object[] { raceId });
+                    _methodParameterTypes10, new Object[] { idRace });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -475,14 +475,14 @@ public class RaceLocalServiceClp implements RaceLocalService {
     }
 
     @Override
-    public es.eina.tfg.model.Race getRace(long raceId)
+    public es.eina.tfg.model.Race getRace(long idRace)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName11,
-                    _methodParameterTypes11, new Object[] { raceId });
+                    _methodParameterTypes11, new Object[] { idRace });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -664,36 +664,18 @@ public class RaceLocalServiceClp implements RaceLocalService {
     }
 
     @Override
-    public es.eina.tfg.model.Race add(java.lang.Long userId,
-        java.lang.Long routeId, java.lang.String type,
-        java.lang.Integer userHeight, java.lang.Integer userWeight)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingUserException {
+    public java.lang.Long generateNewIdRace()
+        throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName19,
-                    _methodParameterTypes19,
-                    new Object[] {
-                        ClpSerializer.translateInput(userId),
-                        
-                    ClpSerializer.translateInput(routeId),
-                        
-                    ClpSerializer.translateInput(type),
-                        
-                    ClpSerializer.translateInput(userHeight),
-                        
-                    ClpSerializer.translateInput(userWeight)
-                    });
+                    _methodParameterTypes19, new Object[] {  });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
             if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
                 throw (com.liferay.portal.kernel.exception.SystemException) t;
-            }
-
-            if (t instanceof es.eina.tfg.NonExistingUserException) {
-                throw (es.eina.tfg.NonExistingUserException) t;
             }
 
             if (t instanceof RuntimeException) {
@@ -704,69 +686,18 @@ public class RaceLocalServiceClp implements RaceLocalService {
             }
         }
 
-        return (es.eina.tfg.model.Race) ClpSerializer.translateOutput(returnObj);
+        return (java.lang.Long) ClpSerializer.translateOutput(returnObj);
     }
 
     @Override
-    public es.eina.tfg.model.Race update(java.lang.Long raceId,
-        java.lang.Long userId, java.lang.Long routeId, java.lang.String type,
-        java.lang.Integer userHeight, java.lang.Integer userWeight)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingRaceException,
-            es.eina.tfg.NonExistingUserException {
-        Object returnObj = null;
-
-        try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName20,
-                    _methodParameterTypes20,
-                    new Object[] {
-                        ClpSerializer.translateInput(raceId),
-                        
-                    ClpSerializer.translateInput(userId),
-                        
-                    ClpSerializer.translateInput(routeId),
-                        
-                    ClpSerializer.translateInput(type),
-                        
-                    ClpSerializer.translateInput(userHeight),
-                        
-                    ClpSerializer.translateInput(userWeight)
-                    });
-        } catch (Throwable t) {
-            t = ClpSerializer.translateThrowable(t);
-
-            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
-                throw (com.liferay.portal.kernel.exception.SystemException) t;
-            }
-
-            if (t instanceof es.eina.tfg.NonExistingRaceException) {
-                throw (es.eina.tfg.NonExistingRaceException) t;
-            }
-
-            if (t instanceof es.eina.tfg.NonExistingUserException) {
-                throw (es.eina.tfg.NonExistingUserException) t;
-            }
-
-            if (t instanceof RuntimeException) {
-                throw (RuntimeException) t;
-            } else {
-                throw new RuntimeException(t.getClass().getName() +
-                    " is not a valid exception");
-            }
-        }
-
-        return (es.eina.tfg.model.Race) ClpSerializer.translateOutput(returnObj);
-    }
-
-    @Override
-    public java.util.List<es.eina.tfg.model.Race> findByUserId(
+    public java.util.List<es.eina.tfg.model.Race> getByUserId(
         java.lang.Long userId)
         throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName21,
-                    _methodParameterTypes21,
+            returnObj = _invokableLocalService.invokeMethod(_methodName20,
+                    _methodParameterTypes20,
                     new Object[] { ClpSerializer.translateInput(userId) });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
@@ -784,5 +715,57 @@ public class RaceLocalServiceClp implements RaceLocalService {
         }
 
         return (java.util.List<es.eina.tfg.model.Race>) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
+    public java.util.List<es.eina.tfg.model.Location> getLocations(long idRace)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName21,
+                    _methodParameterTypes21, new Object[] { idRace });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (java.util.List<es.eina.tfg.model.Location>) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
+    public java.util.List<es.eina.tfg.model.Power> getPowerMeasurements(
+        long idRace) throws com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName22,
+                    _methodParameterTypes22, new Object[] { idRace });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (java.util.List<es.eina.tfg.model.Power>) ClpSerializer.translateOutput(returnObj);
     }
 }

@@ -54,26 +54,16 @@ public class UserAdditionalDataServiceUtil {
     public static es.eina.tfg.model.UserAdditionalData add(
         java.lang.Long userId, java.lang.Integer weight,
         java.lang.Integer height, java.lang.String registerType)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingUserException {
+        throws com.liferay.portal.kernel.exception.SystemException {
         return getService().add(userId, weight, height, registerType);
     }
 
     public static es.eina.tfg.model.UserAdditionalData update(
         java.lang.Long userId, java.lang.Integer weight,
-        java.lang.Integer height, java.lang.String registerType,
-        java.lang.Long smsCount)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingUserException {
-        return getService()
-                   .update(userId, weight, height, registerType, smsCount);
-    }
-
-    public static es.eina.tfg.model.UserAdditionalData delete(
-        java.lang.Long userId)
+        java.lang.Integer height, java.lang.Long smsCount)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {
-        return getService().delete(userId);
+        return getService().update(userId, weight, height, smsCount);
     }
 
     public static es.eina.tfg.model.UserAdditionalData getUserAdditionalData(
@@ -83,7 +73,7 @@ public class UserAdditionalDataServiceUtil {
         return getService().getUserAdditionalData(userId);
     }
 
-    public static java.util.List<es.eina.tfg.model.UserSelectedRoutes> getUserSelectedRoutes(
+    public static java.util.List<es.eina.tfg.model.UserAndRoute> getUserSelectedRoutes(
         java.lang.Long userId)
         throws com.liferay.portal.kernel.exception.SystemException {
         return getService().getUserSelectedRoutes(userId);

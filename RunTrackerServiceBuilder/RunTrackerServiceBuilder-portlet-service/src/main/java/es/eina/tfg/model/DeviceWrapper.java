@@ -36,8 +36,8 @@ public class DeviceWrapper implements Device, ModelWrapper<Device> {
     public Map<String, Object> getModelAttributes() {
         Map<String, Object> attributes = new HashMap<String, Object>();
 
-        attributes.put("deviceId", getDeviceId());
-        attributes.put("userId", getUserId());
+        attributes.put("idDevice", getIdDevice());
+        attributes.put("idUser", getIdUser());
         attributes.put("deviceUUID", getDeviceUUID());
         attributes.put("description", getDescription());
         attributes.put("status", getStatus());
@@ -54,16 +54,16 @@ public class DeviceWrapper implements Device, ModelWrapper<Device> {
 
     @Override
     public void setModelAttributes(Map<String, Object> attributes) {
-        Long deviceId = (Long) attributes.get("deviceId");
+        Long idDevice = (Long) attributes.get("idDevice");
 
-        if (deviceId != null) {
-            setDeviceId(deviceId);
+        if (idDevice != null) {
+            setIdDevice(idDevice);
         }
 
-        Long userId = (Long) attributes.get("userId");
+        Long idUser = (Long) attributes.get("idUser");
 
-        if (userId != null) {
-            setUserId(userId);
+        if (idUser != null) {
+            setIdUser(idUser);
         }
 
         String deviceUUID = (String) attributes.get("deviceUUID");
@@ -149,65 +149,43 @@ public class DeviceWrapper implements Device, ModelWrapper<Device> {
     }
 
     /**
-    * Returns the device ID of this device.
+    * Returns the id device of this device.
     *
-    * @return the device ID of this device
+    * @return the id device of this device
     */
     @Override
-    public long getDeviceId() {
-        return _device.getDeviceId();
+    public long getIdDevice() {
+        return _device.getIdDevice();
     }
 
     /**
-    * Sets the device ID of this device.
+    * Sets the id device of this device.
     *
-    * @param deviceId the device ID of this device
+    * @param idDevice the id device of this device
     */
     @Override
-    public void setDeviceId(long deviceId) {
-        _device.setDeviceId(deviceId);
+    public void setIdDevice(long idDevice) {
+        _device.setIdDevice(idDevice);
     }
 
     /**
-    * Returns the user ID of this device.
+    * Returns the id user of this device.
     *
-    * @return the user ID of this device
+    * @return the id user of this device
     */
     @Override
-    public long getUserId() {
-        return _device.getUserId();
+    public long getIdUser() {
+        return _device.getIdUser();
     }
 
     /**
-    * Sets the user ID of this device.
+    * Sets the id user of this device.
     *
-    * @param userId the user ID of this device
+    * @param idUser the id user of this device
     */
     @Override
-    public void setUserId(long userId) {
-        _device.setUserId(userId);
-    }
-
-    /**
-    * Returns the user uuid of this device.
-    *
-    * @return the user uuid of this device
-    * @throws SystemException if a system exception occurred
-    */
-    @Override
-    public java.lang.String getUserUuid()
-        throws com.liferay.portal.kernel.exception.SystemException {
-        return _device.getUserUuid();
-    }
-
-    /**
-    * Sets the user uuid of this device.
-    *
-    * @param userUuid the user uuid of this device
-    */
-    @Override
-    public void setUserUuid(java.lang.String userUuid) {
-        _device.setUserUuid(userUuid);
+    public void setIdUser(long idUser) {
+        _device.setIdUser(idUser);
     }
 
     /**

@@ -2,13 +2,10 @@ package es.eina.tfg.service.impl;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
-import es.eina.tfg.NonExistingDeviceAndSensorRelationException;
-import es.eina.tfg.NonExistingMeasurementException;
-import es.eina.tfg.NonExistingRaceException;
-import es.eina.tfg.NonExistingUserException;
 import es.eina.tfg.model.Location;
 import es.eina.tfg.service.LocationLocalServiceUtil;
 import es.eina.tfg.service.base.LocationServiceBaseImpl;
+import es.eina.tfg.service.persistence.LocationPK;
 
 import java.util.Date;
 import java.util.List;
@@ -32,30 +29,34 @@ import java.util.List;
  * @see es.eina.tfg.service.LocationServiceUtil
  */
 public class LocationServiceImpl extends LocationServiceBaseImpl {
-    public Location add(Long raceId, Long userId, Long deviceId, Long sensorId, Date time, String sensorMode,
+
+    public Location add(Long raceId, Long deviceId, Long sensorId, Date time, String sensorMode,
                         int sysRef, double latitude, double longitude, double speed, double distance, double altitude)
-            throws SystemException, NonExistingUserException, NonExistingDeviceAndSensorRelationException, NonExistingRaceException {
-        return LocationLocalServiceUtil.add(raceId, userId,deviceId, sensorId, time, sensorMode, sysRef, latitude,
-                longitude, speed, distance, altitude);
+            throws SystemException {
+
+        Location location = LocationLocalServiceUtil.createLocation(LocationLocalServiceUtil.generateNewIdLocation(raceId));
+        location.setIdDevice(deviceId);
+        location.setIdSensor(sensorId);
+        location.setTime(time);
+        location.setSensorMode(sensorMode);
+        location.setSysRef(sysRef);
+        location.setLatitude(latitude);
+        location.setLongitude(longitude);
+        location.setSpeed(speed);
+        location.setDistance(distance);
+        location.setAltitude(altitude);
+
+        return LocationLocalServiceUtil.addLocation(location);
     }
 
-    public Location update(Long measurementId, Long raceId, Long userId, Long deviceId, Long sensorId, Date time,
-                           String sensorMode, int sysRef, double latitude, double longitude, double speed,
-                           double distance, double altitude)
-            throws SystemException, NonExistingMeasurementException {
-        return LocationLocalServiceUtil.update(measurementId, raceId, userId, deviceId, sensorId, time, sensorMode,
-                sysRef, latitude, longitude, speed, distance, altitude);
+    public Location getByidLocation (long idMeasurement, long idRace)
+            throws SystemException, PortalException {
+        LocationPK locationPK = new LocationPK(idRace, idMeasurement);
+        return LocationLocalServiceUtil.getLocation(locationPK);
     }
 
-    public Location delete (Long measurementId) throws SystemException, PortalException {
-        return LocationLocalServiceUtil.deleteLocation(measurementId);
-    }
-
-    public Location getLocation (Long measurementId) throws SystemException, PortalException {
-        return LocationLocalServiceUtil.getLocation(measurementId);
-    }
-
-    public List<Location> findByRaceId(Long raceId) throws SystemException {
-        return LocationLocalServiceUtil.findByRaceId(raceId);
+    public List<Location> getByidRace(Long idRace)
+            throws SystemException {
+        return LocationLocalServiceUtil.getByRaceId(idRace);
     }
 }

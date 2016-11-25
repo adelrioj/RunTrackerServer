@@ -47,21 +47,21 @@ public interface RaceLocalService extends BaseLocalService, InvokableLocalServic
     /**
     * Creates a new race with the primary key. Does not add the race to the database.
     *
-    * @param raceId the primary key for the new race
+    * @param idRace the primary key for the new race
     * @return the new race
     */
-    public es.eina.tfg.model.Race createRace(long raceId);
+    public es.eina.tfg.model.Race createRace(long idRace);
 
     /**
     * Deletes the race with the primary key from the database. Also notifies the appropriate model listeners.
     *
-    * @param raceId the primary key of the race
+    * @param idRace the primary key of the race
     * @return the race that was removed
     * @throws PortalException if a race with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
     @com.liferay.portal.kernel.search.Indexable(type = IndexableType.DELETE)
-    public es.eina.tfg.model.Race deleteRace(long raceId)
+    public es.eina.tfg.model.Race deleteRace(long idRace)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException;
 
@@ -154,19 +154,19 @@ public interface RaceLocalService extends BaseLocalService, InvokableLocalServic
         throws com.liferay.portal.kernel.exception.SystemException;
 
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public es.eina.tfg.model.Race fetchRace(long raceId)
+    public es.eina.tfg.model.Race fetchRace(long idRace)
         throws com.liferay.portal.kernel.exception.SystemException;
 
     /**
     * Returns the race with the primary key.
     *
-    * @param raceId the primary key of the race
+    * @param idRace the primary key of the race
     * @return the race
     * @throws PortalException if a race with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public es.eina.tfg.model.Race getRace(long raceId)
+    public es.eina.tfg.model.Race getRace(long idRace)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException;
 
@@ -233,20 +233,19 @@ public interface RaceLocalService extends BaseLocalService, InvokableLocalServic
         java.lang.String[] parameterTypes, java.lang.Object[] arguments)
         throws java.lang.Throwable;
 
-    public es.eina.tfg.model.Race add(java.lang.Long userId,
-        java.lang.Long routeId, java.lang.String type,
-        java.lang.Integer userHeight, java.lang.Integer userWeight)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingUserException;
+    public java.lang.Long generateNewIdRace()
+        throws com.liferay.portal.kernel.exception.SystemException;
 
-    public es.eina.tfg.model.Race update(java.lang.Long raceId,
-        java.lang.Long userId, java.lang.Long routeId, java.lang.String type,
-        java.lang.Integer userHeight, java.lang.Integer userWeight)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingRaceException,
-            es.eina.tfg.NonExistingUserException;
-
-    public java.util.List<es.eina.tfg.model.Race> findByUserId(
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public java.util.List<es.eina.tfg.model.Race> getByUserId(
         java.lang.Long userId)
         throws com.liferay.portal.kernel.exception.SystemException;
+
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public java.util.List<es.eina.tfg.model.Location> getLocations(long idRace)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public java.util.List<es.eina.tfg.model.Power> getPowerMeasurements(
+        long idRace) throws com.liferay.portal.kernel.exception.SystemException;
 }

@@ -43,25 +43,27 @@ public class LocationLocalServiceUtil {
     /**
     * Creates a new location with the primary key. Does not add the location to the database.
     *
-    * @param measurementId the primary key for the new location
+    * @param locationPK the primary key for the new location
     * @return the new location
     */
-    public static es.eina.tfg.model.Location createLocation(long measurementId) {
-        return getService().createLocation(measurementId);
+    public static es.eina.tfg.model.Location createLocation(
+        es.eina.tfg.service.persistence.LocationPK locationPK) {
+        return getService().createLocation(locationPK);
     }
 
     /**
     * Deletes the location with the primary key from the database. Also notifies the appropriate model listeners.
     *
-    * @param measurementId the primary key of the location
+    * @param locationPK the primary key of the location
     * @return the location that was removed
     * @throws PortalException if a location with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
-    public static es.eina.tfg.model.Location deleteLocation(long measurementId)
+    public static es.eina.tfg.model.Location deleteLocation(
+        es.eina.tfg.service.persistence.LocationPK locationPK)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {
-        return getService().deleteLocation(measurementId);
+        return getService().deleteLocation(locationPK);
     }
 
     /**
@@ -167,23 +169,25 @@ public class LocationLocalServiceUtil {
         return getService().dynamicQueryCount(dynamicQuery, projection);
     }
 
-    public static es.eina.tfg.model.Location fetchLocation(long measurementId)
+    public static es.eina.tfg.model.Location fetchLocation(
+        es.eina.tfg.service.persistence.LocationPK locationPK)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return getService().fetchLocation(measurementId);
+        return getService().fetchLocation(locationPK);
     }
 
     /**
     * Returns the location with the primary key.
     *
-    * @param measurementId the primary key of the location
+    * @param locationPK the primary key of the location
     * @return the location
     * @throws PortalException if a location with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
-    public static es.eina.tfg.model.Location getLocation(long measurementId)
+    public static es.eina.tfg.model.Location getLocation(
+        es.eina.tfg.service.persistence.LocationPK locationPK)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {
-        return getService().getLocation(measurementId);
+        return getService().getLocation(locationPK);
     }
 
     public static com.liferay.portal.model.PersistedModel getPersistedModel(
@@ -259,38 +263,15 @@ public class LocationLocalServiceUtil {
         return getService().invokeMethod(name, parameterTypes, arguments);
     }
 
-    public static es.eina.tfg.model.Location add(java.lang.Long raceId,
-        java.lang.Long userId, java.lang.Long deviceId,
-        java.lang.Long sensorId, java.util.Date time,
-        java.lang.String sensorMode, int sysRef, double latitude,
-        double longitude, double speed, double distance, double altitude)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingDeviceAndSensorRelationException,
-            es.eina.tfg.NonExistingRaceException,
-            es.eina.tfg.NonExistingUserException {
-        return getService()
-                   .add(raceId, userId, deviceId, sensorId, time, sensorMode,
-            sysRef, latitude, longitude, speed, distance, altitude);
+    public static es.eina.tfg.service.persistence.LocationPK generateNewIdLocation(
+        long idRace) throws com.liferay.portal.kernel.exception.SystemException {
+        return getService().generateNewIdLocation(idRace);
     }
 
-    public static es.eina.tfg.model.Location update(
-        java.lang.Long measurementId, java.lang.Long raceId,
-        java.lang.Long userId, java.lang.Long deviceId,
-        java.lang.Long sensorId, java.util.Date time,
-        java.lang.String sensorMode, int sysRef, double latitude,
-        double longitude, double speed, double distance, double altitude)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingMeasurementException {
-        return getService()
-                   .update(measurementId, raceId, userId, deviceId, sensorId,
-            time, sensorMode, sysRef, latitude, longitude, speed, distance,
-            altitude);
-    }
-
-    public static java.util.List<es.eina.tfg.model.Location> findByRaceId(
+    public static java.util.List<es.eina.tfg.model.Location> getByRaceId(
         java.lang.Long raceId)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return getService().findByRaceId(raceId);
+        return getService().getByRaceId(raceId);
     }
 
     public static void clearService() {

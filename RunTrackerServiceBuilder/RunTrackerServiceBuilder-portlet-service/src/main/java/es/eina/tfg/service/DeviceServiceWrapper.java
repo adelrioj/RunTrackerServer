@@ -51,8 +51,7 @@ public class DeviceServiceWrapper implements DeviceService,
         java.lang.String serverPhoneNumber, java.lang.String smsPollTime,
         java.lang.String smsTransmitPeriod, java.lang.String cloudId,
         java.lang.String serverIp, java.lang.String httpTransmitPeriod)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingUserException {
+        throws com.liferay.portal.kernel.exception.SystemException {
         return _deviceService.add(userId, deviceUUID, description, status,
             phoneNumber, serverPhoneNumber, smsPollTime, smsTransmitPeriod,
             cloudId, serverIp, httpTransmitPeriod);
@@ -60,18 +59,13 @@ public class DeviceServiceWrapper implements DeviceService,
 
     @Override
     public es.eina.tfg.model.Device update(java.lang.Long deviceId,
-        java.lang.String deviceUUID, java.lang.Long userId,
         java.lang.String description, java.lang.String status,
-        java.lang.String phoneNumber, java.lang.String serverPhoneNumber,
-        java.lang.String smsPollTime, java.lang.String smsTransmitPeriod,
-        java.lang.String cloudId, java.lang.String serverIp,
+        java.lang.String phoneNumber, java.lang.String smsTransmitPeriod,
         java.lang.String httpTransmitPeriod)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingDeviceException,
-            es.eina.tfg.NonExistingUserException {
-        return _deviceService.update(deviceId, deviceUUID, userId, description,
-            status, phoneNumber, serverPhoneNumber, smsPollTime,
-            smsTransmitPeriod, cloudId, serverIp, httpTransmitPeriod);
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        return _deviceService.update(deviceId, description, status,
+            phoneNumber, smsTransmitPeriod, httpTransmitPeriod);
     }
 
     @Override
@@ -111,32 +105,31 @@ public class DeviceServiceWrapper implements DeviceService,
     }
 
     @Override
-    public java.util.List<es.eina.tfg.model.Device> findByUserId(
+    public java.util.List<es.eina.tfg.model.Device> getByUserId(
         java.lang.Long userId)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return _deviceService.findByUserId(userId);
+        return _deviceService.getByUserId(userId);
     }
 
     @Override
-    public es.eina.tfg.model.Device findByDeviceUUID(
-        java.lang.String deviceUUID)
+    public es.eina.tfg.model.Device getByDeviceUUID(java.lang.String deviceUUID)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchDeviceException {
-        return _deviceService.findByDeviceUUID(deviceUUID);
+        return _deviceService.getByDeviceUUID(deviceUUID);
     }
 
     @Override
-    public java.util.List<es.eina.tfg.model.Device> findByStatus(
+    public java.util.List<es.eina.tfg.model.Device> getByStatus(
         java.lang.String status)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return _deviceService.findByStatus(status);
+        return _deviceService.getByStatus(status);
     }
 
     @Override
-    public java.util.List<es.eina.tfg.model.Device> findByStatus(
+    public java.util.List<es.eina.tfg.model.Device> getByStatus(
         java.lang.String status, int start, int end)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return _deviceService.findByStatus(status, start, end);
+        return _deviceService.getByStatus(status, start, end);
     }
 
     /**

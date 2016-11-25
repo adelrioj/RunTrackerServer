@@ -1,7 +1,6 @@
 package es.eina.tfg.model.impl;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
-import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.json.JSON;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
@@ -10,7 +9,6 @@ import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.model.CacheModel;
 import com.liferay.portal.model.impl.BaseModelImpl;
 import com.liferay.portal.service.ServiceContext;
-import com.liferay.portal.util.PortalUtil;
 
 import com.liferay.portlet.expando.model.ExpandoBridge;
 import com.liferay.portlet.expando.util.ExpandoBridgeFactoryUtil;
@@ -50,17 +48,15 @@ public class RaceModelImpl extends BaseModelImpl<Race> implements RaceModel {
      */
     public static final String TABLE_NAME = "GL_Race";
     public static final Object[][] TABLE_COLUMNS = {
-            { "raceId", Types.BIGINT },
-            { "userId", Types.BIGINT },
-            { "routeId", Types.BIGINT },
-            { "type_", Types.VARCHAR },
-            { "userHeight", Types.INTEGER },
-            { "userWeight", Types.INTEGER }
+            { "idRace", Types.BIGINT },
+            { "idUser", Types.BIGINT },
+            { "idRoute", Types.BIGINT },
+            { "type_", Types.VARCHAR }
         };
-    public static final String TABLE_SQL_CREATE = "create table GL_Race (raceId LONG not null primary key,userId LONG,routeId LONG,type_ VARCHAR(75) null,userHeight INTEGER,userWeight INTEGER)";
+    public static final String TABLE_SQL_CREATE = "create table GL_Race (idRace LONG not null primary key,idUser LONG,idRoute LONG,type_ VARCHAR(75) null)";
     public static final String TABLE_SQL_DROP = "drop table GL_Race";
-    public static final String ORDER_BY_JPQL = " ORDER BY race.userId ASC";
-    public static final String ORDER_BY_SQL = " ORDER BY GL_Race.userId ASC";
+    public static final String ORDER_BY_JPQL = " ORDER BY race.idUser ASC";
+    public static final String ORDER_BY_SQL = " ORDER BY GL_Race.idUser ASC";
     public static final String DATA_SOURCE = "liferayDataSource";
     public static final String SESSION_FACTORY = "liferaySessionFactory";
     public static final String TX_MANAGER = "liferayTransactionManager";
@@ -73,20 +69,17 @@ public class RaceModelImpl extends BaseModelImpl<Race> implements RaceModel {
     public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
                 "value.object.column.bitmask.enabled.es.eina.tfg.model.Race"),
             true);
-    public static long USERID_COLUMN_BITMASK = 1L;
+    public static long IDUSER_COLUMN_BITMASK = 1L;
     public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
                 "lock.expiration.time.es.eina.tfg.model.Race"));
     private static ClassLoader _classLoader = Race.class.getClassLoader();
     private static Class<?>[] _escapedModelInterfaces = new Class[] { Race.class };
-    private long _raceId;
-    private long _userId;
-    private String _userUuid;
-    private long _originalUserId;
-    private boolean _setOriginalUserId;
-    private long _routeId;
+    private long _idRace;
+    private long _idUser;
+    private long _originalIdUser;
+    private boolean _setOriginalIdUser;
+    private long _idRoute;
     private String _type;
-    private int _userHeight;
-    private int _userWeight;
     private long _columnBitmask;
     private Race _escapedModel;
 
@@ -106,12 +99,10 @@ public class RaceModelImpl extends BaseModelImpl<Race> implements RaceModel {
 
         Race model = new RaceImpl();
 
-        model.setRaceId(soapModel.getRaceId());
-        model.setUserId(soapModel.getUserId());
-        model.setRouteId(soapModel.getRouteId());
+        model.setIdRace(soapModel.getIdRace());
+        model.setIdUser(soapModel.getIdUser());
+        model.setIdRoute(soapModel.getIdRoute());
         model.setType(soapModel.getType());
-        model.setUserHeight(soapModel.getUserHeight());
-        model.setUserWeight(soapModel.getUserWeight());
 
         return model;
     }
@@ -138,17 +129,17 @@ public class RaceModelImpl extends BaseModelImpl<Race> implements RaceModel {
 
     @Override
     public long getPrimaryKey() {
-        return _raceId;
+        return _idRace;
     }
 
     @Override
     public void setPrimaryKey(long primaryKey) {
-        setRaceId(primaryKey);
+        setIdRace(primaryKey);
     }
 
     @Override
     public Serializable getPrimaryKeyObj() {
-        return _raceId;
+        return _idRace;
     }
 
     @Override
@@ -170,34 +161,32 @@ public class RaceModelImpl extends BaseModelImpl<Race> implements RaceModel {
     public Map<String, Object> getModelAttributes() {
         Map<String, Object> attributes = new HashMap<String, Object>();
 
-        attributes.put("raceId", getRaceId());
-        attributes.put("userId", getUserId());
-        attributes.put("routeId", getRouteId());
+        attributes.put("idRace", getIdRace());
+        attributes.put("idUser", getIdUser());
+        attributes.put("idRoute", getIdRoute());
         attributes.put("type", getType());
-        attributes.put("userHeight", getUserHeight());
-        attributes.put("userWeight", getUserWeight());
 
         return attributes;
     }
 
     @Override
     public void setModelAttributes(Map<String, Object> attributes) {
-        Long raceId = (Long) attributes.get("raceId");
+        Long idRace = (Long) attributes.get("idRace");
 
-        if (raceId != null) {
-            setRaceId(raceId);
+        if (idRace != null) {
+            setIdRace(idRace);
         }
 
-        Long userId = (Long) attributes.get("userId");
+        Long idUser = (Long) attributes.get("idUser");
 
-        if (userId != null) {
-            setUserId(userId);
+        if (idUser != null) {
+            setIdUser(idUser);
         }
 
-        Long routeId = (Long) attributes.get("routeId");
+        Long idRoute = (Long) attributes.get("idRoute");
 
-        if (routeId != null) {
-            setRouteId(routeId);
+        if (idRoute != null) {
+            setIdRoute(idRoute);
         }
 
         String type = (String) attributes.get("type");
@@ -205,73 +194,51 @@ public class RaceModelImpl extends BaseModelImpl<Race> implements RaceModel {
         if (type != null) {
             setType(type);
         }
-
-        Integer userHeight = (Integer) attributes.get("userHeight");
-
-        if (userHeight != null) {
-            setUserHeight(userHeight);
-        }
-
-        Integer userWeight = (Integer) attributes.get("userWeight");
-
-        if (userWeight != null) {
-            setUserWeight(userWeight);
-        }
     }
 
     @JSON
     @Override
-    public long getRaceId() {
-        return _raceId;
+    public long getIdRace() {
+        return _idRace;
     }
 
     @Override
-    public void setRaceId(long raceId) {
-        _raceId = raceId;
+    public void setIdRace(long idRace) {
+        _idRace = idRace;
     }
 
     @JSON
     @Override
-    public long getUserId() {
-        return _userId;
+    public long getIdUser() {
+        return _idUser;
     }
 
     @Override
-    public void setUserId(long userId) {
+    public void setIdUser(long idUser) {
         _columnBitmask = -1L;
 
-        if (!_setOriginalUserId) {
-            _setOriginalUserId = true;
+        if (!_setOriginalIdUser) {
+            _setOriginalIdUser = true;
 
-            _originalUserId = _userId;
+            _originalIdUser = _idUser;
         }
 
-        _userId = userId;
+        _idUser = idUser;
     }
 
-    @Override
-    public String getUserUuid() throws SystemException {
-        return PortalUtil.getUserValue(getUserId(), "uuid", _userUuid);
-    }
-
-    @Override
-    public void setUserUuid(String userUuid) {
-        _userUuid = userUuid;
-    }
-
-    public long getOriginalUserId() {
-        return _originalUserId;
+    public long getOriginalIdUser() {
+        return _originalIdUser;
     }
 
     @JSON
     @Override
-    public long getRouteId() {
-        return _routeId;
+    public long getIdRoute() {
+        return _idRoute;
     }
 
     @Override
-    public void setRouteId(long routeId) {
-        _routeId = routeId;
+    public void setIdRoute(long idRoute) {
+        _idRoute = idRoute;
     }
 
     @JSON
@@ -287,28 +254,6 @@ public class RaceModelImpl extends BaseModelImpl<Race> implements RaceModel {
     @Override
     public void setType(String type) {
         _type = type;
-    }
-
-    @JSON
-    @Override
-    public int getUserHeight() {
-        return _userHeight;
-    }
-
-    @Override
-    public void setUserHeight(int userHeight) {
-        _userHeight = userHeight;
-    }
-
-    @JSON
-    @Override
-    public int getUserWeight() {
-        return _userWeight;
-    }
-
-    @Override
-    public void setUserWeight(int userWeight) {
-        _userWeight = userWeight;
     }
 
     public long getColumnBitmask() {
@@ -342,12 +287,10 @@ public class RaceModelImpl extends BaseModelImpl<Race> implements RaceModel {
     public Object clone() {
         RaceImpl raceImpl = new RaceImpl();
 
-        raceImpl.setRaceId(getRaceId());
-        raceImpl.setUserId(getUserId());
-        raceImpl.setRouteId(getRouteId());
+        raceImpl.setIdRace(getIdRace());
+        raceImpl.setIdUser(getIdUser());
+        raceImpl.setIdRoute(getIdRoute());
         raceImpl.setType(getType());
-        raceImpl.setUserHeight(getUserHeight());
-        raceImpl.setUserWeight(getUserWeight());
 
         raceImpl.resetOriginalValues();
 
@@ -358,9 +301,9 @@ public class RaceModelImpl extends BaseModelImpl<Race> implements RaceModel {
     public int compareTo(Race race) {
         int value = 0;
 
-        if (getUserId() < race.getUserId()) {
+        if (getIdUser() < race.getIdUser()) {
             value = -1;
-        } else if (getUserId() > race.getUserId()) {
+        } else if (getIdUser() > race.getIdUser()) {
             value = 1;
         } else {
             value = 0;
@@ -403,9 +346,9 @@ public class RaceModelImpl extends BaseModelImpl<Race> implements RaceModel {
     public void resetOriginalValues() {
         RaceModelImpl raceModelImpl = this;
 
-        raceModelImpl._originalUserId = raceModelImpl._userId;
+        raceModelImpl._originalIdUser = raceModelImpl._idUser;
 
-        raceModelImpl._setOriginalUserId = false;
+        raceModelImpl._setOriginalIdUser = false;
 
         raceModelImpl._columnBitmask = 0;
     }
@@ -414,11 +357,11 @@ public class RaceModelImpl extends BaseModelImpl<Race> implements RaceModel {
     public CacheModel<Race> toCacheModel() {
         RaceCacheModel raceCacheModel = new RaceCacheModel();
 
-        raceCacheModel.raceId = getRaceId();
+        raceCacheModel.idRace = getIdRace();
 
-        raceCacheModel.userId = getUserId();
+        raceCacheModel.idUser = getIdUser();
 
-        raceCacheModel.routeId = getRouteId();
+        raceCacheModel.idRoute = getIdRoute();
 
         raceCacheModel.type = getType();
 
@@ -428,29 +371,21 @@ public class RaceModelImpl extends BaseModelImpl<Race> implements RaceModel {
             raceCacheModel.type = null;
         }
 
-        raceCacheModel.userHeight = getUserHeight();
-
-        raceCacheModel.userWeight = getUserWeight();
-
         return raceCacheModel;
     }
 
     @Override
     public String toString() {
-        StringBundler sb = new StringBundler(13);
+        StringBundler sb = new StringBundler(9);
 
-        sb.append("{raceId=");
-        sb.append(getRaceId());
-        sb.append(", userId=");
-        sb.append(getUserId());
-        sb.append(", routeId=");
-        sb.append(getRouteId());
+        sb.append("{idRace=");
+        sb.append(getIdRace());
+        sb.append(", idUser=");
+        sb.append(getIdUser());
+        sb.append(", idRoute=");
+        sb.append(getIdRoute());
         sb.append(", type=");
         sb.append(getType());
-        sb.append(", userHeight=");
-        sb.append(getUserHeight());
-        sb.append(", userWeight=");
-        sb.append(getUserWeight());
         sb.append("}");
 
         return sb.toString();
@@ -458,35 +393,27 @@ public class RaceModelImpl extends BaseModelImpl<Race> implements RaceModel {
 
     @Override
     public String toXmlString() {
-        StringBundler sb = new StringBundler(22);
+        StringBundler sb = new StringBundler(16);
 
         sb.append("<model><model-name>");
         sb.append("es.eina.tfg.model.Race");
         sb.append("</model-name>");
 
         sb.append(
-            "<column><column-name>raceId</column-name><column-value><![CDATA[");
-        sb.append(getRaceId());
+            "<column><column-name>idRace</column-name><column-value><![CDATA[");
+        sb.append(getIdRace());
         sb.append("]]></column-value></column>");
         sb.append(
-            "<column><column-name>userId</column-name><column-value><![CDATA[");
-        sb.append(getUserId());
+            "<column><column-name>idUser</column-name><column-value><![CDATA[");
+        sb.append(getIdUser());
         sb.append("]]></column-value></column>");
         sb.append(
-            "<column><column-name>routeId</column-name><column-value><![CDATA[");
-        sb.append(getRouteId());
+            "<column><column-name>idRoute</column-name><column-value><![CDATA[");
+        sb.append(getIdRoute());
         sb.append("]]></column-value></column>");
         sb.append(
             "<column><column-name>type</column-name><column-value><![CDATA[");
         sb.append(getType());
-        sb.append("]]></column-value></column>");
-        sb.append(
-            "<column><column-name>userHeight</column-name><column-value><![CDATA[");
-        sb.append(getUserHeight());
-        sb.append("]]></column-value></column>");
-        sb.append(
-            "<column><column-name>userWeight</column-name><column-value><![CDATA[");
-        sb.append(getUserWeight());
         sb.append("]]></column-value></column>");
 
         sb.append("</model>");

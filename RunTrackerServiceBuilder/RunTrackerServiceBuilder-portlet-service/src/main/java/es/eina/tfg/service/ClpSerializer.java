@@ -11,8 +11,9 @@ import com.liferay.portal.kernel.util.PropsUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.BaseModel;
 
+import es.eina.tfg.model.DeviceAndSensorClp;
 import es.eina.tfg.model.DeviceClp;
-import es.eina.tfg.model.Device_SensorClp;
+import es.eina.tfg.model.EventClp;
 import es.eina.tfg.model.LocationClp;
 import es.eina.tfg.model.PowerClp;
 import es.eina.tfg.model.RaceClp;
@@ -20,7 +21,8 @@ import es.eina.tfg.model.RouteClp;
 import es.eina.tfg.model.RouteLocationClp;
 import es.eina.tfg.model.SensorClp;
 import es.eina.tfg.model.UserAdditionalDataClp;
-import es.eina.tfg.model.UserSelectedRoutesClp;
+import es.eina.tfg.model.UserAndEventClp;
+import es.eina.tfg.model.UserAndRouteClp;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -101,8 +103,12 @@ public class ClpSerializer {
             return translateInputDevice(oldModel);
         }
 
-        if (oldModelClassName.equals(Device_SensorClp.class.getName())) {
-            return translateInputDevice_Sensor(oldModel);
+        if (oldModelClassName.equals(DeviceAndSensorClp.class.getName())) {
+            return translateInputDeviceAndSensor(oldModel);
+        }
+
+        if (oldModelClassName.equals(EventClp.class.getName())) {
+            return translateInputEvent(oldModel);
         }
 
         if (oldModelClassName.equals(LocationClp.class.getName())) {
@@ -133,8 +139,12 @@ public class ClpSerializer {
             return translateInputUserAdditionalData(oldModel);
         }
 
-        if (oldModelClassName.equals(UserSelectedRoutesClp.class.getName())) {
-            return translateInputUserSelectedRoutes(oldModel);
+        if (oldModelClassName.equals(UserAndEventClp.class.getName())) {
+            return translateInputUserAndEvent(oldModel);
+        }
+
+        if (oldModelClassName.equals(UserAndRouteClp.class.getName())) {
+            return translateInputUserAndRoute(oldModel);
         }
 
         return oldModel;
@@ -162,10 +172,20 @@ public class ClpSerializer {
         return newModel;
     }
 
-    public static Object translateInputDevice_Sensor(BaseModel<?> oldModel) {
-        Device_SensorClp oldClpModel = (Device_SensorClp) oldModel;
+    public static Object translateInputDeviceAndSensor(BaseModel<?> oldModel) {
+        DeviceAndSensorClp oldClpModel = (DeviceAndSensorClp) oldModel;
 
-        BaseModel<?> newModel = oldClpModel.getDevice_SensorRemoteModel();
+        BaseModel<?> newModel = oldClpModel.getDeviceAndSensorRemoteModel();
+
+        newModel.setModelAttributes(oldClpModel.getModelAttributes());
+
+        return newModel;
+    }
+
+    public static Object translateInputEvent(BaseModel<?> oldModel) {
+        EventClp oldClpModel = (EventClp) oldModel;
+
+        BaseModel<?> newModel = oldClpModel.getEventRemoteModel();
 
         newModel.setModelAttributes(oldClpModel.getModelAttributes());
 
@@ -242,10 +262,20 @@ public class ClpSerializer {
         return newModel;
     }
 
-    public static Object translateInputUserSelectedRoutes(BaseModel<?> oldModel) {
-        UserSelectedRoutesClp oldClpModel = (UserSelectedRoutesClp) oldModel;
+    public static Object translateInputUserAndEvent(BaseModel<?> oldModel) {
+        UserAndEventClp oldClpModel = (UserAndEventClp) oldModel;
 
-        BaseModel<?> newModel = oldClpModel.getUserSelectedRoutesRemoteModel();
+        BaseModel<?> newModel = oldClpModel.getUserAndEventRemoteModel();
+
+        newModel.setModelAttributes(oldClpModel.getModelAttributes());
+
+        return newModel;
+    }
+
+    public static Object translateInputUserAndRoute(BaseModel<?> oldModel) {
+        UserAndRouteClp oldClpModel = (UserAndRouteClp) oldModel;
+
+        BaseModel<?> newModel = oldClpModel.getUserAndRouteRemoteModel();
 
         newModel.setModelAttributes(oldClpModel.getModelAttributes());
 
@@ -301,8 +331,43 @@ public class ClpSerializer {
             }
         }
 
-        if (oldModelClassName.equals("es.eina.tfg.model.impl.Device_SensorImpl")) {
-            return translateOutputDevice_Sensor(oldModel);
+        if (oldModelClassName.equals(
+                    "es.eina.tfg.model.impl.DeviceAndSensorImpl")) {
+            return translateOutputDeviceAndSensor(oldModel);
+        } else if (oldModelClassName.endsWith("Clp")) {
+            try {
+                ClassLoader classLoader = ClpSerializer.class.getClassLoader();
+
+                Method getClpSerializerClassMethod = oldModelClass.getMethod(
+                        "getClpSerializerClass");
+
+                Class<?> oldClpSerializerClass = (Class<?>) getClpSerializerClassMethod.invoke(oldModel);
+
+                Class<?> newClpSerializerClass = classLoader.loadClass(oldClpSerializerClass.getName());
+
+                Method translateOutputMethod = newClpSerializerClass.getMethod("translateOutput",
+                        BaseModel.class);
+
+                Class<?> oldModelModelClass = oldModel.getModelClass();
+
+                Method getRemoteModelMethod = oldModelClass.getMethod("get" +
+                        oldModelModelClass.getSimpleName() + "RemoteModel");
+
+                Object oldRemoteModel = getRemoteModelMethod.invoke(oldModel);
+
+                BaseModel<?> newModel = (BaseModel<?>) translateOutputMethod.invoke(null,
+                        oldRemoteModel);
+
+                return newModel;
+            } catch (Throwable t) {
+                if (_log.isInfoEnabled()) {
+                    _log.info("Unable to translate " + oldModelClassName, t);
+                }
+            }
+        }
+
+        if (oldModelClassName.equals("es.eina.tfg.model.impl.EventImpl")) {
+            return translateOutputEvent(oldModel);
         } else if (oldModelClassName.endsWith("Clp")) {
             try {
                 ClassLoader classLoader = ClpSerializer.class.getClassLoader();
@@ -574,9 +639,42 @@ public class ClpSerializer {
             }
         }
 
-        if (oldModelClassName.equals(
-                    "es.eina.tfg.model.impl.UserSelectedRoutesImpl")) {
-            return translateOutputUserSelectedRoutes(oldModel);
+        if (oldModelClassName.equals("es.eina.tfg.model.impl.UserAndEventImpl")) {
+            return translateOutputUserAndEvent(oldModel);
+        } else if (oldModelClassName.endsWith("Clp")) {
+            try {
+                ClassLoader classLoader = ClpSerializer.class.getClassLoader();
+
+                Method getClpSerializerClassMethod = oldModelClass.getMethod(
+                        "getClpSerializerClass");
+
+                Class<?> oldClpSerializerClass = (Class<?>) getClpSerializerClassMethod.invoke(oldModel);
+
+                Class<?> newClpSerializerClass = classLoader.loadClass(oldClpSerializerClass.getName());
+
+                Method translateOutputMethod = newClpSerializerClass.getMethod("translateOutput",
+                        BaseModel.class);
+
+                Class<?> oldModelModelClass = oldModel.getModelClass();
+
+                Method getRemoteModelMethod = oldModelClass.getMethod("get" +
+                        oldModelModelClass.getSimpleName() + "RemoteModel");
+
+                Object oldRemoteModel = getRemoteModelMethod.invoke(oldModel);
+
+                BaseModel<?> newModel = (BaseModel<?>) translateOutputMethod.invoke(null,
+                        oldRemoteModel);
+
+                return newModel;
+            } catch (Throwable t) {
+                if (_log.isInfoEnabled()) {
+                    _log.info("Unable to translate " + oldModelClassName, t);
+                }
+            }
+        }
+
+        if (oldModelClassName.equals("es.eina.tfg.model.impl.UserAndRouteImpl")) {
+            return translateOutputUserAndRoute(oldModel);
         } else if (oldModelClassName.endsWith("Clp")) {
             try {
                 ClassLoader classLoader = ClpSerializer.class.getClassLoader();
@@ -689,9 +787,8 @@ public class ClpSerializer {
             return new es.eina.tfg.NonExistingDeviceException();
         }
 
-        if (className.equals(
-                    "es.eina.tfg.NonExistingDeviceAndSensorRelationException")) {
-            return new es.eina.tfg.NonExistingDeviceAndSensorRelationException();
+        if (className.equals("es.eina.tfg.NonExistingEventException")) {
+            return new es.eina.tfg.NonExistingEventException();
         }
 
         if (className.equals("es.eina.tfg.NonExistingMeasurementException")) {
@@ -706,11 +803,6 @@ public class ClpSerializer {
             return new es.eina.tfg.NonExistingRouteException();
         }
 
-        if (className.equals(
-                    "es.eina.tfg.NonExistingRouteAndUserRelationException")) {
-            return new es.eina.tfg.NonExistingRouteAndUserRelationException();
-        }
-
         if (className.equals("es.eina.tfg.NonExistingRouteLocationException")) {
             return new es.eina.tfg.NonExistingRouteLocationException();
         }
@@ -723,16 +815,16 @@ public class ClpSerializer {
             return new es.eina.tfg.NonExistingUserException();
         }
 
-        if (className.equals("es.eina.tfg.RouteAlreadySelectedByUserException")) {
-            return new es.eina.tfg.RouteAlreadySelectedByUserException();
-        }
-
         if (className.equals("es.eina.tfg.NoSuchDeviceException")) {
             return new es.eina.tfg.NoSuchDeviceException();
         }
 
-        if (className.equals("es.eina.tfg.NoSuchDevice_SensorException")) {
-            return new es.eina.tfg.NoSuchDevice_SensorException();
+        if (className.equals("es.eina.tfg.NoSuchDeviceAndSensorException")) {
+            return new es.eina.tfg.NoSuchDeviceAndSensorException();
+        }
+
+        if (className.equals("es.eina.tfg.NoSuchEventException")) {
+            return new es.eina.tfg.NoSuchEventException();
         }
 
         if (className.equals("es.eina.tfg.NoSuchLocationException")) {
@@ -763,8 +855,12 @@ public class ClpSerializer {
             return new es.eina.tfg.NoSuchUserAdditionalDataException();
         }
 
-        if (className.equals("es.eina.tfg.NoSuchUserSelectedRoutesException")) {
-            return new es.eina.tfg.NoSuchUserSelectedRoutesException();
+        if (className.equals("es.eina.tfg.NoSuchUserAndEventException")) {
+            return new es.eina.tfg.NoSuchUserAndEventException();
+        }
+
+        if (className.equals("es.eina.tfg.NoSuchUserAndRouteException")) {
+            return new es.eina.tfg.NoSuchUserAndRouteException();
         }
 
         return throwable;
@@ -780,12 +876,22 @@ public class ClpSerializer {
         return newModel;
     }
 
-    public static Object translateOutputDevice_Sensor(BaseModel<?> oldModel) {
-        Device_SensorClp newModel = new Device_SensorClp();
+    public static Object translateOutputDeviceAndSensor(BaseModel<?> oldModel) {
+        DeviceAndSensorClp newModel = new DeviceAndSensorClp();
 
         newModel.setModelAttributes(oldModel.getModelAttributes());
 
-        newModel.setDevice_SensorRemoteModel(oldModel);
+        newModel.setDeviceAndSensorRemoteModel(oldModel);
+
+        return newModel;
+    }
+
+    public static Object translateOutputEvent(BaseModel<?> oldModel) {
+        EventClp newModel = new EventClp();
+
+        newModel.setModelAttributes(oldModel.getModelAttributes());
+
+        newModel.setEventRemoteModel(oldModel);
 
         return newModel;
     }
@@ -861,13 +967,22 @@ public class ClpSerializer {
         return newModel;
     }
 
-    public static Object translateOutputUserSelectedRoutes(
-        BaseModel<?> oldModel) {
-        UserSelectedRoutesClp newModel = new UserSelectedRoutesClp();
+    public static Object translateOutputUserAndEvent(BaseModel<?> oldModel) {
+        UserAndEventClp newModel = new UserAndEventClp();
 
         newModel.setModelAttributes(oldModel.getModelAttributes());
 
-        newModel.setUserSelectedRoutesRemoteModel(oldModel);
+        newModel.setUserAndEventRemoteModel(oldModel);
+
+        return newModel;
+    }
+
+    public static Object translateOutputUserAndRoute(BaseModel<?> oldModel) {
+        UserAndRouteClp newModel = new UserAndRouteClp();
+
+        newModel.setModelAttributes(oldModel.getModelAttributes());
+
+        newModel.setUserAndRouteRemoteModel(oldModel);
 
         return newModel;
     }

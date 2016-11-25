@@ -21,11 +21,10 @@ import java.util.Date;
  * @generated
  */
 public class LocationCacheModel implements CacheModel<Location>, Externalizable {
-    public long measurementId;
-    public Long raceId;
-    public long userId;
-    public long deviceId;
-    public long sensorId;
+    public Long idRace;
+    public long idMeasurement;
+    public long idDevice;
+    public long idSensor;
     public long time;
     public String sensorMode;
     public int sysRef;
@@ -37,18 +36,16 @@ public class LocationCacheModel implements CacheModel<Location>, Externalizable 
 
     @Override
     public String toString() {
-        StringBundler sb = new StringBundler(27);
+        StringBundler sb = new StringBundler(25);
 
-        sb.append("{measurementId=");
-        sb.append(measurementId);
-        sb.append(", raceId=");
-        sb.append(raceId);
-        sb.append(", userId=");
-        sb.append(userId);
-        sb.append(", deviceId=");
-        sb.append(deviceId);
-        sb.append(", sensorId=");
-        sb.append(sensorId);
+        sb.append("{idRace=");
+        sb.append(idRace);
+        sb.append(", idMeasurement=");
+        sb.append(idMeasurement);
+        sb.append(", idDevice=");
+        sb.append(idDevice);
+        sb.append(", idSensor=");
+        sb.append(idSensor);
         sb.append(", time=");
         sb.append(time);
         sb.append(", sensorMode=");
@@ -74,11 +71,10 @@ public class LocationCacheModel implements CacheModel<Location>, Externalizable 
     public Location toEntityModel() {
         LocationImpl locationImpl = new LocationImpl();
 
-        locationImpl.setMeasurementId(measurementId);
-        locationImpl.setRaceId(raceId);
-        locationImpl.setUserId(userId);
-        locationImpl.setDeviceId(deviceId);
-        locationImpl.setSensorId(sensorId);
+        locationImpl.setIdRace(idRace);
+        locationImpl.setIdMeasurement(idMeasurement);
+        locationImpl.setIdDevice(idDevice);
+        locationImpl.setIdSensor(idSensor);
 
         if (time == Long.MIN_VALUE) {
             locationImpl.setTime(null);
@@ -106,11 +102,10 @@ public class LocationCacheModel implements CacheModel<Location>, Externalizable 
 
     @Override
     public void readExternal(ObjectInput objectInput) throws IOException {
-        measurementId = objectInput.readLong();
-        raceId = objectInput.readLong();
-        userId = objectInput.readLong();
-        deviceId = objectInput.readLong();
-        sensorId = objectInput.readLong();
+        idRace = objectInput.readLong();
+        idMeasurement = objectInput.readLong();
+        idDevice = objectInput.readLong();
+        idSensor = objectInput.readLong();
         time = objectInput.readLong();
         sensorMode = objectInput.readUTF();
         sysRef = objectInput.readInt();
@@ -124,11 +119,10 @@ public class LocationCacheModel implements CacheModel<Location>, Externalizable 
     @Override
     public void writeExternal(ObjectOutput objectOutput)
         throws IOException {
-        objectOutput.writeLong(measurementId);
-        objectOutput.writeLong(raceId);
-        objectOutput.writeLong(userId);
-        objectOutput.writeLong(deviceId);
-        objectOutput.writeLong(sensorId);
+        objectOutput.writeLong(idRace);
+        objectOutput.writeLong(idMeasurement);
+        objectOutput.writeLong(idDevice);
+        objectOutput.writeLong(idSensor);
         objectOutput.writeLong(time);
 
         if (sensorMode == null) {

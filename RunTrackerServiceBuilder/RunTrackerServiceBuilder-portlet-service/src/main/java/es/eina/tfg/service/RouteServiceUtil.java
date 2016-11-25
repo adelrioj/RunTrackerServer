@@ -53,23 +53,17 @@ public class RouteServiceUtil {
 
     public static es.eina.tfg.model.Route add(java.lang.String type,
         java.lang.String name, java.lang.String description,
-        java.lang.Long authorId, boolean isPublic, java.util.Date startingTime)
+        java.lang.Long authorId, boolean isPublic)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return getService()
-                   .add(type, name, description, authorId, isPublic,
-            startingTime);
+        return getService().add(type, name, description, authorId, isPublic);
     }
 
     public static es.eina.tfg.model.Route update(java.lang.Long routeId,
         java.lang.String type, java.lang.String name,
-        java.lang.String description, java.lang.Long authorId,
-        boolean isPublic, java.util.Date startingTime,
-        java.util.Date creationTime)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingRouteException {
-        return getService()
-                   .update(routeId, type, name, description, authorId,
-            isPublic, startingTime, creationTime);
+        java.lang.String description, boolean isPublic)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        return getService().update(routeId, type, name, description, isPublic);
     }
 
     public static es.eina.tfg.model.Route delete(java.lang.Long routeId)
@@ -84,21 +78,22 @@ public class RouteServiceUtil {
         return getService().getRoute(routeId);
     }
 
-    public static java.util.List<es.eina.tfg.model.Route> findByAuthor(
+    public static java.util.List<es.eina.tfg.model.Route> getByAuthor(
         java.lang.Long userId)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return getService().findByAuthor(userId);
+        return getService().getByAuthor(userId);
     }
 
-    public static java.util.List<es.eina.tfg.model.Route> getPublicRoutes()
+    public static java.util.List<es.eina.tfg.model.Route> getByisPublic(
+        boolean isPublic)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return getService().getPublicRoutes();
+        return getService().getByisPublic(isPublic);
     }
 
     public static java.util.List<es.eina.tfg.model.Route> getPublicRoutes(
-        int start, int end)
+        boolean isPublic, int start, int end)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return getService().getPublicRoutes(start, end);
+        return getService().getPublicRoutes(isPublic, start, end);
     }
 
     public static void clearService() {

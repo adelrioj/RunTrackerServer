@@ -58,9 +58,7 @@ public class DeviceServiceClp implements DeviceService {
         _methodName4 = "update";
 
         _methodParameterTypes4 = new String[] {
-                "java.lang.Long", "java.lang.String", "java.lang.Long",
-                "java.lang.String", "java.lang.String", "java.lang.String",
-                "java.lang.String", "java.lang.String", "java.lang.String",
+                "java.lang.Long", "java.lang.String", "java.lang.String",
                 "java.lang.String", "java.lang.String", "java.lang.String"
             };
 
@@ -84,19 +82,19 @@ public class DeviceServiceClp implements DeviceService {
 
         _methodParameterTypes9 = new String[] { "java.lang.String" };
 
-        _methodName10 = "findByUserId";
+        _methodName10 = "getByUserId";
 
         _methodParameterTypes10 = new String[] { "java.lang.Long" };
 
-        _methodName11 = "findByDeviceUUID";
+        _methodName11 = "getByDeviceUUID";
 
         _methodParameterTypes11 = new String[] { "java.lang.String" };
 
-        _methodName12 = "findByStatus";
+        _methodName12 = "getByStatus";
 
         _methodParameterTypes12 = new String[] { "java.lang.String" };
 
-        _methodName13 = "findByStatus";
+        _methodName13 = "getByStatus";
 
         _methodParameterTypes13 = new String[] { "java.lang.String", "int", "int" };
     }
@@ -154,8 +152,7 @@ public class DeviceServiceClp implements DeviceService {
         java.lang.String serverPhoneNumber, java.lang.String smsPollTime,
         java.lang.String smsTransmitPeriod, java.lang.String cloudId,
         java.lang.String serverIp, java.lang.String httpTransmitPeriod)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingUserException {
+        throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
@@ -191,10 +188,6 @@ public class DeviceServiceClp implements DeviceService {
                 throw (com.liferay.portal.kernel.exception.SystemException) t;
             }
 
-            if (t instanceof es.eina.tfg.NonExistingUserException) {
-                throw (es.eina.tfg.NonExistingUserException) t;
-            }
-
             if (t instanceof RuntimeException) {
                 throw (RuntimeException) t;
             } else {
@@ -208,15 +201,11 @@ public class DeviceServiceClp implements DeviceService {
 
     @Override
     public es.eina.tfg.model.Device update(java.lang.Long deviceId,
-        java.lang.String deviceUUID, java.lang.Long userId,
         java.lang.String description, java.lang.String status,
-        java.lang.String phoneNumber, java.lang.String serverPhoneNumber,
-        java.lang.String smsPollTime, java.lang.String smsTransmitPeriod,
-        java.lang.String cloudId, java.lang.String serverIp,
+        java.lang.String phoneNumber, java.lang.String smsTransmitPeriod,
         java.lang.String httpTransmitPeriod)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingDeviceException,
-            es.eina.tfg.NonExistingUserException {
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
@@ -225,41 +214,25 @@ public class DeviceServiceClp implements DeviceService {
                     new Object[] {
                         ClpSerializer.translateInput(deviceId),
                         
-                    ClpSerializer.translateInput(deviceUUID),
-                        
-                    ClpSerializer.translateInput(userId),
-                        
                     ClpSerializer.translateInput(description),
                         
                     ClpSerializer.translateInput(status),
                         
                     ClpSerializer.translateInput(phoneNumber),
                         
-                    ClpSerializer.translateInput(serverPhoneNumber),
-                        
-                    ClpSerializer.translateInput(smsPollTime),
-                        
                     ClpSerializer.translateInput(smsTransmitPeriod),
-                        
-                    ClpSerializer.translateInput(cloudId),
-                        
-                    ClpSerializer.translateInput(serverIp),
                         
                     ClpSerializer.translateInput(httpTransmitPeriod)
                     });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
+            if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+                throw (com.liferay.portal.kernel.exception.PortalException) t;
+            }
+
             if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
                 throw (com.liferay.portal.kernel.exception.SystemException) t;
-            }
-
-            if (t instanceof es.eina.tfg.NonExistingDeviceException) {
-                throw (es.eina.tfg.NonExistingDeviceException) t;
-            }
-
-            if (t instanceof es.eina.tfg.NonExistingUserException) {
-                throw (es.eina.tfg.NonExistingUserException) t;
             }
 
             if (t instanceof RuntimeException) {
@@ -427,7 +400,7 @@ public class DeviceServiceClp implements DeviceService {
     }
 
     @Override
-    public java.util.List<es.eina.tfg.model.Device> findByUserId(
+    public java.util.List<es.eina.tfg.model.Device> getByUserId(
         java.lang.Long userId)
         throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
@@ -455,8 +428,7 @@ public class DeviceServiceClp implements DeviceService {
     }
 
     @Override
-    public es.eina.tfg.model.Device findByDeviceUUID(
-        java.lang.String deviceUUID)
+    public es.eina.tfg.model.Device getByDeviceUUID(java.lang.String deviceUUID)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchDeviceException {
         Object returnObj = null;
@@ -488,7 +460,7 @@ public class DeviceServiceClp implements DeviceService {
     }
 
     @Override
-    public java.util.List<es.eina.tfg.model.Device> findByStatus(
+    public java.util.List<es.eina.tfg.model.Device> getByStatus(
         java.lang.String status)
         throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
@@ -516,7 +488,7 @@ public class DeviceServiceClp implements DeviceService {
     }
 
     @Override
-    public java.util.List<es.eina.tfg.model.Device> findByStatus(
+    public java.util.List<es.eina.tfg.model.Device> getByStatus(
         java.lang.String status, int start, int end)
         throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;

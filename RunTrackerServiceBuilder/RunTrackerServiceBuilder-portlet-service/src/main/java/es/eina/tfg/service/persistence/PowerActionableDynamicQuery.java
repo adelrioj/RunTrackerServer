@@ -18,6 +18,6 @@ public abstract class PowerActionableDynamicQuery
 
         setClassLoader(es.eina.tfg.service.ClpSerializer.class.getClassLoader());
 
-        setPrimaryKeyPropertyName("measurementId");
+        setPrimaryKeyPropertyName("primaryKey.idMeasurement");
     }
 }

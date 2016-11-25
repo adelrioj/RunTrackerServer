@@ -3,7 +3,8 @@
 
 <hibernate-mapping default-lazy="false" auto-import="false">
 	<import class="es.eina.tfg.model.Device" />
-	<import class="es.eina.tfg.model.Device_Sensor" />
+	<import class="es.eina.tfg.model.DeviceAndSensor" />
+	<import class="es.eina.tfg.model.Event" />
 	<import class="es.eina.tfg.model.Location" />
 	<import class="es.eina.tfg.model.Power" />
 	<import class="es.eina.tfg.model.Race" />
@@ -11,13 +12,14 @@
 	<import class="es.eina.tfg.model.RouteLocation" />
 	<import class="es.eina.tfg.model.Sensor" />
 	<import class="es.eina.tfg.model.UserAdditionalData" />
-	<import class="es.eina.tfg.model.UserSelectedRoutes" />
+	<import class="es.eina.tfg.model.UserAndEvent" />
+	<import class="es.eina.tfg.model.UserAndRoute" />
 	<class name="es.eina.tfg.model.impl.DeviceImpl" table="GL_Device">
 		<cache usage="read-write" />
-		<id name="deviceId" type="long">
+		<id name="idDevice" type="long">
 			<generator class="assigned" />
 		</id>
-		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="idUser" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="deviceUUID" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="description" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="status" type="com.liferay.portal.dao.orm.hibernate.StringType" />
@@ -29,23 +31,35 @@
 		<property name="serverIp" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="httpTransmitPeriod" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 	</class>
-	<class name="es.eina.tfg.model.impl.Device_SensorImpl" table="GL_Device_Sensor">
+	<class name="es.eina.tfg.model.impl.DeviceAndSensorImpl" table="GL_DeviceAndSensor">
 		<cache usage="read-write" />
-		<composite-id name="primaryKey" class="es.eina.tfg.service.persistence.Device_SensorPK">
-			<key-property name="deviceId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
-			<key-property name="sensorId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<composite-id name="primaryKey" class="es.eina.tfg.service.persistence.DeviceAndSensorPK">
+			<key-property name="idDevice" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+			<key-property name="idSensor" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		</composite-id>
 		<property name="status" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
 	</class>
-	<class name="es.eina.tfg.model.impl.LocationImpl" table="GL_Location">
+	<class name="es.eina.tfg.model.impl.EventImpl" table="GL_Event">
 		<cache usage="read-write" />
-		<id name="measurementId" type="long">
+		<id name="idEvent" type="long">
 			<generator class="assigned" />
 		</id>
-		<property name="raceId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
-		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
-		<property name="deviceId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
-		<property name="sensorId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="idRoute" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="idAuthor" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="plannedStartingTime" type="org.hibernate.type.TimestampType" />
+		<property name="plannedFinishTime" type="org.hibernate.type.TimestampType" />
+		<property name="realStartingTime" type="org.hibernate.type.TimestampType" />
+		<property name="realFinishTime" type="org.hibernate.type.TimestampType" />
+	</class>
+	<class name="es.eina.tfg.model.impl.LocationImpl" table="GL_Location">
+		<cache usage="read-write" />
+		<composite-id name="primaryKey" class="es.eina.tfg.service.persistence.LocationPK">
+			<key-property name="idRace" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+			<key-property name="idMeasurement" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		</composite-id>
+		<property name="idDevice" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="idSensor" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="time" type="org.hibernate.type.TimestampType" column="time_" />
 		<property name="sensorMode" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="sysRef" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
@@ -57,53 +71,49 @@
 	</class>
 	<class name="es.eina.tfg.model.impl.PowerImpl" table="GL_Power">
 		<cache usage="read-write" />
-		<id name="measurementId" type="long">
-			<generator class="assigned" />
-		</id>
-		<property name="raceId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
-		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
-		<property name="deviceId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
-		<property name="sensorId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<composite-id name="primaryKey" class="es.eina.tfg.service.persistence.PowerPK">
+			<key-property name="idMeasurement" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+			<key-property name="idRace" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		</composite-id>
+		<property name="idDevice" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="idSensor" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="time" type="org.hibernate.type.TimestampType" column="time_" />
 		<property name="sensorMode" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="level" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 	</class>
 	<class name="es.eina.tfg.model.impl.RaceImpl" table="GL_Race">
 		<cache usage="read-write" />
-		<id name="raceId" type="long">
+		<id name="idRace" type="long">
 			<generator class="assigned" />
 		</id>
-		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
-		<property name="routeId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="idUser" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="idRoute" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="type" type="com.liferay.portal.dao.orm.hibernate.StringType" column="type_" />
-		<property name="userHeight" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
-		<property name="userWeight" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 	</class>
 	<class name="es.eina.tfg.model.impl.RouteImpl" table="GL_Route">
 		<cache usage="read-write" />
-		<id name="routeId" type="long">
+		<id name="idRoute" type="long">
 			<generator class="assigned" />
 		</id>
+		<property name="idAuthor" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="type" type="com.liferay.portal.dao.orm.hibernate.StringType" column="type_" />
 		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="description" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property name="authorId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="isPublic" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
-		<property name="startingTime" type="org.hibernate.type.TimestampType" />
 		<property name="creationTime" type="org.hibernate.type.TimestampType" />
 	</class>
 	<class name="es.eina.tfg.model.impl.RouteLocationImpl" table="GL_RouteLocation">
 		<cache usage="read-write" />
-		<id name="routePositionId" type="long">
-			<generator class="assigned" />
-		</id>
-		<property name="routeId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<composite-id name="primaryKey" class="es.eina.tfg.service.persistence.RouteLocationPK">
+			<key-property name="idRouteLocation" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+			<key-property name="idRoute" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		</composite-id>
 		<property name="latitude" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
 		<property name="longitude" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
 	</class>
 	<class name="es.eina.tfg.model.impl.SensorImpl" table="GL_Sensor">
 		<cache usage="read-write" />
-		<id name="sensorId" type="long">
+		<id name="idSensor" type="long">
 			<generator class="assigned" />
 		</id>
 		<property name="type" type="com.liferay.portal.dao.orm.hibernate.IntegerType" column="type_" />
@@ -117,19 +127,26 @@
 	</class>
 	<class name="es.eina.tfg.model.impl.UserAdditionalDataImpl" table="GL_UserAdditionalData">
 		<cache usage="read-write" />
-		<id name="userId" type="long">
+		<id name="idUser" type="long">
 			<generator class="assigned" />
 		</id>
-		<property name="registerType" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="weight" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 		<property name="height" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
-		<property name="smsCounter" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="smsCount" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 	</class>
-	<class name="es.eina.tfg.model.impl.UserSelectedRoutesImpl" table="GL_UserSelectedRoutes">
+	<class name="es.eina.tfg.model.impl.UserAndEventImpl" table="GL_UserAndEvent">
 		<cache usage="read-write" />
-		<composite-id name="primaryKey" class="es.eina.tfg.service.persistence.UserSelectedRoutesPK">
-			<key-property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
-			<key-property name="routeId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<composite-id name="primaryKey" class="es.eina.tfg.service.persistence.UserAndEventPK">
+			<key-property name="idUser" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+			<key-property name="idEvent" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		</composite-id>
+		<property name="idRace" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+	<class name="es.eina.tfg.model.impl.UserAndRouteImpl" table="GL_UserAndRoute">
+		<cache usage="read-write" />
+		<composite-id name="primaryKey" class="es.eina.tfg.service.persistence.UserAndRoutePK">
+			<key-property name="idUser" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+			<key-property name="idRoute" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		</composite-id>
 	</class>
 </hibernate-mapping>

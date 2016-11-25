@@ -51,28 +51,11 @@ public class RaceServiceSoap {
     private static Log _log = LogFactoryUtil.getLog(RaceServiceSoap.class);
 
     public static es.eina.tfg.model.RaceSoap add(java.lang.Long userId,
-        java.lang.Long routeId, java.lang.String type,
-        java.lang.Integer userHeight, java.lang.Integer userWeight)
+        java.lang.Long routeId, java.lang.String type)
         throws RemoteException {
         try {
             es.eina.tfg.model.Race returnValue = RaceServiceUtil.add(userId,
-                    routeId, type, userHeight, userWeight);
-
-            return es.eina.tfg.model.RaceSoap.toSoapModel(returnValue);
-        } catch (Exception e) {
-            _log.error(e, e);
-
-            throw new RemoteException(e.getMessage());
-        }
-    }
-
-    public static es.eina.tfg.model.RaceSoap update(java.lang.Long raceId,
-        java.lang.Long userId, java.lang.Long routeId, java.lang.String type,
-        java.lang.Integer userHeight, java.lang.Integer userWeight)
-        throws RemoteException {
-        try {
-            es.eina.tfg.model.Race returnValue = RaceServiceUtil.update(raceId,
-                    userId, routeId, type, userHeight, userWeight);
+                    routeId, type);
 
             return es.eina.tfg.model.RaceSoap.toSoapModel(returnValue);
         } catch (Exception e) {

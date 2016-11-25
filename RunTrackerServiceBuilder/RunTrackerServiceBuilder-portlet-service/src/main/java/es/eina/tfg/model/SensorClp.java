@@ -19,7 +19,7 @@ import java.util.Map;
 
 
 public class SensorClp extends BaseModelImpl<Sensor> implements Sensor {
-    private long _sensorId;
+    private long _idSensor;
     private int _type;
     private String _description;
     private String _dataUnits;
@@ -46,17 +46,17 @@ public class SensorClp extends BaseModelImpl<Sensor> implements Sensor {
 
     @Override
     public long getPrimaryKey() {
-        return _sensorId;
+        return _idSensor;
     }
 
     @Override
     public void setPrimaryKey(long primaryKey) {
-        setSensorId(primaryKey);
+        setIdSensor(primaryKey);
     }
 
     @Override
     public Serializable getPrimaryKeyObj() {
-        return _sensorId;
+        return _idSensor;
     }
 
     @Override
@@ -68,7 +68,7 @@ public class SensorClp extends BaseModelImpl<Sensor> implements Sensor {
     public Map<String, Object> getModelAttributes() {
         Map<String, Object> attributes = new HashMap<String, Object>();
 
-        attributes.put("sensorId", getSensorId());
+        attributes.put("idSensor", getIdSensor());
         attributes.put("type", getType());
         attributes.put("description", getDescription());
         attributes.put("dataUnits", getDataUnits());
@@ -83,10 +83,10 @@ public class SensorClp extends BaseModelImpl<Sensor> implements Sensor {
 
     @Override
     public void setModelAttributes(Map<String, Object> attributes) {
-        Long sensorId = (Long) attributes.get("sensorId");
+        Long idSensor = (Long) attributes.get("idSensor");
 
-        if (sensorId != null) {
-            setSensorId(sensorId);
+        if (idSensor != null) {
+            setIdSensor(idSensor);
         }
 
         Integer type = (Integer) attributes.get("type");
@@ -139,21 +139,21 @@ public class SensorClp extends BaseModelImpl<Sensor> implements Sensor {
     }
 
     @Override
-    public long getSensorId() {
-        return _sensorId;
+    public long getIdSensor() {
+        return _idSensor;
     }
 
     @Override
-    public void setSensorId(long sensorId) {
-        _sensorId = sensorId;
+    public void setIdSensor(long idSensor) {
+        _idSensor = idSensor;
 
         if (_sensorRemoteModel != null) {
             try {
                 Class<?> clazz = _sensorRemoteModel.getClass();
 
-                Method method = clazz.getMethod("setSensorId", long.class);
+                Method method = clazz.getMethod("setIdSensor", long.class);
 
-                method.invoke(_sensorRemoteModel, sensorId);
+                method.invoke(_sensorRemoteModel, idSensor);
             } catch (Exception e) {
                 throw new UnsupportedOperationException(e);
             }
@@ -407,7 +407,7 @@ public class SensorClp extends BaseModelImpl<Sensor> implements Sensor {
     public Object clone() {
         SensorClp clone = new SensorClp();
 
-        clone.setSensorId(getSensorId());
+        clone.setIdSensor(getIdSensor());
         clone.setType(getType());
         clone.setDescription(getDescription());
         clone.setDataUnits(getDataUnits());
@@ -473,8 +473,8 @@ public class SensorClp extends BaseModelImpl<Sensor> implements Sensor {
     public String toString() {
         StringBundler sb = new StringBundler(19);
 
-        sb.append("{sensorId=");
-        sb.append(getSensorId());
+        sb.append("{idSensor=");
+        sb.append(getIdSensor());
         sb.append(", type=");
         sb.append(getType());
         sb.append(", description=");
@@ -505,8 +505,8 @@ public class SensorClp extends BaseModelImpl<Sensor> implements Sensor {
         sb.append("</model-name>");
 
         sb.append(
-            "<column><column-name>sensorId</column-name><column-value><![CDATA[");
-        sb.append(getSensorId());
+            "<column><column-name>idSensor</column-name><column-value><![CDATA[");
+        sb.append(getIdSensor());
         sb.append("]]></column-value></column>");
         sb.append(
             "<column><column-name>type</column-name><column-value><![CDATA[");

@@ -36,52 +36,38 @@ public class RaceWrapper implements Race, ModelWrapper<Race> {
     public Map<String, Object> getModelAttributes() {
         Map<String, Object> attributes = new HashMap<String, Object>();
 
-        attributes.put("raceId", getRaceId());
-        attributes.put("userId", getUserId());
-        attributes.put("routeId", getRouteId());
+        attributes.put("idRace", getIdRace());
+        attributes.put("idUser", getIdUser());
+        attributes.put("idRoute", getIdRoute());
         attributes.put("type", getType());
-        attributes.put("userHeight", getUserHeight());
-        attributes.put("userWeight", getUserWeight());
 
         return attributes;
     }
 
     @Override
     public void setModelAttributes(Map<String, Object> attributes) {
-        Long raceId = (Long) attributes.get("raceId");
+        Long idRace = (Long) attributes.get("idRace");
 
-        if (raceId != null) {
-            setRaceId(raceId);
+        if (idRace != null) {
+            setIdRace(idRace);
         }
 
-        Long userId = (Long) attributes.get("userId");
+        Long idUser = (Long) attributes.get("idUser");
 
-        if (userId != null) {
-            setUserId(userId);
+        if (idUser != null) {
+            setIdUser(idUser);
         }
 
-        Long routeId = (Long) attributes.get("routeId");
+        Long idRoute = (Long) attributes.get("idRoute");
 
-        if (routeId != null) {
-            setRouteId(routeId);
+        if (idRoute != null) {
+            setIdRoute(idRoute);
         }
 
         String type = (String) attributes.get("type");
 
         if (type != null) {
             setType(type);
-        }
-
-        Integer userHeight = (Integer) attributes.get("userHeight");
-
-        if (userHeight != null) {
-            setUserHeight(userHeight);
-        }
-
-        Integer userWeight = (Integer) attributes.get("userWeight");
-
-        if (userWeight != null) {
-            setUserWeight(userWeight);
         }
     }
 
@@ -106,85 +92,63 @@ public class RaceWrapper implements Race, ModelWrapper<Race> {
     }
 
     /**
-    * Returns the race ID of this race.
+    * Returns the id race of this race.
     *
-    * @return the race ID of this race
+    * @return the id race of this race
     */
     @Override
-    public long getRaceId() {
-        return _race.getRaceId();
+    public long getIdRace() {
+        return _race.getIdRace();
     }
 
     /**
-    * Sets the race ID of this race.
+    * Sets the id race of this race.
     *
-    * @param raceId the race ID of this race
+    * @param idRace the id race of this race
     */
     @Override
-    public void setRaceId(long raceId) {
-        _race.setRaceId(raceId);
+    public void setIdRace(long idRace) {
+        _race.setIdRace(idRace);
     }
 
     /**
-    * Returns the user ID of this race.
+    * Returns the id user of this race.
     *
-    * @return the user ID of this race
+    * @return the id user of this race
     */
     @Override
-    public long getUserId() {
-        return _race.getUserId();
+    public long getIdUser() {
+        return _race.getIdUser();
     }
 
     /**
-    * Sets the user ID of this race.
+    * Sets the id user of this race.
     *
-    * @param userId the user ID of this race
+    * @param idUser the id user of this race
     */
     @Override
-    public void setUserId(long userId) {
-        _race.setUserId(userId);
+    public void setIdUser(long idUser) {
+        _race.setIdUser(idUser);
     }
 
     /**
-    * Returns the user uuid of this race.
+    * Returns the id route of this race.
     *
-    * @return the user uuid of this race
-    * @throws SystemException if a system exception occurred
+    * @return the id route of this race
     */
     @Override
-    public java.lang.String getUserUuid()
-        throws com.liferay.portal.kernel.exception.SystemException {
-        return _race.getUserUuid();
+    public long getIdRoute() {
+        return _race.getIdRoute();
     }
 
     /**
-    * Sets the user uuid of this race.
+    * Sets the id route of this race.
     *
-    * @param userUuid the user uuid of this race
+    * @param idRoute the id route of this race
     */
     @Override
-    public void setUserUuid(java.lang.String userUuid) {
-        _race.setUserUuid(userUuid);
-    }
-
-    /**
-    * Returns the route ID of this race.
-    *
-    * @return the route ID of this race
-    */
-    @Override
-    public long getRouteId() {
-        return _race.getRouteId();
-    }
-
-    /**
-    * Sets the route ID of this race.
-    *
-    * @param routeId the route ID of this race
-    */
-    @Override
-    public void setRouteId(long routeId) {
-        _race.setRouteId(routeId);
+    public void setIdRoute(long idRoute) {
+        _race.setIdRoute(idRoute);
     }
 
     /**
@@ -205,46 +169,6 @@ public class RaceWrapper implements Race, ModelWrapper<Race> {
     @Override
     public void setType(java.lang.String type) {
         _race.setType(type);
-    }
-
-    /**
-    * Returns the user height of this race.
-    *
-    * @return the user height of this race
-    */
-    @Override
-    public int getUserHeight() {
-        return _race.getUserHeight();
-    }
-
-    /**
-    * Sets the user height of this race.
-    *
-    * @param userHeight the user height of this race
-    */
-    @Override
-    public void setUserHeight(int userHeight) {
-        _race.setUserHeight(userHeight);
-    }
-
-    /**
-    * Returns the user weight of this race.
-    *
-    * @return the user weight of this race
-    */
-    @Override
-    public int getUserWeight() {
-        return _race.getUserWeight();
-    }
-
-    /**
-    * Sets the user weight of this race.
-    *
-    * @param userWeight the user weight of this race
-    */
-    @Override
-    public void setUserWeight(int userWeight) {
-        _race.setUserWeight(userWeight);
     }
 
     @Override

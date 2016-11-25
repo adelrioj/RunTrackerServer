@@ -1,5 +1,7 @@
 package es.eina.tfg.model;
 
+import es.eina.tfg.service.persistence.RouteLocationPK;
+
 import java.io.Serializable;
 
 import java.util.ArrayList;
@@ -13,8 +15,8 @@ import java.util.List;
  * @generated
  */
 public class RouteLocationSoap implements Serializable {
-    private long _routePositionId;
-    private long _routeId;
+    private long _idRouteLocation;
+    private long _idRoute;
     private double _latitude;
     private double _longitude;
 
@@ -24,8 +26,8 @@ public class RouteLocationSoap implements Serializable {
     public static RouteLocationSoap toSoapModel(RouteLocation model) {
         RouteLocationSoap soapModel = new RouteLocationSoap();
 
-        soapModel.setRoutePositionId(model.getRoutePositionId());
-        soapModel.setRouteId(model.getRouteId());
+        soapModel.setIdRouteLocation(model.getIdRouteLocation());
+        soapModel.setIdRoute(model.getIdRoute());
         soapModel.setLatitude(model.getLatitude());
         soapModel.setLongitude(model.getLongitude());
 
@@ -68,28 +70,29 @@ public class RouteLocationSoap implements Serializable {
         return soapModels.toArray(new RouteLocationSoap[soapModels.size()]);
     }
 
-    public long getPrimaryKey() {
-        return _routePositionId;
+    public RouteLocationPK getPrimaryKey() {
+        return new RouteLocationPK(_idRouteLocation, _idRoute);
     }
 
-    public void setPrimaryKey(long pk) {
-        setRoutePositionId(pk);
+    public void setPrimaryKey(RouteLocationPK pk) {
+        setIdRouteLocation(pk.idRouteLocation);
+        setIdRoute(pk.idRoute);
     }
 
-    public long getRoutePositionId() {
-        return _routePositionId;
+    public long getIdRouteLocation() {
+        return _idRouteLocation;
     }
 
-    public void setRoutePositionId(long routePositionId) {
-        _routePositionId = routePositionId;
+    public void setIdRouteLocation(long idRouteLocation) {
+        _idRouteLocation = idRouteLocation;
     }
 
-    public long getRouteId() {
-        return _routeId;
+    public long getIdRoute() {
+        return _idRoute;
     }
 
-    public void setRouteId(long routeId) {
-        _routeId = routeId;
+    public void setIdRoute(long idRoute) {
+        _idRoute = idRoute;
     }
 
     public double getLatitude() {

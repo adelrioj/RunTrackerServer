@@ -50,56 +50,6 @@ import java.rmi.RemoteException;
 public class SensorServiceSoap {
     private static Log _log = LogFactoryUtil.getLog(SensorServiceSoap.class);
 
-    public static es.eina.tfg.model.SensorSoap add(java.lang.Integer type,
-        java.lang.String description, java.lang.String dataUnits,
-        java.lang.String dataType, java.lang.String dataUncertainity,
-        java.lang.String dataLowerRange, java.lang.String dataUpperRange,
-        java.lang.String dataPacketFormat) throws RemoteException {
-        try {
-            es.eina.tfg.model.Sensor returnValue = SensorServiceUtil.add(type,
-                    description, dataUnits, dataType, dataUncertainity,
-                    dataLowerRange, dataUpperRange, dataPacketFormat);
-
-            return es.eina.tfg.model.SensorSoap.toSoapModel(returnValue);
-        } catch (Exception e) {
-            _log.error(e, e);
-
-            throw new RemoteException(e.getMessage());
-        }
-    }
-
-    public static es.eina.tfg.model.SensorSoap update(java.lang.Long sensorId,
-        java.lang.Integer type, java.lang.String description,
-        java.lang.String dataUnits, java.lang.String dataType,
-        java.lang.String dataUncertainity, java.lang.String dataLowerRange,
-        java.lang.String dataUpperRange, java.lang.String dataPacketFormat)
-        throws RemoteException {
-        try {
-            es.eina.tfg.model.Sensor returnValue = SensorServiceUtil.update(sensorId,
-                    type, description, dataUnits, dataType, dataUncertainity,
-                    dataLowerRange, dataUpperRange, dataPacketFormat);
-
-            return es.eina.tfg.model.SensorSoap.toSoapModel(returnValue);
-        } catch (Exception e) {
-            _log.error(e, e);
-
-            throw new RemoteException(e.getMessage());
-        }
-    }
-
-    public static es.eina.tfg.model.SensorSoap delete(java.lang.Long sensorId)
-        throws RemoteException {
-        try {
-            es.eina.tfg.model.Sensor returnValue = SensorServiceUtil.delete(sensorId);
-
-            return es.eina.tfg.model.SensorSoap.toSoapModel(returnValue);
-        } catch (Exception e) {
-            _log.error(e, e);
-
-            throw new RemoteException(e.getMessage());
-        }
-    }
-
     public static es.eina.tfg.model.SensorSoap getSensor(
         java.lang.Long sensorId) throws RemoteException {
         try {

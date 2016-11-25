@@ -42,15 +42,14 @@ public class RouteServiceClp implements RouteService {
 
         _methodParameterTypes3 = new String[] {
                 "java.lang.String", "java.lang.String", "java.lang.String",
-                "java.lang.Long", "boolean", "java.util.Date"
+                "java.lang.Long", "boolean"
             };
 
         _methodName4 = "update";
 
         _methodParameterTypes4 = new String[] {
                 "java.lang.Long", "java.lang.String", "java.lang.String",
-                "java.lang.String", "java.lang.Long", "boolean",
-                "java.util.Date", "java.util.Date"
+                "java.lang.String", "boolean"
             };
 
         _methodName5 = "delete";
@@ -61,17 +60,17 @@ public class RouteServiceClp implements RouteService {
 
         _methodParameterTypes6 = new String[] { "java.lang.Long" };
 
-        _methodName7 = "findByAuthor";
+        _methodName7 = "getByAuthor";
 
         _methodParameterTypes7 = new String[] { "java.lang.Long" };
 
-        _methodName8 = "getPublicRoutes";
+        _methodName8 = "getByisPublic";
 
-        _methodParameterTypes8 = new String[] {  };
+        _methodParameterTypes8 = new String[] { "boolean" };
 
         _methodName9 = "getPublicRoutes";
 
-        _methodParameterTypes9 = new String[] { "int", "int" };
+        _methodParameterTypes9 = new String[] { "boolean", "int", "int" };
     }
 
     @Override
@@ -123,7 +122,7 @@ public class RouteServiceClp implements RouteService {
     @Override
     public es.eina.tfg.model.Route add(java.lang.String type,
         java.lang.String name, java.lang.String description,
-        java.lang.Long authorId, boolean isPublic, java.util.Date startingTime)
+        java.lang.Long authorId, boolean isPublic)
         throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
@@ -139,9 +138,7 @@ public class RouteServiceClp implements RouteService {
                         
                     ClpSerializer.translateInput(authorId),
                         
-                    isPublic,
-                        
-                    ClpSerializer.translateInput(startingTime)
+                    isPublic
                     });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
@@ -164,11 +161,9 @@ public class RouteServiceClp implements RouteService {
     @Override
     public es.eina.tfg.model.Route update(java.lang.Long routeId,
         java.lang.String type, java.lang.String name,
-        java.lang.String description, java.lang.Long authorId,
-        boolean isPublic, java.util.Date startingTime,
-        java.util.Date creationTime)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingRouteException {
+        java.lang.String description, boolean isPublic)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
@@ -183,23 +178,17 @@ public class RouteServiceClp implements RouteService {
                         
                     ClpSerializer.translateInput(description),
                         
-                    ClpSerializer.translateInput(authorId),
-                        
-                    isPublic,
-                        
-                    ClpSerializer.translateInput(startingTime),
-                        
-                    ClpSerializer.translateInput(creationTime)
+                    isPublic
                     });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
-            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
-                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+                throw (com.liferay.portal.kernel.exception.PortalException) t;
             }
 
-            if (t instanceof es.eina.tfg.NonExistingRouteException) {
-                throw (es.eina.tfg.NonExistingRouteException) t;
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
             }
 
             if (t instanceof RuntimeException) {
@@ -278,7 +267,7 @@ public class RouteServiceClp implements RouteService {
     }
 
     @Override
-    public java.util.List<es.eina.tfg.model.Route> findByAuthor(
+    public java.util.List<es.eina.tfg.model.Route> getByAuthor(
         java.lang.Long userId)
         throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
@@ -306,13 +295,14 @@ public class RouteServiceClp implements RouteService {
     }
 
     @Override
-    public java.util.List<es.eina.tfg.model.Route> getPublicRoutes()
+    public java.util.List<es.eina.tfg.model.Route> getByisPublic(
+        boolean isPublic)
         throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableService.invokeMethod(_methodName8,
-                    _methodParameterTypes8, new Object[] {  });
+                    _methodParameterTypes8, new Object[] { isPublic });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -332,13 +322,15 @@ public class RouteServiceClp implements RouteService {
     }
 
     @Override
-    public java.util.List<es.eina.tfg.model.Route> getPublicRoutes(int start,
-        int end) throws com.liferay.portal.kernel.exception.SystemException {
+    public java.util.List<es.eina.tfg.model.Route> getPublicRoutes(
+        boolean isPublic, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableService.invokeMethod(_methodName9,
-                    _methodParameterTypes9, new Object[] { start, end });
+                    _methodParameterTypes9,
+                    new Object[] { isPublic, start, end });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 

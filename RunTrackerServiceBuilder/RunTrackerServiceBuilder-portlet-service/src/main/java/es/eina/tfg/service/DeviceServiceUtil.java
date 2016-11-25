@@ -57,8 +57,7 @@ public class DeviceServiceUtil {
         java.lang.String serverPhoneNumber, java.lang.String smsPollTime,
         java.lang.String smsTransmitPeriod, java.lang.String cloudId,
         java.lang.String serverIp, java.lang.String httpTransmitPeriod)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingUserException {
+        throws com.liferay.portal.kernel.exception.SystemException {
         return getService()
                    .add(userId, deviceUUID, description, status, phoneNumber,
             serverPhoneNumber, smsPollTime, smsTransmitPeriod, cloudId,
@@ -66,19 +65,14 @@ public class DeviceServiceUtil {
     }
 
     public static es.eina.tfg.model.Device update(java.lang.Long deviceId,
-        java.lang.String deviceUUID, java.lang.Long userId,
         java.lang.String description, java.lang.String status,
-        java.lang.String phoneNumber, java.lang.String serverPhoneNumber,
-        java.lang.String smsPollTime, java.lang.String smsTransmitPeriod,
-        java.lang.String cloudId, java.lang.String serverIp,
+        java.lang.String phoneNumber, java.lang.String smsTransmitPeriod,
         java.lang.String httpTransmitPeriod)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingDeviceException,
-            es.eina.tfg.NonExistingUserException {
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
         return getService()
-                   .update(deviceId, deviceUUID, userId, description, status,
-            phoneNumber, serverPhoneNumber, smsPollTime, smsTransmitPeriod,
-            cloudId, serverIp, httpTransmitPeriod);
+                   .update(deviceId, description, status, phoneNumber,
+            smsTransmitPeriod, httpTransmitPeriod);
     }
 
     public static es.eina.tfg.model.Device delete(java.lang.Long deviceId)
@@ -112,29 +106,29 @@ public class DeviceServiceUtil {
         return getService().getDeviceByPhoneNumber(phoneNumber);
     }
 
-    public static java.util.List<es.eina.tfg.model.Device> findByUserId(
+    public static java.util.List<es.eina.tfg.model.Device> getByUserId(
         java.lang.Long userId)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return getService().findByUserId(userId);
+        return getService().getByUserId(userId);
     }
 
-    public static es.eina.tfg.model.Device findByDeviceUUID(
+    public static es.eina.tfg.model.Device getByDeviceUUID(
         java.lang.String deviceUUID)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchDeviceException {
-        return getService().findByDeviceUUID(deviceUUID);
+        return getService().getByDeviceUUID(deviceUUID);
     }
 
-    public static java.util.List<es.eina.tfg.model.Device> findByStatus(
+    public static java.util.List<es.eina.tfg.model.Device> getByStatus(
         java.lang.String status)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return getService().findByStatus(status);
+        return getService().getByStatus(status);
     }
 
-    public static java.util.List<es.eina.tfg.model.Device> findByStatus(
+    public static java.util.List<es.eina.tfg.model.Device> getByStatus(
         java.lang.String status, int start, int end)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return getService().findByStatus(status, start, end);
+        return getService().getByStatus(status, start, end);
     }
 
     public static void clearService() {

@@ -51,15 +51,14 @@ public class LocationServiceSoap {
     private static Log _log = LogFactoryUtil.getLog(LocationServiceSoap.class);
 
     public static es.eina.tfg.model.LocationSoap add(java.lang.Long raceId,
-        java.lang.Long userId, java.lang.Long deviceId,
-        java.lang.Long sensorId, java.util.Date time,
+        java.lang.Long deviceId, java.lang.Long sensorId, java.util.Date time,
         java.lang.String sensorMode, int sysRef, double latitude,
         double longitude, double speed, double distance, double altitude)
         throws RemoteException {
         try {
             es.eina.tfg.model.Location returnValue = LocationServiceUtil.add(raceId,
-                    userId, deviceId, sensorId, time, sensorMode, sysRef,
-                    latitude, longitude, speed, distance, altitude);
+                    deviceId, sensorId, time, sensorMode, sysRef, latitude,
+                    longitude, speed, distance, altitude);
 
             return es.eina.tfg.model.LocationSoap.toSoapModel(returnValue);
         } catch (Exception e) {
@@ -69,17 +68,11 @@ public class LocationServiceSoap {
         }
     }
 
-    public static es.eina.tfg.model.LocationSoap update(
-        java.lang.Long measurementId, java.lang.Long raceId,
-        java.lang.Long userId, java.lang.Long deviceId,
-        java.lang.Long sensorId, java.util.Date time,
-        java.lang.String sensorMode, int sysRef, double latitude,
-        double longitude, double speed, double distance, double altitude)
-        throws RemoteException {
+    public static es.eina.tfg.model.LocationSoap getByidLocation(
+        long idMeasurement, long idRace) throws RemoteException {
         try {
-            es.eina.tfg.model.Location returnValue = LocationServiceUtil.update(measurementId,
-                    raceId, userId, deviceId, sensorId, time, sensorMode,
-                    sysRef, latitude, longitude, speed, distance, altitude);
+            es.eina.tfg.model.Location returnValue = LocationServiceUtil.getByidLocation(idMeasurement,
+                    idRace);
 
             return es.eina.tfg.model.LocationSoap.toSoapModel(returnValue);
         } catch (Exception e) {
@@ -89,36 +82,10 @@ public class LocationServiceSoap {
         }
     }
 
-    public static es.eina.tfg.model.LocationSoap delete(
-        java.lang.Long measurementId) throws RemoteException {
+    public static es.eina.tfg.model.LocationSoap[] getByidRace(
+        java.lang.Long idRace) throws RemoteException {
         try {
-            es.eina.tfg.model.Location returnValue = LocationServiceUtil.delete(measurementId);
-
-            return es.eina.tfg.model.LocationSoap.toSoapModel(returnValue);
-        } catch (Exception e) {
-            _log.error(e, e);
-
-            throw new RemoteException(e.getMessage());
-        }
-    }
-
-    public static es.eina.tfg.model.LocationSoap getLocation(
-        java.lang.Long measurementId) throws RemoteException {
-        try {
-            es.eina.tfg.model.Location returnValue = LocationServiceUtil.getLocation(measurementId);
-
-            return es.eina.tfg.model.LocationSoap.toSoapModel(returnValue);
-        } catch (Exception e) {
-            _log.error(e, e);
-
-            throw new RemoteException(e.getMessage());
-        }
-    }
-
-    public static es.eina.tfg.model.LocationSoap[] findByRaceId(
-        java.lang.Long raceId) throws RemoteException {
-        try {
-            java.util.List<es.eina.tfg.model.Location> returnValue = LocationServiceUtil.findByRaceId(raceId);
+            java.util.List<es.eina.tfg.model.Location> returnValue = LocationServiceUtil.getByidRace(idRace);
 
             return es.eina.tfg.model.LocationSoap.toSoapModels(returnValue);
         } catch (Exception e) {

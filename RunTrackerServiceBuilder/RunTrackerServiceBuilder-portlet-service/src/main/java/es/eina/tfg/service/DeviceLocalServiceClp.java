@@ -60,8 +60,6 @@ public class DeviceLocalServiceClp implements DeviceLocalService {
     private String[] _methodParameterTypes25;
     private String _methodName26;
     private String[] _methodParameterTypes26;
-    private String _methodName27;
-    private String[] _methodParameterTypes27;
 
     public DeviceLocalServiceClp(InvokableLocalService invokableLocalService) {
         _invokableLocalService = invokableLocalService;
@@ -150,51 +148,37 @@ public class DeviceLocalServiceClp implements DeviceLocalService {
 
         _methodParameterTypes17 = new String[] { "java.lang.String" };
 
-        _methodName19 = "add";
+        _methodName19 = "generateNewIdDevice";
 
-        _methodParameterTypes19 = new String[] {
-                "java.lang.String", "java.lang.Long", "java.lang.String",
-                "java.lang.String", "java.lang.String", "java.lang.String",
-                "java.lang.String", "java.lang.String", "java.lang.String",
-                "java.lang.String", "java.lang.String"
-            };
+        _methodParameterTypes19 = new String[] {  };
 
-        _methodName20 = "update";
+        _methodName20 = "getSensors";
 
-        _methodParameterTypes20 = new String[] {
-                "java.lang.Long", "java.lang.String", "java.lang.Long",
-                "java.lang.String", "java.lang.String", "java.lang.String",
-                "java.lang.String", "java.lang.String", "java.lang.String",
-                "java.lang.String", "java.lang.String", "java.lang.String"
-            };
+        _methodParameterTypes20 = new String[] { "java.lang.Long" };
 
-        _methodName21 = "getDeviceByPhoneNumber";
+        _methodName21 = "getActiveSensors";
 
-        _methodParameterTypes21 = new String[] { "java.lang.String" };
+        _methodParameterTypes21 = new String[] { "java.lang.Long" };
 
-        _methodName22 = "getSensors";
+        _methodName22 = "getDeviceByPhoneNumber";
 
-        _methodParameterTypes22 = new String[] { "java.lang.Long" };
+        _methodParameterTypes22 = new String[] { "java.lang.String" };
 
-        _methodName23 = "getActiveSensors";
+        _methodName23 = "getByUserId";
 
         _methodParameterTypes23 = new String[] { "java.lang.Long" };
 
-        _methodName24 = "findByUserId";
+        _methodName24 = "getBydeviceUUID";
 
-        _methodParameterTypes24 = new String[] { "java.lang.Long" };
+        _methodParameterTypes24 = new String[] { "java.lang.String" };
 
-        _methodName25 = "findBydeviceUUID";
+        _methodName25 = "getByStatus";
 
         _methodParameterTypes25 = new String[] { "java.lang.String" };
 
-        _methodName26 = "findByStatus";
+        _methodName26 = "getByStatus";
 
-        _methodParameterTypes26 = new String[] { "java.lang.String" };
-
-        _methodName27 = "findByStatus";
-
-        _methodParameterTypes27 = new String[] { "java.lang.String", "int", "int" };
+        _methodParameterTypes26 = new String[] { "java.lang.String", "int", "int" };
     }
 
     @Override
@@ -225,12 +209,12 @@ public class DeviceLocalServiceClp implements DeviceLocalService {
     }
 
     @Override
-    public es.eina.tfg.model.Device createDevice(long deviceId) {
+    public es.eina.tfg.model.Device createDevice(long idDevice) {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName1,
-                    _methodParameterTypes1, new Object[] { deviceId });
+                    _methodParameterTypes1, new Object[] { idDevice });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -246,14 +230,14 @@ public class DeviceLocalServiceClp implements DeviceLocalService {
     }
 
     @Override
-    public es.eina.tfg.model.Device deleteDevice(long deviceId)
+    public es.eina.tfg.model.Device deleteDevice(long idDevice)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName2,
-                    _methodParameterTypes2, new Object[] { deviceId });
+                    _methodParameterTypes2, new Object[] { idDevice });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -490,13 +474,13 @@ public class DeviceLocalServiceClp implements DeviceLocalService {
     }
 
     @Override
-    public es.eina.tfg.model.Device fetchDevice(long deviceId)
+    public es.eina.tfg.model.Device fetchDevice(long idDevice)
         throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName10,
-                    _methodParameterTypes10, new Object[] { deviceId });
+                    _methodParameterTypes10, new Object[] { idDevice });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -516,14 +500,14 @@ public class DeviceLocalServiceClp implements DeviceLocalService {
     }
 
     @Override
-    public es.eina.tfg.model.Device getDevice(long deviceId)
+    public es.eina.tfg.model.Device getDevice(long idDevice)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName11,
-                    _methodParameterTypes11, new Object[] { deviceId });
+                    _methodParameterTypes11, new Object[] { idDevice });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -706,51 +690,18 @@ public class DeviceLocalServiceClp implements DeviceLocalService {
     }
 
     @Override
-    public es.eina.tfg.model.Device add(java.lang.String deviceUUID,
-        java.lang.Long userId, java.lang.String description,
-        java.lang.String status, java.lang.String phoneNumber,
-        java.lang.String serverPhoneNumber, java.lang.String smsPollTime,
-        java.lang.String smsTransmitPeriod, java.lang.String cloudId,
-        java.lang.String serverIp, java.lang.String httpTransmitPeriod)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingUserException {
+    public java.lang.Long generateNewIdDevice()
+        throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName19,
-                    _methodParameterTypes19,
-                    new Object[] {
-                        ClpSerializer.translateInput(deviceUUID),
-                        
-                    ClpSerializer.translateInput(userId),
-                        
-                    ClpSerializer.translateInput(description),
-                        
-                    ClpSerializer.translateInput(status),
-                        
-                    ClpSerializer.translateInput(phoneNumber),
-                        
-                    ClpSerializer.translateInput(serverPhoneNumber),
-                        
-                    ClpSerializer.translateInput(smsPollTime),
-                        
-                    ClpSerializer.translateInput(smsTransmitPeriod),
-                        
-                    ClpSerializer.translateInput(cloudId),
-                        
-                    ClpSerializer.translateInput(serverIp),
-                        
-                    ClpSerializer.translateInput(httpTransmitPeriod)
-                    });
+                    _methodParameterTypes19, new Object[] {  });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
             if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
                 throw (com.liferay.portal.kernel.exception.SystemException) t;
-            }
-
-            if (t instanceof es.eina.tfg.NonExistingUserException) {
-                throw (es.eina.tfg.NonExistingUserException) t;
             }
 
             if (t instanceof RuntimeException) {
@@ -761,107 +712,7 @@ public class DeviceLocalServiceClp implements DeviceLocalService {
             }
         }
 
-        return (es.eina.tfg.model.Device) ClpSerializer.translateOutput(returnObj);
-    }
-
-    @Override
-    public es.eina.tfg.model.Device update(java.lang.Long deviceId,
-        java.lang.String deviceUUID, java.lang.Long userId,
-        java.lang.String description, java.lang.String status,
-        java.lang.String phoneNumber, java.lang.String serverPhoneNumber,
-        java.lang.String smsPollTime, java.lang.String smsTransmitPeriod,
-        java.lang.String cloudId, java.lang.String serverIp,
-        java.lang.String httpTransmitPeriod)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingDeviceException,
-            es.eina.tfg.NonExistingUserException {
-        Object returnObj = null;
-
-        try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName20,
-                    _methodParameterTypes20,
-                    new Object[] {
-                        ClpSerializer.translateInput(deviceId),
-                        
-                    ClpSerializer.translateInput(deviceUUID),
-                        
-                    ClpSerializer.translateInput(userId),
-                        
-                    ClpSerializer.translateInput(description),
-                        
-                    ClpSerializer.translateInput(status),
-                        
-                    ClpSerializer.translateInput(phoneNumber),
-                        
-                    ClpSerializer.translateInput(serverPhoneNumber),
-                        
-                    ClpSerializer.translateInput(smsPollTime),
-                        
-                    ClpSerializer.translateInput(smsTransmitPeriod),
-                        
-                    ClpSerializer.translateInput(cloudId),
-                        
-                    ClpSerializer.translateInput(serverIp),
-                        
-                    ClpSerializer.translateInput(httpTransmitPeriod)
-                    });
-        } catch (Throwable t) {
-            t = ClpSerializer.translateThrowable(t);
-
-            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
-                throw (com.liferay.portal.kernel.exception.SystemException) t;
-            }
-
-            if (t instanceof es.eina.tfg.NonExistingDeviceException) {
-                throw (es.eina.tfg.NonExistingDeviceException) t;
-            }
-
-            if (t instanceof es.eina.tfg.NonExistingUserException) {
-                throw (es.eina.tfg.NonExistingUserException) t;
-            }
-
-            if (t instanceof RuntimeException) {
-                throw (RuntimeException) t;
-            } else {
-                throw new RuntimeException(t.getClass().getName() +
-                    " is not a valid exception");
-            }
-        }
-
-        return (es.eina.tfg.model.Device) ClpSerializer.translateOutput(returnObj);
-    }
-
-    @Override
-    public es.eina.tfg.model.Device getDeviceByPhoneNumber(
-        java.lang.String phoneNumber)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NoSuchDeviceException {
-        Object returnObj = null;
-
-        try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName21,
-                    _methodParameterTypes21,
-                    new Object[] { ClpSerializer.translateInput(phoneNumber) });
-        } catch (Throwable t) {
-            t = ClpSerializer.translateThrowable(t);
-
-            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
-                throw (com.liferay.portal.kernel.exception.SystemException) t;
-            }
-
-            if (t instanceof es.eina.tfg.NoSuchDeviceException) {
-                throw (es.eina.tfg.NoSuchDeviceException) t;
-            }
-
-            if (t instanceof RuntimeException) {
-                throw (RuntimeException) t;
-            } else {
-                throw new RuntimeException(t.getClass().getName() +
-                    " is not a valid exception");
-            }
-        }
-
-        return (es.eina.tfg.model.Device) ClpSerializer.translateOutput(returnObj);
+        return (java.lang.Long) ClpSerializer.translateOutput(returnObj);
     }
 
     @Override
@@ -871,8 +722,8 @@ public class DeviceLocalServiceClp implements DeviceLocalService {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName22,
-                    _methodParameterTypes22,
+            returnObj = _invokableLocalService.invokeMethod(_methodName20,
+                    _methodParameterTypes20,
                     new Object[] { ClpSerializer.translateInput(deviceId) });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
@@ -899,8 +750,8 @@ public class DeviceLocalServiceClp implements DeviceLocalService {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName23,
-                    _methodParameterTypes23,
+            returnObj = _invokableLocalService.invokeMethod(_methodName21,
+                    _methodParameterTypes21,
                     new Object[] { ClpSerializer.translateInput(deviceId) });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
@@ -921,14 +772,47 @@ public class DeviceLocalServiceClp implements DeviceLocalService {
     }
 
     @Override
-    public java.util.List<es.eina.tfg.model.Device> findByUserId(
+    public es.eina.tfg.model.Device getDeviceByPhoneNumber(
+        java.lang.String phoneNumber)
+        throws com.liferay.portal.kernel.exception.SystemException,
+            es.eina.tfg.NoSuchDeviceException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName22,
+                    _methodParameterTypes22,
+                    new Object[] { ClpSerializer.translateInput(phoneNumber) });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof es.eina.tfg.NoSuchDeviceException) {
+                throw (es.eina.tfg.NoSuchDeviceException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (es.eina.tfg.model.Device) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
+    public java.util.List<es.eina.tfg.model.Device> getByUserId(
         java.lang.Long userId)
         throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName24,
-                    _methodParameterTypes24,
+            returnObj = _invokableLocalService.invokeMethod(_methodName23,
+                    _methodParameterTypes23,
                     new Object[] { ClpSerializer.translateInput(userId) });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
@@ -949,15 +833,14 @@ public class DeviceLocalServiceClp implements DeviceLocalService {
     }
 
     @Override
-    public es.eina.tfg.model.Device findBydeviceUUID(
-        java.lang.String deviceUUID)
+    public es.eina.tfg.model.Device getBydeviceUUID(java.lang.String deviceUUID)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchDeviceException {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName25,
-                    _methodParameterTypes25,
+            returnObj = _invokableLocalService.invokeMethod(_methodName24,
+                    _methodParameterTypes24,
                     new Object[] { ClpSerializer.translateInput(deviceUUID) });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
@@ -982,14 +865,14 @@ public class DeviceLocalServiceClp implements DeviceLocalService {
     }
 
     @Override
-    public java.util.List<es.eina.tfg.model.Device> findByStatus(
+    public java.util.List<es.eina.tfg.model.Device> getByStatus(
         java.lang.String status)
         throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName26,
-                    _methodParameterTypes26,
+            returnObj = _invokableLocalService.invokeMethod(_methodName25,
+                    _methodParameterTypes25,
                     new Object[] { ClpSerializer.translateInput(status) });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
@@ -1010,14 +893,14 @@ public class DeviceLocalServiceClp implements DeviceLocalService {
     }
 
     @Override
-    public java.util.List<es.eina.tfg.model.Device> findByStatus(
+    public java.util.List<es.eina.tfg.model.Device> getByStatus(
         java.lang.String status, int start, int end)
         throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName27,
-                    _methodParameterTypes27,
+            returnObj = _invokableLocalService.invokeMethod(_methodName26,
+                    _methodParameterTypes26,
                     new Object[] {
                         ClpSerializer.translateInput(status),
                         

@@ -18,6 +18,6 @@ public abstract class DeviceActionableDynamicQuery
 
         setClassLoader(es.eina.tfg.service.ClpSerializer.class.getClassLoader());
 
-        setPrimaryKeyPropertyName("deviceId");
+        setPrimaryKeyPropertyName("idDevice");
     }
 }

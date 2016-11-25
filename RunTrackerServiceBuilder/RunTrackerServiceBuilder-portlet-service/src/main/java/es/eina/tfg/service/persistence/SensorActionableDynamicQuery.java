@@ -18,6 +18,6 @@ public abstract class SensorActionableDynamicQuery
 
         setClassLoader(es.eina.tfg.service.ClpSerializer.class.getClassLoader());
 
-        setPrimaryKeyPropertyName("sensorId");
+        setPrimaryKeyPropertyName("idSensor");
     }
 }

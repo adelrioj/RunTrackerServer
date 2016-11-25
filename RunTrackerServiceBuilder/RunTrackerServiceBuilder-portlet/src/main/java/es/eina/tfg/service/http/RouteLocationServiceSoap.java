@@ -50,9 +50,9 @@ import java.rmi.RemoteException;
 public class RouteLocationServiceSoap {
     private static Log _log = LogFactoryUtil.getLog(RouteLocationServiceSoap.class);
 
-    public static es.eina.tfg.model.RouteLocationSoap add(
-        java.lang.Long routeId, java.lang.Double latitude,
-        java.lang.Double longitude) throws RemoteException {
+    public static es.eina.tfg.model.RouteLocationSoap add(long routeId,
+        java.lang.Double latitude, java.lang.Double longitude)
+        throws RemoteException {
         try {
             es.eina.tfg.model.RouteLocation returnValue = RouteLocationServiceUtil.add(routeId,
                     latitude, longitude);
@@ -66,9 +66,8 @@ public class RouteLocationServiceSoap {
     }
 
     public static es.eina.tfg.model.RouteLocationSoap update(
-        java.lang.Long routeLocationId, java.lang.Long routeId,
-        java.lang.Double latitude, java.lang.Double longitude)
-        throws RemoteException {
+        long routeLocationId, long routeId, java.lang.Double latitude,
+        java.lang.Double longitude) throws RemoteException {
         try {
             es.eina.tfg.model.RouteLocation returnValue = RouteLocationServiceUtil.update(routeLocationId,
                     routeId, latitude, longitude);
@@ -82,9 +81,10 @@ public class RouteLocationServiceSoap {
     }
 
     public static es.eina.tfg.model.RouteLocationSoap delete(
-        java.lang.Long routeLocationId) throws RemoteException {
+        long idRouteLocation, long idRoute) throws RemoteException {
         try {
-            es.eina.tfg.model.RouteLocation returnValue = RouteLocationServiceUtil.delete(routeLocationId);
+            es.eina.tfg.model.RouteLocation returnValue = RouteLocationServiceUtil.delete(idRouteLocation,
+                    idRoute);
 
             return es.eina.tfg.model.RouteLocationSoap.toSoapModel(returnValue);
         } catch (Exception e) {
@@ -94,23 +94,10 @@ public class RouteLocationServiceSoap {
         }
     }
 
-    public static es.eina.tfg.model.RouteLocationSoap getRouteLocation(
-        java.lang.Long routeLocationId) throws RemoteException {
+    public static es.eina.tfg.model.RouteLocationSoap[] getByRouteId(
+        long routeId) throws RemoteException {
         try {
-            es.eina.tfg.model.RouteLocation returnValue = RouteLocationServiceUtil.getRouteLocation(routeLocationId);
-
-            return es.eina.tfg.model.RouteLocationSoap.toSoapModel(returnValue);
-        } catch (Exception e) {
-            _log.error(e, e);
-
-            throw new RemoteException(e.getMessage());
-        }
-    }
-
-    public static es.eina.tfg.model.RouteLocationSoap[] findByRouteId(
-        java.lang.Long routeId) throws RemoteException {
-        try {
-            java.util.List<es.eina.tfg.model.RouteLocation> returnValue = RouteLocationServiceUtil.findByRouteId(routeId);
+            java.util.List<es.eina.tfg.model.RouteLocation> returnValue = RouteLocationServiceUtil.getByRouteId(routeId);
 
             return es.eina.tfg.model.RouteLocationSoap.toSoapModels(returnValue);
         } catch (Exception e) {

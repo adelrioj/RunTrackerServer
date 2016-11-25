@@ -21,33 +21,30 @@ import java.util.Date;
  * @generated
  */
 public class RouteCacheModel implements CacheModel<Route>, Externalizable {
-    public long routeId;
+    public long idRoute;
+    public long idAuthor;
     public String type;
     public String name;
     public String description;
-    public long authorId;
     public boolean isPublic;
-    public long startingTime;
     public long creationTime;
 
     @Override
     public String toString() {
-        StringBundler sb = new StringBundler(17);
+        StringBundler sb = new StringBundler(15);
 
-        sb.append("{routeId=");
-        sb.append(routeId);
+        sb.append("{idRoute=");
+        sb.append(idRoute);
+        sb.append(", idAuthor=");
+        sb.append(idAuthor);
         sb.append(", type=");
         sb.append(type);
         sb.append(", name=");
         sb.append(name);
         sb.append(", description=");
         sb.append(description);
-        sb.append(", authorId=");
-        sb.append(authorId);
         sb.append(", isPublic=");
         sb.append(isPublic);
-        sb.append(", startingTime=");
-        sb.append(startingTime);
         sb.append(", creationTime=");
         sb.append(creationTime);
         sb.append("}");
@@ -59,7 +56,8 @@ public class RouteCacheModel implements CacheModel<Route>, Externalizable {
     public Route toEntityModel() {
         RouteImpl routeImpl = new RouteImpl();
 
-        routeImpl.setRouteId(routeId);
+        routeImpl.setIdRoute(idRoute);
+        routeImpl.setIdAuthor(idAuthor);
 
         if (type == null) {
             routeImpl.setType(StringPool.BLANK);
@@ -79,14 +77,7 @@ public class RouteCacheModel implements CacheModel<Route>, Externalizable {
             routeImpl.setDescription(description);
         }
 
-        routeImpl.setAuthorId(authorId);
         routeImpl.setIsPublic(isPublic);
-
-        if (startingTime == Long.MIN_VALUE) {
-            routeImpl.setStartingTime(null);
-        } else {
-            routeImpl.setStartingTime(new Date(startingTime));
-        }
 
         if (creationTime == Long.MIN_VALUE) {
             routeImpl.setCreationTime(null);
@@ -101,20 +92,20 @@ public class RouteCacheModel implements CacheModel<Route>, Externalizable {
 
     @Override
     public void readExternal(ObjectInput objectInput) throws IOException {
-        routeId = objectInput.readLong();
+        idRoute = objectInput.readLong();
+        idAuthor = objectInput.readLong();
         type = objectInput.readUTF();
         name = objectInput.readUTF();
         description = objectInput.readUTF();
-        authorId = objectInput.readLong();
         isPublic = objectInput.readBoolean();
-        startingTime = objectInput.readLong();
         creationTime = objectInput.readLong();
     }
 
     @Override
     public void writeExternal(ObjectOutput objectOutput)
         throws IOException {
-        objectOutput.writeLong(routeId);
+        objectOutput.writeLong(idRoute);
+        objectOutput.writeLong(idAuthor);
 
         if (type == null) {
             objectOutput.writeUTF(StringPool.BLANK);
@@ -134,9 +125,7 @@ public class RouteCacheModel implements CacheModel<Route>, Externalizable {
             objectOutput.writeUTF(description);
         }
 
-        objectOutput.writeLong(authorId);
         objectOutput.writeBoolean(isPublic);
-        objectOutput.writeLong(startingTime);
         objectOutput.writeLong(creationTime);
     }
 }

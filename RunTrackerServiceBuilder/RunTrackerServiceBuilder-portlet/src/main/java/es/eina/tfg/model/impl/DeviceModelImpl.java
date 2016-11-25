@@ -1,7 +1,6 @@
 package es.eina.tfg.model.impl;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
-import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.json.JSON;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
@@ -10,7 +9,6 @@ import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.model.CacheModel;
 import com.liferay.portal.model.impl.BaseModelImpl;
 import com.liferay.portal.service.ServiceContext;
-import com.liferay.portal.util.PortalUtil;
 
 import com.liferay.portlet.expando.model.ExpandoBridge;
 import com.liferay.portlet.expando.util.ExpandoBridgeFactoryUtil;
@@ -51,8 +49,8 @@ public class DeviceModelImpl extends BaseModelImpl<Device>
      */
     public static final String TABLE_NAME = "GL_Device";
     public static final Object[][] TABLE_COLUMNS = {
-            { "deviceId", Types.BIGINT },
-            { "userId", Types.BIGINT },
+            { "idDevice", Types.BIGINT },
+            { "idUser", Types.BIGINT },
             { "deviceUUID", Types.VARCHAR },
             { "description", Types.VARCHAR },
             { "status", Types.VARCHAR },
@@ -64,10 +62,10 @@ public class DeviceModelImpl extends BaseModelImpl<Device>
             { "serverIp", Types.VARCHAR },
             { "httpTransmitPeriod", Types.VARCHAR }
         };
-    public static final String TABLE_SQL_CREATE = "create table GL_Device (deviceId LONG not null primary key,userId LONG,deviceUUID VARCHAR(75) null,description VARCHAR(75) null,status VARCHAR(75) null,phoneNumber VARCHAR(75) null,serverPhoneNumber VARCHAR(75) null,smsPollTime VARCHAR(75) null,smsTransmitPeriod VARCHAR(75) null,cloudId VARCHAR(75) null,serverIp VARCHAR(75) null,httpTransmitPeriod VARCHAR(75) null)";
+    public static final String TABLE_SQL_CREATE = "create table GL_Device (idDevice LONG not null primary key,idUser LONG,deviceUUID VARCHAR(75) null,description VARCHAR(75) null,status VARCHAR(75) null,phoneNumber VARCHAR(75) null,serverPhoneNumber VARCHAR(75) null,smsPollTime VARCHAR(75) null,smsTransmitPeriod VARCHAR(75) null,cloudId VARCHAR(75) null,serverIp VARCHAR(75) null,httpTransmitPeriod VARCHAR(75) null)";
     public static final String TABLE_SQL_DROP = "drop table GL_Device";
-    public static final String ORDER_BY_JPQL = " ORDER BY device.userId ASC";
-    public static final String ORDER_BY_SQL = " ORDER BY GL_Device.userId ASC";
+    public static final String ORDER_BY_JPQL = " ORDER BY device.idUser ASC";
+    public static final String ORDER_BY_SQL = " ORDER BY GL_Device.idUser ASC";
     public static final String DATA_SOURCE = "liferayDataSource";
     public static final String SESSION_FACTORY = "liferaySessionFactory";
     public static final String TX_MANAGER = "liferayTransactionManager";
@@ -81,18 +79,17 @@ public class DeviceModelImpl extends BaseModelImpl<Device>
                 "value.object.column.bitmask.enabled.es.eina.tfg.model.Device"),
             true);
     public static long DEVICEUUID_COLUMN_BITMASK = 1L;
-    public static long PHONENUMBER_COLUMN_BITMASK = 2L;
-    public static long STATUS_COLUMN_BITMASK = 4L;
-    public static long USERID_COLUMN_BITMASK = 8L;
+    public static long IDUSER_COLUMN_BITMASK = 2L;
+    public static long PHONENUMBER_COLUMN_BITMASK = 4L;
+    public static long STATUS_COLUMN_BITMASK = 8L;
     public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
                 "lock.expiration.time.es.eina.tfg.model.Device"));
     private static ClassLoader _classLoader = Device.class.getClassLoader();
     private static Class<?>[] _escapedModelInterfaces = new Class[] { Device.class };
-    private long _deviceId;
-    private long _userId;
-    private String _userUuid;
-    private long _originalUserId;
-    private boolean _setOriginalUserId;
+    private long _idDevice;
+    private long _idUser;
+    private long _originalIdUser;
+    private boolean _setOriginalIdUser;
     private String _deviceUUID;
     private String _originalDeviceUUID;
     private String _description;
@@ -125,8 +122,8 @@ public class DeviceModelImpl extends BaseModelImpl<Device>
 
         Device model = new DeviceImpl();
 
-        model.setDeviceId(soapModel.getDeviceId());
-        model.setUserId(soapModel.getUserId());
+        model.setIdDevice(soapModel.getIdDevice());
+        model.setIdUser(soapModel.getIdUser());
         model.setDeviceUUID(soapModel.getDeviceUUID());
         model.setDescription(soapModel.getDescription());
         model.setStatus(soapModel.getStatus());
@@ -163,17 +160,17 @@ public class DeviceModelImpl extends BaseModelImpl<Device>
 
     @Override
     public long getPrimaryKey() {
-        return _deviceId;
+        return _idDevice;
     }
 
     @Override
     public void setPrimaryKey(long primaryKey) {
-        setDeviceId(primaryKey);
+        setIdDevice(primaryKey);
     }
 
     @Override
     public Serializable getPrimaryKeyObj() {
-        return _deviceId;
+        return _idDevice;
     }
 
     @Override
@@ -195,8 +192,8 @@ public class DeviceModelImpl extends BaseModelImpl<Device>
     public Map<String, Object> getModelAttributes() {
         Map<String, Object> attributes = new HashMap<String, Object>();
 
-        attributes.put("deviceId", getDeviceId());
-        attributes.put("userId", getUserId());
+        attributes.put("idDevice", getIdDevice());
+        attributes.put("idUser", getIdUser());
         attributes.put("deviceUUID", getDeviceUUID());
         attributes.put("description", getDescription());
         attributes.put("status", getStatus());
@@ -213,16 +210,16 @@ public class DeviceModelImpl extends BaseModelImpl<Device>
 
     @Override
     public void setModelAttributes(Map<String, Object> attributes) {
-        Long deviceId = (Long) attributes.get("deviceId");
+        Long idDevice = (Long) attributes.get("idDevice");
 
-        if (deviceId != null) {
-            setDeviceId(deviceId);
+        if (idDevice != null) {
+            setIdDevice(idDevice);
         }
 
-        Long userId = (Long) attributes.get("userId");
+        Long idUser = (Long) attributes.get("idUser");
 
-        if (userId != null) {
-            setUserId(userId);
+        if (idUser != null) {
+            setIdUser(idUser);
         }
 
         String deviceUUID = (String) attributes.get("deviceUUID");
@@ -289,46 +286,36 @@ public class DeviceModelImpl extends BaseModelImpl<Device>
 
     @JSON
     @Override
-    public long getDeviceId() {
-        return _deviceId;
+    public long getIdDevice() {
+        return _idDevice;
     }
 
     @Override
-    public void setDeviceId(long deviceId) {
-        _deviceId = deviceId;
+    public void setIdDevice(long idDevice) {
+        _idDevice = idDevice;
     }
 
     @JSON
     @Override
-    public long getUserId() {
-        return _userId;
+    public long getIdUser() {
+        return _idUser;
     }
 
     @Override
-    public void setUserId(long userId) {
+    public void setIdUser(long idUser) {
         _columnBitmask = -1L;
 
-        if (!_setOriginalUserId) {
-            _setOriginalUserId = true;
+        if (!_setOriginalIdUser) {
+            _setOriginalIdUser = true;
 
-            _originalUserId = _userId;
+            _originalIdUser = _idUser;
         }
 
-        _userId = userId;
+        _idUser = idUser;
     }
 
-    @Override
-    public String getUserUuid() throws SystemException {
-        return PortalUtil.getUserValue(getUserId(), "uuid", _userUuid);
-    }
-
-    @Override
-    public void setUserUuid(String userUuid) {
-        _userUuid = userUuid;
-    }
-
-    public long getOriginalUserId() {
-        return _originalUserId;
+    public long getOriginalIdUser() {
+        return _originalIdUser;
     }
 
     @JSON
@@ -542,8 +529,8 @@ public class DeviceModelImpl extends BaseModelImpl<Device>
     public Object clone() {
         DeviceImpl deviceImpl = new DeviceImpl();
 
-        deviceImpl.setDeviceId(getDeviceId());
-        deviceImpl.setUserId(getUserId());
+        deviceImpl.setIdDevice(getIdDevice());
+        deviceImpl.setIdUser(getIdUser());
         deviceImpl.setDeviceUUID(getDeviceUUID());
         deviceImpl.setDescription(getDescription());
         deviceImpl.setStatus(getStatus());
@@ -564,9 +551,9 @@ public class DeviceModelImpl extends BaseModelImpl<Device>
     public int compareTo(Device device) {
         int value = 0;
 
-        if (getUserId() < device.getUserId()) {
+        if (getIdUser() < device.getIdUser()) {
             value = -1;
-        } else if (getUserId() > device.getUserId()) {
+        } else if (getIdUser() > device.getIdUser()) {
             value = 1;
         } else {
             value = 0;
@@ -609,9 +596,9 @@ public class DeviceModelImpl extends BaseModelImpl<Device>
     public void resetOriginalValues() {
         DeviceModelImpl deviceModelImpl = this;
 
-        deviceModelImpl._originalUserId = deviceModelImpl._userId;
+        deviceModelImpl._originalIdUser = deviceModelImpl._idUser;
 
-        deviceModelImpl._setOriginalUserId = false;
+        deviceModelImpl._setOriginalIdUser = false;
 
         deviceModelImpl._originalDeviceUUID = deviceModelImpl._deviceUUID;
 
@@ -626,9 +613,9 @@ public class DeviceModelImpl extends BaseModelImpl<Device>
     public CacheModel<Device> toCacheModel() {
         DeviceCacheModel deviceCacheModel = new DeviceCacheModel();
 
-        deviceCacheModel.deviceId = getDeviceId();
+        deviceCacheModel.idDevice = getIdDevice();
 
-        deviceCacheModel.userId = getUserId();
+        deviceCacheModel.idUser = getIdUser();
 
         deviceCacheModel.deviceUUID = getDeviceUUID();
 
@@ -717,10 +704,10 @@ public class DeviceModelImpl extends BaseModelImpl<Device>
     public String toString() {
         StringBundler sb = new StringBundler(25);
 
-        sb.append("{deviceId=");
-        sb.append(getDeviceId());
-        sb.append(", userId=");
-        sb.append(getUserId());
+        sb.append("{idDevice=");
+        sb.append(getIdDevice());
+        sb.append(", idUser=");
+        sb.append(getIdUser());
         sb.append(", deviceUUID=");
         sb.append(getDeviceUUID());
         sb.append(", description=");
@@ -755,12 +742,12 @@ public class DeviceModelImpl extends BaseModelImpl<Device>
         sb.append("</model-name>");
 
         sb.append(
-            "<column><column-name>deviceId</column-name><column-value><![CDATA[");
-        sb.append(getDeviceId());
+            "<column><column-name>idDevice</column-name><column-value><![CDATA[");
+        sb.append(getIdDevice());
         sb.append("]]></column-value></column>");
         sb.append(
-            "<column><column-name>userId</column-name><column-value><![CDATA[");
-        sb.append(getUserId());
+            "<column><column-name>idUser</column-name><column-value><![CDATA[");
+        sb.append(getIdUser());
         sb.append("]]></column-value></column>");
         sb.append(
             "<column><column-name>deviceUUID</column-name><column-value><![CDATA[");

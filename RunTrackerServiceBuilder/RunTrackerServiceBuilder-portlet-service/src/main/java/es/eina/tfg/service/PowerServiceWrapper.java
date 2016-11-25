@@ -46,43 +46,25 @@ public class PowerServiceWrapper implements PowerService,
 
     @Override
     public es.eina.tfg.model.Power add(java.lang.Long raceId,
-        java.lang.Long userId, java.lang.Long deviceId,
-        java.lang.Long sensorId, java.util.Date time,
+        java.lang.Long deviceId, java.lang.Long sensorId, java.util.Date time,
         java.lang.String sensorMode, java.lang.Integer level)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingDeviceAndSensorRelationException,
-            es.eina.tfg.NonExistingRaceException,
-            es.eina.tfg.NonExistingUserException {
-        return _powerService.add(raceId, userId, deviceId, sensorId, time,
-            sensorMode, level);
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _powerService.add(raceId, deviceId, sensorId, time, sensorMode,
+            level);
     }
 
     @Override
-    public es.eina.tfg.model.Power update(java.lang.Long measurementId,
-        java.lang.Long raceId, java.lang.Long userId, java.lang.Long deviceId,
-        java.lang.Long sensorId, java.util.Date time,
-        java.lang.String sensorMode, java.lang.Integer level)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingDeviceAndSensorRelationException,
-            es.eina.tfg.NonExistingMeasurementException,
-            es.eina.tfg.NonExistingRaceException,
-            es.eina.tfg.NonExistingUserException {
-        return _powerService.update(measurementId, raceId, userId, deviceId,
-            sensorId, time, sensorMode, level);
-    }
-
-    @Override
-    public es.eina.tfg.model.Power delete(java.lang.Long measurementId)
+    public es.eina.tfg.model.Power getPower(long idMeasurement, long idRace)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {
-        return _powerService.delete(measurementId);
+        return _powerService.getPower(idMeasurement, idRace);
     }
 
     @Override
-    public es.eina.tfg.model.Power getPower(java.lang.Long measurementId)
-        throws com.liferay.portal.kernel.exception.PortalException,
-            com.liferay.portal.kernel.exception.SystemException {
-        return _powerService.getPower(measurementId);
+    public java.util.List<es.eina.tfg.model.Location> getByidRace(
+        java.lang.Long idRace)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _powerService.getByidRace(idRace);
     }
 
     /**

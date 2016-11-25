@@ -49,7 +49,7 @@ public class SensorModelImpl extends BaseModelImpl<Sensor>
      */
     public static final String TABLE_NAME = "GL_Sensor";
     public static final Object[][] TABLE_COLUMNS = {
-            { "sensorId", Types.BIGINT },
+            { "idSensor", Types.BIGINT },
             { "type_", Types.INTEGER },
             { "description", Types.VARCHAR },
             { "dataUnits", Types.VARCHAR },
@@ -59,7 +59,7 @@ public class SensorModelImpl extends BaseModelImpl<Sensor>
             { "dataUpperRange", Types.VARCHAR },
             { "dataPacketFormat", Types.VARCHAR }
         };
-    public static final String TABLE_SQL_CREATE = "create table GL_Sensor (sensorId LONG not null primary key,type_ INTEGER,description VARCHAR(75) null,dataUnits VARCHAR(75) null,dataType VARCHAR(75) null,dataUncertainity VARCHAR(75) null,dataLowerRange VARCHAR(75) null,dataUpperRange VARCHAR(75) null,dataPacketFormat VARCHAR(75) null)";
+    public static final String TABLE_SQL_CREATE = "create table GL_Sensor (idSensor LONG not null primary key,type_ INTEGER,description VARCHAR(75) null,dataUnits VARCHAR(75) null,dataType VARCHAR(75) null,dataUncertainity VARCHAR(75) null,dataLowerRange VARCHAR(75) null,dataUpperRange VARCHAR(75) null,dataPacketFormat VARCHAR(75) null)";
     public static final String TABLE_SQL_DROP = "drop table GL_Sensor";
     public static final String ORDER_BY_JPQL = " ORDER BY sensor.type ASC";
     public static final String ORDER_BY_SQL = " ORDER BY GL_Sensor.type_ ASC";
@@ -80,7 +80,7 @@ public class SensorModelImpl extends BaseModelImpl<Sensor>
                 "lock.expiration.time.es.eina.tfg.model.Sensor"));
     private static ClassLoader _classLoader = Sensor.class.getClassLoader();
     private static Class<?>[] _escapedModelInterfaces = new Class[] { Sensor.class };
-    private long _sensorId;
+    private long _idSensor;
     private int _type;
     private int _originalType;
     private boolean _setOriginalType;
@@ -110,7 +110,7 @@ public class SensorModelImpl extends BaseModelImpl<Sensor>
 
         Sensor model = new SensorImpl();
 
-        model.setSensorId(soapModel.getSensorId());
+        model.setIdSensor(soapModel.getIdSensor());
         model.setType(soapModel.getType());
         model.setDescription(soapModel.getDescription());
         model.setDataUnits(soapModel.getDataUnits());
@@ -145,17 +145,17 @@ public class SensorModelImpl extends BaseModelImpl<Sensor>
 
     @Override
     public long getPrimaryKey() {
-        return _sensorId;
+        return _idSensor;
     }
 
     @Override
     public void setPrimaryKey(long primaryKey) {
-        setSensorId(primaryKey);
+        setIdSensor(primaryKey);
     }
 
     @Override
     public Serializable getPrimaryKeyObj() {
-        return _sensorId;
+        return _idSensor;
     }
 
     @Override
@@ -177,7 +177,7 @@ public class SensorModelImpl extends BaseModelImpl<Sensor>
     public Map<String, Object> getModelAttributes() {
         Map<String, Object> attributes = new HashMap<String, Object>();
 
-        attributes.put("sensorId", getSensorId());
+        attributes.put("idSensor", getIdSensor());
         attributes.put("type", getType());
         attributes.put("description", getDescription());
         attributes.put("dataUnits", getDataUnits());
@@ -192,10 +192,10 @@ public class SensorModelImpl extends BaseModelImpl<Sensor>
 
     @Override
     public void setModelAttributes(Map<String, Object> attributes) {
-        Long sensorId = (Long) attributes.get("sensorId");
+        Long idSensor = (Long) attributes.get("idSensor");
 
-        if (sensorId != null) {
-            setSensorId(sensorId);
+        if (idSensor != null) {
+            setIdSensor(idSensor);
         }
 
         Integer type = (Integer) attributes.get("type");
@@ -249,13 +249,13 @@ public class SensorModelImpl extends BaseModelImpl<Sensor>
 
     @JSON
     @Override
-    public long getSensorId() {
-        return _sensorId;
+    public long getIdSensor() {
+        return _idSensor;
     }
 
     @Override
-    public void setSensorId(long sensorId) {
-        _sensorId = sensorId;
+    public void setIdSensor(long idSensor) {
+        _idSensor = idSensor;
     }
 
     @JSON
@@ -417,7 +417,7 @@ public class SensorModelImpl extends BaseModelImpl<Sensor>
     public Object clone() {
         SensorImpl sensorImpl = new SensorImpl();
 
-        sensorImpl.setSensorId(getSensorId());
+        sensorImpl.setIdSensor(getIdSensor());
         sensorImpl.setType(getType());
         sensorImpl.setDescription(getDescription());
         sensorImpl.setDataUnits(getDataUnits());
@@ -492,7 +492,7 @@ public class SensorModelImpl extends BaseModelImpl<Sensor>
     public CacheModel<Sensor> toCacheModel() {
         SensorCacheModel sensorCacheModel = new SensorCacheModel();
 
-        sensorCacheModel.sensorId = getSensorId();
+        sensorCacheModel.idSensor = getIdSensor();
 
         sensorCacheModel.type = getType();
 
@@ -559,8 +559,8 @@ public class SensorModelImpl extends BaseModelImpl<Sensor>
     public String toString() {
         StringBundler sb = new StringBundler(19);
 
-        sb.append("{sensorId=");
-        sb.append(getSensorId());
+        sb.append("{idSensor=");
+        sb.append(getIdSensor());
         sb.append(", type=");
         sb.append(getType());
         sb.append(", description=");
@@ -591,8 +591,8 @@ public class SensorModelImpl extends BaseModelImpl<Sensor>
         sb.append("</model-name>");
 
         sb.append(
-            "<column><column-name>sensorId</column-name><column-value><![CDATA[");
-        sb.append(getSensorId());
+            "<column><column-name>idSensor</column-name><column-value><![CDATA[");
+        sb.append(getIdSensor());
         sb.append("]]></column-value></column>");
         sb.append(
             "<column><column-name>type</column-name><column-value><![CDATA[");

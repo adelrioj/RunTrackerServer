@@ -43,25 +43,25 @@ public class SensorLocalServiceUtil {
     /**
     * Creates a new sensor with the primary key. Does not add the sensor to the database.
     *
-    * @param sensorId the primary key for the new sensor
+    * @param idSensor the primary key for the new sensor
     * @return the new sensor
     */
-    public static es.eina.tfg.model.Sensor createSensor(long sensorId) {
-        return getService().createSensor(sensorId);
+    public static es.eina.tfg.model.Sensor createSensor(long idSensor) {
+        return getService().createSensor(idSensor);
     }
 
     /**
     * Deletes the sensor with the primary key from the database. Also notifies the appropriate model listeners.
     *
-    * @param sensorId the primary key of the sensor
+    * @param idSensor the primary key of the sensor
     * @return the sensor that was removed
     * @throws PortalException if a sensor with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
-    public static es.eina.tfg.model.Sensor deleteSensor(long sensorId)
+    public static es.eina.tfg.model.Sensor deleteSensor(long idSensor)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {
-        return getService().deleteSensor(sensorId);
+        return getService().deleteSensor(idSensor);
     }
 
     /**
@@ -167,23 +167,23 @@ public class SensorLocalServiceUtil {
         return getService().dynamicQueryCount(dynamicQuery, projection);
     }
 
-    public static es.eina.tfg.model.Sensor fetchSensor(long sensorId)
+    public static es.eina.tfg.model.Sensor fetchSensor(long idSensor)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return getService().fetchSensor(sensorId);
+        return getService().fetchSensor(idSensor);
     }
 
     /**
     * Returns the sensor with the primary key.
     *
-    * @param sensorId the primary key of the sensor
+    * @param idSensor the primary key of the sensor
     * @return the sensor
     * @throws PortalException if a sensor with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
-    public static es.eina.tfg.model.Sensor getSensor(long sensorId)
+    public static es.eina.tfg.model.Sensor getSensor(long idSensor)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {
-        return getService().getSensor(sensorId);
+        return getService().getSensor(idSensor);
     }
 
     public static com.liferay.portal.model.PersistedModel getPersistedModel(
@@ -259,27 +259,9 @@ public class SensorLocalServiceUtil {
         return getService().invokeMethod(name, parameterTypes, arguments);
     }
 
-    public static es.eina.tfg.model.Sensor add(java.lang.Integer type,
-        java.lang.String description, java.lang.String dataUnits,
-        java.lang.String dataType, java.lang.String dataUncertainity,
-        java.lang.String dataLowerRange, java.lang.String dataUpperRange,
-        java.lang.String dataPacketFormat)
+    public static java.lang.Long generateNewIdSensor()
         throws com.liferay.portal.kernel.exception.SystemException {
-        return getService()
-                   .add(type, description, dataUnits, dataType,
-            dataUncertainity, dataLowerRange, dataUpperRange, dataPacketFormat);
-    }
-
-    public static es.eina.tfg.model.Sensor update(java.lang.Long sensorId,
-        java.lang.Integer type, java.lang.String description,
-        java.lang.String dataUnits, java.lang.String dataType,
-        java.lang.String dataUncertainity, java.lang.String dataLowerRange,
-        java.lang.String dataUpperRange, java.lang.String dataPacketFormat)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingSensorException {
-        return getService()
-                   .update(sensorId, type, description, dataUnits, dataType,
-            dataUncertainity, dataLowerRange, dataUpperRange, dataPacketFormat);
+        return getService().generateNewIdSensor();
     }
 
     public static void clearService() {

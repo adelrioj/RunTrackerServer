@@ -1,14 +1,17 @@
 package es.eina.tfg.service.impl;
 
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.model.User;
 import com.liferay.portal.service.UserLocalServiceUtil;
-import es.eina.tfg.NonExistingUserException;
-import es.eina.tfg.model.UserAdditionalData;
-import es.eina.tfg.model.UserSelectedRoutes;
-import es.eina.tfg.service.UserSelectedRoutesLocalServiceUtil;
+import es.eina.tfg.model.*;
+import es.eina.tfg.service.EventLocalServiceUtil;
+import es.eina.tfg.service.RouteLocalServiceUtil;
+import es.eina.tfg.service.UserAndEventLocalServiceUtil;
+import es.eina.tfg.service.UserAndRouteLocalServiceUtil;
 import es.eina.tfg.service.base.UserAdditionalDataLocalServiceBaseImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,45 +31,55 @@ import java.util.List;
  * @see UserAdditionalDataLocalServiceBaseImpl
  * @see es.eina.tfg.service.UserAdditionalDataLocalServiceUtil
  */
-public class UserAdditionalDataLocalServiceImpl extends UserAdditionalDataLocalServiceBaseImpl {
+public class UserAdditionalDataLocalServiceImpl
+    extends UserAdditionalDataLocalServiceBaseImpl {
 
-    public UserAdditionalData add(Long userId, Integer weight, Integer height, String registerType)
-            throws SystemException, NonExistingUserException {
-
-        User user = UserLocalServiceUtil.fetchUser(userId);
-        if (user == null){
-            throw new NonExistingUserException("The user: " + userId +" does not exists on the database");
-        }
-
-        UserAdditionalData userAdditionalData = createUserAdditionalData(userId);
-        userAdditionalData.setWeight(weight);
-        userAdditionalData.setHeight(height);
-        userAdditionalData.setRegisterType(registerType);
-        userAdditionalData.setSmsCounter(0);
-
-        return updateUserAdditionalData(userAdditionalData);
+    @Override
+    public UserAdditionalData addUserAdditionalData(UserAdditionalData userAdditionalData)
+            throws SystemException {
+        checkMadatoryAttributes(userAdditionalData);
+        userAdditionalData.setSmsCount(0);
+        return super.addUserAdditionalData(userAdditionalData);
     }
 
-    public UserAdditionalData update(Long userId, Integer weight, Integer height, String registerType, Long smsCounter)
-            throws SystemException, NonExistingUserException {
-        User user = UserLocalServiceUtil.fetchUser(userId);
-        if (user == null){
-            throw new NonExistingUserException("The user: " + userId +" does not exists on the database");
-        }
-        UserAdditionalData userAdditionalData = fetchUserAdditionalData(userId);
-        if (userAdditionalData == null){
-            throw new NonExistingUserException("The userAdditionalData: " + userId +" does not exists on the database");
-        }
-
-        userAdditionalData.setWeight(weight);
-        userAdditionalData.setHeight(height);
-        userAdditionalData.setRegisterType(registerType);
-        userAdditionalData.setSmsCounter(smsCounter);
-
-        return updateUserAdditionalData(userAdditionalData);
+    @Override
+    public UserAdditionalData updateUserAdditionalData(UserAdditionalData userAdditionalData)
+            throws SystemException {
+        checkMadatoryAttributes(userAdditionalData);
+        return super.updateUserAdditionalData(userAdditionalData);
     }
 
-    public List<UserSelectedRoutes> getUserSelectedRoutes(Long userId) throws SystemException {
-        return UserSelectedRoutesLocalServiceUtil.findByUser(userId);
+    private void checkMadatoryAttributes(UserAdditionalData userAdditionalData)
+            throws SystemException {
+        User user = UserLocalServiceUtil.fetchUser(userAdditionalData.getIdUser());
+        if (user == null){
+            throw new SystemException("The user: "
+                    + userAdditionalData.getIdUser() +" does not exists on the database");
+        }
+    }
+
+    public List<UserAndRoute> getUserAndRoute(Long userId)
+            throws SystemException {
+        return UserAndRouteLocalServiceUtil.getByidUser(userId);
+    }
+
+    public List<Route> getAssociatedRoutes(Long idUser)
+            throws SystemException, PortalException {
+        List<UserAndRoute> userAndRoutes = UserAndRouteLocalServiceUtil.getByidUser(idUser);
+        List<Route> routes = new ArrayList<Route>();
+        for (UserAndRoute userAndRoute : userAndRoutes) {
+            routes.add(RouteLocalServiceUtil.getRoute(userAndRoute.getIdRoute()));
+        }
+        return routes;
+    }
+
+    public List<Event> getAssociatedEvents(Long idUser)
+            throws SystemException, PortalException {
+        List<UserAndEvent> userAndEvents = UserAndEventLocalServiceUtil.getByidUser(idUser);
+        List<Event> events = new ArrayList<Event>();
+        for (UserAndEvent event : userAndEvents) {
+            events.add(EventLocalServiceUtil.getEvent(event.getIdEvent()));
+        }
+        return events;
     }
 }

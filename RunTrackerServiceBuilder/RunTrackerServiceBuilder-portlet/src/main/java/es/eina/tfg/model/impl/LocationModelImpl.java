@@ -1,7 +1,6 @@
 package es.eina.tfg.model.impl;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
-import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.json.JSON;
 import com.liferay.portal.kernel.util.DateUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
@@ -10,15 +9,11 @@ import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.model.CacheModel;
 import com.liferay.portal.model.impl.BaseModelImpl;
-import com.liferay.portal.service.ServiceContext;
-import com.liferay.portal.util.PortalUtil;
-
-import com.liferay.portlet.expando.model.ExpandoBridge;
-import com.liferay.portlet.expando.util.ExpandoBridgeFactoryUtil;
 
 import es.eina.tfg.model.Location;
 import es.eina.tfg.model.LocationModel;
 import es.eina.tfg.model.LocationSoap;
+import es.eina.tfg.service.persistence.LocationPK;
 
 import java.io.Serializable;
 
@@ -53,11 +48,10 @@ public class LocationModelImpl extends BaseModelImpl<Location>
      */
     public static final String TABLE_NAME = "GL_Location";
     public static final Object[][] TABLE_COLUMNS = {
-            { "measurementId", Types.BIGINT },
-            { "raceId", Types.BIGINT },
-            { "userId", Types.BIGINT },
-            { "deviceId", Types.BIGINT },
-            { "sensorId", Types.BIGINT },
+            { "idRace", Types.BIGINT },
+            { "idMeasurement", Types.BIGINT },
+            { "idDevice", Types.BIGINT },
+            { "idSensor", Types.BIGINT },
             { "time_", Types.TIMESTAMP },
             { "sensorMode", Types.VARCHAR },
             { "sysRef", Types.INTEGER },
@@ -67,7 +61,7 @@ public class LocationModelImpl extends BaseModelImpl<Location>
             { "distance", Types.DOUBLE },
             { "altitude", Types.DOUBLE }
         };
-    public static final String TABLE_SQL_CREATE = "create table GL_Location (measurementId LONG not null primary key,raceId LONG,userId LONG,deviceId LONG,sensorId LONG,time_ DATE null,sensorMode VARCHAR(75) null,sysRef INTEGER,latitude DOUBLE,longitude DOUBLE,speed DOUBLE,distance DOUBLE,altitude DOUBLE)";
+    public static final String TABLE_SQL_CREATE = "create table GL_Location (idRace LONG not null,idMeasurement LONG not null,idDevice LONG,idSensor LONG,time_ DATE null,sensorMode VARCHAR(75) null,sysRef INTEGER,latitude DOUBLE,longitude DOUBLE,speed DOUBLE,distance DOUBLE,altitude DOUBLE,primary key (idRace, idMeasurement))";
     public static final String TABLE_SQL_DROP = "drop table GL_Location";
     public static final String ORDER_BY_JPQL = " ORDER BY location.time ASC";
     public static final String ORDER_BY_SQL = " ORDER BY GL_Location.time_ ASC";
@@ -83,7 +77,7 @@ public class LocationModelImpl extends BaseModelImpl<Location>
     public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
                 "value.object.column.bitmask.enabled.es.eina.tfg.model.Location"),
             true);
-    public static long RACEID_COLUMN_BITMASK = 1L;
+    public static long IDRACE_COLUMN_BITMASK = 1L;
     public static long TIME_COLUMN_BITMASK = 2L;
     public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
                 "lock.expiration.time.es.eina.tfg.model.Location"));
@@ -91,14 +85,12 @@ public class LocationModelImpl extends BaseModelImpl<Location>
     private static Class<?>[] _escapedModelInterfaces = new Class[] {
             Location.class
         };
-    private long _measurementId;
-    private Long _raceId;
-    private Long _originalRaceId;
-    private boolean _setOriginalRaceId;
-    private long _userId;
-    private String _userUuid;
-    private long _deviceId;
-    private long _sensorId;
+    private Long _idRace;
+    private Long _originalIdRace;
+    private boolean _setOriginalIdRace;
+    private long _idMeasurement;
+    private long _idDevice;
+    private long _idSensor;
     private Date _time;
     private String _sensorMode;
     private int _sysRef;
@@ -126,11 +118,10 @@ public class LocationModelImpl extends BaseModelImpl<Location>
 
         Location model = new LocationImpl();
 
-        model.setMeasurementId(soapModel.getMeasurementId());
-        model.setRaceId(soapModel.getRaceId());
-        model.setUserId(soapModel.getUserId());
-        model.setDeviceId(soapModel.getDeviceId());
-        model.setSensorId(soapModel.getSensorId());
+        model.setIdRace(soapModel.getIdRace());
+        model.setIdMeasurement(soapModel.getIdMeasurement());
+        model.setIdDevice(soapModel.getIdDevice());
+        model.setIdSensor(soapModel.getIdSensor());
         model.setTime(soapModel.getTime());
         model.setSensorMode(soapModel.getSensorMode());
         model.setSysRef(soapModel.getSysRef());
@@ -164,23 +155,24 @@ public class LocationModelImpl extends BaseModelImpl<Location>
     }
 
     @Override
-    public long getPrimaryKey() {
-        return _measurementId;
+    public LocationPK getPrimaryKey() {
+        return new LocationPK(_idRace, _idMeasurement);
     }
 
     @Override
-    public void setPrimaryKey(long primaryKey) {
-        setMeasurementId(primaryKey);
+    public void setPrimaryKey(LocationPK primaryKey) {
+        setIdRace(primaryKey.idRace);
+        setIdMeasurement(primaryKey.idMeasurement);
     }
 
     @Override
     public Serializable getPrimaryKeyObj() {
-        return _measurementId;
+        return new LocationPK(_idRace, _idMeasurement);
     }
 
     @Override
     public void setPrimaryKeyObj(Serializable primaryKeyObj) {
-        setPrimaryKey(((Long) primaryKeyObj).longValue());
+        setPrimaryKey((LocationPK) primaryKeyObj);
     }
 
     @Override
@@ -197,11 +189,10 @@ public class LocationModelImpl extends BaseModelImpl<Location>
     public Map<String, Object> getModelAttributes() {
         Map<String, Object> attributes = new HashMap<String, Object>();
 
-        attributes.put("measurementId", getMeasurementId());
-        attributes.put("raceId", getRaceId());
-        attributes.put("userId", getUserId());
-        attributes.put("deviceId", getDeviceId());
-        attributes.put("sensorId", getSensorId());
+        attributes.put("idRace", getIdRace());
+        attributes.put("idMeasurement", getIdMeasurement());
+        attributes.put("idDevice", getIdDevice());
+        attributes.put("idSensor", getIdSensor());
         attributes.put("time", getTime());
         attributes.put("sensorMode", getSensorMode());
         attributes.put("sysRef", getSysRef());
@@ -216,34 +207,28 @@ public class LocationModelImpl extends BaseModelImpl<Location>
 
     @Override
     public void setModelAttributes(Map<String, Object> attributes) {
-        Long measurementId = (Long) attributes.get("measurementId");
+        Long idRace = (Long) attributes.get("idRace");
 
-        if (measurementId != null) {
-            setMeasurementId(measurementId);
+        if (idRace != null) {
+            setIdRace(idRace);
         }
 
-        Long raceId = (Long) attributes.get("raceId");
+        Long idMeasurement = (Long) attributes.get("idMeasurement");
 
-        if (raceId != null) {
-            setRaceId(raceId);
+        if (idMeasurement != null) {
+            setIdMeasurement(idMeasurement);
         }
 
-        Long userId = (Long) attributes.get("userId");
+        Long idDevice = (Long) attributes.get("idDevice");
 
-        if (userId != null) {
-            setUserId(userId);
+        if (idDevice != null) {
+            setIdDevice(idDevice);
         }
 
-        Long deviceId = (Long) attributes.get("deviceId");
+        Long idSensor = (Long) attributes.get("idSensor");
 
-        if (deviceId != null) {
-            setDeviceId(deviceId);
-        }
-
-        Long sensorId = (Long) attributes.get("sensorId");
-
-        if (sensorId != null) {
-            setSensorId(sensorId);
+        if (idSensor != null) {
+            setIdSensor(idSensor);
         }
 
         Date time = (Date) attributes.get("time");
@@ -297,79 +282,58 @@ public class LocationModelImpl extends BaseModelImpl<Location>
 
     @JSON
     @Override
-    public long getMeasurementId() {
-        return _measurementId;
+    public Long getIdRace() {
+        return _idRace;
     }
 
     @Override
-    public void setMeasurementId(long measurementId) {
-        _measurementId = measurementId;
-    }
+    public void setIdRace(Long idRace) {
+        _columnBitmask |= IDRACE_COLUMN_BITMASK;
 
-    @JSON
-    @Override
-    public Long getRaceId() {
-        return _raceId;
-    }
+        if (!_setOriginalIdRace) {
+            _setOriginalIdRace = true;
 
-    @Override
-    public void setRaceId(Long raceId) {
-        _columnBitmask |= RACEID_COLUMN_BITMASK;
-
-        if (!_setOriginalRaceId) {
-            _setOriginalRaceId = true;
-
-            _originalRaceId = _raceId;
+            _originalIdRace = _idRace;
         }
 
-        _raceId = raceId;
+        _idRace = idRace;
     }
 
-    public Long getOriginalRaceId() {
-        return _originalRaceId;
-    }
-
-    @JSON
-    @Override
-    public long getUserId() {
-        return _userId;
-    }
-
-    @Override
-    public void setUserId(long userId) {
-        _userId = userId;
-    }
-
-    @Override
-    public String getUserUuid() throws SystemException {
-        return PortalUtil.getUserValue(getUserId(), "uuid", _userUuid);
-    }
-
-    @Override
-    public void setUserUuid(String userUuid) {
-        _userUuid = userUuid;
+    public Long getOriginalIdRace() {
+        return _originalIdRace;
     }
 
     @JSON
     @Override
-    public long getDeviceId() {
-        return _deviceId;
+    public long getIdMeasurement() {
+        return _idMeasurement;
     }
 
     @Override
-    public void setDeviceId(long deviceId) {
-        _deviceId = deviceId;
+    public void setIdMeasurement(long idMeasurement) {
+        _idMeasurement = idMeasurement;
     }
 
     @JSON
     @Override
-    public long getSensorId() {
-        return _sensorId;
+    public long getIdDevice() {
+        return _idDevice;
     }
 
     @Override
-    public void setSensorId(long sensorId) {
-        _sensorId = sensorId;
+    public void setIdDevice(long idDevice) {
+        _idDevice = idDevice;
+    }
+
+    @JSON
+    @Override
+    public long getIdSensor() {
+        return _idSensor;
+    }
+
+    @Override
+    public void setIdSensor(long idSensor) {
+        _idSensor = idSensor;
     }
 
     @JSON
@@ -471,19 +435,6 @@ public class LocationModelImpl extends BaseModelImpl<Location>
     }
 
     @Override
-    public ExpandoBridge getExpandoBridge() {
-        return ExpandoBridgeFactoryUtil.getExpandoBridge(0,
-            Location.class.getName(), getPrimaryKey());
-    }
-
-    @Override
-    public void setExpandoBridgeAttributes(ServiceContext serviceContext) {
-        ExpandoBridge expandoBridge = getExpandoBridge();
-
-        expandoBridge.setAttributes(serviceContext);
-    }
-
-    @Override
     public Location toEscapedModel() {
         if (_escapedModel == null) {
             _escapedModel = (Location) ProxyUtil.newProxyInstance(_classLoader,
@@ -497,11 +448,10 @@ public class LocationModelImpl extends BaseModelImpl<Location>
     public Object clone() {
         LocationImpl locationImpl = new LocationImpl();
 
-        locationImpl.setMeasurementId(getMeasurementId());
-        locationImpl.setRaceId(getRaceId());
-        locationImpl.setUserId(getUserId());
-        locationImpl.setDeviceId(getDeviceId());
-        locationImpl.setSensorId(getSensorId());
+        locationImpl.setIdRace(getIdRace());
+        locationImpl.setIdMeasurement(getIdMeasurement());
+        locationImpl.setIdDevice(getIdDevice());
+        locationImpl.setIdSensor(getIdSensor());
         locationImpl.setTime(getTime());
         locationImpl.setSensorMode(getSensorMode());
         locationImpl.setSysRef(getSysRef());
@@ -541,9 +491,9 @@ public class LocationModelImpl extends BaseModelImpl<Location>
 
         Location location = (Location) obj;
 
-        long primaryKey = location.getPrimaryKey();
+        LocationPK primaryKey = location.getPrimaryKey();
 
-        if (getPrimaryKey() == primaryKey) {
+        if (getPrimaryKey().equals(primaryKey)) {
             return true;
         } else {
             return false;
@@ -552,16 +502,16 @@ public class LocationModelImpl extends BaseModelImpl<Location>
 
     @Override
     public int hashCode() {
-        return (int) getPrimaryKey();
+        return getPrimaryKey().hashCode();
     }
 
     @Override
     public void resetOriginalValues() {
         LocationModelImpl locationModelImpl = this;
 
-        locationModelImpl._originalRaceId = locationModelImpl._raceId;
+        locationModelImpl._originalIdRace = locationModelImpl._idRace;
 
-        locationModelImpl._setOriginalRaceId = false;
+        locationModelImpl._setOriginalIdRace = false;
 
         locationModelImpl._columnBitmask = 0;
     }
@@ -570,15 +520,13 @@ public class LocationModelImpl extends BaseModelImpl<Location>
     public CacheModel<Location> toCacheModel() {
         LocationCacheModel locationCacheModel = new LocationCacheModel();
 
-        locationCacheModel.measurementId = getMeasurementId();
+        locationCacheModel.idRace = getIdRace();
 
-        locationCacheModel.raceId = getRaceId();
+        locationCacheModel.idMeasurement = getIdMeasurement();
 
-        locationCacheModel.userId = getUserId();
+        locationCacheModel.idDevice = getIdDevice();
 
-        locationCacheModel.deviceId = getDeviceId();
-
-        locationCacheModel.sensorId = getSensorId();
+        locationCacheModel.idSensor = getIdSensor();
 
         Date time = getTime();
 
@@ -613,18 +561,16 @@ public class LocationModelImpl extends BaseModelImpl<Location>
 
     @Override
     public String toString() {
-        StringBundler sb = new StringBundler(27);
+        StringBundler sb = new StringBundler(25);
 
-        sb.append("{measurementId=");
-        sb.append(getMeasurementId());
-        sb.append(", raceId=");
-        sb.append(getRaceId());
-        sb.append(", userId=");
-        sb.append(getUserId());
-        sb.append(", deviceId=");
-        sb.append(getDeviceId());
-        sb.append(", sensorId=");
-        sb.append(getSensorId());
+        sb.append("{idRace=");
+        sb.append(getIdRace());
+        sb.append(", idMeasurement=");
+        sb.append(getIdMeasurement());
+        sb.append(", idDevice=");
+        sb.append(getIdDevice());
+        sb.append(", idSensor=");
+        sb.append(getIdSensor());
         sb.append(", time=");
         sb.append(getTime());
         sb.append(", sensorMode=");
@@ -648,31 +594,27 @@ public class LocationModelImpl extends BaseModelImpl<Location>
 
     @Override
     public String toXmlString() {
-        StringBundler sb = new StringBundler(43);
+        StringBundler sb = new StringBundler(40);
 
         sb.append("<model><model-name>");
         sb.append("es.eina.tfg.model.Location");
         sb.append("</model-name>");
 
         sb.append(
-            "<column><column-name>measurementId</column-name><column-value><![CDATA[");
-        sb.append(getMeasurementId());
+            "<column><column-name>idRace</column-name><column-value><![CDATA[");
+        sb.append(getIdRace());
         sb.append("]]></column-value></column>");
         sb.append(
-            "<column><column-name>raceId</column-name><column-value><![CDATA[");
-        sb.append(getRaceId());
+            "<column><column-name>idMeasurement</column-name><column-value><![CDATA[");
+        sb.append(getIdMeasurement());
         sb.append("]]></column-value></column>");
         sb.append(
-            "<column><column-name>userId</column-name><column-value><![CDATA[");
-        sb.append(getUserId());
+            "<column><column-name>idDevice</column-name><column-value><![CDATA[");
+        sb.append(getIdDevice());
         sb.append("]]></column-value></column>");
         sb.append(
-            "<column><column-name>deviceId</column-name><column-value><![CDATA[");
-        sb.append(getDeviceId());
-        sb.append("]]></column-value></column>");
-        sb.append(
-            "<column><column-name>sensorId</column-name><column-value><![CDATA[");
-        sb.append(getSensorId());
+            "<column><column-name>idSensor</column-name><column-value><![CDATA[");
+        sb.append(getIdSensor());
         sb.append("]]></column-value></column>");
         sb.append(
             "<column><column-name>time</column-name><column-value><![CDATA[");

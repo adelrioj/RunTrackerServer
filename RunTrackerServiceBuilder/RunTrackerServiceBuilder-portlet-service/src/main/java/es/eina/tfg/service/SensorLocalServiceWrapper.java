@@ -33,27 +33,27 @@ public class SensorLocalServiceWrapper implements SensorLocalService,
     /**
     * Creates a new sensor with the primary key. Does not add the sensor to the database.
     *
-    * @param sensorId the primary key for the new sensor
+    * @param idSensor the primary key for the new sensor
     * @return the new sensor
     */
     @Override
-    public es.eina.tfg.model.Sensor createSensor(long sensorId) {
-        return _sensorLocalService.createSensor(sensorId);
+    public es.eina.tfg.model.Sensor createSensor(long idSensor) {
+        return _sensorLocalService.createSensor(idSensor);
     }
 
     /**
     * Deletes the sensor with the primary key from the database. Also notifies the appropriate model listeners.
     *
-    * @param sensorId the primary key of the sensor
+    * @param idSensor the primary key of the sensor
     * @return the sensor that was removed
     * @throws PortalException if a sensor with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
     @Override
-    public es.eina.tfg.model.Sensor deleteSensor(long sensorId)
+    public es.eina.tfg.model.Sensor deleteSensor(long idSensor)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {
-        return _sensorLocalService.deleteSensor(sensorId);
+        return _sensorLocalService.deleteSensor(idSensor);
     }
 
     /**
@@ -167,24 +167,24 @@ public class SensorLocalServiceWrapper implements SensorLocalService,
     }
 
     @Override
-    public es.eina.tfg.model.Sensor fetchSensor(long sensorId)
+    public es.eina.tfg.model.Sensor fetchSensor(long idSensor)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return _sensorLocalService.fetchSensor(sensorId);
+        return _sensorLocalService.fetchSensor(idSensor);
     }
 
     /**
     * Returns the sensor with the primary key.
     *
-    * @param sensorId the primary key of the sensor
+    * @param idSensor the primary key of the sensor
     * @return the sensor
     * @throws PortalException if a sensor with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
     @Override
-    public es.eina.tfg.model.Sensor getSensor(long sensorId)
+    public es.eina.tfg.model.Sensor getSensor(long idSensor)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {
-        return _sensorLocalService.getSensor(sensorId);
+        return _sensorLocalService.getSensor(idSensor);
     }
 
     @Override
@@ -267,27 +267,9 @@ public class SensorLocalServiceWrapper implements SensorLocalService,
     }
 
     @Override
-    public es.eina.tfg.model.Sensor add(java.lang.Integer type,
-        java.lang.String description, java.lang.String dataUnits,
-        java.lang.String dataType, java.lang.String dataUncertainity,
-        java.lang.String dataLowerRange, java.lang.String dataUpperRange,
-        java.lang.String dataPacketFormat)
+    public java.lang.Long generateNewIdSensor()
         throws com.liferay.portal.kernel.exception.SystemException {
-        return _sensorLocalService.add(type, description, dataUnits, dataType,
-            dataUncertainity, dataLowerRange, dataUpperRange, dataPacketFormat);
-    }
-
-    @Override
-    public es.eina.tfg.model.Sensor update(java.lang.Long sensorId,
-        java.lang.Integer type, java.lang.String description,
-        java.lang.String dataUnits, java.lang.String dataType,
-        java.lang.String dataUncertainity, java.lang.String dataLowerRange,
-        java.lang.String dataUpperRange, java.lang.String dataPacketFormat)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingSensorException {
-        return _sensorLocalService.update(sensorId, type, description,
-            dataUnits, dataType, dataUncertainity, dataLowerRange,
-            dataUpperRange, dataPacketFormat);
+        return _sensorLocalService.generateNewIdSensor();
     }
 
     /**

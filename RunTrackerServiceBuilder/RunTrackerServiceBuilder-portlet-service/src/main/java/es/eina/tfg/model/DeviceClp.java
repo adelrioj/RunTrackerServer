@@ -6,7 +6,6 @@ import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.impl.BaseModelImpl;
-import com.liferay.portal.util.PortalUtil;
 
 import es.eina.tfg.service.ClpSerializer;
 import es.eina.tfg.service.DeviceLocalServiceUtil;
@@ -20,9 +19,8 @@ import java.util.Map;
 
 
 public class DeviceClp extends BaseModelImpl<Device> implements Device {
-    private long _deviceId;
-    private long _userId;
-    private String _userUuid;
+    private long _idDevice;
+    private long _idUser;
     private String _deviceUUID;
     private String _description;
     private String _status;
@@ -51,17 +49,17 @@ public class DeviceClp extends BaseModelImpl<Device> implements Device {
 
     @Override
     public long getPrimaryKey() {
-        return _deviceId;
+        return _idDevice;
     }
 
     @Override
     public void setPrimaryKey(long primaryKey) {
-        setDeviceId(primaryKey);
+        setIdDevice(primaryKey);
     }
 
     @Override
     public Serializable getPrimaryKeyObj() {
-        return _deviceId;
+        return _idDevice;
     }
 
     @Override
@@ -73,8 +71,8 @@ public class DeviceClp extends BaseModelImpl<Device> implements Device {
     public Map<String, Object> getModelAttributes() {
         Map<String, Object> attributes = new HashMap<String, Object>();
 
-        attributes.put("deviceId", getDeviceId());
-        attributes.put("userId", getUserId());
+        attributes.put("idDevice", getIdDevice());
+        attributes.put("idUser", getIdUser());
         attributes.put("deviceUUID", getDeviceUUID());
         attributes.put("description", getDescription());
         attributes.put("status", getStatus());
@@ -91,16 +89,16 @@ public class DeviceClp extends BaseModelImpl<Device> implements Device {
 
     @Override
     public void setModelAttributes(Map<String, Object> attributes) {
-        Long deviceId = (Long) attributes.get("deviceId");
+        Long idDevice = (Long) attributes.get("idDevice");
 
-        if (deviceId != null) {
-            setDeviceId(deviceId);
+        if (idDevice != null) {
+            setIdDevice(idDevice);
         }
 
-        Long userId = (Long) attributes.get("userId");
+        Long idUser = (Long) attributes.get("idUser");
 
-        if (userId != null) {
-            setUserId(userId);
+        if (idUser != null) {
+            setIdUser(idUser);
         }
 
         String deviceUUID = (String) attributes.get("deviceUUID");
@@ -166,21 +164,21 @@ public class DeviceClp extends BaseModelImpl<Device> implements Device {
     }
 
     @Override
-    public long getDeviceId() {
-        return _deviceId;
+    public long getIdDevice() {
+        return _idDevice;
     }
 
     @Override
-    public void setDeviceId(long deviceId) {
-        _deviceId = deviceId;
+    public void setIdDevice(long idDevice) {
+        _idDevice = idDevice;
 
         if (_deviceRemoteModel != null) {
             try {
                 Class<?> clazz = _deviceRemoteModel.getClass();
 
-                Method method = clazz.getMethod("setDeviceId", long.class);
+                Method method = clazz.getMethod("setIdDevice", long.class);
 
-                method.invoke(_deviceRemoteModel, deviceId);
+                method.invoke(_deviceRemoteModel, idDevice);
             } catch (Exception e) {
                 throw new UnsupportedOperationException(e);
             }
@@ -188,35 +186,25 @@ public class DeviceClp extends BaseModelImpl<Device> implements Device {
     }
 
     @Override
-    public long getUserId() {
-        return _userId;
+    public long getIdUser() {
+        return _idUser;
     }
 
     @Override
-    public void setUserId(long userId) {
-        _userId = userId;
+    public void setIdUser(long idUser) {
+        _idUser = idUser;
 
         if (_deviceRemoteModel != null) {
             try {
                 Class<?> clazz = _deviceRemoteModel.getClass();
 
-                Method method = clazz.getMethod("setUserId", long.class);
+                Method method = clazz.getMethod("setIdUser", long.class);
 
-                method.invoke(_deviceRemoteModel, userId);
+                method.invoke(_deviceRemoteModel, idUser);
             } catch (Exception e) {
                 throw new UnsupportedOperationException(e);
             }
         }
-    }
-
-    @Override
-    public String getUserUuid() throws SystemException {
-        return PortalUtil.getUserValue(getUserId(), "uuid", _userUuid);
-    }
-
-    @Override
-    public void setUserUuid(String userUuid) {
-        _userUuid = userUuid;
     }
 
     @Override
@@ -509,8 +497,8 @@ public class DeviceClp extends BaseModelImpl<Device> implements Device {
     public Object clone() {
         DeviceClp clone = new DeviceClp();
 
-        clone.setDeviceId(getDeviceId());
-        clone.setUserId(getUserId());
+        clone.setIdDevice(getIdDevice());
+        clone.setIdUser(getIdUser());
         clone.setDeviceUUID(getDeviceUUID());
         clone.setDescription(getDescription());
         clone.setStatus(getStatus());
@@ -529,9 +517,9 @@ public class DeviceClp extends BaseModelImpl<Device> implements Device {
     public int compareTo(Device device) {
         int value = 0;
 
-        if (getUserId() < device.getUserId()) {
+        if (getIdUser() < device.getIdUser()) {
             value = -1;
-        } else if (getUserId() > device.getUserId()) {
+        } else if (getIdUser() > device.getIdUser()) {
             value = 1;
         } else {
             value = 0;
@@ -578,10 +566,10 @@ public class DeviceClp extends BaseModelImpl<Device> implements Device {
     public String toString() {
         StringBundler sb = new StringBundler(25);
 
-        sb.append("{deviceId=");
-        sb.append(getDeviceId());
-        sb.append(", userId=");
-        sb.append(getUserId());
+        sb.append("{idDevice=");
+        sb.append(getIdDevice());
+        sb.append(", idUser=");
+        sb.append(getIdUser());
         sb.append(", deviceUUID=");
         sb.append(getDeviceUUID());
         sb.append(", description=");
@@ -616,12 +604,12 @@ public class DeviceClp extends BaseModelImpl<Device> implements Device {
         sb.append("</model-name>");
 
         sb.append(
-            "<column><column-name>deviceId</column-name><column-value><![CDATA[");
-        sb.append(getDeviceId());
+            "<column><column-name>idDevice</column-name><column-value><![CDATA[");
+        sb.append(getIdDevice());
         sb.append("]]></column-value></column>");
         sb.append(
-            "<column><column-name>userId</column-name><column-value><![CDATA[");
-        sb.append(getUserId());
+            "<column><column-name>idUser</column-name><column-value><![CDATA[");
+        sb.append(getIdUser());
         sb.append("]]></column-value></column>");
         sb.append(
             "<column><column-name>deviceUUID</column-name><column-value><![CDATA[");

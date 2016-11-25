@@ -48,21 +48,23 @@ public interface LocationLocalService extends BaseLocalService,
     /**
     * Creates a new location with the primary key. Does not add the location to the database.
     *
-    * @param measurementId the primary key for the new location
+    * @param locationPK the primary key for the new location
     * @return the new location
     */
-    public es.eina.tfg.model.Location createLocation(long measurementId);
+    public es.eina.tfg.model.Location createLocation(
+        es.eina.tfg.service.persistence.LocationPK locationPK);
 
     /**
     * Deletes the location with the primary key from the database. Also notifies the appropriate model listeners.
     *
-    * @param measurementId the primary key of the location
+    * @param locationPK the primary key of the location
     * @return the location that was removed
     * @throws PortalException if a location with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
     @com.liferay.portal.kernel.search.Indexable(type = IndexableType.DELETE)
-    public es.eina.tfg.model.Location deleteLocation(long measurementId)
+    public es.eina.tfg.model.Location deleteLocation(
+        es.eina.tfg.service.persistence.LocationPK locationPK)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException;
 
@@ -156,19 +158,21 @@ public interface LocationLocalService extends BaseLocalService,
         throws com.liferay.portal.kernel.exception.SystemException;
 
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public es.eina.tfg.model.Location fetchLocation(long measurementId)
+    public es.eina.tfg.model.Location fetchLocation(
+        es.eina.tfg.service.persistence.LocationPK locationPK)
         throws com.liferay.portal.kernel.exception.SystemException;
 
     /**
     * Returns the location with the primary key.
     *
-    * @param measurementId the primary key of the location
+    * @param locationPK the primary key of the location
     * @return the location
     * @throws PortalException if a location with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public es.eina.tfg.model.Location getLocation(long measurementId)
+    public es.eina.tfg.model.Location getLocation(
+        es.eina.tfg.service.persistence.LocationPK locationPK)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException;
 
@@ -236,25 +240,11 @@ public interface LocationLocalService extends BaseLocalService,
         java.lang.String[] parameterTypes, java.lang.Object[] arguments)
         throws java.lang.Throwable;
 
-    public es.eina.tfg.model.Location add(java.lang.Long raceId,
-        java.lang.Long userId, java.lang.Long deviceId,
-        java.lang.Long sensorId, java.util.Date time,
-        java.lang.String sensorMode, int sysRef, double latitude,
-        double longitude, double speed, double distance, double altitude)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingDeviceAndSensorRelationException,
-            es.eina.tfg.NonExistingRaceException,
-            es.eina.tfg.NonExistingUserException;
+    public es.eina.tfg.service.persistence.LocationPK generateNewIdLocation(
+        long idRace) throws com.liferay.portal.kernel.exception.SystemException;
 
-    public es.eina.tfg.model.Location update(java.lang.Long measurementId,
-        java.lang.Long raceId, java.lang.Long userId, java.lang.Long deviceId,
-        java.lang.Long sensorId, java.util.Date time,
-        java.lang.String sensorMode, int sysRef, double latitude,
-        double longitude, double speed, double distance, double altitude)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingMeasurementException;
-
-    public java.util.List<es.eina.tfg.model.Location> findByRaceId(
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public java.util.List<es.eina.tfg.model.Location> getByRaceId(
         java.lang.Long raceId)
         throws com.liferay.portal.kernel.exception.SystemException;
 }

@@ -53,30 +53,17 @@ public interface PowerService extends BaseService, InvokableService {
         throws java.lang.Throwable;
 
     public es.eina.tfg.model.Power add(java.lang.Long raceId,
-        java.lang.Long userId, java.lang.Long deviceId,
-        java.lang.Long sensorId, java.util.Date time,
+        java.lang.Long deviceId, java.lang.Long sensorId, java.util.Date time,
         java.lang.String sensorMode, java.lang.Integer level)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingDeviceAndSensorRelationException,
-            es.eina.tfg.NonExistingRaceException,
-            es.eina.tfg.NonExistingUserException;
+        throws com.liferay.portal.kernel.exception.SystemException;
 
-    public es.eina.tfg.model.Power update(java.lang.Long measurementId,
-        java.lang.Long raceId, java.lang.Long userId, java.lang.Long deviceId,
-        java.lang.Long sensorId, java.util.Date time,
-        java.lang.String sensorMode, java.lang.Integer level)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingDeviceAndSensorRelationException,
-            es.eina.tfg.NonExistingMeasurementException,
-            es.eina.tfg.NonExistingRaceException,
-            es.eina.tfg.NonExistingUserException;
-
-    public es.eina.tfg.model.Power delete(java.lang.Long measurementId)
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public es.eina.tfg.model.Power getPower(long idMeasurement, long idRace)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException;
 
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public es.eina.tfg.model.Power getPower(java.lang.Long measurementId)
-        throws com.liferay.portal.kernel.exception.PortalException,
-            com.liferay.portal.kernel.exception.SystemException;
+    public java.util.List<es.eina.tfg.model.Location> getByidRace(
+        java.lang.Long idRace)
+        throws com.liferay.portal.kernel.exception.SystemException;
 }

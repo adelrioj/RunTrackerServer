@@ -52,30 +52,22 @@ public interface RouteLocationService extends BaseService, InvokableService {
         java.lang.String[] parameterTypes, java.lang.Object[] arguments)
         throws java.lang.Throwable;
 
-    public es.eina.tfg.model.RouteLocation add(java.lang.Long routeId,
+    public es.eina.tfg.model.RouteLocation add(long routeId,
         java.lang.Double latitude, java.lang.Double longitude)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingRouteException;
+        throws com.liferay.portal.kernel.exception.SystemException;
 
-    public es.eina.tfg.model.RouteLocation update(
-        java.lang.Long routeLocationId, java.lang.Long routeId,
-        java.lang.Double latitude, java.lang.Double longitude)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingRouteException,
-            es.eina.tfg.NonExistingRouteLocationException;
+    public es.eina.tfg.model.RouteLocation update(long routeLocationId,
+        long routeId, java.lang.Double latitude, java.lang.Double longitude)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException;
 
-    public es.eina.tfg.model.RouteLocation delete(
-        java.lang.Long routeLocationId)
+    public es.eina.tfg.model.RouteLocation delete(long idRouteLocation,
+        long idRoute)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException;
 
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public es.eina.tfg.model.RouteLocation getRouteLocation(
-        java.lang.Long routeLocationId)
-        throws com.liferay.portal.kernel.exception.PortalException,
-            com.liferay.portal.kernel.exception.SystemException;
-
-    public java.util.List<es.eina.tfg.model.RouteLocation> findByRouteId(
-        java.lang.Long routeId)
+    public java.util.List<es.eina.tfg.model.RouteLocation> getByRouteId(
+        long routeId)
         throws com.liferay.portal.kernel.exception.SystemException;
 }

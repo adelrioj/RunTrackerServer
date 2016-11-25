@@ -1,7 +1,6 @@
 package es.eina.tfg.model;
 
 import com.liferay.portal.kernel.bean.AutoEscape;
-import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.CacheModel;
 import com.liferay.portal.service.ServiceContext;
@@ -45,47 +44,32 @@ public interface DeviceModel extends BaseModel<Device> {
     public void setPrimaryKey(long primaryKey);
 
     /**
-     * Returns the device ID of this device.
+     * Returns the id device of this device.
      *
-     * @return the device ID of this device
+     * @return the id device of this device
      */
-    public long getDeviceId();
+    public long getIdDevice();
 
     /**
-     * Sets the device ID of this device.
+     * Sets the id device of this device.
      *
-     * @param deviceId the device ID of this device
+     * @param idDevice the id device of this device
      */
-    public void setDeviceId(long deviceId);
+    public void setIdDevice(long idDevice);
 
     /**
-     * Returns the user ID of this device.
+     * Returns the id user of this device.
      *
-     * @return the user ID of this device
+     * @return the id user of this device
      */
-    public long getUserId();
+    public long getIdUser();
 
     /**
-     * Sets the user ID of this device.
+     * Sets the id user of this device.
      *
-     * @param userId the user ID of this device
+     * @param idUser the id user of this device
      */
-    public void setUserId(long userId);
-
-    /**
-     * Returns the user uuid of this device.
-     *
-     * @return the user uuid of this device
-     * @throws SystemException if a system exception occurred
-     */
-    public String getUserUuid() throws SystemException;
-
-    /**
-     * Sets the user uuid of this device.
-     *
-     * @param userUuid the user uuid of this device
-     */
-    public void setUserUuid(String userUuid);
+    public void setIdUser(long idUser);
 
     /**
      * Returns the device u u i d of this device.

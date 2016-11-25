@@ -99,45 +99,45 @@ public class RouteLocationUtil {
     }
 
     /**
-    * Returns all the route locations where routeId = &#63;.
+    * Returns all the route locations where idRoute = &#63;.
     *
-    * @param routeId the route ID
+    * @param idRoute the id route
     * @return the matching route locations
     * @throws SystemException if a system exception occurred
     */
     public static java.util.List<es.eina.tfg.model.RouteLocation> findByrouteId(
-        long routeId)
+        long idRoute)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return getPersistence().findByrouteId(routeId);
+        return getPersistence().findByrouteId(idRoute);
     }
 
     /**
-    * Returns a range of all the route locations where routeId = &#63;.
+    * Returns a range of all the route locations where idRoute = &#63;.
     *
     * <p>
     * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link es.eina.tfg.model.impl.RouteLocationModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
     * </p>
     *
-    * @param routeId the route ID
+    * @param idRoute the id route
     * @param start the lower bound of the range of route locations
     * @param end the upper bound of the range of route locations (not inclusive)
     * @return the range of matching route locations
     * @throws SystemException if a system exception occurred
     */
     public static java.util.List<es.eina.tfg.model.RouteLocation> findByrouteId(
-        long routeId, int start, int end)
+        long idRoute, int start, int end)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return getPersistence().findByrouteId(routeId, start, end);
+        return getPersistence().findByrouteId(idRoute, start, end);
     }
 
     /**
-    * Returns an ordered range of all the route locations where routeId = &#63;.
+    * Returns an ordered range of all the route locations where idRoute = &#63;.
     *
     * <p>
     * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link es.eina.tfg.model.impl.RouteLocationModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
     * </p>
     *
-    * @param routeId the route ID
+    * @param idRoute the id route
     * @param start the lower bound of the range of route locations
     * @param end the upper bound of the range of route locations (not inclusive)
     * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
@@ -145,118 +145,119 @@ public class RouteLocationUtil {
     * @throws SystemException if a system exception occurred
     */
     public static java.util.List<es.eina.tfg.model.RouteLocation> findByrouteId(
-        long routeId, int start, int end,
+        long idRoute, int start, int end,
         com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException {
         return getPersistence()
-                   .findByrouteId(routeId, start, end, orderByComparator);
+                   .findByrouteId(idRoute, start, end, orderByComparator);
     }
 
     /**
-    * Returns the first route location in the ordered set where routeId = &#63;.
+    * Returns the first route location in the ordered set where idRoute = &#63;.
     *
-    * @param routeId the route ID
+    * @param idRoute the id route
     * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
     * @return the first matching route location
     * @throws es.eina.tfg.NoSuchRouteLocationException if a matching route location could not be found
     * @throws SystemException if a system exception occurred
     */
     public static es.eina.tfg.model.RouteLocation findByrouteId_First(
-        long routeId,
+        long idRoute,
         com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchRouteLocationException {
-        return getPersistence().findByrouteId_First(routeId, orderByComparator);
+        return getPersistence().findByrouteId_First(idRoute, orderByComparator);
     }
 
     /**
-    * Returns the first route location in the ordered set where routeId = &#63;.
+    * Returns the first route location in the ordered set where idRoute = &#63;.
     *
-    * @param routeId the route ID
+    * @param idRoute the id route
     * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
     * @return the first matching route location, or <code>null</code> if a matching route location could not be found
     * @throws SystemException if a system exception occurred
     */
     public static es.eina.tfg.model.RouteLocation fetchByrouteId_First(
-        long routeId,
+        long idRoute,
         com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return getPersistence().fetchByrouteId_First(routeId, orderByComparator);
+        return getPersistence().fetchByrouteId_First(idRoute, orderByComparator);
     }
 
     /**
-    * Returns the last route location in the ordered set where routeId = &#63;.
+    * Returns the last route location in the ordered set where idRoute = &#63;.
     *
-    * @param routeId the route ID
+    * @param idRoute the id route
     * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
     * @return the last matching route location
     * @throws es.eina.tfg.NoSuchRouteLocationException if a matching route location could not be found
     * @throws SystemException if a system exception occurred
     */
     public static es.eina.tfg.model.RouteLocation findByrouteId_Last(
-        long routeId,
+        long idRoute,
         com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchRouteLocationException {
-        return getPersistence().findByrouteId_Last(routeId, orderByComparator);
+        return getPersistence().findByrouteId_Last(idRoute, orderByComparator);
     }
 
     /**
-    * Returns the last route location in the ordered set where routeId = &#63;.
+    * Returns the last route location in the ordered set where idRoute = &#63;.
     *
-    * @param routeId the route ID
+    * @param idRoute the id route
     * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
     * @return the last matching route location, or <code>null</code> if a matching route location could not be found
     * @throws SystemException if a system exception occurred
     */
     public static es.eina.tfg.model.RouteLocation fetchByrouteId_Last(
-        long routeId,
+        long idRoute,
         com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return getPersistence().fetchByrouteId_Last(routeId, orderByComparator);
+        return getPersistence().fetchByrouteId_Last(idRoute, orderByComparator);
     }
 
     /**
-    * Returns the route locations before and after the current route location in the ordered set where routeId = &#63;.
+    * Returns the route locations before and after the current route location in the ordered set where idRoute = &#63;.
     *
-    * @param routePositionId the primary key of the current route location
-    * @param routeId the route ID
+    * @param routeLocationPK the primary key of the current route location
+    * @param idRoute the id route
     * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
     * @return the previous, current, and next route location
     * @throws es.eina.tfg.NoSuchRouteLocationException if a route location with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
     public static es.eina.tfg.model.RouteLocation[] findByrouteId_PrevAndNext(
-        long routePositionId, long routeId,
+        es.eina.tfg.service.persistence.RouteLocationPK routeLocationPK,
+        long idRoute,
         com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchRouteLocationException {
         return getPersistence()
-                   .findByrouteId_PrevAndNext(routePositionId, routeId,
+                   .findByrouteId_PrevAndNext(routeLocationPK, idRoute,
             orderByComparator);
     }
 
     /**
-    * Removes all the route locations where routeId = &#63; from the database.
+    * Removes all the route locations where idRoute = &#63; from the database.
     *
-    * @param routeId the route ID
+    * @param idRoute the id route
     * @throws SystemException if a system exception occurred
     */
-    public static void removeByrouteId(long routeId)
+    public static void removeByrouteId(long idRoute)
         throws com.liferay.portal.kernel.exception.SystemException {
-        getPersistence().removeByrouteId(routeId);
+        getPersistence().removeByrouteId(idRoute);
     }
 
     /**
-    * Returns the number of route locations where routeId = &#63;.
+    * Returns the number of route locations where idRoute = &#63;.
     *
-    * @param routeId the route ID
+    * @param idRoute the id route
     * @return the number of matching route locations
     * @throws SystemException if a system exception occurred
     */
-    public static int countByrouteId(long routeId)
+    public static int countByrouteId(long idRoute)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return getPersistence().countByrouteId(routeId);
+        return getPersistence().countByrouteId(idRoute);
     }
 
     /**
@@ -282,25 +283,27 @@ public class RouteLocationUtil {
     /**
     * Creates a new route location with the primary key. Does not add the route location to the database.
     *
-    * @param routePositionId the primary key for the new route location
+    * @param routeLocationPK the primary key for the new route location
     * @return the new route location
     */
-    public static es.eina.tfg.model.RouteLocation create(long routePositionId) {
-        return getPersistence().create(routePositionId);
+    public static es.eina.tfg.model.RouteLocation create(
+        es.eina.tfg.service.persistence.RouteLocationPK routeLocationPK) {
+        return getPersistence().create(routeLocationPK);
     }
 
     /**
     * Removes the route location with the primary key from the database. Also notifies the appropriate model listeners.
     *
-    * @param routePositionId the primary key of the route location
+    * @param routeLocationPK the primary key of the route location
     * @return the route location that was removed
     * @throws es.eina.tfg.NoSuchRouteLocationException if a route location with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
-    public static es.eina.tfg.model.RouteLocation remove(long routePositionId)
+    public static es.eina.tfg.model.RouteLocation remove(
+        es.eina.tfg.service.persistence.RouteLocationPK routeLocationPK)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchRouteLocationException {
-        return getPersistence().remove(routePositionId);
+        return getPersistence().remove(routeLocationPK);
     }
 
     public static es.eina.tfg.model.RouteLocation updateImpl(
@@ -312,29 +315,29 @@ public class RouteLocationUtil {
     /**
     * Returns the route location with the primary key or throws a {@link es.eina.tfg.NoSuchRouteLocationException} if it could not be found.
     *
-    * @param routePositionId the primary key of the route location
+    * @param routeLocationPK the primary key of the route location
     * @return the route location
     * @throws es.eina.tfg.NoSuchRouteLocationException if a route location with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
     public static es.eina.tfg.model.RouteLocation findByPrimaryKey(
-        long routePositionId)
+        es.eina.tfg.service.persistence.RouteLocationPK routeLocationPK)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchRouteLocationException {
-        return getPersistence().findByPrimaryKey(routePositionId);
+        return getPersistence().findByPrimaryKey(routeLocationPK);
     }
 
     /**
     * Returns the route location with the primary key or returns <code>null</code> if it could not be found.
     *
-    * @param routePositionId the primary key of the route location
+    * @param routeLocationPK the primary key of the route location
     * @return the route location, or <code>null</code> if a route location with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
     public static es.eina.tfg.model.RouteLocation fetchByPrimaryKey(
-        long routePositionId)
+        es.eina.tfg.service.persistence.RouteLocationPK routeLocationPK)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return getPersistence().fetchByPrimaryKey(routePositionId);
+        return getPersistence().fetchByPrimaryKey(routeLocationPK);
     }
 
     /**

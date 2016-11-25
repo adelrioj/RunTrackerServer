@@ -37,8 +37,8 @@ public class RouteLocationWrapper implements RouteLocation,
     public Map<String, Object> getModelAttributes() {
         Map<String, Object> attributes = new HashMap<String, Object>();
 
-        attributes.put("routePositionId", getRoutePositionId());
-        attributes.put("routeId", getRouteId());
+        attributes.put("idRouteLocation", getIdRouteLocation());
+        attributes.put("idRoute", getIdRoute());
         attributes.put("latitude", getLatitude());
         attributes.put("longitude", getLongitude());
 
@@ -47,16 +47,16 @@ public class RouteLocationWrapper implements RouteLocation,
 
     @Override
     public void setModelAttributes(Map<String, Object> attributes) {
-        Long routePositionId = (Long) attributes.get("routePositionId");
+        Long idRouteLocation = (Long) attributes.get("idRouteLocation");
 
-        if (routePositionId != null) {
-            setRoutePositionId(routePositionId);
+        if (idRouteLocation != null) {
+            setIdRouteLocation(idRouteLocation);
         }
 
-        Long routeId = (Long) attributes.get("routeId");
+        Long idRoute = (Long) attributes.get("idRoute");
 
-        if (routeId != null) {
-            setRouteId(routeId);
+        if (idRoute != null) {
+            setIdRoute(idRoute);
         }
 
         Double latitude = (Double) attributes.get("latitude");
@@ -78,7 +78,7 @@ public class RouteLocationWrapper implements RouteLocation,
     * @return the primary key of this route location
     */
     @Override
-    public long getPrimaryKey() {
+    public es.eina.tfg.service.persistence.RouteLocationPK getPrimaryKey() {
         return _routeLocation.getPrimaryKey();
     }
 
@@ -88,48 +88,49 @@ public class RouteLocationWrapper implements RouteLocation,
     * @param primaryKey the primary key of this route location
     */
     @Override
-    public void setPrimaryKey(long primaryKey) {
+    public void setPrimaryKey(
+        es.eina.tfg.service.persistence.RouteLocationPK primaryKey) {
         _routeLocation.setPrimaryKey(primaryKey);
     }
 
     /**
-    * Returns the route position ID of this route location.
+    * Returns the id route location of this route location.
     *
-    * @return the route position ID of this route location
+    * @return the id route location of this route location
     */
     @Override
-    public long getRoutePositionId() {
-        return _routeLocation.getRoutePositionId();
+    public long getIdRouteLocation() {
+        return _routeLocation.getIdRouteLocation();
     }
 
     /**
-    * Sets the route position ID of this route location.
+    * Sets the id route location of this route location.
     *
-    * @param routePositionId the route position ID of this route location
+    * @param idRouteLocation the id route location of this route location
     */
     @Override
-    public void setRoutePositionId(long routePositionId) {
-        _routeLocation.setRoutePositionId(routePositionId);
+    public void setIdRouteLocation(long idRouteLocation) {
+        _routeLocation.setIdRouteLocation(idRouteLocation);
     }
 
     /**
-    * Returns the route ID of this route location.
+    * Returns the id route of this route location.
     *
-    * @return the route ID of this route location
+    * @return the id route of this route location
     */
     @Override
-    public long getRouteId() {
-        return _routeLocation.getRouteId();
+    public long getIdRoute() {
+        return _routeLocation.getIdRoute();
     }
 
     /**
-    * Sets the route ID of this route location.
+    * Sets the id route of this route location.
     *
-    * @param routeId the route ID of this route location
+    * @param idRoute the id route of this route location
     */
     @Override
-    public void setRouteId(long routeId) {
-        _routeLocation.setRouteId(routeId);
+    public void setIdRoute(long idRoute) {
+        _routeLocation.setIdRoute(idRoute);
     }
 
     /**

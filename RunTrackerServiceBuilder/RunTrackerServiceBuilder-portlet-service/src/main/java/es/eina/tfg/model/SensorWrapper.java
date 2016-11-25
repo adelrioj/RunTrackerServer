@@ -36,7 +36,7 @@ public class SensorWrapper implements Sensor, ModelWrapper<Sensor> {
     public Map<String, Object> getModelAttributes() {
         Map<String, Object> attributes = new HashMap<String, Object>();
 
-        attributes.put("sensorId", getSensorId());
+        attributes.put("idSensor", getIdSensor());
         attributes.put("type", getType());
         attributes.put("description", getDescription());
         attributes.put("dataUnits", getDataUnits());
@@ -51,10 +51,10 @@ public class SensorWrapper implements Sensor, ModelWrapper<Sensor> {
 
     @Override
     public void setModelAttributes(Map<String, Object> attributes) {
-        Long sensorId = (Long) attributes.get("sensorId");
+        Long idSensor = (Long) attributes.get("idSensor");
 
-        if (sensorId != null) {
-            setSensorId(sensorId);
+        if (idSensor != null) {
+            setIdSensor(idSensor);
         }
 
         Integer type = (Integer) attributes.get("type");
@@ -127,23 +127,23 @@ public class SensorWrapper implements Sensor, ModelWrapper<Sensor> {
     }
 
     /**
-    * Returns the sensor ID of this sensor.
+    * Returns the id sensor of this sensor.
     *
-    * @return the sensor ID of this sensor
+    * @return the id sensor of this sensor
     */
     @Override
-    public long getSensorId() {
-        return _sensor.getSensorId();
+    public long getIdSensor() {
+        return _sensor.getIdSensor();
     }
 
     /**
-    * Sets the sensor ID of this sensor.
+    * Sets the id sensor of this sensor.
     *
-    * @param sensorId the sensor ID of this sensor
+    * @param idSensor the id sensor of this sensor
     */
     @Override
-    public void setSensorId(long sensorId) {
-        _sensor.setSensorId(sensorId);
+    public void setIdSensor(long idSensor) {
+        _sensor.setIdSensor(idSensor);
     }
 
     /**

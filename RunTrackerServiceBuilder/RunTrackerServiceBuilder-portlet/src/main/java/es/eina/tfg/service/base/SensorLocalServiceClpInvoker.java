@@ -41,14 +41,12 @@ public class SensorLocalServiceClpInvoker {
     private String[] _methodParameterTypes14;
     private String _methodName15;
     private String[] _methodParameterTypes15;
-    private String _methodName88;
-    private String[] _methodParameterTypes88;
-    private String _methodName89;
-    private String[] _methodParameterTypes89;
     private String _methodName94;
     private String[] _methodParameterTypes94;
     private String _methodName95;
     private String[] _methodParameterTypes95;
+    private String _methodName100;
+    private String[] _methodParameterTypes100;
 
     public SensorLocalServiceClpInvoker() {
         _methodName0 = "addSensor";
@@ -127,29 +125,17 @@ public class SensorLocalServiceClpInvoker {
 
         _methodParameterTypes15 = new String[] { "es.eina.tfg.model.Sensor" };
 
-        _methodName88 = "getBeanIdentifier";
+        _methodName94 = "getBeanIdentifier";
 
-        _methodParameterTypes88 = new String[] {  };
+        _methodParameterTypes94 = new String[] {  };
 
-        _methodName89 = "setBeanIdentifier";
+        _methodName95 = "setBeanIdentifier";
 
-        _methodParameterTypes89 = new String[] { "java.lang.String" };
+        _methodParameterTypes95 = new String[] { "java.lang.String" };
 
-        _methodName94 = "add";
+        _methodName100 = "generateNewIdSensor";
 
-        _methodParameterTypes94 = new String[] {
-                "java.lang.Integer", "java.lang.String", "java.lang.String",
-                "java.lang.String", "java.lang.String", "java.lang.String",
-                "java.lang.String", "java.lang.String"
-            };
-
-        _methodName95 = "update";
-
-        _methodParameterTypes95 = new String[] {
-                "java.lang.Long", "java.lang.Integer", "java.lang.String",
-                "java.lang.String", "java.lang.String", "java.lang.String",
-                "java.lang.String", "java.lang.String", "java.lang.String"
-            };
+        _methodParameterTypes100 = new String[] {  };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -241,39 +227,21 @@ public class SensorLocalServiceClpInvoker {
             return SensorLocalServiceUtil.updateSensor((es.eina.tfg.model.Sensor) arguments[0]);
         }
 
-        if (_methodName88.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes88, parameterTypes)) {
+        if (_methodName94.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
             return SensorLocalServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName89.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes89, parameterTypes)) {
+        if (_methodName95.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes95, parameterTypes)) {
             SensorLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }
 
-        if (_methodName94.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
-            return SensorLocalServiceUtil.add((java.lang.Integer) arguments[0],
-                (java.lang.String) arguments[1],
-                (java.lang.String) arguments[2],
-                (java.lang.String) arguments[3],
-                (java.lang.String) arguments[4],
-                (java.lang.String) arguments[5],
-                (java.lang.String) arguments[6], (java.lang.String) arguments[7]);
-        }
-
-        if (_methodName95.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes95, parameterTypes)) {
-            return SensorLocalServiceUtil.update((java.lang.Long) arguments[0],
-                (java.lang.Integer) arguments[1],
-                (java.lang.String) arguments[2],
-                (java.lang.String) arguments[3],
-                (java.lang.String) arguments[4],
-                (java.lang.String) arguments[5],
-                (java.lang.String) arguments[6],
-                (java.lang.String) arguments[7], (java.lang.String) arguments[8]);
+        if (_methodName100.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes100, parameterTypes)) {
+            return SensorLocalServiceUtil.generateNewIdSensor();
         }
 
         throw new UnsupportedOperationException();

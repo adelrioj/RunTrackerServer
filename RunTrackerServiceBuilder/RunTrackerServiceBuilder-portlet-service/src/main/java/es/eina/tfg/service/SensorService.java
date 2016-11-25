@@ -52,25 +52,6 @@ public interface SensorService extends BaseService, InvokableService {
         java.lang.String[] parameterTypes, java.lang.Object[] arguments)
         throws java.lang.Throwable;
 
-    public es.eina.tfg.model.Sensor add(java.lang.Integer type,
-        java.lang.String description, java.lang.String dataUnits,
-        java.lang.String dataType, java.lang.String dataUncertainity,
-        java.lang.String dataLowerRange, java.lang.String dataUpperRange,
-        java.lang.String dataPacketFormat)
-        throws com.liferay.portal.kernel.exception.SystemException;
-
-    public es.eina.tfg.model.Sensor update(java.lang.Long sensorId,
-        java.lang.Integer type, java.lang.String description,
-        java.lang.String dataUnits, java.lang.String dataType,
-        java.lang.String dataUncertainity, java.lang.String dataLowerRange,
-        java.lang.String dataUpperRange, java.lang.String dataPacketFormat)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingSensorException;
-
-    public es.eina.tfg.model.Sensor delete(java.lang.Long sensorId)
-        throws com.liferay.portal.kernel.exception.PortalException,
-            com.liferay.portal.kernel.exception.SystemException;
-
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public es.eina.tfg.model.Sensor getSensor(java.lang.Long sensorId)
         throws com.liferay.portal.kernel.exception.PortalException,

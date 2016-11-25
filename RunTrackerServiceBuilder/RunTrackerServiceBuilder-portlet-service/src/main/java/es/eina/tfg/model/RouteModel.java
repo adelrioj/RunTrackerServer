@@ -46,18 +46,32 @@ public interface RouteModel extends BaseModel<Route> {
     public void setPrimaryKey(long primaryKey);
 
     /**
-     * Returns the route ID of this route.
+     * Returns the id route of this route.
      *
-     * @return the route ID of this route
+     * @return the id route of this route
      */
-    public long getRouteId();
+    public long getIdRoute();
 
     /**
-     * Sets the route ID of this route.
+     * Sets the id route of this route.
      *
-     * @param routeId the route ID of this route
+     * @param idRoute the id route of this route
      */
-    public void setRouteId(long routeId);
+    public void setIdRoute(long idRoute);
+
+    /**
+     * Returns the id author of this route.
+     *
+     * @return the id author of this route
+     */
+    public long getIdAuthor();
+
+    /**
+     * Sets the id author of this route.
+     *
+     * @param idAuthor the id author of this route
+     */
+    public void setIdAuthor(long idAuthor);
 
     /**
      * Returns the type of this route.
@@ -105,20 +119,6 @@ public interface RouteModel extends BaseModel<Route> {
     public void setDescription(String description);
 
     /**
-     * Returns the author ID of this route.
-     *
-     * @return the author ID of this route
-     */
-    public long getAuthorId();
-
-    /**
-     * Sets the author ID of this route.
-     *
-     * @param authorId the author ID of this route
-     */
-    public void setAuthorId(long authorId);
-
-    /**
      * Returns the is public of this route.
      *
      * @return the is public of this route
@@ -138,20 +138,6 @@ public interface RouteModel extends BaseModel<Route> {
      * @param isPublic the is public of this route
      */
     public void setIsPublic(boolean isPublic);
-
-    /**
-     * Returns the starting time of this route.
-     *
-     * @return the starting time of this route
-     */
-    public Date getStartingTime();
-
-    /**
-     * Sets the starting time of this route.
-     *
-     * @param startingTime the starting time of this route
-     */
-    public void setStartingTime(Date startingTime);
 
     /**
      * Returns the creation time of this route.

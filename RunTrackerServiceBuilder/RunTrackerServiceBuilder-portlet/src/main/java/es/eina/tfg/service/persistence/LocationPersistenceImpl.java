@@ -86,13 +86,13 @@ public class LocationPersistenceImpl extends BasePersistenceImpl<Location>
             LocationModelImpl.FINDER_CACHE_ENABLED, LocationImpl.class,
             FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByraceId",
             new String[] { Long.class.getName() },
-            LocationModelImpl.RACEID_COLUMN_BITMASK |
+            LocationModelImpl.IDRACE_COLUMN_BITMASK |
             LocationModelImpl.TIME_COLUMN_BITMASK);
     public static final FinderPath FINDER_PATH_COUNT_BY_RACEID = new FinderPath(LocationModelImpl.ENTITY_CACHE_ENABLED,
             LocationModelImpl.FINDER_CACHE_ENABLED, Long.class,
             FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByraceId",
             new String[] { Long.class.getName() });
-    private static final String _FINDER_COLUMN_RACEID_RACEID_2 = "location.raceId = ?";
+    private static final String _FINDER_COLUMN_RACEID_IDRACE_2 = "location.id.idRace = ?";
     private static final String _SQL_SELECT_LOCATION = "SELECT location FROM Location location";
     private static final String _SQL_SELECT_LOCATION_WHERE = "SELECT location FROM Location location WHERE ";
     private static final String _SQL_COUNT_LOCATION = "SELECT COUNT(location) FROM Location location";
@@ -130,44 +130,44 @@ public class LocationPersistenceImpl extends BasePersistenceImpl<Location>
     }
 
     /**
-     * Returns all the locations where raceId = &#63;.
+     * Returns all the locations where idRace = &#63;.
      *
-     * @param raceId the race ID
+     * @param idRace the id race
      * @return the matching locations
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public List<Location> findByraceId(Long raceId) throws SystemException {
-        return findByraceId(raceId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+    public List<Location> findByraceId(Long idRace) throws SystemException {
+        return findByraceId(idRace, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
     }
 
     /**
-     * Returns a range of all the locations where raceId = &#63;.
+     * Returns a range of all the locations where idRace = &#63;.
      *
      * <p>
      * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link es.eina.tfg.model.impl.LocationModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
      * </p>
      *
-     * @param raceId the race ID
+     * @param idRace the id race
      * @param start the lower bound of the range of locations
      * @param end the upper bound of the range of locations (not inclusive)
      * @return the range of matching locations
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public List<Location> findByraceId(Long raceId, int start, int end)
+    public List<Location> findByraceId(Long idRace, int start, int end)
         throws SystemException {
-        return findByraceId(raceId, start, end, null);
+        return findByraceId(idRace, start, end, null);
     }
 
     /**
-     * Returns an ordered range of all the locations where raceId = &#63;.
+     * Returns an ordered range of all the locations where idRace = &#63;.
      *
      * <p>
      * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link es.eina.tfg.model.impl.LocationModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
      * </p>
      *
-     * @param raceId the race ID
+     * @param idRace the id race
      * @param start the lower bound of the range of locations
      * @param end the upper bound of the range of locations (not inclusive)
      * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
@@ -175,7 +175,7 @@ public class LocationPersistenceImpl extends BasePersistenceImpl<Location>
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public List<Location> findByraceId(Long raceId, int start, int end,
+    public List<Location> findByraceId(Long idRace, int start, int end,
         OrderByComparator orderByComparator) throws SystemException {
         boolean pagination = true;
         FinderPath finderPath = null;
@@ -185,10 +185,10 @@ public class LocationPersistenceImpl extends BasePersistenceImpl<Location>
                 (orderByComparator == null)) {
             pagination = false;
             finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_RACEID;
-            finderArgs = new Object[] { raceId };
+            finderArgs = new Object[] { idRace };
         } else {
             finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_RACEID;
-            finderArgs = new Object[] { raceId, start, end, orderByComparator };
+            finderArgs = new Object[] { idRace, start, end, orderByComparator };
         }
 
         List<Location> list = (List<Location>) FinderCacheUtil.getResult(finderPath,
@@ -196,7 +196,7 @@ public class LocationPersistenceImpl extends BasePersistenceImpl<Location>
 
         if ((list != null) && !list.isEmpty()) {
             for (Location location : list) {
-                if (!Validator.equals(raceId, location.getRaceId())) {
+                if (!Validator.equals(idRace, location.getIdRace())) {
                     list = null;
 
                     break;
@@ -216,7 +216,7 @@ public class LocationPersistenceImpl extends BasePersistenceImpl<Location>
 
             query.append(_SQL_SELECT_LOCATION_WHERE);
 
-            query.append(_FINDER_COLUMN_RACEID_RACEID_2);
+            query.append(_FINDER_COLUMN_RACEID_IDRACE_2);
 
             if (orderByComparator != null) {
                 appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
@@ -237,7 +237,7 @@ public class LocationPersistenceImpl extends BasePersistenceImpl<Location>
 
                 QueryPos qPos = QueryPos.getInstance(q);
 
-                qPos.add(raceId.longValue());
+                qPos.add(idRace.longValue());
 
                 if (!pagination) {
                     list = (List<Location>) QueryUtil.list(q, getDialect(),
@@ -267,19 +267,19 @@ public class LocationPersistenceImpl extends BasePersistenceImpl<Location>
     }
 
     /**
-     * Returns the first location in the ordered set where raceId = &#63;.
+     * Returns the first location in the ordered set where idRace = &#63;.
      *
-     * @param raceId the race ID
+     * @param idRace the id race
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the first matching location
      * @throws es.eina.tfg.NoSuchLocationException if a matching location could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Location findByraceId_First(Long raceId,
+    public Location findByraceId_First(Long idRace,
         OrderByComparator orderByComparator)
         throws NoSuchLocationException, SystemException {
-        Location location = fetchByraceId_First(raceId, orderByComparator);
+        Location location = fetchByraceId_First(idRace, orderByComparator);
 
         if (location != null) {
             return location;
@@ -289,8 +289,8 @@ public class LocationPersistenceImpl extends BasePersistenceImpl<Location>
 
         msg.append(_NO_SUCH_ENTITY_WITH_KEY);
 
-        msg.append("raceId=");
-        msg.append(raceId);
+        msg.append("idRace=");
+        msg.append(idRace);
 
         msg.append(StringPool.CLOSE_CURLY_BRACE);
 
@@ -298,17 +298,17 @@ public class LocationPersistenceImpl extends BasePersistenceImpl<Location>
     }
 
     /**
-     * Returns the first location in the ordered set where raceId = &#63;.
+     * Returns the first location in the ordered set where idRace = &#63;.
      *
-     * @param raceId the race ID
+     * @param idRace the id race
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the first matching location, or <code>null</code> if a matching location could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Location fetchByraceId_First(Long raceId,
+    public Location fetchByraceId_First(Long idRace,
         OrderByComparator orderByComparator) throws SystemException {
-        List<Location> list = findByraceId(raceId, 0, 1, orderByComparator);
+        List<Location> list = findByraceId(idRace, 0, 1, orderByComparator);
 
         if (!list.isEmpty()) {
             return list.get(0);
@@ -318,19 +318,19 @@ public class LocationPersistenceImpl extends BasePersistenceImpl<Location>
     }
 
     /**
-     * Returns the last location in the ordered set where raceId = &#63;.
+     * Returns the last location in the ordered set where idRace = &#63;.
      *
-     * @param raceId the race ID
+     * @param idRace the id race
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the last matching location
      * @throws es.eina.tfg.NoSuchLocationException if a matching location could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Location findByraceId_Last(Long raceId,
+    public Location findByraceId_Last(Long idRace,
         OrderByComparator orderByComparator)
         throws NoSuchLocationException, SystemException {
-        Location location = fetchByraceId_Last(raceId, orderByComparator);
+        Location location = fetchByraceId_Last(idRace, orderByComparator);
 
         if (location != null) {
             return location;
@@ -340,8 +340,8 @@ public class LocationPersistenceImpl extends BasePersistenceImpl<Location>
 
         msg.append(_NO_SUCH_ENTITY_WITH_KEY);
 
-        msg.append("raceId=");
-        msg.append(raceId);
+        msg.append("idRace=");
+        msg.append(idRace);
 
         msg.append(StringPool.CLOSE_CURLY_BRACE);
 
@@ -349,23 +349,23 @@ public class LocationPersistenceImpl extends BasePersistenceImpl<Location>
     }
 
     /**
-     * Returns the last location in the ordered set where raceId = &#63;.
+     * Returns the last location in the ordered set where idRace = &#63;.
      *
-     * @param raceId the race ID
+     * @param idRace the id race
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the last matching location, or <code>null</code> if a matching location could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Location fetchByraceId_Last(Long raceId,
+    public Location fetchByraceId_Last(Long idRace,
         OrderByComparator orderByComparator) throws SystemException {
-        int count = countByraceId(raceId);
+        int count = countByraceId(idRace);
 
         if (count == 0) {
             return null;
         }
 
-        List<Location> list = findByraceId(raceId, count - 1, count,
+        List<Location> list = findByraceId(idRace, count - 1, count,
                 orderByComparator);
 
         if (!list.isEmpty()) {
@@ -376,20 +376,20 @@ public class LocationPersistenceImpl extends BasePersistenceImpl<Location>
     }
 
     /**
-     * Returns the locations before and after the current location in the ordered set where raceId = &#63;.
+     * Returns the locations before and after the current location in the ordered set where idRace = &#63;.
      *
-     * @param measurementId the primary key of the current location
-     * @param raceId the race ID
+     * @param locationPK the primary key of the current location
+     * @param idRace the id race
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the previous, current, and next location
      * @throws es.eina.tfg.NoSuchLocationException if a location with the primary key could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Location[] findByraceId_PrevAndNext(long measurementId, Long raceId,
-        OrderByComparator orderByComparator)
+    public Location[] findByraceId_PrevAndNext(LocationPK locationPK,
+        Long idRace, OrderByComparator orderByComparator)
         throws NoSuchLocationException, SystemException {
-        Location location = findByPrimaryKey(measurementId);
+        Location location = findByPrimaryKey(locationPK);
 
         Session session = null;
 
@@ -398,12 +398,12 @@ public class LocationPersistenceImpl extends BasePersistenceImpl<Location>
 
             Location[] array = new LocationImpl[3];
 
-            array[0] = getByraceId_PrevAndNext(session, location, raceId,
+            array[0] = getByraceId_PrevAndNext(session, location, idRace,
                     orderByComparator, true);
 
             array[1] = location;
 
-            array[2] = getByraceId_PrevAndNext(session, location, raceId,
+            array[2] = getByraceId_PrevAndNext(session, location, idRace,
                     orderByComparator, false);
 
             return array;
@@ -415,7 +415,7 @@ public class LocationPersistenceImpl extends BasePersistenceImpl<Location>
     }
 
     protected Location getByraceId_PrevAndNext(Session session,
-        Location location, Long raceId, OrderByComparator orderByComparator,
+        Location location, Long idRace, OrderByComparator orderByComparator,
         boolean previous) {
         StringBundler query = null;
 
@@ -428,7 +428,7 @@ public class LocationPersistenceImpl extends BasePersistenceImpl<Location>
 
         query.append(_SQL_SELECT_LOCATION_WHERE);
 
-        query.append(_FINDER_COLUMN_RACEID_RACEID_2);
+        query.append(_FINDER_COLUMN_RACEID_IDRACE_2);
 
         if (orderByComparator != null) {
             String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
@@ -491,7 +491,7 @@ public class LocationPersistenceImpl extends BasePersistenceImpl<Location>
 
         QueryPos qPos = QueryPos.getInstance(q);
 
-        qPos.add(raceId.longValue());
+        qPos.add(idRace.longValue());
 
         if (orderByComparator != null) {
             Object[] values = orderByComparator.getOrderByConditionValues(location);
@@ -511,31 +511,31 @@ public class LocationPersistenceImpl extends BasePersistenceImpl<Location>
     }
 
     /**
-     * Removes all the locations where raceId = &#63; from the database.
+     * Removes all the locations where idRace = &#63; from the database.
      *
-     * @param raceId the race ID
+     * @param idRace the id race
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public void removeByraceId(Long raceId) throws SystemException {
-        for (Location location : findByraceId(raceId, QueryUtil.ALL_POS,
+    public void removeByraceId(Long idRace) throws SystemException {
+        for (Location location : findByraceId(idRace, QueryUtil.ALL_POS,
                 QueryUtil.ALL_POS, null)) {
             remove(location);
         }
     }
 
     /**
-     * Returns the number of locations where raceId = &#63;.
+     * Returns the number of locations where idRace = &#63;.
      *
-     * @param raceId the race ID
+     * @param idRace the id race
      * @return the number of matching locations
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public int countByraceId(Long raceId) throws SystemException {
+    public int countByraceId(Long idRace) throws SystemException {
         FinderPath finderPath = FINDER_PATH_COUNT_BY_RACEID;
 
-        Object[] finderArgs = new Object[] { raceId };
+        Object[] finderArgs = new Object[] { idRace };
 
         Long count = (Long) FinderCacheUtil.getResult(finderPath, finderArgs,
                 this);
@@ -545,7 +545,7 @@ public class LocationPersistenceImpl extends BasePersistenceImpl<Location>
 
             query.append(_SQL_COUNT_LOCATION_WHERE);
 
-            query.append(_FINDER_COLUMN_RACEID_RACEID_2);
+            query.append(_FINDER_COLUMN_RACEID_IDRACE_2);
 
             String sql = query.toString();
 
@@ -558,7 +558,7 @@ public class LocationPersistenceImpl extends BasePersistenceImpl<Location>
 
                 QueryPos qPos = QueryPos.getInstance(q);
 
-                qPos.add(raceId.longValue());
+                qPos.add(idRace.longValue());
 
                 count = (Long) q.uniqueResult();
 
@@ -656,15 +656,15 @@ public class LocationPersistenceImpl extends BasePersistenceImpl<Location>
     /**
      * Creates a new location with the primary key. Does not add the location to the database.
      *
-     * @param measurementId the primary key for the new location
+     * @param locationPK the primary key for the new location
      * @return the new location
      */
     @Override
-    public Location create(long measurementId) {
+    public Location create(LocationPK locationPK) {
         Location location = new LocationImpl();
 
         location.setNew(true);
-        location.setPrimaryKey(measurementId);
+        location.setPrimaryKey(locationPK);
 
         return location;
     }
@@ -672,15 +672,15 @@ public class LocationPersistenceImpl extends BasePersistenceImpl<Location>
     /**
      * Removes the location with the primary key from the database. Also notifies the appropriate model listeners.
      *
-     * @param measurementId the primary key of the location
+     * @param locationPK the primary key of the location
      * @return the location that was removed
      * @throws es.eina.tfg.NoSuchLocationException if a location with the primary key could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Location remove(long measurementId)
+    public Location remove(LocationPK locationPK)
         throws NoSuchLocationException, SystemException {
-        return remove((Serializable) measurementId);
+        return remove((Serializable) locationPK);
     }
 
     /**
@@ -787,14 +787,14 @@ public class LocationPersistenceImpl extends BasePersistenceImpl<Location>
             if ((locationModelImpl.getColumnBitmask() &
                     FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_RACEID.getColumnBitmask()) != 0) {
                 Object[] args = new Object[] {
-                        locationModelImpl.getOriginalRaceId()
+                        locationModelImpl.getOriginalIdRace()
                     };
 
                 FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_RACEID, args);
                 FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_RACEID,
                     args);
 
-                args = new Object[] { locationModelImpl.getRaceId() };
+                args = new Object[] { locationModelImpl.getIdRace() };
 
                 FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_RACEID, args);
                 FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_RACEID,
@@ -818,11 +818,10 @@ public class LocationPersistenceImpl extends BasePersistenceImpl<Location>
         locationImpl.setNew(location.isNew());
         locationImpl.setPrimaryKey(location.getPrimaryKey());
 
-        locationImpl.setMeasurementId(location.getMeasurementId());
-        locationImpl.setRaceId(location.getRaceId());
-        locationImpl.setUserId(location.getUserId());
-        locationImpl.setDeviceId(location.getDeviceId());
-        locationImpl.setSensorId(location.getSensorId());
+        locationImpl.setIdRace(location.getIdRace());
+        locationImpl.setIdMeasurement(location.getIdMeasurement());
+        locationImpl.setIdDevice(location.getIdDevice());
+        locationImpl.setIdSensor(location.getIdSensor());
         locationImpl.setTime(location.getTime());
         locationImpl.setSensorMode(location.getSensorMode());
         locationImpl.setSysRef(location.getSysRef());
@@ -863,15 +862,15 @@ public class LocationPersistenceImpl extends BasePersistenceImpl<Location>
     /**
      * Returns the location with the primary key or throws a {@link es.eina.tfg.NoSuchLocationException} if it could not be found.
      *
-     * @param measurementId the primary key of the location
+     * @param locationPK the primary key of the location
      * @return the location
      * @throws es.eina.tfg.NoSuchLocationException if a location with the primary key could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Location findByPrimaryKey(long measurementId)
+    public Location findByPrimaryKey(LocationPK locationPK)
         throws NoSuchLocationException, SystemException {
-        return findByPrimaryKey((Serializable) measurementId);
+        return findByPrimaryKey((Serializable) locationPK);
     }
 
     /**
@@ -921,14 +920,14 @@ public class LocationPersistenceImpl extends BasePersistenceImpl<Location>
     /**
      * Returns the location with the primary key or returns <code>null</code> if it could not be found.
      *
-     * @param measurementId the primary key of the location
+     * @param locationPK the primary key of the location
      * @return the location, or <code>null</code> if a location with the primary key could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Location fetchByPrimaryKey(long measurementId)
+    public Location fetchByPrimaryKey(LocationPK locationPK)
         throws SystemException {
-        return fetchByPrimaryKey((Serializable) measurementId);
+        return fetchByPrimaryKey((Serializable) locationPK);
     }
 
     /**

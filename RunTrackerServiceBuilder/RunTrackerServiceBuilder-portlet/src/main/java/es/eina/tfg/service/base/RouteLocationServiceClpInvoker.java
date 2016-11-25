@@ -9,96 +9,85 @@ import java.util.Arrays;
  * @generated
  */
 public class RouteLocationServiceClpInvoker {
-    private String _methodName72;
-    private String[] _methodParameterTypes72;
-    private String _methodName73;
-    private String[] _methodParameterTypes73;
     private String _methodName78;
     private String[] _methodParameterTypes78;
     private String _methodName79;
     private String[] _methodParameterTypes79;
-    private String _methodName80;
-    private String[] _methodParameterTypes80;
-    private String _methodName81;
-    private String[] _methodParameterTypes81;
-    private String _methodName82;
-    private String[] _methodParameterTypes82;
+    private String _methodName84;
+    private String[] _methodParameterTypes84;
+    private String _methodName85;
+    private String[] _methodParameterTypes85;
+    private String _methodName86;
+    private String[] _methodParameterTypes86;
+    private String _methodName87;
+    private String[] _methodParameterTypes87;
 
     public RouteLocationServiceClpInvoker() {
-        _methodName72 = "getBeanIdentifier";
+        _methodName78 = "getBeanIdentifier";
 
-        _methodParameterTypes72 = new String[] {  };
+        _methodParameterTypes78 = new String[] {  };
 
-        _methodName73 = "setBeanIdentifier";
+        _methodName79 = "setBeanIdentifier";
 
-        _methodParameterTypes73 = new String[] { "java.lang.String" };
+        _methodParameterTypes79 = new String[] { "java.lang.String" };
 
-        _methodName78 = "add";
+        _methodName84 = "add";
 
-        _methodParameterTypes78 = new String[] {
-                "java.lang.Long", "java.lang.Double", "java.lang.Double"
+        _methodParameterTypes84 = new String[] {
+                "long", "java.lang.Double", "java.lang.Double"
             };
 
-        _methodName79 = "update";
+        _methodName85 = "update";
 
-        _methodParameterTypes79 = new String[] {
-                "java.lang.Long", "java.lang.Long", "java.lang.Double",
-                "java.lang.Double"
+        _methodParameterTypes85 = new String[] {
+                "long", "long", "java.lang.Double", "java.lang.Double"
             };
 
-        _methodName80 = "delete";
+        _methodName86 = "delete";
 
-        _methodParameterTypes80 = new String[] { "java.lang.Long" };
+        _methodParameterTypes86 = new String[] { "long", "long" };
 
-        _methodName81 = "getRouteLocation";
+        _methodName87 = "getByRouteId";
 
-        _methodParameterTypes81 = new String[] { "java.lang.Long" };
-
-        _methodName82 = "findByRouteId";
-
-        _methodParameterTypes82 = new String[] { "java.lang.Long" };
+        _methodParameterTypes87 = new String[] { "long" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
         Object[] arguments) throws Throwable {
-        if (_methodName72.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes72, parameterTypes)) {
+        if (_methodName78.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes78, parameterTypes)) {
             return RouteLocationServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName73.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes73, parameterTypes)) {
+        if (_methodName79.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes79, parameterTypes)) {
             RouteLocationServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }
 
-        if (_methodName78.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes78, parameterTypes)) {
-            return RouteLocationServiceUtil.add((java.lang.Long) arguments[0],
+        if (_methodName84.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes84, parameterTypes)) {
+            return RouteLocationServiceUtil.add(((Long) arguments[0]).longValue(),
                 (java.lang.Double) arguments[1], (java.lang.Double) arguments[2]);
         }
 
-        if (_methodName79.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes79, parameterTypes)) {
-            return RouteLocationServiceUtil.update((java.lang.Long) arguments[0],
-                (java.lang.Long) arguments[1], (java.lang.Double) arguments[2],
-                (java.lang.Double) arguments[3]);
+        if (_methodName85.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes85, parameterTypes)) {
+            return RouteLocationServiceUtil.update(((Long) arguments[0]).longValue(),
+                ((Long) arguments[1]).longValue(),
+                (java.lang.Double) arguments[2], (java.lang.Double) arguments[3]);
         }
 
-        if (_methodName80.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes80, parameterTypes)) {
-            return RouteLocationServiceUtil.delete((java.lang.Long) arguments[0]);
+        if (_methodName86.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes86, parameterTypes)) {
+            return RouteLocationServiceUtil.delete(((Long) arguments[0]).longValue(),
+                ((Long) arguments[1]).longValue());
         }
 
-        if (_methodName81.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes81, parameterTypes)) {
-            return RouteLocationServiceUtil.getRouteLocation((java.lang.Long) arguments[0]);
-        }
-
-        if (_methodName82.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes82, parameterTypes)) {
-            return RouteLocationServiceUtil.findByRouteId((java.lang.Long) arguments[0]);
+        if (_methodName87.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes87, parameterTypes)) {
+            return RouteLocationServiceUtil.getByRouteId(((Long) arguments[0]).longValue());
         }
 
         throw new UnsupportedOperationException();

@@ -18,6 +18,6 @@ public abstract class RouteLocationActionableDynamicQuery
 
         setClassLoader(es.eina.tfg.service.ClpSerializer.class.getClassLoader());
 
-        setPrimaryKeyPropertyName("routePositionId");
+        setPrimaryKeyPropertyName("primaryKey.idRouteLocation");
     }
 }

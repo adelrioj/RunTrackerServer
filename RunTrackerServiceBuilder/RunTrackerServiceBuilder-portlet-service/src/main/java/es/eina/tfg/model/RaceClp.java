@@ -6,7 +6,6 @@ import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.impl.BaseModelImpl;
-import com.liferay.portal.util.PortalUtil;
 
 import es.eina.tfg.service.ClpSerializer;
 import es.eina.tfg.service.RaceLocalServiceUtil;
@@ -20,13 +19,10 @@ import java.util.Map;
 
 
 public class RaceClp extends BaseModelImpl<Race> implements Race {
-    private long _raceId;
-    private long _userId;
-    private String _userUuid;
-    private long _routeId;
+    private long _idRace;
+    private long _idUser;
+    private long _idRoute;
     private String _type;
-    private int _userHeight;
-    private int _userWeight;
     private BaseModel<?> _raceRemoteModel;
     private Class<?> _clpSerializerClass = es.eina.tfg.service.ClpSerializer.class;
 
@@ -45,17 +41,17 @@ public class RaceClp extends BaseModelImpl<Race> implements Race {
 
     @Override
     public long getPrimaryKey() {
-        return _raceId;
+        return _idRace;
     }
 
     @Override
     public void setPrimaryKey(long primaryKey) {
-        setRaceId(primaryKey);
+        setIdRace(primaryKey);
     }
 
     @Override
     public Serializable getPrimaryKeyObj() {
-        return _raceId;
+        return _idRace;
     }
 
     @Override
@@ -67,34 +63,32 @@ public class RaceClp extends BaseModelImpl<Race> implements Race {
     public Map<String, Object> getModelAttributes() {
         Map<String, Object> attributes = new HashMap<String, Object>();
 
-        attributes.put("raceId", getRaceId());
-        attributes.put("userId", getUserId());
-        attributes.put("routeId", getRouteId());
+        attributes.put("idRace", getIdRace());
+        attributes.put("idUser", getIdUser());
+        attributes.put("idRoute", getIdRoute());
         attributes.put("type", getType());
-        attributes.put("userHeight", getUserHeight());
-        attributes.put("userWeight", getUserWeight());
 
         return attributes;
     }
 
     @Override
     public void setModelAttributes(Map<String, Object> attributes) {
-        Long raceId = (Long) attributes.get("raceId");
+        Long idRace = (Long) attributes.get("idRace");
 
-        if (raceId != null) {
-            setRaceId(raceId);
+        if (idRace != null) {
+            setIdRace(idRace);
         }
 
-        Long userId = (Long) attributes.get("userId");
+        Long idUser = (Long) attributes.get("idUser");
 
-        if (userId != null) {
-            setUserId(userId);
+        if (idUser != null) {
+            setIdUser(idUser);
         }
 
-        Long routeId = (Long) attributes.get("routeId");
+        Long idRoute = (Long) attributes.get("idRoute");
 
-        if (routeId != null) {
-            setRouteId(routeId);
+        if (idRoute != null) {
+            setIdRoute(idRoute);
         }
 
         String type = (String) attributes.get("type");
@@ -102,36 +96,24 @@ public class RaceClp extends BaseModelImpl<Race> implements Race {
         if (type != null) {
             setType(type);
         }
-
-        Integer userHeight = (Integer) attributes.get("userHeight");
-
-        if (userHeight != null) {
-            setUserHeight(userHeight);
-        }
-
-        Integer userWeight = (Integer) attributes.get("userWeight");
-
-        if (userWeight != null) {
-            setUserWeight(userWeight);
-        }
     }
 
     @Override
-    public long getRaceId() {
-        return _raceId;
+    public long getIdRace() {
+        return _idRace;
     }
 
     @Override
-    public void setRaceId(long raceId) {
-        _raceId = raceId;
+    public void setIdRace(long idRace) {
+        _idRace = idRace;
 
         if (_raceRemoteModel != null) {
             try {
                 Class<?> clazz = _raceRemoteModel.getClass();
 
-                Method method = clazz.getMethod("setRaceId", long.class);
+                Method method = clazz.getMethod("setIdRace", long.class);
 
-                method.invoke(_raceRemoteModel, raceId);
+                method.invoke(_raceRemoteModel, idRace);
             } catch (Exception e) {
                 throw new UnsupportedOperationException(e);
             }
@@ -139,21 +121,21 @@ public class RaceClp extends BaseModelImpl<Race> implements Race {
     }
 
     @Override
-    public long getUserId() {
-        return _userId;
+    public long getIdUser() {
+        return _idUser;
     }
 
     @Override
-    public void setUserId(long userId) {
-        _userId = userId;
+    public void setIdUser(long idUser) {
+        _idUser = idUser;
 
         if (_raceRemoteModel != null) {
             try {
                 Class<?> clazz = _raceRemoteModel.getClass();
 
-                Method method = clazz.getMethod("setUserId", long.class);
+                Method method = clazz.getMethod("setIdUser", long.class);
 
-                method.invoke(_raceRemoteModel, userId);
+                method.invoke(_raceRemoteModel, idUser);
             } catch (Exception e) {
                 throw new UnsupportedOperationException(e);
             }
@@ -161,31 +143,21 @@ public class RaceClp extends BaseModelImpl<Race> implements Race {
     }
 
     @Override
-    public String getUserUuid() throws SystemException {
-        return PortalUtil.getUserValue(getUserId(), "uuid", _userUuid);
+    public long getIdRoute() {
+        return _idRoute;
     }
 
     @Override
-    public void setUserUuid(String userUuid) {
-        _userUuid = userUuid;
-    }
-
-    @Override
-    public long getRouteId() {
-        return _routeId;
-    }
-
-    @Override
-    public void setRouteId(long routeId) {
-        _routeId = routeId;
+    public void setIdRoute(long idRoute) {
+        _idRoute = idRoute;
 
         if (_raceRemoteModel != null) {
             try {
                 Class<?> clazz = _raceRemoteModel.getClass();
 
-                Method method = clazz.getMethod("setRouteId", long.class);
+                Method method = clazz.getMethod("setIdRoute", long.class);
 
-                method.invoke(_raceRemoteModel, routeId);
+                method.invoke(_raceRemoteModel, idRoute);
             } catch (Exception e) {
                 throw new UnsupportedOperationException(e);
             }
@@ -208,50 +180,6 @@ public class RaceClp extends BaseModelImpl<Race> implements Race {
                 Method method = clazz.getMethod("setType", String.class);
 
                 method.invoke(_raceRemoteModel, type);
-            } catch (Exception e) {
-                throw new UnsupportedOperationException(e);
-            }
-        }
-    }
-
-    @Override
-    public int getUserHeight() {
-        return _userHeight;
-    }
-
-    @Override
-    public void setUserHeight(int userHeight) {
-        _userHeight = userHeight;
-
-        if (_raceRemoteModel != null) {
-            try {
-                Class<?> clazz = _raceRemoteModel.getClass();
-
-                Method method = clazz.getMethod("setUserHeight", int.class);
-
-                method.invoke(_raceRemoteModel, userHeight);
-            } catch (Exception e) {
-                throw new UnsupportedOperationException(e);
-            }
-        }
-    }
-
-    @Override
-    public int getUserWeight() {
-        return _userWeight;
-    }
-
-    @Override
-    public void setUserWeight(int userWeight) {
-        _userWeight = userWeight;
-
-        if (_raceRemoteModel != null) {
-            try {
-                Class<?> clazz = _raceRemoteModel.getClass();
-
-                Method method = clazz.getMethod("setUserWeight", int.class);
-
-                method.invoke(_raceRemoteModel, userWeight);
             } catch (Exception e) {
                 throw new UnsupportedOperationException(e);
             }
@@ -325,12 +253,10 @@ public class RaceClp extends BaseModelImpl<Race> implements Race {
     public Object clone() {
         RaceClp clone = new RaceClp();
 
-        clone.setRaceId(getRaceId());
-        clone.setUserId(getUserId());
-        clone.setRouteId(getRouteId());
+        clone.setIdRace(getIdRace());
+        clone.setIdUser(getIdUser());
+        clone.setIdRoute(getIdRoute());
         clone.setType(getType());
-        clone.setUserHeight(getUserHeight());
-        clone.setUserWeight(getUserWeight());
 
         return clone;
     }
@@ -339,9 +265,9 @@ public class RaceClp extends BaseModelImpl<Race> implements Race {
     public int compareTo(Race race) {
         int value = 0;
 
-        if (getUserId() < race.getUserId()) {
+        if (getIdUser() < race.getIdUser()) {
             value = -1;
-        } else if (getUserId() > race.getUserId()) {
+        } else if (getIdUser() > race.getIdUser()) {
             value = 1;
         } else {
             value = 0;
@@ -386,20 +312,16 @@ public class RaceClp extends BaseModelImpl<Race> implements Race {
 
     @Override
     public String toString() {
-        StringBundler sb = new StringBundler(13);
+        StringBundler sb = new StringBundler(9);
 
-        sb.append("{raceId=");
-        sb.append(getRaceId());
-        sb.append(", userId=");
-        sb.append(getUserId());
-        sb.append(", routeId=");
-        sb.append(getRouteId());
+        sb.append("{idRace=");
+        sb.append(getIdRace());
+        sb.append(", idUser=");
+        sb.append(getIdUser());
+        sb.append(", idRoute=");
+        sb.append(getIdRoute());
         sb.append(", type=");
         sb.append(getType());
-        sb.append(", userHeight=");
-        sb.append(getUserHeight());
-        sb.append(", userWeight=");
-        sb.append(getUserWeight());
         sb.append("}");
 
         return sb.toString();
@@ -407,35 +329,27 @@ public class RaceClp extends BaseModelImpl<Race> implements Race {
 
     @Override
     public String toXmlString() {
-        StringBundler sb = new StringBundler(22);
+        StringBundler sb = new StringBundler(16);
 
         sb.append("<model><model-name>");
         sb.append("es.eina.tfg.model.Race");
         sb.append("</model-name>");
 
         sb.append(
-            "<column><column-name>raceId</column-name><column-value><![CDATA[");
-        sb.append(getRaceId());
+            "<column><column-name>idRace</column-name><column-value><![CDATA[");
+        sb.append(getIdRace());
         sb.append("]]></column-value></column>");
         sb.append(
-            "<column><column-name>userId</column-name><column-value><![CDATA[");
-        sb.append(getUserId());
+            "<column><column-name>idUser</column-name><column-value><![CDATA[");
+        sb.append(getIdUser());
         sb.append("]]></column-value></column>");
         sb.append(
-            "<column><column-name>routeId</column-name><column-value><![CDATA[");
-        sb.append(getRouteId());
+            "<column><column-name>idRoute</column-name><column-value><![CDATA[");
+        sb.append(getIdRoute());
         sb.append("]]></column-value></column>");
         sb.append(
             "<column><column-name>type</column-name><column-value><![CDATA[");
         sb.append(getType());
-        sb.append("]]></column-value></column>");
-        sb.append(
-            "<column><column-name>userHeight</column-name><column-value><![CDATA[");
-        sb.append(getUserHeight());
-        sb.append("]]></column-value></column>");
-        sb.append(
-            "<column><column-name>userWeight</column-name><column-value><![CDATA[");
-        sb.append(getUserWeight());
         sb.append("]]></column-value></column>");
 
         sb.append("</model>");

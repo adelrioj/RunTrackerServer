@@ -9,6 +9,7 @@ import com.liferay.portal.model.impl.BaseModelImpl;
 
 import es.eina.tfg.service.ClpSerializer;
 import es.eina.tfg.service.RouteLocationLocalServiceUtil;
+import es.eina.tfg.service.persistence.RouteLocationPK;
 
 import java.io.Serializable;
 
@@ -20,8 +21,8 @@ import java.util.Map;
 
 public class RouteLocationClp extends BaseModelImpl<RouteLocation>
     implements RouteLocation {
-    private long _routePositionId;
-    private long _routeId;
+    private long _idRouteLocation;
+    private long _idRoute;
     private double _latitude;
     private double _longitude;
     private BaseModel<?> _routeLocationRemoteModel;
@@ -41,31 +42,32 @@ public class RouteLocationClp extends BaseModelImpl<RouteLocation>
     }
 
     @Override
-    public long getPrimaryKey() {
-        return _routePositionId;
+    public RouteLocationPK getPrimaryKey() {
+        return new RouteLocationPK(_idRouteLocation, _idRoute);
     }
 
     @Override
-    public void setPrimaryKey(long primaryKey) {
-        setRoutePositionId(primaryKey);
+    public void setPrimaryKey(RouteLocationPK primaryKey) {
+        setIdRouteLocation(primaryKey.idRouteLocation);
+        setIdRoute(primaryKey.idRoute);
     }
 
     @Override
     public Serializable getPrimaryKeyObj() {
-        return _routePositionId;
+        return new RouteLocationPK(_idRouteLocation, _idRoute);
     }
 
     @Override
     public void setPrimaryKeyObj(Serializable primaryKeyObj) {
-        setPrimaryKey(((Long) primaryKeyObj).longValue());
+        setPrimaryKey((RouteLocationPK) primaryKeyObj);
     }
 
     @Override
     public Map<String, Object> getModelAttributes() {
         Map<String, Object> attributes = new HashMap<String, Object>();
 
-        attributes.put("routePositionId", getRoutePositionId());
-        attributes.put("routeId", getRouteId());
+        attributes.put("idRouteLocation", getIdRouteLocation());
+        attributes.put("idRoute", getIdRoute());
         attributes.put("latitude", getLatitude());
         attributes.put("longitude", getLongitude());
 
@@ -74,16 +76,16 @@ public class RouteLocationClp extends BaseModelImpl<RouteLocation>
 
     @Override
     public void setModelAttributes(Map<String, Object> attributes) {
-        Long routePositionId = (Long) attributes.get("routePositionId");
+        Long idRouteLocation = (Long) attributes.get("idRouteLocation");
 
-        if (routePositionId != null) {
-            setRoutePositionId(routePositionId);
+        if (idRouteLocation != null) {
+            setIdRouteLocation(idRouteLocation);
         }
 
-        Long routeId = (Long) attributes.get("routeId");
+        Long idRoute = (Long) attributes.get("idRoute");
 
-        if (routeId != null) {
-            setRouteId(routeId);
+        if (idRoute != null) {
+            setIdRoute(idRoute);
         }
 
         Double latitude = (Double) attributes.get("latitude");
@@ -100,21 +102,21 @@ public class RouteLocationClp extends BaseModelImpl<RouteLocation>
     }
 
     @Override
-    public long getRoutePositionId() {
-        return _routePositionId;
+    public long getIdRouteLocation() {
+        return _idRouteLocation;
     }
 
     @Override
-    public void setRoutePositionId(long routePositionId) {
-        _routePositionId = routePositionId;
+    public void setIdRouteLocation(long idRouteLocation) {
+        _idRouteLocation = idRouteLocation;
 
         if (_routeLocationRemoteModel != null) {
             try {
                 Class<?> clazz = _routeLocationRemoteModel.getClass();
 
-                Method method = clazz.getMethod("setRoutePositionId", long.class);
+                Method method = clazz.getMethod("setIdRouteLocation", long.class);
 
-                method.invoke(_routeLocationRemoteModel, routePositionId);
+                method.invoke(_routeLocationRemoteModel, idRouteLocation);
             } catch (Exception e) {
                 throw new UnsupportedOperationException(e);
             }
@@ -122,21 +124,21 @@ public class RouteLocationClp extends BaseModelImpl<RouteLocation>
     }
 
     @Override
-    public long getRouteId() {
-        return _routeId;
+    public long getIdRoute() {
+        return _idRoute;
     }
 
     @Override
-    public void setRouteId(long routeId) {
-        _routeId = routeId;
+    public void setIdRoute(long idRoute) {
+        _idRoute = idRoute;
 
         if (_routeLocationRemoteModel != null) {
             try {
                 Class<?> clazz = _routeLocationRemoteModel.getClass();
 
-                Method method = clazz.getMethod("setRouteId", long.class);
+                Method method = clazz.getMethod("setIdRoute", long.class);
 
-                method.invoke(_routeLocationRemoteModel, routeId);
+                method.invoke(_routeLocationRemoteModel, idRoute);
             } catch (Exception e) {
                 throw new UnsupportedOperationException(e);
             }
@@ -255,8 +257,8 @@ public class RouteLocationClp extends BaseModelImpl<RouteLocation>
     public Object clone() {
         RouteLocationClp clone = new RouteLocationClp();
 
-        clone.setRoutePositionId(getRoutePositionId());
-        clone.setRouteId(getRouteId());
+        clone.setIdRouteLocation(getIdRouteLocation());
+        clone.setIdRoute(getIdRoute());
         clone.setLatitude(getLatitude());
         clone.setLongitude(getLongitude());
 
@@ -267,9 +269,9 @@ public class RouteLocationClp extends BaseModelImpl<RouteLocation>
     public int compareTo(RouteLocation routeLocation) {
         int value = 0;
 
-        if (getRouteId() < routeLocation.getRouteId()) {
+        if (getIdRoute() < routeLocation.getIdRoute()) {
             value = -1;
-        } else if (getRouteId() > routeLocation.getRouteId()) {
+        } else if (getIdRoute() > routeLocation.getIdRoute()) {
             value = 1;
         } else {
             value = 0;
@@ -294,9 +296,9 @@ public class RouteLocationClp extends BaseModelImpl<RouteLocation>
 
         RouteLocationClp routeLocation = (RouteLocationClp) obj;
 
-        long primaryKey = routeLocation.getPrimaryKey();
+        RouteLocationPK primaryKey = routeLocation.getPrimaryKey();
 
-        if (getPrimaryKey() == primaryKey) {
+        if (getPrimaryKey().equals(primaryKey)) {
             return true;
         } else {
             return false;
@@ -309,17 +311,17 @@ public class RouteLocationClp extends BaseModelImpl<RouteLocation>
 
     @Override
     public int hashCode() {
-        return (int) getPrimaryKey();
+        return getPrimaryKey().hashCode();
     }
 
     @Override
     public String toString() {
         StringBundler sb = new StringBundler(9);
 
-        sb.append("{routePositionId=");
-        sb.append(getRoutePositionId());
-        sb.append(", routeId=");
-        sb.append(getRouteId());
+        sb.append("{idRouteLocation=");
+        sb.append(getIdRouteLocation());
+        sb.append(", idRoute=");
+        sb.append(getIdRoute());
         sb.append(", latitude=");
         sb.append(getLatitude());
         sb.append(", longitude=");
@@ -338,12 +340,12 @@ public class RouteLocationClp extends BaseModelImpl<RouteLocation>
         sb.append("</model-name>");
 
         sb.append(
-            "<column><column-name>routePositionId</column-name><column-value><![CDATA[");
-        sb.append(getRoutePositionId());
+            "<column><column-name>idRouteLocation</column-name><column-value><![CDATA[");
+        sb.append(getIdRouteLocation());
         sb.append("]]></column-value></column>");
         sb.append(
-            "<column><column-name>routeId</column-name><column-value><![CDATA[");
-        sb.append(getRouteId());
+            "<column><column-name>idRoute</column-name><column-value><![CDATA[");
+        sb.append(getIdRoute());
         sb.append("]]></column-value></column>");
         sb.append(
             "<column><column-name>latitude</column-name><column-value><![CDATA[");

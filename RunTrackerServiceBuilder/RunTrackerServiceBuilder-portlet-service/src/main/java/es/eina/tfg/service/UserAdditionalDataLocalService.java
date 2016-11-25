@@ -10,6 +10,8 @@ import com.liferay.portal.service.BaseLocalService;
 import com.liferay.portal.service.InvokableLocalService;
 import com.liferay.portal.service.PersistedModelLocalService;
 
+import es.eina.tfg.model.*;
+
 /**
  * Provides the local service interface for UserAdditionalData. Methods of this
  * service will not have security checks based on the propagated JAAS
@@ -48,23 +50,23 @@ public interface UserAdditionalDataLocalService extends BaseLocalService,
     /**
     * Creates a new user additional data with the primary key. Does not add the user additional data to the database.
     *
-    * @param userId the primary key for the new user additional data
+    * @param idUser the primary key for the new user additional data
     * @return the new user additional data
     */
     public es.eina.tfg.model.UserAdditionalData createUserAdditionalData(
-        long userId);
+        long idUser);
 
     /**
     * Deletes the user additional data with the primary key from the database. Also notifies the appropriate model listeners.
     *
-    * @param userId the primary key of the user additional data
+    * @param idUser the primary key of the user additional data
     * @return the user additional data that was removed
     * @throws PortalException if a user additional data with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
     @com.liferay.portal.kernel.search.Indexable(type = IndexableType.DELETE)
     public es.eina.tfg.model.UserAdditionalData deleteUserAdditionalData(
-        long userId)
+        long idUser)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException;
 
@@ -159,19 +161,19 @@ public interface UserAdditionalDataLocalService extends BaseLocalService,
 
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public es.eina.tfg.model.UserAdditionalData fetchUserAdditionalData(
-        long userId) throws com.liferay.portal.kernel.exception.SystemException;
+        long idUser) throws com.liferay.portal.kernel.exception.SystemException;
 
     /**
     * Returns the user additional data with the primary key.
     *
-    * @param userId the primary key of the user additional data
+    * @param idUser the primary key of the user additional data
     * @return the user additional data
     * @throws PortalException if a user additional data with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public es.eina.tfg.model.UserAdditionalData getUserAdditionalData(
-        long userId)
+        long idUser)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException;
 
@@ -240,20 +242,20 @@ public interface UserAdditionalDataLocalService extends BaseLocalService,
         java.lang.String[] parameterTypes, java.lang.Object[] arguments)
         throws java.lang.Throwable;
 
-    public es.eina.tfg.model.UserAdditionalData add(java.lang.Long userId,
-        java.lang.Integer weight, java.lang.Integer height,
-        java.lang.String registerType)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingUserException;
-
-    public es.eina.tfg.model.UserAdditionalData update(java.lang.Long userId,
-        java.lang.Integer weight, java.lang.Integer height,
-        java.lang.String registerType, java.lang.Long smsCounter)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingUserException;
-
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public java.util.List<es.eina.tfg.model.UserSelectedRoutes> getUserSelectedRoutes(
+    public java.util.List<es.eina.tfg.model.UserAndRoute> getUserAndRoute(
         java.lang.Long userId)
         throws com.liferay.portal.kernel.exception.SystemException;
+
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public java.util.List<es.eina.tfg.model.Route> getAssociatedRoutes(
+        java.lang.Long idUser)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException;
+
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public java.util.List<es.eina.tfg.model.Event> getAssociatedEvents(
+        java.lang.Long idUser)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException;
 }

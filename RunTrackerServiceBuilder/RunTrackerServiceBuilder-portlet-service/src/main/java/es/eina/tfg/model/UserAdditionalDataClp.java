@@ -6,7 +6,6 @@ import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.impl.BaseModelImpl;
-import com.liferay.portal.util.PortalUtil;
 
 import es.eina.tfg.service.ClpSerializer;
 import es.eina.tfg.service.UserAdditionalDataLocalServiceUtil;
@@ -21,12 +20,10 @@ import java.util.Map;
 
 public class UserAdditionalDataClp extends BaseModelImpl<UserAdditionalData>
     implements UserAdditionalData {
-    private long _userId;
-    private String _userUuid;
-    private String _registerType;
+    private long _idUser;
     private int _weight;
     private int _height;
-    private long _smsCounter;
+    private long _smsCount;
     private BaseModel<?> _userAdditionalDataRemoteModel;
     private Class<?> _clpSerializerClass = es.eina.tfg.service.ClpSerializer.class;
 
@@ -45,17 +42,17 @@ public class UserAdditionalDataClp extends BaseModelImpl<UserAdditionalData>
 
     @Override
     public long getPrimaryKey() {
-        return _userId;
+        return _idUser;
     }
 
     @Override
     public void setPrimaryKey(long primaryKey) {
-        setUserId(primaryKey);
+        setIdUser(primaryKey);
     }
 
     @Override
     public Serializable getPrimaryKeyObj() {
-        return _userId;
+        return _idUser;
     }
 
     @Override
@@ -67,27 +64,20 @@ public class UserAdditionalDataClp extends BaseModelImpl<UserAdditionalData>
     public Map<String, Object> getModelAttributes() {
         Map<String, Object> attributes = new HashMap<String, Object>();
 
-        attributes.put("userId", getUserId());
-        attributes.put("registerType", getRegisterType());
+        attributes.put("idUser", getIdUser());
         attributes.put("weight", getWeight());
         attributes.put("height", getHeight());
-        attributes.put("smsCounter", getSmsCounter());
+        attributes.put("smsCount", getSmsCount());
 
         return attributes;
     }
 
     @Override
     public void setModelAttributes(Map<String, Object> attributes) {
-        Long userId = (Long) attributes.get("userId");
+        Long idUser = (Long) attributes.get("idUser");
 
-        if (userId != null) {
-            setUserId(userId);
-        }
-
-        String registerType = (String) attributes.get("registerType");
-
-        if (registerType != null) {
-            setRegisterType(registerType);
+        if (idUser != null) {
+            setIdUser(idUser);
         }
 
         Integer weight = (Integer) attributes.get("weight");
@@ -102,61 +92,29 @@ public class UserAdditionalDataClp extends BaseModelImpl<UserAdditionalData>
             setHeight(height);
         }
 
-        Long smsCounter = (Long) attributes.get("smsCounter");
+        Long smsCount = (Long) attributes.get("smsCount");
 
-        if (smsCounter != null) {
-            setSmsCounter(smsCounter);
+        if (smsCount != null) {
+            setSmsCount(smsCount);
         }
     }
 
     @Override
-    public long getUserId() {
-        return _userId;
+    public long getIdUser() {
+        return _idUser;
     }
 
     @Override
-    public void setUserId(long userId) {
-        _userId = userId;
+    public void setIdUser(long idUser) {
+        _idUser = idUser;
 
         if (_userAdditionalDataRemoteModel != null) {
             try {
                 Class<?> clazz = _userAdditionalDataRemoteModel.getClass();
 
-                Method method = clazz.getMethod("setUserId", long.class);
+                Method method = clazz.getMethod("setIdUser", long.class);
 
-                method.invoke(_userAdditionalDataRemoteModel, userId);
-            } catch (Exception e) {
-                throw new UnsupportedOperationException(e);
-            }
-        }
-    }
-
-    @Override
-    public String getUserUuid() throws SystemException {
-        return PortalUtil.getUserValue(getUserId(), "uuid", _userUuid);
-    }
-
-    @Override
-    public void setUserUuid(String userUuid) {
-        _userUuid = userUuid;
-    }
-
-    @Override
-    public String getRegisterType() {
-        return _registerType;
-    }
-
-    @Override
-    public void setRegisterType(String registerType) {
-        _registerType = registerType;
-
-        if (_userAdditionalDataRemoteModel != null) {
-            try {
-                Class<?> clazz = _userAdditionalDataRemoteModel.getClass();
-
-                Method method = clazz.getMethod("setRegisterType", String.class);
-
-                method.invoke(_userAdditionalDataRemoteModel, registerType);
+                method.invoke(_userAdditionalDataRemoteModel, idUser);
             } catch (Exception e) {
                 throw new UnsupportedOperationException(e);
             }
@@ -208,21 +166,21 @@ public class UserAdditionalDataClp extends BaseModelImpl<UserAdditionalData>
     }
 
     @Override
-    public long getSmsCounter() {
-        return _smsCounter;
+    public long getSmsCount() {
+        return _smsCount;
     }
 
     @Override
-    public void setSmsCounter(long smsCounter) {
-        _smsCounter = smsCounter;
+    public void setSmsCount(long smsCount) {
+        _smsCount = smsCount;
 
         if (_userAdditionalDataRemoteModel != null) {
             try {
                 Class<?> clazz = _userAdditionalDataRemoteModel.getClass();
 
-                Method method = clazz.getMethod("setSmsCounter", long.class);
+                Method method = clazz.getMethod("setSmsCount", long.class);
 
-                method.invoke(_userAdditionalDataRemoteModel, smsCounter);
+                method.invoke(_userAdditionalDataRemoteModel, smsCount);
             } catch (Exception e) {
                 throw new UnsupportedOperationException(e);
             }
@@ -298,11 +256,10 @@ public class UserAdditionalDataClp extends BaseModelImpl<UserAdditionalData>
     public Object clone() {
         UserAdditionalDataClp clone = new UserAdditionalDataClp();
 
-        clone.setUserId(getUserId());
-        clone.setRegisterType(getRegisterType());
+        clone.setIdUser(getIdUser());
         clone.setWeight(getWeight());
         clone.setHeight(getHeight());
-        clone.setSmsCounter(getSmsCounter());
+        clone.setSmsCount(getSmsCount());
 
         return clone;
     }
@@ -352,18 +309,16 @@ public class UserAdditionalDataClp extends BaseModelImpl<UserAdditionalData>
 
     @Override
     public String toString() {
-        StringBundler sb = new StringBundler(11);
+        StringBundler sb = new StringBundler(9);
 
-        sb.append("{userId=");
-        sb.append(getUserId());
-        sb.append(", registerType=");
-        sb.append(getRegisterType());
+        sb.append("{idUser=");
+        sb.append(getIdUser());
         sb.append(", weight=");
         sb.append(getWeight());
         sb.append(", height=");
         sb.append(getHeight());
-        sb.append(", smsCounter=");
-        sb.append(getSmsCounter());
+        sb.append(", smsCount=");
+        sb.append(getSmsCount());
         sb.append("}");
 
         return sb.toString();
@@ -371,19 +326,15 @@ public class UserAdditionalDataClp extends BaseModelImpl<UserAdditionalData>
 
     @Override
     public String toXmlString() {
-        StringBundler sb = new StringBundler(19);
+        StringBundler sb = new StringBundler(16);
 
         sb.append("<model><model-name>");
         sb.append("es.eina.tfg.model.UserAdditionalData");
         sb.append("</model-name>");
 
         sb.append(
-            "<column><column-name>userId</column-name><column-value><![CDATA[");
-        sb.append(getUserId());
-        sb.append("]]></column-value></column>");
-        sb.append(
-            "<column><column-name>registerType</column-name><column-value><![CDATA[");
-        sb.append(getRegisterType());
+            "<column><column-name>idUser</column-name><column-value><![CDATA[");
+        sb.append(getIdUser());
         sb.append("]]></column-value></column>");
         sb.append(
             "<column><column-name>weight</column-name><column-value><![CDATA[");
@@ -394,8 +345,8 @@ public class UserAdditionalDataClp extends BaseModelImpl<UserAdditionalData>
         sb.append(getHeight());
         sb.append("]]></column-value></column>");
         sb.append(
-            "<column><column-name>smsCounter</column-name><column-value><![CDATA[");
-        sb.append(getSmsCounter());
+            "<column><column-name>smsCount</column-name><column-value><![CDATA[");
+        sb.append(getSmsCount());
         sb.append("]]></column-value></column>");
 
         sb.append("</model>");

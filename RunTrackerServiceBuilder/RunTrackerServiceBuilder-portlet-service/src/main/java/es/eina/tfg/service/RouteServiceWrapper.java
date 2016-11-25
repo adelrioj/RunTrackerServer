@@ -47,22 +47,18 @@ public class RouteServiceWrapper implements RouteService,
     @Override
     public es.eina.tfg.model.Route add(java.lang.String type,
         java.lang.String name, java.lang.String description,
-        java.lang.Long authorId, boolean isPublic, java.util.Date startingTime)
+        java.lang.Long authorId, boolean isPublic)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return _routeService.add(type, name, description, authorId, isPublic,
-            startingTime);
+        return _routeService.add(type, name, description, authorId, isPublic);
     }
 
     @Override
     public es.eina.tfg.model.Route update(java.lang.Long routeId,
         java.lang.String type, java.lang.String name,
-        java.lang.String description, java.lang.Long authorId,
-        boolean isPublic, java.util.Date startingTime,
-        java.util.Date creationTime)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingRouteException {
-        return _routeService.update(routeId, type, name, description, authorId,
-            isPublic, startingTime, creationTime);
+        java.lang.String description, boolean isPublic)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        return _routeService.update(routeId, type, name, description, isPublic);
     }
 
     @Override
@@ -80,22 +76,24 @@ public class RouteServiceWrapper implements RouteService,
     }
 
     @Override
-    public java.util.List<es.eina.tfg.model.Route> findByAuthor(
+    public java.util.List<es.eina.tfg.model.Route> getByAuthor(
         java.lang.Long userId)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return _routeService.findByAuthor(userId);
+        return _routeService.getByAuthor(userId);
     }
 
     @Override
-    public java.util.List<es.eina.tfg.model.Route> getPublicRoutes()
+    public java.util.List<es.eina.tfg.model.Route> getByisPublic(
+        boolean isPublic)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return _routeService.getPublicRoutes();
+        return _routeService.getByisPublic(isPublic);
     }
 
     @Override
-    public java.util.List<es.eina.tfg.model.Route> getPublicRoutes(int start,
-        int end) throws com.liferay.portal.kernel.exception.SystemException {
-        return _routeService.getPublicRoutes(start, end);
+    public java.util.List<es.eina.tfg.model.Route> getPublicRoutes(
+        boolean isPublic, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _routeService.getPublicRoutes(isPublic, start, end);
     }
 
     /**

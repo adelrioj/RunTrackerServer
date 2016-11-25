@@ -42,20 +42,20 @@ public interface UserAdditionalDataPersistence extends BasePersistence<UserAddit
     /**
     * Creates a new user additional data with the primary key. Does not add the user additional data to the database.
     *
-    * @param userId the primary key for the new user additional data
+    * @param idUser the primary key for the new user additional data
     * @return the new user additional data
     */
-    public es.eina.tfg.model.UserAdditionalData create(long userId);
+    public es.eina.tfg.model.UserAdditionalData create(long idUser);
 
     /**
     * Removes the user additional data with the primary key from the database. Also notifies the appropriate model listeners.
     *
-    * @param userId the primary key of the user additional data
+    * @param idUser the primary key of the user additional data
     * @return the user additional data that was removed
     * @throws es.eina.tfg.NoSuchUserAdditionalDataException if a user additional data with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
-    public es.eina.tfg.model.UserAdditionalData remove(long userId)
+    public es.eina.tfg.model.UserAdditionalData remove(long idUser)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchUserAdditionalDataException;
 
@@ -66,23 +66,23 @@ public interface UserAdditionalDataPersistence extends BasePersistence<UserAddit
     /**
     * Returns the user additional data with the primary key or throws a {@link es.eina.tfg.NoSuchUserAdditionalDataException} if it could not be found.
     *
-    * @param userId the primary key of the user additional data
+    * @param idUser the primary key of the user additional data
     * @return the user additional data
     * @throws es.eina.tfg.NoSuchUserAdditionalDataException if a user additional data with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
-    public es.eina.tfg.model.UserAdditionalData findByPrimaryKey(long userId)
+    public es.eina.tfg.model.UserAdditionalData findByPrimaryKey(long idUser)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchUserAdditionalDataException;
 
     /**
     * Returns the user additional data with the primary key or returns <code>null</code> if it could not be found.
     *
-    * @param userId the primary key of the user additional data
+    * @param idUser the primary key of the user additional data
     * @return the user additional data, or <code>null</code> if a user additional data with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
-    public es.eina.tfg.model.UserAdditionalData fetchByPrimaryKey(long userId)
+    public es.eina.tfg.model.UserAdditionalData fetchByPrimaryKey(long idUser)
         throws com.liferay.portal.kernel.exception.SystemException;
 
     /**

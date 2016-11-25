@@ -52,51 +52,26 @@ public class LocationServiceUtil {
     }
 
     public static es.eina.tfg.model.Location add(java.lang.Long raceId,
-        java.lang.Long userId, java.lang.Long deviceId,
-        java.lang.Long sensorId, java.util.Date time,
+        java.lang.Long deviceId, java.lang.Long sensorId, java.util.Date time,
         java.lang.String sensorMode, int sysRef, double latitude,
         double longitude, double speed, double distance, double altitude)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingDeviceAndSensorRelationException,
-            es.eina.tfg.NonExistingRaceException,
-            es.eina.tfg.NonExistingUserException {
-        return getService()
-                   .add(raceId, userId, deviceId, sensorId, time, sensorMode,
-            sysRef, latitude, longitude, speed, distance, altitude);
-    }
-
-    public static es.eina.tfg.model.Location update(
-        java.lang.Long measurementId, java.lang.Long raceId,
-        java.lang.Long userId, java.lang.Long deviceId,
-        java.lang.Long sensorId, java.util.Date time,
-        java.lang.String sensorMode, int sysRef, double latitude,
-        double longitude, double speed, double distance, double altitude)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingMeasurementException {
-        return getService()
-                   .update(measurementId, raceId, userId, deviceId, sensorId,
-            time, sensorMode, sysRef, latitude, longitude, speed, distance,
-            altitude);
-    }
-
-    public static es.eina.tfg.model.Location delete(
-        java.lang.Long measurementId)
-        throws com.liferay.portal.kernel.exception.PortalException,
-            com.liferay.portal.kernel.exception.SystemException {
-        return getService().delete(measurementId);
-    }
-
-    public static es.eina.tfg.model.Location getLocation(
-        java.lang.Long measurementId)
-        throws com.liferay.portal.kernel.exception.PortalException,
-            com.liferay.portal.kernel.exception.SystemException {
-        return getService().getLocation(measurementId);
-    }
-
-    public static java.util.List<es.eina.tfg.model.Location> findByRaceId(
-        java.lang.Long raceId)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return getService().findByRaceId(raceId);
+        return getService()
+                   .add(raceId, deviceId, sensorId, time, sensorMode, sysRef,
+            latitude, longitude, speed, distance, altitude);
+    }
+
+    public static es.eina.tfg.model.Location getByidLocation(
+        long idMeasurement, long idRace)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        return getService().getByidLocation(idMeasurement, idRace);
+    }
+
+    public static java.util.List<es.eina.tfg.model.Location> getByidRace(
+        java.lang.Long idRace)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService().getByidRace(idRace);
     }
 
     public static void clearService() {

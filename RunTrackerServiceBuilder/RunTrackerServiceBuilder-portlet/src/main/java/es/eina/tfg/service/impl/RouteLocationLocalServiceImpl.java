@@ -3,12 +3,11 @@ package es.eina.tfg.service.impl;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
-import es.eina.tfg.NonExistingRouteException;
-import es.eina.tfg.NonExistingRouteLocationException;
 import es.eina.tfg.model.Route;
 import es.eina.tfg.model.RouteLocation;
 import es.eina.tfg.service.RouteLocalServiceUtil;
 import es.eina.tfg.service.base.RouteLocationLocalServiceBaseImpl;
+import es.eina.tfg.service.persistence.RouteLocationPK;
 import es.eina.tfg.service.persistence.RouteLocationUtil;
 
 import java.util.List;
@@ -30,65 +29,57 @@ import java.util.List;
  * @see RouteLocationLocalServiceBaseImpl
  * @see es.eina.tfg.service.RouteLocationLocalServiceUtil
  */
-public class RouteLocationLocalServiceImpl extends RouteLocationLocalServiceBaseImpl {
+public class RouteLocationLocalServiceImpl
+    extends RouteLocationLocalServiceBaseImpl {
 
-    public RouteLocation createRouteLocation()
+    public RouteLocationPK generateNewIdRouteLocation(long idRoute)
             throws SystemException {
-        Long routePositionId;
         try {
-            routePositionId = counterLocalService.increment();
+            long idRouteLocation = counterLocalService.increment(RouteLocation.class.getName());
+            return new RouteLocationPK(idRouteLocation, idRoute);
         } catch (SystemException e) {
-            _log.error("SystemException while calling counterLocalService.increment()", e);
+            _log.error("SystemException: Cannot generate counterLocalService.increment() for class: "
+                    + RouteLocation.class.getName());
             throw e;
         }
-        return createRouteLocation(routePositionId);
     }
 
-    public RouteLocation add(Long routeId, Double latitude, Double longitude)
-            throws SystemException, NonExistingRouteException {
-        Long routePositionId = counterLocalService.increment();
+    @Override
+    public RouteLocation addRouteLocation(RouteLocation routeLocation)
+            throws SystemException {
+        checkMadatoryAttributes(routeLocation);
+        return super.addRouteLocation(routeLocation);
+    }
 
-        Route route = RouteLocalServiceUtil.fetchRoute(routeId);
+    @Override
+    public RouteLocation updateRouteLocation(RouteLocation routeLocation)
+            throws SystemException {
+        checkMadatoryAttributes(routeLocation);
+        return super.updateRouteLocation(routeLocation);
+    }
+
+    private void checkMadatoryAttributes(RouteLocation routeLocation)
+            throws SystemException {
+        Route route = RouteLocalServiceUtil.fetchRoute(routeLocation.getIdRoute());
         if (route == null){
-            throw new NonExistingRouteException("Route: " + routeId + " does not exists on the database.");
+            throw new SystemException("Route: "
+                    + routeLocation.getIdRoute() + " does not exists on the database.");
         }
-
-        RouteLocation routeLocation = createRouteLocation(routePositionId);
-        routeLocation.setRouteId(routeId);
-        routeLocation.setLatitude(latitude);
-        routeLocation.setLongitude(longitude);
-
-        return updateRouteLocation(routeLocation);
     }
 
-    public RouteLocation update(Long routeLocationId, Long routeId, Double latitude, Double longitude)
-            throws NonExistingRouteException, SystemException, NonExistingRouteLocationException {
-        Route route = RouteLocalServiceUtil.fetchRoute(routeId);
-        if (route == null){
-            throw new NonExistingRouteException("Route: " + routeId + " does not exists on the database.");
-        }
-        RouteLocation routeLocation = fetchRouteLocation(routeLocationId);
-        if (routeLocation == null){
-            throw new NonExistingRouteLocationException(
-                    "Route location: " + routeLocationId + " on route: " + routeId + " does not exists on the database.");
-        }
-        routeLocation.setRouteId(routeId);
-        routeLocation.setLatitude(latitude);
-        routeLocation.setLongitude(longitude);
-
-        return updateRouteLocation(routeLocation);
+    public List<RouteLocation> getByidRoute (Long idRoute)
+            throws SystemException {
+        return RouteLocationUtil.findByrouteId(idRoute);
     }
 
-    public List<RouteLocation> findByRouteId (Long routeId) throws SystemException {
-        return RouteLocationUtil.findByrouteId(routeId);
+    public List<RouteLocation> getByidRoute(long idRoute, int start, int end)
+            throws SystemException {
+        return RouteLocationUtil.findByrouteId(idRoute, start, end);
     }
 
-    public List<RouteLocation> findByRouteId (long routeId, int start, int end) throws SystemException {
-        return RouteLocationUtil.findByrouteId(routeId, start, end);
-    }
-
-    public int findByRouteIdCount (Long routeId) throws SystemException {
-        return RouteLocationUtil.findByrouteId(routeId).size();
+    public int getByidRouteCount (Long idRoute)
+            throws SystemException {
+        return RouteLocationUtil.findByrouteId(idRoute).size();
     }
 
     private static Log _log = LogFactoryUtil.getLog(RouteLocationLocalServiceImpl.class);

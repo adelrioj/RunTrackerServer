@@ -72,17 +72,13 @@ public class DeviceServiceSoap {
     }
 
     public static es.eina.tfg.model.DeviceSoap update(java.lang.Long deviceId,
-        java.lang.String deviceUUID, java.lang.Long userId,
         java.lang.String description, java.lang.String status,
-        java.lang.String phoneNumber, java.lang.String serverPhoneNumber,
-        java.lang.String smsPollTime, java.lang.String smsTransmitPeriod,
-        java.lang.String cloudId, java.lang.String serverIp,
+        java.lang.String phoneNumber, java.lang.String smsTransmitPeriod,
         java.lang.String httpTransmitPeriod) throws RemoteException {
         try {
             es.eina.tfg.model.Device returnValue = DeviceServiceUtil.update(deviceId,
-                    deviceUUID, userId, description, status, phoneNumber,
-                    serverPhoneNumber, smsPollTime, smsTransmitPeriod, cloudId,
-                    serverIp, httpTransmitPeriod);
+                    description, status, phoneNumber, smsTransmitPeriod,
+                    httpTransmitPeriod);
 
             return es.eina.tfg.model.DeviceSoap.toSoapModel(returnValue);
         } catch (Exception e) {
@@ -157,10 +153,10 @@ public class DeviceServiceSoap {
         }
     }
 
-    public static es.eina.tfg.model.DeviceSoap[] findByUserId(
+    public static es.eina.tfg.model.DeviceSoap[] getByUserId(
         java.lang.Long userId) throws RemoteException {
         try {
-            java.util.List<es.eina.tfg.model.Device> returnValue = DeviceServiceUtil.findByUserId(userId);
+            java.util.List<es.eina.tfg.model.Device> returnValue = DeviceServiceUtil.getByUserId(userId);
 
             return es.eina.tfg.model.DeviceSoap.toSoapModels(returnValue);
         } catch (Exception e) {
@@ -170,10 +166,10 @@ public class DeviceServiceSoap {
         }
     }
 
-    public static es.eina.tfg.model.DeviceSoap findByDeviceUUID(
+    public static es.eina.tfg.model.DeviceSoap getByDeviceUUID(
         java.lang.String deviceUUID) throws RemoteException {
         try {
-            es.eina.tfg.model.Device returnValue = DeviceServiceUtil.findByDeviceUUID(deviceUUID);
+            es.eina.tfg.model.Device returnValue = DeviceServiceUtil.getByDeviceUUID(deviceUUID);
 
             return es.eina.tfg.model.DeviceSoap.toSoapModel(returnValue);
         } catch (Exception e) {
@@ -183,10 +179,10 @@ public class DeviceServiceSoap {
         }
     }
 
-    public static es.eina.tfg.model.DeviceSoap[] findByStatus(
+    public static es.eina.tfg.model.DeviceSoap[] getByStatus(
         java.lang.String status) throws RemoteException {
         try {
-            java.util.List<es.eina.tfg.model.Device> returnValue = DeviceServiceUtil.findByStatus(status);
+            java.util.List<es.eina.tfg.model.Device> returnValue = DeviceServiceUtil.getByStatus(status);
 
             return es.eina.tfg.model.DeviceSoap.toSoapModels(returnValue);
         } catch (Exception e) {
@@ -196,10 +192,10 @@ public class DeviceServiceSoap {
         }
     }
 
-    public static es.eina.tfg.model.DeviceSoap[] findByStatus(
+    public static es.eina.tfg.model.DeviceSoap[] getByStatus(
         java.lang.String status, int start, int end) throws RemoteException {
         try {
-            java.util.List<es.eina.tfg.model.Device> returnValue = DeviceServiceUtil.findByStatus(status,
+            java.util.List<es.eina.tfg.model.Device> returnValue = DeviceServiceUtil.getByStatus(status,
                     start, end);
 
             return es.eina.tfg.model.DeviceSoap.toSoapModels(returnValue);

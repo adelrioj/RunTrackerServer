@@ -3,34 +3,10 @@
 <deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
 	<service name="Plugin_GL_SensorService" provider="java:RPC" style="rpc" use="encoded">
 		<typeMapping xmlns:ns="http://model.tfg.eina.es" qname="ns:SensorSoap" type="java:es.eina.tfg.model.SensorSoap" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
-		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="add" qname="operNS:add" returnQName="addReturn" returnType="rtns:SensorSoap" soapAction="">
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="type" type="tns:int"></parameter>
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="description" type="tns:string"></parameter>
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dataUnits" type="tns:string"></parameter>
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dataType" type="tns:string"></parameter>
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dataUncertainity" type="tns:string"></parameter>
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dataLowerRange" type="tns:string"></parameter>
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dataUpperRange" type="tns:string"></parameter>
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dataPacketFormat" type="tns:string"></parameter>
-		</operation>
-		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="delete" qname="operNS:delete" returnQName="deleteReturn" returnType="rtns:SensorSoap" soapAction="">
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="sensorId" type="tns:long"></parameter>
-		</operation>
 		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="getSensor" qname="operNS:getSensor" returnQName="getSensorReturn" returnType="rtns:SensorSoap" soapAction="">
 			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="sensorId" type="tns:long"></parameter>
 		</operation>
-		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="update" qname="operNS:update" returnQName="updateReturn" returnType="rtns:SensorSoap" soapAction="">
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="sensorId" type="tns:long"></parameter>
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="type" type="tns:int"></parameter>
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="description" type="tns:string"></parameter>
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dataUnits" type="tns:string"></parameter>
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dataType" type="tns:string"></parameter>
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dataUncertainity" type="tns:string"></parameter>
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dataLowerRange" type="tns:string"></parameter>
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dataUpperRange" type="tns:string"></parameter>
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dataPacketFormat" type="tns:string"></parameter>
-		</operation>
-		<parameter name="allowedMethods" value="add delete getSensor update" />
+		<parameter name="allowedMethods" value="getSensor" />
 		<parameter name="className" value="es.eina.tfg.service.http.SensorServiceSoap" />
 		<parameter name="schemaUnqualified" value="http://model.tfg.eina.es" />
 		<parameter name="typeMappingVersion" value="1.2" />

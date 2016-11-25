@@ -4,8 +4,11 @@ import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import es.eina.tfg.NonExistingUserException;
 import es.eina.tfg.model.UserAdditionalData;
-import es.eina.tfg.model.UserSelectedRoutes;
+import es.eina.tfg.model.UserAndRoute;
+import es.eina.tfg.service.UserAdditionalDataLocalService;
 import es.eina.tfg.service.UserAdditionalDataLocalServiceUtil;
+import es.eina.tfg.service.UserAdditionalDataService;
+import es.eina.tfg.service.UserAdditionalDataServiceUtil;
 import es.eina.tfg.service.base.UserAdditionalDataServiceBaseImpl;
 
 import java.util.List;
@@ -27,26 +30,35 @@ import java.util.List;
  * @see UserAdditionalDataServiceBaseImpl
  * @see es.eina.tfg.service.UserAdditionalDataServiceUtil
  */
-public class UserAdditionalDataServiceImpl extends UserAdditionalDataServiceBaseImpl {
+public class UserAdditionalDataServiceImpl
+    extends UserAdditionalDataServiceBaseImpl {
+
     public UserAdditionalData add(Long userId, Integer weight, Integer height, String registerType)
-            throws SystemException, NonExistingUserException {
-        return UserAdditionalDataLocalServiceUtil.add(userId, weight, height, registerType);
+            throws SystemException {
+        UserAdditionalData userData = UserAdditionalDataLocalServiceUtil.createUserAdditionalData(
+                UserAdditionalDataLocalServiceUtil.getUserAdditionalDatasCount());
+        userData.setIdUser(userId);
+        userData.setWeight(weight);
+        userData.setHeight(height);
+
+        return UserAdditionalDataLocalServiceUtil.addUserAdditionalData(userData);
     }
 
-    public UserAdditionalData update(Long userId, Integer weight, Integer height, String registerType, Long smsCount)
-            throws SystemException, NonExistingUserException {
-        return UserAdditionalDataLocalServiceUtil.update(userId, weight, height, registerType, smsCount);
+    public UserAdditionalData update(Long userId, Integer weight, Integer height, Long smsCount)
+            throws SystemException, PortalException {
+        UserAdditionalData userData = UserAdditionalDataLocalServiceUtil.getUserAdditionalData(userId);
+        userData.setHeight(height);
+        userData.setWeight(weight);
+        userData.setSmsCount(smsCount);
+
+        return UserAdditionalDataLocalServiceUtil.updateUserAdditionalData(userData);
     }
 
-    public UserAdditionalData delete (Long userId) throws SystemException, PortalException {
-        return UserAdditionalDataLocalServiceUtil.deleteUserAdditionalData(userId);
-    }
-
-    public UserAdditionalData getUserAdditionalData (Long userId) throws SystemException, PortalException {
+    public UserAdditionalData getUserAdditionalData(Long userId) throws SystemException, PortalException {
         return UserAdditionalDataLocalServiceUtil.getUserAdditionalData(userId);
     }
 
-    public List<UserSelectedRoutes> getUserSelectedRoutes(Long userId) throws SystemException {
-        return UserAdditionalDataLocalServiceUtil.getUserSelectedRoutes(userId);
+    public List<UserAndRoute> getUserSelectedRoutes(Long userId) throws SystemException {
+        return UserAdditionalDataLocalServiceUtil.getUserAndRoute(userId);
     }
 }

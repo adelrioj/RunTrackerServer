@@ -36,29 +36,29 @@ public class UserAdditionalDataLocalServiceWrapper
     /**
     * Creates a new user additional data with the primary key. Does not add the user additional data to the database.
     *
-    * @param userId the primary key for the new user additional data
+    * @param idUser the primary key for the new user additional data
     * @return the new user additional data
     */
     @Override
     public es.eina.tfg.model.UserAdditionalData createUserAdditionalData(
-        long userId) {
-        return _userAdditionalDataLocalService.createUserAdditionalData(userId);
+        long idUser) {
+        return _userAdditionalDataLocalService.createUserAdditionalData(idUser);
     }
 
     /**
     * Deletes the user additional data with the primary key from the database. Also notifies the appropriate model listeners.
     *
-    * @param userId the primary key of the user additional data
+    * @param idUser the primary key of the user additional data
     * @return the user additional data that was removed
     * @throws PortalException if a user additional data with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
     @Override
     public es.eina.tfg.model.UserAdditionalData deleteUserAdditionalData(
-        long userId)
+        long idUser)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {
-        return _userAdditionalDataLocalService.deleteUserAdditionalData(userId);
+        return _userAdditionalDataLocalService.deleteUserAdditionalData(idUser);
     }
 
     /**
@@ -175,24 +175,24 @@ public class UserAdditionalDataLocalServiceWrapper
 
     @Override
     public es.eina.tfg.model.UserAdditionalData fetchUserAdditionalData(
-        long userId) throws com.liferay.portal.kernel.exception.SystemException {
-        return _userAdditionalDataLocalService.fetchUserAdditionalData(userId);
+        long idUser) throws com.liferay.portal.kernel.exception.SystemException {
+        return _userAdditionalDataLocalService.fetchUserAdditionalData(idUser);
     }
 
     /**
     * Returns the user additional data with the primary key.
     *
-    * @param userId the primary key of the user additional data
+    * @param idUser the primary key of the user additional data
     * @return the user additional data
     * @throws PortalException if a user additional data with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
     @Override
     public es.eina.tfg.model.UserAdditionalData getUserAdditionalData(
-        long userId)
+        long idUser)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {
-        return _userAdditionalDataLocalService.getUserAdditionalData(userId);
+        return _userAdditionalDataLocalService.getUserAdditionalData(idUser);
     }
 
     @Override
@@ -277,30 +277,26 @@ public class UserAdditionalDataLocalServiceWrapper
     }
 
     @Override
-    public es.eina.tfg.model.UserAdditionalData add(java.lang.Long userId,
-        java.lang.Integer weight, java.lang.Integer height,
-        java.lang.String registerType)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingUserException {
-        return _userAdditionalDataLocalService.add(userId, weight, height,
-            registerType);
-    }
-
-    @Override
-    public es.eina.tfg.model.UserAdditionalData update(java.lang.Long userId,
-        java.lang.Integer weight, java.lang.Integer height,
-        java.lang.String registerType, java.lang.Long smsCounter)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingUserException {
-        return _userAdditionalDataLocalService.update(userId, weight, height,
-            registerType, smsCounter);
-    }
-
-    @Override
-    public java.util.List<es.eina.tfg.model.UserSelectedRoutes> getUserSelectedRoutes(
+    public java.util.List<es.eina.tfg.model.UserAndRoute> getUserAndRoute(
         java.lang.Long userId)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return _userAdditionalDataLocalService.getUserSelectedRoutes(userId);
+        return _userAdditionalDataLocalService.getUserAndRoute(userId);
+    }
+
+    @Override
+    public java.util.List<es.eina.tfg.model.Route> getAssociatedRoutes(
+        java.lang.Long idUser)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        return _userAdditionalDataLocalService.getAssociatedRoutes(idUser);
+    }
+
+    @Override
+    public java.util.List<es.eina.tfg.model.Event> getAssociatedEvents(
+        java.lang.Long idUser)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        return _userAdditionalDataLocalService.getAssociatedEvents(idUser);
     }
 
     /**

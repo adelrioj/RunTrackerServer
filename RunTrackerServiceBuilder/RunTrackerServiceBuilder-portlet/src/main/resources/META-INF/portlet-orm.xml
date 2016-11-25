@@ -9,8 +9,8 @@
 	</persistence-unit-metadata>
 	<mapped-superclass class="es.eina.tfg.model.impl.DeviceModelImpl">
 		<attributes>
-			<id name="deviceId" />
-			<basic name="userId" />
+			<id name="idDevice" />
+			<basic name="idUser" />
 			<basic name="deviceUUID" />
 			<basic name="description" />
 			<basic name="status" />
@@ -24,27 +24,49 @@
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />
-			<transient name="userUuid" />
 		</attributes>
 	</mapped-superclass>
-	<mapped-superclass class="es.eina.tfg.model.impl.Device_SensorModelImpl">
-		<id-class class="es.eina.tfg.service.persistence.Device_SensorPK" />
+	<mapped-superclass class="es.eina.tfg.model.impl.DeviceAndSensorModelImpl">
+		<id-class class="es.eina.tfg.service.persistence.DeviceAndSensorPK" />
 		<attributes>
-			<id name="deviceId" />
-			<id name="sensorId" />
+			<id name="idDevice" />
+			<id name="idSensor" />
 			<basic name="status" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />
 		</attributes>
 	</mapped-superclass>
-	<mapped-superclass class="es.eina.tfg.model.impl.LocationModelImpl">
+	<mapped-superclass class="es.eina.tfg.model.impl.EventModelImpl">
 		<attributes>
-			<id name="measurementId" />
-			<basic name="raceId" />
-			<basic name="userId" />
-			<basic name="deviceId" />
-			<basic name="sensorId" />
+			<id name="idEvent" />
+			<basic name="idRoute" />
+			<basic name="idAuthor" />
+			<basic name="name" />
+			<basic name="plannedStartingTime">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="plannedFinishTime">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="realStartingTime">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="realFinishTime">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="es.eina.tfg.model.impl.LocationModelImpl">
+		<id-class class="es.eina.tfg.service.persistence.LocationPK" />
+		<attributes>
+			<id name="idRace" />
+			<id name="idMeasurement" />
+			<basic name="idDevice" />
+			<basic name="idSensor" />
 			<basic name="time">
 				<column name="TIME_" />
 				<temporal>TIMESTAMP</temporal>
@@ -59,16 +81,15 @@
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />
-			<transient name="userUuid" />
 		</attributes>
 	</mapped-superclass>
 	<mapped-superclass class="es.eina.tfg.model.impl.PowerModelImpl">
+		<id-class class="es.eina.tfg.service.persistence.PowerPK" />
 		<attributes>
-			<id name="measurementId" />
-			<basic name="raceId" />
-			<basic name="userId" />
-			<basic name="deviceId" />
-			<basic name="sensorId" />
+			<id name="idMeasurement" />
+			<id name="idRace" />
+			<basic name="idDevice" />
+			<basic name="idSensor" />
 			<basic name="time">
 				<column name="TIME_" />
 				<temporal>TIMESTAMP</temporal>
@@ -78,38 +99,31 @@
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />
-			<transient name="userUuid" />
 		</attributes>
 	</mapped-superclass>
 	<mapped-superclass class="es.eina.tfg.model.impl.RaceModelImpl">
 		<attributes>
-			<id name="raceId" />
-			<basic name="userId" />
-			<basic name="routeId" />
+			<id name="idRace" />
+			<basic name="idUser" />
+			<basic name="idRoute" />
 			<basic name="type">
 				<column name="TYPE_" />
 			</basic>
-			<basic name="userHeight" />
-			<basic name="userWeight" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />
-			<transient name="userUuid" />
 		</attributes>
 	</mapped-superclass>
 	<mapped-superclass class="es.eina.tfg.model.impl.RouteModelImpl">
 		<attributes>
-			<id name="routeId" />
+			<id name="idRoute" />
+			<basic name="idAuthor" />
 			<basic name="type">
 				<column name="TYPE_" />
 			</basic>
 			<basic name="name" />
 			<basic name="description" />
-			<basic name="authorId" />
 			<basic name="isPublic" />
-			<basic name="startingTime">
-				<temporal>TIMESTAMP</temporal>
-			</basic>
 			<basic name="creationTime">
 				<temporal>TIMESTAMP</temporal>
 			</basic>
@@ -119,9 +133,10 @@
 		</attributes>
 	</mapped-superclass>
 	<mapped-superclass class="es.eina.tfg.model.impl.RouteLocationModelImpl">
+		<id-class class="es.eina.tfg.service.persistence.RouteLocationPK" />
 		<attributes>
-			<id name="routePositionId" />
-			<basic name="routeId" />
+			<id name="idRouteLocation" />
+			<id name="idRoute" />
 			<basic name="latitude" />
 			<basic name="longitude" />
 			<transient name="modelAttributes" />
@@ -131,7 +146,7 @@
 	</mapped-superclass>
 	<mapped-superclass class="es.eina.tfg.model.impl.SensorModelImpl">
 		<attributes>
-			<id name="sensorId" />
+			<id name="idSensor" />
 			<basic name="type">
 				<column name="TYPE_" />
 			</basic>
@@ -149,34 +164,46 @@
 	</mapped-superclass>
 	<mapped-superclass class="es.eina.tfg.model.impl.UserAdditionalDataModelImpl">
 		<attributes>
-			<id name="userId" />
-			<basic name="registerType" />
+			<id name="idUser" />
 			<basic name="weight" />
 			<basic name="height" />
-			<basic name="smsCounter" />
+			<basic name="smsCount" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />
-			<transient name="userUuid" />
 		</attributes>
 	</mapped-superclass>
-	<mapped-superclass class="es.eina.tfg.model.impl.UserSelectedRoutesModelImpl">
-		<id-class class="es.eina.tfg.service.persistence.UserSelectedRoutesPK" />
+	<mapped-superclass class="es.eina.tfg.model.impl.UserAndEventModelImpl">
+		<id-class class="es.eina.tfg.service.persistence.UserAndEventPK" />
 		<attributes>
-			<id name="userId" />
-			<id name="routeId" />
+			<id name="idUser" />
+			<id name="idEvent" />
+			<basic name="idRace" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />
-			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="es.eina.tfg.model.impl.UserAndRouteModelImpl">
+		<id-class class="es.eina.tfg.service.persistence.UserAndRoutePK" />
+		<attributes>
+			<id name="idUser" />
+			<id name="idRoute" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
 		</attributes>
 	</mapped-superclass>
 	<entity class="es.eina.tfg.model.impl.DeviceImpl" name="Device">
 		<table name="GL_Device" />
 		<attributes />
 	</entity>
-	<entity class="es.eina.tfg.model.impl.Device_SensorImpl" name="Device_Sensor">
-		<table name="GL_Device_Sensor" />
+	<entity class="es.eina.tfg.model.impl.DeviceAndSensorImpl" name="DeviceAndSensor">
+		<table name="GL_DeviceAndSensor" />
+		<attributes />
+	</entity>
+	<entity class="es.eina.tfg.model.impl.EventImpl" name="Event">
+		<table name="GL_Event" />
 		<attributes />
 	</entity>
 	<entity class="es.eina.tfg.model.impl.LocationImpl" name="Location">
@@ -207,8 +234,12 @@
 		<table name="GL_UserAdditionalData" />
 		<attributes />
 	</entity>
-	<entity class="es.eina.tfg.model.impl.UserSelectedRoutesImpl" name="UserSelectedRoutes">
-		<table name="GL_UserSelectedRoutes" />
+	<entity class="es.eina.tfg.model.impl.UserAndEventImpl" name="UserAndEvent">
+		<table name="GL_UserAndEvent" />
+		<attributes />
+	</entity>
+	<entity class="es.eina.tfg.model.impl.UserAndRouteImpl" name="UserAndRoute">
+		<table name="GL_UserAndRoute" />
 		<attributes />
 	</entity>
 </entity-mappings>

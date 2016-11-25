@@ -1,7 +1,6 @@
 package es.eina.tfg.model.impl;
 
 import com.liferay.portal.kernel.util.StringBundler;
-import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.model.CacheModel;
 
 import es.eina.tfg.model.UserAdditionalData;
@@ -20,26 +19,23 @@ import java.io.ObjectOutput;
  */
 public class UserAdditionalDataCacheModel implements CacheModel<UserAdditionalData>,
     Externalizable {
-    public long userId;
-    public String registerType;
+    public long idUser;
     public int weight;
     public int height;
-    public long smsCounter;
+    public long smsCount;
 
     @Override
     public String toString() {
-        StringBundler sb = new StringBundler(11);
+        StringBundler sb = new StringBundler(9);
 
-        sb.append("{userId=");
-        sb.append(userId);
-        sb.append(", registerType=");
-        sb.append(registerType);
+        sb.append("{idUser=");
+        sb.append(idUser);
         sb.append(", weight=");
         sb.append(weight);
         sb.append(", height=");
         sb.append(height);
-        sb.append(", smsCounter=");
-        sb.append(smsCounter);
+        sb.append(", smsCount=");
+        sb.append(smsCount);
         sb.append("}");
 
         return sb.toString();
@@ -49,17 +45,10 @@ public class UserAdditionalDataCacheModel implements CacheModel<UserAdditionalDa
     public UserAdditionalData toEntityModel() {
         UserAdditionalDataImpl userAdditionalDataImpl = new UserAdditionalDataImpl();
 
-        userAdditionalDataImpl.setUserId(userId);
-
-        if (registerType == null) {
-            userAdditionalDataImpl.setRegisterType(StringPool.BLANK);
-        } else {
-            userAdditionalDataImpl.setRegisterType(registerType);
-        }
-
+        userAdditionalDataImpl.setIdUser(idUser);
         userAdditionalDataImpl.setWeight(weight);
         userAdditionalDataImpl.setHeight(height);
-        userAdditionalDataImpl.setSmsCounter(smsCounter);
+        userAdditionalDataImpl.setSmsCount(smsCount);
 
         userAdditionalDataImpl.resetOriginalValues();
 
@@ -68,26 +57,18 @@ public class UserAdditionalDataCacheModel implements CacheModel<UserAdditionalDa
 
     @Override
     public void readExternal(ObjectInput objectInput) throws IOException {
-        userId = objectInput.readLong();
-        registerType = objectInput.readUTF();
+        idUser = objectInput.readLong();
         weight = objectInput.readInt();
         height = objectInput.readInt();
-        smsCounter = objectInput.readLong();
+        smsCount = objectInput.readLong();
     }
 
     @Override
     public void writeExternal(ObjectOutput objectOutput)
         throws IOException {
-        objectOutput.writeLong(userId);
-
-        if (registerType == null) {
-            objectOutput.writeUTF(StringPool.BLANK);
-        } else {
-            objectOutput.writeUTF(registerType);
-        }
-
+        objectOutput.writeLong(idUser);
         objectOutput.writeInt(weight);
         objectOutput.writeInt(height);
-        objectOutput.writeLong(smsCounter);
+        objectOutput.writeLong(smsCount);
     }
 }

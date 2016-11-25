@@ -2,11 +2,10 @@ package es.eina.tfg.service.impl;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
-import es.eina.tfg.NonExistingRouteException;
-import es.eina.tfg.NonExistingRouteLocationException;
 import es.eina.tfg.model.RouteLocation;
 import es.eina.tfg.service.RouteLocationLocalServiceUtil;
 import es.eina.tfg.service.base.RouteLocationServiceBaseImpl;
+import es.eina.tfg.service.persistence.RouteLocationPK;
 
 import java.util.List;
 
@@ -28,25 +27,36 @@ import java.util.List;
  * @see es.eina.tfg.service.RouteLocationServiceUtil
  */
 public class RouteLocationServiceImpl extends RouteLocationServiceBaseImpl {
-    public RouteLocation add(Long routeId, Double latitude, Double longitude)
-            throws SystemException, NonExistingRouteException {
-        return RouteLocationLocalServiceUtil.add(routeId, latitude, longitude);
+
+    public RouteLocation add(long routeId, Double latitude, Double longitude)
+            throws SystemException {
+        RouteLocation routeLocation = RouteLocationLocalServiceUtil.createRouteLocation(
+                RouteLocationLocalServiceUtil.generateNewIdRouteLocation(routeId));
+        routeLocation.setIdRoute(routeId);
+        routeLocation.setLatitude(latitude);
+        routeLocation.setLongitude(longitude);
+
+        return RouteLocationLocalServiceUtil.addRouteLocation(routeLocation);
     }
 
-    public RouteLocation update(Long routeLocationId, Long routeId, Double latitude, Double longitude)
-            throws NonExistingRouteException, SystemException, NonExistingRouteLocationException {
-        return RouteLocationLocalServiceUtil.update(routeLocationId, routeId, latitude, longitude);
+    public RouteLocation update(long routeLocationId, long routeId, Double latitude, Double longitude)
+            throws SystemException, PortalException {
+        RouteLocationPK routeLocationPK = new RouteLocationPK(routeLocationId, routeId);
+        RouteLocation routeLocation = RouteLocationLocalServiceUtil.getRouteLocation(routeLocationPK);
+        routeLocation.setLatitude(latitude);
+        routeLocation.setLongitude(longitude);
+
+        return RouteLocationLocalServiceUtil.updateRouteLocation(routeLocation);
     }
 
-    public RouteLocation delete(Long routeLocationId) throws SystemException, PortalException {
-        return RouteLocationLocalServiceUtil.deleteRouteLocation(routeLocationId);
+    public RouteLocation delete(long idRouteLocation, long idRoute)
+            throws SystemException, PortalException {
+        RouteLocationPK routeLocationPK = new RouteLocationPK(idRouteLocation, idRoute);
+        return RouteLocationLocalServiceUtil.deleteRouteLocation(routeLocationPK);
     }
 
-    public RouteLocation getRouteLocation(Long routeLocationId) throws SystemException, PortalException {
-        return RouteLocationLocalServiceUtil.getRouteLocation(routeLocationId);
-    }
-
-    public List<RouteLocation> findByRouteId (Long routeId) throws SystemException {
-        return RouteLocationLocalServiceUtil.findByRouteId(routeId);
+    public List<RouteLocation> getByRouteId (long routeId)
+            throws SystemException {
+        return RouteLocationLocalServiceUtil.getByidRoute(routeId);
     }
 }

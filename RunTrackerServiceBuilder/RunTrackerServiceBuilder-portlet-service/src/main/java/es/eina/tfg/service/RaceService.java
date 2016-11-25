@@ -53,17 +53,8 @@ public interface RaceService extends BaseService, InvokableService {
         throws java.lang.Throwable;
 
     public es.eina.tfg.model.Race add(java.lang.Long userId,
-        java.lang.Long routeId, java.lang.String type,
-        java.lang.Integer userHeight, java.lang.Integer userWeight)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingUserException;
-
-    public es.eina.tfg.model.Race update(java.lang.Long raceId,
-        java.lang.Long userId, java.lang.Long routeId, java.lang.String type,
-        java.lang.Integer userHeight, java.lang.Integer userWeight)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingRaceException,
-            es.eina.tfg.NonExistingUserException;
+        java.lang.Long routeId, java.lang.String type)
+        throws com.liferay.portal.kernel.exception.SystemException;
 
     public es.eina.tfg.model.Race delete(java.lang.Long raceId)
         throws com.liferay.portal.kernel.exception.PortalException,

@@ -19,8 +19,8 @@ import java.io.ObjectOutput;
  */
 public class RouteLocationCacheModel implements CacheModel<RouteLocation>,
     Externalizable {
-    public long routePositionId;
-    public long routeId;
+    public long idRouteLocation;
+    public long idRoute;
     public double latitude;
     public double longitude;
 
@@ -28,10 +28,10 @@ public class RouteLocationCacheModel implements CacheModel<RouteLocation>,
     public String toString() {
         StringBundler sb = new StringBundler(9);
 
-        sb.append("{routePositionId=");
-        sb.append(routePositionId);
-        sb.append(", routeId=");
-        sb.append(routeId);
+        sb.append("{idRouteLocation=");
+        sb.append(idRouteLocation);
+        sb.append(", idRoute=");
+        sb.append(idRoute);
         sb.append(", latitude=");
         sb.append(latitude);
         sb.append(", longitude=");
@@ -45,8 +45,8 @@ public class RouteLocationCacheModel implements CacheModel<RouteLocation>,
     public RouteLocation toEntityModel() {
         RouteLocationImpl routeLocationImpl = new RouteLocationImpl();
 
-        routeLocationImpl.setRoutePositionId(routePositionId);
-        routeLocationImpl.setRouteId(routeId);
+        routeLocationImpl.setIdRouteLocation(idRouteLocation);
+        routeLocationImpl.setIdRoute(idRoute);
         routeLocationImpl.setLatitude(latitude);
         routeLocationImpl.setLongitude(longitude);
 
@@ -57,8 +57,8 @@ public class RouteLocationCacheModel implements CacheModel<RouteLocation>,
 
     @Override
     public void readExternal(ObjectInput objectInput) throws IOException {
-        routePositionId = objectInput.readLong();
-        routeId = objectInput.readLong();
+        idRouteLocation = objectInput.readLong();
+        idRoute = objectInput.readLong();
         latitude = objectInput.readDouble();
         longitude = objectInput.readDouble();
     }
@@ -66,8 +66,8 @@ public class RouteLocationCacheModel implements CacheModel<RouteLocation>,
     @Override
     public void writeExternal(ObjectOutput objectOutput)
         throws IOException {
-        objectOutput.writeLong(routePositionId);
-        objectOutput.writeLong(routeId);
+        objectOutput.writeLong(idRouteLocation);
+        objectOutput.writeLong(idRoute);
         objectOutput.writeDouble(latitude);
         objectOutput.writeDouble(longitude);
     }

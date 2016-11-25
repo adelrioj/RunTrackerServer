@@ -10,8 +10,9 @@ import com.liferay.portal.service.persistence.UserPersistence;
 
 import es.eina.tfg.model.UserAdditionalData;
 import es.eina.tfg.service.UserAdditionalDataService;
+import es.eina.tfg.service.persistence.DeviceAndSensorPersistence;
 import es.eina.tfg.service.persistence.DevicePersistence;
-import es.eina.tfg.service.persistence.Device_SensorPersistence;
+import es.eina.tfg.service.persistence.EventPersistence;
 import es.eina.tfg.service.persistence.LocationPersistence;
 import es.eina.tfg.service.persistence.PowerPersistence;
 import es.eina.tfg.service.persistence.RacePersistence;
@@ -19,7 +20,8 @@ import es.eina.tfg.service.persistence.RouteLocationPersistence;
 import es.eina.tfg.service.persistence.RoutePersistence;
 import es.eina.tfg.service.persistence.SensorPersistence;
 import es.eina.tfg.service.persistence.UserAdditionalDataPersistence;
-import es.eina.tfg.service.persistence.UserSelectedRoutesPersistence;
+import es.eina.tfg.service.persistence.UserAndEventPersistence;
+import es.eina.tfg.service.persistence.UserAndRoutePersistence;
 
 import javax.sql.DataSource;
 
@@ -43,12 +45,16 @@ public abstract class UserAdditionalDataServiceBaseImpl extends BaseServiceImpl
     protected es.eina.tfg.service.DeviceService deviceService;
     @BeanReference(type = DevicePersistence.class)
     protected DevicePersistence devicePersistence;
-    @BeanReference(type = es.eina.tfg.service.Device_SensorLocalService.class)
-    protected es.eina.tfg.service.Device_SensorLocalService device_SensorLocalService;
-    @BeanReference(type = es.eina.tfg.service.Device_SensorService.class)
-    protected es.eina.tfg.service.Device_SensorService device_SensorService;
-    @BeanReference(type = Device_SensorPersistence.class)
-    protected Device_SensorPersistence device_SensorPersistence;
+    @BeanReference(type = es.eina.tfg.service.DeviceAndSensorLocalService.class)
+    protected es.eina.tfg.service.DeviceAndSensorLocalService deviceAndSensorLocalService;
+    @BeanReference(type = DeviceAndSensorPersistence.class)
+    protected DeviceAndSensorPersistence deviceAndSensorPersistence;
+    @BeanReference(type = es.eina.tfg.service.EventLocalService.class)
+    protected es.eina.tfg.service.EventLocalService eventLocalService;
+    @BeanReference(type = es.eina.tfg.service.EventService.class)
+    protected es.eina.tfg.service.EventService eventService;
+    @BeanReference(type = EventPersistence.class)
+    protected EventPersistence eventPersistence;
     @BeanReference(type = es.eina.tfg.service.LocationLocalService.class)
     protected es.eina.tfg.service.LocationLocalService locationLocalService;
     @BeanReference(type = es.eina.tfg.service.LocationService.class)
@@ -91,12 +97,14 @@ public abstract class UserAdditionalDataServiceBaseImpl extends BaseServiceImpl
     protected es.eina.tfg.service.UserAdditionalDataService userAdditionalDataService;
     @BeanReference(type = UserAdditionalDataPersistence.class)
     protected UserAdditionalDataPersistence userAdditionalDataPersistence;
-    @BeanReference(type = es.eina.tfg.service.UserSelectedRoutesLocalService.class)
-    protected es.eina.tfg.service.UserSelectedRoutesLocalService userSelectedRoutesLocalService;
-    @BeanReference(type = es.eina.tfg.service.UserSelectedRoutesService.class)
-    protected es.eina.tfg.service.UserSelectedRoutesService userSelectedRoutesService;
-    @BeanReference(type = UserSelectedRoutesPersistence.class)
-    protected UserSelectedRoutesPersistence userSelectedRoutesPersistence;
+    @BeanReference(type = es.eina.tfg.service.UserAndEventLocalService.class)
+    protected es.eina.tfg.service.UserAndEventLocalService userAndEventLocalService;
+    @BeanReference(type = UserAndEventPersistence.class)
+    protected UserAndEventPersistence userAndEventPersistence;
+    @BeanReference(type = es.eina.tfg.service.UserAndRouteLocalService.class)
+    protected es.eina.tfg.service.UserAndRouteLocalService userAndRouteLocalService;
+    @BeanReference(type = UserAndRoutePersistence.class)
+    protected UserAndRoutePersistence userAndRoutePersistence;
     @BeanReference(type = com.liferay.counter.service.CounterLocalService.class)
     protected com.liferay.counter.service.CounterLocalService counterLocalService;
     @BeanReference(type = com.liferay.portal.service.ResourceLocalService.class)
@@ -174,60 +182,96 @@ public abstract class UserAdditionalDataServiceBaseImpl extends BaseServiceImpl
     }
 
     /**
-     * Returns the device_ sensor local service.
+     * Returns the device and sensor local service.
      *
-     * @return the device_ sensor local service
+     * @return the device and sensor local service
      */
-    public es.eina.tfg.service.Device_SensorLocalService getDevice_SensorLocalService() {
-        return device_SensorLocalService;
+    public es.eina.tfg.service.DeviceAndSensorLocalService getDeviceAndSensorLocalService() {
+        return deviceAndSensorLocalService;
     }
 
     /**
-     * Sets the device_ sensor local service.
+     * Sets the device and sensor local service.
      *
-     * @param device_SensorLocalService the device_ sensor local service
+     * @param deviceAndSensorLocalService the device and sensor local service
      */
-    public void setDevice_SensorLocalService(
-        es.eina.tfg.service.Device_SensorLocalService device_SensorLocalService) {
-        this.device_SensorLocalService = device_SensorLocalService;
+    public void setDeviceAndSensorLocalService(
+        es.eina.tfg.service.DeviceAndSensorLocalService deviceAndSensorLocalService) {
+        this.deviceAndSensorLocalService = deviceAndSensorLocalService;
     }
 
     /**
-     * Returns the device_ sensor remote service.
+     * Returns the device and sensor persistence.
      *
-     * @return the device_ sensor remote service
+     * @return the device and sensor persistence
      */
-    public es.eina.tfg.service.Device_SensorService getDevice_SensorService() {
-        return device_SensorService;
+    public DeviceAndSensorPersistence getDeviceAndSensorPersistence() {
+        return deviceAndSensorPersistence;
     }
 
     /**
-     * Sets the device_ sensor remote service.
+     * Sets the device and sensor persistence.
      *
-     * @param device_SensorService the device_ sensor remote service
+     * @param deviceAndSensorPersistence the device and sensor persistence
      */
-    public void setDevice_SensorService(
-        es.eina.tfg.service.Device_SensorService device_SensorService) {
-        this.device_SensorService = device_SensorService;
+    public void setDeviceAndSensorPersistence(
+        DeviceAndSensorPersistence deviceAndSensorPersistence) {
+        this.deviceAndSensorPersistence = deviceAndSensorPersistence;
     }
 
     /**
-     * Returns the device_ sensor persistence.
+     * Returns the event local service.
      *
-     * @return the device_ sensor persistence
+     * @return the event local service
      */
-    public Device_SensorPersistence getDevice_SensorPersistence() {
-        return device_SensorPersistence;
+    public es.eina.tfg.service.EventLocalService getEventLocalService() {
+        return eventLocalService;
     }
 
     /**
-     * Sets the device_ sensor persistence.
+     * Sets the event local service.
      *
-     * @param device_SensorPersistence the device_ sensor persistence
+     * @param eventLocalService the event local service
      */
-    public void setDevice_SensorPersistence(
-        Device_SensorPersistence device_SensorPersistence) {
-        this.device_SensorPersistence = device_SensorPersistence;
+    public void setEventLocalService(
+        es.eina.tfg.service.EventLocalService eventLocalService) {
+        this.eventLocalService = eventLocalService;
+    }
+
+    /**
+     * Returns the event remote service.
+     *
+     * @return the event remote service
+     */
+    public es.eina.tfg.service.EventService getEventService() {
+        return eventService;
+    }
+
+    /**
+     * Sets the event remote service.
+     *
+     * @param eventService the event remote service
+     */
+    public void setEventService(es.eina.tfg.service.EventService eventService) {
+        this.eventService = eventService;
+    }
+
+    /**
+     * Returns the event persistence.
+     *
+     * @return the event persistence
+     */
+    public EventPersistence getEventPersistence() {
+        return eventPersistence;
+    }
+
+    /**
+     * Sets the event persistence.
+     *
+     * @param eventPersistence the event persistence
+     */
+    public void setEventPersistence(EventPersistence eventPersistence) {
+        this.eventPersistence = eventPersistence;
     }
 
     /**
@@ -622,60 +666,79 @@ public abstract class UserAdditionalDataServiceBaseImpl extends BaseServiceImpl
     }
 
     /**
-     * Returns the user selected routes local service.
+     * Returns the user and event local service.
      *
-     * @return the user selected routes local service
+     * @return the user and event local service
      */
-    public es.eina.tfg.service.UserSelectedRoutesLocalService getUserSelectedRoutesLocalService() {
-        return userSelectedRoutesLocalService;
+    public es.eina.tfg.service.UserAndEventLocalService getUserAndEventLocalService() {
+        return userAndEventLocalService;
     }
 
     /**
-     * Sets the user selected routes local service.
+     * Sets the user and event local service.
      *
-     * @param userSelectedRoutesLocalService the user selected routes local service
+     * @param userAndEventLocalService the user and event local service
      */
-    public void setUserSelectedRoutesLocalService(
-        es.eina.tfg.service.UserSelectedRoutesLocalService userSelectedRoutesLocalService) {
-        this.userSelectedRoutesLocalService = userSelectedRoutesLocalService;
+    public void setUserAndEventLocalService(
+        es.eina.tfg.service.UserAndEventLocalService userAndEventLocalService) {
+        this.userAndEventLocalService = userAndEventLocalService;
     }
 
     /**
-     * Returns the user selected routes remote service.
+     * Returns the user and event persistence.
      *
-     * @return the user selected routes remote service
+     * @return the user and event persistence
      */
-    public es.eina.tfg.service.UserSelectedRoutesService getUserSelectedRoutesService() {
-        return userSelectedRoutesService;
+    public UserAndEventPersistence getUserAndEventPersistence() {
+        return userAndEventPersistence;
     }
 
     /**
-     * Sets the user selected routes remote service.
+     * Sets the user and event persistence.
      *
-     * @param userSelectedRoutesService the user selected routes remote service
+     * @param userAndEventPersistence the user and event persistence
      */
-    public void setUserSelectedRoutesService(
-        es.eina.tfg.service.UserSelectedRoutesService userSelectedRoutesService) {
-        this.userSelectedRoutesService = userSelectedRoutesService;
+    public void setUserAndEventPersistence(
+        UserAndEventPersistence userAndEventPersistence) {
+        this.userAndEventPersistence = userAndEventPersistence;
     }
 
     /**
-     * Returns the user selected routes persistence.
+     * Returns the user and route local service.
      *
-     * @return the user selected routes persistence
+     * @return the user and route local service
      */
-    public UserSelectedRoutesPersistence getUserSelectedRoutesPersistence() {
-        return userSelectedRoutesPersistence;
+    public es.eina.tfg.service.UserAndRouteLocalService getUserAndRouteLocalService() {
+        return userAndRouteLocalService;
     }
 
     /**
-     * Sets the user selected routes persistence.
+     * Sets the user and route local service.
      *
-     * @param userSelectedRoutesPersistence the user selected routes persistence
+     * @param userAndRouteLocalService the user and route local service
      */
-    public void setUserSelectedRoutesPersistence(
-        UserSelectedRoutesPersistence userSelectedRoutesPersistence) {
-        this.userSelectedRoutesPersistence = userSelectedRoutesPersistence;
+    public void setUserAndRouteLocalService(
+        es.eina.tfg.service.UserAndRouteLocalService userAndRouteLocalService) {
+        this.userAndRouteLocalService = userAndRouteLocalService;
+    }
+
+    /**
+     * Returns the user and route persistence.
+     *
+     * @return the user and route persistence
+     */
+    public UserAndRoutePersistence getUserAndRoutePersistence() {
+        return userAndRoutePersistence;
+    }
+
+    /**
+     * Sets the user and route persistence.
+     *
+     * @param userAndRoutePersistence the user and route persistence
+     */
+    public void setUserAndRoutePersistence(
+        UserAndRoutePersistence userAndRoutePersistence) {
+        this.userAndRoutePersistence = userAndRoutePersistence;
     }
 
     /**

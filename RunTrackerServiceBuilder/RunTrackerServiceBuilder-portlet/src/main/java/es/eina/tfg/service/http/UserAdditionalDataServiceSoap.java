@@ -68,24 +68,11 @@ public class UserAdditionalDataServiceSoap {
 
     public static es.eina.tfg.model.UserAdditionalDataSoap update(
         java.lang.Long userId, java.lang.Integer weight,
-        java.lang.Integer height, java.lang.String registerType,
-        java.lang.Long smsCount) throws RemoteException {
+        java.lang.Integer height, java.lang.Long smsCount)
+        throws RemoteException {
         try {
             es.eina.tfg.model.UserAdditionalData returnValue = UserAdditionalDataServiceUtil.update(userId,
-                    weight, height, registerType, smsCount);
-
-            return es.eina.tfg.model.UserAdditionalDataSoap.toSoapModel(returnValue);
-        } catch (Exception e) {
-            _log.error(e, e);
-
-            throw new RemoteException(e.getMessage());
-        }
-    }
-
-    public static es.eina.tfg.model.UserAdditionalDataSoap delete(
-        java.lang.Long userId) throws RemoteException {
-        try {
-            es.eina.tfg.model.UserAdditionalData returnValue = UserAdditionalDataServiceUtil.delete(userId);
+                    weight, height, smsCount);
 
             return es.eina.tfg.model.UserAdditionalDataSoap.toSoapModel(returnValue);
         } catch (Exception e) {
@@ -108,12 +95,12 @@ public class UserAdditionalDataServiceSoap {
         }
     }
 
-    public static es.eina.tfg.model.UserSelectedRoutesSoap[] getUserSelectedRoutes(
+    public static es.eina.tfg.model.UserAndRouteSoap[] getUserSelectedRoutes(
         java.lang.Long userId) throws RemoteException {
         try {
-            java.util.List<es.eina.tfg.model.UserSelectedRoutes> returnValue = UserAdditionalDataServiceUtil.getUserSelectedRoutes(userId);
+            java.util.List<es.eina.tfg.model.UserAndRoute> returnValue = UserAdditionalDataServiceUtil.getUserSelectedRoutes(userId);
 
-            return es.eina.tfg.model.UserSelectedRoutesSoap.toSoapModels(returnValue);
+            return es.eina.tfg.model.UserAndRouteSoap.toSoapModels(returnValue);
         } catch (Exception e) {
             _log.error(e, e);
 

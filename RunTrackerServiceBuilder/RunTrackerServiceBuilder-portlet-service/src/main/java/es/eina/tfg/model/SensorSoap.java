@@ -13,7 +13,7 @@ import java.util.List;
  * @generated
  */
 public class SensorSoap implements Serializable {
-    private long _sensorId;
+    private long _idSensor;
     private int _type;
     private String _description;
     private String _dataUnits;
@@ -29,7 +29,7 @@ public class SensorSoap implements Serializable {
     public static SensorSoap toSoapModel(Sensor model) {
         SensorSoap soapModel = new SensorSoap();
 
-        soapModel.setSensorId(model.getSensorId());
+        soapModel.setIdSensor(model.getIdSensor());
         soapModel.setType(model.getType());
         soapModel.setDescription(model.getDescription());
         soapModel.setDataUnits(model.getDataUnits());
@@ -79,19 +79,19 @@ public class SensorSoap implements Serializable {
     }
 
     public long getPrimaryKey() {
-        return _sensorId;
+        return _idSensor;
     }
 
     public void setPrimaryKey(long pk) {
-        setSensorId(pk);
+        setIdSensor(pk);
     }
 
-    public long getSensorId() {
-        return _sensorId;
+    public long getIdSensor() {
+        return _idSensor;
     }
 
-    public void setSensorId(long sensorId) {
-        _sensorId = sensorId;
+    public void setIdSensor(long idSensor) {
+        _idSensor = idSensor;
     }
 
     public int getType() {

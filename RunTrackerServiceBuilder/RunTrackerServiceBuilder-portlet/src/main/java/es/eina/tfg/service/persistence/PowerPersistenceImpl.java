@@ -21,6 +21,7 @@ import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.UnmodifiableList;
+import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.CacheModel;
 import com.liferay.portal.model.ModelListener;
 import com.liferay.portal.service.persistence.impl.BasePersistenceImpl;
@@ -85,13 +86,13 @@ public class PowerPersistenceImpl extends BasePersistenceImpl<Power>
             PowerModelImpl.FINDER_CACHE_ENABLED, PowerImpl.class,
             FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByraceId",
             new String[] { Long.class.getName() },
-            PowerModelImpl.RACEID_COLUMN_BITMASK |
+            PowerModelImpl.IDRACE_COLUMN_BITMASK |
             PowerModelImpl.TIME_COLUMN_BITMASK);
     public static final FinderPath FINDER_PATH_COUNT_BY_RACEID = new FinderPath(PowerModelImpl.ENTITY_CACHE_ENABLED,
             PowerModelImpl.FINDER_CACHE_ENABLED, Long.class,
             FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByraceId",
             new String[] { Long.class.getName() });
-    private static final String _FINDER_COLUMN_RACEID_RACEID_2 = "power.raceId = ?";
+    private static final String _FINDER_COLUMN_RACEID_IDRACE_2 = "power.id.idRace = ?";
     private static final String _SQL_SELECT_POWER = "SELECT power FROM Power power";
     private static final String _SQL_SELECT_POWER_WHERE = "SELECT power FROM Power power WHERE ";
     private static final String _SQL_COUNT_POWER = "SELECT COUNT(power) FROM Power power";
@@ -129,44 +130,44 @@ public class PowerPersistenceImpl extends BasePersistenceImpl<Power>
     }
 
     /**
-     * Returns all the powers where raceId = &#63;.
+     * Returns all the powers where idRace = &#63;.
      *
-     * @param raceId the race ID
+     * @param idRace the id race
      * @return the matching powers
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public List<Power> findByraceId(long raceId) throws SystemException {
-        return findByraceId(raceId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+    public List<Power> findByraceId(Long idRace) throws SystemException {
+        return findByraceId(idRace, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
     }
 
     /**
-     * Returns a range of all the powers where raceId = &#63;.
+     * Returns a range of all the powers where idRace = &#63;.
      *
      * <p>
      * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link es.eina.tfg.model.impl.PowerModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
      * </p>
      *
-     * @param raceId the race ID
+     * @param idRace the id race
      * @param start the lower bound of the range of powers
      * @param end the upper bound of the range of powers (not inclusive)
      * @return the range of matching powers
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public List<Power> findByraceId(long raceId, int start, int end)
+    public List<Power> findByraceId(Long idRace, int start, int end)
         throws SystemException {
-        return findByraceId(raceId, start, end, null);
+        return findByraceId(idRace, start, end, null);
     }
 
     /**
-     * Returns an ordered range of all the powers where raceId = &#63;.
+     * Returns an ordered range of all the powers where idRace = &#63;.
      *
      * <p>
      * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link es.eina.tfg.model.impl.PowerModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
      * </p>
      *
-     * @param raceId the race ID
+     * @param idRace the id race
      * @param start the lower bound of the range of powers
      * @param end the upper bound of the range of powers (not inclusive)
      * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
@@ -174,7 +175,7 @@ public class PowerPersistenceImpl extends BasePersistenceImpl<Power>
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public List<Power> findByraceId(long raceId, int start, int end,
+    public List<Power> findByraceId(Long idRace, int start, int end,
         OrderByComparator orderByComparator) throws SystemException {
         boolean pagination = true;
         FinderPath finderPath = null;
@@ -184,10 +185,10 @@ public class PowerPersistenceImpl extends BasePersistenceImpl<Power>
                 (orderByComparator == null)) {
             pagination = false;
             finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_RACEID;
-            finderArgs = new Object[] { raceId };
+            finderArgs = new Object[] { idRace };
         } else {
             finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_RACEID;
-            finderArgs = new Object[] { raceId, start, end, orderByComparator };
+            finderArgs = new Object[] { idRace, start, end, orderByComparator };
         }
 
         List<Power> list = (List<Power>) FinderCacheUtil.getResult(finderPath,
@@ -195,7 +196,7 @@ public class PowerPersistenceImpl extends BasePersistenceImpl<Power>
 
         if ((list != null) && !list.isEmpty()) {
             for (Power power : list) {
-                if ((raceId != power.getRaceId())) {
+                if (!Validator.equals(idRace, power.getIdRace())) {
                     list = null;
 
                     break;
@@ -215,7 +216,7 @@ public class PowerPersistenceImpl extends BasePersistenceImpl<Power>
 
             query.append(_SQL_SELECT_POWER_WHERE);
 
-            query.append(_FINDER_COLUMN_RACEID_RACEID_2);
+            query.append(_FINDER_COLUMN_RACEID_IDRACE_2);
 
             if (orderByComparator != null) {
                 appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
@@ -236,7 +237,7 @@ public class PowerPersistenceImpl extends BasePersistenceImpl<Power>
 
                 QueryPos qPos = QueryPos.getInstance(q);
 
-                qPos.add(raceId);
+                qPos.add(idRace.longValue());
 
                 if (!pagination) {
                     list = (List<Power>) QueryUtil.list(q, getDialect(), start,
@@ -266,19 +267,19 @@ public class PowerPersistenceImpl extends BasePersistenceImpl<Power>
     }
 
     /**
-     * Returns the first power in the ordered set where raceId = &#63;.
+     * Returns the first power in the ordered set where idRace = &#63;.
      *
-     * @param raceId the race ID
+     * @param idRace the id race
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the first matching power
      * @throws es.eina.tfg.NoSuchPowerException if a matching power could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Power findByraceId_First(long raceId,
+    public Power findByraceId_First(Long idRace,
         OrderByComparator orderByComparator)
         throws NoSuchPowerException, SystemException {
-        Power power = fetchByraceId_First(raceId, orderByComparator);
+        Power power = fetchByraceId_First(idRace, orderByComparator);
 
         if (power != null) {
             return power;
@@ -288,8 +289,8 @@ public class PowerPersistenceImpl extends BasePersistenceImpl<Power>
 
         msg.append(_NO_SUCH_ENTITY_WITH_KEY);
 
-        msg.append("raceId=");
-        msg.append(raceId);
+        msg.append("idRace=");
+        msg.append(idRace);
 
         msg.append(StringPool.CLOSE_CURLY_BRACE);
 
@@ -297,17 +298,17 @@ public class PowerPersistenceImpl extends BasePersistenceImpl<Power>
     }
 
     /**
-     * Returns the first power in the ordered set where raceId = &#63;.
+     * Returns the first power in the ordered set where idRace = &#63;.
      *
-     * @param raceId the race ID
+     * @param idRace the id race
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the first matching power, or <code>null</code> if a matching power could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Power fetchByraceId_First(long raceId,
+    public Power fetchByraceId_First(Long idRace,
         OrderByComparator orderByComparator) throws SystemException {
-        List<Power> list = findByraceId(raceId, 0, 1, orderByComparator);
+        List<Power> list = findByraceId(idRace, 0, 1, orderByComparator);
 
         if (!list.isEmpty()) {
             return list.get(0);
@@ -317,19 +318,19 @@ public class PowerPersistenceImpl extends BasePersistenceImpl<Power>
     }
 
     /**
-     * Returns the last power in the ordered set where raceId = &#63;.
+     * Returns the last power in the ordered set where idRace = &#63;.
      *
-     * @param raceId the race ID
+     * @param idRace the id race
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the last matching power
      * @throws es.eina.tfg.NoSuchPowerException if a matching power could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Power findByraceId_Last(long raceId,
+    public Power findByraceId_Last(Long idRace,
         OrderByComparator orderByComparator)
         throws NoSuchPowerException, SystemException {
-        Power power = fetchByraceId_Last(raceId, orderByComparator);
+        Power power = fetchByraceId_Last(idRace, orderByComparator);
 
         if (power != null) {
             return power;
@@ -339,8 +340,8 @@ public class PowerPersistenceImpl extends BasePersistenceImpl<Power>
 
         msg.append(_NO_SUCH_ENTITY_WITH_KEY);
 
-        msg.append("raceId=");
-        msg.append(raceId);
+        msg.append("idRace=");
+        msg.append(idRace);
 
         msg.append(StringPool.CLOSE_CURLY_BRACE);
 
@@ -348,23 +349,23 @@ public class PowerPersistenceImpl extends BasePersistenceImpl<Power>
     }
 
     /**
-     * Returns the last power in the ordered set where raceId = &#63;.
+     * Returns the last power in the ordered set where idRace = &#63;.
      *
-     * @param raceId the race ID
+     * @param idRace the id race
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the last matching power, or <code>null</code> if a matching power could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Power fetchByraceId_Last(long raceId,
+    public Power fetchByraceId_Last(Long idRace,
         OrderByComparator orderByComparator) throws SystemException {
-        int count = countByraceId(raceId);
+        int count = countByraceId(idRace);
 
         if (count == 0) {
             return null;
         }
 
-        List<Power> list = findByraceId(raceId, count - 1, count,
+        List<Power> list = findByraceId(idRace, count - 1, count,
                 orderByComparator);
 
         if (!list.isEmpty()) {
@@ -375,20 +376,20 @@ public class PowerPersistenceImpl extends BasePersistenceImpl<Power>
     }
 
     /**
-     * Returns the powers before and after the current power in the ordered set where raceId = &#63;.
+     * Returns the powers before and after the current power in the ordered set where idRace = &#63;.
      *
-     * @param measurementId the primary key of the current power
-     * @param raceId the race ID
+     * @param powerPK the primary key of the current power
+     * @param idRace the id race
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the previous, current, and next power
      * @throws es.eina.tfg.NoSuchPowerException if a power with the primary key could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Power[] findByraceId_PrevAndNext(long measurementId, long raceId,
+    public Power[] findByraceId_PrevAndNext(PowerPK powerPK, Long idRace,
         OrderByComparator orderByComparator)
         throws NoSuchPowerException, SystemException {
-        Power power = findByPrimaryKey(measurementId);
+        Power power = findByPrimaryKey(powerPK);
 
         Session session = null;
 
@@ -397,12 +398,12 @@ public class PowerPersistenceImpl extends BasePersistenceImpl<Power>
 
             Power[] array = new PowerImpl[3];
 
-            array[0] = getByraceId_PrevAndNext(session, power, raceId,
+            array[0] = getByraceId_PrevAndNext(session, power, idRace,
                     orderByComparator, true);
 
             array[1] = power;
 
-            array[2] = getByraceId_PrevAndNext(session, power, raceId,
+            array[2] = getByraceId_PrevAndNext(session, power, idRace,
                     orderByComparator, false);
 
             return array;
@@ -414,7 +415,7 @@ public class PowerPersistenceImpl extends BasePersistenceImpl<Power>
     }
 
     protected Power getByraceId_PrevAndNext(Session session, Power power,
-        long raceId, OrderByComparator orderByComparator, boolean previous) {
+        Long idRace, OrderByComparator orderByComparator, boolean previous) {
         StringBundler query = null;
 
         if (orderByComparator != null) {
@@ -426,7 +427,7 @@ public class PowerPersistenceImpl extends BasePersistenceImpl<Power>
 
         query.append(_SQL_SELECT_POWER_WHERE);
 
-        query.append(_FINDER_COLUMN_RACEID_RACEID_2);
+        query.append(_FINDER_COLUMN_RACEID_IDRACE_2);
 
         if (orderByComparator != null) {
             String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
@@ -489,7 +490,7 @@ public class PowerPersistenceImpl extends BasePersistenceImpl<Power>
 
         QueryPos qPos = QueryPos.getInstance(q);
 
-        qPos.add(raceId);
+        qPos.add(idRace.longValue());
 
         if (orderByComparator != null) {
             Object[] values = orderByComparator.getOrderByConditionValues(power);
@@ -509,31 +510,31 @@ public class PowerPersistenceImpl extends BasePersistenceImpl<Power>
     }
 
     /**
-     * Removes all the powers where raceId = &#63; from the database.
+     * Removes all the powers where idRace = &#63; from the database.
      *
-     * @param raceId the race ID
+     * @param idRace the id race
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public void removeByraceId(long raceId) throws SystemException {
-        for (Power power : findByraceId(raceId, QueryUtil.ALL_POS,
+    public void removeByraceId(Long idRace) throws SystemException {
+        for (Power power : findByraceId(idRace, QueryUtil.ALL_POS,
                 QueryUtil.ALL_POS, null)) {
             remove(power);
         }
     }
 
     /**
-     * Returns the number of powers where raceId = &#63;.
+     * Returns the number of powers where idRace = &#63;.
      *
-     * @param raceId the race ID
+     * @param idRace the id race
      * @return the number of matching powers
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public int countByraceId(long raceId) throws SystemException {
+    public int countByraceId(Long idRace) throws SystemException {
         FinderPath finderPath = FINDER_PATH_COUNT_BY_RACEID;
 
-        Object[] finderArgs = new Object[] { raceId };
+        Object[] finderArgs = new Object[] { idRace };
 
         Long count = (Long) FinderCacheUtil.getResult(finderPath, finderArgs,
                 this);
@@ -543,7 +544,7 @@ public class PowerPersistenceImpl extends BasePersistenceImpl<Power>
 
             query.append(_SQL_COUNT_POWER_WHERE);
 
-            query.append(_FINDER_COLUMN_RACEID_RACEID_2);
+            query.append(_FINDER_COLUMN_RACEID_IDRACE_2);
 
             String sql = query.toString();
 
@@ -556,7 +557,7 @@ public class PowerPersistenceImpl extends BasePersistenceImpl<Power>
 
                 QueryPos qPos = QueryPos.getInstance(q);
 
-                qPos.add(raceId);
+                qPos.add(idRace.longValue());
 
                 count = (Long) q.uniqueResult();
 
@@ -653,15 +654,15 @@ public class PowerPersistenceImpl extends BasePersistenceImpl<Power>
     /**
      * Creates a new power with the primary key. Does not add the power to the database.
      *
-     * @param measurementId the primary key for the new power
+     * @param powerPK the primary key for the new power
      * @return the new power
      */
     @Override
-    public Power create(long measurementId) {
+    public Power create(PowerPK powerPK) {
         Power power = new PowerImpl();
 
         power.setNew(true);
-        power.setPrimaryKey(measurementId);
+        power.setPrimaryKey(powerPK);
 
         return power;
     }
@@ -669,15 +670,15 @@ public class PowerPersistenceImpl extends BasePersistenceImpl<Power>
     /**
      * Removes the power with the primary key from the database. Also notifies the appropriate model listeners.
      *
-     * @param measurementId the primary key of the power
+     * @param powerPK the primary key of the power
      * @return the power that was removed
      * @throws es.eina.tfg.NoSuchPowerException if a power with the primary key could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Power remove(long measurementId)
+    public Power remove(PowerPK powerPK)
         throws NoSuchPowerException, SystemException {
-        return remove((Serializable) measurementId);
+        return remove((Serializable) powerPK);
     }
 
     /**
@@ -782,13 +783,13 @@ public class PowerPersistenceImpl extends BasePersistenceImpl<Power>
         else {
             if ((powerModelImpl.getColumnBitmask() &
                     FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_RACEID.getColumnBitmask()) != 0) {
-                Object[] args = new Object[] { powerModelImpl.getOriginalRaceId() };
+                Object[] args = new Object[] { powerModelImpl.getOriginalIdRace() };
 
                 FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_RACEID, args);
                 FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_RACEID,
                     args);
 
-                args = new Object[] { powerModelImpl.getRaceId() };
+                args = new Object[] { powerModelImpl.getIdRace() };
 
                 FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_RACEID, args);
                 FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_RACEID,
@@ -812,11 +813,10 @@ public class PowerPersistenceImpl extends BasePersistenceImpl<Power>
         powerImpl.setNew(power.isNew());
         powerImpl.setPrimaryKey(power.getPrimaryKey());
 
-        powerImpl.setMeasurementId(power.getMeasurementId());
-        powerImpl.setRaceId(power.getRaceId());
-        powerImpl.setUserId(power.getUserId());
-        powerImpl.setDeviceId(power.getDeviceId());
-        powerImpl.setSensorId(power.getSensorId());
+        powerImpl.setIdMeasurement(power.getIdMeasurement());
+        powerImpl.setIdRace(power.getIdRace());
+        powerImpl.setIdDevice(power.getIdDevice());
+        powerImpl.setIdSensor(power.getIdSensor());
         powerImpl.setTime(power.getTime());
         powerImpl.setSensorMode(power.getSensorMode());
         powerImpl.setLevel(power.getLevel());
@@ -852,15 +852,15 @@ public class PowerPersistenceImpl extends BasePersistenceImpl<Power>
     /**
      * Returns the power with the primary key or throws a {@link es.eina.tfg.NoSuchPowerException} if it could not be found.
      *
-     * @param measurementId the primary key of the power
+     * @param powerPK the primary key of the power
      * @return the power
      * @throws es.eina.tfg.NoSuchPowerException if a power with the primary key could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Power findByPrimaryKey(long measurementId)
+    public Power findByPrimaryKey(PowerPK powerPK)
         throws NoSuchPowerException, SystemException {
-        return findByPrimaryKey((Serializable) measurementId);
+        return findByPrimaryKey((Serializable) powerPK);
     }
 
     /**
@@ -910,14 +910,13 @@ public class PowerPersistenceImpl extends BasePersistenceImpl<Power>
     /**
      * Returns the power with the primary key or returns <code>null</code> if it could not be found.
      *
-     * @param measurementId the primary key of the power
+     * @param powerPK the primary key of the power
      * @return the power, or <code>null</code> if a power with the primary key could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Power fetchByPrimaryKey(long measurementId)
-        throws SystemException {
-        return fetchByPrimaryKey((Serializable) measurementId);
+    public Power fetchByPrimaryKey(PowerPK powerPK) throws SystemException {
+        return fetchByPrimaryKey((Serializable) powerPK);
     }
 
     /**

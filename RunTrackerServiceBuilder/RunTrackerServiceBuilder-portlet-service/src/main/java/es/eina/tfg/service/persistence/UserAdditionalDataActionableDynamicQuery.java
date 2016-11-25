@@ -18,6 +18,6 @@ public abstract class UserAdditionalDataActionableDynamicQuery
 
         setClassLoader(es.eina.tfg.service.ClpSerializer.class.getClassLoader());
 
-        setPrimaryKeyPropertyName("userId");
+        setPrimaryKeyPropertyName("idUser");
     }
 }

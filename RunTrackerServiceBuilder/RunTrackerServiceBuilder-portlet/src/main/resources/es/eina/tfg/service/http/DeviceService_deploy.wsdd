@@ -22,22 +22,22 @@
 		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="delete" qname="operNS:delete" returnQName="deleteReturn" returnType="rtns:DeviceSoap" soapAction="">
 			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceId" type="tns:long"></parameter>
 		</operation>
-		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="findByDeviceUUID" qname="operNS:findByDeviceUUID" returnQName="findByDeviceUUIDReturn" returnType="rtns:DeviceSoap" soapAction="">
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="getActiveSensors" qname="operNS:getActiveSensors" returnQName="getActiveSensorsReturn" returnType="rtns:ArrayOf_tns2_SensorSoap" returnItemType="tns2:SensorSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="getByDeviceUUID" qname="operNS:getByDeviceUUID" returnQName="getByDeviceUUIDReturn" returnType="rtns:DeviceSoap" soapAction="">
 			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceUUID" type="tns:string"></parameter>
 		</operation>
-		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="findByStatus" qname="operNS:findByStatus" returnQName="findByStatusReturn" returnType="rtns:ArrayOf_tns2_DeviceSoap" returnItemType="tns2:DeviceSoap" soapAction="">
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="getByStatus" qname="operNS:getByStatus" returnQName="getByStatusReturn" returnType="rtns:ArrayOf_tns2_DeviceSoap" returnItemType="tns2:DeviceSoap" soapAction="">
 			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="status" type="tns:string"></parameter>
 		</operation>
-		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="findByStatus" qname="operNS:findByStatus" returnQName="findByStatusReturn" returnType="rtns:ArrayOf_tns2_DeviceSoap" returnItemType="tns2:DeviceSoap" soapAction="">
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="getByStatus" qname="operNS:getByStatus" returnQName="getByStatusReturn" returnType="rtns:ArrayOf_tns2_DeviceSoap" returnItemType="tns2:DeviceSoap" soapAction="">
 			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="status" type="tns:string"></parameter>
 			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="start" type="tns:int"></parameter>
 			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="end" type="tns:int"></parameter>
 		</operation>
-		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="findByUserId" qname="operNS:findByUserId" returnQName="findByUserIdReturn" returnType="rtns:ArrayOf_tns2_DeviceSoap" returnItemType="tns2:DeviceSoap" soapAction="">
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="getByUserId" qname="operNS:getByUserId" returnQName="getByUserIdReturn" returnType="rtns:ArrayOf_tns2_DeviceSoap" returnItemType="tns2:DeviceSoap" soapAction="">
 			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
-		</operation>
-		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="getActiveSensors" qname="operNS:getActiveSensors" returnQName="getActiveSensorsReturn" returnType="rtns:ArrayOf_tns2_SensorSoap" returnItemType="tns2:SensorSoap" soapAction="">
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceId" type="tns:long"></parameter>
 		</operation>
 		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="getDeviceByPhoneNumber" qname="operNS:getDeviceByPhoneNumber" returnQName="getDeviceByPhoneNumberReturn" returnType="rtns:DeviceSoap" soapAction="">
 			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="phoneNumber" type="tns:string"></parameter>
@@ -50,19 +50,13 @@
 		</operation>
 		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="update" qname="operNS:update" returnQName="updateReturn" returnType="rtns:DeviceSoap" soapAction="">
 			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceId" type="tns:long"></parameter>
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deviceUUID" type="tns:string"></parameter>
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
 			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="description" type="tns:string"></parameter>
 			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="status" type="tns:string"></parameter>
 			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="phoneNumber" type="tns:string"></parameter>
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="serverPhoneNumber" type="tns:string"></parameter>
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="smsPollTime" type="tns:string"></parameter>
 			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="smsTransmitPeriod" type="tns:string"></parameter>
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="cloudId" type="tns:string"></parameter>
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="serverIp" type="tns:string"></parameter>
 			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="httpTransmitPeriod" type="tns:string"></parameter>
 		</operation>
-		<parameter name="allowedMethods" value="add delete findByDeviceUUID findByStatus findByUserId getActiveSensors getDevice getDeviceByPhoneNumber getSensors update" />
+		<parameter name="allowedMethods" value="add delete getActiveSensors getByDeviceUUID getByStatus getByUserId getDevice getDeviceByPhoneNumber getSensors update" />
 		<parameter name="className" value="es.eina.tfg.service.http.DeviceServiceSoap" />
 		<parameter name="schemaUnqualified" value="http://model.tfg.eina.es,urn:http.service.tfg.eina.es" />
 		<parameter name="typeMappingVersion" value="1.2" />

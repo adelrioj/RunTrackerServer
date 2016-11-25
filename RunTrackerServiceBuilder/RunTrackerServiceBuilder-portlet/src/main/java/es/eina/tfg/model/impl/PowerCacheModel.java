@@ -21,29 +21,26 @@ import java.util.Date;
  * @generated
  */
 public class PowerCacheModel implements CacheModel<Power>, Externalizable {
-    public long measurementId;
-    public long raceId;
-    public long userId;
-    public long deviceId;
-    public long sensorId;
+    public long idMeasurement;
+    public Long idRace;
+    public long idDevice;
+    public long idSensor;
     public long time;
     public String sensorMode;
     public int level;
 
     @Override
     public String toString() {
-        StringBundler sb = new StringBundler(17);
+        StringBundler sb = new StringBundler(15);
 
-        sb.append("{measurementId=");
-        sb.append(measurementId);
-        sb.append(", raceId=");
-        sb.append(raceId);
-        sb.append(", userId=");
-        sb.append(userId);
-        sb.append(", deviceId=");
-        sb.append(deviceId);
-        sb.append(", sensorId=");
-        sb.append(sensorId);
+        sb.append("{idMeasurement=");
+        sb.append(idMeasurement);
+        sb.append(", idRace=");
+        sb.append(idRace);
+        sb.append(", idDevice=");
+        sb.append(idDevice);
+        sb.append(", idSensor=");
+        sb.append(idSensor);
         sb.append(", time=");
         sb.append(time);
         sb.append(", sensorMode=");
@@ -59,11 +56,10 @@ public class PowerCacheModel implements CacheModel<Power>, Externalizable {
     public Power toEntityModel() {
         PowerImpl powerImpl = new PowerImpl();
 
-        powerImpl.setMeasurementId(measurementId);
-        powerImpl.setRaceId(raceId);
-        powerImpl.setUserId(userId);
-        powerImpl.setDeviceId(deviceId);
-        powerImpl.setSensorId(sensorId);
+        powerImpl.setIdMeasurement(idMeasurement);
+        powerImpl.setIdRace(idRace);
+        powerImpl.setIdDevice(idDevice);
+        powerImpl.setIdSensor(idSensor);
 
         if (time == Long.MIN_VALUE) {
             powerImpl.setTime(null);
@@ -86,11 +82,10 @@ public class PowerCacheModel implements CacheModel<Power>, Externalizable {
 
     @Override
     public void readExternal(ObjectInput objectInput) throws IOException {
-        measurementId = objectInput.readLong();
-        raceId = objectInput.readLong();
-        userId = objectInput.readLong();
-        deviceId = objectInput.readLong();
-        sensorId = objectInput.readLong();
+        idMeasurement = objectInput.readLong();
+        idRace = objectInput.readLong();
+        idDevice = objectInput.readLong();
+        idSensor = objectInput.readLong();
         time = objectInput.readLong();
         sensorMode = objectInput.readUTF();
         level = objectInput.readInt();
@@ -99,11 +94,10 @@ public class PowerCacheModel implements CacheModel<Power>, Externalizable {
     @Override
     public void writeExternal(ObjectOutput objectOutput)
         throws IOException {
-        objectOutput.writeLong(measurementId);
-        objectOutput.writeLong(raceId);
-        objectOutput.writeLong(userId);
-        objectOutput.writeLong(deviceId);
-        objectOutput.writeLong(sensorId);
+        objectOutput.writeLong(idMeasurement);
+        objectOutput.writeLong(idRace);
+        objectOutput.writeLong(idDevice);
+        objectOutput.writeLong(idSensor);
         objectOutput.writeLong(time);
 
         if (sensorMode == null) {

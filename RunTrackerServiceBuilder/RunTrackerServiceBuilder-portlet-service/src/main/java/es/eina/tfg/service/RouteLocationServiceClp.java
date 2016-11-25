@@ -20,8 +20,6 @@ public class RouteLocationServiceClp implements RouteLocationService {
     private String[] _methodParameterTypes5;
     private String _methodName6;
     private String[] _methodParameterTypes6;
-    private String _methodName7;
-    private String[] _methodParameterTypes7;
 
     public RouteLocationServiceClp(InvokableService invokableService) {
         _invokableService = invokableService;
@@ -37,27 +35,22 @@ public class RouteLocationServiceClp implements RouteLocationService {
         _methodName3 = "add";
 
         _methodParameterTypes3 = new String[] {
-                "java.lang.Long", "java.lang.Double", "java.lang.Double"
+                "long", "java.lang.Double", "java.lang.Double"
             };
 
         _methodName4 = "update";
 
         _methodParameterTypes4 = new String[] {
-                "java.lang.Long", "java.lang.Long", "java.lang.Double",
-                "java.lang.Double"
+                "long", "long", "java.lang.Double", "java.lang.Double"
             };
 
         _methodName5 = "delete";
 
-        _methodParameterTypes5 = new String[] { "java.lang.Long" };
+        _methodParameterTypes5 = new String[] { "long", "long" };
 
-        _methodName6 = "getRouteLocation";
+        _methodName6 = "getByRouteId";
 
-        _methodParameterTypes6 = new String[] { "java.lang.Long" };
-
-        _methodName7 = "findByRouteId";
-
-        _methodParameterTypes7 = new String[] { "java.lang.Long" };
+        _methodParameterTypes6 = new String[] { "long" };
     }
 
     @Override
@@ -107,17 +100,16 @@ public class RouteLocationServiceClp implements RouteLocationService {
     }
 
     @Override
-    public es.eina.tfg.model.RouteLocation add(java.lang.Long routeId,
+    public es.eina.tfg.model.RouteLocation add(long routeId,
         java.lang.Double latitude, java.lang.Double longitude)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingRouteException {
+        throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableService.invokeMethod(_methodName3,
                     _methodParameterTypes3,
                     new Object[] {
-                        ClpSerializer.translateInput(routeId),
+                        routeId,
                         
                     ClpSerializer.translateInput(latitude),
                         
@@ -128,10 +120,6 @@ public class RouteLocationServiceClp implements RouteLocationService {
 
             if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
                 throw (com.liferay.portal.kernel.exception.SystemException) t;
-            }
-
-            if (t instanceof es.eina.tfg.NonExistingRouteException) {
-                throw (es.eina.tfg.NonExistingRouteException) t;
             }
 
             if (t instanceof RuntimeException) {
@@ -146,21 +134,19 @@ public class RouteLocationServiceClp implements RouteLocationService {
     }
 
     @Override
-    public es.eina.tfg.model.RouteLocation update(
-        java.lang.Long routeLocationId, java.lang.Long routeId,
-        java.lang.Double latitude, java.lang.Double longitude)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingRouteException,
-            es.eina.tfg.NonExistingRouteLocationException {
+    public es.eina.tfg.model.RouteLocation update(long routeLocationId,
+        long routeId, java.lang.Double latitude, java.lang.Double longitude)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableService.invokeMethod(_methodName4,
                     _methodParameterTypes4,
                     new Object[] {
-                        ClpSerializer.translateInput(routeLocationId),
+                        routeLocationId,
                         
-                    ClpSerializer.translateInput(routeId),
+                    routeId,
                         
                     ClpSerializer.translateInput(latitude),
                         
@@ -169,16 +155,12 @@ public class RouteLocationServiceClp implements RouteLocationService {
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
+            if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+                throw (com.liferay.portal.kernel.exception.PortalException) t;
+            }
+
             if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
                 throw (com.liferay.portal.kernel.exception.SystemException) t;
-            }
-
-            if (t instanceof es.eina.tfg.NonExistingRouteException) {
-                throw (es.eina.tfg.NonExistingRouteException) t;
-            }
-
-            if (t instanceof es.eina.tfg.NonExistingRouteLocationException) {
-                throw (es.eina.tfg.NonExistingRouteLocationException) t;
             }
 
             if (t instanceof RuntimeException) {
@@ -193,8 +175,8 @@ public class RouteLocationServiceClp implements RouteLocationService {
     }
 
     @Override
-    public es.eina.tfg.model.RouteLocation delete(
-        java.lang.Long routeLocationId)
+    public es.eina.tfg.model.RouteLocation delete(long idRouteLocation,
+        long idRoute)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
@@ -202,7 +184,7 @@ public class RouteLocationServiceClp implements RouteLocationService {
         try {
             returnObj = _invokableService.invokeMethod(_methodName5,
                     _methodParameterTypes5,
-                    new Object[] { ClpSerializer.translateInput(routeLocationId) });
+                    new Object[] { idRouteLocation, idRoute });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -226,48 +208,14 @@ public class RouteLocationServiceClp implements RouteLocationService {
     }
 
     @Override
-    public es.eina.tfg.model.RouteLocation getRouteLocation(
-        java.lang.Long routeLocationId)
-        throws com.liferay.portal.kernel.exception.PortalException,
-            com.liferay.portal.kernel.exception.SystemException {
-        Object returnObj = null;
-
-        try {
-            returnObj = _invokableService.invokeMethod(_methodName6,
-                    _methodParameterTypes6,
-                    new Object[] { ClpSerializer.translateInput(routeLocationId) });
-        } catch (Throwable t) {
-            t = ClpSerializer.translateThrowable(t);
-
-            if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
-                throw (com.liferay.portal.kernel.exception.PortalException) t;
-            }
-
-            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
-                throw (com.liferay.portal.kernel.exception.SystemException) t;
-            }
-
-            if (t instanceof RuntimeException) {
-                throw (RuntimeException) t;
-            } else {
-                throw new RuntimeException(t.getClass().getName() +
-                    " is not a valid exception");
-            }
-        }
-
-        return (es.eina.tfg.model.RouteLocation) ClpSerializer.translateOutput(returnObj);
-    }
-
-    @Override
-    public java.util.List<es.eina.tfg.model.RouteLocation> findByRouteId(
-        java.lang.Long routeId)
+    public java.util.List<es.eina.tfg.model.RouteLocation> getByRouteId(
+        long routeId)
         throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableService.invokeMethod(_methodName7,
-                    _methodParameterTypes7,
-                    new Object[] { ClpSerializer.translateInput(routeId) });
+            returnObj = _invokableService.invokeMethod(_methodName6,
+                    _methodParameterTypes6, new Object[] { routeId });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 

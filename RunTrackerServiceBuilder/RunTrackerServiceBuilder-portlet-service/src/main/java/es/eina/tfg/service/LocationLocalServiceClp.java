@@ -48,8 +48,6 @@ public class LocationLocalServiceClp implements LocationLocalService {
     private String[] _methodParameterTypes19;
     private String _methodName20;
     private String[] _methodParameterTypes20;
-    private String _methodName21;
-    private String[] _methodParameterTypes21;
 
     public LocationLocalServiceClp(InvokableLocalService invokableLocalService) {
         _invokableLocalService = invokableLocalService;
@@ -60,11 +58,15 @@ public class LocationLocalServiceClp implements LocationLocalService {
 
         _methodName1 = "createLocation";
 
-        _methodParameterTypes1 = new String[] { "long" };
+        _methodParameterTypes1 = new String[] {
+                "es.eina.tfg.service.persistence.LocationPK"
+            };
 
         _methodName2 = "deleteLocation";
 
-        _methodParameterTypes2 = new String[] { "long" };
+        _methodParameterTypes2 = new String[] {
+                "es.eina.tfg.service.persistence.LocationPK"
+            };
 
         _methodName3 = "deleteLocation";
 
@@ -108,11 +110,15 @@ public class LocationLocalServiceClp implements LocationLocalService {
 
         _methodName10 = "fetchLocation";
 
-        _methodParameterTypes10 = new String[] { "long" };
+        _methodParameterTypes10 = new String[] {
+                "es.eina.tfg.service.persistence.LocationPK"
+            };
 
         _methodName11 = "getLocation";
 
-        _methodParameterTypes11 = new String[] { "long" };
+        _methodParameterTypes11 = new String[] {
+                "es.eina.tfg.service.persistence.LocationPK"
+            };
 
         _methodName12 = "getPersistedModel";
 
@@ -138,26 +144,13 @@ public class LocationLocalServiceClp implements LocationLocalService {
 
         _methodParameterTypes17 = new String[] { "java.lang.String" };
 
-        _methodName19 = "add";
+        _methodName19 = "generateNewIdLocation";
 
-        _methodParameterTypes19 = new String[] {
-                "java.lang.Long", "java.lang.Long", "java.lang.Long",
-                "java.lang.Long", "java.util.Date", "java.lang.String", "int",
-                "double", "double", "double", "double", "double"
-            };
+        _methodParameterTypes19 = new String[] { "long" };
 
-        _methodName20 = "update";
+        _methodName20 = "getByRaceId";
 
-        _methodParameterTypes20 = new String[] {
-                "java.lang.Long", "java.lang.Long", "java.lang.Long",
-                "java.lang.Long", "java.lang.Long", "java.util.Date",
-                "java.lang.String", "int", "double", "double", "double",
-                "double", "double"
-            };
-
-        _methodName21 = "findByRaceId";
-
-        _methodParameterTypes21 = new String[] { "java.lang.Long" };
+        _methodParameterTypes20 = new String[] { "java.lang.Long" };
     }
 
     @Override
@@ -189,12 +182,14 @@ public class LocationLocalServiceClp implements LocationLocalService {
     }
 
     @Override
-    public es.eina.tfg.model.Location createLocation(long measurementId) {
+    public es.eina.tfg.model.Location createLocation(
+        es.eina.tfg.service.persistence.LocationPK locationPK) {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName1,
-                    _methodParameterTypes1, new Object[] { measurementId });
+                    _methodParameterTypes1,
+                    new Object[] { ClpSerializer.translateInput(locationPK) });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -210,14 +205,16 @@ public class LocationLocalServiceClp implements LocationLocalService {
     }
 
     @Override
-    public es.eina.tfg.model.Location deleteLocation(long measurementId)
+    public es.eina.tfg.model.Location deleteLocation(
+        es.eina.tfg.service.persistence.LocationPK locationPK)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName2,
-                    _methodParameterTypes2, new Object[] { measurementId });
+                    _methodParameterTypes2,
+                    new Object[] { ClpSerializer.translateInput(locationPK) });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -454,13 +451,15 @@ public class LocationLocalServiceClp implements LocationLocalService {
     }
 
     @Override
-    public es.eina.tfg.model.Location fetchLocation(long measurementId)
+    public es.eina.tfg.model.Location fetchLocation(
+        es.eina.tfg.service.persistence.LocationPK locationPK)
         throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName10,
-                    _methodParameterTypes10, new Object[] { measurementId });
+                    _methodParameterTypes10,
+                    new Object[] { ClpSerializer.translateInput(locationPK) });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -480,14 +479,16 @@ public class LocationLocalServiceClp implements LocationLocalService {
     }
 
     @Override
-    public es.eina.tfg.model.Location getLocation(long measurementId)
+    public es.eina.tfg.model.Location getLocation(
+        es.eina.tfg.service.persistence.LocationPK locationPK)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName11,
-                    _methodParameterTypes11, new Object[] { measurementId });
+                    _methodParameterTypes11,
+                    new Object[] { ClpSerializer.translateInput(locationPK) });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -670,62 +671,18 @@ public class LocationLocalServiceClp implements LocationLocalService {
     }
 
     @Override
-    public es.eina.tfg.model.Location add(java.lang.Long raceId,
-        java.lang.Long userId, java.lang.Long deviceId,
-        java.lang.Long sensorId, java.util.Date time,
-        java.lang.String sensorMode, int sysRef, double latitude,
-        double longitude, double speed, double distance, double altitude)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingDeviceAndSensorRelationException,
-            es.eina.tfg.NonExistingRaceException,
-            es.eina.tfg.NonExistingUserException {
+    public es.eina.tfg.service.persistence.LocationPK generateNewIdLocation(
+        long idRace) throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName19,
-                    _methodParameterTypes19,
-                    new Object[] {
-                        ClpSerializer.translateInput(raceId),
-                        
-                    ClpSerializer.translateInput(userId),
-                        
-                    ClpSerializer.translateInput(deviceId),
-                        
-                    ClpSerializer.translateInput(sensorId),
-                        
-                    ClpSerializer.translateInput(time),
-                        
-                    ClpSerializer.translateInput(sensorMode),
-                        
-                    sysRef,
-                        
-                    latitude,
-                        
-                    longitude,
-                        
-                    speed,
-                        
-                    distance,
-                        
-                    altitude
-                    });
+                    _methodParameterTypes19, new Object[] { idRace });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
             if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
                 throw (com.liferay.portal.kernel.exception.SystemException) t;
-            }
-
-            if (t instanceof es.eina.tfg.NonExistingDeviceAndSensorRelationException) {
-                throw (es.eina.tfg.NonExistingDeviceAndSensorRelationException) t;
-            }
-
-            if (t instanceof es.eina.tfg.NonExistingRaceException) {
-                throw (es.eina.tfg.NonExistingRaceException) t;
-            }
-
-            if (t instanceof es.eina.tfg.NonExistingUserException) {
-                throw (es.eina.tfg.NonExistingUserException) t;
             }
 
             if (t instanceof RuntimeException) {
@@ -736,80 +693,18 @@ public class LocationLocalServiceClp implements LocationLocalService {
             }
         }
 
-        return (es.eina.tfg.model.Location) ClpSerializer.translateOutput(returnObj);
+        return (es.eina.tfg.service.persistence.LocationPK) ClpSerializer.translateOutput(returnObj);
     }
 
     @Override
-    public es.eina.tfg.model.Location update(java.lang.Long measurementId,
-        java.lang.Long raceId, java.lang.Long userId, java.lang.Long deviceId,
-        java.lang.Long sensorId, java.util.Date time,
-        java.lang.String sensorMode, int sysRef, double latitude,
-        double longitude, double speed, double distance, double altitude)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingMeasurementException {
-        Object returnObj = null;
-
-        try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName20,
-                    _methodParameterTypes20,
-                    new Object[] {
-                        ClpSerializer.translateInput(measurementId),
-                        
-                    ClpSerializer.translateInput(raceId),
-                        
-                    ClpSerializer.translateInput(userId),
-                        
-                    ClpSerializer.translateInput(deviceId),
-                        
-                    ClpSerializer.translateInput(sensorId),
-                        
-                    ClpSerializer.translateInput(time),
-                        
-                    ClpSerializer.translateInput(sensorMode),
-                        
-                    sysRef,
-                        
-                    latitude,
-                        
-                    longitude,
-                        
-                    speed,
-                        
-                    distance,
-                        
-                    altitude
-                    });
-        } catch (Throwable t) {
-            t = ClpSerializer.translateThrowable(t);
-
-            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
-                throw (com.liferay.portal.kernel.exception.SystemException) t;
-            }
-
-            if (t instanceof es.eina.tfg.NonExistingMeasurementException) {
-                throw (es.eina.tfg.NonExistingMeasurementException) t;
-            }
-
-            if (t instanceof RuntimeException) {
-                throw (RuntimeException) t;
-            } else {
-                throw new RuntimeException(t.getClass().getName() +
-                    " is not a valid exception");
-            }
-        }
-
-        return (es.eina.tfg.model.Location) ClpSerializer.translateOutput(returnObj);
-    }
-
-    @Override
-    public java.util.List<es.eina.tfg.model.Location> findByRaceId(
+    public java.util.List<es.eina.tfg.model.Location> getByRaceId(
         java.lang.Long raceId)
         throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName21,
-                    _methodParameterTypes21,
+            returnObj = _invokableLocalService.invokeMethod(_methodName20,
+                    _methodParameterTypes20,
                     new Object[] { ClpSerializer.translateInput(raceId) });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);

@@ -1,7 +1,9 @@
 package es.eina.tfg.service.impl;
 
 import com.liferay.portal.kernel.exception.SystemException;
-import es.eina.tfg.NonExistingSensorException;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+import es.eina.tfg.model.RouteLocation;
 import es.eina.tfg.model.Sensor;
 import es.eina.tfg.service.base.SensorLocalServiceBaseImpl;
 
@@ -23,40 +25,17 @@ import es.eina.tfg.service.base.SensorLocalServiceBaseImpl;
  * @see es.eina.tfg.service.SensorLocalServiceUtil
  */
 public class SensorLocalServiceImpl extends SensorLocalServiceBaseImpl {
-    public Sensor add(Integer type, String description, String dataUnits, String dataType, String dataUncertainity,
-                      String dataLowerRange, String dataUpperRange, String dataPacketFormat)
+
+    public Long generateNewIdSensor()
             throws SystemException {
-        Long sensorId = counterLocalService.increment();
-
-        Sensor sensor = createSensor(sensorId);
-        sensor.setType(type);
-        sensor.setDescription(description);
-        sensor.setDataUnits(dataUnits);
-        sensor.setDataType(dataType);
-        sensor.setDataUncertainity(dataUncertainity);
-        sensor.setDataLowerRange(dataLowerRange);
-        sensor.setDataUpperRange(dataUpperRange);
-        sensor.setDataPacketFormat(dataPacketFormat);
-
-        return updateSensor(sensor);
-    }
-
-    public Sensor update(Long sensorId, Integer type, String description, String dataUnits, String dataType,
-                         String dataUncertainity, String dataLowerRange, String dataUpperRange, String dataPacketFormat)
-            throws SystemException, NonExistingSensorException {
-        Sensor sensor = fetchSensor(sensorId);
-        if (sensor == null){
-            throw new NonExistingSensorException("The Sensor: " + sensorId +" does not exists on the database");
+        try {
+            return counterLocalService.increment(Sensor.class.getName());
+        } catch (SystemException e) {
+            _log.error("SystemException: Cannot generate counterLocalService.increment() for class: "
+                    + Sensor.class.getName());
+            throw e;
         }
-        sensor.setType(type);
-        sensor.setDescription(description);
-        sensor.setDataUnits(dataUnits);
-        sensor.setDataType(dataType);
-        sensor.setDataUncertainity(dataUncertainity);
-        sensor.setDataLowerRange(dataLowerRange);
-        sensor.setDataUpperRange(dataUpperRange);
-        sensor.setDataPacketFormat(dataPacketFormat);
-
-        return updateSensor(sensor);
     }
+
+    private static Log _log = LogFactoryUtil.getLog(SensorLocalServiceImpl.class);
 }

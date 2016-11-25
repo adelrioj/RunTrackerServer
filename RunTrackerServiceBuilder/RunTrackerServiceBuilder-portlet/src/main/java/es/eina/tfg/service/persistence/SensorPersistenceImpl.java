@@ -372,7 +372,7 @@ public class SensorPersistenceImpl extends BasePersistenceImpl<Sensor>
     /**
      * Returns the sensors before and after the current sensor in the ordered set where type = &#63;.
      *
-     * @param sensorId the primary key of the current sensor
+     * @param idSensor the primary key of the current sensor
      * @param type the type
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the previous, current, and next sensor
@@ -380,10 +380,10 @@ public class SensorPersistenceImpl extends BasePersistenceImpl<Sensor>
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Sensor[] findBytype_PrevAndNext(long sensorId, int type,
+    public Sensor[] findBytype_PrevAndNext(long idSensor, int type,
         OrderByComparator orderByComparator)
         throws NoSuchSensorException, SystemException {
-        Sensor sensor = findByPrimaryKey(sensorId);
+        Sensor sensor = findByPrimaryKey(idSensor);
 
         Session session = null;
 
@@ -649,15 +649,15 @@ public class SensorPersistenceImpl extends BasePersistenceImpl<Sensor>
     /**
      * Creates a new sensor with the primary key. Does not add the sensor to the database.
      *
-     * @param sensorId the primary key for the new sensor
+     * @param idSensor the primary key for the new sensor
      * @return the new sensor
      */
     @Override
-    public Sensor create(long sensorId) {
+    public Sensor create(long idSensor) {
         Sensor sensor = new SensorImpl();
 
         sensor.setNew(true);
-        sensor.setPrimaryKey(sensorId);
+        sensor.setPrimaryKey(idSensor);
 
         return sensor;
     }
@@ -665,15 +665,15 @@ public class SensorPersistenceImpl extends BasePersistenceImpl<Sensor>
     /**
      * Removes the sensor with the primary key from the database. Also notifies the appropriate model listeners.
      *
-     * @param sensorId the primary key of the sensor
+     * @param idSensor the primary key of the sensor
      * @return the sensor that was removed
      * @throws es.eina.tfg.NoSuchSensorException if a sensor with the primary key could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Sensor remove(long sensorId)
+    public Sensor remove(long idSensor)
         throws NoSuchSensorException, SystemException {
-        return remove((Serializable) sensorId);
+        return remove((Serializable) idSensor);
     }
 
     /**
@@ -808,7 +808,7 @@ public class SensorPersistenceImpl extends BasePersistenceImpl<Sensor>
         sensorImpl.setNew(sensor.isNew());
         sensorImpl.setPrimaryKey(sensor.getPrimaryKey());
 
-        sensorImpl.setSensorId(sensor.getSensorId());
+        sensorImpl.setIdSensor(sensor.getIdSensor());
         sensorImpl.setType(sensor.getType());
         sensorImpl.setDescription(sensor.getDescription());
         sensorImpl.setDataUnits(sensor.getDataUnits());
@@ -849,15 +849,15 @@ public class SensorPersistenceImpl extends BasePersistenceImpl<Sensor>
     /**
      * Returns the sensor with the primary key or throws a {@link es.eina.tfg.NoSuchSensorException} if it could not be found.
      *
-     * @param sensorId the primary key of the sensor
+     * @param idSensor the primary key of the sensor
      * @return the sensor
      * @throws es.eina.tfg.NoSuchSensorException if a sensor with the primary key could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Sensor findByPrimaryKey(long sensorId)
+    public Sensor findByPrimaryKey(long idSensor)
         throws NoSuchSensorException, SystemException {
-        return findByPrimaryKey((Serializable) sensorId);
+        return findByPrimaryKey((Serializable) idSensor);
     }
 
     /**
@@ -907,13 +907,13 @@ public class SensorPersistenceImpl extends BasePersistenceImpl<Sensor>
     /**
      * Returns the sensor with the primary key or returns <code>null</code> if it could not be found.
      *
-     * @param sensorId the primary key of the sensor
+     * @param idSensor the primary key of the sensor
      * @return the sensor, or <code>null</code> if a sensor with the primary key could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Sensor fetchByPrimaryKey(long sensorId) throws SystemException {
-        return fetchByPrimaryKey((Serializable) sensorId);
+    public Sensor fetchByPrimaryKey(long idSensor) throws SystemException {
+        return fetchByPrimaryKey((Serializable) idSensor);
     }
 
     /**

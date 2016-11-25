@@ -19,29 +19,23 @@ import java.io.ObjectOutput;
  * @generated
  */
 public class RaceCacheModel implements CacheModel<Race>, Externalizable {
-    public long raceId;
-    public long userId;
-    public long routeId;
+    public long idRace;
+    public long idUser;
+    public long idRoute;
     public String type;
-    public int userHeight;
-    public int userWeight;
 
     @Override
     public String toString() {
-        StringBundler sb = new StringBundler(13);
+        StringBundler sb = new StringBundler(9);
 
-        sb.append("{raceId=");
-        sb.append(raceId);
-        sb.append(", userId=");
-        sb.append(userId);
-        sb.append(", routeId=");
-        sb.append(routeId);
+        sb.append("{idRace=");
+        sb.append(idRace);
+        sb.append(", idUser=");
+        sb.append(idUser);
+        sb.append(", idRoute=");
+        sb.append(idRoute);
         sb.append(", type=");
         sb.append(type);
-        sb.append(", userHeight=");
-        sb.append(userHeight);
-        sb.append(", userWeight=");
-        sb.append(userWeight);
         sb.append("}");
 
         return sb.toString();
@@ -51,18 +45,15 @@ public class RaceCacheModel implements CacheModel<Race>, Externalizable {
     public Race toEntityModel() {
         RaceImpl raceImpl = new RaceImpl();
 
-        raceImpl.setRaceId(raceId);
-        raceImpl.setUserId(userId);
-        raceImpl.setRouteId(routeId);
+        raceImpl.setIdRace(idRace);
+        raceImpl.setIdUser(idUser);
+        raceImpl.setIdRoute(idRoute);
 
         if (type == null) {
             raceImpl.setType(StringPool.BLANK);
         } else {
             raceImpl.setType(type);
         }
-
-        raceImpl.setUserHeight(userHeight);
-        raceImpl.setUserWeight(userWeight);
 
         raceImpl.resetOriginalValues();
 
@@ -71,28 +62,23 @@ public class RaceCacheModel implements CacheModel<Race>, Externalizable {
 
     @Override
     public void readExternal(ObjectInput objectInput) throws IOException {
-        raceId = objectInput.readLong();
-        userId = objectInput.readLong();
-        routeId = objectInput.readLong();
+        idRace = objectInput.readLong();
+        idUser = objectInput.readLong();
+        idRoute = objectInput.readLong();
         type = objectInput.readUTF();
-        userHeight = objectInput.readInt();
-        userWeight = objectInput.readInt();
     }
 
     @Override
     public void writeExternal(ObjectOutput objectOutput)
         throws IOException {
-        objectOutput.writeLong(raceId);
-        objectOutput.writeLong(userId);
-        objectOutput.writeLong(routeId);
+        objectOutput.writeLong(idRace);
+        objectOutput.writeLong(idUser);
+        objectOutput.writeLong(idRoute);
 
         if (type == null) {
             objectOutput.writeUTF(StringPool.BLANK);
         } else {
             objectOutput.writeUTF(type);
         }
-
-        objectOutput.writeInt(userHeight);
-        objectOutput.writeInt(userWeight);
     }
 }

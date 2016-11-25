@@ -1,12 +1,17 @@
 package es.eina.tfg.service.impl;
 
 import com.liferay.portal.kernel.exception.SystemException;
-import com.liferay.portal.kernel.util.Validator;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.model.User;
 import com.liferay.portal.service.UserLocalServiceUtil;
-import es.eina.tfg.NonExistingRaceException;
-import es.eina.tfg.NonExistingUserException;
+import es.eina.tfg.model.Location;
+import es.eina.tfg.model.Power;
 import es.eina.tfg.model.Race;
+import es.eina.tfg.service.LocationLocalService;
+import es.eina.tfg.service.LocationLocalServiceUtil;
+import es.eina.tfg.service.PowerLocalService;
+import es.eina.tfg.service.PowerLocalServiceUtil;
 import es.eina.tfg.service.base.RaceLocalServiceBaseImpl;
 import es.eina.tfg.service.persistence.RaceUtil;
 
@@ -31,57 +36,51 @@ import java.util.List;
  */
 public class RaceLocalServiceImpl extends RaceLocalServiceBaseImpl {
 
-    public Race add(Long userId, Long routeId, String type, Integer userHeight, Integer userWeight)
-            throws SystemException, NonExistingUserException {
-
-        Long raceId = counterLocalService.increment();
-
-        User user = UserLocalServiceUtil.fetchUser(userId);
-        if (user == null){
-            throw new NonExistingUserException("The user: " + userId +" does not exists on the database");
+    public Long generateNewIdRace()
+            throws SystemException {
+        try {
+            return counterLocalService.increment(Race.class.getName());
+        } catch (SystemException e) {
+            _log.error("SystemException: Cannot generate counterLocalService.increment() for class: "
+                    + Race.class.getName());
+            throw e;
         }
-
-        Race race = createRace(raceId);
-        race.setUserId(userId);
-        if (Validator.isNotNull(routeId)){
-            race.setRouteId(routeId);
-        }else {
-            race.setRouteId(DEFAULT_ROUTEID);
-        }
-        race.setType(type);
-        race.setUserHeight(userHeight);
-        race.setUserWeight(userWeight);
-
-        return updateRace(race);
     }
 
-    public Race update(Long raceId, Long userId, Long routeId, String type, Integer userHeight, Integer userWeight)
-            throws SystemException, NonExistingUserException, NonExistingRaceException {
-
-        User user = UserLocalServiceUtil.fetchUser(userId);
-        if (user == null){
-            throw new NonExistingUserException("The user: " + userId +" does not exists on the database");
-        }
-        Race race = fetchRace(raceId);
-        if (race == null){
-            throw new NonExistingRaceException("Race: " + raceId + " does not exists on the database");
-        }
-
-        race.setUserId(userId);
-        if (Validator.isNotNull(routeId)){
-            race.setRouteId(routeId);
-        }else {
-            race.setRouteId(DEFAULT_ROUTEID);
-        }
-        race.setType(type);
-        race.setUserHeight(userHeight);
-        race.setUserWeight(userWeight);
-
-        return updateRace(race);
+    @Override
+    public Race addRace(Race race)
+            throws SystemException {
+        checkMadatoryAttributes(race);
+        return super.addRace(race);
     }
 
-    public List<Race> findByUserId (Long userId) throws SystemException {
+    @Override
+    public Race updateRace(Race race)
+            throws SystemException {
+        checkMadatoryAttributes(race);
+        return super.updateRace(race);
+    }
+
+    private void checkMadatoryAttributes(Race race)
+            throws SystemException {
+        User user = UserLocalServiceUtil.fetchUser(race.getIdUser());
+        if (user == null){
+            throw new SystemException("The user: " + race.getIdUser() +" does not exists on the database");
+        }
+    }
+
+    public List<Race> getByUserId (Long userId) throws SystemException {
         return RaceUtil.findByuserId(userId);
+    }
+
+    public List<Location> getLocations (long idRace)
+            throws SystemException {
+        return LocationLocalServiceUtil.getByRaceId(idRace);
+    }
+
+    public List<Power> getPowerMeasurements (long idRace)
+            throws SystemException {
+        return PowerLocalServiceUtil.getByRaceId(idRace);
     }
 
     public static final Long DEFAULT_ROUTEID = (long) 1;
@@ -89,4 +88,6 @@ public class RaceLocalServiceImpl extends RaceLocalServiceBaseImpl {
     public static final String TYPE_WALKING = RouteLocalServiceImpl.TYPE_WALKING;
     public static final String TYPE_RUNNING = RouteLocalServiceImpl.TYPE_RUNNING;
     public static final String TYPE_CYCLING = RouteLocalServiceImpl.TYPE_CYCLING;
+
+    private static Log _log = LogFactoryUtil.getLog(RaceLocalServiceImpl.class);
 }

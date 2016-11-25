@@ -13,11 +13,10 @@ import java.util.List;
  * @generated
  */
 public class UserAdditionalDataSoap implements Serializable {
-    private long _userId;
-    private String _registerType;
+    private long _idUser;
     private int _weight;
     private int _height;
-    private long _smsCounter;
+    private long _smsCount;
 
     public UserAdditionalDataSoap() {
     }
@@ -25,11 +24,10 @@ public class UserAdditionalDataSoap implements Serializable {
     public static UserAdditionalDataSoap toSoapModel(UserAdditionalData model) {
         UserAdditionalDataSoap soapModel = new UserAdditionalDataSoap();
 
-        soapModel.setUserId(model.getUserId());
-        soapModel.setRegisterType(model.getRegisterType());
+        soapModel.setIdUser(model.getIdUser());
         soapModel.setWeight(model.getWeight());
         soapModel.setHeight(model.getHeight());
-        soapModel.setSmsCounter(model.getSmsCounter());
+        soapModel.setSmsCount(model.getSmsCount());
 
         return soapModel;
     }
@@ -74,27 +72,19 @@ public class UserAdditionalDataSoap implements Serializable {
     }
 
     public long getPrimaryKey() {
-        return _userId;
+        return _idUser;
     }
 
     public void setPrimaryKey(long pk) {
-        setUserId(pk);
+        setIdUser(pk);
     }
 
-    public long getUserId() {
-        return _userId;
+    public long getIdUser() {
+        return _idUser;
     }
 
-    public void setUserId(long userId) {
-        _userId = userId;
-    }
-
-    public String getRegisterType() {
-        return _registerType;
-    }
-
-    public void setRegisterType(String registerType) {
-        _registerType = registerType;
+    public void setIdUser(long idUser) {
+        _idUser = idUser;
     }
 
     public int getWeight() {
@@ -113,11 +103,11 @@ public class UserAdditionalDataSoap implements Serializable {
         _height = height;
     }
 
-    public long getSmsCounter() {
-        return _smsCounter;
+    public long getSmsCount() {
+        return _smsCount;
     }
 
-    public void setSmsCounter(long smsCounter) {
-        _smsCounter = smsCounter;
+    public void setSmsCount(long smsCount) {
+        _smsCount = smsCount;
     }
 }

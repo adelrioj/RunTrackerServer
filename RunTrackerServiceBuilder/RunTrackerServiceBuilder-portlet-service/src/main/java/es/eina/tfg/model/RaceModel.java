@@ -1,7 +1,6 @@
 package es.eina.tfg.model;
 
 import com.liferay.portal.kernel.bean.AutoEscape;
-import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.CacheModel;
 import com.liferay.portal.service.ServiceContext;
@@ -45,61 +44,46 @@ public interface RaceModel extends BaseModel<Race> {
     public void setPrimaryKey(long primaryKey);
 
     /**
-     * Returns the race ID of this race.
+     * Returns the id race of this race.
      *
-     * @return the race ID of this race
+     * @return the id race of this race
      */
-    public long getRaceId();
+    public long getIdRace();
 
     /**
-     * Sets the race ID of this race.
+     * Sets the id race of this race.
      *
-     * @param raceId the race ID of this race
+     * @param idRace the id race of this race
      */
-    public void setRaceId(long raceId);
+    public void setIdRace(long idRace);
 
     /**
-     * Returns the user ID of this race.
+     * Returns the id user of this race.
      *
-     * @return the user ID of this race
+     * @return the id user of this race
      */
-    public long getUserId();
+    public long getIdUser();
 
     /**
-     * Sets the user ID of this race.
+     * Sets the id user of this race.
      *
-     * @param userId the user ID of this race
+     * @param idUser the id user of this race
      */
-    public void setUserId(long userId);
+    public void setIdUser(long idUser);
 
     /**
-     * Returns the user uuid of this race.
+     * Returns the id route of this race.
      *
-     * @return the user uuid of this race
-     * @throws SystemException if a system exception occurred
+     * @return the id route of this race
      */
-    public String getUserUuid() throws SystemException;
+    public long getIdRoute();
 
     /**
-     * Sets the user uuid of this race.
+     * Sets the id route of this race.
      *
-     * @param userUuid the user uuid of this race
+     * @param idRoute the id route of this race
      */
-    public void setUserUuid(String userUuid);
-
-    /**
-     * Returns the route ID of this race.
-     *
-     * @return the route ID of this race
-     */
-    public long getRouteId();
-
-    /**
-     * Sets the route ID of this race.
-     *
-     * @param routeId the route ID of this race
-     */
-    public void setRouteId(long routeId);
+    public void setIdRoute(long idRoute);
 
     /**
      * Returns the type of this race.
@@ -115,34 +99,6 @@ public interface RaceModel extends BaseModel<Race> {
      * @param type the type of this race
      */
     public void setType(String type);
-
-    /**
-     * Returns the user height of this race.
-     *
-     * @return the user height of this race
-     */
-    public int getUserHeight();
-
-    /**
-     * Sets the user height of this race.
-     *
-     * @param userHeight the user height of this race
-     */
-    public void setUserHeight(int userHeight);
-
-    /**
-     * Returns the user weight of this race.
-     *
-     * @return the user weight of this race
-     */
-    public int getUserWeight();
-
-    /**
-     * Sets the user weight of this race.
-     *
-     * @param userWeight the user weight of this race
-     */
-    public void setUserWeight(int userWeight);
 
     @Override
     public boolean isNew();

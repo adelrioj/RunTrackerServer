@@ -14,13 +14,12 @@ import java.util.List;
  * @generated
  */
 public class RouteSoap implements Serializable {
-    private long _routeId;
+    private long _idRoute;
+    private long _idAuthor;
     private String _type;
     private String _name;
     private String _description;
-    private long _authorId;
     private boolean _isPublic;
-    private Date _startingTime;
     private Date _creationTime;
 
     public RouteSoap() {
@@ -29,13 +28,12 @@ public class RouteSoap implements Serializable {
     public static RouteSoap toSoapModel(Route model) {
         RouteSoap soapModel = new RouteSoap();
 
-        soapModel.setRouteId(model.getRouteId());
+        soapModel.setIdRoute(model.getIdRoute());
+        soapModel.setIdAuthor(model.getIdAuthor());
         soapModel.setType(model.getType());
         soapModel.setName(model.getName());
         soapModel.setDescription(model.getDescription());
-        soapModel.setAuthorId(model.getAuthorId());
         soapModel.setIsPublic(model.getIsPublic());
-        soapModel.setStartingTime(model.getStartingTime());
         soapModel.setCreationTime(model.getCreationTime());
 
         return soapModel;
@@ -78,19 +76,27 @@ public class RouteSoap implements Serializable {
     }
 
     public long getPrimaryKey() {
-        return _routeId;
+        return _idRoute;
     }
 
     public void setPrimaryKey(long pk) {
-        setRouteId(pk);
+        setIdRoute(pk);
     }
 
-    public long getRouteId() {
-        return _routeId;
+    public long getIdRoute() {
+        return _idRoute;
     }
 
-    public void setRouteId(long routeId) {
-        _routeId = routeId;
+    public void setIdRoute(long idRoute) {
+        _idRoute = idRoute;
+    }
+
+    public long getIdAuthor() {
+        return _idAuthor;
+    }
+
+    public void setIdAuthor(long idAuthor) {
+        _idAuthor = idAuthor;
     }
 
     public String getType() {
@@ -117,14 +123,6 @@ public class RouteSoap implements Serializable {
         _description = description;
     }
 
-    public long getAuthorId() {
-        return _authorId;
-    }
-
-    public void setAuthorId(long authorId) {
-        _authorId = authorId;
-    }
-
     public boolean getIsPublic() {
         return _isPublic;
     }
@@ -135,14 +133,6 @@ public class RouteSoap implements Serializable {
 
     public void setIsPublic(boolean isPublic) {
         _isPublic = isPublic;
-    }
-
-    public Date getStartingTime() {
-        return _startingTime;
-    }
-
-    public void setStartingTime(Date startingTime) {
-        _startingTime = startingTime;
     }
 
     public Date getCreationTime() {

@@ -45,37 +45,6 @@ public class SensorServiceWrapper implements SensorService,
     }
 
     @Override
-    public es.eina.tfg.model.Sensor add(java.lang.Integer type,
-        java.lang.String description, java.lang.String dataUnits,
-        java.lang.String dataType, java.lang.String dataUncertainity,
-        java.lang.String dataLowerRange, java.lang.String dataUpperRange,
-        java.lang.String dataPacketFormat)
-        throws com.liferay.portal.kernel.exception.SystemException {
-        return _sensorService.add(type, description, dataUnits, dataType,
-            dataUncertainity, dataLowerRange, dataUpperRange, dataPacketFormat);
-    }
-
-    @Override
-    public es.eina.tfg.model.Sensor update(java.lang.Long sensorId,
-        java.lang.Integer type, java.lang.String description,
-        java.lang.String dataUnits, java.lang.String dataType,
-        java.lang.String dataUncertainity, java.lang.String dataLowerRange,
-        java.lang.String dataUpperRange, java.lang.String dataPacketFormat)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingSensorException {
-        return _sensorService.update(sensorId, type, description, dataUnits,
-            dataType, dataUncertainity, dataLowerRange, dataUpperRange,
-            dataPacketFormat);
-    }
-
-    @Override
-    public es.eina.tfg.model.Sensor delete(java.lang.Long sensorId)
-        throws com.liferay.portal.kernel.exception.PortalException,
-            com.liferay.portal.kernel.exception.SystemException {
-        return _sensorService.delete(sensorId);
-    }
-
-    @Override
     public es.eina.tfg.model.Sensor getSensor(java.lang.Long sensorId)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {

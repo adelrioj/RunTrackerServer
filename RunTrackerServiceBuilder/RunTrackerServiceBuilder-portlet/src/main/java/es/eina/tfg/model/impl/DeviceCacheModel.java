@@ -19,8 +19,8 @@ import java.io.ObjectOutput;
  * @generated
  */
 public class DeviceCacheModel implements CacheModel<Device>, Externalizable {
-    public long deviceId;
-    public long userId;
+    public long idDevice;
+    public long idUser;
     public String deviceUUID;
     public String description;
     public String status;
@@ -36,10 +36,10 @@ public class DeviceCacheModel implements CacheModel<Device>, Externalizable {
     public String toString() {
         StringBundler sb = new StringBundler(25);
 
-        sb.append("{deviceId=");
-        sb.append(deviceId);
-        sb.append(", userId=");
-        sb.append(userId);
+        sb.append("{idDevice=");
+        sb.append(idDevice);
+        sb.append(", idUser=");
+        sb.append(idUser);
         sb.append(", deviceUUID=");
         sb.append(deviceUUID);
         sb.append(", description=");
@@ -69,8 +69,8 @@ public class DeviceCacheModel implements CacheModel<Device>, Externalizable {
     public Device toEntityModel() {
         DeviceImpl deviceImpl = new DeviceImpl();
 
-        deviceImpl.setDeviceId(deviceId);
-        deviceImpl.setUserId(userId);
+        deviceImpl.setIdDevice(idDevice);
+        deviceImpl.setIdUser(idUser);
 
         if (deviceUUID == null) {
             deviceImpl.setDeviceUUID(StringPool.BLANK);
@@ -139,8 +139,8 @@ public class DeviceCacheModel implements CacheModel<Device>, Externalizable {
 
     @Override
     public void readExternal(ObjectInput objectInput) throws IOException {
-        deviceId = objectInput.readLong();
-        userId = objectInput.readLong();
+        idDevice = objectInput.readLong();
+        idUser = objectInput.readLong();
         deviceUUID = objectInput.readUTF();
         description = objectInput.readUTF();
         status = objectInput.readUTF();
@@ -156,8 +156,8 @@ public class DeviceCacheModel implements CacheModel<Device>, Externalizable {
     @Override
     public void writeExternal(ObjectOutput objectOutput)
         throws IOException {
-        objectOutput.writeLong(deviceId);
-        objectOutput.writeLong(userId);
+        objectOutput.writeLong(idDevice);
+        objectOutput.writeLong(idUser);
 
         if (deviceUUID == null) {
             objectOutput.writeUTF(StringPool.BLANK);

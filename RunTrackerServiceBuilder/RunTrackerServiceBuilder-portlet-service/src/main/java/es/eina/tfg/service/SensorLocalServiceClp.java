@@ -46,8 +46,6 @@ public class SensorLocalServiceClp implements SensorLocalService {
     private String[] _methodParameterTypes17;
     private String _methodName19;
     private String[] _methodParameterTypes19;
-    private String _methodName20;
-    private String[] _methodParameterTypes20;
 
     public SensorLocalServiceClp(InvokableLocalService invokableLocalService) {
         _invokableLocalService = invokableLocalService;
@@ -136,21 +134,9 @@ public class SensorLocalServiceClp implements SensorLocalService {
 
         _methodParameterTypes17 = new String[] { "java.lang.String" };
 
-        _methodName19 = "add";
+        _methodName19 = "generateNewIdSensor";
 
-        _methodParameterTypes19 = new String[] {
-                "java.lang.Integer", "java.lang.String", "java.lang.String",
-                "java.lang.String", "java.lang.String", "java.lang.String",
-                "java.lang.String", "java.lang.String"
-            };
-
-        _methodName20 = "update";
-
-        _methodParameterTypes20 = new String[] {
-                "java.lang.Long", "java.lang.Integer", "java.lang.String",
-                "java.lang.String", "java.lang.String", "java.lang.String",
-                "java.lang.String", "java.lang.String", "java.lang.String"
-            };
+        _methodParameterTypes19 = new String[] {  };
     }
 
     @Override
@@ -181,12 +167,12 @@ public class SensorLocalServiceClp implements SensorLocalService {
     }
 
     @Override
-    public es.eina.tfg.model.Sensor createSensor(long sensorId) {
+    public es.eina.tfg.model.Sensor createSensor(long idSensor) {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName1,
-                    _methodParameterTypes1, new Object[] { sensorId });
+                    _methodParameterTypes1, new Object[] { idSensor });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -202,14 +188,14 @@ public class SensorLocalServiceClp implements SensorLocalService {
     }
 
     @Override
-    public es.eina.tfg.model.Sensor deleteSensor(long sensorId)
+    public es.eina.tfg.model.Sensor deleteSensor(long idSensor)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName2,
-                    _methodParameterTypes2, new Object[] { sensorId });
+                    _methodParameterTypes2, new Object[] { idSensor });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -446,13 +432,13 @@ public class SensorLocalServiceClp implements SensorLocalService {
     }
 
     @Override
-    public es.eina.tfg.model.Sensor fetchSensor(long sensorId)
+    public es.eina.tfg.model.Sensor fetchSensor(long idSensor)
         throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName10,
-                    _methodParameterTypes10, new Object[] { sensorId });
+                    _methodParameterTypes10, new Object[] { idSensor });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -472,14 +458,14 @@ public class SensorLocalServiceClp implements SensorLocalService {
     }
 
     @Override
-    public es.eina.tfg.model.Sensor getSensor(long sensorId)
+    public es.eina.tfg.model.Sensor getSensor(long idSensor)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName11,
-                    _methodParameterTypes11, new Object[] { sensorId });
+                    _methodParameterTypes11, new Object[] { idSensor });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -662,34 +648,13 @@ public class SensorLocalServiceClp implements SensorLocalService {
     }
 
     @Override
-    public es.eina.tfg.model.Sensor add(java.lang.Integer type,
-        java.lang.String description, java.lang.String dataUnits,
-        java.lang.String dataType, java.lang.String dataUncertainity,
-        java.lang.String dataLowerRange, java.lang.String dataUpperRange,
-        java.lang.String dataPacketFormat)
+    public java.lang.Long generateNewIdSensor()
         throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName19,
-                    _methodParameterTypes19,
-                    new Object[] {
-                        ClpSerializer.translateInput(type),
-                        
-                    ClpSerializer.translateInput(description),
-                        
-                    ClpSerializer.translateInput(dataUnits),
-                        
-                    ClpSerializer.translateInput(dataType),
-                        
-                    ClpSerializer.translateInput(dataUncertainity),
-                        
-                    ClpSerializer.translateInput(dataLowerRange),
-                        
-                    ClpSerializer.translateInput(dataUpperRange),
-                        
-                    ClpSerializer.translateInput(dataPacketFormat)
-                    });
+                    _methodParameterTypes19, new Object[] {  });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -705,60 +670,6 @@ public class SensorLocalServiceClp implements SensorLocalService {
             }
         }
 
-        return (es.eina.tfg.model.Sensor) ClpSerializer.translateOutput(returnObj);
-    }
-
-    @Override
-    public es.eina.tfg.model.Sensor update(java.lang.Long sensorId,
-        java.lang.Integer type, java.lang.String description,
-        java.lang.String dataUnits, java.lang.String dataType,
-        java.lang.String dataUncertainity, java.lang.String dataLowerRange,
-        java.lang.String dataUpperRange, java.lang.String dataPacketFormat)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingSensorException {
-        Object returnObj = null;
-
-        try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName20,
-                    _methodParameterTypes20,
-                    new Object[] {
-                        ClpSerializer.translateInput(sensorId),
-                        
-                    ClpSerializer.translateInput(type),
-                        
-                    ClpSerializer.translateInput(description),
-                        
-                    ClpSerializer.translateInput(dataUnits),
-                        
-                    ClpSerializer.translateInput(dataType),
-                        
-                    ClpSerializer.translateInput(dataUncertainity),
-                        
-                    ClpSerializer.translateInput(dataLowerRange),
-                        
-                    ClpSerializer.translateInput(dataUpperRange),
-                        
-                    ClpSerializer.translateInput(dataPacketFormat)
-                    });
-        } catch (Throwable t) {
-            t = ClpSerializer.translateThrowable(t);
-
-            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
-                throw (com.liferay.portal.kernel.exception.SystemException) t;
-            }
-
-            if (t instanceof es.eina.tfg.NonExistingSensorException) {
-                throw (es.eina.tfg.NonExistingSensorException) t;
-            }
-
-            if (t instanceof RuntimeException) {
-                throw (RuntimeException) t;
-            } else {
-                throw new RuntimeException(t.getClass().getName() +
-                    " is not a valid exception");
-            }
-        }
-
-        return (es.eina.tfg.model.Sensor) ClpSerializer.translateOutput(returnObj);
+        return (java.lang.Long) ClpSerializer.translateOutput(returnObj);
     }
 }

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<custom-sql>
-    <sql id="getStartingLocation" >
-        <![CDATA[ SELECT loc.* FROM GL_Location loc WHERE loc.time < (SELECT loc2.time FROM GL_Location loc2) ]]>
-    </sql>
-</custom-sql>

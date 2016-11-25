@@ -37,27 +37,20 @@ public class UserAdditionalDataWrapper implements UserAdditionalData,
     public Map<String, Object> getModelAttributes() {
         Map<String, Object> attributes = new HashMap<String, Object>();
 
-        attributes.put("userId", getUserId());
-        attributes.put("registerType", getRegisterType());
+        attributes.put("idUser", getIdUser());
         attributes.put("weight", getWeight());
         attributes.put("height", getHeight());
-        attributes.put("smsCounter", getSmsCounter());
+        attributes.put("smsCount", getSmsCount());
 
         return attributes;
     }
 
     @Override
     public void setModelAttributes(Map<String, Object> attributes) {
-        Long userId = (Long) attributes.get("userId");
+        Long idUser = (Long) attributes.get("idUser");
 
-        if (userId != null) {
-            setUserId(userId);
-        }
-
-        String registerType = (String) attributes.get("registerType");
-
-        if (registerType != null) {
-            setRegisterType(registerType);
+        if (idUser != null) {
+            setIdUser(idUser);
         }
 
         Integer weight = (Integer) attributes.get("weight");
@@ -72,10 +65,10 @@ public class UserAdditionalDataWrapper implements UserAdditionalData,
             setHeight(height);
         }
 
-        Long smsCounter = (Long) attributes.get("smsCounter");
+        Long smsCount = (Long) attributes.get("smsCount");
 
-        if (smsCounter != null) {
-            setSmsCounter(smsCounter);
+        if (smsCount != null) {
+            setSmsCount(smsCount);
         }
     }
 
@@ -100,65 +93,23 @@ public class UserAdditionalDataWrapper implements UserAdditionalData,
     }
 
     /**
-    * Returns the user ID of this user additional data.
+    * Returns the id user of this user additional data.
     *
-    * @return the user ID of this user additional data
+    * @return the id user of this user additional data
     */
     @Override
-    public long getUserId() {
-        return _userAdditionalData.getUserId();
+    public long getIdUser() {
+        return _userAdditionalData.getIdUser();
     }
 
     /**
-    * Sets the user ID of this user additional data.
+    * Sets the id user of this user additional data.
     *
-    * @param userId the user ID of this user additional data
+    * @param idUser the id user of this user additional data
     */
     @Override
-    public void setUserId(long userId) {
-        _userAdditionalData.setUserId(userId);
-    }
-
-    /**
-    * Returns the user uuid of this user additional data.
-    *
-    * @return the user uuid of this user additional data
-    * @throws SystemException if a system exception occurred
-    */
-    @Override
-    public java.lang.String getUserUuid()
-        throws com.liferay.portal.kernel.exception.SystemException {
-        return _userAdditionalData.getUserUuid();
-    }
-
-    /**
-    * Sets the user uuid of this user additional data.
-    *
-    * @param userUuid the user uuid of this user additional data
-    */
-    @Override
-    public void setUserUuid(java.lang.String userUuid) {
-        _userAdditionalData.setUserUuid(userUuid);
-    }
-
-    /**
-    * Returns the register type of this user additional data.
-    *
-    * @return the register type of this user additional data
-    */
-    @Override
-    public java.lang.String getRegisterType() {
-        return _userAdditionalData.getRegisterType();
-    }
-
-    /**
-    * Sets the register type of this user additional data.
-    *
-    * @param registerType the register type of this user additional data
-    */
-    @Override
-    public void setRegisterType(java.lang.String registerType) {
-        _userAdditionalData.setRegisterType(registerType);
+    public void setIdUser(long idUser) {
+        _userAdditionalData.setIdUser(idUser);
     }
 
     /**
@@ -202,23 +153,23 @@ public class UserAdditionalDataWrapper implements UserAdditionalData,
     }
 
     /**
-    * Returns the sms counter of this user additional data.
+    * Returns the sms count of this user additional data.
     *
-    * @return the sms counter of this user additional data
+    * @return the sms count of this user additional data
     */
     @Override
-    public long getSmsCounter() {
-        return _userAdditionalData.getSmsCounter();
+    public long getSmsCount() {
+        return _userAdditionalData.getSmsCount();
     }
 
     /**
-    * Sets the sms counter of this user additional data.
+    * Sets the sms count of this user additional data.
     *
-    * @param smsCounter the sms counter of this user additional data
+    * @param smsCount the sms count of this user additional data
     */
     @Override
-    public void setSmsCounter(long smsCounter) {
-        _userAdditionalData.setSmsCounter(smsCounter);
+    public void setSmsCount(long smsCount) {
+        _userAdditionalData.setSmsCount(smsCount);
     }
 
     @Override

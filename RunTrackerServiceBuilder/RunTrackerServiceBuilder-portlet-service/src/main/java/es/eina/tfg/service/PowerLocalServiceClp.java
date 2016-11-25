@@ -58,11 +58,15 @@ public class PowerLocalServiceClp implements PowerLocalService {
 
         _methodName1 = "createPower";
 
-        _methodParameterTypes1 = new String[] { "long" };
+        _methodParameterTypes1 = new String[] {
+                "es.eina.tfg.service.persistence.PowerPK"
+            };
 
         _methodName2 = "deletePower";
 
-        _methodParameterTypes2 = new String[] { "long" };
+        _methodParameterTypes2 = new String[] {
+                "es.eina.tfg.service.persistence.PowerPK"
+            };
 
         _methodName3 = "deletePower";
 
@@ -106,11 +110,15 @@ public class PowerLocalServiceClp implements PowerLocalService {
 
         _methodName10 = "fetchPower";
 
-        _methodParameterTypes10 = new String[] { "long" };
+        _methodParameterTypes10 = new String[] {
+                "es.eina.tfg.service.persistence.PowerPK"
+            };
 
         _methodName11 = "getPower";
 
-        _methodParameterTypes11 = new String[] { "long" };
+        _methodParameterTypes11 = new String[] {
+                "es.eina.tfg.service.persistence.PowerPK"
+            };
 
         _methodName12 = "getPersistedModel";
 
@@ -136,21 +144,13 @@ public class PowerLocalServiceClp implements PowerLocalService {
 
         _methodParameterTypes17 = new String[] { "java.lang.String" };
 
-        _methodName19 = "add";
+        _methodName19 = "generateNewIdPower";
 
-        _methodParameterTypes19 = new String[] {
-                "java.lang.Long", "java.lang.Long", "java.lang.Long",
-                "java.lang.Long", "java.util.Date", "java.lang.String",
-                "java.lang.Integer"
-            };
+        _methodParameterTypes19 = new String[] { "long" };
 
-        _methodName20 = "update";
+        _methodName20 = "getByRaceId";
 
-        _methodParameterTypes20 = new String[] {
-                "java.lang.Long", "java.lang.Long", "java.lang.Long",
-                "java.lang.Long", "java.lang.Long", "java.util.Date",
-                "java.lang.String", "java.lang.Integer"
-            };
+        _methodParameterTypes20 = new String[] { "java.lang.Long" };
     }
 
     @Override
@@ -181,12 +181,14 @@ public class PowerLocalServiceClp implements PowerLocalService {
     }
 
     @Override
-    public es.eina.tfg.model.Power createPower(long measurementId) {
+    public es.eina.tfg.model.Power createPower(
+        es.eina.tfg.service.persistence.PowerPK powerPK) {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName1,
-                    _methodParameterTypes1, new Object[] { measurementId });
+                    _methodParameterTypes1,
+                    new Object[] { ClpSerializer.translateInput(powerPK) });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -202,14 +204,16 @@ public class PowerLocalServiceClp implements PowerLocalService {
     }
 
     @Override
-    public es.eina.tfg.model.Power deletePower(long measurementId)
+    public es.eina.tfg.model.Power deletePower(
+        es.eina.tfg.service.persistence.PowerPK powerPK)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName2,
-                    _methodParameterTypes2, new Object[] { measurementId });
+                    _methodParameterTypes2,
+                    new Object[] { ClpSerializer.translateInput(powerPK) });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -445,13 +449,15 @@ public class PowerLocalServiceClp implements PowerLocalService {
     }
 
     @Override
-    public es.eina.tfg.model.Power fetchPower(long measurementId)
+    public es.eina.tfg.model.Power fetchPower(
+        es.eina.tfg.service.persistence.PowerPK powerPK)
         throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName10,
-                    _methodParameterTypes10, new Object[] { measurementId });
+                    _methodParameterTypes10,
+                    new Object[] { ClpSerializer.translateInput(powerPK) });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -471,14 +477,16 @@ public class PowerLocalServiceClp implements PowerLocalService {
     }
 
     @Override
-    public es.eina.tfg.model.Power getPower(long measurementId)
+    public es.eina.tfg.model.Power getPower(
+        es.eina.tfg.service.persistence.PowerPK powerPK)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName11,
-                    _methodParameterTypes11, new Object[] { measurementId });
+                    _methodParameterTypes11,
+                    new Object[] { ClpSerializer.translateInput(powerPK) });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -660,51 +668,18 @@ public class PowerLocalServiceClp implements PowerLocalService {
     }
 
     @Override
-    public es.eina.tfg.model.Power add(java.lang.Long raceId,
-        java.lang.Long userId, java.lang.Long deviceId,
-        java.lang.Long sensorId, java.util.Date time,
-        java.lang.String sensorMode, java.lang.Integer level)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingDeviceAndSensorRelationException,
-            es.eina.tfg.NonExistingRaceException,
-            es.eina.tfg.NonExistingUserException {
+    public es.eina.tfg.service.persistence.PowerPK generateNewIdPower(
+        long idRace) throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName19,
-                    _methodParameterTypes19,
-                    new Object[] {
-                        ClpSerializer.translateInput(raceId),
-                        
-                    ClpSerializer.translateInput(userId),
-                        
-                    ClpSerializer.translateInput(deviceId),
-                        
-                    ClpSerializer.translateInput(sensorId),
-                        
-                    ClpSerializer.translateInput(time),
-                        
-                    ClpSerializer.translateInput(sensorMode),
-                        
-                    ClpSerializer.translateInput(level)
-                    });
+                    _methodParameterTypes19, new Object[] { idRace });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
             if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
                 throw (com.liferay.portal.kernel.exception.SystemException) t;
-            }
-
-            if (t instanceof es.eina.tfg.NonExistingDeviceAndSensorRelationException) {
-                throw (es.eina.tfg.NonExistingDeviceAndSensorRelationException) t;
-            }
-
-            if (t instanceof es.eina.tfg.NonExistingRaceException) {
-                throw (es.eina.tfg.NonExistingRaceException) t;
-            }
-
-            if (t instanceof es.eina.tfg.NonExistingUserException) {
-                throw (es.eina.tfg.NonExistingUserException) t;
             }
 
             if (t instanceof RuntimeException) {
@@ -715,62 +690,24 @@ public class PowerLocalServiceClp implements PowerLocalService {
             }
         }
 
-        return (es.eina.tfg.model.Power) ClpSerializer.translateOutput(returnObj);
+        return (es.eina.tfg.service.persistence.PowerPK) ClpSerializer.translateOutput(returnObj);
     }
 
     @Override
-    public es.eina.tfg.model.Power update(java.lang.Long measurementId,
-        java.lang.Long raceId, java.lang.Long userId, java.lang.Long deviceId,
-        java.lang.Long sensorId, java.util.Date time,
-        java.lang.String sensorMode, java.lang.Integer level)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingDeviceAndSensorRelationException,
-            es.eina.tfg.NonExistingMeasurementException,
-            es.eina.tfg.NonExistingRaceException,
-            es.eina.tfg.NonExistingUserException {
+    public java.util.List<es.eina.tfg.model.Power> getByRaceId(
+        java.lang.Long raceId)
+        throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName20,
                     _methodParameterTypes20,
-                    new Object[] {
-                        ClpSerializer.translateInput(measurementId),
-                        
-                    ClpSerializer.translateInput(raceId),
-                        
-                    ClpSerializer.translateInput(userId),
-                        
-                    ClpSerializer.translateInput(deviceId),
-                        
-                    ClpSerializer.translateInput(sensorId),
-                        
-                    ClpSerializer.translateInput(time),
-                        
-                    ClpSerializer.translateInput(sensorMode),
-                        
-                    ClpSerializer.translateInput(level)
-                    });
+                    new Object[] { ClpSerializer.translateInput(raceId) });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
             if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
                 throw (com.liferay.portal.kernel.exception.SystemException) t;
-            }
-
-            if (t instanceof es.eina.tfg.NonExistingDeviceAndSensorRelationException) {
-                throw (es.eina.tfg.NonExistingDeviceAndSensorRelationException) t;
-            }
-
-            if (t instanceof es.eina.tfg.NonExistingMeasurementException) {
-                throw (es.eina.tfg.NonExistingMeasurementException) t;
-            }
-
-            if (t instanceof es.eina.tfg.NonExistingRaceException) {
-                throw (es.eina.tfg.NonExistingRaceException) t;
-            }
-
-            if (t instanceof es.eina.tfg.NonExistingUserException) {
-                throw (es.eina.tfg.NonExistingUserException) t;
             }
 
             if (t instanceof RuntimeException) {
@@ -781,6 +718,6 @@ public class PowerLocalServiceClp implements PowerLocalService {
             }
         }
 
-        return (es.eina.tfg.model.Power) ClpSerializer.translateOutput(returnObj);
+        return (java.util.List<es.eina.tfg.model.Power>) ClpSerializer.translateOutput(returnObj);
     }
 }

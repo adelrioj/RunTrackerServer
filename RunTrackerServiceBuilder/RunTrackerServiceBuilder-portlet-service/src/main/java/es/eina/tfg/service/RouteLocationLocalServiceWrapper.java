@@ -36,29 +36,29 @@ public class RouteLocationLocalServiceWrapper
     /**
     * Creates a new route location with the primary key. Does not add the route location to the database.
     *
-    * @param routePositionId the primary key for the new route location
+    * @param routeLocationPK the primary key for the new route location
     * @return the new route location
     */
     @Override
     public es.eina.tfg.model.RouteLocation createRouteLocation(
-        long routePositionId) {
-        return _routeLocationLocalService.createRouteLocation(routePositionId);
+        es.eina.tfg.service.persistence.RouteLocationPK routeLocationPK) {
+        return _routeLocationLocalService.createRouteLocation(routeLocationPK);
     }
 
     /**
     * Deletes the route location with the primary key from the database. Also notifies the appropriate model listeners.
     *
-    * @param routePositionId the primary key of the route location
+    * @param routeLocationPK the primary key of the route location
     * @return the route location that was removed
     * @throws PortalException if a route location with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
     @Override
     public es.eina.tfg.model.RouteLocation deleteRouteLocation(
-        long routePositionId)
+        es.eina.tfg.service.persistence.RouteLocationPK routeLocationPK)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {
-        return _routeLocationLocalService.deleteRouteLocation(routePositionId);
+        return _routeLocationLocalService.deleteRouteLocation(routeLocationPK);
     }
 
     /**
@@ -174,25 +174,25 @@ public class RouteLocationLocalServiceWrapper
 
     @Override
     public es.eina.tfg.model.RouteLocation fetchRouteLocation(
-        long routePositionId)
+        es.eina.tfg.service.persistence.RouteLocationPK routeLocationPK)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return _routeLocationLocalService.fetchRouteLocation(routePositionId);
+        return _routeLocationLocalService.fetchRouteLocation(routeLocationPK);
     }
 
     /**
     * Returns the route location with the primary key.
     *
-    * @param routePositionId the primary key of the route location
+    * @param routeLocationPK the primary key of the route location
     * @return the route location
     * @throws PortalException if a route location with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
     @Override
     public es.eina.tfg.model.RouteLocation getRouteLocation(
-        long routePositionId)
+        es.eina.tfg.service.persistence.RouteLocationPK routeLocationPK)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {
-        return _routeLocationLocalService.getRouteLocation(routePositionId);
+        return _routeLocationLocalService.getRouteLocation(routeLocationPK);
     }
 
     @Override
@@ -277,48 +277,30 @@ public class RouteLocationLocalServiceWrapper
     }
 
     @Override
-    public es.eina.tfg.model.RouteLocation createRouteLocation()
+    public es.eina.tfg.service.persistence.RouteLocationPK generateNewIdRouteLocation(
+        long idRoute)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return _routeLocationLocalService.createRouteLocation();
+        return _routeLocationLocalService.generateNewIdRouteLocation(idRoute);
     }
 
     @Override
-    public es.eina.tfg.model.RouteLocation add(java.lang.Long routeId,
-        java.lang.Double latitude, java.lang.Double longitude)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingRouteException {
-        return _routeLocationLocalService.add(routeId, latitude, longitude);
-    }
-
-    @Override
-    public es.eina.tfg.model.RouteLocation update(
-        java.lang.Long routeLocationId, java.lang.Long routeId,
-        java.lang.Double latitude, java.lang.Double longitude)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingRouteException,
-            es.eina.tfg.NonExistingRouteLocationException {
-        return _routeLocationLocalService.update(routeLocationId, routeId,
-            latitude, longitude);
-    }
-
-    @Override
-    public java.util.List<es.eina.tfg.model.RouteLocation> findByRouteId(
-        java.lang.Long routeId)
+    public java.util.List<es.eina.tfg.model.RouteLocation> getByidRoute(
+        java.lang.Long idRoute)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return _routeLocationLocalService.findByRouteId(routeId);
+        return _routeLocationLocalService.getByidRoute(idRoute);
     }
 
     @Override
-    public java.util.List<es.eina.tfg.model.RouteLocation> findByRouteId(
-        long routeId, int start, int end)
+    public java.util.List<es.eina.tfg.model.RouteLocation> getByidRoute(
+        long idRoute, int start, int end)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return _routeLocationLocalService.findByRouteId(routeId, start, end);
+        return _routeLocationLocalService.getByidRoute(idRoute, start, end);
     }
 
     @Override
-    public int findByRouteIdCount(java.lang.Long routeId)
+    public int getByidRouteCount(java.lang.Long idRoute)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return _routeLocationLocalService.findByRouteIdCount(routeId);
+        return _routeLocationLocalService.getByidRouteCount(idRoute);
     }
 
     /**

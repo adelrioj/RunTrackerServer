@@ -19,7 +19,7 @@ import java.io.ObjectOutput;
  * @generated
  */
 public class SensorCacheModel implements CacheModel<Sensor>, Externalizable {
-    public long sensorId;
+    public long idSensor;
     public int type;
     public String description;
     public String dataUnits;
@@ -33,8 +33,8 @@ public class SensorCacheModel implements CacheModel<Sensor>, Externalizable {
     public String toString() {
         StringBundler sb = new StringBundler(19);
 
-        sb.append("{sensorId=");
-        sb.append(sensorId);
+        sb.append("{idSensor=");
+        sb.append(idSensor);
         sb.append(", type=");
         sb.append(type);
         sb.append(", description=");
@@ -60,7 +60,7 @@ public class SensorCacheModel implements CacheModel<Sensor>, Externalizable {
     public Sensor toEntityModel() {
         SensorImpl sensorImpl = new SensorImpl();
 
-        sensorImpl.setSensorId(sensorId);
+        sensorImpl.setIdSensor(idSensor);
         sensorImpl.setType(type);
 
         if (description == null) {
@@ -112,7 +112,7 @@ public class SensorCacheModel implements CacheModel<Sensor>, Externalizable {
 
     @Override
     public void readExternal(ObjectInput objectInput) throws IOException {
-        sensorId = objectInput.readLong();
+        idSensor = objectInput.readLong();
         type = objectInput.readInt();
         description = objectInput.readUTF();
         dataUnits = objectInput.readUTF();
@@ -126,7 +126,7 @@ public class SensorCacheModel implements CacheModel<Sensor>, Externalizable {
     @Override
     public void writeExternal(ObjectOutput objectOutput)
         throws IOException {
-        objectOutput.writeLong(sensorId);
+        objectOutput.writeLong(idSensor);
         objectOutput.writeInt(type);
 
         if (description == null) {

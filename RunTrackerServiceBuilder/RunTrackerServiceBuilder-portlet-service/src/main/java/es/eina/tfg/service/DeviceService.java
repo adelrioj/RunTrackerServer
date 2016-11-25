@@ -58,19 +58,14 @@ public interface DeviceService extends BaseService, InvokableService {
         java.lang.String serverPhoneNumber, java.lang.String smsPollTime,
         java.lang.String smsTransmitPeriod, java.lang.String cloudId,
         java.lang.String serverIp, java.lang.String httpTransmitPeriod)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingUserException;
+        throws com.liferay.portal.kernel.exception.SystemException;
 
     public es.eina.tfg.model.Device update(java.lang.Long deviceId,
-        java.lang.String deviceUUID, java.lang.Long userId,
         java.lang.String description, java.lang.String status,
-        java.lang.String phoneNumber, java.lang.String serverPhoneNumber,
-        java.lang.String smsPollTime, java.lang.String smsTransmitPeriod,
-        java.lang.String cloudId, java.lang.String serverIp,
+        java.lang.String phoneNumber, java.lang.String smsTransmitPeriod,
         java.lang.String httpTransmitPeriod)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingDeviceException,
-            es.eina.tfg.NonExistingUserException;
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException;
 
     public es.eina.tfg.model.Device delete(java.lang.Long deviceId)
         throws com.liferay.portal.kernel.exception.PortalException,
@@ -97,20 +92,23 @@ public interface DeviceService extends BaseService, InvokableService {
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchDeviceException;
 
-    public java.util.List<es.eina.tfg.model.Device> findByUserId(
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public java.util.List<es.eina.tfg.model.Device> getByUserId(
         java.lang.Long userId)
         throws com.liferay.portal.kernel.exception.SystemException;
 
-    public es.eina.tfg.model.Device findByDeviceUUID(
-        java.lang.String deviceUUID)
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public es.eina.tfg.model.Device getByDeviceUUID(java.lang.String deviceUUID)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchDeviceException;
 
-    public java.util.List<es.eina.tfg.model.Device> findByStatus(
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public java.util.List<es.eina.tfg.model.Device> getByStatus(
         java.lang.String status)
         throws com.liferay.portal.kernel.exception.SystemException;
 
-    public java.util.List<es.eina.tfg.model.Device> findByStatus(
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public java.util.List<es.eina.tfg.model.Device> getByStatus(
         java.lang.String status, int start, int end)
         throws com.liferay.portal.kernel.exception.SystemException;
 }

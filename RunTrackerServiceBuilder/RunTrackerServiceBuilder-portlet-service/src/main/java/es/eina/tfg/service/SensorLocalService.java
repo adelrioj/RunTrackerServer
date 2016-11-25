@@ -47,21 +47,21 @@ public interface SensorLocalService extends BaseLocalService,
     /**
     * Creates a new sensor with the primary key. Does not add the sensor to the database.
     *
-    * @param sensorId the primary key for the new sensor
+    * @param idSensor the primary key for the new sensor
     * @return the new sensor
     */
-    public es.eina.tfg.model.Sensor createSensor(long sensorId);
+    public es.eina.tfg.model.Sensor createSensor(long idSensor);
 
     /**
     * Deletes the sensor with the primary key from the database. Also notifies the appropriate model listeners.
     *
-    * @param sensorId the primary key of the sensor
+    * @param idSensor the primary key of the sensor
     * @return the sensor that was removed
     * @throws PortalException if a sensor with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
     @com.liferay.portal.kernel.search.Indexable(type = IndexableType.DELETE)
-    public es.eina.tfg.model.Sensor deleteSensor(long sensorId)
+    public es.eina.tfg.model.Sensor deleteSensor(long idSensor)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException;
 
@@ -155,19 +155,19 @@ public interface SensorLocalService extends BaseLocalService,
         throws com.liferay.portal.kernel.exception.SystemException;
 
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public es.eina.tfg.model.Sensor fetchSensor(long sensorId)
+    public es.eina.tfg.model.Sensor fetchSensor(long idSensor)
         throws com.liferay.portal.kernel.exception.SystemException;
 
     /**
     * Returns the sensor with the primary key.
     *
-    * @param sensorId the primary key of the sensor
+    * @param idSensor the primary key of the sensor
     * @return the sensor
     * @throws PortalException if a sensor with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public es.eina.tfg.model.Sensor getSensor(long sensorId)
+    public es.eina.tfg.model.Sensor getSensor(long idSensor)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException;
 
@@ -235,18 +235,6 @@ public interface SensorLocalService extends BaseLocalService,
         java.lang.String[] parameterTypes, java.lang.Object[] arguments)
         throws java.lang.Throwable;
 
-    public es.eina.tfg.model.Sensor add(java.lang.Integer type,
-        java.lang.String description, java.lang.String dataUnits,
-        java.lang.String dataType, java.lang.String dataUncertainity,
-        java.lang.String dataLowerRange, java.lang.String dataUpperRange,
-        java.lang.String dataPacketFormat)
+    public java.lang.Long generateNewIdSensor()
         throws com.liferay.portal.kernel.exception.SystemException;
-
-    public es.eina.tfg.model.Sensor update(java.lang.Long sensorId,
-        java.lang.Integer type, java.lang.String description,
-        java.lang.String dataUnits, java.lang.String dataType,
-        java.lang.String dataUncertainity, java.lang.String dataLowerRange,
-        java.lang.String dataUpperRange, java.lang.String dataPacketFormat)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingSensorException;
 }

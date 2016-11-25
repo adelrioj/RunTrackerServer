@@ -85,12 +85,12 @@ public class RacePersistenceImpl extends BasePersistenceImpl<Race>
             RaceModelImpl.FINDER_CACHE_ENABLED, RaceImpl.class,
             FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByuserId",
             new String[] { Long.class.getName() },
-            RaceModelImpl.USERID_COLUMN_BITMASK);
+            RaceModelImpl.IDUSER_COLUMN_BITMASK);
     public static final FinderPath FINDER_PATH_COUNT_BY_USERID = new FinderPath(RaceModelImpl.ENTITY_CACHE_ENABLED,
             RaceModelImpl.FINDER_CACHE_ENABLED, Long.class,
             FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByuserId",
             new String[] { Long.class.getName() });
-    private static final String _FINDER_COLUMN_USERID_USERID_2 = "race.userId = ?";
+    private static final String _FINDER_COLUMN_USERID_IDUSER_2 = "race.idUser = ?";
     private static final String _SQL_SELECT_RACE = "SELECT race FROM Race race";
     private static final String _SQL_SELECT_RACE_WHERE = "SELECT race FROM Race race WHERE ";
     private static final String _SQL_COUNT_RACE = "SELECT COUNT(race) FROM Race race";
@@ -128,44 +128,44 @@ public class RacePersistenceImpl extends BasePersistenceImpl<Race>
     }
 
     /**
-     * Returns all the races where userId = &#63;.
+     * Returns all the races where idUser = &#63;.
      *
-     * @param userId the user ID
+     * @param idUser the id user
      * @return the matching races
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public List<Race> findByuserId(long userId) throws SystemException {
-        return findByuserId(userId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+    public List<Race> findByuserId(long idUser) throws SystemException {
+        return findByuserId(idUser, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
     }
 
     /**
-     * Returns a range of all the races where userId = &#63;.
+     * Returns a range of all the races where idUser = &#63;.
      *
      * <p>
      * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link es.eina.tfg.model.impl.RaceModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
      * </p>
      *
-     * @param userId the user ID
+     * @param idUser the id user
      * @param start the lower bound of the range of races
      * @param end the upper bound of the range of races (not inclusive)
      * @return the range of matching races
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public List<Race> findByuserId(long userId, int start, int end)
+    public List<Race> findByuserId(long idUser, int start, int end)
         throws SystemException {
-        return findByuserId(userId, start, end, null);
+        return findByuserId(idUser, start, end, null);
     }
 
     /**
-     * Returns an ordered range of all the races where userId = &#63;.
+     * Returns an ordered range of all the races where idUser = &#63;.
      *
      * <p>
      * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link es.eina.tfg.model.impl.RaceModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
      * </p>
      *
-     * @param userId the user ID
+     * @param idUser the id user
      * @param start the lower bound of the range of races
      * @param end the upper bound of the range of races (not inclusive)
      * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
@@ -173,7 +173,7 @@ public class RacePersistenceImpl extends BasePersistenceImpl<Race>
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public List<Race> findByuserId(long userId, int start, int end,
+    public List<Race> findByuserId(long idUser, int start, int end,
         OrderByComparator orderByComparator) throws SystemException {
         boolean pagination = true;
         FinderPath finderPath = null;
@@ -183,10 +183,10 @@ public class RacePersistenceImpl extends BasePersistenceImpl<Race>
                 (orderByComparator == null)) {
             pagination = false;
             finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERID;
-            finderArgs = new Object[] { userId };
+            finderArgs = new Object[] { idUser };
         } else {
             finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_USERID;
-            finderArgs = new Object[] { userId, start, end, orderByComparator };
+            finderArgs = new Object[] { idUser, start, end, orderByComparator };
         }
 
         List<Race> list = (List<Race>) FinderCacheUtil.getResult(finderPath,
@@ -194,7 +194,7 @@ public class RacePersistenceImpl extends BasePersistenceImpl<Race>
 
         if ((list != null) && !list.isEmpty()) {
             for (Race race : list) {
-                if ((userId != race.getUserId())) {
+                if ((idUser != race.getIdUser())) {
                     list = null;
 
                     break;
@@ -214,7 +214,7 @@ public class RacePersistenceImpl extends BasePersistenceImpl<Race>
 
             query.append(_SQL_SELECT_RACE_WHERE);
 
-            query.append(_FINDER_COLUMN_USERID_USERID_2);
+            query.append(_FINDER_COLUMN_USERID_IDUSER_2);
 
             if (orderByComparator != null) {
                 appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
@@ -235,7 +235,7 @@ public class RacePersistenceImpl extends BasePersistenceImpl<Race>
 
                 QueryPos qPos = QueryPos.getInstance(q);
 
-                qPos.add(userId);
+                qPos.add(idUser);
 
                 if (!pagination) {
                     list = (List<Race>) QueryUtil.list(q, getDialect(), start,
@@ -265,19 +265,19 @@ public class RacePersistenceImpl extends BasePersistenceImpl<Race>
     }
 
     /**
-     * Returns the first race in the ordered set where userId = &#63;.
+     * Returns the first race in the ordered set where idUser = &#63;.
      *
-     * @param userId the user ID
+     * @param idUser the id user
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the first matching race
      * @throws es.eina.tfg.NoSuchRaceException if a matching race could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Race findByuserId_First(long userId,
+    public Race findByuserId_First(long idUser,
         OrderByComparator orderByComparator)
         throws NoSuchRaceException, SystemException {
-        Race race = fetchByuserId_First(userId, orderByComparator);
+        Race race = fetchByuserId_First(idUser, orderByComparator);
 
         if (race != null) {
             return race;
@@ -287,8 +287,8 @@ public class RacePersistenceImpl extends BasePersistenceImpl<Race>
 
         msg.append(_NO_SUCH_ENTITY_WITH_KEY);
 
-        msg.append("userId=");
-        msg.append(userId);
+        msg.append("idUser=");
+        msg.append(idUser);
 
         msg.append(StringPool.CLOSE_CURLY_BRACE);
 
@@ -296,17 +296,17 @@ public class RacePersistenceImpl extends BasePersistenceImpl<Race>
     }
 
     /**
-     * Returns the first race in the ordered set where userId = &#63;.
+     * Returns the first race in the ordered set where idUser = &#63;.
      *
-     * @param userId the user ID
+     * @param idUser the id user
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the first matching race, or <code>null</code> if a matching race could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Race fetchByuserId_First(long userId,
+    public Race fetchByuserId_First(long idUser,
         OrderByComparator orderByComparator) throws SystemException {
-        List<Race> list = findByuserId(userId, 0, 1, orderByComparator);
+        List<Race> list = findByuserId(idUser, 0, 1, orderByComparator);
 
         if (!list.isEmpty()) {
             return list.get(0);
@@ -316,19 +316,19 @@ public class RacePersistenceImpl extends BasePersistenceImpl<Race>
     }
 
     /**
-     * Returns the last race in the ordered set where userId = &#63;.
+     * Returns the last race in the ordered set where idUser = &#63;.
      *
-     * @param userId the user ID
+     * @param idUser the id user
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the last matching race
      * @throws es.eina.tfg.NoSuchRaceException if a matching race could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Race findByuserId_Last(long userId,
+    public Race findByuserId_Last(long idUser,
         OrderByComparator orderByComparator)
         throws NoSuchRaceException, SystemException {
-        Race race = fetchByuserId_Last(userId, orderByComparator);
+        Race race = fetchByuserId_Last(idUser, orderByComparator);
 
         if (race != null) {
             return race;
@@ -338,8 +338,8 @@ public class RacePersistenceImpl extends BasePersistenceImpl<Race>
 
         msg.append(_NO_SUCH_ENTITY_WITH_KEY);
 
-        msg.append("userId=");
-        msg.append(userId);
+        msg.append("idUser=");
+        msg.append(idUser);
 
         msg.append(StringPool.CLOSE_CURLY_BRACE);
 
@@ -347,23 +347,23 @@ public class RacePersistenceImpl extends BasePersistenceImpl<Race>
     }
 
     /**
-     * Returns the last race in the ordered set where userId = &#63;.
+     * Returns the last race in the ordered set where idUser = &#63;.
      *
-     * @param userId the user ID
+     * @param idUser the id user
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the last matching race, or <code>null</code> if a matching race could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Race fetchByuserId_Last(long userId,
+    public Race fetchByuserId_Last(long idUser,
         OrderByComparator orderByComparator) throws SystemException {
-        int count = countByuserId(userId);
+        int count = countByuserId(idUser);
 
         if (count == 0) {
             return null;
         }
 
-        List<Race> list = findByuserId(userId, count - 1, count,
+        List<Race> list = findByuserId(idUser, count - 1, count,
                 orderByComparator);
 
         if (!list.isEmpty()) {
@@ -374,20 +374,20 @@ public class RacePersistenceImpl extends BasePersistenceImpl<Race>
     }
 
     /**
-     * Returns the races before and after the current race in the ordered set where userId = &#63;.
+     * Returns the races before and after the current race in the ordered set where idUser = &#63;.
      *
-     * @param raceId the primary key of the current race
-     * @param userId the user ID
+     * @param idRace the primary key of the current race
+     * @param idUser the id user
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the previous, current, and next race
      * @throws es.eina.tfg.NoSuchRaceException if a race with the primary key could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Race[] findByuserId_PrevAndNext(long raceId, long userId,
+    public Race[] findByuserId_PrevAndNext(long idRace, long idUser,
         OrderByComparator orderByComparator)
         throws NoSuchRaceException, SystemException {
-        Race race = findByPrimaryKey(raceId);
+        Race race = findByPrimaryKey(idRace);
 
         Session session = null;
 
@@ -396,12 +396,12 @@ public class RacePersistenceImpl extends BasePersistenceImpl<Race>
 
             Race[] array = new RaceImpl[3];
 
-            array[0] = getByuserId_PrevAndNext(session, race, userId,
+            array[0] = getByuserId_PrevAndNext(session, race, idUser,
                     orderByComparator, true);
 
             array[1] = race;
 
-            array[2] = getByuserId_PrevAndNext(session, race, userId,
+            array[2] = getByuserId_PrevAndNext(session, race, idUser,
                     orderByComparator, false);
 
             return array;
@@ -413,7 +413,7 @@ public class RacePersistenceImpl extends BasePersistenceImpl<Race>
     }
 
     protected Race getByuserId_PrevAndNext(Session session, Race race,
-        long userId, OrderByComparator orderByComparator, boolean previous) {
+        long idUser, OrderByComparator orderByComparator, boolean previous) {
         StringBundler query = null;
 
         if (orderByComparator != null) {
@@ -425,7 +425,7 @@ public class RacePersistenceImpl extends BasePersistenceImpl<Race>
 
         query.append(_SQL_SELECT_RACE_WHERE);
 
-        query.append(_FINDER_COLUMN_USERID_USERID_2);
+        query.append(_FINDER_COLUMN_USERID_IDUSER_2);
 
         if (orderByComparator != null) {
             String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
@@ -488,7 +488,7 @@ public class RacePersistenceImpl extends BasePersistenceImpl<Race>
 
         QueryPos qPos = QueryPos.getInstance(q);
 
-        qPos.add(userId);
+        qPos.add(idUser);
 
         if (orderByComparator != null) {
             Object[] values = orderByComparator.getOrderByConditionValues(race);
@@ -508,31 +508,31 @@ public class RacePersistenceImpl extends BasePersistenceImpl<Race>
     }
 
     /**
-     * Removes all the races where userId = &#63; from the database.
+     * Removes all the races where idUser = &#63; from the database.
      *
-     * @param userId the user ID
+     * @param idUser the id user
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public void removeByuserId(long userId) throws SystemException {
-        for (Race race : findByuserId(userId, QueryUtil.ALL_POS,
+    public void removeByuserId(long idUser) throws SystemException {
+        for (Race race : findByuserId(idUser, QueryUtil.ALL_POS,
                 QueryUtil.ALL_POS, null)) {
             remove(race);
         }
     }
 
     /**
-     * Returns the number of races where userId = &#63;.
+     * Returns the number of races where idUser = &#63;.
      *
-     * @param userId the user ID
+     * @param idUser the id user
      * @return the number of matching races
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public int countByuserId(long userId) throws SystemException {
+    public int countByuserId(long idUser) throws SystemException {
         FinderPath finderPath = FINDER_PATH_COUNT_BY_USERID;
 
-        Object[] finderArgs = new Object[] { userId };
+        Object[] finderArgs = new Object[] { idUser };
 
         Long count = (Long) FinderCacheUtil.getResult(finderPath, finderArgs,
                 this);
@@ -542,7 +542,7 @@ public class RacePersistenceImpl extends BasePersistenceImpl<Race>
 
             query.append(_SQL_COUNT_RACE_WHERE);
 
-            query.append(_FINDER_COLUMN_USERID_USERID_2);
+            query.append(_FINDER_COLUMN_USERID_IDUSER_2);
 
             String sql = query.toString();
 
@@ -555,7 +555,7 @@ public class RacePersistenceImpl extends BasePersistenceImpl<Race>
 
                 QueryPos qPos = QueryPos.getInstance(q);
 
-                qPos.add(userId);
+                qPos.add(idUser);
 
                 count = (Long) q.uniqueResult();
 
@@ -652,15 +652,15 @@ public class RacePersistenceImpl extends BasePersistenceImpl<Race>
     /**
      * Creates a new race with the primary key. Does not add the race to the database.
      *
-     * @param raceId the primary key for the new race
+     * @param idRace the primary key for the new race
      * @return the new race
      */
     @Override
-    public Race create(long raceId) {
+    public Race create(long idRace) {
         Race race = new RaceImpl();
 
         race.setNew(true);
-        race.setPrimaryKey(raceId);
+        race.setPrimaryKey(idRace);
 
         return race;
     }
@@ -668,14 +668,14 @@ public class RacePersistenceImpl extends BasePersistenceImpl<Race>
     /**
      * Removes the race with the primary key from the database. Also notifies the appropriate model listeners.
      *
-     * @param raceId the primary key of the race
+     * @param idRace the primary key of the race
      * @return the race that was removed
      * @throws es.eina.tfg.NoSuchRaceException if a race with the primary key could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Race remove(long raceId) throws NoSuchRaceException, SystemException {
-        return remove((Serializable) raceId);
+    public Race remove(long idRace) throws NoSuchRaceException, SystemException {
+        return remove((Serializable) idRace);
     }
 
     /**
@@ -780,13 +780,13 @@ public class RacePersistenceImpl extends BasePersistenceImpl<Race>
         else {
             if ((raceModelImpl.getColumnBitmask() &
                     FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERID.getColumnBitmask()) != 0) {
-                Object[] args = new Object[] { raceModelImpl.getOriginalUserId() };
+                Object[] args = new Object[] { raceModelImpl.getOriginalIdUser() };
 
                 FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_USERID, args);
                 FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERID,
                     args);
 
-                args = new Object[] { raceModelImpl.getUserId() };
+                args = new Object[] { raceModelImpl.getIdUser() };
 
                 FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_USERID, args);
                 FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERID,
@@ -810,12 +810,10 @@ public class RacePersistenceImpl extends BasePersistenceImpl<Race>
         raceImpl.setNew(race.isNew());
         raceImpl.setPrimaryKey(race.getPrimaryKey());
 
-        raceImpl.setRaceId(race.getRaceId());
-        raceImpl.setUserId(race.getUserId());
-        raceImpl.setRouteId(race.getRouteId());
+        raceImpl.setIdRace(race.getIdRace());
+        raceImpl.setIdUser(race.getIdUser());
+        raceImpl.setIdRoute(race.getIdRoute());
         raceImpl.setType(race.getType());
-        raceImpl.setUserHeight(race.getUserHeight());
-        raceImpl.setUserWeight(race.getUserWeight());
 
         return raceImpl;
     }
@@ -848,15 +846,15 @@ public class RacePersistenceImpl extends BasePersistenceImpl<Race>
     /**
      * Returns the race with the primary key or throws a {@link es.eina.tfg.NoSuchRaceException} if it could not be found.
      *
-     * @param raceId the primary key of the race
+     * @param idRace the primary key of the race
      * @return the race
      * @throws es.eina.tfg.NoSuchRaceException if a race with the primary key could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Race findByPrimaryKey(long raceId)
+    public Race findByPrimaryKey(long idRace)
         throws NoSuchRaceException, SystemException {
-        return findByPrimaryKey((Serializable) raceId);
+        return findByPrimaryKey((Serializable) idRace);
     }
 
     /**
@@ -906,13 +904,13 @@ public class RacePersistenceImpl extends BasePersistenceImpl<Race>
     /**
      * Returns the race with the primary key or returns <code>null</code> if it could not be found.
      *
-     * @param raceId the primary key of the race
+     * @param idRace the primary key of the race
      * @return the race, or <code>null</code> if a race with the primary key could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Race fetchByPrimaryKey(long raceId) throws SystemException {
-        return fetchByPrimaryKey((Serializable) raceId);
+    public Race fetchByPrimaryKey(long idRace) throws SystemException {
+        return fetchByPrimaryKey((Serializable) idRace);
     }
 
     /**

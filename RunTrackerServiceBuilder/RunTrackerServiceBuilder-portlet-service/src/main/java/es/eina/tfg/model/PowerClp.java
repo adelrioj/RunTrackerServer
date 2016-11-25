@@ -7,10 +7,10 @@ import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.impl.BaseModelImpl;
-import com.liferay.portal.util.PortalUtil;
 
 import es.eina.tfg.service.ClpSerializer;
 import es.eina.tfg.service.PowerLocalServiceUtil;
+import es.eina.tfg.service.persistence.PowerPK;
 
 import java.io.Serializable;
 
@@ -22,12 +22,10 @@ import java.util.Map;
 
 
 public class PowerClp extends BaseModelImpl<Power> implements Power {
-    private long _measurementId;
-    private long _raceId;
-    private long _userId;
-    private String _userUuid;
-    private long _deviceId;
-    private long _sensorId;
+    private long _idMeasurement;
+    private Long _idRace;
+    private long _idDevice;
+    private long _idSensor;
     private Date _time;
     private String _sensorMode;
     private int _level;
@@ -48,34 +46,34 @@ public class PowerClp extends BaseModelImpl<Power> implements Power {
     }
 
     @Override
-    public long getPrimaryKey() {
-        return _measurementId;
+    public PowerPK getPrimaryKey() {
+        return new PowerPK(_idMeasurement, _idRace);
     }
 
     @Override
-    public void setPrimaryKey(long primaryKey) {
-        setMeasurementId(primaryKey);
+    public void setPrimaryKey(PowerPK primaryKey) {
+        setIdMeasurement(primaryKey.idMeasurement);
+        setIdRace(primaryKey.idRace);
     }
 
     @Override
     public Serializable getPrimaryKeyObj() {
-        return _measurementId;
+        return new PowerPK(_idMeasurement, _idRace);
     }
 
     @Override
     public void setPrimaryKeyObj(Serializable primaryKeyObj) {
-        setPrimaryKey(((Long) primaryKeyObj).longValue());
+        setPrimaryKey((PowerPK) primaryKeyObj);
     }
 
     @Override
     public Map<String, Object> getModelAttributes() {
         Map<String, Object> attributes = new HashMap<String, Object>();
 
-        attributes.put("measurementId", getMeasurementId());
-        attributes.put("raceId", getRaceId());
-        attributes.put("userId", getUserId());
-        attributes.put("deviceId", getDeviceId());
-        attributes.put("sensorId", getSensorId());
+        attributes.put("idMeasurement", getIdMeasurement());
+        attributes.put("idRace", getIdRace());
+        attributes.put("idDevice", getIdDevice());
+        attributes.put("idSensor", getIdSensor());
         attributes.put("time", getTime());
         attributes.put("sensorMode", getSensorMode());
         attributes.put("level", getLevel());
@@ -85,34 +83,28 @@ public class PowerClp extends BaseModelImpl<Power> implements Power {
 
     @Override
     public void setModelAttributes(Map<String, Object> attributes) {
-        Long measurementId = (Long) attributes.get("measurementId");
+        Long idMeasurement = (Long) attributes.get("idMeasurement");
 
-        if (measurementId != null) {
-            setMeasurementId(measurementId);
+        if (idMeasurement != null) {
+            setIdMeasurement(idMeasurement);
         }
 
-        Long raceId = (Long) attributes.get("raceId");
+        Long idRace = (Long) attributes.get("idRace");
 
-        if (raceId != null) {
-            setRaceId(raceId);
+        if (idRace != null) {
+            setIdRace(idRace);
         }
 
-        Long userId = (Long) attributes.get("userId");
+        Long idDevice = (Long) attributes.get("idDevice");
 
-        if (userId != null) {
-            setUserId(userId);
+        if (idDevice != null) {
+            setIdDevice(idDevice);
         }
 
-        Long deviceId = (Long) attributes.get("deviceId");
+        Long idSensor = (Long) attributes.get("idSensor");
 
-        if (deviceId != null) {
-            setDeviceId(deviceId);
-        }
-
-        Long sensorId = (Long) attributes.get("sensorId");
-
-        if (sensorId != null) {
-            setSensorId(sensorId);
+        if (idSensor != null) {
+            setIdSensor(idSensor);
         }
 
         Date time = (Date) attributes.get("time");
@@ -135,21 +127,21 @@ public class PowerClp extends BaseModelImpl<Power> implements Power {
     }
 
     @Override
-    public long getMeasurementId() {
-        return _measurementId;
+    public long getIdMeasurement() {
+        return _idMeasurement;
     }
 
     @Override
-    public void setMeasurementId(long measurementId) {
-        _measurementId = measurementId;
+    public void setIdMeasurement(long idMeasurement) {
+        _idMeasurement = idMeasurement;
 
         if (_powerRemoteModel != null) {
             try {
                 Class<?> clazz = _powerRemoteModel.getClass();
 
-                Method method = clazz.getMethod("setMeasurementId", long.class);
+                Method method = clazz.getMethod("setIdMeasurement", long.class);
 
-                method.invoke(_powerRemoteModel, measurementId);
+                method.invoke(_powerRemoteModel, idMeasurement);
             } catch (Exception e) {
                 throw new UnsupportedOperationException(e);
             }
@@ -157,21 +149,21 @@ public class PowerClp extends BaseModelImpl<Power> implements Power {
     }
 
     @Override
-    public long getRaceId() {
-        return _raceId;
+    public Long getIdRace() {
+        return _idRace;
     }
 
     @Override
-    public void setRaceId(long raceId) {
-        _raceId = raceId;
+    public void setIdRace(Long idRace) {
+        _idRace = idRace;
 
         if (_powerRemoteModel != null) {
             try {
                 Class<?> clazz = _powerRemoteModel.getClass();
 
-                Method method = clazz.getMethod("setRaceId", long.class);
+                Method method = clazz.getMethod("setIdRace", Long.class);
 
-                method.invoke(_powerRemoteModel, raceId);
+                method.invoke(_powerRemoteModel, idRace);
             } catch (Exception e) {
                 throw new UnsupportedOperationException(e);
             }
@@ -179,21 +171,21 @@ public class PowerClp extends BaseModelImpl<Power> implements Power {
     }
 
     @Override
-    public long getUserId() {
-        return _userId;
+    public long getIdDevice() {
+        return _idDevice;
     }
 
     @Override
-    public void setUserId(long userId) {
-        _userId = userId;
+    public void setIdDevice(long idDevice) {
+        _idDevice = idDevice;
 
         if (_powerRemoteModel != null) {
             try {
                 Class<?> clazz = _powerRemoteModel.getClass();
 
-                Method method = clazz.getMethod("setUserId", long.class);
+                Method method = clazz.getMethod("setIdDevice", long.class);
 
-                method.invoke(_powerRemoteModel, userId);
+                method.invoke(_powerRemoteModel, idDevice);
             } catch (Exception e) {
                 throw new UnsupportedOperationException(e);
             }
@@ -201,53 +193,21 @@ public class PowerClp extends BaseModelImpl<Power> implements Power {
     }
 
     @Override
-    public String getUserUuid() throws SystemException {
-        return PortalUtil.getUserValue(getUserId(), "uuid", _userUuid);
+    public long getIdSensor() {
+        return _idSensor;
     }
 
     @Override
-    public void setUserUuid(String userUuid) {
-        _userUuid = userUuid;
-    }
-
-    @Override
-    public long getDeviceId() {
-        return _deviceId;
-    }
-
-    @Override
-    public void setDeviceId(long deviceId) {
-        _deviceId = deviceId;
+    public void setIdSensor(long idSensor) {
+        _idSensor = idSensor;
 
         if (_powerRemoteModel != null) {
             try {
                 Class<?> clazz = _powerRemoteModel.getClass();
 
-                Method method = clazz.getMethod("setDeviceId", long.class);
+                Method method = clazz.getMethod("setIdSensor", long.class);
 
-                method.invoke(_powerRemoteModel, deviceId);
-            } catch (Exception e) {
-                throw new UnsupportedOperationException(e);
-            }
-        }
-    }
-
-    @Override
-    public long getSensorId() {
-        return _sensorId;
-    }
-
-    @Override
-    public void setSensorId(long sensorId) {
-        _sensorId = sensorId;
-
-        if (_powerRemoteModel != null) {
-            try {
-                Class<?> clazz = _powerRemoteModel.getClass();
-
-                Method method = clazz.getMethod("setSensorId", long.class);
-
-                method.invoke(_powerRemoteModel, sensorId);
+                method.invoke(_powerRemoteModel, idSensor);
             } catch (Exception e) {
                 throw new UnsupportedOperationException(e);
             }
@@ -387,11 +347,10 @@ public class PowerClp extends BaseModelImpl<Power> implements Power {
     public Object clone() {
         PowerClp clone = new PowerClp();
 
-        clone.setMeasurementId(getMeasurementId());
-        clone.setRaceId(getRaceId());
-        clone.setUserId(getUserId());
-        clone.setDeviceId(getDeviceId());
-        clone.setSensorId(getSensorId());
+        clone.setIdMeasurement(getIdMeasurement());
+        clone.setIdRace(getIdRace());
+        clone.setIdDevice(getIdDevice());
+        clone.setIdSensor(getIdSensor());
         clone.setTime(getTime());
         clone.setSensorMode(getSensorMode());
         clone.setLevel(getLevel());
@@ -424,9 +383,9 @@ public class PowerClp extends BaseModelImpl<Power> implements Power {
 
         PowerClp power = (PowerClp) obj;
 
-        long primaryKey = power.getPrimaryKey();
+        PowerPK primaryKey = power.getPrimaryKey();
 
-        if (getPrimaryKey() == primaryKey) {
+        if (getPrimaryKey().equals(primaryKey)) {
             return true;
         } else {
             return false;
@@ -439,23 +398,21 @@ public class PowerClp extends BaseModelImpl<Power> implements Power {
 
     @Override
     public int hashCode() {
-        return (int) getPrimaryKey();
+        return getPrimaryKey().hashCode();
     }
 
     @Override
     public String toString() {
-        StringBundler sb = new StringBundler(17);
+        StringBundler sb = new StringBundler(15);
 
-        sb.append("{measurementId=");
-        sb.append(getMeasurementId());
-        sb.append(", raceId=");
-        sb.append(getRaceId());
-        sb.append(", userId=");
-        sb.append(getUserId());
-        sb.append(", deviceId=");
-        sb.append(getDeviceId());
-        sb.append(", sensorId=");
-        sb.append(getSensorId());
+        sb.append("{idMeasurement=");
+        sb.append(getIdMeasurement());
+        sb.append(", idRace=");
+        sb.append(getIdRace());
+        sb.append(", idDevice=");
+        sb.append(getIdDevice());
+        sb.append(", idSensor=");
+        sb.append(getIdSensor());
         sb.append(", time=");
         sb.append(getTime());
         sb.append(", sensorMode=");
@@ -469,31 +426,27 @@ public class PowerClp extends BaseModelImpl<Power> implements Power {
 
     @Override
     public String toXmlString() {
-        StringBundler sb = new StringBundler(28);
+        StringBundler sb = new StringBundler(25);
 
         sb.append("<model><model-name>");
         sb.append("es.eina.tfg.model.Power");
         sb.append("</model-name>");
 
         sb.append(
-            "<column><column-name>measurementId</column-name><column-value><![CDATA[");
-        sb.append(getMeasurementId());
+            "<column><column-name>idMeasurement</column-name><column-value><![CDATA[");
+        sb.append(getIdMeasurement());
         sb.append("]]></column-value></column>");
         sb.append(
-            "<column><column-name>raceId</column-name><column-value><![CDATA[");
-        sb.append(getRaceId());
+            "<column><column-name>idRace</column-name><column-value><![CDATA[");
+        sb.append(getIdRace());
         sb.append("]]></column-value></column>");
         sb.append(
-            "<column><column-name>userId</column-name><column-value><![CDATA[");
-        sb.append(getUserId());
+            "<column><column-name>idDevice</column-name><column-value><![CDATA[");
+        sb.append(getIdDevice());
         sb.append("]]></column-value></column>");
         sb.append(
-            "<column><column-name>deviceId</column-name><column-value><![CDATA[");
-        sb.append(getDeviceId());
-        sb.append("]]></column-value></column>");
-        sb.append(
-            "<column><column-name>sensorId</column-name><column-value><![CDATA[");
-        sb.append(getSensorId());
+            "<column><column-name>idSensor</column-name><column-value><![CDATA[");
+        sb.append(getIdSensor());
         sb.append("]]></column-value></column>");
         sb.append(
             "<column><column-name>time</column-name><column-value><![CDATA[");

@@ -52,11 +52,10 @@ public class RouteServiceSoap {
 
     public static es.eina.tfg.model.RouteSoap add(java.lang.String type,
         java.lang.String name, java.lang.String description,
-        java.lang.Long authorId, boolean isPublic, java.util.Date startingTime)
-        throws RemoteException {
+        java.lang.Long authorId, boolean isPublic) throws RemoteException {
         try {
             es.eina.tfg.model.Route returnValue = RouteServiceUtil.add(type,
-                    name, description, authorId, isPublic, startingTime);
+                    name, description, authorId, isPublic);
 
             return es.eina.tfg.model.RouteSoap.toSoapModel(returnValue);
         } catch (Exception e) {
@@ -68,13 +67,11 @@ public class RouteServiceSoap {
 
     public static es.eina.tfg.model.RouteSoap update(java.lang.Long routeId,
         java.lang.String type, java.lang.String name,
-        java.lang.String description, java.lang.Long authorId,
-        boolean isPublic, java.util.Date startingTime,
-        java.util.Date creationTime) throws RemoteException {
+        java.lang.String description, boolean isPublic)
+        throws RemoteException {
         try {
             es.eina.tfg.model.Route returnValue = RouteServiceUtil.update(routeId,
-                    type, name, description, authorId, isPublic, startingTime,
-                    creationTime);
+                    type, name, description, isPublic);
 
             return es.eina.tfg.model.RouteSoap.toSoapModel(returnValue);
         } catch (Exception e) {
@@ -110,10 +107,10 @@ public class RouteServiceSoap {
         }
     }
 
-    public static es.eina.tfg.model.RouteSoap[] findByAuthor(
+    public static es.eina.tfg.model.RouteSoap[] getByAuthor(
         java.lang.Long userId) throws RemoteException {
         try {
-            java.util.List<es.eina.tfg.model.Route> returnValue = RouteServiceUtil.findByAuthor(userId);
+            java.util.List<es.eina.tfg.model.Route> returnValue = RouteServiceUtil.getByAuthor(userId);
 
             return es.eina.tfg.model.RouteSoap.toSoapModels(returnValue);
         } catch (Exception e) {
@@ -123,10 +120,10 @@ public class RouteServiceSoap {
         }
     }
 
-    public static es.eina.tfg.model.RouteSoap[] getPublicRoutes()
+    public static es.eina.tfg.model.RouteSoap[] getByisPublic(boolean isPublic)
         throws RemoteException {
         try {
-            java.util.List<es.eina.tfg.model.Route> returnValue = RouteServiceUtil.getPublicRoutes();
+            java.util.List<es.eina.tfg.model.Route> returnValue = RouteServiceUtil.getByisPublic(isPublic);
 
             return es.eina.tfg.model.RouteSoap.toSoapModels(returnValue);
         } catch (Exception e) {
@@ -136,11 +133,11 @@ public class RouteServiceSoap {
         }
     }
 
-    public static es.eina.tfg.model.RouteSoap[] getPublicRoutes(int start,
-        int end) throws RemoteException {
+    public static es.eina.tfg.model.RouteSoap[] getPublicRoutes(
+        boolean isPublic, int start, int end) throws RemoteException {
         try {
-            java.util.List<es.eina.tfg.model.Route> returnValue = RouteServiceUtil.getPublicRoutes(start,
-                    end);
+            java.util.List<es.eina.tfg.model.Route> returnValue = RouteServiceUtil.getPublicRoutes(isPublic,
+                    start, end);
 
             return es.eina.tfg.model.RouteSoap.toSoapModels(returnValue);
         } catch (Exception e) {

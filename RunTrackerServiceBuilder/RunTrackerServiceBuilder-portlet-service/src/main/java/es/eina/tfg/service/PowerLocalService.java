@@ -47,21 +47,23 @@ public interface PowerLocalService extends BaseLocalService,
     /**
     * Creates a new power with the primary key. Does not add the power to the database.
     *
-    * @param measurementId the primary key for the new power
+    * @param powerPK the primary key for the new power
     * @return the new power
     */
-    public es.eina.tfg.model.Power createPower(long measurementId);
+    public es.eina.tfg.model.Power createPower(
+        es.eina.tfg.service.persistence.PowerPK powerPK);
 
     /**
     * Deletes the power with the primary key from the database. Also notifies the appropriate model listeners.
     *
-    * @param measurementId the primary key of the power
+    * @param powerPK the primary key of the power
     * @return the power that was removed
     * @throws PortalException if a power with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
     @com.liferay.portal.kernel.search.Indexable(type = IndexableType.DELETE)
-    public es.eina.tfg.model.Power deletePower(long measurementId)
+    public es.eina.tfg.model.Power deletePower(
+        es.eina.tfg.service.persistence.PowerPK powerPK)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException;
 
@@ -154,19 +156,21 @@ public interface PowerLocalService extends BaseLocalService,
         throws com.liferay.portal.kernel.exception.SystemException;
 
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public es.eina.tfg.model.Power fetchPower(long measurementId)
+    public es.eina.tfg.model.Power fetchPower(
+        es.eina.tfg.service.persistence.PowerPK powerPK)
         throws com.liferay.portal.kernel.exception.SystemException;
 
     /**
     * Returns the power with the primary key.
     *
-    * @param measurementId the primary key of the power
+    * @param powerPK the primary key of the power
     * @return the power
     * @throws PortalException if a power with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public es.eina.tfg.model.Power getPower(long measurementId)
+    public es.eina.tfg.model.Power getPower(
+        es.eina.tfg.service.persistence.PowerPK powerPK)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException;
 
@@ -233,22 +237,11 @@ public interface PowerLocalService extends BaseLocalService,
         java.lang.String[] parameterTypes, java.lang.Object[] arguments)
         throws java.lang.Throwable;
 
-    public es.eina.tfg.model.Power add(java.lang.Long raceId,
-        java.lang.Long userId, java.lang.Long deviceId,
-        java.lang.Long sensorId, java.util.Date time,
-        java.lang.String sensorMode, java.lang.Integer level)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingDeviceAndSensorRelationException,
-            es.eina.tfg.NonExistingRaceException,
-            es.eina.tfg.NonExistingUserException;
+    public es.eina.tfg.service.persistence.PowerPK generateNewIdPower(
+        long idRace) throws com.liferay.portal.kernel.exception.SystemException;
 
-    public es.eina.tfg.model.Power update(java.lang.Long measurementId,
-        java.lang.Long raceId, java.lang.Long userId, java.lang.Long deviceId,
-        java.lang.Long sensorId, java.util.Date time,
-        java.lang.String sensorMode, java.lang.Integer level)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingDeviceAndSensorRelationException,
-            es.eina.tfg.NonExistingMeasurementException,
-            es.eina.tfg.NonExistingRaceException,
-            es.eina.tfg.NonExistingUserException;
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public java.util.List<es.eina.tfg.model.Power> getByRaceId(
+        java.lang.Long raceId)
+        throws com.liferay.portal.kernel.exception.SystemException;
 }

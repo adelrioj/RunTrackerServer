@@ -1,21 +1,19 @@
 package es.eina.tfg.service.impl;
 
 import com.liferay.portal.kernel.exception.SystemException;
-import com.liferay.portal.model.User;
-import com.liferay.portal.service.UserLocalServiceUtil;
-import es.eina.tfg.NonExistingDeviceAndSensorRelationException;
-import es.eina.tfg.NonExistingMeasurementException;
-import es.eina.tfg.NonExistingRaceException;
-import es.eina.tfg.NonExistingUserException;
-import es.eina.tfg.model.Device_Sensor;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+import es.eina.tfg.model.DeviceAndSensor;
 import es.eina.tfg.model.Power;
 import es.eina.tfg.model.Race;
-import es.eina.tfg.service.Device_SensorLocalServiceUtil;
+import es.eina.tfg.service.DeviceAndSensorLocalServiceUtil;
 import es.eina.tfg.service.RaceLocalServiceUtil;
 import es.eina.tfg.service.base.PowerLocalServiceBaseImpl;
-import es.eina.tfg.service.persistence.Device_SensorPK;
+import es.eina.tfg.service.persistence.DeviceAndSensorPK;
+import es.eina.tfg.service.persistence.PowerPK;
+import es.eina.tfg.service.persistence.PowerUtil;
 
-import java.util.Date;
+import java.util.List;
 
 /**
  * The implementation of the power local service.
@@ -37,69 +35,55 @@ import java.util.Date;
  */
 public class PowerLocalServiceImpl extends PowerLocalServiceBaseImpl {
 
-    public Power add(Long raceId, Long userId, Long deviceId, Long sensorId, Date time, String sensorMode, Integer level)
-            throws SystemException, NonExistingUserException, NonExistingDeviceAndSensorRelationException, NonExistingRaceException {
-
-        Long measurementId = counterLocalService.increment();
-
-        User user = UserLocalServiceUtil.fetchUser(userId);
-        if (user == null){
-            throw new NonExistingUserException("The user: " + userId +" does not exists on the database");
+    public PowerPK generateNewIdPower(long idRace)
+            throws SystemException {
+        try {
+            return new PowerPK(idRace, counterLocalService.increment(Power.class.getName()));
+        } catch (SystemException e) {
+            _log.error("SystemException: Cannot generate counterLocalService.increment() for class: "
+                    + Power.class.getName());
+            throw e;
         }
-        Device_Sensor deviceSensor = Device_SensorLocalServiceUtil.fetchDevice_Sensor(new Device_SensorPK(deviceId, sensorId));
-        if (deviceSensor == null){
-            throw new NonExistingDeviceAndSensorRelationException(
-                    "The device:" + deviceId + " and sensor: " + sensorId + " has no relation on the database");
-        }
-        Race race = RaceLocalServiceUtil.fetchRace(raceId);
-        if (race == null){
-            throw new NonExistingRaceException("Race:" + raceId + " does not exists on the database");
-        }
-
-        Power power = createPower(measurementId);
-        power.setRaceId(raceId);
-        power.setUserId(userId);
-        power.setDeviceId(deviceId);
-        power.setSensorId(sensorId);
-        power.setTime(time);
-        power.setSensorMode(sensorMode);
-        power.setLevel(level);
-
-        return updatePower(power);
     }
 
-    public Power update(Long measurementId, Long raceId, Long userId, Long deviceId, Long sensorId, Date time,
-                        String sensorMode, Integer level)
-            throws SystemException, NonExistingUserException, NonExistingDeviceAndSensorRelationException,
-            NonExistingRaceException, NonExistingMeasurementException {
-
-        User user = UserLocalServiceUtil.fetchUser(userId);
-        if (user == null){
-            throw new NonExistingUserException("The user: " + userId +" does not exists on the database");
-        }
-        Device_Sensor deviceSensor = Device_SensorLocalServiceUtil.fetchDevice_Sensor(new Device_SensorPK(deviceId, sensorId));
-        if (deviceSensor == null){
-            throw new NonExistingDeviceAndSensorRelationException(
-                    "The device:" + deviceId + " and sensor: " + sensorId + " has no relation on the database");
-        }
-        Race race = RaceLocalServiceUtil.fetchRace(raceId);
-        if (race == null){
-            throw new NonExistingRaceException("Race:" + raceId + " does not exists on the database");
-        }
-
-        Power power = fetchPower(measurementId);
-        if (power == null){
-            throw new NonExistingMeasurementException(
-                    "Measurement: " + measurementId + " type: " + this.getClass().getName() + " does not exists on the database");
-        }
-        power.setRaceId(raceId);
-        power.setUserId(userId);
-        power.setDeviceId(deviceId);
-        power.setSensorId(sensorId);
-        power.setTime(time);
-        power.setSensorMode(sensorMode);
-        power.setLevel(level);
-
-        return updatePower(power);
+    @Override
+    public Power addPower(Power power)
+            throws SystemException {
+        checkMadatoryAttributes(power);
+        return super.addPower(power);
     }
+
+    @Override
+    public Power updatePower(Power power)
+            throws SystemException {
+        checkMadatoryAttributes(power);
+        return super.updatePower(power);
+    }
+
+    private void checkMadatoryAttributes(Power power)
+            throws SystemException {
+        Race race = RaceLocalServiceUtil.fetchRace(power.getIdRace());
+        if (race == null){
+            throw new SystemException("Race:" + power.getIdRace() + " does not exists on the database");
+        }
+
+        DeviceAndSensorPK deviceAndSensorPK = new DeviceAndSensorPK(power.getIdDevice(), power.getIdSensor());
+        DeviceAndSensor deviceAndSensor = DeviceAndSensorLocalServiceUtil.fetchDeviceAndSensor(deviceAndSensorPK);
+        if (deviceAndSensor == null){
+            throw new SystemException(
+                    "The device:" + power.getIdDevice() + " and sensor: " + power.getIdSensor()
+                            + " has no relation on the database");
+        }
+
+        if (power.getTime() == null){
+            throw new SystemException("Power time cannot be null");
+        }
+    }
+
+    public List<Power> getByRaceId(Long raceId)
+            throws SystemException {
+        return PowerUtil.findByraceId(raceId);
+    }
+
+    private static Log _log = LogFactoryUtil.getLog(PowerLocalServiceImpl.class);
 }

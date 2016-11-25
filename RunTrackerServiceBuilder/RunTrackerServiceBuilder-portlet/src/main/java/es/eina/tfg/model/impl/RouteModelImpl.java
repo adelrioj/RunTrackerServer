@@ -50,16 +50,15 @@ public class RouteModelImpl extends BaseModelImpl<Route> implements RouteModel {
      */
     public static final String TABLE_NAME = "GL_Route";
     public static final Object[][] TABLE_COLUMNS = {
-            { "routeId", Types.BIGINT },
+            { "idRoute", Types.BIGINT },
+            { "idAuthor", Types.BIGINT },
             { "type_", Types.VARCHAR },
             { "name", Types.VARCHAR },
             { "description", Types.VARCHAR },
-            { "authorId", Types.BIGINT },
             { "isPublic", Types.BOOLEAN },
-            { "startingTime", Types.TIMESTAMP },
             { "creationTime", Types.TIMESTAMP }
         };
-    public static final String TABLE_SQL_CREATE = "create table GL_Route (routeId LONG not null primary key,type_ VARCHAR(75) null,name VARCHAR(75) null,description VARCHAR(75) null,authorId LONG,isPublic BOOLEAN,startingTime DATE null,creationTime DATE null)";
+    public static final String TABLE_SQL_CREATE = "create table GL_Route (idRoute LONG not null primary key,idAuthor LONG,type_ VARCHAR(75) null,name VARCHAR(75) null,description VARCHAR(75) null,isPublic BOOLEAN,creationTime DATE null)";
     public static final String TABLE_SQL_DROP = "drop table GL_Route";
     public static final String ORDER_BY_JPQL = " ORDER BY route.creationTime ASC";
     public static final String ORDER_BY_SQL = " ORDER BY GL_Route.creationTime ASC";
@@ -75,24 +74,23 @@ public class RouteModelImpl extends BaseModelImpl<Route> implements RouteModel {
     public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
                 "value.object.column.bitmask.enabled.es.eina.tfg.model.Route"),
             true);
-    public static long AUTHORID_COLUMN_BITMASK = 1L;
+    public static long IDAUTHOR_COLUMN_BITMASK = 1L;
     public static long ISPUBLIC_COLUMN_BITMASK = 2L;
     public static long CREATIONTIME_COLUMN_BITMASK = 4L;
     public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
                 "lock.expiration.time.es.eina.tfg.model.Route"));
     private static ClassLoader _classLoader = Route.class.getClassLoader();
     private static Class<?>[] _escapedModelInterfaces = new Class[] { Route.class };
-    private long _routeId;
+    private long _idRoute;
+    private long _idAuthor;
+    private long _originalIdAuthor;
+    private boolean _setOriginalIdAuthor;
     private String _type;
     private String _name;
     private String _description;
-    private long _authorId;
-    private long _originalAuthorId;
-    private boolean _setOriginalAuthorId;
     private boolean _isPublic;
     private boolean _originalIsPublic;
     private boolean _setOriginalIsPublic;
-    private Date _startingTime;
     private Date _creationTime;
     private long _columnBitmask;
     private Route _escapedModel;
@@ -113,13 +111,12 @@ public class RouteModelImpl extends BaseModelImpl<Route> implements RouteModel {
 
         Route model = new RouteImpl();
 
-        model.setRouteId(soapModel.getRouteId());
+        model.setIdRoute(soapModel.getIdRoute());
+        model.setIdAuthor(soapModel.getIdAuthor());
         model.setType(soapModel.getType());
         model.setName(soapModel.getName());
         model.setDescription(soapModel.getDescription());
-        model.setAuthorId(soapModel.getAuthorId());
         model.setIsPublic(soapModel.getIsPublic());
-        model.setStartingTime(soapModel.getStartingTime());
         model.setCreationTime(soapModel.getCreationTime());
 
         return model;
@@ -147,17 +144,17 @@ public class RouteModelImpl extends BaseModelImpl<Route> implements RouteModel {
 
     @Override
     public long getPrimaryKey() {
-        return _routeId;
+        return _idRoute;
     }
 
     @Override
     public void setPrimaryKey(long primaryKey) {
-        setRouteId(primaryKey);
+        setIdRoute(primaryKey);
     }
 
     @Override
     public Serializable getPrimaryKeyObj() {
-        return _routeId;
+        return _idRoute;
     }
 
     @Override
@@ -179,13 +176,12 @@ public class RouteModelImpl extends BaseModelImpl<Route> implements RouteModel {
     public Map<String, Object> getModelAttributes() {
         Map<String, Object> attributes = new HashMap<String, Object>();
 
-        attributes.put("routeId", getRouteId());
+        attributes.put("idRoute", getIdRoute());
+        attributes.put("idAuthor", getIdAuthor());
         attributes.put("type", getType());
         attributes.put("name", getName());
         attributes.put("description", getDescription());
-        attributes.put("authorId", getAuthorId());
         attributes.put("isPublic", getIsPublic());
-        attributes.put("startingTime", getStartingTime());
         attributes.put("creationTime", getCreationTime());
 
         return attributes;
@@ -193,10 +189,16 @@ public class RouteModelImpl extends BaseModelImpl<Route> implements RouteModel {
 
     @Override
     public void setModelAttributes(Map<String, Object> attributes) {
-        Long routeId = (Long) attributes.get("routeId");
+        Long idRoute = (Long) attributes.get("idRoute");
 
-        if (routeId != null) {
-            setRouteId(routeId);
+        if (idRoute != null) {
+            setIdRoute(idRoute);
+        }
+
+        Long idAuthor = (Long) attributes.get("idAuthor");
+
+        if (idAuthor != null) {
+            setIdAuthor(idAuthor);
         }
 
         String type = (String) attributes.get("type");
@@ -217,22 +219,10 @@ public class RouteModelImpl extends BaseModelImpl<Route> implements RouteModel {
             setDescription(description);
         }
 
-        Long authorId = (Long) attributes.get("authorId");
-
-        if (authorId != null) {
-            setAuthorId(authorId);
-        }
-
         Boolean isPublic = (Boolean) attributes.get("isPublic");
 
         if (isPublic != null) {
             setIsPublic(isPublic);
-        }
-
-        Date startingTime = (Date) attributes.get("startingTime");
-
-        if (startingTime != null) {
-            setStartingTime(startingTime);
         }
 
         Date creationTime = (Date) attributes.get("creationTime");
@@ -244,13 +234,36 @@ public class RouteModelImpl extends BaseModelImpl<Route> implements RouteModel {
 
     @JSON
     @Override
-    public long getRouteId() {
-        return _routeId;
+    public long getIdRoute() {
+        return _idRoute;
     }
 
     @Override
-    public void setRouteId(long routeId) {
-        _routeId = routeId;
+    public void setIdRoute(long idRoute) {
+        _idRoute = idRoute;
+    }
+
+    @JSON
+    @Override
+    public long getIdAuthor() {
+        return _idAuthor;
+    }
+
+    @Override
+    public void setIdAuthor(long idAuthor) {
+        _columnBitmask |= IDAUTHOR_COLUMN_BITMASK;
+
+        if (!_setOriginalIdAuthor) {
+            _setOriginalIdAuthor = true;
+
+            _originalIdAuthor = _idAuthor;
+        }
+
+        _idAuthor = idAuthor;
+    }
+
+    public long getOriginalIdAuthor() {
+        return _originalIdAuthor;
     }
 
     @JSON
@@ -300,29 +313,6 @@ public class RouteModelImpl extends BaseModelImpl<Route> implements RouteModel {
 
     @JSON
     @Override
-    public long getAuthorId() {
-        return _authorId;
-    }
-
-    @Override
-    public void setAuthorId(long authorId) {
-        _columnBitmask |= AUTHORID_COLUMN_BITMASK;
-
-        if (!_setOriginalAuthorId) {
-            _setOriginalAuthorId = true;
-
-            _originalAuthorId = _authorId;
-        }
-
-        _authorId = authorId;
-    }
-
-    public long getOriginalAuthorId() {
-        return _originalAuthorId;
-    }
-
-    @JSON
-    @Override
     public boolean getIsPublic() {
         return _isPublic;
     }
@@ -347,17 +337,6 @@ public class RouteModelImpl extends BaseModelImpl<Route> implements RouteModel {
 
     public boolean getOriginalIsPublic() {
         return _originalIsPublic;
-    }
-
-    @JSON
-    @Override
-    public Date getStartingTime() {
-        return _startingTime;
-    }
-
-    @Override
-    public void setStartingTime(Date startingTime) {
-        _startingTime = startingTime;
     }
 
     @JSON
@@ -404,13 +383,12 @@ public class RouteModelImpl extends BaseModelImpl<Route> implements RouteModel {
     public Object clone() {
         RouteImpl routeImpl = new RouteImpl();
 
-        routeImpl.setRouteId(getRouteId());
+        routeImpl.setIdRoute(getIdRoute());
+        routeImpl.setIdAuthor(getIdAuthor());
         routeImpl.setType(getType());
         routeImpl.setName(getName());
         routeImpl.setDescription(getDescription());
-        routeImpl.setAuthorId(getAuthorId());
         routeImpl.setIsPublic(getIsPublic());
-        routeImpl.setStartingTime(getStartingTime());
         routeImpl.setCreationTime(getCreationTime());
 
         routeImpl.resetOriginalValues();
@@ -461,9 +439,9 @@ public class RouteModelImpl extends BaseModelImpl<Route> implements RouteModel {
     public void resetOriginalValues() {
         RouteModelImpl routeModelImpl = this;
 
-        routeModelImpl._originalAuthorId = routeModelImpl._authorId;
+        routeModelImpl._originalIdAuthor = routeModelImpl._idAuthor;
 
-        routeModelImpl._setOriginalAuthorId = false;
+        routeModelImpl._setOriginalIdAuthor = false;
 
         routeModelImpl._originalIsPublic = routeModelImpl._isPublic;
 
@@ -476,7 +454,9 @@ public class RouteModelImpl extends BaseModelImpl<Route> implements RouteModel {
     public CacheModel<Route> toCacheModel() {
         RouteCacheModel routeCacheModel = new RouteCacheModel();
 
-        routeCacheModel.routeId = getRouteId();
+        routeCacheModel.idRoute = getIdRoute();
+
+        routeCacheModel.idAuthor = getIdAuthor();
 
         routeCacheModel.type = getType();
 
@@ -502,17 +482,7 @@ public class RouteModelImpl extends BaseModelImpl<Route> implements RouteModel {
             routeCacheModel.description = null;
         }
 
-        routeCacheModel.authorId = getAuthorId();
-
         routeCacheModel.isPublic = getIsPublic();
-
-        Date startingTime = getStartingTime();
-
-        if (startingTime != null) {
-            routeCacheModel.startingTime = startingTime.getTime();
-        } else {
-            routeCacheModel.startingTime = Long.MIN_VALUE;
-        }
 
         Date creationTime = getCreationTime();
 
@@ -527,22 +497,20 @@ public class RouteModelImpl extends BaseModelImpl<Route> implements RouteModel {
 
     @Override
     public String toString() {
-        StringBundler sb = new StringBundler(17);
+        StringBundler sb = new StringBundler(15);
 
-        sb.append("{routeId=");
-        sb.append(getRouteId());
+        sb.append("{idRoute=");
+        sb.append(getIdRoute());
+        sb.append(", idAuthor=");
+        sb.append(getIdAuthor());
         sb.append(", type=");
         sb.append(getType());
         sb.append(", name=");
         sb.append(getName());
         sb.append(", description=");
         sb.append(getDescription());
-        sb.append(", authorId=");
-        sb.append(getAuthorId());
         sb.append(", isPublic=");
         sb.append(getIsPublic());
-        sb.append(", startingTime=");
-        sb.append(getStartingTime());
         sb.append(", creationTime=");
         sb.append(getCreationTime());
         sb.append("}");
@@ -552,15 +520,19 @@ public class RouteModelImpl extends BaseModelImpl<Route> implements RouteModel {
 
     @Override
     public String toXmlString() {
-        StringBundler sb = new StringBundler(28);
+        StringBundler sb = new StringBundler(25);
 
         sb.append("<model><model-name>");
         sb.append("es.eina.tfg.model.Route");
         sb.append("</model-name>");
 
         sb.append(
-            "<column><column-name>routeId</column-name><column-value><![CDATA[");
-        sb.append(getRouteId());
+            "<column><column-name>idRoute</column-name><column-value><![CDATA[");
+        sb.append(getIdRoute());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>idAuthor</column-name><column-value><![CDATA[");
+        sb.append(getIdAuthor());
         sb.append("]]></column-value></column>");
         sb.append(
             "<column><column-name>type</column-name><column-value><![CDATA[");
@@ -575,16 +547,8 @@ public class RouteModelImpl extends BaseModelImpl<Route> implements RouteModel {
         sb.append(getDescription());
         sb.append("]]></column-value></column>");
         sb.append(
-            "<column><column-name>authorId</column-name><column-value><![CDATA[");
-        sb.append(getAuthorId());
-        sb.append("]]></column-value></column>");
-        sb.append(
             "<column><column-name>isPublic</column-name><column-value><![CDATA[");
         sb.append(getIsPublic());
-        sb.append("]]></column-value></column>");
-        sb.append(
-            "<column><column-name>startingTime</column-name><column-value><![CDATA[");
-        sb.append(getStartingTime());
         sb.append("]]></column-value></column>");
         sb.append(
             "<column><column-name>creationTime</column-name><column-value><![CDATA[");

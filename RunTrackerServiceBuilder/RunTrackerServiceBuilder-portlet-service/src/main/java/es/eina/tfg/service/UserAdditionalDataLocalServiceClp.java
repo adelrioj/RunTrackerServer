@@ -146,21 +146,15 @@ public class UserAdditionalDataLocalServiceClp
 
         _methodParameterTypes17 = new String[] { "java.lang.String" };
 
-        _methodName19 = "add";
+        _methodName19 = "getUserAndRoute";
 
-        _methodParameterTypes19 = new String[] {
-                "java.lang.Long", "java.lang.Integer", "java.lang.Integer",
-                "java.lang.String"
-            };
+        _methodParameterTypes19 = new String[] { "java.lang.Long" };
 
-        _methodName20 = "update";
+        _methodName20 = "getAssociatedRoutes";
 
-        _methodParameterTypes20 = new String[] {
-                "java.lang.Long", "java.lang.Integer", "java.lang.Integer",
-                "java.lang.String", "java.lang.Long"
-            };
+        _methodParameterTypes20 = new String[] { "java.lang.Long" };
 
-        _methodName21 = "getUserSelectedRoutes";
+        _methodName21 = "getAssociatedEvents";
 
         _methodParameterTypes21 = new String[] { "java.lang.Long" };
     }
@@ -197,12 +191,12 @@ public class UserAdditionalDataLocalServiceClp
 
     @Override
     public es.eina.tfg.model.UserAdditionalData createUserAdditionalData(
-        long userId) {
+        long idUser) {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName1,
-                    _methodParameterTypes1, new Object[] { userId });
+                    _methodParameterTypes1, new Object[] { idUser });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -219,14 +213,14 @@ public class UserAdditionalDataLocalServiceClp
 
     @Override
     public es.eina.tfg.model.UserAdditionalData deleteUserAdditionalData(
-        long userId)
+        long idUser)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName2,
-                    _methodParameterTypes2, new Object[] { userId });
+                    _methodParameterTypes2, new Object[] { idUser });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -466,12 +460,12 @@ public class UserAdditionalDataLocalServiceClp
 
     @Override
     public es.eina.tfg.model.UserAdditionalData fetchUserAdditionalData(
-        long userId) throws com.liferay.portal.kernel.exception.SystemException {
+        long idUser) throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName10,
-                    _methodParameterTypes10, new Object[] { userId });
+                    _methodParameterTypes10, new Object[] { idUser });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -492,14 +486,14 @@ public class UserAdditionalDataLocalServiceClp
 
     @Override
     public es.eina.tfg.model.UserAdditionalData getUserAdditionalData(
-        long userId)
+        long idUser)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName11,
-                    _methodParameterTypes11, new Object[] { userId });
+                    _methodParameterTypes11, new Object[] { idUser });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -685,100 +679,14 @@ public class UserAdditionalDataLocalServiceClp
     }
 
     @Override
-    public es.eina.tfg.model.UserAdditionalData add(java.lang.Long userId,
-        java.lang.Integer weight, java.lang.Integer height,
-        java.lang.String registerType)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingUserException {
-        Object returnObj = null;
-
-        try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName19,
-                    _methodParameterTypes19,
-                    new Object[] {
-                        ClpSerializer.translateInput(userId),
-                        
-                    ClpSerializer.translateInput(weight),
-                        
-                    ClpSerializer.translateInput(height),
-                        
-                    ClpSerializer.translateInput(registerType)
-                    });
-        } catch (Throwable t) {
-            t = ClpSerializer.translateThrowable(t);
-
-            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
-                throw (com.liferay.portal.kernel.exception.SystemException) t;
-            }
-
-            if (t instanceof es.eina.tfg.NonExistingUserException) {
-                throw (es.eina.tfg.NonExistingUserException) t;
-            }
-
-            if (t instanceof RuntimeException) {
-                throw (RuntimeException) t;
-            } else {
-                throw new RuntimeException(t.getClass().getName() +
-                    " is not a valid exception");
-            }
-        }
-
-        return (es.eina.tfg.model.UserAdditionalData) ClpSerializer.translateOutput(returnObj);
-    }
-
-    @Override
-    public es.eina.tfg.model.UserAdditionalData update(java.lang.Long userId,
-        java.lang.Integer weight, java.lang.Integer height,
-        java.lang.String registerType, java.lang.Long smsCounter)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingUserException {
-        Object returnObj = null;
-
-        try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName20,
-                    _methodParameterTypes20,
-                    new Object[] {
-                        ClpSerializer.translateInput(userId),
-                        
-                    ClpSerializer.translateInput(weight),
-                        
-                    ClpSerializer.translateInput(height),
-                        
-                    ClpSerializer.translateInput(registerType),
-                        
-                    ClpSerializer.translateInput(smsCounter)
-                    });
-        } catch (Throwable t) {
-            t = ClpSerializer.translateThrowable(t);
-
-            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
-                throw (com.liferay.portal.kernel.exception.SystemException) t;
-            }
-
-            if (t instanceof es.eina.tfg.NonExistingUserException) {
-                throw (es.eina.tfg.NonExistingUserException) t;
-            }
-
-            if (t instanceof RuntimeException) {
-                throw (RuntimeException) t;
-            } else {
-                throw new RuntimeException(t.getClass().getName() +
-                    " is not a valid exception");
-            }
-        }
-
-        return (es.eina.tfg.model.UserAdditionalData) ClpSerializer.translateOutput(returnObj);
-    }
-
-    @Override
-    public java.util.List<es.eina.tfg.model.UserSelectedRoutes> getUserSelectedRoutes(
+    public java.util.List<es.eina.tfg.model.UserAndRoute> getUserAndRoute(
         java.lang.Long userId)
         throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName21,
-                    _methodParameterTypes21,
+            returnObj = _invokableLocalService.invokeMethod(_methodName19,
+                    _methodParameterTypes19,
                     new Object[] { ClpSerializer.translateInput(userId) });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
@@ -795,6 +703,72 @@ public class UserAdditionalDataLocalServiceClp
             }
         }
 
-        return (java.util.List<es.eina.tfg.model.UserSelectedRoutes>) ClpSerializer.translateOutput(returnObj);
+        return (java.util.List<es.eina.tfg.model.UserAndRoute>) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
+    public java.util.List<es.eina.tfg.model.Route> getAssociatedRoutes(
+        java.lang.Long idUser)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName20,
+                    _methodParameterTypes20,
+                    new Object[] { ClpSerializer.translateInput(idUser) });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+                throw (com.liferay.portal.kernel.exception.PortalException) t;
+            }
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (java.util.List<es.eina.tfg.model.Route>) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
+    public java.util.List<es.eina.tfg.model.Event> getAssociatedEvents(
+        java.lang.Long idUser)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName21,
+                    _methodParameterTypes21,
+                    new Object[] { ClpSerializer.translateInput(idUser) });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+                throw (com.liferay.portal.kernel.exception.PortalException) t;
+            }
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (java.util.List<es.eina.tfg.model.Event>) ClpSerializer.translateOutput(returnObj);
     }
 }

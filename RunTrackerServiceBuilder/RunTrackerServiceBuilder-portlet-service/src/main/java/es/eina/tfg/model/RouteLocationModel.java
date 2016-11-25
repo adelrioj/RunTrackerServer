@@ -6,6 +6,8 @@ import com.liferay.portal.service.ServiceContext;
 
 import com.liferay.portlet.expando.model.ExpandoBridge;
 
+import es.eina.tfg.service.persistence.RouteLocationPK;
+
 import java.io.Serializable;
 
 /**
@@ -33,42 +35,42 @@ public interface RouteLocationModel extends BaseModel<RouteLocation> {
      *
      * @return the primary key of this route location
      */
-    public long getPrimaryKey();
+    public RouteLocationPK getPrimaryKey();
 
     /**
      * Sets the primary key of this route location.
      *
      * @param primaryKey the primary key of this route location
      */
-    public void setPrimaryKey(long primaryKey);
+    public void setPrimaryKey(RouteLocationPK primaryKey);
 
     /**
-     * Returns the route position ID of this route location.
+     * Returns the id route location of this route location.
      *
-     * @return the route position ID of this route location
+     * @return the id route location of this route location
      */
-    public long getRoutePositionId();
+    public long getIdRouteLocation();
 
     /**
-     * Sets the route position ID of this route location.
+     * Sets the id route location of this route location.
      *
-     * @param routePositionId the route position ID of this route location
+     * @param idRouteLocation the id route location of this route location
      */
-    public void setRoutePositionId(long routePositionId);
+    public void setIdRouteLocation(long idRouteLocation);
 
     /**
-     * Returns the route ID of this route location.
+     * Returns the id route of this route location.
      *
-     * @return the route ID of this route location
+     * @return the id route of this route location
      */
-    public long getRouteId();
+    public long getIdRoute();
 
     /**
-     * Sets the route ID of this route location.
+     * Sets the id route of this route location.
      *
-     * @param routeId the route ID of this route location
+     * @param idRoute the id route of this route location
      */
-    public void setRouteId(long routeId);
+    public void setIdRoute(long idRoute);
 
     /**
      * Returns the latitude of this route location.

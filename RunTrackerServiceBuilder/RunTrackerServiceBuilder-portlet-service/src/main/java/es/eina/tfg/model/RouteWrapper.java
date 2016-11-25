@@ -37,13 +37,12 @@ public class RouteWrapper implements Route, ModelWrapper<Route> {
     public Map<String, Object> getModelAttributes() {
         Map<String, Object> attributes = new HashMap<String, Object>();
 
-        attributes.put("routeId", getRouteId());
+        attributes.put("idRoute", getIdRoute());
+        attributes.put("idAuthor", getIdAuthor());
         attributes.put("type", getType());
         attributes.put("name", getName());
         attributes.put("description", getDescription());
-        attributes.put("authorId", getAuthorId());
         attributes.put("isPublic", getIsPublic());
-        attributes.put("startingTime", getStartingTime());
         attributes.put("creationTime", getCreationTime());
 
         return attributes;
@@ -51,10 +50,16 @@ public class RouteWrapper implements Route, ModelWrapper<Route> {
 
     @Override
     public void setModelAttributes(Map<String, Object> attributes) {
-        Long routeId = (Long) attributes.get("routeId");
+        Long idRoute = (Long) attributes.get("idRoute");
 
-        if (routeId != null) {
-            setRouteId(routeId);
+        if (idRoute != null) {
+            setIdRoute(idRoute);
+        }
+
+        Long idAuthor = (Long) attributes.get("idAuthor");
+
+        if (idAuthor != null) {
+            setIdAuthor(idAuthor);
         }
 
         String type = (String) attributes.get("type");
@@ -75,22 +80,10 @@ public class RouteWrapper implements Route, ModelWrapper<Route> {
             setDescription(description);
         }
 
-        Long authorId = (Long) attributes.get("authorId");
-
-        if (authorId != null) {
-            setAuthorId(authorId);
-        }
-
         Boolean isPublic = (Boolean) attributes.get("isPublic");
 
         if (isPublic != null) {
             setIsPublic(isPublic);
-        }
-
-        Date startingTime = (Date) attributes.get("startingTime");
-
-        if (startingTime != null) {
-            setStartingTime(startingTime);
         }
 
         Date creationTime = (Date) attributes.get("creationTime");
@@ -121,23 +114,43 @@ public class RouteWrapper implements Route, ModelWrapper<Route> {
     }
 
     /**
-    * Returns the route ID of this route.
+    * Returns the id route of this route.
     *
-    * @return the route ID of this route
+    * @return the id route of this route
     */
     @Override
-    public long getRouteId() {
-        return _route.getRouteId();
+    public long getIdRoute() {
+        return _route.getIdRoute();
     }
 
     /**
-    * Sets the route ID of this route.
+    * Sets the id route of this route.
     *
-    * @param routeId the route ID of this route
+    * @param idRoute the id route of this route
     */
     @Override
-    public void setRouteId(long routeId) {
-        _route.setRouteId(routeId);
+    public void setIdRoute(long idRoute) {
+        _route.setIdRoute(idRoute);
+    }
+
+    /**
+    * Returns the id author of this route.
+    *
+    * @return the id author of this route
+    */
+    @Override
+    public long getIdAuthor() {
+        return _route.getIdAuthor();
+    }
+
+    /**
+    * Sets the id author of this route.
+    *
+    * @param idAuthor the id author of this route
+    */
+    @Override
+    public void setIdAuthor(long idAuthor) {
+        _route.setIdAuthor(idAuthor);
     }
 
     /**
@@ -201,26 +214,6 @@ public class RouteWrapper implements Route, ModelWrapper<Route> {
     }
 
     /**
-    * Returns the author ID of this route.
-    *
-    * @return the author ID of this route
-    */
-    @Override
-    public long getAuthorId() {
-        return _route.getAuthorId();
-    }
-
-    /**
-    * Sets the author ID of this route.
-    *
-    * @param authorId the author ID of this route
-    */
-    @Override
-    public void setAuthorId(long authorId) {
-        _route.setAuthorId(authorId);
-    }
-
-    /**
     * Returns the is public of this route.
     *
     * @return the is public of this route
@@ -248,26 +241,6 @@ public class RouteWrapper implements Route, ModelWrapper<Route> {
     @Override
     public void setIsPublic(boolean isPublic) {
         _route.setIsPublic(isPublic);
-    }
-
-    /**
-    * Returns the starting time of this route.
-    *
-    * @return the starting time of this route
-    */
-    @Override
-    public java.util.Date getStartingTime() {
-        return _route.getStartingTime();
-    }
-
-    /**
-    * Sets the starting time of this route.
-    *
-    * @param startingTime the starting time of this route
-    */
-    @Override
-    public void setStartingTime(java.util.Date startingTime) {
-        _route.setStartingTime(startingTime);
     }
 
     /**

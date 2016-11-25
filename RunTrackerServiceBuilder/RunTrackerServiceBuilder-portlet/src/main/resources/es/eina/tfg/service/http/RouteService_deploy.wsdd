@@ -10,16 +10,18 @@
 			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="description" type="tns:string"></parameter>
 			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="authorId" type="tns:long"></parameter>
 			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="isPublic" type="tns:boolean"></parameter>
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="startingTime" type="tns:dateTime"></parameter>
 		</operation>
 		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="http://model.tfg.eina.es" name="delete" qname="operNS:delete" returnQName="deleteReturn" returnType="rtns:RouteSoap" soapAction="">
 			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="routeId" type="tns:long"></parameter>
 		</operation>
-		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="findByAuthor" qname="operNS:findByAuthor" returnQName="findByAuthorReturn" returnType="rtns:ArrayOf_tns2_RouteSoap" returnItemType="tns2:RouteSoap" soapAction="">
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="getByAuthor" qname="operNS:getByAuthor" returnQName="getByAuthorReturn" returnType="rtns:ArrayOf_tns2_RouteSoap" returnItemType="tns2:RouteSoap" soapAction="">
 			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
 		</operation>
-		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="getPublicRoutes" qname="operNS:getPublicRoutes" returnQName="getPublicRoutesReturn" returnType="rtns:ArrayOf_tns2_RouteSoap" returnItemType="tns2:RouteSoap" soapAction=""> </operation>
+		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="getByisPublic" qname="operNS:getByisPublic" returnQName="getByisPublicReturn" returnType="rtns:ArrayOf_tns2_RouteSoap" returnItemType="tns2:RouteSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="isPublic" type="tns:boolean"></parameter>
+		</operation>
 		<operation xmlns:operNS="urn:http.service.tfg.eina.es" xmlns:rtns="urn:http.service.tfg.eina.es" xmlns:tns2="http://model.tfg.eina.es" name="getPublicRoutes" qname="operNS:getPublicRoutes" returnQName="getPublicRoutesReturn" returnType="rtns:ArrayOf_tns2_RouteSoap" returnItemType="tns2:RouteSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="isPublic" type="tns:boolean"></parameter>
 			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="start" type="tns:int"></parameter>
 			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="end" type="tns:int"></parameter>
 		</operation>
@@ -31,12 +33,9 @@
 			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="type" type="tns:string"></parameter>
 			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="name" type="tns:string"></parameter>
 			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="description" type="tns:string"></parameter>
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="authorId" type="tns:long"></parameter>
 			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="isPublic" type="tns:boolean"></parameter>
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="startingTime" type="tns:dateTime"></parameter>
-			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="creationTime" type="tns:dateTime"></parameter>
 		</operation>
-		<parameter name="allowedMethods" value="add delete findByAuthor getPublicRoutes getRoute update" />
+		<parameter name="allowedMethods" value="add delete getByAuthor getByisPublic getPublicRoutes getRoute update" />
 		<parameter name="className" value="es.eina.tfg.service.http.RouteServiceSoap" />
 		<parameter name="schemaUnqualified" value="http://model.tfg.eina.es,urn:http.service.tfg.eina.es" />
 		<parameter name="typeMappingVersion" value="1.2" />

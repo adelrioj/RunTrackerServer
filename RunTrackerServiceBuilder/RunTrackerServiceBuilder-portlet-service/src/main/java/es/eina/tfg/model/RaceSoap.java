@@ -13,12 +13,10 @@ import java.util.List;
  * @generated
  */
 public class RaceSoap implements Serializable {
-    private long _raceId;
-    private long _userId;
-    private long _routeId;
+    private long _idRace;
+    private long _idUser;
+    private long _idRoute;
     private String _type;
-    private int _userHeight;
-    private int _userWeight;
 
     public RaceSoap() {
     }
@@ -26,12 +24,10 @@ public class RaceSoap implements Serializable {
     public static RaceSoap toSoapModel(Race model) {
         RaceSoap soapModel = new RaceSoap();
 
-        soapModel.setRaceId(model.getRaceId());
-        soapModel.setUserId(model.getUserId());
-        soapModel.setRouteId(model.getRouteId());
+        soapModel.setIdRace(model.getIdRace());
+        soapModel.setIdUser(model.getIdUser());
+        soapModel.setIdRoute(model.getIdRoute());
         soapModel.setType(model.getType());
-        soapModel.setUserHeight(model.getUserHeight());
-        soapModel.setUserWeight(model.getUserWeight());
 
         return soapModel;
     }
@@ -73,35 +69,35 @@ public class RaceSoap implements Serializable {
     }
 
     public long getPrimaryKey() {
-        return _raceId;
+        return _idRace;
     }
 
     public void setPrimaryKey(long pk) {
-        setRaceId(pk);
+        setIdRace(pk);
     }
 
-    public long getRaceId() {
-        return _raceId;
+    public long getIdRace() {
+        return _idRace;
     }
 
-    public void setRaceId(long raceId) {
-        _raceId = raceId;
+    public void setIdRace(long idRace) {
+        _idRace = idRace;
     }
 
-    public long getUserId() {
-        return _userId;
+    public long getIdUser() {
+        return _idUser;
     }
 
-    public void setUserId(long userId) {
-        _userId = userId;
+    public void setIdUser(long idUser) {
+        _idUser = idUser;
     }
 
-    public long getRouteId() {
-        return _routeId;
+    public long getIdRoute() {
+        return _idRoute;
     }
 
-    public void setRouteId(long routeId) {
-        _routeId = routeId;
+    public void setIdRoute(long idRoute) {
+        _idRoute = idRoute;
     }
 
     public String getType() {
@@ -110,21 +106,5 @@ public class RaceSoap implements Serializable {
 
     public void setType(String type) {
         _type = type;
-    }
-
-    public int getUserHeight() {
-        return _userHeight;
-    }
-
-    public void setUserHeight(int userHeight) {
-        _userHeight = userHeight;
-    }
-
-    public int getUserWeight() {
-        return _userWeight;
-    }
-
-    public void setUserWeight(int userWeight) {
-        _userWeight = userWeight;
     }
 }

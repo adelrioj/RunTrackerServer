@@ -1,6 +1,6 @@
 create table GL_Device (
-	deviceId LONG not null primary key,
-	userId LONG,
+	idDevice LONG not null primary key,
+	idUser LONG,
 	deviceUUID VARCHAR(75) null,
 	description VARCHAR(75) null,
 	status VARCHAR(75) null,
@@ -13,19 +13,29 @@ create table GL_Device (
 	httpTransmitPeriod VARCHAR(75) null
 );
 
-create table GL_Device_Sensor (
-	deviceId LONG not null,
-	sensorId LONG not null,
+create table GL_DeviceAndSensor (
+	idDevice LONG not null,
+	idSensor LONG not null,
 	status BOOLEAN,
-	primary key (deviceId, sensorId)
+	primary key (idDevice, idSensor)
+);
+
+create table GL_Event (
+	idEvent LONG not null primary key,
+	idRoute LONG,
+	idAuthor LONG,
+	name VARCHAR(75) null,
+	plannedStartingTime DATE null,
+	plannedFinishTime DATE null,
+	realStartingTime DATE null,
+	realFinishTime DATE null
 );
 
 create table GL_Location (
-	measurementId LONG not null primary key,
-	raceId LONG,
-	userId LONG,
-	deviceId LONG,
-	sensorId LONG,
+	idRace LONG not null,
+	idMeasurement LONG not null,
+	idDevice LONG,
+	idSensor LONG,
 	time_ DATE null,
 	sensorMode VARCHAR(75) null,
 	sysRef INTEGER,
@@ -33,49 +43,48 @@ create table GL_Location (
 	longitude DOUBLE,
 	speed DOUBLE,
 	distance DOUBLE,
-	altitude DOUBLE
+	altitude DOUBLE,
+	primary key (idRace, idMeasurement)
 );
 
 create table GL_Power (
-	measurementId LONG not null primary key,
-	raceId LONG,
-	userId LONG,
-	deviceId LONG,
-	sensorId LONG,
+	idMeasurement LONG not null,
+	idRace LONG not null,
+	idDevice LONG,
+	idSensor LONG,
 	time_ DATE null,
 	sensorMode VARCHAR(75) null,
-	level INTEGER
+	level INTEGER,
+	primary key (idMeasurement, idRace)
 );
 
 create table GL_Race (
-	raceId LONG not null primary key,
-	userId LONG,
-	routeId LONG,
-	type_ VARCHAR(75) null,
-	userHeight INTEGER,
-	userWeight INTEGER
+	idRace LONG not null primary key,
+	idUser LONG,
+	idRoute LONG,
+	type_ VARCHAR(75) null
 );
 
 create table GL_Route (
-	routeId LONG not null primary key,
+	idRoute LONG not null primary key,
+	idAuthor LONG,
 	type_ VARCHAR(75) null,
 	name VARCHAR(75) null,
 	description VARCHAR(75) null,
-	authorId LONG,
 	isPublic BOOLEAN,
-	startingTime DATE null,
 	creationTime DATE null
 );
 
 create table GL_RouteLocation (
-	routePositionId LONG not null primary key,
-	routeId LONG,
+	idRouteLocation LONG not null,
+	idRoute LONG not null,
 	latitude DOUBLE,
-	longitude DOUBLE
+	longitude DOUBLE,
+	primary key (idRouteLocation, idRoute)
 );
 
 create table GL_Sensor (
-	sensorId LONG not null primary key,
+	idSensor LONG not null primary key,
 	type_ INTEGER,
 	description VARCHAR(75) null,
 	dataUnits VARCHAR(75) null,
@@ -87,15 +96,21 @@ create table GL_Sensor (
 );
 
 create table GL_UserAdditionalData (
-	userId LONG not null primary key,
-	registerType VARCHAR(75) null,
+	idUser LONG not null primary key,
 	weight INTEGER,
 	height INTEGER,
-	smsCounter LONG
+	smsCount LONG
 );
 
-create table GL_UserSelectedRoutes (
-	userId LONG not null,
-	routeId LONG not null,
-	primary key (userId, routeId)
+create table GL_UserAndEvent (
+	idUser LONG not null,
+	idEvent LONG not null,
+	idRace LONG,
+	primary key (idUser, idEvent)
+);
+
+create table GL_UserAndRoute (
+	idUser LONG not null,
+	idRoute LONG not null,
+	primary key (idUser, idRoute)
 );

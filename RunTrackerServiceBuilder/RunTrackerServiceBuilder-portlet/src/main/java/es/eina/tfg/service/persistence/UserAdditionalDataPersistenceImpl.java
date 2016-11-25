@@ -183,15 +183,15 @@ public class UserAdditionalDataPersistenceImpl extends BasePersistenceImpl<UserA
     /**
      * Creates a new user additional data with the primary key. Does not add the user additional data to the database.
      *
-     * @param userId the primary key for the new user additional data
+     * @param idUser the primary key for the new user additional data
      * @return the new user additional data
      */
     @Override
-    public UserAdditionalData create(long userId) {
+    public UserAdditionalData create(long idUser) {
         UserAdditionalData userAdditionalData = new UserAdditionalDataImpl();
 
         userAdditionalData.setNew(true);
-        userAdditionalData.setPrimaryKey(userId);
+        userAdditionalData.setPrimaryKey(idUser);
 
         return userAdditionalData;
     }
@@ -199,15 +199,15 @@ public class UserAdditionalDataPersistenceImpl extends BasePersistenceImpl<UserA
     /**
      * Removes the user additional data with the primary key from the database. Also notifies the appropriate model listeners.
      *
-     * @param userId the primary key of the user additional data
+     * @param idUser the primary key of the user additional data
      * @return the user additional data that was removed
      * @throws es.eina.tfg.NoSuchUserAdditionalDataException if a user additional data with the primary key could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public UserAdditionalData remove(long userId)
+    public UserAdditionalData remove(long idUser)
         throws NoSuchUserAdditionalDataException, SystemException {
-        return remove((Serializable) userId);
+        return remove((Serializable) idUser);
     }
 
     /**
@@ -329,11 +329,10 @@ public class UserAdditionalDataPersistenceImpl extends BasePersistenceImpl<UserA
         userAdditionalDataImpl.setNew(userAdditionalData.isNew());
         userAdditionalDataImpl.setPrimaryKey(userAdditionalData.getPrimaryKey());
 
-        userAdditionalDataImpl.setUserId(userAdditionalData.getUserId());
-        userAdditionalDataImpl.setRegisterType(userAdditionalData.getRegisterType());
+        userAdditionalDataImpl.setIdUser(userAdditionalData.getIdUser());
         userAdditionalDataImpl.setWeight(userAdditionalData.getWeight());
         userAdditionalDataImpl.setHeight(userAdditionalData.getHeight());
-        userAdditionalDataImpl.setSmsCounter(userAdditionalData.getSmsCounter());
+        userAdditionalDataImpl.setSmsCount(userAdditionalData.getSmsCount());
 
         return userAdditionalDataImpl;
     }
@@ -366,15 +365,15 @@ public class UserAdditionalDataPersistenceImpl extends BasePersistenceImpl<UserA
     /**
      * Returns the user additional data with the primary key or throws a {@link es.eina.tfg.NoSuchUserAdditionalDataException} if it could not be found.
      *
-     * @param userId the primary key of the user additional data
+     * @param idUser the primary key of the user additional data
      * @return the user additional data
      * @throws es.eina.tfg.NoSuchUserAdditionalDataException if a user additional data with the primary key could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public UserAdditionalData findByPrimaryKey(long userId)
+    public UserAdditionalData findByPrimaryKey(long idUser)
         throws NoSuchUserAdditionalDataException, SystemException {
-        return findByPrimaryKey((Serializable) userId);
+        return findByPrimaryKey((Serializable) idUser);
     }
 
     /**
@@ -426,14 +425,14 @@ public class UserAdditionalDataPersistenceImpl extends BasePersistenceImpl<UserA
     /**
      * Returns the user additional data with the primary key or returns <code>null</code> if it could not be found.
      *
-     * @param userId the primary key of the user additional data
+     * @param idUser the primary key of the user additional data
      * @return the user additional data, or <code>null</code> if a user additional data with the primary key could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public UserAdditionalData fetchByPrimaryKey(long userId)
+    public UserAdditionalData fetchByPrimaryKey(long idUser)
         throws SystemException {
-        return fetchByPrimaryKey((Serializable) userId);
+        return fetchByPrimaryKey((Serializable) idUser);
     }
 
     /**

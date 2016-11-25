@@ -48,23 +48,23 @@ public interface RouteLocationLocalService extends BaseLocalService,
     /**
     * Creates a new route location with the primary key. Does not add the route location to the database.
     *
-    * @param routePositionId the primary key for the new route location
+    * @param routeLocationPK the primary key for the new route location
     * @return the new route location
     */
     public es.eina.tfg.model.RouteLocation createRouteLocation(
-        long routePositionId);
+        es.eina.tfg.service.persistence.RouteLocationPK routeLocationPK);
 
     /**
     * Deletes the route location with the primary key from the database. Also notifies the appropriate model listeners.
     *
-    * @param routePositionId the primary key of the route location
+    * @param routeLocationPK the primary key of the route location
     * @return the route location that was removed
     * @throws PortalException if a route location with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
     @com.liferay.portal.kernel.search.Indexable(type = IndexableType.DELETE)
     public es.eina.tfg.model.RouteLocation deleteRouteLocation(
-        long routePositionId)
+        es.eina.tfg.service.persistence.RouteLocationPK routeLocationPK)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException;
 
@@ -159,20 +159,20 @@ public interface RouteLocationLocalService extends BaseLocalService,
 
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public es.eina.tfg.model.RouteLocation fetchRouteLocation(
-        long routePositionId)
+        es.eina.tfg.service.persistence.RouteLocationPK routeLocationPK)
         throws com.liferay.portal.kernel.exception.SystemException;
 
     /**
     * Returns the route location with the primary key.
     *
-    * @param routePositionId the primary key of the route location
+    * @param routeLocationPK the primary key of the route location
     * @return the route location
     * @throws PortalException if a route location with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public es.eina.tfg.model.RouteLocation getRouteLocation(
-        long routePositionId)
+        es.eina.tfg.service.persistence.RouteLocationPK routeLocationPK)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException;
 
@@ -241,29 +241,21 @@ public interface RouteLocationLocalService extends BaseLocalService,
         java.lang.String[] parameterTypes, java.lang.Object[] arguments)
         throws java.lang.Throwable;
 
-    public es.eina.tfg.model.RouteLocation createRouteLocation()
+    public es.eina.tfg.service.persistence.RouteLocationPK generateNewIdRouteLocation(
+        long idRoute)
         throws com.liferay.portal.kernel.exception.SystemException;
 
-    public es.eina.tfg.model.RouteLocation add(java.lang.Long routeId,
-        java.lang.Double latitude, java.lang.Double longitude)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingRouteException;
-
-    public es.eina.tfg.model.RouteLocation update(
-        java.lang.Long routeLocationId, java.lang.Long routeId,
-        java.lang.Double latitude, java.lang.Double longitude)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingRouteException,
-            es.eina.tfg.NonExistingRouteLocationException;
-
-    public java.util.List<es.eina.tfg.model.RouteLocation> findByRouteId(
-        java.lang.Long routeId)
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public java.util.List<es.eina.tfg.model.RouteLocation> getByidRoute(
+        java.lang.Long idRoute)
         throws com.liferay.portal.kernel.exception.SystemException;
 
-    public java.util.List<es.eina.tfg.model.RouteLocation> findByRouteId(
-        long routeId, int start, int end)
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public java.util.List<es.eina.tfg.model.RouteLocation> getByidRoute(
+        long idRoute, int start, int end)
         throws com.liferay.portal.kernel.exception.SystemException;
 
-    public int findByRouteIdCount(java.lang.Long routeId)
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public int getByidRouteCount(java.lang.Long idRoute)
         throws com.liferay.portal.kernel.exception.SystemException;
 }

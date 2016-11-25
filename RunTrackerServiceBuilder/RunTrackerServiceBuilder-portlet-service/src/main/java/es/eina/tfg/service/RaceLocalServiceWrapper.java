@@ -33,27 +33,27 @@ public class RaceLocalServiceWrapper implements RaceLocalService,
     /**
     * Creates a new race with the primary key. Does not add the race to the database.
     *
-    * @param raceId the primary key for the new race
+    * @param idRace the primary key for the new race
     * @return the new race
     */
     @Override
-    public es.eina.tfg.model.Race createRace(long raceId) {
-        return _raceLocalService.createRace(raceId);
+    public es.eina.tfg.model.Race createRace(long idRace) {
+        return _raceLocalService.createRace(idRace);
     }
 
     /**
     * Deletes the race with the primary key from the database. Also notifies the appropriate model listeners.
     *
-    * @param raceId the primary key of the race
+    * @param idRace the primary key of the race
     * @return the race that was removed
     * @throws PortalException if a race with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
     @Override
-    public es.eina.tfg.model.Race deleteRace(long raceId)
+    public es.eina.tfg.model.Race deleteRace(long idRace)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {
-        return _raceLocalService.deleteRace(raceId);
+        return _raceLocalService.deleteRace(idRace);
     }
 
     /**
@@ -166,24 +166,24 @@ public class RaceLocalServiceWrapper implements RaceLocalService,
     }
 
     @Override
-    public es.eina.tfg.model.Race fetchRace(long raceId)
+    public es.eina.tfg.model.Race fetchRace(long idRace)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return _raceLocalService.fetchRace(raceId);
+        return _raceLocalService.fetchRace(idRace);
     }
 
     /**
     * Returns the race with the primary key.
     *
-    * @param raceId the primary key of the race
+    * @param idRace the primary key of the race
     * @return the race
     * @throws PortalException if a race with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
     @Override
-    public es.eina.tfg.model.Race getRace(long raceId)
+    public es.eina.tfg.model.Race getRace(long idRace)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {
-        return _raceLocalService.getRace(raceId);
+        return _raceLocalService.getRace(idRace);
     }
 
     @Override
@@ -265,31 +265,28 @@ public class RaceLocalServiceWrapper implements RaceLocalService,
     }
 
     @Override
-    public es.eina.tfg.model.Race add(java.lang.Long userId,
-        java.lang.Long routeId, java.lang.String type,
-        java.lang.Integer userHeight, java.lang.Integer userWeight)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingUserException {
-        return _raceLocalService.add(userId, routeId, type, userHeight,
-            userWeight);
+    public java.lang.Long generateNewIdRace()
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _raceLocalService.generateNewIdRace();
     }
 
     @Override
-    public es.eina.tfg.model.Race update(java.lang.Long raceId,
-        java.lang.Long userId, java.lang.Long routeId, java.lang.String type,
-        java.lang.Integer userHeight, java.lang.Integer userWeight)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingRaceException,
-            es.eina.tfg.NonExistingUserException {
-        return _raceLocalService.update(raceId, userId, routeId, type,
-            userHeight, userWeight);
-    }
-
-    @Override
-    public java.util.List<es.eina.tfg.model.Race> findByUserId(
+    public java.util.List<es.eina.tfg.model.Race> getByUserId(
         java.lang.Long userId)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return _raceLocalService.findByUserId(userId);
+        return _raceLocalService.getByUserId(userId);
+    }
+
+    @Override
+    public java.util.List<es.eina.tfg.model.Location> getLocations(long idRace)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _raceLocalService.getLocations(idRace);
+    }
+
+    @Override
+    public java.util.List<es.eina.tfg.model.Power> getPowerMeasurements(
+        long idRace) throws com.liferay.portal.kernel.exception.SystemException {
+        return _raceLocalService.getPowerMeasurements(idRace);
     }
 
     /**

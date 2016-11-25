@@ -18,6 +18,6 @@ public abstract class LocationActionableDynamicQuery
 
         setClassLoader(es.eina.tfg.service.ClpSerializer.class.getClassLoader());
 
-        setPrimaryKeyPropertyName("measurementId");
+        setPrimaryKeyPropertyName("primaryKey.idRace");
     }
 }

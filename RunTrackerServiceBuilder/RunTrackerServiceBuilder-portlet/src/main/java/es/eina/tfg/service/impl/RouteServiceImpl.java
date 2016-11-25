@@ -2,12 +2,11 @@ package es.eina.tfg.service.impl;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
-import es.eina.tfg.NonExistingRouteException;
 import es.eina.tfg.model.Route;
 import es.eina.tfg.service.RouteLocalServiceUtil;
 import es.eina.tfg.service.base.RouteServiceBaseImpl;
+import org.joda.time.DateTime;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -28,15 +27,29 @@ import java.util.List;
  * @see es.eina.tfg.service.RouteServiceUtil
  */
 public class RouteServiceImpl extends RouteServiceBaseImpl {
-    public Route add(String type, String name, String description, Long authorId, boolean isPublic,
-                     Date startingTime) throws SystemException {
-        return RouteLocalServiceUtil.add(type, name, description, authorId, isPublic, startingTime);
+
+    public Route add(String type, String name, String description, Long authorId, boolean isPublic)
+            throws SystemException {
+        Route route = RouteLocalServiceUtil.createRoute(RouteLocalServiceUtil.generateNewIdRoute());
+        route.setType(type);
+        route.setName(name);
+        route.setDescription(description);
+        route.setIdAuthor(authorId);
+        route.setIsPublic(isPublic);
+        route.setCreationTime(DateTime.now().toDate());
+
+        return RouteLocalServiceUtil.addRoute(route);
     }
 
-    public Route update( Long routeId, String type, String name, String description, Long authorId, boolean isPublic,
-                         Date startingTime, Date creationTime) throws SystemException, NonExistingRouteException {
-        return RouteLocalServiceUtil.update(routeId, type, name, description, authorId, isPublic, startingTime,
-                creationTime);
+    public Route update( Long routeId, String type, String name, String description, boolean isPublic)
+            throws SystemException, PortalException {
+        Route route = RouteLocalServiceUtil.getRoute(routeId);
+        route.setType(type);
+        route.setName(name);
+        route.setDescription(description);
+        route.setIsPublic(isPublic);
+
+        return RouteLocalServiceUtil.updateRoute(route);
     }
 
     public Route delete(Long routeId) throws SystemException, PortalException {
@@ -47,15 +60,15 @@ public class RouteServiceImpl extends RouteServiceBaseImpl {
         return RouteLocalServiceUtil.getRoute(routeId);
     }
 
-    public List<Route> findByAuthor(Long userId) throws SystemException {
-        return RouteLocalServiceUtil.findByAuthor(userId);
+    public List<Route> getByAuthor(Long userId) throws SystemException {
+        return RouteLocalServiceUtil.getByAuthor(userId);
     }
 
-    public List<Route> getPublicRoutes() throws SystemException {
-        return RouteLocalServiceUtil.getPublicRoutes();
+    public List<Route> getByisPublic(boolean isPublic) throws SystemException {
+        return RouteLocalServiceUtil.getByisPublic(isPublic);
     }
 
-    public List<Route> getPublicRoutes(int start, int end) throws SystemException {
-        return RouteLocalServiceUtil.getPublicRoutes(start,end);
+    public List<Route> getPublicRoutes(boolean isPublic, int start, int end) throws SystemException {
+        return RouteLocalServiceUtil.getByisPublic(isPublic, start, end);
     }
 }

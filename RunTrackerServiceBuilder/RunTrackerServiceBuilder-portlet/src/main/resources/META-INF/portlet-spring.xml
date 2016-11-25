@@ -4,9 +4,11 @@
 	<bean id="es.eina.tfg.service.DeviceLocalService" class="es.eina.tfg.service.impl.DeviceLocalServiceImpl" />
 	<bean id="es.eina.tfg.service.DeviceService" class="es.eina.tfg.service.impl.DeviceServiceImpl" />
 	<bean id="es.eina.tfg.service.persistence.DevicePersistence" class="es.eina.tfg.service.persistence.DevicePersistenceImpl" parent="basePersistence" />
-	<bean id="es.eina.tfg.service.Device_SensorLocalService" class="es.eina.tfg.service.impl.Device_SensorLocalServiceImpl" />
-	<bean id="es.eina.tfg.service.Device_SensorService" class="es.eina.tfg.service.impl.Device_SensorServiceImpl" />
-	<bean id="es.eina.tfg.service.persistence.Device_SensorPersistence" class="es.eina.tfg.service.persistence.Device_SensorPersistenceImpl" parent="basePersistence" />
+	<bean id="es.eina.tfg.service.DeviceAndSensorLocalService" class="es.eina.tfg.service.impl.DeviceAndSensorLocalServiceImpl" />
+	<bean id="es.eina.tfg.service.persistence.DeviceAndSensorPersistence" class="es.eina.tfg.service.persistence.DeviceAndSensorPersistenceImpl" parent="basePersistence" />
+	<bean id="es.eina.tfg.service.EventLocalService" class="es.eina.tfg.service.impl.EventLocalServiceImpl" />
+	<bean id="es.eina.tfg.service.EventService" class="es.eina.tfg.service.impl.EventServiceImpl" />
+	<bean id="es.eina.tfg.service.persistence.EventPersistence" class="es.eina.tfg.service.persistence.EventPersistenceImpl" parent="basePersistence" />
 	<bean id="es.eina.tfg.service.LocationLocalService" class="es.eina.tfg.service.impl.LocationLocalServiceImpl" />
 	<bean id="es.eina.tfg.service.LocationService" class="es.eina.tfg.service.impl.LocationServiceImpl" />
 	<bean id="es.eina.tfg.service.persistence.LocationPersistence" class="es.eina.tfg.service.persistence.LocationPersistenceImpl" parent="basePersistence" />
@@ -28,7 +30,8 @@
 	<bean id="es.eina.tfg.service.UserAdditionalDataLocalService" class="es.eina.tfg.service.impl.UserAdditionalDataLocalServiceImpl" />
 	<bean id="es.eina.tfg.service.UserAdditionalDataService" class="es.eina.tfg.service.impl.UserAdditionalDataServiceImpl" />
 	<bean id="es.eina.tfg.service.persistence.UserAdditionalDataPersistence" class="es.eina.tfg.service.persistence.UserAdditionalDataPersistenceImpl" parent="basePersistence" />
-	<bean id="es.eina.tfg.service.UserSelectedRoutesLocalService" class="es.eina.tfg.service.impl.UserSelectedRoutesLocalServiceImpl" />
-	<bean id="es.eina.tfg.service.UserSelectedRoutesService" class="es.eina.tfg.service.impl.UserSelectedRoutesServiceImpl" />
-	<bean id="es.eina.tfg.service.persistence.UserSelectedRoutesPersistence" class="es.eina.tfg.service.persistence.UserSelectedRoutesPersistenceImpl" parent="basePersistence" />
+	<bean id="es.eina.tfg.service.UserAndEventLocalService" class="es.eina.tfg.service.impl.UserAndEventLocalServiceImpl" />
+	<bean id="es.eina.tfg.service.persistence.UserAndEventPersistence" class="es.eina.tfg.service.persistence.UserAndEventPersistenceImpl" parent="basePersistence" />
+	<bean id="es.eina.tfg.service.UserAndRouteLocalService" class="es.eina.tfg.service.impl.UserAndRouteLocalServiceImpl" />
+	<bean id="es.eina.tfg.service.persistence.UserAndRoutePersistence" class="es.eina.tfg.service.persistence.UserAndRoutePersistenceImpl" parent="basePersistence" />
 </beans>

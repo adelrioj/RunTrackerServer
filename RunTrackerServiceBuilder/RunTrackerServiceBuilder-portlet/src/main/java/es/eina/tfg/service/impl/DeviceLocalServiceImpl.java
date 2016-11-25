@@ -1,15 +1,19 @@
 package es.eina.tfg.service.impl;
 
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.model.User;
 import com.liferay.portal.service.UserLocalServiceUtil;
 import es.eina.tfg.NoSuchDeviceException;
 import es.eina.tfg.NonExistingDeviceException;
 import es.eina.tfg.NonExistingUserException;
 import es.eina.tfg.model.Device;
-import es.eina.tfg.model.Device_Sensor;
+import es.eina.tfg.model.DeviceAndSensor;
 import es.eina.tfg.model.Sensor;
-import es.eina.tfg.service.Device_SensorLocalServiceUtil;
+import es.eina.tfg.service.DeviceAndSensorLocalServiceUtil;
+import es.eina.tfg.service.DeviceLocalServiceUtil;
 import es.eina.tfg.service.SensorLocalServiceUtil;
 import es.eina.tfg.service.base.DeviceLocalServiceBaseImpl;
 import es.eina.tfg.service.persistence.DeviceUtil;
@@ -37,106 +41,92 @@ import java.util.List;
  */
 public class DeviceLocalServiceImpl extends DeviceLocalServiceBaseImpl {
 
-    public Device add (String deviceUUID, Long userId, String description, String status, String phoneNumber,
-                             String serverPhoneNumber, String smsPollTime, String smsTransmitPeriod, String cloudId,
-                             String serverIp, String httpTransmitPeriod)
-            throws SystemException, NonExistingUserException {
-        Long deviceInternalId = counterLocalService.increment();
-
-        User user = UserLocalServiceUtil.fetchUser(userId);
-        if (user == null){
-            throw new NonExistingUserException("The user: " + userId +" does not exists on the database");
+    public Long generateNewIdDevice()
+            throws SystemException {
+        try {
+            return counterLocalService.increment(Device.class.getName());
+        } catch (SystemException e) {
+            _log.error("SystemException: Cannot generate counterLocalService.increment() for class: "
+                    + Device.class.getName());
+            throw e;
         }
-
-        Device device = createDevice(deviceInternalId);
-        device.setDeviceUUID(deviceUUID);
-        device.setUserId(userId);
-        device.setDescription(description);
-        device.setStatus(status);
-        device.setPhoneNumber(phoneNumber);
-        device.setServerPhoneNumber(serverPhoneNumber);
-        device.setSmsPollTime(smsPollTime);
-        device.setSmsTransmitPeriod(smsTransmitPeriod);
-        device.setCloudId(cloudId);
-        device.setServerIp(serverIp);
-        device.setHttpTransmitPeriod(httpTransmitPeriod);
-
-        return updateDevice(device);
     }
 
-    public Device update (Long deviceId, String deviceUUID, Long userId, String description, String status, String phoneNumber,
-                                String serverPhoneNumber, String smsPollTime, String smsTransmitPeriod, String cloudId,
-                                String serverIp, String httpTransmitPeriod)
-            throws SystemException, NonExistingUserException, NonExistingDeviceException {
-        Device device = fetchDevice(deviceId);
-        if (device == null){
-            throw new NonExistingDeviceException("The device: " + deviceId +" does not exists on the database");
-        }
-
-        User user = UserLocalServiceUtil.fetchUser(userId);
-        if (user == null){
-            throw new NonExistingUserException("The user: " + userId +" does not exists on the database");
-        }
-
-        device.setUserId(userId);
-        device.setDeviceUUID(deviceUUID);
-        device.setDescription(description);
-        device.setStatus(status);
-        device.setPhoneNumber(phoneNumber);
-        device.setServerPhoneNumber(serverPhoneNumber);
-        device.setSmsPollTime(smsPollTime);
-        device.setSmsTransmitPeriod(smsTransmitPeriod);
-        device.setCloudId(cloudId);
-        device.setServerIp(serverIp);
-        device.setHttpTransmitPeriod(httpTransmitPeriod);
-
-        return updateDevice(device);
+    @Override
+    public Device addDevice(Device device)
+            throws SystemException {
+        checkMadatoryAttributes(device);
+        return super.addDevice(device);
     }
 
-    public Device getDeviceByPhoneNumber(String phoneNumber) throws NoSuchDeviceException, SystemException {
+    @Override
+    public Device updateDevice(Device device)
+            throws SystemException {
+        checkMadatoryAttributes(device);
+        return super.updateDevice(device);
+    }
+
+    private void checkMadatoryAttributes(Device device)
+            throws SystemException {
+        User user = UserLocalServiceUtil.fetchUser(device.getIdUser());
+        if (user == null){
+            throw new SystemException("The user: " + device.getIdUser() +" does not exists on the database");
+        }
+    }
+
+    public List<Sensor> getSensors (Long deviceId)
+            throws SystemException {
+        List<DeviceAndSensor> deviceAndSensors = DeviceAndSensorLocalServiceUtil.getSensorsByDevice(deviceId);
+        return getSensorsFromDeviceAndSensorRelation(deviceAndSensors);
+    }
+
+    public List<Sensor> getActiveSensors (Long deviceId)
+            throws SystemException {
+        List<DeviceAndSensor> deviceAndSensors = DeviceAndSensorLocalServiceUtil.getActiveSensorsByDevice(deviceId);
+        return getSensorsFromDeviceAndSensorRelation(deviceAndSensors);
+    }
+
+    private List<Sensor> getSensorsFromDeviceAndSensorRelation(List<DeviceAndSensor> deviceAndSensors)
+            throws SystemException {
+        List<Sensor> sensors = new ArrayList<Sensor>();
+        for (DeviceAndSensor deviceSensor : deviceAndSensors) {
+            try {
+                sensors.add(SensorLocalServiceUtil.getSensor(deviceSensor.getIdSensor()));
+            } catch (PortalException e) {
+                _log.error("PortalException: Cannot SensorLocalServiceUtil.getSensor() for ID: "
+                        + deviceSensor.getIdSensor());
+            }
+        }
+        return sensors;
+    }
+
+    public Device getDeviceByPhoneNumber(String phoneNumber)
+            throws NoSuchDeviceException, SystemException {
         return DeviceUtil.findByphoneNumber(phoneNumber);
     }
 
-    public List<Sensor> getSensors (Long deviceId) throws SystemException {
-        List<Device_Sensor> deviceSensors = Device_SensorLocalServiceUtil.findByDeviceId(deviceId);
-        List<Sensor> sensors = new ArrayList<Sensor>();
-        for (Device_Sensor deviceSensor : deviceSensors) {
-            Sensor sensor = SensorLocalServiceUtil.fetchSensor(deviceSensor.getSensorId());
-            if (sensor != null){
-                sensors.add(sensor);
-            }
-        }
-        return sensors;
-    }
-
-    public List<Sensor> getActiveSensors (Long deviceId) throws SystemException {
-        List<Device_Sensor> deviceSensors = Device_SensorLocalServiceUtil.findActiveSensors(deviceId);
-        List<Sensor> sensors = new ArrayList<Sensor>();
-        for (Device_Sensor deviceSensor : deviceSensors) {
-            Sensor sensor = SensorLocalServiceUtil.fetchSensor(deviceSensor.getSensorId());
-            if (sensor != null){
-                sensors.add(sensor);
-            }
-        }
-        return sensors;
-    }
-
-    public List<Device> findByUserId (Long userId) throws SystemException {
+    public List<Device> getByUserId (Long userId)
+            throws SystemException {
         return DeviceUtil.findByuserId(userId);
     }
 
-    public Device findBydeviceUUID (String deviceUUID) throws NoSuchDeviceException, SystemException {
+    public Device getBydeviceUUID (String deviceUUID)
+            throws NoSuchDeviceException, SystemException {
         return DeviceUtil.findBydeviceUUID(deviceUUID);
     }
 
-    public List<Device> findByStatus (String status) throws SystemException {
+    public List<Device> getByStatus (String status)
+            throws SystemException {
         return DeviceUtil.findBystatus(status);
     }
 
-    public List<Device> findByStatus (String status, int start, int end) throws SystemException {
+    public List<Device> getByStatus (String status, int start, int end)
+            throws SystemException {
         return DeviceUtil.findBystatus(status, start, end);
     }
 
     public static final String STATUS_SMSMODE = "SMSMODE";
     public static final String STATUS_3GMODE = "3GMODE";
+
+    private static Log _log = LogFactoryUtil.getLog(DeviceLocalServiceImpl.class);
 }

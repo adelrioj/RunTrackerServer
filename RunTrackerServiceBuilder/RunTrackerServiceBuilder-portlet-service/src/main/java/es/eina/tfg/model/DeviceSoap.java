@@ -13,8 +13,8 @@ import java.util.List;
  * @generated
  */
 public class DeviceSoap implements Serializable {
-    private long _deviceId;
-    private long _userId;
+    private long _idDevice;
+    private long _idUser;
     private String _deviceUUID;
     private String _description;
     private String _status;
@@ -32,8 +32,8 @@ public class DeviceSoap implements Serializable {
     public static DeviceSoap toSoapModel(Device model) {
         DeviceSoap soapModel = new DeviceSoap();
 
-        soapModel.setDeviceId(model.getDeviceId());
-        soapModel.setUserId(model.getUserId());
+        soapModel.setIdDevice(model.getIdDevice());
+        soapModel.setIdUser(model.getIdUser());
         soapModel.setDeviceUUID(model.getDeviceUUID());
         soapModel.setDescription(model.getDescription());
         soapModel.setStatus(model.getStatus());
@@ -85,27 +85,27 @@ public class DeviceSoap implements Serializable {
     }
 
     public long getPrimaryKey() {
-        return _deviceId;
+        return _idDevice;
     }
 
     public void setPrimaryKey(long pk) {
-        setDeviceId(pk);
+        setIdDevice(pk);
     }
 
-    public long getDeviceId() {
-        return _deviceId;
+    public long getIdDevice() {
+        return _idDevice;
     }
 
-    public void setDeviceId(long deviceId) {
-        _deviceId = deviceId;
+    public void setIdDevice(long idDevice) {
+        _idDevice = idDevice;
     }
 
-    public long getUserId() {
-        return _userId;
+    public long getIdUser() {
+        return _idUser;
     }
 
-    public void setUserId(long userId) {
-        _userId = userId;
+    public void setIdUser(long idUser) {
+        _idUser = idUser;
     }
 
     public String getDeviceUUID() {

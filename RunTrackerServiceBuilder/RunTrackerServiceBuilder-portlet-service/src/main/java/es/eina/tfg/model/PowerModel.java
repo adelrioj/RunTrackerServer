@@ -1,12 +1,13 @@
 package es.eina.tfg.model;
 
 import com.liferay.portal.kernel.bean.AutoEscape;
-import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.CacheModel;
 import com.liferay.portal.service.ServiceContext;
 
 import com.liferay.portlet.expando.model.ExpandoBridge;
+
+import es.eina.tfg.service.persistence.PowerPK;
 
 import java.io.Serializable;
 
@@ -37,99 +38,70 @@ public interface PowerModel extends BaseModel<Power> {
      *
      * @return the primary key of this power
      */
-    public long getPrimaryKey();
+    public PowerPK getPrimaryKey();
 
     /**
      * Sets the primary key of this power.
      *
      * @param primaryKey the primary key of this power
      */
-    public void setPrimaryKey(long primaryKey);
+    public void setPrimaryKey(PowerPK primaryKey);
 
     /**
-     * Returns the measurement ID of this power.
+     * Returns the id measurement of this power.
      *
-     * @return the measurement ID of this power
+     * @return the id measurement of this power
      */
-    public long getMeasurementId();
+    public long getIdMeasurement();
 
     /**
-     * Sets the measurement ID of this power.
+     * Sets the id measurement of this power.
      *
-     * @param measurementId the measurement ID of this power
+     * @param idMeasurement the id measurement of this power
      */
-    public void setMeasurementId(long measurementId);
+    public void setIdMeasurement(long idMeasurement);
 
     /**
-     * Returns the race ID of this power.
+     * Returns the id race of this power.
      *
-     * @return the race ID of this power
+     * @return the id race of this power
      */
-    public long getRaceId();
+    public Long getIdRace();
 
     /**
-     * Sets the race ID of this power.
+     * Sets the id race of this power.
      *
-     * @param raceId the race ID of this power
+     * @param idRace the id race of this power
      */
-    public void setRaceId(long raceId);
+    public void setIdRace(Long idRace);
 
     /**
-     * Returns the user ID of this power.
+     * Returns the id device of this power.
      *
-     * @return the user ID of this power
+     * @return the id device of this power
      */
-    public long getUserId();
+    public long getIdDevice();
 
     /**
-     * Sets the user ID of this power.
+     * Sets the id device of this power.
      *
-     * @param userId the user ID of this power
+     * @param idDevice the id device of this power
      */
-    public void setUserId(long userId);
+    public void setIdDevice(long idDevice);
 
     /**
-     * Returns the user uuid of this power.
+     * Returns the id sensor of this power.
      *
-     * @return the user uuid of this power
-     * @throws SystemException if a system exception occurred
+     * @return the id sensor of this power
      */
-    public String getUserUuid() throws SystemException;
+    public long getIdSensor();
 
     /**
-     * Sets the user uuid of this power.
+     * Sets the id sensor of this power.
      *
-     * @param userUuid the user uuid of this power
+     * @param idSensor the id sensor of this power
      */
-    public void setUserUuid(String userUuid);
-
-    /**
-     * Returns the device ID of this power.
-     *
-     * @return the device ID of this power
-     */
-    public long getDeviceId();
-
-    /**
-     * Sets the device ID of this power.
-     *
-     * @param deviceId the device ID of this power
-     */
-    public void setDeviceId(long deviceId);
-
-    /**
-     * Returns the sensor ID of this power.
-     *
-     * @return the sensor ID of this power
-     */
-    public long getSensorId();
-
-    /**
-     * Sets the sensor ID of this power.
-     *
-     * @param sensorId the sensor ID of this power
-     */
-    public void setSensorId(long sensorId);
+    public void setIdSensor(long idSensor);
 
     /**
      * Returns the time of this power.

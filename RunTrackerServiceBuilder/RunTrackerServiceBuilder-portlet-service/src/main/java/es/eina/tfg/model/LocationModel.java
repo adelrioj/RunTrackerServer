@@ -1,12 +1,13 @@
 package es.eina.tfg.model;
 
 import com.liferay.portal.kernel.bean.AutoEscape;
-import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.CacheModel;
 import com.liferay.portal.service.ServiceContext;
 
 import com.liferay.portlet.expando.model.ExpandoBridge;
+
+import es.eina.tfg.service.persistence.LocationPK;
 
 import java.io.Serializable;
 
@@ -37,99 +38,70 @@ public interface LocationModel extends BaseModel<Location> {
      *
      * @return the primary key of this location
      */
-    public long getPrimaryKey();
+    public LocationPK getPrimaryKey();
 
     /**
      * Sets the primary key of this location.
      *
      * @param primaryKey the primary key of this location
      */
-    public void setPrimaryKey(long primaryKey);
+    public void setPrimaryKey(LocationPK primaryKey);
 
     /**
-     * Returns the measurement ID of this location.
+     * Returns the id race of this location.
      *
-     * @return the measurement ID of this location
+     * @return the id race of this location
      */
-    public long getMeasurementId();
+    public Long getIdRace();
 
     /**
-     * Sets the measurement ID of this location.
+     * Sets the id race of this location.
      *
-     * @param measurementId the measurement ID of this location
+     * @param idRace the id race of this location
      */
-    public void setMeasurementId(long measurementId);
+    public void setIdRace(Long idRace);
 
     /**
-     * Returns the race ID of this location.
+     * Returns the id measurement of this location.
      *
-     * @return the race ID of this location
+     * @return the id measurement of this location
      */
-    public Long getRaceId();
+    public long getIdMeasurement();
 
     /**
-     * Sets the race ID of this location.
+     * Sets the id measurement of this location.
      *
-     * @param raceId the race ID of this location
+     * @param idMeasurement the id measurement of this location
      */
-    public void setRaceId(Long raceId);
+    public void setIdMeasurement(long idMeasurement);
 
     /**
-     * Returns the user ID of this location.
+     * Returns the id device of this location.
      *
-     * @return the user ID of this location
+     * @return the id device of this location
      */
-    public long getUserId();
+    public long getIdDevice();
 
     /**
-     * Sets the user ID of this location.
+     * Sets the id device of this location.
      *
-     * @param userId the user ID of this location
+     * @param idDevice the id device of this location
      */
-    public void setUserId(long userId);
+    public void setIdDevice(long idDevice);
 
     /**
-     * Returns the user uuid of this location.
+     * Returns the id sensor of this location.
      *
-     * @return the user uuid of this location
-     * @throws SystemException if a system exception occurred
+     * @return the id sensor of this location
      */
-    public String getUserUuid() throws SystemException;
+    public long getIdSensor();
 
     /**
-     * Sets the user uuid of this location.
+     * Sets the id sensor of this location.
      *
-     * @param userUuid the user uuid of this location
+     * @param idSensor the id sensor of this location
      */
-    public void setUserUuid(String userUuid);
-
-    /**
-     * Returns the device ID of this location.
-     *
-     * @return the device ID of this location
-     */
-    public long getDeviceId();
-
-    /**
-     * Sets the device ID of this location.
-     *
-     * @param deviceId the device ID of this location
-     */
-    public void setDeviceId(long deviceId);
-
-    /**
-     * Returns the sensor ID of this location.
-     *
-     * @return the sensor ID of this location
-     */
-    public long getSensorId();
-
-    /**
-     * Sets the sensor ID of this location.
-     *
-     * @param sensorId the sensor ID of this location
-     */
-    public void setSensorId(long sensorId);
+    public void setIdSensor(long idSensor);
 
     /**
      * Returns the time of this location.

@@ -21,13 +21,12 @@ import java.util.Map;
 
 
 public class RouteClp extends BaseModelImpl<Route> implements Route {
-    private long _routeId;
+    private long _idRoute;
+    private long _idAuthor;
     private String _type;
     private String _name;
     private String _description;
-    private long _authorId;
     private boolean _isPublic;
-    private Date _startingTime;
     private Date _creationTime;
     private BaseModel<?> _routeRemoteModel;
     private Class<?> _clpSerializerClass = es.eina.tfg.service.ClpSerializer.class;
@@ -47,17 +46,17 @@ public class RouteClp extends BaseModelImpl<Route> implements Route {
 
     @Override
     public long getPrimaryKey() {
-        return _routeId;
+        return _idRoute;
     }
 
     @Override
     public void setPrimaryKey(long primaryKey) {
-        setRouteId(primaryKey);
+        setIdRoute(primaryKey);
     }
 
     @Override
     public Serializable getPrimaryKeyObj() {
-        return _routeId;
+        return _idRoute;
     }
 
     @Override
@@ -69,13 +68,12 @@ public class RouteClp extends BaseModelImpl<Route> implements Route {
     public Map<String, Object> getModelAttributes() {
         Map<String, Object> attributes = new HashMap<String, Object>();
 
-        attributes.put("routeId", getRouteId());
+        attributes.put("idRoute", getIdRoute());
+        attributes.put("idAuthor", getIdAuthor());
         attributes.put("type", getType());
         attributes.put("name", getName());
         attributes.put("description", getDescription());
-        attributes.put("authorId", getAuthorId());
         attributes.put("isPublic", getIsPublic());
-        attributes.put("startingTime", getStartingTime());
         attributes.put("creationTime", getCreationTime());
 
         return attributes;
@@ -83,10 +81,16 @@ public class RouteClp extends BaseModelImpl<Route> implements Route {
 
     @Override
     public void setModelAttributes(Map<String, Object> attributes) {
-        Long routeId = (Long) attributes.get("routeId");
+        Long idRoute = (Long) attributes.get("idRoute");
 
-        if (routeId != null) {
-            setRouteId(routeId);
+        if (idRoute != null) {
+            setIdRoute(idRoute);
+        }
+
+        Long idAuthor = (Long) attributes.get("idAuthor");
+
+        if (idAuthor != null) {
+            setIdAuthor(idAuthor);
         }
 
         String type = (String) attributes.get("type");
@@ -107,22 +111,10 @@ public class RouteClp extends BaseModelImpl<Route> implements Route {
             setDescription(description);
         }
 
-        Long authorId = (Long) attributes.get("authorId");
-
-        if (authorId != null) {
-            setAuthorId(authorId);
-        }
-
         Boolean isPublic = (Boolean) attributes.get("isPublic");
 
         if (isPublic != null) {
             setIsPublic(isPublic);
-        }
-
-        Date startingTime = (Date) attributes.get("startingTime");
-
-        if (startingTime != null) {
-            setStartingTime(startingTime);
         }
 
         Date creationTime = (Date) attributes.get("creationTime");
@@ -133,21 +125,43 @@ public class RouteClp extends BaseModelImpl<Route> implements Route {
     }
 
     @Override
-    public long getRouteId() {
-        return _routeId;
+    public long getIdRoute() {
+        return _idRoute;
     }
 
     @Override
-    public void setRouteId(long routeId) {
-        _routeId = routeId;
+    public void setIdRoute(long idRoute) {
+        _idRoute = idRoute;
 
         if (_routeRemoteModel != null) {
             try {
                 Class<?> clazz = _routeRemoteModel.getClass();
 
-                Method method = clazz.getMethod("setRouteId", long.class);
+                Method method = clazz.getMethod("setIdRoute", long.class);
 
-                method.invoke(_routeRemoteModel, routeId);
+                method.invoke(_routeRemoteModel, idRoute);
+            } catch (Exception e) {
+                throw new UnsupportedOperationException(e);
+            }
+        }
+    }
+
+    @Override
+    public long getIdAuthor() {
+        return _idAuthor;
+    }
+
+    @Override
+    public void setIdAuthor(long idAuthor) {
+        _idAuthor = idAuthor;
+
+        if (_routeRemoteModel != null) {
+            try {
+                Class<?> clazz = _routeRemoteModel.getClass();
+
+                Method method = clazz.getMethod("setIdAuthor", long.class);
+
+                method.invoke(_routeRemoteModel, idAuthor);
             } catch (Exception e) {
                 throw new UnsupportedOperationException(e);
             }
@@ -221,28 +235,6 @@ public class RouteClp extends BaseModelImpl<Route> implements Route {
     }
 
     @Override
-    public long getAuthorId() {
-        return _authorId;
-    }
-
-    @Override
-    public void setAuthorId(long authorId) {
-        _authorId = authorId;
-
-        if (_routeRemoteModel != null) {
-            try {
-                Class<?> clazz = _routeRemoteModel.getClass();
-
-                Method method = clazz.getMethod("setAuthorId", long.class);
-
-                method.invoke(_routeRemoteModel, authorId);
-            } catch (Exception e) {
-                throw new UnsupportedOperationException(e);
-            }
-        }
-    }
-
-    @Override
     public boolean getIsPublic() {
         return _isPublic;
     }
@@ -263,28 +255,6 @@ public class RouteClp extends BaseModelImpl<Route> implements Route {
                 Method method = clazz.getMethod("setIsPublic", boolean.class);
 
                 method.invoke(_routeRemoteModel, isPublic);
-            } catch (Exception e) {
-                throw new UnsupportedOperationException(e);
-            }
-        }
-    }
-
-    @Override
-    public Date getStartingTime() {
-        return _startingTime;
-    }
-
-    @Override
-    public void setStartingTime(Date startingTime) {
-        _startingTime = startingTime;
-
-        if (_routeRemoteModel != null) {
-            try {
-                Class<?> clazz = _routeRemoteModel.getClass();
-
-                Method method = clazz.getMethod("setStartingTime", Date.class);
-
-                method.invoke(_routeRemoteModel, startingTime);
             } catch (Exception e) {
                 throw new UnsupportedOperationException(e);
             }
@@ -380,13 +350,12 @@ public class RouteClp extends BaseModelImpl<Route> implements Route {
     public Object clone() {
         RouteClp clone = new RouteClp();
 
-        clone.setRouteId(getRouteId());
+        clone.setIdRoute(getIdRoute());
+        clone.setIdAuthor(getIdAuthor());
         clone.setType(getType());
         clone.setName(getName());
         clone.setDescription(getDescription());
-        clone.setAuthorId(getAuthorId());
         clone.setIsPublic(getIsPublic());
-        clone.setStartingTime(getStartingTime());
         clone.setCreationTime(getCreationTime());
 
         return clone;
@@ -437,22 +406,20 @@ public class RouteClp extends BaseModelImpl<Route> implements Route {
 
     @Override
     public String toString() {
-        StringBundler sb = new StringBundler(17);
+        StringBundler sb = new StringBundler(15);
 
-        sb.append("{routeId=");
-        sb.append(getRouteId());
+        sb.append("{idRoute=");
+        sb.append(getIdRoute());
+        sb.append(", idAuthor=");
+        sb.append(getIdAuthor());
         sb.append(", type=");
         sb.append(getType());
         sb.append(", name=");
         sb.append(getName());
         sb.append(", description=");
         sb.append(getDescription());
-        sb.append(", authorId=");
-        sb.append(getAuthorId());
         sb.append(", isPublic=");
         sb.append(getIsPublic());
-        sb.append(", startingTime=");
-        sb.append(getStartingTime());
         sb.append(", creationTime=");
         sb.append(getCreationTime());
         sb.append("}");
@@ -462,15 +429,19 @@ public class RouteClp extends BaseModelImpl<Route> implements Route {
 
     @Override
     public String toXmlString() {
-        StringBundler sb = new StringBundler(28);
+        StringBundler sb = new StringBundler(25);
 
         sb.append("<model><model-name>");
         sb.append("es.eina.tfg.model.Route");
         sb.append("</model-name>");
 
         sb.append(
-            "<column><column-name>routeId</column-name><column-value><![CDATA[");
-        sb.append(getRouteId());
+            "<column><column-name>idRoute</column-name><column-value><![CDATA[");
+        sb.append(getIdRoute());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>idAuthor</column-name><column-value><![CDATA[");
+        sb.append(getIdAuthor());
         sb.append("]]></column-value></column>");
         sb.append(
             "<column><column-name>type</column-name><column-value><![CDATA[");
@@ -485,16 +456,8 @@ public class RouteClp extends BaseModelImpl<Route> implements Route {
         sb.append(getDescription());
         sb.append("]]></column-value></column>");
         sb.append(
-            "<column><column-name>authorId</column-name><column-value><![CDATA[");
-        sb.append(getAuthorId());
-        sb.append("]]></column-value></column>");
-        sb.append(
             "<column><column-name>isPublic</column-name><column-value><![CDATA[");
         sb.append(getIsPublic());
-        sb.append("]]></column-value></column>");
-        sb.append(
-            "<column><column-name>startingTime</column-name><column-value><![CDATA[");
-        sb.append(getStartingTime());
         sb.append("]]></column-value></column>");
         sb.append(
             "<column><column-name>creationTime</column-name><column-value><![CDATA[");

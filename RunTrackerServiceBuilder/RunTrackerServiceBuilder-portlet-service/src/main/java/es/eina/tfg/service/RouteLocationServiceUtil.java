@@ -51,40 +51,30 @@ public class RouteLocationServiceUtil {
         return getService().invokeMethod(name, parameterTypes, arguments);
     }
 
-    public static es.eina.tfg.model.RouteLocation add(java.lang.Long routeId,
+    public static es.eina.tfg.model.RouteLocation add(long routeId,
         java.lang.Double latitude, java.lang.Double longitude)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingRouteException {
+        throws com.liferay.portal.kernel.exception.SystemException {
         return getService().add(routeId, latitude, longitude);
     }
 
-    public static es.eina.tfg.model.RouteLocation update(
-        java.lang.Long routeLocationId, java.lang.Long routeId,
-        java.lang.Double latitude, java.lang.Double longitude)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingRouteException,
-            es.eina.tfg.NonExistingRouteLocationException {
+    public static es.eina.tfg.model.RouteLocation update(long routeLocationId,
+        long routeId, java.lang.Double latitude, java.lang.Double longitude)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
         return getService().update(routeLocationId, routeId, latitude, longitude);
     }
 
-    public static es.eina.tfg.model.RouteLocation delete(
-        java.lang.Long routeLocationId)
+    public static es.eina.tfg.model.RouteLocation delete(long idRouteLocation,
+        long idRoute)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException {
-        return getService().delete(routeLocationId);
+        return getService().delete(idRouteLocation, idRoute);
     }
 
-    public static es.eina.tfg.model.RouteLocation getRouteLocation(
-        java.lang.Long routeLocationId)
-        throws com.liferay.portal.kernel.exception.PortalException,
-            com.liferay.portal.kernel.exception.SystemException {
-        return getService().getRouteLocation(routeLocationId);
-    }
-
-    public static java.util.List<es.eina.tfg.model.RouteLocation> findByRouteId(
-        java.lang.Long routeId)
+    public static java.util.List<es.eina.tfg.model.RouteLocation> getByRouteId(
+        long routeId)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return getService().findByRouteId(routeId);
+        return getService().getByRouteId(routeId);
     }
 
     public static void clearService() {

@@ -71,27 +71,27 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
     public static final FinderPath FINDER_PATH_COUNT_ALL = new FinderPath(RouteModelImpl.ENTITY_CACHE_ENABLED,
             RouteModelImpl.FINDER_CACHE_ENABLED, Long.class,
             FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countAll", new String[0]);
-    public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_USERID = new FinderPath(RouteModelImpl.ENTITY_CACHE_ENABLED,
+    public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_AUTHOR = new FinderPath(RouteModelImpl.ENTITY_CACHE_ENABLED,
             RouteModelImpl.FINDER_CACHE_ENABLED, RouteImpl.class,
-            FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByuserId",
+            FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByauthor",
             new String[] {
                 Long.class.getName(),
                 
             Integer.class.getName(), Integer.class.getName(),
                 OrderByComparator.class.getName()
             });
-    public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERID =
+    public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_AUTHOR =
         new FinderPath(RouteModelImpl.ENTITY_CACHE_ENABLED,
             RouteModelImpl.FINDER_CACHE_ENABLED, RouteImpl.class,
-            FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByuserId",
+            FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByauthor",
             new String[] { Long.class.getName() },
-            RouteModelImpl.AUTHORID_COLUMN_BITMASK |
+            RouteModelImpl.IDAUTHOR_COLUMN_BITMASK |
             RouteModelImpl.CREATIONTIME_COLUMN_BITMASK);
-    public static final FinderPath FINDER_PATH_COUNT_BY_USERID = new FinderPath(RouteModelImpl.ENTITY_CACHE_ENABLED,
+    public static final FinderPath FINDER_PATH_COUNT_BY_AUTHOR = new FinderPath(RouteModelImpl.ENTITY_CACHE_ENABLED,
             RouteModelImpl.FINDER_CACHE_ENABLED, Long.class,
-            FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByuserId",
+            FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByauthor",
             new String[] { Long.class.getName() });
-    private static final String _FINDER_COLUMN_USERID_AUTHORID_2 = "route.authorId = ?";
+    private static final String _FINDER_COLUMN_AUTHOR_IDAUTHOR_2 = "route.idAuthor = ?";
     public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_ISPUBLIC = new FinderPath(RouteModelImpl.ENTITY_CACHE_ENABLED,
             RouteModelImpl.FINDER_CACHE_ENABLED, RouteImpl.class,
             FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByisPublic",
@@ -150,44 +150,44 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
     }
 
     /**
-     * Returns all the routes where authorId = &#63;.
+     * Returns all the routes where idAuthor = &#63;.
      *
-     * @param authorId the author ID
+     * @param idAuthor the id author
      * @return the matching routes
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public List<Route> findByuserId(long authorId) throws SystemException {
-        return findByuserId(authorId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+    public List<Route> findByauthor(long idAuthor) throws SystemException {
+        return findByauthor(idAuthor, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
     }
 
     /**
-     * Returns a range of all the routes where authorId = &#63;.
+     * Returns a range of all the routes where idAuthor = &#63;.
      *
      * <p>
      * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link es.eina.tfg.model.impl.RouteModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
      * </p>
      *
-     * @param authorId the author ID
+     * @param idAuthor the id author
      * @param start the lower bound of the range of routes
      * @param end the upper bound of the range of routes (not inclusive)
      * @return the range of matching routes
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public List<Route> findByuserId(long authorId, int start, int end)
+    public List<Route> findByauthor(long idAuthor, int start, int end)
         throws SystemException {
-        return findByuserId(authorId, start, end, null);
+        return findByauthor(idAuthor, start, end, null);
     }
 
     /**
-     * Returns an ordered range of all the routes where authorId = &#63;.
+     * Returns an ordered range of all the routes where idAuthor = &#63;.
      *
      * <p>
      * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link es.eina.tfg.model.impl.RouteModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
      * </p>
      *
-     * @param authorId the author ID
+     * @param idAuthor the id author
      * @param start the lower bound of the range of routes
      * @param end the upper bound of the range of routes (not inclusive)
      * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
@@ -195,7 +195,7 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public List<Route> findByuserId(long authorId, int start, int end,
+    public List<Route> findByauthor(long idAuthor, int start, int end,
         OrderByComparator orderByComparator) throws SystemException {
         boolean pagination = true;
         FinderPath finderPath = null;
@@ -204,11 +204,11 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
         if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
                 (orderByComparator == null)) {
             pagination = false;
-            finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERID;
-            finderArgs = new Object[] { authorId };
+            finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_AUTHOR;
+            finderArgs = new Object[] { idAuthor };
         } else {
-            finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_USERID;
-            finderArgs = new Object[] { authorId, start, end, orderByComparator };
+            finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_AUTHOR;
+            finderArgs = new Object[] { idAuthor, start, end, orderByComparator };
         }
 
         List<Route> list = (List<Route>) FinderCacheUtil.getResult(finderPath,
@@ -216,7 +216,7 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
 
         if ((list != null) && !list.isEmpty()) {
             for (Route route : list) {
-                if ((authorId != route.getAuthorId())) {
+                if ((idAuthor != route.getIdAuthor())) {
                     list = null;
 
                     break;
@@ -236,7 +236,7 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
 
             query.append(_SQL_SELECT_ROUTE_WHERE);
 
-            query.append(_FINDER_COLUMN_USERID_AUTHORID_2);
+            query.append(_FINDER_COLUMN_AUTHOR_IDAUTHOR_2);
 
             if (orderByComparator != null) {
                 appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
@@ -257,7 +257,7 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
 
                 QueryPos qPos = QueryPos.getInstance(q);
 
-                qPos.add(authorId);
+                qPos.add(idAuthor);
 
                 if (!pagination) {
                     list = (List<Route>) QueryUtil.list(q, getDialect(), start,
@@ -287,19 +287,19 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
     }
 
     /**
-     * Returns the first route in the ordered set where authorId = &#63;.
+     * Returns the first route in the ordered set where idAuthor = &#63;.
      *
-     * @param authorId the author ID
+     * @param idAuthor the id author
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the first matching route
      * @throws es.eina.tfg.NoSuchRouteException if a matching route could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Route findByuserId_First(long authorId,
+    public Route findByauthor_First(long idAuthor,
         OrderByComparator orderByComparator)
         throws NoSuchRouteException, SystemException {
-        Route route = fetchByuserId_First(authorId, orderByComparator);
+        Route route = fetchByauthor_First(idAuthor, orderByComparator);
 
         if (route != null) {
             return route;
@@ -309,8 +309,8 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
 
         msg.append(_NO_SUCH_ENTITY_WITH_KEY);
 
-        msg.append("authorId=");
-        msg.append(authorId);
+        msg.append("idAuthor=");
+        msg.append(idAuthor);
 
         msg.append(StringPool.CLOSE_CURLY_BRACE);
 
@@ -318,17 +318,17 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
     }
 
     /**
-     * Returns the first route in the ordered set where authorId = &#63;.
+     * Returns the first route in the ordered set where idAuthor = &#63;.
      *
-     * @param authorId the author ID
+     * @param idAuthor the id author
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the first matching route, or <code>null</code> if a matching route could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Route fetchByuserId_First(long authorId,
+    public Route fetchByauthor_First(long idAuthor,
         OrderByComparator orderByComparator) throws SystemException {
-        List<Route> list = findByuserId(authorId, 0, 1, orderByComparator);
+        List<Route> list = findByauthor(idAuthor, 0, 1, orderByComparator);
 
         if (!list.isEmpty()) {
             return list.get(0);
@@ -338,19 +338,19 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
     }
 
     /**
-     * Returns the last route in the ordered set where authorId = &#63;.
+     * Returns the last route in the ordered set where idAuthor = &#63;.
      *
-     * @param authorId the author ID
+     * @param idAuthor the id author
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the last matching route
      * @throws es.eina.tfg.NoSuchRouteException if a matching route could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Route findByuserId_Last(long authorId,
+    public Route findByauthor_Last(long idAuthor,
         OrderByComparator orderByComparator)
         throws NoSuchRouteException, SystemException {
-        Route route = fetchByuserId_Last(authorId, orderByComparator);
+        Route route = fetchByauthor_Last(idAuthor, orderByComparator);
 
         if (route != null) {
             return route;
@@ -360,8 +360,8 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
 
         msg.append(_NO_SUCH_ENTITY_WITH_KEY);
 
-        msg.append("authorId=");
-        msg.append(authorId);
+        msg.append("idAuthor=");
+        msg.append(idAuthor);
 
         msg.append(StringPool.CLOSE_CURLY_BRACE);
 
@@ -369,23 +369,23 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
     }
 
     /**
-     * Returns the last route in the ordered set where authorId = &#63;.
+     * Returns the last route in the ordered set where idAuthor = &#63;.
      *
-     * @param authorId the author ID
+     * @param idAuthor the id author
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the last matching route, or <code>null</code> if a matching route could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Route fetchByuserId_Last(long authorId,
+    public Route fetchByauthor_Last(long idAuthor,
         OrderByComparator orderByComparator) throws SystemException {
-        int count = countByuserId(authorId);
+        int count = countByauthor(idAuthor);
 
         if (count == 0) {
             return null;
         }
 
-        List<Route> list = findByuserId(authorId, count - 1, count,
+        List<Route> list = findByauthor(idAuthor, count - 1, count,
                 orderByComparator);
 
         if (!list.isEmpty()) {
@@ -396,20 +396,20 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
     }
 
     /**
-     * Returns the routes before and after the current route in the ordered set where authorId = &#63;.
+     * Returns the routes before and after the current route in the ordered set where idAuthor = &#63;.
      *
-     * @param routeId the primary key of the current route
-     * @param authorId the author ID
+     * @param idRoute the primary key of the current route
+     * @param idAuthor the id author
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the previous, current, and next route
      * @throws es.eina.tfg.NoSuchRouteException if a route with the primary key could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Route[] findByuserId_PrevAndNext(long routeId, long authorId,
+    public Route[] findByauthor_PrevAndNext(long idRoute, long idAuthor,
         OrderByComparator orderByComparator)
         throws NoSuchRouteException, SystemException {
-        Route route = findByPrimaryKey(routeId);
+        Route route = findByPrimaryKey(idRoute);
 
         Session session = null;
 
@@ -418,12 +418,12 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
 
             Route[] array = new RouteImpl[3];
 
-            array[0] = getByuserId_PrevAndNext(session, route, authorId,
+            array[0] = getByauthor_PrevAndNext(session, route, idAuthor,
                     orderByComparator, true);
 
             array[1] = route;
 
-            array[2] = getByuserId_PrevAndNext(session, route, authorId,
+            array[2] = getByauthor_PrevAndNext(session, route, idAuthor,
                     orderByComparator, false);
 
             return array;
@@ -434,8 +434,8 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
         }
     }
 
-    protected Route getByuserId_PrevAndNext(Session session, Route route,
-        long authorId, OrderByComparator orderByComparator, boolean previous) {
+    protected Route getByauthor_PrevAndNext(Session session, Route route,
+        long idAuthor, OrderByComparator orderByComparator, boolean previous) {
         StringBundler query = null;
 
         if (orderByComparator != null) {
@@ -447,7 +447,7 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
 
         query.append(_SQL_SELECT_ROUTE_WHERE);
 
-        query.append(_FINDER_COLUMN_USERID_AUTHORID_2);
+        query.append(_FINDER_COLUMN_AUTHOR_IDAUTHOR_2);
 
         if (orderByComparator != null) {
             String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
@@ -510,7 +510,7 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
 
         QueryPos qPos = QueryPos.getInstance(q);
 
-        qPos.add(authorId);
+        qPos.add(idAuthor);
 
         if (orderByComparator != null) {
             Object[] values = orderByComparator.getOrderByConditionValues(route);
@@ -530,31 +530,31 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
     }
 
     /**
-     * Removes all the routes where authorId = &#63; from the database.
+     * Removes all the routes where idAuthor = &#63; from the database.
      *
-     * @param authorId the author ID
+     * @param idAuthor the id author
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public void removeByuserId(long authorId) throws SystemException {
-        for (Route route : findByuserId(authorId, QueryUtil.ALL_POS,
+    public void removeByauthor(long idAuthor) throws SystemException {
+        for (Route route : findByauthor(idAuthor, QueryUtil.ALL_POS,
                 QueryUtil.ALL_POS, null)) {
             remove(route);
         }
     }
 
     /**
-     * Returns the number of routes where authorId = &#63;.
+     * Returns the number of routes where idAuthor = &#63;.
      *
-     * @param authorId the author ID
+     * @param idAuthor the id author
      * @return the number of matching routes
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public int countByuserId(long authorId) throws SystemException {
-        FinderPath finderPath = FINDER_PATH_COUNT_BY_USERID;
+    public int countByauthor(long idAuthor) throws SystemException {
+        FinderPath finderPath = FINDER_PATH_COUNT_BY_AUTHOR;
 
-        Object[] finderArgs = new Object[] { authorId };
+        Object[] finderArgs = new Object[] { idAuthor };
 
         Long count = (Long) FinderCacheUtil.getResult(finderPath, finderArgs,
                 this);
@@ -564,7 +564,7 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
 
             query.append(_SQL_COUNT_ROUTE_WHERE);
 
-            query.append(_FINDER_COLUMN_USERID_AUTHORID_2);
+            query.append(_FINDER_COLUMN_AUTHOR_IDAUTHOR_2);
 
             String sql = query.toString();
 
@@ -577,7 +577,7 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
 
                 QueryPos qPos = QueryPos.getInstance(q);
 
-                qPos.add(authorId);
+                qPos.add(idAuthor);
 
                 count = (Long) q.uniqueResult();
 
@@ -845,7 +845,7 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
     /**
      * Returns the routes before and after the current route in the ordered set where isPublic = &#63;.
      *
-     * @param routeId the primary key of the current route
+     * @param idRoute the primary key of the current route
      * @param isPublic the is public
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the previous, current, and next route
@@ -853,10 +853,10 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Route[] findByisPublic_PrevAndNext(long routeId, boolean isPublic,
+    public Route[] findByisPublic_PrevAndNext(long idRoute, boolean isPublic,
         OrderByComparator orderByComparator)
         throws NoSuchRouteException, SystemException {
-        Route route = findByPrimaryKey(routeId);
+        Route route = findByPrimaryKey(idRoute);
 
         Session session = null;
 
@@ -1121,15 +1121,15 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
     /**
      * Creates a new route with the primary key. Does not add the route to the database.
      *
-     * @param routeId the primary key for the new route
+     * @param idRoute the primary key for the new route
      * @return the new route
      */
     @Override
-    public Route create(long routeId) {
+    public Route create(long idRoute) {
         Route route = new RouteImpl();
 
         route.setNew(true);
-        route.setPrimaryKey(routeId);
+        route.setPrimaryKey(idRoute);
 
         return route;
     }
@@ -1137,15 +1137,15 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
     /**
      * Removes the route with the primary key from the database. Also notifies the appropriate model listeners.
      *
-     * @param routeId the primary key of the route
+     * @param idRoute the primary key of the route
      * @return the route that was removed
      * @throws es.eina.tfg.NoSuchRouteException if a route with the primary key could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Route remove(long routeId)
+    public Route remove(long idRoute)
         throws NoSuchRouteException, SystemException {
-        return remove((Serializable) routeId);
+        return remove((Serializable) idRoute);
     }
 
     /**
@@ -1249,19 +1249,19 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
         }
         else {
             if ((routeModelImpl.getColumnBitmask() &
-                    FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERID.getColumnBitmask()) != 0) {
+                    FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_AUTHOR.getColumnBitmask()) != 0) {
                 Object[] args = new Object[] {
-                        routeModelImpl.getOriginalAuthorId()
+                        routeModelImpl.getOriginalIdAuthor()
                     };
 
-                FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_USERID, args);
-                FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERID,
+                FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_AUTHOR, args);
+                FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_AUTHOR,
                     args);
 
-                args = new Object[] { routeModelImpl.getAuthorId() };
+                args = new Object[] { routeModelImpl.getIdAuthor() };
 
-                FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_USERID, args);
-                FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERID,
+                FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_AUTHOR, args);
+                FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_AUTHOR,
                     args);
             }
 
@@ -1299,13 +1299,12 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
         routeImpl.setNew(route.isNew());
         routeImpl.setPrimaryKey(route.getPrimaryKey());
 
-        routeImpl.setRouteId(route.getRouteId());
+        routeImpl.setIdRoute(route.getIdRoute());
+        routeImpl.setIdAuthor(route.getIdAuthor());
         routeImpl.setType(route.getType());
         routeImpl.setName(route.getName());
         routeImpl.setDescription(route.getDescription());
-        routeImpl.setAuthorId(route.getAuthorId());
         routeImpl.setIsPublic(route.isIsPublic());
-        routeImpl.setStartingTime(route.getStartingTime());
         routeImpl.setCreationTime(route.getCreationTime());
 
         return routeImpl;
@@ -1339,15 +1338,15 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
     /**
      * Returns the route with the primary key or throws a {@link es.eina.tfg.NoSuchRouteException} if it could not be found.
      *
-     * @param routeId the primary key of the route
+     * @param idRoute the primary key of the route
      * @return the route
      * @throws es.eina.tfg.NoSuchRouteException if a route with the primary key could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Route findByPrimaryKey(long routeId)
+    public Route findByPrimaryKey(long idRoute)
         throws NoSuchRouteException, SystemException {
-        return findByPrimaryKey((Serializable) routeId);
+        return findByPrimaryKey((Serializable) idRoute);
     }
 
     /**
@@ -1397,13 +1396,13 @@ public class RoutePersistenceImpl extends BasePersistenceImpl<Route>
     /**
      * Returns the route with the primary key or returns <code>null</code> if it could not be found.
      *
-     * @param routeId the primary key of the route
+     * @param idRoute the primary key of the route
      * @return the route, or <code>null</code> if a route with the primary key could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Route fetchByPrimaryKey(long routeId) throws SystemException {
-        return fetchByPrimaryKey((Serializable) routeId);
+    public Route fetchByPrimaryKey(long idRoute) throws SystemException {
+        return fetchByPrimaryKey((Serializable) idRoute);
     }
 
     /**

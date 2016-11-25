@@ -54,16 +54,14 @@ public interface RouteService extends BaseService, InvokableService {
 
     public es.eina.tfg.model.Route add(java.lang.String type,
         java.lang.String name, java.lang.String description,
-        java.lang.Long authorId, boolean isPublic, java.util.Date startingTime)
+        java.lang.Long authorId, boolean isPublic)
         throws com.liferay.portal.kernel.exception.SystemException;
 
     public es.eina.tfg.model.Route update(java.lang.Long routeId,
         java.lang.String type, java.lang.String name,
-        java.lang.String description, java.lang.Long authorId,
-        boolean isPublic, java.util.Date startingTime,
-        java.util.Date creationTime)
-        throws com.liferay.portal.kernel.exception.SystemException,
-            es.eina.tfg.NonExistingRouteException;
+        java.lang.String description, boolean isPublic)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException;
 
     public es.eina.tfg.model.Route delete(java.lang.Long routeId)
         throws com.liferay.portal.kernel.exception.PortalException,
@@ -74,15 +72,18 @@ public interface RouteService extends BaseService, InvokableService {
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException;
 
-    public java.util.List<es.eina.tfg.model.Route> findByAuthor(
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public java.util.List<es.eina.tfg.model.Route> getByAuthor(
         java.lang.Long userId)
         throws com.liferay.portal.kernel.exception.SystemException;
 
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public java.util.List<es.eina.tfg.model.Route> getPublicRoutes()
+    public java.util.List<es.eina.tfg.model.Route> getByisPublic(
+        boolean isPublic)
         throws com.liferay.portal.kernel.exception.SystemException;
 
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public java.util.List<es.eina.tfg.model.Route> getPublicRoutes(int start,
-        int end) throws com.liferay.portal.kernel.exception.SystemException;
+    public java.util.List<es.eina.tfg.model.Route> getPublicRoutes(
+        boolean isPublic, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException;
 }

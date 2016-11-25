@@ -2,8 +2,6 @@ package es.eina.tfg.service.impl;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
-import es.eina.tfg.NonExistingRaceException;
-import es.eina.tfg.NonExistingUserException;
 import es.eina.tfg.model.Race;
 import es.eina.tfg.service.RaceLocalServiceUtil;
 import es.eina.tfg.service.base.RaceServiceBaseImpl;
@@ -28,14 +26,15 @@ import java.util.List;
  * @see es.eina.tfg.service.RaceServiceUtil
  */
 public class RaceServiceImpl extends RaceServiceBaseImpl {
-    public Race add(Long userId, Long routeId, String type, Integer userHeight, Integer userWeight)
-            throws SystemException, NonExistingUserException {
-        return RaceLocalServiceUtil.add(userId, routeId, type, userHeight, userWeight);
-    }
 
-    public Race update(Long raceId, Long userId, Long routeId, String type, Integer userHeight, Integer userWeight)
-            throws SystemException, NonExistingUserException, NonExistingRaceException {
-        return RaceLocalServiceUtil.update(raceId, userId, routeId, type, userHeight, userWeight);
+    public Race add(Long userId, Long routeId, String type)
+            throws SystemException {
+        Race race = RaceLocalServiceUtil.createRace(RaceLocalServiceUtil.generateNewIdRace());
+        race.setIdUser(userId);
+        race.setIdRoute(routeId);
+        race.setType(type);
+
+        return RaceLocalServiceUtil.addRace(race);
     }
 
     public Race delete(Long raceId) throws SystemException, PortalException {
@@ -47,7 +46,7 @@ public class RaceServiceImpl extends RaceServiceBaseImpl {
     }
 
     public List<Race> findByUserId (Long userId) throws SystemException {
-        return RaceLocalServiceUtil.findByUserId(userId);
+        return RaceLocalServiceUtil.getByUserId(userId);
     }
 
     public static final String TYPE_WALKING = RaceLocalServiceImpl.TYPE_WALKING;

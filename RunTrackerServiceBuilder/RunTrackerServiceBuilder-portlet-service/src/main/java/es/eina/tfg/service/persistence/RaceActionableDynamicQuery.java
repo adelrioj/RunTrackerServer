@@ -18,6 +18,6 @@ public abstract class RaceActionableDynamicQuery
 
         setClassLoader(es.eina.tfg.service.ClpSerializer.class.getClassLoader());
 
-        setPrimaryKeyPropertyName("raceId");
+        setPrimaryKeyPropertyName("idRace");
     }
 }

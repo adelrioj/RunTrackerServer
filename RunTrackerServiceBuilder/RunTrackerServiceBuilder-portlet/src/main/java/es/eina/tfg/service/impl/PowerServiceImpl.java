@@ -2,15 +2,15 @@ package es.eina.tfg.service.impl;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
-import es.eina.tfg.NonExistingDeviceAndSensorRelationException;
-import es.eina.tfg.NonExistingMeasurementException;
-import es.eina.tfg.NonExistingRaceException;
-import es.eina.tfg.NonExistingUserException;
+import es.eina.tfg.model.Location;
 import es.eina.tfg.model.Power;
+import es.eina.tfg.service.LocationLocalServiceUtil;
 import es.eina.tfg.service.PowerLocalServiceUtil;
 import es.eina.tfg.service.base.PowerServiceBaseImpl;
+import es.eina.tfg.service.persistence.PowerPK;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * The implementation of the power remote service.
@@ -31,23 +31,27 @@ import java.util.Date;
  * @see es.eina.tfg.service.PowerServiceUtil
  */
 public class PowerServiceImpl extends PowerServiceBaseImpl {
-    public Power add(Long raceId, Long userId, Long deviceId, Long sensorId, Date time, String sensorMode, Integer level)
-            throws SystemException, NonExistingUserException, NonExistingDeviceAndSensorRelationException, NonExistingRaceException {
-        return PowerLocalServiceUtil.add(raceId, userId, deviceId, sensorId, time, sensorMode, level);
+
+    public Power add(Long raceId, Long deviceId, Long sensorId, Date time, String sensorMode, Integer level)
+            throws SystemException {
+        Power power = PowerLocalServiceUtil.createPower(PowerLocalServiceUtil.generateNewIdPower(raceId));
+        power.setIdDevice(deviceId);
+        power.setIdSensor(sensorId);
+        power.setTime(time);
+        power.setSensorMode(sensorMode);
+        power.setLevel(level);
+
+        return PowerLocalServiceUtil.addPower(power);
     }
 
-    public Power update(Long measurementId, Long raceId, Long userId, Long deviceId, Long sensorId, Date time,
-                        String sensorMode, Integer level)
-            throws SystemException, NonExistingUserException, NonExistingDeviceAndSensorRelationException,
-            NonExistingRaceException, NonExistingMeasurementException {
-        return PowerLocalServiceUtil.update(measurementId, raceId, userId, deviceId, sensorId, time, sensorMode, level);
+    public Power getPower(long idMeasurement, long idRace)
+            throws SystemException, PortalException {
+        PowerPK powerPK = new PowerPK(idMeasurement, idRace);
+        return PowerLocalServiceUtil.getPower(powerPK);
     }
 
-    public Power delete(Long measurementId) throws SystemException, PortalException {
-        return PowerLocalServiceUtil.deletePower(measurementId);
-    }
-
-    public Power getPower(Long measurementId) throws SystemException, PortalException {
-        return PowerLocalServiceUtil.getPower(measurementId);
+    public List<Location> getByidRace(Long idRace)
+            throws SystemException {
+        return LocationLocalServiceUtil.getByRaceId(idRace);
     }
 }

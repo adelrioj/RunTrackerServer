@@ -41,16 +41,18 @@ public class LocationLocalServiceClpInvoker {
     private String[] _methodParameterTypes14;
     private String _methodName15;
     private String[] _methodParameterTypes15;
-    private String _methodName88;
-    private String[] _methodParameterTypes88;
-    private String _methodName89;
-    private String[] _methodParameterTypes89;
     private String _methodName94;
     private String[] _methodParameterTypes94;
     private String _methodName95;
     private String[] _methodParameterTypes95;
-    private String _methodName96;
-    private String[] _methodParameterTypes96;
+    private String _methodName100;
+    private String[] _methodParameterTypes100;
+    private String _methodName101;
+    private String[] _methodParameterTypes101;
+    private String _methodName102;
+    private String[] _methodParameterTypes102;
+    private String _methodName104;
+    private String[] _methodParameterTypes104;
 
     public LocationLocalServiceClpInvoker() {
         _methodName0 = "addLocation";
@@ -59,11 +61,15 @@ public class LocationLocalServiceClpInvoker {
 
         _methodName1 = "createLocation";
 
-        _methodParameterTypes1 = new String[] { "long" };
+        _methodParameterTypes1 = new String[] {
+                "es.eina.tfg.service.persistence.LocationPK"
+            };
 
         _methodName2 = "deleteLocation";
 
-        _methodParameterTypes2 = new String[] { "long" };
+        _methodParameterTypes2 = new String[] {
+                "es.eina.tfg.service.persistence.LocationPK"
+            };
 
         _methodName3 = "deleteLocation";
 
@@ -107,11 +113,15 @@ public class LocationLocalServiceClpInvoker {
 
         _methodName10 = "fetchLocation";
 
-        _methodParameterTypes10 = new String[] { "long" };
+        _methodParameterTypes10 = new String[] {
+                "es.eina.tfg.service.persistence.LocationPK"
+            };
 
         _methodName11 = "getLocation";
 
-        _methodParameterTypes11 = new String[] { "long" };
+        _methodParameterTypes11 = new String[] {
+                "es.eina.tfg.service.persistence.LocationPK"
+            };
 
         _methodName12 = "getPersistedModel";
 
@@ -129,34 +139,29 @@ public class LocationLocalServiceClpInvoker {
 
         _methodParameterTypes15 = new String[] { "es.eina.tfg.model.Location" };
 
-        _methodName88 = "getBeanIdentifier";
+        _methodName94 = "getBeanIdentifier";
 
-        _methodParameterTypes88 = new String[] {  };
+        _methodParameterTypes94 = new String[] {  };
 
-        _methodName89 = "setBeanIdentifier";
+        _methodName95 = "setBeanIdentifier";
 
-        _methodParameterTypes89 = new String[] { "java.lang.String" };
+        _methodParameterTypes95 = new String[] { "java.lang.String" };
 
-        _methodName94 = "add";
+        _methodName100 = "generateNewIdLocation";
 
-        _methodParameterTypes94 = new String[] {
-                "java.lang.Long", "java.lang.Long", "java.lang.Long",
-                "java.lang.Long", "java.util.Date", "java.lang.String", "int",
-                "double", "double", "double", "double", "double"
-            };
+        _methodParameterTypes100 = new String[] { "long" };
 
-        _methodName95 = "update";
+        _methodName101 = "addLocation";
 
-        _methodParameterTypes95 = new String[] {
-                "java.lang.Long", "java.lang.Long", "java.lang.Long",
-                "java.lang.Long", "java.lang.Long", "java.util.Date",
-                "java.lang.String", "int", "double", "double", "double",
-                "double", "double"
-            };
+        _methodParameterTypes101 = new String[] { "es.eina.tfg.model.Location" };
 
-        _methodName96 = "findByRaceId";
+        _methodName102 = "updateLocation";
 
-        _methodParameterTypes96 = new String[] { "java.lang.Long" };
+        _methodParameterTypes102 = new String[] { "es.eina.tfg.model.Location" };
+
+        _methodName104 = "getByRaceId";
+
+        _methodParameterTypes104 = new String[] { "java.lang.Long" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -168,12 +173,12 @@ public class LocationLocalServiceClpInvoker {
 
         if (_methodName1.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes1, parameterTypes)) {
-            return LocationLocalServiceUtil.createLocation(((Long) arguments[0]).longValue());
+            return LocationLocalServiceUtil.createLocation((es.eina.tfg.service.persistence.LocationPK) arguments[0]);
         }
 
         if (_methodName2.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes2, parameterTypes)) {
-            return LocationLocalServiceUtil.deleteLocation(((Long) arguments[0]).longValue());
+            return LocationLocalServiceUtil.deleteLocation((es.eina.tfg.service.persistence.LocationPK) arguments[0]);
         }
 
         if (_methodName3.equals(name) &&
@@ -219,12 +224,12 @@ public class LocationLocalServiceClpInvoker {
 
         if (_methodName10.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes10, parameterTypes)) {
-            return LocationLocalServiceUtil.fetchLocation(((Long) arguments[0]).longValue());
+            return LocationLocalServiceUtil.fetchLocation((es.eina.tfg.service.persistence.LocationPK) arguments[0]);
         }
 
         if (_methodName11.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes11, parameterTypes)) {
-            return LocationLocalServiceUtil.getLocation(((Long) arguments[0]).longValue());
+            return LocationLocalServiceUtil.getLocation((es.eina.tfg.service.persistence.LocationPK) arguments[0]);
         }
 
         if (_methodName12.equals(name) &&
@@ -248,49 +253,36 @@ public class LocationLocalServiceClpInvoker {
             return LocationLocalServiceUtil.updateLocation((es.eina.tfg.model.Location) arguments[0]);
         }
 
-        if (_methodName88.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes88, parameterTypes)) {
+        if (_methodName94.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
             return LocationLocalServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName89.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes89, parameterTypes)) {
+        if (_methodName95.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes95, parameterTypes)) {
             LocationLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }
 
-        if (_methodName94.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
-            return LocationLocalServiceUtil.add((java.lang.Long) arguments[0],
-                (java.lang.Long) arguments[1], (java.lang.Long) arguments[2],
-                (java.lang.Long) arguments[3], (java.util.Date) arguments[4],
-                (java.lang.String) arguments[5],
-                ((Integer) arguments[6]).intValue(),
-                ((Double) arguments[7]).doubleValue(),
-                ((Double) arguments[8]).doubleValue(),
-                ((Double) arguments[9]).doubleValue(),
-                ((Double) arguments[10]).doubleValue(),
-                ((Double) arguments[11]).doubleValue());
+        if (_methodName100.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes100, parameterTypes)) {
+            return LocationLocalServiceUtil.generateNewIdLocation(((Long) arguments[0]).longValue());
         }
 
-        if (_methodName95.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes95, parameterTypes)) {
-            return LocationLocalServiceUtil.update((java.lang.Long) arguments[0],
-                (java.lang.Long) arguments[1], (java.lang.Long) arguments[2],
-                (java.lang.Long) arguments[3], (java.lang.Long) arguments[4],
-                (java.util.Date) arguments[5], (java.lang.String) arguments[6],
-                ((Integer) arguments[7]).intValue(),
-                ((Double) arguments[8]).doubleValue(),
-                ((Double) arguments[9]).doubleValue(),
-                ((Double) arguments[10]).doubleValue(),
-                ((Double) arguments[11]).doubleValue(),
-                ((Double) arguments[12]).doubleValue());
+        if (_methodName101.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes101, parameterTypes)) {
+            return LocationLocalServiceUtil.addLocation((es.eina.tfg.model.Location) arguments[0]);
         }
 
-        if (_methodName96.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes96, parameterTypes)) {
-            return LocationLocalServiceUtil.findByRaceId((java.lang.Long) arguments[0]);
+        if (_methodName102.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes102, parameterTypes)) {
+            return LocationLocalServiceUtil.updateLocation((es.eina.tfg.model.Location) arguments[0]);
+        }
+
+        if (_methodName104.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes104, parameterTypes)) {
+            return LocationLocalServiceUtil.getByRaceId((java.lang.Long) arguments[0]);
         }
 
         throw new UnsupportedOperationException();

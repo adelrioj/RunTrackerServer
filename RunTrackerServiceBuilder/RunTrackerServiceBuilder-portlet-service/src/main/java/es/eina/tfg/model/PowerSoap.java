@@ -1,5 +1,7 @@
 package es.eina.tfg.model;
 
+import es.eina.tfg.service.persistence.PowerPK;
+
 import java.io.Serializable;
 
 import java.util.ArrayList;
@@ -14,11 +16,10 @@ import java.util.List;
  * @generated
  */
 public class PowerSoap implements Serializable {
-    private long _measurementId;
-    private long _raceId;
-    private long _userId;
-    private long _deviceId;
-    private long _sensorId;
+    private long _idMeasurement;
+    private Long _idRace;
+    private long _idDevice;
+    private long _idSensor;
     private Date _time;
     private String _sensorMode;
     private int _level;
@@ -29,11 +30,10 @@ public class PowerSoap implements Serializable {
     public static PowerSoap toSoapModel(Power model) {
         PowerSoap soapModel = new PowerSoap();
 
-        soapModel.setMeasurementId(model.getMeasurementId());
-        soapModel.setRaceId(model.getRaceId());
-        soapModel.setUserId(model.getUserId());
-        soapModel.setDeviceId(model.getDeviceId());
-        soapModel.setSensorId(model.getSensorId());
+        soapModel.setIdMeasurement(model.getIdMeasurement());
+        soapModel.setIdRace(model.getIdRace());
+        soapModel.setIdDevice(model.getIdDevice());
+        soapModel.setIdSensor(model.getIdSensor());
         soapModel.setTime(model.getTime());
         soapModel.setSensorMode(model.getSensorMode());
         soapModel.setLevel(model.getLevel());
@@ -77,52 +77,45 @@ public class PowerSoap implements Serializable {
         return soapModels.toArray(new PowerSoap[soapModels.size()]);
     }
 
-    public long getPrimaryKey() {
-        return _measurementId;
+    public PowerPK getPrimaryKey() {
+        return new PowerPK(_idMeasurement, _idRace);
     }
 
-    public void setPrimaryKey(long pk) {
-        setMeasurementId(pk);
+    public void setPrimaryKey(PowerPK pk) {
+        setIdMeasurement(pk.idMeasurement);
+        setIdRace(pk.idRace);
     }
 
-    public long getMeasurementId() {
-        return _measurementId;
+    public long getIdMeasurement() {
+        return _idMeasurement;
     }
 
-    public void setMeasurementId(long measurementId) {
-        _measurementId = measurementId;
+    public void setIdMeasurement(long idMeasurement) {
+        _idMeasurement = idMeasurement;
     }
 
-    public long getRaceId() {
-        return _raceId;
+    public Long getIdRace() {
+        return _idRace;
     }
 
-    public void setRaceId(long raceId) {
-        _raceId = raceId;
+    public void setIdRace(Long idRace) {
+        _idRace = idRace;
     }
 
-    public long getUserId() {
-        return _userId;
+    public long getIdDevice() {
+        return _idDevice;
     }
 
-    public void setUserId(long userId) {
-        _userId = userId;
+    public void setIdDevice(long idDevice) {
+        _idDevice = idDevice;
     }
 
-    public long getDeviceId() {
-        return _deviceId;
+    public long getIdSensor() {
+        return _idSensor;
     }
 
-    public void setDeviceId(long deviceId) {
-        _deviceId = deviceId;
-    }
-
-    public long getSensorId() {
-        return _sensorId;
-    }
-
-    public void setSensorId(long sensorId) {
-        _sensorId = sensorId;
+    public void setIdSensor(long idSensor) {
+        _idSensor = idSensor;
     }
 
     public Date getTime() {

@@ -1,16 +1,13 @@
 package es.eina.tfg.model.impl;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
-import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.json.JSON;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
-import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.model.CacheModel;
 import com.liferay.portal.model.impl.BaseModelImpl;
 import com.liferay.portal.service.ServiceContext;
-import com.liferay.portal.util.PortalUtil;
 
 import com.liferay.portlet.expando.model.ExpandoBridge;
 import com.liferay.portlet.expando.util.ExpandoBridgeFactoryUtil;
@@ -51,16 +48,15 @@ public class UserAdditionalDataModelImpl extends BaseModelImpl<UserAdditionalDat
      */
     public static final String TABLE_NAME = "GL_UserAdditionalData";
     public static final Object[][] TABLE_COLUMNS = {
-            { "userId", Types.BIGINT },
-            { "registerType", Types.VARCHAR },
+            { "idUser", Types.BIGINT },
             { "weight", Types.INTEGER },
             { "height", Types.INTEGER },
-            { "smsCounter", Types.BIGINT }
+            { "smsCount", Types.BIGINT }
         };
-    public static final String TABLE_SQL_CREATE = "create table GL_UserAdditionalData (userId LONG not null primary key,registerType VARCHAR(75) null,weight INTEGER,height INTEGER,smsCounter LONG)";
+    public static final String TABLE_SQL_CREATE = "create table GL_UserAdditionalData (idUser LONG not null primary key,weight INTEGER,height INTEGER,smsCount LONG)";
     public static final String TABLE_SQL_DROP = "drop table GL_UserAdditionalData";
-    public static final String ORDER_BY_JPQL = " ORDER BY userAdditionalData.userId ASC";
-    public static final String ORDER_BY_SQL = " ORDER BY GL_UserAdditionalData.userId ASC";
+    public static final String ORDER_BY_JPQL = " ORDER BY userAdditionalData.idUser ASC";
+    public static final String ORDER_BY_SQL = " ORDER BY GL_UserAdditionalData.idUser ASC";
     public static final String DATA_SOURCE = "liferayDataSource";
     public static final String SESSION_FACTORY = "liferaySessionFactory";
     public static final String TX_MANAGER = "liferayTransactionManager";
@@ -77,12 +73,10 @@ public class UserAdditionalDataModelImpl extends BaseModelImpl<UserAdditionalDat
     private static Class<?>[] _escapedModelInterfaces = new Class[] {
             UserAdditionalData.class
         };
-    private long _userId;
-    private String _userUuid;
-    private String _registerType;
+    private long _idUser;
     private int _weight;
     private int _height;
-    private long _smsCounter;
+    private long _smsCount;
     private UserAdditionalData _escapedModel;
 
     public UserAdditionalDataModelImpl() {
@@ -101,11 +95,10 @@ public class UserAdditionalDataModelImpl extends BaseModelImpl<UserAdditionalDat
 
         UserAdditionalData model = new UserAdditionalDataImpl();
 
-        model.setUserId(soapModel.getUserId());
-        model.setRegisterType(soapModel.getRegisterType());
+        model.setIdUser(soapModel.getIdUser());
         model.setWeight(soapModel.getWeight());
         model.setHeight(soapModel.getHeight());
-        model.setSmsCounter(soapModel.getSmsCounter());
+        model.setSmsCount(soapModel.getSmsCount());
 
         return model;
     }
@@ -133,17 +126,17 @@ public class UserAdditionalDataModelImpl extends BaseModelImpl<UserAdditionalDat
 
     @Override
     public long getPrimaryKey() {
-        return _userId;
+        return _idUser;
     }
 
     @Override
     public void setPrimaryKey(long primaryKey) {
-        setUserId(primaryKey);
+        setIdUser(primaryKey);
     }
 
     @Override
     public Serializable getPrimaryKeyObj() {
-        return _userId;
+        return _idUser;
     }
 
     @Override
@@ -165,27 +158,20 @@ public class UserAdditionalDataModelImpl extends BaseModelImpl<UserAdditionalDat
     public Map<String, Object> getModelAttributes() {
         Map<String, Object> attributes = new HashMap<String, Object>();
 
-        attributes.put("userId", getUserId());
-        attributes.put("registerType", getRegisterType());
+        attributes.put("idUser", getIdUser());
         attributes.put("weight", getWeight());
         attributes.put("height", getHeight());
-        attributes.put("smsCounter", getSmsCounter());
+        attributes.put("smsCount", getSmsCount());
 
         return attributes;
     }
 
     @Override
     public void setModelAttributes(Map<String, Object> attributes) {
-        Long userId = (Long) attributes.get("userId");
+        Long idUser = (Long) attributes.get("idUser");
 
-        if (userId != null) {
-            setUserId(userId);
-        }
-
-        String registerType = (String) attributes.get("registerType");
-
-        if (registerType != null) {
-            setRegisterType(registerType);
+        if (idUser != null) {
+            setIdUser(idUser);
         }
 
         Integer weight = (Integer) attributes.get("weight");
@@ -200,47 +186,22 @@ public class UserAdditionalDataModelImpl extends BaseModelImpl<UserAdditionalDat
             setHeight(height);
         }
 
-        Long smsCounter = (Long) attributes.get("smsCounter");
+        Long smsCount = (Long) attributes.get("smsCount");
 
-        if (smsCounter != null) {
-            setSmsCounter(smsCounter);
+        if (smsCount != null) {
+            setSmsCount(smsCount);
         }
     }
 
     @JSON
     @Override
-    public long getUserId() {
-        return _userId;
+    public long getIdUser() {
+        return _idUser;
     }
 
     @Override
-    public void setUserId(long userId) {
-        _userId = userId;
-    }
-
-    @Override
-    public String getUserUuid() throws SystemException {
-        return PortalUtil.getUserValue(getUserId(), "uuid", _userUuid);
-    }
-
-    @Override
-    public void setUserUuid(String userUuid) {
-        _userUuid = userUuid;
-    }
-
-    @JSON
-    @Override
-    public String getRegisterType() {
-        if (_registerType == null) {
-            return StringPool.BLANK;
-        } else {
-            return _registerType;
-        }
-    }
-
-    @Override
-    public void setRegisterType(String registerType) {
-        _registerType = registerType;
+    public void setIdUser(long idUser) {
+        _idUser = idUser;
     }
 
     @JSON
@@ -267,13 +228,13 @@ public class UserAdditionalDataModelImpl extends BaseModelImpl<UserAdditionalDat
 
     @JSON
     @Override
-    public long getSmsCounter() {
-        return _smsCounter;
+    public long getSmsCount() {
+        return _smsCount;
     }
 
     @Override
-    public void setSmsCounter(long smsCounter) {
-        _smsCounter = smsCounter;
+    public void setSmsCount(long smsCount) {
+        _smsCount = smsCount;
     }
 
     @Override
@@ -303,11 +264,10 @@ public class UserAdditionalDataModelImpl extends BaseModelImpl<UserAdditionalDat
     public Object clone() {
         UserAdditionalDataImpl userAdditionalDataImpl = new UserAdditionalDataImpl();
 
-        userAdditionalDataImpl.setUserId(getUserId());
-        userAdditionalDataImpl.setRegisterType(getRegisterType());
+        userAdditionalDataImpl.setIdUser(getIdUser());
         userAdditionalDataImpl.setWeight(getWeight());
         userAdditionalDataImpl.setHeight(getHeight());
-        userAdditionalDataImpl.setSmsCounter(getSmsCounter());
+        userAdditionalDataImpl.setSmsCount(getSmsCount());
 
         userAdditionalDataImpl.resetOriginalValues();
 
@@ -361,39 +321,29 @@ public class UserAdditionalDataModelImpl extends BaseModelImpl<UserAdditionalDat
     public CacheModel<UserAdditionalData> toCacheModel() {
         UserAdditionalDataCacheModel userAdditionalDataCacheModel = new UserAdditionalDataCacheModel();
 
-        userAdditionalDataCacheModel.userId = getUserId();
-
-        userAdditionalDataCacheModel.registerType = getRegisterType();
-
-        String registerType = userAdditionalDataCacheModel.registerType;
-
-        if ((registerType != null) && (registerType.length() == 0)) {
-            userAdditionalDataCacheModel.registerType = null;
-        }
+        userAdditionalDataCacheModel.idUser = getIdUser();
 
         userAdditionalDataCacheModel.weight = getWeight();
 
         userAdditionalDataCacheModel.height = getHeight();
 
-        userAdditionalDataCacheModel.smsCounter = getSmsCounter();
+        userAdditionalDataCacheModel.smsCount = getSmsCount();
 
         return userAdditionalDataCacheModel;
     }
 
     @Override
     public String toString() {
-        StringBundler sb = new StringBundler(11);
+        StringBundler sb = new StringBundler(9);
 
-        sb.append("{userId=");
-        sb.append(getUserId());
-        sb.append(", registerType=");
-        sb.append(getRegisterType());
+        sb.append("{idUser=");
+        sb.append(getIdUser());
         sb.append(", weight=");
         sb.append(getWeight());
         sb.append(", height=");
         sb.append(getHeight());
-        sb.append(", smsCounter=");
-        sb.append(getSmsCounter());
+        sb.append(", smsCount=");
+        sb.append(getSmsCount());
         sb.append("}");
 
         return sb.toString();
@@ -401,19 +351,15 @@ public class UserAdditionalDataModelImpl extends BaseModelImpl<UserAdditionalDat
 
     @Override
     public String toXmlString() {
-        StringBundler sb = new StringBundler(19);
+        StringBundler sb = new StringBundler(16);
 
         sb.append("<model><model-name>");
         sb.append("es.eina.tfg.model.UserAdditionalData");
         sb.append("</model-name>");
 
         sb.append(
-            "<column><column-name>userId</column-name><column-value><![CDATA[");
-        sb.append(getUserId());
-        sb.append("]]></column-value></column>");
-        sb.append(
-            "<column><column-name>registerType</column-name><column-value><![CDATA[");
-        sb.append(getRegisterType());
+            "<column><column-name>idUser</column-name><column-value><![CDATA[");
+        sb.append(getIdUser());
         sb.append("]]></column-value></column>");
         sb.append(
             "<column><column-name>weight</column-name><column-value><![CDATA[");
@@ -424,8 +370,8 @@ public class UserAdditionalDataModelImpl extends BaseModelImpl<UserAdditionalDat
         sb.append(getHeight());
         sb.append("]]></column-value></column>");
         sb.append(
-            "<column><column-name>smsCounter</column-name><column-value><![CDATA[");
-        sb.append(getSmsCounter());
+            "<column><column-name>smsCount</column-name><column-value><![CDATA[");
+        sb.append(getSmsCount());
         sb.append("]]></column-value></column>");
 
         sb.append("</model>");
