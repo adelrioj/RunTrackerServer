@@ -68,9 +68,4 @@ public interface UserAdditionalDataService extends BaseService, InvokableService
         java.lang.Long userId)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException;
-
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public java.util.List<es.eina.tfg.model.UserAndRoute> getUserSelectedRoutes(
-        java.lang.Long userId)
-        throws com.liferay.portal.kernel.exception.SystemException;
 }

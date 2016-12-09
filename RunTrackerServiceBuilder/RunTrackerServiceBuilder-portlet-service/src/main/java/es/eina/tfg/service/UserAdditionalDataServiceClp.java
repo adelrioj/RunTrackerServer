@@ -18,8 +18,6 @@ public class UserAdditionalDataServiceClp implements UserAdditionalDataService {
     private String[] _methodParameterTypes4;
     private String _methodName5;
     private String[] _methodParameterTypes5;
-    private String _methodName6;
-    private String[] _methodParameterTypes6;
 
     public UserAdditionalDataServiceClp(InvokableService invokableService) {
         _invokableService = invokableService;
@@ -49,10 +47,6 @@ public class UserAdditionalDataServiceClp implements UserAdditionalDataService {
         _methodName5 = "getUserAdditionalData";
 
         _methodParameterTypes5 = new String[] { "java.lang.Long" };
-
-        _methodName6 = "getUserSelectedRoutes";
-
-        _methodParameterTypes6 = new String[] { "java.lang.Long" };
     }
 
     @Override
@@ -211,33 +205,5 @@ public class UserAdditionalDataServiceClp implements UserAdditionalDataService {
         }
 
         return (es.eina.tfg.model.UserAdditionalData) ClpSerializer.translateOutput(returnObj);
-    }
-
-    @Override
-    public java.util.List<es.eina.tfg.model.UserAndRoute> getUserSelectedRoutes(
-        java.lang.Long userId)
-        throws com.liferay.portal.kernel.exception.SystemException {
-        Object returnObj = null;
-
-        try {
-            returnObj = _invokableService.invokeMethod(_methodName6,
-                    _methodParameterTypes6,
-                    new Object[] { ClpSerializer.translateInput(userId) });
-        } catch (Throwable t) {
-            t = ClpSerializer.translateThrowable(t);
-
-            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
-                throw (com.liferay.portal.kernel.exception.SystemException) t;
-            }
-
-            if (t instanceof RuntimeException) {
-                throw (RuntimeException) t;
-            } else {
-                throw new RuntimeException(t.getClass().getName() +
-                    " is not a valid exception");
-            }
-        }
-
-        return (java.util.List<es.eina.tfg.model.UserAndRoute>) ClpSerializer.translateOutput(returnObj);
     }
 }

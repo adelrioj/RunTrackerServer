@@ -10,8 +10,6 @@ import com.liferay.portal.service.BaseLocalService;
 import com.liferay.portal.service.InvokableLocalService;
 import com.liferay.portal.service.PersistedModelLocalService;
 
-import es.eina.tfg.model.*;
-
 /**
  * Provides the local service interface for UserAdditionalData. Methods of this
  * service will not have security checks based on the propagated JAAS
@@ -242,20 +240,11 @@ public interface UserAdditionalDataLocalService extends BaseLocalService,
         java.lang.String[] parameterTypes, java.lang.Object[] arguments)
         throws java.lang.Throwable;
 
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public java.util.List<es.eina.tfg.model.UserAndRoute> getUserAndRoute(
-        java.lang.Long userId)
+    public es.eina.tfg.model.UserAdditionalData add(
+        es.eina.tfg.model.UserAdditionalData userAdditionalData)
         throws com.liferay.portal.kernel.exception.SystemException;
 
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public java.util.List<es.eina.tfg.model.Route> getAssociatedRoutes(
-        java.lang.Long idUser)
-        throws com.liferay.portal.kernel.exception.PortalException,
-            com.liferay.portal.kernel.exception.SystemException;
-
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public java.util.List<es.eina.tfg.model.Event> getAssociatedEvents(
-        java.lang.Long idUser)
-        throws com.liferay.portal.kernel.exception.PortalException,
-            com.liferay.portal.kernel.exception.SystemException;
+    public es.eina.tfg.model.UserAdditionalData update(
+        es.eina.tfg.model.UserAdditionalData userAdditionalData)
+        throws com.liferay.portal.kernel.exception.SystemException;
 }

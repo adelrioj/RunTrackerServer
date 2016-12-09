@@ -94,17 +94,4 @@ public class UserAdditionalDataServiceSoap {
             throw new RemoteException(e.getMessage());
         }
     }
-
-    public static es.eina.tfg.model.UserAndRouteSoap[] getUserSelectedRoutes(
-        java.lang.Long userId) throws RemoteException {
-        try {
-            java.util.List<es.eina.tfg.model.UserAndRoute> returnValue = UserAdditionalDataServiceUtil.getUserSelectedRoutes(userId);
-
-            return es.eina.tfg.model.UserAndRouteSoap.toSoapModels(returnValue);
-        } catch (Exception e) {
-            _log.error(e, e);
-
-            throw new RemoteException(e.getMessage());
-        }
-    }
 }

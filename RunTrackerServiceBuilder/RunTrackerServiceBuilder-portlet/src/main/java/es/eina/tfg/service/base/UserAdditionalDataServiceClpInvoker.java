@@ -19,8 +19,6 @@ public class UserAdditionalDataServiceClpInvoker {
     private String[] _methodParameterTypes85;
     private String _methodName86;
     private String[] _methodParameterTypes86;
-    private String _methodName87;
-    private String[] _methodParameterTypes87;
 
     public UserAdditionalDataServiceClpInvoker() {
         _methodName78 = "getBeanIdentifier";
@@ -48,10 +46,6 @@ public class UserAdditionalDataServiceClpInvoker {
         _methodName86 = "getUserAdditionalData";
 
         _methodParameterTypes86 = new String[] { "java.lang.Long" };
-
-        _methodName87 = "getUserSelectedRoutes";
-
-        _methodParameterTypes87 = new String[] { "java.lang.Long" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -86,11 +80,6 @@ public class UserAdditionalDataServiceClpInvoker {
         if (_methodName86.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes86, parameterTypes)) {
             return UserAdditionalDataServiceUtil.getUserAdditionalData((java.lang.Long) arguments[0]);
-        }
-
-        if (_methodName87.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes87, parameterTypes)) {
-            return UserAdditionalDataServiceUtil.getUserSelectedRoutes((java.lang.Long) arguments[0]);
         }
 
         throw new UnsupportedOperationException();

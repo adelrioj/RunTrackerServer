@@ -73,12 +73,6 @@ public class UserAdditionalDataServiceUtil {
         return getService().getUserAdditionalData(userId);
     }
 
-    public static java.util.List<es.eina.tfg.model.UserAndRoute> getUserSelectedRoutes(
-        java.lang.Long userId)
-        throws com.liferay.portal.kernel.exception.SystemException {
-        return getService().getUserSelectedRoutes(userId);
-    }
-
     public static void clearService() {
         _service = null;
     }

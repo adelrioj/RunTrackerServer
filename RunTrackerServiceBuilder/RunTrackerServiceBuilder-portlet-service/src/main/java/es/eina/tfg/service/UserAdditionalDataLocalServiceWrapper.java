@@ -277,26 +277,17 @@ public class UserAdditionalDataLocalServiceWrapper
     }
 
     @Override
-    public java.util.List<es.eina.tfg.model.UserAndRoute> getUserAndRoute(
-        java.lang.Long userId)
+    public es.eina.tfg.model.UserAdditionalData add(
+        es.eina.tfg.model.UserAdditionalData userAdditionalData)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return _userAdditionalDataLocalService.getUserAndRoute(userId);
+        return _userAdditionalDataLocalService.add(userAdditionalData);
     }
 
     @Override
-    public java.util.List<es.eina.tfg.model.Route> getAssociatedRoutes(
-        java.lang.Long idUser)
-        throws com.liferay.portal.kernel.exception.PortalException,
-            com.liferay.portal.kernel.exception.SystemException {
-        return _userAdditionalDataLocalService.getAssociatedRoutes(idUser);
-    }
-
-    @Override
-    public java.util.List<es.eina.tfg.model.Event> getAssociatedEvents(
-        java.lang.Long idUser)
-        throws com.liferay.portal.kernel.exception.PortalException,
-            com.liferay.portal.kernel.exception.SystemException {
-        return _userAdditionalDataLocalService.getAssociatedEvents(idUser);
+    public es.eina.tfg.model.UserAdditionalData update(
+        es.eina.tfg.model.UserAdditionalData userAdditionalData)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _userAdditionalDataLocalService.update(userAdditionalData);
     }
 
     /**

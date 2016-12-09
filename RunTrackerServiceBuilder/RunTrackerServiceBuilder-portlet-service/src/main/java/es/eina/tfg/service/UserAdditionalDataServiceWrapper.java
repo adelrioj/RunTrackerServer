@@ -74,13 +74,6 @@ public class UserAdditionalDataServiceWrapper
         return _userAdditionalDataService.getUserAdditionalData(userId);
     }
 
-    @Override
-    public java.util.List<es.eina.tfg.model.UserAndRoute> getUserSelectedRoutes(
-        java.lang.Long userId)
-        throws com.liferay.portal.kernel.exception.SystemException {
-        return _userAdditionalDataService.getUserSelectedRoutes(userId);
-    }
-
     /**
      * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
      */

@@ -57,8 +57,4 @@ public class UserAdditionalDataServiceImpl
     public UserAdditionalData getUserAdditionalData(Long userId) throws SystemException, PortalException {
         return UserAdditionalDataLocalServiceUtil.getUserAdditionalData(userId);
     }
-
-    public List<UserAndRoute> getUserSelectedRoutes(Long userId) throws SystemException {
-        return UserAdditionalDataLocalServiceUtil.getUserAndRoute(userId);
-    }
 }

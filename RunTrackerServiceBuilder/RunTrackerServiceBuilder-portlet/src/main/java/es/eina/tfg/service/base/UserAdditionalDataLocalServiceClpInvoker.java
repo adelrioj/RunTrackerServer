@@ -49,12 +49,6 @@ public class UserAdditionalDataLocalServiceClpInvoker {
     private String[] _methodParameterTypes100;
     private String _methodName101;
     private String[] _methodParameterTypes101;
-    private String _methodName103;
-    private String[] _methodParameterTypes103;
-    private String _methodName104;
-    private String[] _methodParameterTypes104;
-    private String _methodName105;
-    private String[] _methodParameterTypes105;
 
     public UserAdditionalDataLocalServiceClpInvoker() {
         _methodName0 = "addUserAdditionalData";
@@ -147,29 +141,17 @@ public class UserAdditionalDataLocalServiceClpInvoker {
 
         _methodParameterTypes95 = new String[] { "java.lang.String" };
 
-        _methodName100 = "addUserAdditionalData";
+        _methodName100 = "add";
 
         _methodParameterTypes100 = new String[] {
                 "es.eina.tfg.model.UserAdditionalData"
             };
 
-        _methodName101 = "updateUserAdditionalData";
+        _methodName101 = "update";
 
         _methodParameterTypes101 = new String[] {
                 "es.eina.tfg.model.UserAdditionalData"
             };
-
-        _methodName103 = "getUserAndRoute";
-
-        _methodParameterTypes103 = new String[] { "java.lang.Long" };
-
-        _methodName104 = "getAssociatedRoutes";
-
-        _methodParameterTypes104 = new String[] { "java.lang.Long" };
-
-        _methodName105 = "getAssociatedEvents";
-
-        _methodParameterTypes105 = new String[] { "java.lang.Long" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -275,27 +257,12 @@ public class UserAdditionalDataLocalServiceClpInvoker {
 
         if (_methodName100.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes100, parameterTypes)) {
-            return UserAdditionalDataLocalServiceUtil.addUserAdditionalData((es.eina.tfg.model.UserAdditionalData) arguments[0]);
+            return UserAdditionalDataLocalServiceUtil.add((es.eina.tfg.model.UserAdditionalData) arguments[0]);
         }
 
         if (_methodName101.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes101, parameterTypes)) {
-            return UserAdditionalDataLocalServiceUtil.updateUserAdditionalData((es.eina.tfg.model.UserAdditionalData) arguments[0]);
-        }
-
-        if (_methodName103.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes103, parameterTypes)) {
-            return UserAdditionalDataLocalServiceUtil.getUserAndRoute((java.lang.Long) arguments[0]);
-        }
-
-        if (_methodName104.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes104, parameterTypes)) {
-            return UserAdditionalDataLocalServiceUtil.getAssociatedRoutes((java.lang.Long) arguments[0]);
-        }
-
-        if (_methodName105.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes105, parameterTypes)) {
-            return UserAdditionalDataLocalServiceUtil.getAssociatedEvents((java.lang.Long) arguments[0]);
+            return UserAdditionalDataLocalServiceUtil.update((es.eina.tfg.model.UserAdditionalData) arguments[0]);
         }
 
         throw new UnsupportedOperationException();

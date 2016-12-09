@@ -1,18 +1,10 @@
 package es.eina.tfg.service.impl;
 
-import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.model.User;
 import com.liferay.portal.service.UserLocalServiceUtil;
-import es.eina.tfg.model.*;
-import es.eina.tfg.service.EventLocalServiceUtil;
-import es.eina.tfg.service.RouteLocalServiceUtil;
-import es.eina.tfg.service.UserAndEventLocalServiceUtil;
-import es.eina.tfg.service.UserAndRouteLocalServiceUtil;
+import es.eina.tfg.model.UserAdditionalData;
 import es.eina.tfg.service.base.UserAdditionalDataLocalServiceBaseImpl;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * The implementation of the user additional data local service.
@@ -34,16 +26,14 @@ import java.util.List;
 public class UserAdditionalDataLocalServiceImpl
     extends UserAdditionalDataLocalServiceBaseImpl {
 
-    @Override
-    public UserAdditionalData addUserAdditionalData(UserAdditionalData userAdditionalData)
+    public UserAdditionalData add(UserAdditionalData userAdditionalData)
             throws SystemException {
         checkMadatoryAttributes(userAdditionalData);
         userAdditionalData.setSmsCount(0);
         return super.addUserAdditionalData(userAdditionalData);
     }
 
-    @Override
-    public UserAdditionalData updateUserAdditionalData(UserAdditionalData userAdditionalData)
+    public UserAdditionalData update(UserAdditionalData userAdditionalData)
             throws SystemException {
         checkMadatoryAttributes(userAdditionalData);
         return super.updateUserAdditionalData(userAdditionalData);
@@ -56,30 +46,5 @@ public class UserAdditionalDataLocalServiceImpl
             throw new SystemException("The user: "
                     + userAdditionalData.getIdUser() +" does not exists on the database");
         }
-    }
-
-    public List<UserAndRoute> getUserAndRoute(Long userId)
-            throws SystemException {
-        return UserAndRouteLocalServiceUtil.getByidUser(userId);
-    }
-
-    public List<Route> getAssociatedRoutes(Long idUser)
-            throws SystemException, PortalException {
-        List<UserAndRoute> userAndRoutes = UserAndRouteLocalServiceUtil.getByidUser(idUser);
-        List<Route> routes = new ArrayList<Route>();
-        for (UserAndRoute userAndRoute : userAndRoutes) {
-            routes.add(RouteLocalServiceUtil.getRoute(userAndRoute.getIdRoute()));
-        }
-        return routes;
-    }
-
-    public List<Event> getAssociatedEvents(Long idUser)
-            throws SystemException, PortalException {
-        List<UserAndEvent> userAndEvents = UserAndEventLocalServiceUtil.getByidUser(idUser);
-        List<Event> events = new ArrayList<Event>();
-        for (UserAndEvent event : userAndEvents) {
-            events.add(EventLocalServiceUtil.getEvent(event.getIdEvent()));
-        }
-        return events;
     }
 }

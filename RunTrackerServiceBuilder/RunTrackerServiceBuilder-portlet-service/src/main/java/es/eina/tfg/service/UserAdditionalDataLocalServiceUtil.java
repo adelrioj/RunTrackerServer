@@ -262,24 +262,16 @@ public class UserAdditionalDataLocalServiceUtil {
         return getService().invokeMethod(name, parameterTypes, arguments);
     }
 
-    public static java.util.List<es.eina.tfg.model.UserAndRoute> getUserAndRoute(
-        java.lang.Long userId)
+    public static es.eina.tfg.model.UserAdditionalData add(
+        es.eina.tfg.model.UserAdditionalData userAdditionalData)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return getService().getUserAndRoute(userId);
+        return getService().add(userAdditionalData);
     }
 
-    public static java.util.List<es.eina.tfg.model.Route> getAssociatedRoutes(
-        java.lang.Long idUser)
-        throws com.liferay.portal.kernel.exception.PortalException,
-            com.liferay.portal.kernel.exception.SystemException {
-        return getService().getAssociatedRoutes(idUser);
-    }
-
-    public static java.util.List<es.eina.tfg.model.Event> getAssociatedEvents(
-        java.lang.Long idUser)
-        throws com.liferay.portal.kernel.exception.PortalException,
-            com.liferay.portal.kernel.exception.SystemException {
-        return getService().getAssociatedEvents(idUser);
+    public static es.eina.tfg.model.UserAdditionalData update(
+        es.eina.tfg.model.UserAdditionalData userAdditionalData)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService().update(userAdditionalData);
     }
 
     public static void clearService() {
