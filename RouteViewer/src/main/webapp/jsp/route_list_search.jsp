@@ -9,5 +9,5 @@
         buttonLabel="routeListSearch"
         displayTerms="<%= displayTerms %>"
         id="toggle_id_route_list_search">
-  <aui:input label="routeName" name="routeName" value="${routeName}" />
+  <aui:input label="routeName" name="routeName" value="${requestScope.routeName}" />
 </liferay-ui:search-toggle>

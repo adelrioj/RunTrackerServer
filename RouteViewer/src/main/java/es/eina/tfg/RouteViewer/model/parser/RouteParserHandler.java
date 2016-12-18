@@ -1,9 +1,10 @@
 package es.eina.tfg.RouteViewer.model.parser;
 
-import es.eina.tfg.model.Route;
-import org.joda.time.DateTime;
+import es.eina.tfg.RouteViewer.exception.UnableToParseGPXException;
+import es.eina.tfg.RouteViewer.model.RouteLocation;
 
 import java.io.File;
+import java.util.List;
 
 /**
  * Generic interface created for Factory pattern implementation reasons.
@@ -11,6 +12,7 @@ import java.io.File;
  * Created by adelrioj on 09/10/2015.
  */
 public interface RouteParserHandler {
-    Route addRouteFromLocationListFile(File inputFile, String name, String description, boolean isPublic, String type,
-                                       Long authorId, DateTime startingDate) throws Exception;
+
+    List<RouteLocation> getLocationsFromFile(File inputFile)
+            throws UnableToParseGPXException;
 }

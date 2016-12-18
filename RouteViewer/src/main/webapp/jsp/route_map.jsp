@@ -6,9 +6,10 @@
     function initialize() {
 
         var myLatlng = new google.maps.LatLng(
-                ${requestScope.routeToEditLocations[0].latitude},
-                ${requestScope.routeToEditLocations[0].longitude}
+                ${requestScope.routeToEdit.locations[0].latitude},
+                ${requestScope.routeToEdit.locations[0].longitude}
         );
+
         var myOptions = {
             zoom: 14,
             center: myLatlng,
@@ -16,32 +17,26 @@
         };
 
         map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
         var routeCoordinates = [
-            <c:forEach items="${requestScope.routeToEditLocations}" var="routeLocation" >
+            <c:forEach items="${requestScope.routeToEdit.locations}" var="routeLocation" >
                 {lat: ${routeLocation.latitude}, lng:${routeLocation.longitude}},
             </c:forEach>
         ];
+
         setPolyLine(routeCoordinates);
 
         setMarker(
-                ${requestScope.routeToEditLocations[0].latitude},
-                ${requestScope.routeToEditLocations[0].longitude},
+                ${requestScope.routeToEdit.locations[0].latitude},
+                ${requestScope.routeToEdit.locations[0].longitude},
                 '<liferay-ui:message key="startLocationMarkerLabel" />',
                 '${constants.MARKER_GEEEN}');
 
         setMarker(
-                ${requestScope.routeToEditLocations[fn:length(requestScope.routeToEditLocations)-1].latitude},
-                ${requestScope.routeToEditLocations[fn:length(requestScope.routeToEditLocations)-1].longitude},
+                ${requestScope.routeToEdit.locations[fn:length(requestScope.routeToEdit.locations)-1].latitude},
+                ${requestScope.routeToEdit.locations[fn:length(requestScope.routeToEdit.locations)-1].longitude},
                 '<liferay-ui:message key="finishLocationMarkerLabel" />',
                 '${constants.MARKER_YELLOW}');
-
-        <c:if test="${not empty requestScope.routeLocationSelected}">
-        setMarker(
-                ${requestScope.routeLocationSelected.latitude},
-                ${requestScope.routeLocationSelected.longitude},
-                '<liferay-ui:message key="selectedLocationMarkerLabel" />',
-                '${constants.MARKER_RED}');
-        </c:if>
     }
 
     function setMarker(latitude, longitude, title, iconPath) {

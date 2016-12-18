@@ -11,8 +11,13 @@ import javax.portlet.PortletRequest;
  * Created by adelrioj on 04/11/2015.
  */
 public class UserUtils {
+
     public static Long getCurrentUserId(PortletRequest request){
         User user = (User) request.getAttribute(WebKeys.USER);
         return user.getUserId();
+    }
+
+    public static User getCurrentUser(PortletRequest request){
+        return (User) request.getAttribute(WebKeys.USER);
     }
 }

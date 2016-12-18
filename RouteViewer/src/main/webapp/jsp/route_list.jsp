@@ -1,16 +1,21 @@
-<%@ page import="com.liferay.portal.kernel.dao.search.DisplayTerms" %>
-<%@ page import="es.eina.tfg.RouteViewer.model.compare.RouteNameComparator" %>
-<%@ page import="es.eina.tfg.service.RouteLocalServiceUtil" %>
+<%@ page import="com.liferay.portal.kernel.util.Validator" %>
+<%@ page import="es.eina.tfg.RouteViewer.model.Route" %>
+<%@ page import="es.eina.tfg.RouteViewer.model.RouteDisplayTerms" %>
+<%@ page import="es.eina.tfg.RouteViewer.portlet.RouteManager" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.liferay.docs.route.util.WebKeys" %>
 <%@include file="custom_init.jsp"%>
 
 <liferay-portlet:renderURL varImpl="routeListSearchURL">
     <portlet:param name="mvcPath" value="/jsp/view.jsp" />
 </liferay-portlet:renderURL>
 
-<aui:form action="${routeListSearchURL}" method="get" name="RouteListForm">
+<aui:form action="${routeListSearchURL}" method="post" name="RouteListForm">
+
     <liferay-portlet:renderURLParams varImpl="routeListSearchURL" />
+
     <liferay-portlet:renderURL varImpl="iteratorURL">
-        <portlet:param name="routeId" value="${requestScope.routeId}" />
+        <portlet:param name="routeId" value="${requestScope.routeId}" /> <%-- Posible eliminar? --%>
         <portlet:param name="mvcPath" value="/jsp/view.jsp" />
     </liferay-portlet:renderURL>
 
@@ -19,42 +24,50 @@
             hover="false"
             curParam="routeListCurParam"
             emptyResultsMessage="noRoutesFound"
-            displayTerms="<%= new DisplayTerms(renderRequest) %>"
+            displayTerms="<%= new RouteDisplayTerms(renderRequest) %>"
             iteratorURL="<%= iteratorURL %>" >
 
         <liferay-ui:search-form
                 page="/jsp/route_list_search.jsp"
                 servletContext="<%= application %>"
-                />
+        />
+
         <liferay-ui:search-container-results >
             <%
-                DisplayTerms displayTerms =searchContainer.getDisplayTerms();
-                String searchkeywords = displayTerms.getKeywords();
-                searchContainer.setResults(
-                        RouteLocalServiceUtil.getRoutesByName(
-                                searchkeywords,
-                                searchContainer.getStart(),
-                                searchContainer.getEnd(),
-                                new RouteNameComparator()));
-                searchContainer.setTotal(
-                        RouteLocalServiceUtil.getRoutesByNameCount(searchkeywords));
+                RouteDisplayTerms displayTerms = (RouteDisplayTerms) searchContainer.getDisplayTerms();
+
+                List<Route> resultsSearch = RouteManager.getRouteByDisplayTerms(displayTerms,
+                        searchContainer.getStart(), searchContainer.getEnd());
+                int totalSearch = RouteManager.getRouteByDisplayTermsCount(displayTerms);
+
+                searchContainer.setResults(resultsSearch);
+                searchContainer.setTotal(totalSearch);
+
+                Route alreadySelectedRoute = (Route) renderRequest.getAttribute(WebKeys.PARAM_ROUTE_TO_EDIT);
+                if (Validator.isNull(alreadySelectedRoute)
+                        && Validator.isNotNull(resultsSearch)
+                        && resultsSearch.size()>0){
+                    request.setAttribute(WebKeys.PARAM_ROUTE_TO_EDIT, resultsSearch.get(0));
+                }
             %>
         </liferay-ui:search-container-results>
 
         <liferay-ui:search-container-row
-                className="es.eina.tfg.model.Route"
-                keyProperty="routeId"
+                className="es.eina.tfg.RouteViewer.model.Route"
+                keyProperty="idRoute"
                 modelVar="aRoute">
             <liferay-ui:search-container-column-text
                     property="name"
                     name="name"
-                    orderableProperty="name"
-                    orderable="true" />
+                    orderable="false" />
             <liferay-ui:search-container-column-text
                     property="description"
                     name="description"
-                    orderableProperty="description"
-                    orderable="true" />
+                    orderable="false" />
+            <liferay-ui:search-container-column-text
+                    property="type"
+                    name="type"
+                    orderable="false" />
             <liferay-ui:search-container-column-jsp
                     path="/jsp/route_list_actions.jsp"
                     align="right" />
