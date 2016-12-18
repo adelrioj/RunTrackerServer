@@ -41,18 +41,18 @@ public class UserAndEventLocalServiceClpInvoker {
     private String[] _methodParameterTypes14;
     private String _methodName15;
     private String[] _methodParameterTypes15;
-    private String _methodName94;
-    private String[] _methodParameterTypes94;
-    private String _methodName95;
-    private String[] _methodParameterTypes95;
-    private String _methodName100;
-    private String[] _methodParameterTypes100;
+    private String _methodName96;
+    private String[] _methodParameterTypes96;
+    private String _methodName97;
+    private String[] _methodParameterTypes97;
     private String _methodName102;
     private String[] _methodParameterTypes102;
-    private String _methodName103;
-    private String[] _methodParameterTypes103;
     private String _methodName104;
     private String[] _methodParameterTypes104;
+    private String _methodName105;
+    private String[] _methodParameterTypes105;
+    private String _methodName106;
+    private String[] _methodParameterTypes106;
 
     public UserAndEventLocalServiceClpInvoker() {
         _methodName0 = "addUserAndEvent";
@@ -139,29 +139,29 @@ public class UserAndEventLocalServiceClpInvoker {
 
         _methodParameterTypes15 = new String[] { "es.eina.tfg.model.UserAndEvent" };
 
-        _methodName94 = "getBeanIdentifier";
+        _methodName96 = "getBeanIdentifier";
 
-        _methodParameterTypes94 = new String[] {  };
+        _methodParameterTypes96 = new String[] {  };
 
-        _methodName95 = "setBeanIdentifier";
+        _methodName97 = "setBeanIdentifier";
 
-        _methodParameterTypes95 = new String[] { "java.lang.String" };
+        _methodParameterTypes97 = new String[] { "java.lang.String" };
 
-        _methodName100 = "addUserAndEvent";
+        _methodName102 = "addUserAndEvent";
 
-        _methodParameterTypes100 = new String[] { "es.eina.tfg.model.UserAndEvent" };
+        _methodParameterTypes102 = new String[] { "es.eina.tfg.model.UserAndEvent" };
 
-        _methodName102 = "getByidUser";
-
-        _methodParameterTypes102 = new String[] { "long" };
-
-        _methodName103 = "getByidEvent";
-
-        _methodParameterTypes103 = new String[] { "long" };
-
-        _methodName104 = "getByRace";
+        _methodName104 = "getByidUser";
 
         _methodParameterTypes104 = new String[] { "long" };
+
+        _methodName105 = "getByidEvent";
+
+        _methodParameterTypes105 = new String[] { "long" };
+
+        _methodName106 = "getByRace";
+
+        _methodParameterTypes106 = new String[] { "long" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -253,35 +253,35 @@ public class UserAndEventLocalServiceClpInvoker {
             return UserAndEventLocalServiceUtil.updateUserAndEvent((es.eina.tfg.model.UserAndEvent) arguments[0]);
         }
 
-        if (_methodName94.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
+        if (_methodName96.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes96, parameterTypes)) {
             return UserAndEventLocalServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName95.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes95, parameterTypes)) {
+        if (_methodName97.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes97, parameterTypes)) {
             UserAndEventLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }
 
-        if (_methodName100.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes100, parameterTypes)) {
-            return UserAndEventLocalServiceUtil.addUserAndEvent((es.eina.tfg.model.UserAndEvent) arguments[0]);
-        }
-
         if (_methodName102.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes102, parameterTypes)) {
-            return UserAndEventLocalServiceUtil.getByidUser(((Long) arguments[0]).longValue());
-        }
-
-        if (_methodName103.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes103, parameterTypes)) {
-            return UserAndEventLocalServiceUtil.getByidEvent(((Long) arguments[0]).longValue());
+            return UserAndEventLocalServiceUtil.addUserAndEvent((es.eina.tfg.model.UserAndEvent) arguments[0]);
         }
 
         if (_methodName104.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes104, parameterTypes)) {
+            return UserAndEventLocalServiceUtil.getByidUser(((Long) arguments[0]).longValue());
+        }
+
+        if (_methodName105.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes105, parameterTypes)) {
+            return UserAndEventLocalServiceUtil.getByidEvent(((Long) arguments[0]).longValue());
+        }
+
+        if (_methodName106.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes106, parameterTypes)) {
             return UserAndEventLocalServiceUtil.getByRace(((Long) arguments[0]).longValue());
         }
 

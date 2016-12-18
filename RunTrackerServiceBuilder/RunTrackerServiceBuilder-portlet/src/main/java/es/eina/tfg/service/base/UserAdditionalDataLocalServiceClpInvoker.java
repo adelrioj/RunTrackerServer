@@ -41,14 +41,14 @@ public class UserAdditionalDataLocalServiceClpInvoker {
     private String[] _methodParameterTypes14;
     private String _methodName15;
     private String[] _methodParameterTypes15;
-    private String _methodName94;
-    private String[] _methodParameterTypes94;
-    private String _methodName95;
-    private String[] _methodParameterTypes95;
-    private String _methodName100;
-    private String[] _methodParameterTypes100;
-    private String _methodName101;
-    private String[] _methodParameterTypes101;
+    private String _methodName96;
+    private String[] _methodParameterTypes96;
+    private String _methodName97;
+    private String[] _methodParameterTypes97;
+    private String _methodName102;
+    private String[] _methodParameterTypes102;
+    private String _methodName103;
+    private String[] _methodParameterTypes103;
 
     public UserAdditionalDataLocalServiceClpInvoker() {
         _methodName0 = "addUserAdditionalData";
@@ -133,23 +133,23 @@ public class UserAdditionalDataLocalServiceClpInvoker {
                 "es.eina.tfg.model.UserAdditionalData"
             };
 
-        _methodName94 = "getBeanIdentifier";
+        _methodName96 = "getBeanIdentifier";
 
-        _methodParameterTypes94 = new String[] {  };
+        _methodParameterTypes96 = new String[] {  };
 
-        _methodName95 = "setBeanIdentifier";
+        _methodName97 = "setBeanIdentifier";
 
-        _methodParameterTypes95 = new String[] { "java.lang.String" };
+        _methodParameterTypes97 = new String[] { "java.lang.String" };
 
-        _methodName100 = "add";
+        _methodName102 = "add";
 
-        _methodParameterTypes100 = new String[] {
+        _methodParameterTypes102 = new String[] {
                 "es.eina.tfg.model.UserAdditionalData"
             };
 
-        _methodName101 = "update";
+        _methodName103 = "update";
 
-        _methodParameterTypes101 = new String[] {
+        _methodParameterTypes103 = new String[] {
                 "es.eina.tfg.model.UserAdditionalData"
             };
     }
@@ -243,25 +243,25 @@ public class UserAdditionalDataLocalServiceClpInvoker {
             return UserAdditionalDataLocalServiceUtil.updateUserAdditionalData((es.eina.tfg.model.UserAdditionalData) arguments[0]);
         }
 
-        if (_methodName94.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
+        if (_methodName96.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes96, parameterTypes)) {
             return UserAdditionalDataLocalServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName95.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes95, parameterTypes)) {
+        if (_methodName97.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes97, parameterTypes)) {
             UserAdditionalDataLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }
 
-        if (_methodName100.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes100, parameterTypes)) {
+        if (_methodName102.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes102, parameterTypes)) {
             return UserAdditionalDataLocalServiceUtil.add((es.eina.tfg.model.UserAdditionalData) arguments[0]);
         }
 
-        if (_methodName101.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes101, parameterTypes)) {
+        if (_methodName103.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes103, parameterTypes)) {
             return UserAdditionalDataLocalServiceUtil.update((es.eina.tfg.model.UserAdditionalData) arguments[0]);
         }
 

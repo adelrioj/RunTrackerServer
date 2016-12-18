@@ -10,11 +10,8 @@ import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.model.User;
 import com.liferay.portal.service.UserLocalServiceUtil;
 import es.eina.tfg.model.Route;
-import es.eina.tfg.model.RouteLocation;
-import es.eina.tfg.service.RouteLocalServiceUtil;
-import es.eina.tfg.service.RouteLocationLocalService;
-import es.eina.tfg.service.RouteLocationLocalServiceUtil;
 import es.eina.tfg.service.base.RouteLocalServiceBaseImpl;
+import es.eina.tfg.service.persistence.RouteFinderUtil;
 import es.eina.tfg.service.persistence.RouteUtil;
 import org.joda.time.DateTime;
 
@@ -101,9 +98,14 @@ public class RouteLocalServiceImpl extends RouteLocalServiceBaseImpl {
         return (int) RouteUtil.countWithDynamicQuery(buildGetRoutesByNameDynamicQuery(name));
     }
 
-    public List<RouteLocation> getRouteLocations(long idRoute)
+    public List<Route> getByIdUserAndName(long idUser, String name, int start, int end)
             throws SystemException {
-        return RouteLocationLocalServiceUtil.getByidRoute(idRoute);
+        return RouteFinderUtil.getByIdUserAndName(idUser, name, start, end);
+    }
+
+    public long getByIdUserAndNameCount(long idUser, String name)
+            throws SystemException {
+        return RouteFinderUtil.getByIdUserAndNameCount(idUser, name);
     }
 
     private DynamicQuery buildGetRoutesByNameDynamicQuery(String name){

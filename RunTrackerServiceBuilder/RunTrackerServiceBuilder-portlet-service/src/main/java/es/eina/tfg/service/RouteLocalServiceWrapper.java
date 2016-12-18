@@ -306,10 +306,16 @@ public class RouteLocalServiceWrapper implements RouteLocalService,
     }
 
     @Override
-    public java.util.List<es.eina.tfg.model.RouteLocation> getRouteLocations(
-        long idRoute)
+    public java.util.List<es.eina.tfg.model.Route> getByIdUserAndName(
+        long idUser, java.lang.String name, int start, int end)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return _routeLocalService.getRouteLocations(idRoute);
+        return _routeLocalService.getByIdUserAndName(idUser, name, start, end);
+    }
+
+    @Override
+    public long getByIdUserAndNameCount(long idUser, java.lang.String name)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _routeLocalService.getByIdUserAndNameCount(idUser, name);
     }
 
     /**

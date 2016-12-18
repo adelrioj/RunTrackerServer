@@ -30,7 +30,7 @@ import java.util.List;
  * @see es.eina.tfg.service.RouteLocationLocalServiceUtil
  */
 public class RouteLocationLocalServiceImpl
-    extends RouteLocationLocalServiceBaseImpl {
+        extends RouteLocationLocalServiceBaseImpl {
 
     public RouteLocationPK generateNewIdRouteLocation(long idRoute)
             throws SystemException {
@@ -42,6 +42,11 @@ public class RouteLocationLocalServiceImpl
                     + RouteLocation.class.getName());
             throw e;
         }
+    }
+
+    public RouteLocation createRouteLocation (long idRoute, long idRouteLocation){
+        RouteLocationPK locationPK = new RouteLocationPK(idRouteLocation, idRoute);
+        return createRouteLocation(locationPK);
     }
 
     @Override

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<custom-sql>
+    <sql id="es.eina.tfg.service.persistence.RouteFinder.findRouteByUserAndName">
+        <![CDATA[
+        SELECT gl_route.*
+        FROM gl_route
+        INNER JOIN
+            gl_userandroute ON gl_route.idRoute = gl_userandroute.idRoute
+        WHERE
+            (gl_userandroute.idUser = ?) AND
+            (gl_route.name LIKE ?)
+]]>
+    </sql>
+    <sql id="es.eina.tfg.service.persistence.RouteFinder.findRouteByUserAndNameCount">
+        <![CDATA[
+        SELECT COUNT(*)
+        FROM gl_route
+        INNER JOIN
+            gl_userandroute ON gl_route.idRoute = gl_userandroute.idRoute
+        WHERE
+            (gl_userandroute.idUser = ?) AND
+            (gl_route.name LIKE ?)
+]]>
+    </sql>
+</custom-sql>

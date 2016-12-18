@@ -269,6 +269,11 @@ public class RouteLocationLocalServiceUtil {
         return getService().generateNewIdRouteLocation(idRoute);
     }
 
+    public static es.eina.tfg.model.RouteLocation createRouteLocation(
+        long idRoute, long idRouteLocation) {
+        return getService().createRouteLocation(idRoute, idRouteLocation);
+    }
+
     public static java.util.List<es.eina.tfg.model.RouteLocation> getByidRoute(
         java.lang.Long idRoute)
         throws com.liferay.portal.kernel.exception.SystemException {

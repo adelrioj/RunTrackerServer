@@ -293,10 +293,16 @@ public class RouteLocalServiceUtil {
         return getService().getByNameCount(name);
     }
 
-    public static java.util.List<es.eina.tfg.model.RouteLocation> getRouteLocations(
-        long idRoute)
+    public static java.util.List<es.eina.tfg.model.Route> getByIdUserAndName(
+        long idUser, java.lang.String name, int start, int end)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return getService().getRouteLocations(idRoute);
+        return getService().getByIdUserAndName(idUser, name, start, end);
+    }
+
+    public static long getByIdUserAndNameCount(long idUser,
+        java.lang.String name)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService().getByIdUserAndNameCount(idUser, name);
     }
 
     public static void clearService() {

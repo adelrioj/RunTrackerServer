@@ -245,6 +245,9 @@ public interface RouteLocationLocalService extends BaseLocalService,
         long idRoute)
         throws com.liferay.portal.kernel.exception.SystemException;
 
+    public es.eina.tfg.model.RouteLocation createRouteLocation(long idRoute,
+        long idRouteLocation);
+
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public java.util.List<es.eina.tfg.model.RouteLocation> getByidRoute(
         java.lang.Long idRoute)

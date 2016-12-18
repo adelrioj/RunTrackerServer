@@ -262,7 +262,11 @@ public interface RouteLocalService extends BaseLocalService,
         throws com.liferay.portal.kernel.exception.SystemException;
 
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public java.util.List<es.eina.tfg.model.RouteLocation> getRouteLocations(
-        long idRoute)
+    public java.util.List<es.eina.tfg.model.Route> getByIdUserAndName(
+        long idUser, java.lang.String name, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public long getByIdUserAndNameCount(long idUser, java.lang.String name)
         throws com.liferay.portal.kernel.exception.SystemException;
 }

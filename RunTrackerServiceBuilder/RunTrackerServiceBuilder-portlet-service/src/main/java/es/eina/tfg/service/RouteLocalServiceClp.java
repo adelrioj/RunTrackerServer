@@ -58,6 +58,8 @@ public class RouteLocalServiceClp implements RouteLocalService {
     private String[] _methodParameterTypes24;
     private String _methodName25;
     private String[] _methodParameterTypes25;
+    private String _methodName26;
+    private String[] _methodParameterTypes26;
 
     public RouteLocalServiceClp(InvokableLocalService invokableLocalService) {
         _invokableLocalService = invokableLocalService;
@@ -173,9 +175,15 @@ public class RouteLocalServiceClp implements RouteLocalService {
 
         _methodParameterTypes24 = new String[] { "java.lang.String" };
 
-        _methodName25 = "getRouteLocations";
+        _methodName25 = "getByIdUserAndName";
 
-        _methodParameterTypes25 = new String[] { "long" };
+        _methodParameterTypes25 = new String[] {
+                "long", "java.lang.String", "int", "int"
+            };
+
+        _methodName26 = "getByIdUserAndNameCount";
+
+        _methodParameterTypes26 = new String[] { "long", "java.lang.String" };
     }
 
     @Override
@@ -858,14 +866,23 @@ public class RouteLocalServiceClp implements RouteLocalService {
     }
 
     @Override
-    public java.util.List<es.eina.tfg.model.RouteLocation> getRouteLocations(
-        long idRoute)
+    public java.util.List<es.eina.tfg.model.Route> getByIdUserAndName(
+        long idUser, java.lang.String name, int start, int end)
         throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName25,
-                    _methodParameterTypes25, new Object[] { idRoute });
+                    _methodParameterTypes25,
+                    new Object[] {
+                        idUser,
+                        
+                    ClpSerializer.translateInput(name),
+                        
+                    start,
+                        
+                    end
+                    });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -881,6 +898,33 @@ public class RouteLocalServiceClp implements RouteLocalService {
             }
         }
 
-        return (java.util.List<es.eina.tfg.model.RouteLocation>) ClpSerializer.translateOutput(returnObj);
+        return (java.util.List<es.eina.tfg.model.Route>) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
+    public long getByIdUserAndNameCount(long idUser, java.lang.String name)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName26,
+                    _methodParameterTypes26,
+                    new Object[] { idUser, ClpSerializer.translateInput(name) });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return ((Long) returnObj).longValue();
     }
 }

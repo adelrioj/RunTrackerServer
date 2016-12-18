@@ -21,6 +21,7 @@
 	<bean id="es.eina.tfg.service.RouteLocalService" class="es.eina.tfg.service.impl.RouteLocalServiceImpl" />
 	<bean id="es.eina.tfg.service.RouteService" class="es.eina.tfg.service.impl.RouteServiceImpl" />
 	<bean id="es.eina.tfg.service.persistence.RoutePersistence" class="es.eina.tfg.service.persistence.RoutePersistenceImpl" parent="basePersistence" />
+	<bean id="es.eina.tfg.service.persistence.RouteFinder" class="es.eina.tfg.service.persistence.RouteFinderImpl" parent="basePersistence" />
 	<bean id="es.eina.tfg.service.RouteLocationLocalService" class="es.eina.tfg.service.impl.RouteLocationLocalServiceImpl" />
 	<bean id="es.eina.tfg.service.RouteLocationService" class="es.eina.tfg.service.impl.RouteLocationServiceImpl" />
 	<bean id="es.eina.tfg.service.persistence.RouteLocationPersistence" class="es.eina.tfg.service.persistence.RouteLocationPersistenceImpl" parent="basePersistence" />
