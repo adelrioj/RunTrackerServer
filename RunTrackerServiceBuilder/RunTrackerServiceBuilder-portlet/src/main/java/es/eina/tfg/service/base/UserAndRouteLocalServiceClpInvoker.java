@@ -41,14 +41,16 @@ public class UserAndRouteLocalServiceClpInvoker {
     private String[] _methodParameterTypes14;
     private String _methodName15;
     private String[] _methodParameterTypes15;
-    private String _methodName96;
-    private String[] _methodParameterTypes96;
-    private String _methodName97;
-    private String[] _methodParameterTypes97;
-    private String _methodName102;
-    private String[] _methodParameterTypes102;
+    private String _methodName98;
+    private String[] _methodParameterTypes98;
+    private String _methodName99;
+    private String[] _methodParameterTypes99;
     private String _methodName104;
     private String[] _methodParameterTypes104;
+    private String _methodName105;
+    private String[] _methodParameterTypes105;
+    private String _methodName107;
+    private String[] _methodParameterTypes107;
 
     public UserAndRouteLocalServiceClpInvoker() {
         _methodName0 = "addUserAndRoute";
@@ -135,21 +137,29 @@ public class UserAndRouteLocalServiceClpInvoker {
 
         _methodParameterTypes15 = new String[] { "es.eina.tfg.model.UserAndRoute" };
 
-        _methodName96 = "getBeanIdentifier";
+        _methodName98 = "getBeanIdentifier";
 
-        _methodParameterTypes96 = new String[] {  };
+        _methodParameterTypes98 = new String[] {  };
 
-        _methodName97 = "setBeanIdentifier";
+        _methodName99 = "setBeanIdentifier";
 
-        _methodParameterTypes97 = new String[] { "java.lang.String" };
+        _methodParameterTypes99 = new String[] { "java.lang.String" };
 
-        _methodName102 = "addUserAndRoute";
+        _methodName104 = "addUserAndRoute";
 
-        _methodParameterTypes102 = new String[] { "es.eina.tfg.model.UserAndRoute" };
+        _methodParameterTypes104 = new String[] {
+                "java.lang.Long", "java.lang.Long"
+            };
 
-        _methodName104 = "getByidUser";
+        _methodName105 = "deleteUserAndRoute";
 
-        _methodParameterTypes104 = new String[] { "java.lang.Long" };
+        _methodParameterTypes105 = new String[] {
+                "java.lang.Long", "java.lang.Long"
+            };
+
+        _methodName107 = "getByidUser";
+
+        _methodParameterTypes107 = new String[] { "java.lang.Long" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -241,25 +251,32 @@ public class UserAndRouteLocalServiceClpInvoker {
             return UserAndRouteLocalServiceUtil.updateUserAndRoute((es.eina.tfg.model.UserAndRoute) arguments[0]);
         }
 
-        if (_methodName96.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes96, parameterTypes)) {
+        if (_methodName98.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes98, parameterTypes)) {
             return UserAndRouteLocalServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName97.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes97, parameterTypes)) {
+        if (_methodName99.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes99, parameterTypes)) {
             UserAndRouteLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }
 
-        if (_methodName102.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes102, parameterTypes)) {
-            return UserAndRouteLocalServiceUtil.addUserAndRoute((es.eina.tfg.model.UserAndRoute) arguments[0]);
-        }
-
         if (_methodName104.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes104, parameterTypes)) {
+            return UserAndRouteLocalServiceUtil.addUserAndRoute((java.lang.Long) arguments[0],
+                (java.lang.Long) arguments[1]);
+        }
+
+        if (_methodName105.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes105, parameterTypes)) {
+            return UserAndRouteLocalServiceUtil.deleteUserAndRoute((java.lang.Long) arguments[0],
+                (java.lang.Long) arguments[1]);
+        }
+
+        if (_methodName107.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes107, parameterTypes)) {
             return UserAndRouteLocalServiceUtil.getByidUser((java.lang.Long) arguments[0]);
         }
 

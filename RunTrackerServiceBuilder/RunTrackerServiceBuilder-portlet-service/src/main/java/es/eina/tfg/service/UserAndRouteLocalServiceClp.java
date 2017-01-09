@@ -46,6 +46,10 @@ public class UserAndRouteLocalServiceClp implements UserAndRouteLocalService {
     private String[] _methodParameterTypes17;
     private String _methodName19;
     private String[] _methodParameterTypes19;
+    private String _methodName20;
+    private String[] _methodParameterTypes20;
+    private String _methodName21;
+    private String[] _methodParameterTypes21;
 
     public UserAndRouteLocalServiceClp(
         InvokableLocalService invokableLocalService) {
@@ -143,9 +147,21 @@ public class UserAndRouteLocalServiceClp implements UserAndRouteLocalService {
 
         _methodParameterTypes17 = new String[] { "java.lang.String" };
 
-        _methodName19 = "getByidUser";
+        _methodName19 = "addUserAndRoute";
 
-        _methodParameterTypes19 = new String[] { "java.lang.Long" };
+        _methodParameterTypes19 = new String[] {
+                "java.lang.Long", "java.lang.Long"
+            };
+
+        _methodName20 = "deleteUserAndRoute";
+
+        _methodParameterTypes20 = new String[] {
+                "java.lang.Long", "java.lang.Long"
+            };
+
+        _methodName21 = "getByidUser";
+
+        _methodParameterTypes21 = new String[] { "java.lang.Long" };
     }
 
     @Override
@@ -667,14 +683,83 @@ public class UserAndRouteLocalServiceClp implements UserAndRouteLocalService {
     }
 
     @Override
-    public java.util.List<es.eina.tfg.model.UserAndRoute> getByidUser(
-        java.lang.Long userId)
+    public es.eina.tfg.model.UserAndRoute addUserAndRoute(
+        java.lang.Long idUser, java.lang.Long idRoute)
         throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName19,
                     _methodParameterTypes19,
+                    new Object[] {
+                        ClpSerializer.translateInput(idUser),
+                        
+                    ClpSerializer.translateInput(idRoute)
+                    });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (es.eina.tfg.model.UserAndRoute) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
+    public es.eina.tfg.model.UserAndRoute deleteUserAndRoute(
+        java.lang.Long idUser, java.lang.Long idRoute)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName20,
+                    _methodParameterTypes20,
+                    new Object[] {
+                        ClpSerializer.translateInput(idUser),
+                        
+                    ClpSerializer.translateInput(idRoute)
+                    });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+                throw (com.liferay.portal.kernel.exception.PortalException) t;
+            }
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (es.eina.tfg.model.UserAndRoute) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
+    public java.util.List<es.eina.tfg.model.UserAndRoute> getByidUser(
+        java.lang.Long userId)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName21,
+                    _methodParameterTypes21,
                     new Object[] { ClpSerializer.translateInput(userId) });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);

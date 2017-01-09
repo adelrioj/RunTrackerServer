@@ -41,18 +41,18 @@ public class PowerLocalServiceClpInvoker {
     private String[] _methodParameterTypes14;
     private String _methodName15;
     private String[] _methodParameterTypes15;
-    private String _methodName96;
-    private String[] _methodParameterTypes96;
-    private String _methodName97;
-    private String[] _methodParameterTypes97;
-    private String _methodName102;
-    private String[] _methodParameterTypes102;
-    private String _methodName103;
-    private String[] _methodParameterTypes103;
+    private String _methodName98;
+    private String[] _methodParameterTypes98;
+    private String _methodName99;
+    private String[] _methodParameterTypes99;
     private String _methodName104;
     private String[] _methodParameterTypes104;
+    private String _methodName105;
+    private String[] _methodParameterTypes105;
     private String _methodName106;
     private String[] _methodParameterTypes106;
+    private String _methodName108;
+    private String[] _methodParameterTypes108;
 
     public PowerLocalServiceClpInvoker() {
         _methodName0 = "addPower";
@@ -139,29 +139,29 @@ public class PowerLocalServiceClpInvoker {
 
         _methodParameterTypes15 = new String[] { "es.eina.tfg.model.Power" };
 
-        _methodName96 = "getBeanIdentifier";
+        _methodName98 = "getBeanIdentifier";
 
-        _methodParameterTypes96 = new String[] {  };
+        _methodParameterTypes98 = new String[] {  };
 
-        _methodName97 = "setBeanIdentifier";
+        _methodName99 = "setBeanIdentifier";
 
-        _methodParameterTypes97 = new String[] { "java.lang.String" };
+        _methodParameterTypes99 = new String[] { "java.lang.String" };
 
-        _methodName102 = "generateNewIdPower";
+        _methodName104 = "generateNewIdPower";
 
-        _methodParameterTypes102 = new String[] { "long" };
+        _methodParameterTypes104 = new String[] { "long" };
 
-        _methodName103 = "addPower";
+        _methodName105 = "addPower";
 
-        _methodParameterTypes103 = new String[] { "es.eina.tfg.model.Power" };
+        _methodParameterTypes105 = new String[] { "es.eina.tfg.model.Power" };
 
-        _methodName104 = "updatePower";
+        _methodName106 = "updatePower";
 
-        _methodParameterTypes104 = new String[] { "es.eina.tfg.model.Power" };
+        _methodParameterTypes106 = new String[] { "es.eina.tfg.model.Power" };
 
-        _methodName106 = "getByRaceId";
+        _methodName108 = "getByRaceId";
 
-        _methodParameterTypes106 = new String[] { "java.lang.Long" };
+        _methodParameterTypes108 = new String[] { "java.lang.Long" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -253,35 +253,35 @@ public class PowerLocalServiceClpInvoker {
             return PowerLocalServiceUtil.updatePower((es.eina.tfg.model.Power) arguments[0]);
         }
 
-        if (_methodName96.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes96, parameterTypes)) {
+        if (_methodName98.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes98, parameterTypes)) {
             return PowerLocalServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName97.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes97, parameterTypes)) {
+        if (_methodName99.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes99, parameterTypes)) {
             PowerLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }
 
-        if (_methodName102.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes102, parameterTypes)) {
+        if (_methodName104.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes104, parameterTypes)) {
             return PowerLocalServiceUtil.generateNewIdPower(((Long) arguments[0]).longValue());
         }
 
-        if (_methodName103.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes103, parameterTypes)) {
+        if (_methodName105.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes105, parameterTypes)) {
             return PowerLocalServiceUtil.addPower((es.eina.tfg.model.Power) arguments[0]);
-        }
-
-        if (_methodName104.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes104, parameterTypes)) {
-            return PowerLocalServiceUtil.updatePower((es.eina.tfg.model.Power) arguments[0]);
         }
 
         if (_methodName106.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes106, parameterTypes)) {
+            return PowerLocalServiceUtil.updatePower((es.eina.tfg.model.Power) arguments[0]);
+        }
+
+        if (_methodName108.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes108, parameterTypes)) {
             return PowerLocalServiceUtil.getByRaceId((java.lang.Long) arguments[0]);
         }
 

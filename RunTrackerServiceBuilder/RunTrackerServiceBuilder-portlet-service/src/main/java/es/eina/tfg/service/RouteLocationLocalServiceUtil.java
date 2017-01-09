@@ -274,6 +274,11 @@ public class RouteLocationLocalServiceUtil {
         return getService().createRouteLocation(idRoute, idRouteLocation);
     }
 
+    public static void deleteByIdRoute(long idRoute)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        getService().deleteByIdRoute(idRoute);
+    }
+
     public static java.util.List<es.eina.tfg.model.RouteLocation> getByidRoute(
         java.lang.Long idRoute)
         throws com.liferay.portal.kernel.exception.SystemException {

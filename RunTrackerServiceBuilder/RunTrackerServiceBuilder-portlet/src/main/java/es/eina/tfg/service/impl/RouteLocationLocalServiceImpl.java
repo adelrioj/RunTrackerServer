@@ -7,6 +7,7 @@ import es.eina.tfg.model.Route;
 import es.eina.tfg.model.RouteLocation;
 import es.eina.tfg.service.RouteLocalServiceUtil;
 import es.eina.tfg.service.base.RouteLocationLocalServiceBaseImpl;
+import es.eina.tfg.service.persistence.RouteLocationFinderUtil;
 import es.eina.tfg.service.persistence.RouteLocationPK;
 import es.eina.tfg.service.persistence.RouteLocationUtil;
 
@@ -70,6 +71,11 @@ public class RouteLocationLocalServiceImpl
             throw new SystemException("Route: "
                     + routeLocation.getIdRoute() + " does not exists on the database.");
         }
+    }
+
+    public void deleteByIdRoute(long idRoute)
+            throws SystemException {
+        RouteLocationFinderUtil.deleteByIdRoute(idRoute);
     }
 
     public List<RouteLocation> getByidRoute (Long idRoute)

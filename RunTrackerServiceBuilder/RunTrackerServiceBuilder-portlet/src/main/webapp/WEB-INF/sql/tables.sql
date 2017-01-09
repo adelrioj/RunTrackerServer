@@ -80,6 +80,7 @@ create table GL_RouteLocation (
 	idRoute LONG not null,
 	latitude DOUBLE,
 	longitude DOUBLE,
+	elevation DOUBLE,
 	primary key (idRouteLocation, idRoute)
 );
 

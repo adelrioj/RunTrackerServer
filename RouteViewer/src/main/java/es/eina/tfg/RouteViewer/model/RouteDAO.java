@@ -5,10 +5,9 @@ import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.service.UserLocalServiceUtil;
-import es.eina.tfg.model.UserAndRoute;
+import es.eina.tfg.RouteViewer.util.RouteUtils;
 import es.eina.tfg.service.RouteLocalServiceUtil;
 import es.eina.tfg.service.UserAndRouteLocalServiceUtil;
-import es.eina.tfg.service.persistence.UserAndRoutePK;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,14 +18,8 @@ public class RouteDAO {
             throws SystemException, PortalException {
         es.eina.tfg.model.Route toInsert = createSBRouteFromLocalRoute(route);
         es.eina.tfg.model.Route inserted = RouteLocalServiceUtil.addRoute(toInsert);
-        addUserAndRouteRelation(inserted);
+        UserAndRouteLocalServiceUtil.addUserAndRoute(inserted.getIdAuthor(), inserted.getIdRoute());
         return toLocalRoute(inserted);
-    }
-
-    private static void addUserAndRouteRelation(es.eina.tfg.model.Route inserted) throws SystemException {
-        UserAndRoutePK userAndRoutePK = new UserAndRoutePK(inserted.getIdAuthor(), inserted.getIdRoute());
-        UserAndRoute userAndRoute = UserAndRouteLocalServiceUtil.createUserAndRoute(userAndRoutePK);
-        UserAndRouteLocalServiceUtil.addUserAndRoute(userAndRoute);
     }
 
     public static Route update(final Route route)
@@ -46,44 +39,31 @@ public class RouteDAO {
         deleteUserAndRouteRelation(route);
 
         if (!route.isPublic()){
+            RouteLocationDAO.deleteByIdRoute(route.getIdRoute());
             RouteLocalServiceUtil.deleteRoute(route.getIdRoute());
         }
     }
 
     private static void deleteUserAndRouteRelation(Route route)
             throws SystemException, PortalException {
-        UserAndRoutePK userAndRoutePK = new UserAndRoutePK(route.getAuthor().getUserId(), route.getIdRoute());
-        UserAndRouteLocalServiceUtil.deleteUserAndRoute(userAndRoutePK);
+        UserAndRouteLocalServiceUtil.deleteUserAndRoute(route.getAuthor().getUserId(), route.getIdRoute());
     }
 
-    public static Route getFirstRoute(final Long idUser){
+    public static Route getFirstRoute(final Long idUser)
+            throws SystemException, PortalException {
         es.eina.tfg.RouteViewer.model.Route resultRoute = null;
-        es.eina.tfg.model.Route firstSBRoute = null;
-        try {
-            List<es.eina.tfg.model.Route> routes = RouteLocalServiceUtil.getByIdUserAndName(idUser, "", 0, 19);
-            if (routes!= null && routes.size() >0){
-                firstSBRoute = routes.get(0);
-                resultRoute = toLocalRoute(firstSBRoute);
-            }
-        } catch (SystemException e) {
-            _log.error("Cannot obtain first route of the list on start.");
-        } catch (PortalException e) {
-            _log.error("PortalException while toLocalRoute for: " + firstSBRoute);
+        List<es.eina.tfg.model.Route> routes = RouteLocalServiceUtil.getByIdUserAndName(idUser, "", 0, 19);
+        if (routes!= null && routes.size() >0){
+            es.eina.tfg.model.Route firstSBRoute = routes.get(0);
+            resultRoute = toLocalRoute(firstSBRoute);
         }
         return resultRoute;
     }
 
-    public static Route getByIdRoute(final Long idRoute) {
-        Route route = null;
-        try {
-            es.eina.tfg.model.Route sbRoute = RouteLocalServiceUtil.getRoute(idRoute);
-            route = toLocalRoute(sbRoute);
-        } catch (PortalException e) {
-            _log.error("PortalException while searching for route with ID: " + idRoute);
-        } catch (SystemException e) {
-            _log.error("SystemException while searching for route with ID: " + idRoute);
-        }
-        return route;
+    public static Route getByIdRoute(final Long idRoute)
+            throws SystemException, PortalException {
+        es.eina.tfg.model.Route sbRoute = RouteLocalServiceUtil.getRoute(idRoute);
+        return toLocalRoute(sbRoute);
     }
 
     public static List<Route> getByIdUserAndName(final long idUser,
@@ -105,7 +85,8 @@ public class RouteDAO {
         return RouteLocalServiceUtil.getByIdUserAndNameCount(idUser, name);
     }
 
-    private static es.eina.tfg.model.Route createSBRouteFromLocalRoute(final es.eina.tfg.RouteViewer.model.Route localRoute)
+    private static es.eina.tfg.model.Route createSBRouteFromLocalRoute(
+            final es.eina.tfg.RouteViewer.model.Route localRoute)
             throws SystemException {
         Long idRoute = RouteLocalServiceUtil.generateNewIdRoute();
         es.eina.tfg.model.Route SBRoute = RouteLocalServiceUtil.createRoute(idRoute);
@@ -127,7 +108,13 @@ public class RouteDAO {
             localRoute.setName(toConvert.getName());
             localRoute.setDescription(toConvert.getDescription());
             localRoute.setPublic(toConvert.getIsPublic());
-            localRoute.setLocations(RouteLocationDAO.getByIdRoute(localRoute.getIdRoute()));
+
+            List<RouteLocation> locations = RouteLocationDAO.getByIdRoute(localRoute.getIdRoute());
+            boolean locationsIsNotEmpty = locations != null && !locations.isEmpty();
+            if (locationsIsNotEmpty){
+                RouteUtils.setLocationBasedPRoperties(localRoute, locations);
+            }
+
             return localRoute;
         } catch (SystemException e) {
             _log.error("SystemException while getByIdRoute for route: " + toConvert);

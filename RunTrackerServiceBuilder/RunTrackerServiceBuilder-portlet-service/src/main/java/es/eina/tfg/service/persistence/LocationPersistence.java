@@ -136,8 +136,7 @@ public interface LocationPersistence extends BasePersistence<Location> {
     * @throws SystemException if a system exception occurred
     */
     public es.eina.tfg.model.Location[] findByraceId_PrevAndNext(
-        es.eina.tfg.service.persistence.LocationPK locationPK,
-        java.lang.Long idRace,
+        LocationPK locationPK, java.lang.Long idRace,
         com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchLocationException;
@@ -182,8 +181,7 @@ public interface LocationPersistence extends BasePersistence<Location> {
     * @param locationPK the primary key for the new location
     * @return the new location
     */
-    public es.eina.tfg.model.Location create(
-        es.eina.tfg.service.persistence.LocationPK locationPK);
+    public es.eina.tfg.model.Location create(LocationPK locationPK);
 
     /**
     * Removes the location with the primary key from the database. Also notifies the appropriate model listeners.
@@ -193,8 +191,7 @@ public interface LocationPersistence extends BasePersistence<Location> {
     * @throws es.eina.tfg.NoSuchLocationException if a location with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
-    public es.eina.tfg.model.Location remove(
-        es.eina.tfg.service.persistence.LocationPK locationPK)
+    public es.eina.tfg.model.Location remove(LocationPK locationPK)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchLocationException;
 
@@ -210,8 +207,7 @@ public interface LocationPersistence extends BasePersistence<Location> {
     * @throws es.eina.tfg.NoSuchLocationException if a location with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
-    public es.eina.tfg.model.Location findByPrimaryKey(
-        es.eina.tfg.service.persistence.LocationPK locationPK)
+    public es.eina.tfg.model.Location findByPrimaryKey(LocationPK locationPK)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchLocationException;
 
@@ -222,8 +218,7 @@ public interface LocationPersistence extends BasePersistence<Location> {
     * @return the location, or <code>null</code> if a location with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
-    public es.eina.tfg.model.Location fetchByPrimaryKey(
-        es.eina.tfg.service.persistence.LocationPK locationPK)
+    public es.eina.tfg.model.Location fetchByPrimaryKey(LocationPK locationPK)
         throws com.liferay.portal.kernel.exception.SystemException;
 
     /**

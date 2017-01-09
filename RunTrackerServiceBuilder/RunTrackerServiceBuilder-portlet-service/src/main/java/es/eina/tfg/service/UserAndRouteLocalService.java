@@ -241,6 +241,15 @@ public interface UserAndRouteLocalService extends BaseLocalService,
         java.lang.String[] parameterTypes, java.lang.Object[] arguments)
         throws java.lang.Throwable;
 
+    public es.eina.tfg.model.UserAndRoute addUserAndRoute(
+        java.lang.Long idUser, java.lang.Long idRoute)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    public es.eina.tfg.model.UserAndRoute deleteUserAndRoute(
+        java.lang.Long idUser, java.lang.Long idRoute)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException;
+
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public java.util.List<es.eina.tfg.model.UserAndRoute> getByidUser(
         java.lang.Long userId)

@@ -19,6 +19,7 @@ public class RouteLocationSoap implements Serializable {
     private long _idRoute;
     private double _latitude;
     private double _longitude;
+    private double _elevation;
 
     public RouteLocationSoap() {
     }
@@ -30,6 +31,7 @@ public class RouteLocationSoap implements Serializable {
         soapModel.setIdRoute(model.getIdRoute());
         soapModel.setLatitude(model.getLatitude());
         soapModel.setLongitude(model.getLongitude());
+        soapModel.setElevation(model.getElevation());
 
         return soapModel;
     }
@@ -109,5 +111,13 @@ public class RouteLocationSoap implements Serializable {
 
     public void setLongitude(double longitude) {
         _longitude = longitude;
+    }
+
+    public double getElevation() {
+        return _elevation;
+    }
+
+    public void setElevation(double elevation) {
+        _elevation = elevation;
     }
 }

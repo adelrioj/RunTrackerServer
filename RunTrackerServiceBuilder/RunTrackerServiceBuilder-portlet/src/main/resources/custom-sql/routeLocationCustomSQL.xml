@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<custom-sql>
+    <sql id="es.eina.tfg.service.persistence.RouteLocationFinder.deleteByIdRoute">
+        <![CDATA[
+            DELETE FROM gl_routelocation
+            WHERE gl_routelocation.idRoute = ?
+        ]]>
+    </sql>
+</custom-sql>

@@ -16,7 +16,18 @@ public class Route {
     private String description;
     private Boolean publicRoute;
 
+    private Double distanceInMeters;
+    private RouteLocation minElevation;
+    private RouteLocation maxElevation;
+    private Double maxElevationDifference;
+    private RouteLocation startLocation;
+    private RouteLocation endLocation;
+
     private List<RouteLocation> locations;
+
+    public Route() {
+        distanceInMeters = 0d;
+    }
 
     public Long getIdRoute() {
         return idRoute;
@@ -60,6 +71,56 @@ public class Route {
         publicRoute = aPublic;
     }
 
+    public Boolean getPublicRoute() {
+        return publicRoute;
+    }
+    public void setPublicRoute(Boolean publicRoute) {
+        this.publicRoute = publicRoute;
+    }
+
+    public Double getDistanceInMeters() {
+        return distanceInMeters;
+    }
+    public void setDistanceInMeters(Double distanceInMeters) {
+        this.distanceInMeters = distanceInMeters;
+    }
+
+    public RouteLocation getMinElevation() {
+        return minElevation;
+    }
+    public void setMinElevation(RouteLocation minElevation) {
+        this.minElevation = minElevation;
+    }
+
+    public RouteLocation getMaxElevation() {
+        return maxElevation;
+    }
+    public void setMaxElevation(RouteLocation maxElevation) {
+        this.maxElevation = maxElevation;
+    }
+
+    public Double getMaxElevationDifference() {
+        return maxElevationDifference;
+    }
+
+    public void setMaxElevationDifference(Double maxElevationDifference) {
+        this.maxElevationDifference = maxElevationDifference;
+    }
+
+    public RouteLocation getStartLocation() {
+        return startLocation;
+    }
+    public void setStartLocation(RouteLocation startLocation) {
+        this.startLocation = startLocation;
+    }
+
+    public RouteLocation getEndLocation() {
+        return endLocation;
+    }
+    public void setEndLocation(RouteLocation endLocation) {
+        this.endLocation = endLocation;
+    }
+
     public List<RouteLocation> getLocations() {
         return locations;
     }
@@ -75,7 +136,13 @@ public class Route {
                 ", type='" + type + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", isPublic=" + publicRoute +
+                ", publicRoute=" + publicRoute +
+                ", distanceInMeters=" + distanceInMeters +
+                ", minElevation=" + minElevation +
+                ", maxElevation=" + maxElevation +
+                ", maxElevationDifference=" + maxElevationDifference +
+                ", startLocation=" + startLocation +
+                ", endLocation=" + endLocation +
                 ", locations=" + locations +
                 '}';
     }

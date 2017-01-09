@@ -23,10 +23,11 @@ public class RouteLocationCacheModel implements CacheModel<RouteLocation>,
     public long idRoute;
     public double latitude;
     public double longitude;
+    public double elevation;
 
     @Override
     public String toString() {
-        StringBundler sb = new StringBundler(9);
+        StringBundler sb = new StringBundler(11);
 
         sb.append("{idRouteLocation=");
         sb.append(idRouteLocation);
@@ -36,6 +37,8 @@ public class RouteLocationCacheModel implements CacheModel<RouteLocation>,
         sb.append(latitude);
         sb.append(", longitude=");
         sb.append(longitude);
+        sb.append(", elevation=");
+        sb.append(elevation);
         sb.append("}");
 
         return sb.toString();
@@ -49,6 +52,7 @@ public class RouteLocationCacheModel implements CacheModel<RouteLocation>,
         routeLocationImpl.setIdRoute(idRoute);
         routeLocationImpl.setLatitude(latitude);
         routeLocationImpl.setLongitude(longitude);
+        routeLocationImpl.setElevation(elevation);
 
         routeLocationImpl.resetOriginalValues();
 
@@ -61,6 +65,7 @@ public class RouteLocationCacheModel implements CacheModel<RouteLocation>,
         idRoute = objectInput.readLong();
         latitude = objectInput.readDouble();
         longitude = objectInput.readDouble();
+        elevation = objectInput.readDouble();
     }
 
     @Override
@@ -70,5 +75,6 @@ public class RouteLocationCacheModel implements CacheModel<RouteLocation>,
         objectOutput.writeLong(idRoute);
         objectOutput.writeDouble(latitude);
         objectOutput.writeDouble(longitude);
+        objectOutput.writeDouble(elevation);
     }
 }

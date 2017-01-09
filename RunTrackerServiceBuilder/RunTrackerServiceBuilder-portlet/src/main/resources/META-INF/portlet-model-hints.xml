@@ -73,6 +73,7 @@
 		<field name="idRoute" type="long" />
 		<field name="latitude" type="double" />
 		<field name="longitude" type="double" />
+		<field name="elevation" type="double" />
 	</model>
 	<model name="es.eina.tfg.model.Sensor">
 		<field name="idSensor" type="long" />

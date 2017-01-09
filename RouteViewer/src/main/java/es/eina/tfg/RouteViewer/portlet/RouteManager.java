@@ -5,12 +5,10 @@ import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.util.Validator;
-import es.eina.tfg.RouteViewer.exception.UnableToAddException;
-import es.eina.tfg.RouteViewer.exception.UnableToDeleteException;
-import es.eina.tfg.RouteViewer.exception.UnableToParseGPXException;
-import es.eina.tfg.RouteViewer.exception.UnableToUpdateException;
+import es.eina.tfg.RouteViewer.exception.*;
 import es.eina.tfg.RouteViewer.model.*;
 import es.eina.tfg.RouteViewer.model.parser.RouteParserFactory;
+import es.eina.tfg.RouteViewer.util.RouteUtils;
 
 import java.io.File;
 import java.util.Collections;
@@ -20,32 +18,44 @@ import static com.liferay.portal.kernel.util.Validator.isNull;
 
 public class RouteManager {
 
-    public static Route addRoute(final Route toAdd, File locations)
+    public static Route addRoute(final Route route, File locations)
             throws UnableToAddException {
-        if (Validator.isNull(toAdd.getAuthor()))
-            throw new UnableToAddException("Cannot add route with empty or null author for: " + toAdd);
-        if (Validator.isNull(toAdd.getName()))
-            throw new UnableToAddException("Cannot add route with empty or null name for: " + toAdd);
-        if (Validator.isNull(toAdd.getType()))
-            throw new UnableToAddException("Cannot add route with empty or null type for: " + toAdd);
+        if (Validator.isNull(route.getAuthor()))
+            throw new UnableToAddException("Cannot add route with empty or null author for: " + route);
+        if (Validator.isNull(route.getName()))
+            throw new UnableToAddException("Cannot add route with empty or null name for: " + route);
+        if (Validator.isNull(route.getType()))
+            throw new UnableToAddException("Cannot add route with empty or null type for: " + route);
 
         try {
-            List<RouteLocation> locationList = RouteParserFactory.getSAXHandler(locations.getName())
-                    .getLocationsFromFile(locations);
-            Route addedRoute = RouteDAO.insert(toAdd);
-            addedRoute.setLocations(RouteLocationDAO.insertMany(addedRoute.getIdRoute(), locationList));
-            _log.info("Added route: " + addedRoute);
-            return addedRoute;
+            return _addRoute(route, locations);
         } catch (SystemException e) {
-            _log.error("SystemException while insert: " + toAdd, e);
+            _log.error("SystemException while insert: " + route, e);
             throw new UnableToAddException(e);
         } catch (PortalException e) {
-            _log.error("PortalException while insert: " + toAdd, e);
+            _log.error("PortalException while insert: " + route, e);
             throw new UnableToAddException(e);
         } catch (UnableToParseGPXException e) {
-            _log.error("UnableToParseGPXException while getLocationsFromFile: " + toAdd);
+            _log.error("UnableToParseGPXException while getLocationsFromFile: " + route, e);
+            throw new UnableToAddException(e);
+        } catch (UnableToObtainElevationException e) {
+            _log.error("UnableToObtainElevationException while getLocationsFromFile: " + route, e);
             throw new UnableToAddException(e);
         }
+    }
+
+    private static Route _addRoute(Route route, File locations)
+            throws UnableToParseGPXException, UnableToObtainElevationException, SystemException, PortalException {
+        List<RouteLocation> locationList = RouteParserFactory.getSAXHandler(locations.getName())
+                .getLocationsFromFile(locations);
+
+        Route addedRoute = RouteDAO.insert(route);
+        RouteLocationDAO.insertMany(addedRoute.getIdRoute(), locationList);
+
+        RouteUtils.setLocationBasedPRoperties(addedRoute, locationList);
+
+        _log.info("Added route: " + addedRoute);
+        return addedRoute;
     }
 
     public static Route updateRoute(final Route route)
@@ -85,11 +95,23 @@ public class RouteManager {
     }
 
     public static Route getRouteToRender(final Long idRoute, final Long idUser) {
-        es.eina.tfg.RouteViewer.model.Route route;
+        es.eina.tfg.RouteViewer.model.Route route = null;
         if (isNull(idRoute) || idRoute == 0){
-            route = RouteDAO.getFirstRoute(idUser);
+            try {
+                route = RouteDAO.getFirstRoute(idUser);
+            } catch (SystemException e) {
+                _log.error("Cannot obtain first route of the list on start.", e);
+            } catch (PortalException e) {
+                _log.error("PortalException while toLocalRoute for idUser: " + idUser, e);
+            }
         } else {
-            route = RouteDAO.getByIdRoute(idRoute);
+            try {
+                route = RouteDAO.getByIdRoute(idRoute);
+            } catch (PortalException e) {
+                _log.error("PortalException while searching for route with ID: " + idRoute, e);
+            } catch (SystemException e) {
+                _log.error("SystemException while searching for route with ID: " + idRoute, e);
+            }
         }
         return route;
     }
@@ -105,7 +127,7 @@ public class RouteManager {
             obtainedRoutes = RouteDAO.getByIdUserAndName(idUser, name, start, end);
         }  catch (Exception e) {
             obtainedRoutes = Collections.emptyList();
-            _log.error("Exception while dynamicQuery: returned empty list", e);
+            _log.error("Exception while dynamicQuery. Returned empty list", e);
         }
         return obtainedRoutes;
     }

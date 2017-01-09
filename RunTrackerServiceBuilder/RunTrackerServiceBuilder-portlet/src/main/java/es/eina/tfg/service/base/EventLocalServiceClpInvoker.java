@@ -41,22 +41,22 @@ public class EventLocalServiceClpInvoker {
     private String[] _methodParameterTypes14;
     private String _methodName15;
     private String[] _methodParameterTypes15;
-    private String _methodName96;
-    private String[] _methodParameterTypes96;
-    private String _methodName97;
-    private String[] _methodParameterTypes97;
-    private String _methodName102;
-    private String[] _methodParameterTypes102;
-    private String _methodName103;
-    private String[] _methodParameterTypes103;
+    private String _methodName98;
+    private String[] _methodParameterTypes98;
+    private String _methodName99;
+    private String[] _methodParameterTypes99;
     private String _methodName104;
     private String[] _methodParameterTypes104;
+    private String _methodName105;
+    private String[] _methodParameterTypes105;
     private String _methodName106;
     private String[] _methodParameterTypes106;
-    private String _methodName107;
-    private String[] _methodParameterTypes107;
     private String _methodName108;
     private String[] _methodParameterTypes108;
+    private String _methodName109;
+    private String[] _methodParameterTypes109;
+    private String _methodName110;
+    private String[] _methodParameterTypes110;
 
     public EventLocalServiceClpInvoker() {
         _methodName0 = "addEvent";
@@ -135,37 +135,37 @@ public class EventLocalServiceClpInvoker {
 
         _methodParameterTypes15 = new String[] { "es.eina.tfg.model.Event" };
 
-        _methodName96 = "getBeanIdentifier";
+        _methodName98 = "getBeanIdentifier";
 
-        _methodParameterTypes96 = new String[] {  };
+        _methodParameterTypes98 = new String[] {  };
 
-        _methodName97 = "setBeanIdentifier";
+        _methodName99 = "setBeanIdentifier";
 
-        _methodParameterTypes97 = new String[] { "java.lang.String" };
+        _methodParameterTypes99 = new String[] { "java.lang.String" };
 
-        _methodName102 = "generateNewIdEvent";
+        _methodName104 = "generateNewIdEvent";
 
-        _methodParameterTypes102 = new String[] {  };
+        _methodParameterTypes104 = new String[] {  };
 
-        _methodName103 = "addEvent";
+        _methodName105 = "addEvent";
 
-        _methodParameterTypes103 = new String[] { "es.eina.tfg.model.Event" };
+        _methodParameterTypes105 = new String[] { "es.eina.tfg.model.Event" };
 
-        _methodName104 = "updateEvent";
+        _methodName106 = "updateEvent";
 
-        _methodParameterTypes104 = new String[] { "es.eina.tfg.model.Event" };
+        _methodParameterTypes106 = new String[] { "es.eina.tfg.model.Event" };
 
-        _methodName106 = "getParticipants";
-
-        _methodParameterTypes106 = new String[] { "long" };
-
-        _methodName107 = "getByidAuthor";
-
-        _methodParameterTypes107 = new String[] { "long" };
-
-        _methodName108 = "getByidRoute";
+        _methodName108 = "getParticipants";
 
         _methodParameterTypes108 = new String[] { "long" };
+
+        _methodName109 = "getByidAuthor";
+
+        _methodParameterTypes109 = new String[] { "long" };
+
+        _methodName110 = "getByidRoute";
+
+        _methodParameterTypes110 = new String[] { "long" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -257,45 +257,45 @@ public class EventLocalServiceClpInvoker {
             return EventLocalServiceUtil.updateEvent((es.eina.tfg.model.Event) arguments[0]);
         }
 
-        if (_methodName96.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes96, parameterTypes)) {
+        if (_methodName98.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes98, parameterTypes)) {
             return EventLocalServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName97.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes97, parameterTypes)) {
+        if (_methodName99.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes99, parameterTypes)) {
             EventLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }
 
-        if (_methodName102.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes102, parameterTypes)) {
+        if (_methodName104.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes104, parameterTypes)) {
             return EventLocalServiceUtil.generateNewIdEvent();
         }
 
-        if (_methodName103.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes103, parameterTypes)) {
+        if (_methodName105.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes105, parameterTypes)) {
             return EventLocalServiceUtil.addEvent((es.eina.tfg.model.Event) arguments[0]);
-        }
-
-        if (_methodName104.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes104, parameterTypes)) {
-            return EventLocalServiceUtil.updateEvent((es.eina.tfg.model.Event) arguments[0]);
         }
 
         if (_methodName106.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes106, parameterTypes)) {
-            return EventLocalServiceUtil.getParticipants(((Long) arguments[0]).longValue());
-        }
-
-        if (_methodName107.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes107, parameterTypes)) {
-            return EventLocalServiceUtil.getByidAuthor(((Long) arguments[0]).longValue());
+            return EventLocalServiceUtil.updateEvent((es.eina.tfg.model.Event) arguments[0]);
         }
 
         if (_methodName108.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes108, parameterTypes)) {
+            return EventLocalServiceUtil.getParticipants(((Long) arguments[0]).longValue());
+        }
+
+        if (_methodName109.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes109, parameterTypes)) {
+            return EventLocalServiceUtil.getByidAuthor(((Long) arguments[0]).longValue());
+        }
+
+        if (_methodName110.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes110, parameterTypes)) {
             return EventLocalServiceUtil.getByidRoute(((Long) arguments[0]).longValue());
         }
 

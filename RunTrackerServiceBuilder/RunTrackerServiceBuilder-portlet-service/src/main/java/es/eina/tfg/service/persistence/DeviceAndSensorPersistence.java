@@ -137,8 +137,7 @@ public interface DeviceAndSensorPersistence extends BasePersistence<DeviceAndSen
     * @throws SystemException if a system exception occurred
     */
     public es.eina.tfg.model.DeviceAndSensor[] findBydeviceId_PrevAndNext(
-        es.eina.tfg.service.persistence.DeviceAndSensorPK deviceAndSensorPK,
-        long idDevice,
+        DeviceAndSensorPK deviceAndSensorPK, long idDevice,
         com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchDeviceAndSensorException;
@@ -276,8 +275,7 @@ public interface DeviceAndSensorPersistence extends BasePersistence<DeviceAndSen
     * @throws SystemException if a system exception occurred
     */
     public es.eina.tfg.model.DeviceAndSensor[] findByactiveSensors_PrevAndNext(
-        es.eina.tfg.service.persistence.DeviceAndSensorPK deviceAndSensorPK,
-        long idDevice,
+        DeviceAndSensorPK deviceAndSensorPK, long idDevice,
         com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchDeviceAndSensorException;
@@ -323,7 +321,7 @@ public interface DeviceAndSensorPersistence extends BasePersistence<DeviceAndSen
     * @return the new device and sensor
     */
     public es.eina.tfg.model.DeviceAndSensor create(
-        es.eina.tfg.service.persistence.DeviceAndSensorPK deviceAndSensorPK);
+        DeviceAndSensorPK deviceAndSensorPK);
 
     /**
     * Removes the device and sensor with the primary key from the database. Also notifies the appropriate model listeners.
@@ -334,7 +332,7 @@ public interface DeviceAndSensorPersistence extends BasePersistence<DeviceAndSen
     * @throws SystemException if a system exception occurred
     */
     public es.eina.tfg.model.DeviceAndSensor remove(
-        es.eina.tfg.service.persistence.DeviceAndSensorPK deviceAndSensorPK)
+        DeviceAndSensorPK deviceAndSensorPK)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchDeviceAndSensorException;
 
@@ -351,7 +349,7 @@ public interface DeviceAndSensorPersistence extends BasePersistence<DeviceAndSen
     * @throws SystemException if a system exception occurred
     */
     public es.eina.tfg.model.DeviceAndSensor findByPrimaryKey(
-        es.eina.tfg.service.persistence.DeviceAndSensorPK deviceAndSensorPK)
+        DeviceAndSensorPK deviceAndSensorPK)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchDeviceAndSensorException;
 
@@ -363,7 +361,7 @@ public interface DeviceAndSensorPersistence extends BasePersistence<DeviceAndSen
     * @throws SystemException if a system exception occurred
     */
     public es.eina.tfg.model.DeviceAndSensor fetchByPrimaryKey(
-        es.eina.tfg.service.persistence.DeviceAndSensorPK deviceAndSensorPK)
+        DeviceAndSensorPK deviceAndSensorPK)
         throws com.liferay.portal.kernel.exception.SystemException;
 
     /**

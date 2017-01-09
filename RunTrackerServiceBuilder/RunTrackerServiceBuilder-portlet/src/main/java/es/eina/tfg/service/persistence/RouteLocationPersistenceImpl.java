@@ -827,6 +827,7 @@ public class RouteLocationPersistenceImpl extends BasePersistenceImpl<RouteLocat
         routeLocationImpl.setIdRoute(routeLocation.getIdRoute());
         routeLocationImpl.setLatitude(routeLocation.getLatitude());
         routeLocationImpl.setLongitude(routeLocation.getLongitude());
+        routeLocationImpl.setElevation(routeLocation.getElevation());
 
         return routeLocationImpl;
     }

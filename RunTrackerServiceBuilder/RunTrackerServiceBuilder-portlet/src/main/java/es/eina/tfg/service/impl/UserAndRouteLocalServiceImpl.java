@@ -1,12 +1,15 @@
 package es.eina.tfg.service.impl;
 
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import es.eina.tfg.model.Route;
 import es.eina.tfg.model.UserAdditionalData;
 import es.eina.tfg.model.UserAndRoute;
 import es.eina.tfg.service.RouteLocalServiceUtil;
 import es.eina.tfg.service.UserAdditionalDataLocalServiceUtil;
+import es.eina.tfg.service.UserAndRouteLocalServiceUtil;
 import es.eina.tfg.service.base.UserAndRouteLocalServiceBaseImpl;
+import es.eina.tfg.service.persistence.UserAndRoutePK;
 import es.eina.tfg.service.persistence.UserAndRouteUtil;
 
 import java.util.List;
@@ -27,11 +30,18 @@ import java.util.List;
 public class UserAndRouteLocalServiceImpl
         extends UserAndRouteLocalServiceBaseImpl {
 
-    @Override
-    public UserAndRoute addUserAndRoute(UserAndRoute userAndRoute)
+    public UserAndRoute addUserAndRoute(Long idUser, Long idRoute)
             throws SystemException {
+        UserAndRoutePK userAndRoutePK = new UserAndRoutePK(idUser, idRoute);
+        UserAndRoute userAndRoute = UserAndRouteLocalServiceUtil.createUserAndRoute(userAndRoutePK);
         checkMadatoryAttributes(userAndRoute);
         return super.addUserAndRoute(userAndRoute);
+    }
+
+    public UserAndRoute deleteUserAndRoute(Long idUser, Long idRoute)
+            throws PortalException, SystemException {
+        UserAndRoutePK pk = new UserAndRoutePK(idUser, idRoute);
+        return deleteUserAndRoute(pk);
     }
 
     private void checkMadatoryAttributes(UserAndRoute userAndRoute)

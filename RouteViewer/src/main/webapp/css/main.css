@@ -16,7 +16,7 @@
     bottom: 5px;
     right: 60%;
 }
-#routeMapDiv{
+#routeSelectedDiv{
     border: 3px;
     position: absolute;
     margin-left: 25px;
@@ -24,6 +24,10 @@
     top: 5px;
     bottom: 5px;
     left: 40%;
+}
+#routeNameDiv{
+    text-align: center;
+    background-color: darkgray;
 }
 #routeDescriptionDiv{
     background-color: darkgray;

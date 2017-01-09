@@ -110,6 +110,7 @@
 		</composite-id>
 		<property name="latitude" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
 		<property name="longitude" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+		<property name="elevation" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
 	</class>
 	<class name="es.eina.tfg.model.impl.SensorImpl" table="GL_Sensor">
 		<cache usage="read-write" />

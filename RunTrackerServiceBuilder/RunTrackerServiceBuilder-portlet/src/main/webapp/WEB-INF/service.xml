@@ -222,6 +222,7 @@
 		<!-- Other fields -->
 		<column name="latitude" type="double" />
 		<column name="longitude" type="double" />
+		<column name="elevation" type="double" />
 
 		<!-- Order -->
 		<order by="asc">

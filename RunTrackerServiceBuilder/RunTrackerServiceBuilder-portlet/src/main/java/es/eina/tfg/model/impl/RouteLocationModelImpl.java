@@ -48,9 +48,10 @@ public class RouteLocationModelImpl extends BaseModelImpl<RouteLocation>
             { "idRouteLocation", Types.BIGINT },
             { "idRoute", Types.BIGINT },
             { "latitude", Types.DOUBLE },
-            { "longitude", Types.DOUBLE }
+            { "longitude", Types.DOUBLE },
+            { "elevation", Types.DOUBLE }
         };
-    public static final String TABLE_SQL_CREATE = "create table GL_RouteLocation (idRouteLocation LONG not null,idRoute LONG not null,latitude DOUBLE,longitude DOUBLE,primary key (idRouteLocation, idRoute))";
+    public static final String TABLE_SQL_CREATE = "create table GL_RouteLocation (idRouteLocation LONG not null,idRoute LONG not null,latitude DOUBLE,longitude DOUBLE,elevation DOUBLE,primary key (idRouteLocation, idRoute))";
     public static final String TABLE_SQL_DROP = "drop table GL_RouteLocation";
     public static final String ORDER_BY_JPQL = " ORDER BY routeLocation.id.idRoute ASC";
     public static final String ORDER_BY_SQL = " ORDER BY GL_RouteLocation.idRoute ASC";
@@ -79,6 +80,7 @@ public class RouteLocationModelImpl extends BaseModelImpl<RouteLocation>
     private boolean _setOriginalIdRoute;
     private double _latitude;
     private double _longitude;
+    private double _elevation;
     private long _columnBitmask;
     private RouteLocation _escapedModel;
 
@@ -102,6 +104,7 @@ public class RouteLocationModelImpl extends BaseModelImpl<RouteLocation>
         model.setIdRoute(soapModel.getIdRoute());
         model.setLatitude(soapModel.getLatitude());
         model.setLongitude(soapModel.getLongitude());
+        model.setElevation(soapModel.getElevation());
 
         return model;
     }
@@ -165,6 +168,7 @@ public class RouteLocationModelImpl extends BaseModelImpl<RouteLocation>
         attributes.put("idRoute", getIdRoute());
         attributes.put("latitude", getLatitude());
         attributes.put("longitude", getLongitude());
+        attributes.put("elevation", getElevation());
 
         return attributes;
     }
@@ -193,6 +197,12 @@ public class RouteLocationModelImpl extends BaseModelImpl<RouteLocation>
 
         if (longitude != null) {
             setLongitude(longitude);
+        }
+
+        Double elevation = (Double) attributes.get("elevation");
+
+        if (elevation != null) {
+            setElevation(elevation);
         }
     }
 
@@ -252,6 +262,17 @@ public class RouteLocationModelImpl extends BaseModelImpl<RouteLocation>
         _longitude = longitude;
     }
 
+    @JSON
+    @Override
+    public double getElevation() {
+        return _elevation;
+    }
+
+    @Override
+    public void setElevation(double elevation) {
+        _elevation = elevation;
+    }
+
     public long getColumnBitmask() {
         return _columnBitmask;
     }
@@ -274,6 +295,7 @@ public class RouteLocationModelImpl extends BaseModelImpl<RouteLocation>
         routeLocationImpl.setIdRoute(getIdRoute());
         routeLocationImpl.setLatitude(getLatitude());
         routeLocationImpl.setLongitude(getLongitude());
+        routeLocationImpl.setElevation(getElevation());
 
         routeLocationImpl.resetOriginalValues();
 
@@ -348,12 +370,14 @@ public class RouteLocationModelImpl extends BaseModelImpl<RouteLocation>
 
         routeLocationCacheModel.longitude = getLongitude();
 
+        routeLocationCacheModel.elevation = getElevation();
+
         return routeLocationCacheModel;
     }
 
     @Override
     public String toString() {
-        StringBundler sb = new StringBundler(9);
+        StringBundler sb = new StringBundler(11);
 
         sb.append("{idRouteLocation=");
         sb.append(getIdRouteLocation());
@@ -363,6 +387,8 @@ public class RouteLocationModelImpl extends BaseModelImpl<RouteLocation>
         sb.append(getLatitude());
         sb.append(", longitude=");
         sb.append(getLongitude());
+        sb.append(", elevation=");
+        sb.append(getElevation());
         sb.append("}");
 
         return sb.toString();
@@ -370,7 +396,7 @@ public class RouteLocationModelImpl extends BaseModelImpl<RouteLocation>
 
     @Override
     public String toXmlString() {
-        StringBundler sb = new StringBundler(16);
+        StringBundler sb = new StringBundler(19);
 
         sb.append("<model><model-name>");
         sb.append("es.eina.tfg.model.RouteLocation");
@@ -391,6 +417,10 @@ public class RouteLocationModelImpl extends BaseModelImpl<RouteLocation>
         sb.append(
             "<column><column-name>longitude</column-name><column-value><![CDATA[");
         sb.append(getLongitude());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>elevation</column-name><column-value><![CDATA[");
+        sb.append(getElevation());
         sb.append("]]></column-value></column>");
 
         sb.append("</model>");

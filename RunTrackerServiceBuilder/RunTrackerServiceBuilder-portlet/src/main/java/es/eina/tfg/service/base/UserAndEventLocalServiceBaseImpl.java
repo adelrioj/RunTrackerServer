@@ -26,6 +26,7 @@ import es.eina.tfg.service.persistence.LocationPersistence;
 import es.eina.tfg.service.persistence.PowerPersistence;
 import es.eina.tfg.service.persistence.RacePersistence;
 import es.eina.tfg.service.persistence.RouteFinder;
+import es.eina.tfg.service.persistence.RouteLocationFinder;
 import es.eina.tfg.service.persistence.RouteLocationPersistence;
 import es.eina.tfg.service.persistence.RoutePersistence;
 import es.eina.tfg.service.persistence.SensorPersistence;
@@ -103,6 +104,8 @@ public abstract class UserAndEventLocalServiceBaseImpl
     protected es.eina.tfg.service.RouteLocationService routeLocationService;
     @BeanReference(type = RouteLocationPersistence.class)
     protected RouteLocationPersistence routeLocationPersistence;
+    @BeanReference(type = RouteLocationFinder.class)
+    protected RouteLocationFinder routeLocationFinder;
     @BeanReference(type = es.eina.tfg.service.SensorLocalService.class)
     protected es.eina.tfg.service.SensorLocalService sensorLocalService;
     @BeanReference(type = es.eina.tfg.service.SensorService.class)
@@ -804,6 +807,24 @@ public abstract class UserAndEventLocalServiceBaseImpl
     public void setRouteLocationPersistence(
         RouteLocationPersistence routeLocationPersistence) {
         this.routeLocationPersistence = routeLocationPersistence;
+    }
+
+    /**
+     * Returns the route location finder.
+     *
+     * @return the route location finder
+     */
+    public RouteLocationFinder getRouteLocationFinder() {
+        return routeLocationFinder;
+    }
+
+    /**
+     * Sets the route location finder.
+     *
+     * @param routeLocationFinder the route location finder
+     */
+    public void setRouteLocationFinder(RouteLocationFinder routeLocationFinder) {
+        this.routeLocationFinder = routeLocationFinder;
     }
 
     /**

@@ -276,6 +276,21 @@ public class UserAndRouteLocalServiceWrapper implements UserAndRouteLocalService
     }
 
     @Override
+    public es.eina.tfg.model.UserAndRoute addUserAndRoute(
+        java.lang.Long idUser, java.lang.Long idRoute)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _userAndRouteLocalService.addUserAndRoute(idUser, idRoute);
+    }
+
+    @Override
+    public es.eina.tfg.model.UserAndRoute deleteUserAndRoute(
+        java.lang.Long idUser, java.lang.Long idRoute)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        return _userAndRouteLocalService.deleteUserAndRoute(idUser, idRoute);
+    }
+
+    @Override
     public java.util.List<es.eina.tfg.model.UserAndRoute> getByidUser(
         java.lang.Long userId)
         throws com.liferay.portal.kernel.exception.SystemException {

@@ -8,9 +8,6 @@ import es.eina.tfg.service.RouteLocationLocalServiceUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author adelrioj.
- */
 public class RouteLocationDAO {
 
     public static RouteLocation insert(final Long relatedIdRoute, final RouteLocation location)
@@ -36,6 +33,11 @@ public class RouteLocationDAO {
         return result;
     }
 
+    public static void deleteByIdRoute(final long idRoute)
+            throws SystemException {
+        RouteLocationLocalServiceUtil.deleteByIdRoute(idRoute);
+    }
+
     public static List<RouteLocation> getByIdRoute(final Long idRoute)
             throws SystemException {
         List<es.eina.tfg.model.RouteLocation> SBLocations;
@@ -58,6 +60,7 @@ public class RouteLocationDAO {
         location.setId(toConvert.getIdRouteLocation());
         location.setLongitude(toConvert.getLongitude());
         location.setLatitude(toConvert.getLatitude());
+        location.setElevation(toConvert.getElevation());
         return location;
     }
 
@@ -68,6 +71,7 @@ public class RouteLocationDAO {
                 RouteLocationLocalServiceUtil.createRouteLocation(relatedIdRoute, toConvert.getId());
         locationToInsert.setLongitude(toConvert.getLongitude());
         locationToInsert.setLatitude(toConvert.getLatitude());
+        locationToInsert.setElevation(toConvert.getElevation());
         return locationToInsert;
     }
 

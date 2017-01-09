@@ -41,12 +41,12 @@ public class SensorLocalServiceClpInvoker {
     private String[] _methodParameterTypes14;
     private String _methodName15;
     private String[] _methodParameterTypes15;
-    private String _methodName96;
-    private String[] _methodParameterTypes96;
-    private String _methodName97;
-    private String[] _methodParameterTypes97;
-    private String _methodName102;
-    private String[] _methodParameterTypes102;
+    private String _methodName98;
+    private String[] _methodParameterTypes98;
+    private String _methodName99;
+    private String[] _methodParameterTypes99;
+    private String _methodName104;
+    private String[] _methodParameterTypes104;
 
     public SensorLocalServiceClpInvoker() {
         _methodName0 = "addSensor";
@@ -125,17 +125,17 @@ public class SensorLocalServiceClpInvoker {
 
         _methodParameterTypes15 = new String[] { "es.eina.tfg.model.Sensor" };
 
-        _methodName96 = "getBeanIdentifier";
+        _methodName98 = "getBeanIdentifier";
 
-        _methodParameterTypes96 = new String[] {  };
+        _methodParameterTypes98 = new String[] {  };
 
-        _methodName97 = "setBeanIdentifier";
+        _methodName99 = "setBeanIdentifier";
 
-        _methodParameterTypes97 = new String[] { "java.lang.String" };
+        _methodParameterTypes99 = new String[] { "java.lang.String" };
 
-        _methodName102 = "generateNewIdSensor";
+        _methodName104 = "generateNewIdSensor";
 
-        _methodParameterTypes102 = new String[] {  };
+        _methodParameterTypes104 = new String[] {  };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -227,20 +227,20 @@ public class SensorLocalServiceClpInvoker {
             return SensorLocalServiceUtil.updateSensor((es.eina.tfg.model.Sensor) arguments[0]);
         }
 
-        if (_methodName96.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes96, parameterTypes)) {
+        if (_methodName98.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes98, parameterTypes)) {
             return SensorLocalServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName97.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes97, parameterTypes)) {
+        if (_methodName99.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes99, parameterTypes)) {
             SensorLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }
 
-        if (_methodName102.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes102, parameterTypes)) {
+        if (_methodName104.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes104, parameterTypes)) {
             return SensorLocalServiceUtil.generateNewIdSensor();
         }
 

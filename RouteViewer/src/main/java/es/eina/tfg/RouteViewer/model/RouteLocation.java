@@ -5,6 +5,7 @@ public class RouteLocation {
     private Long id;
     private Double latitude;
     private Double longitude;
+    private Double elevation;
 
     public Long getId() {
         return id;
@@ -27,12 +28,20 @@ public class RouteLocation {
         this.longitude = longitude;
     }
 
+    public Double getElevation() {
+        return elevation;
+    }
+    public void setElevation(Double elevation) {
+        this.elevation = elevation;
+    }
+
     @Override
     public String toString() {
         return "RouteLocation{" +
                 "id=" + id +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
+                ", elevation=" + elevation +
                 '}';
     }
 }

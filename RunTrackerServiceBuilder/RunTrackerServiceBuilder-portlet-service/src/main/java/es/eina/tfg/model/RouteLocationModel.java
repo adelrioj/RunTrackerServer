@@ -100,6 +100,20 @@ public interface RouteLocationModel extends BaseModel<RouteLocation> {
      */
     public void setLongitude(double longitude);
 
+    /**
+     * Returns the elevation of this route location.
+     *
+     * @return the elevation of this route location
+     */
+    public double getElevation();
+
+    /**
+     * Sets the elevation of this route location.
+     *
+     * @param elevation the elevation of this route location
+     */
+    public void setElevation(double elevation);
+
     @Override
     public boolean isNew();
 

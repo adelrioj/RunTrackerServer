@@ -83,6 +83,20 @@
             <version>1.0</version>
 		</dependency>
 
+		<!-- Google Maps API-->
+		<dependency>
+			<groupId>com.google.maps</groupId>
+			<artifactId>google-maps-services</artifactId>
+			<version>0.1.17</version>
+		</dependency>
+
+		<!-- JUnit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
+
 		<!-- ServiceBuilder dependencies -->
 		<dependency>
 			<groupId>es.eina.tfg</groupId>

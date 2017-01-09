@@ -8,9 +8,7 @@ import com.liferay.portal.service.UserLocalServiceUtil;
 import es.eina.tfg.model.Location;
 import es.eina.tfg.model.Power;
 import es.eina.tfg.model.Race;
-import es.eina.tfg.service.LocationLocalService;
 import es.eina.tfg.service.LocationLocalServiceUtil;
-import es.eina.tfg.service.PowerLocalService;
 import es.eina.tfg.service.PowerLocalServiceUtil;
 import es.eina.tfg.service.base.RaceLocalServiceBaseImpl;
 import es.eina.tfg.service.persistence.RaceUtil;
@@ -82,8 +80,6 @@ public class RaceLocalServiceImpl extends RaceLocalServiceBaseImpl {
             throws SystemException {
         return PowerLocalServiceUtil.getByRaceId(idRace);
     }
-
-    public static final Long DEFAULT_ROUTEID = (long) 1;
 
     public static final String TYPE_WALKING = RouteLocalServiceImpl.TYPE_WALKING;
     public static final String TYPE_RUNNING = RouteLocalServiceImpl.TYPE_RUNNING;

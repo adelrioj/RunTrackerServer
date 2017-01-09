@@ -41,6 +41,7 @@ public class RouteLocationWrapper implements RouteLocation,
         attributes.put("idRoute", getIdRoute());
         attributes.put("latitude", getLatitude());
         attributes.put("longitude", getLongitude());
+        attributes.put("elevation", getElevation());
 
         return attributes;
     }
@@ -69,6 +70,12 @@ public class RouteLocationWrapper implements RouteLocation,
 
         if (longitude != null) {
             setLongitude(longitude);
+        }
+
+        Double elevation = (Double) attributes.get("elevation");
+
+        if (elevation != null) {
+            setElevation(elevation);
         }
     }
 
@@ -171,6 +178,26 @@ public class RouteLocationWrapper implements RouteLocation,
     @Override
     public void setLongitude(double longitude) {
         _routeLocation.setLongitude(longitude);
+    }
+
+    /**
+    * Returns the elevation of this route location.
+    *
+    * @return the elevation of this route location
+    */
+    @Override
+    public double getElevation() {
+        return _routeLocation.getElevation();
+    }
+
+    /**
+    * Sets the elevation of this route location.
+    *
+    * @param elevation the elevation of this route location
+    */
+    @Override
+    public void setElevation(double elevation) {
+        _routeLocation.setElevation(elevation);
     }
 
     @Override

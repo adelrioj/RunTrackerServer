@@ -228,8 +228,7 @@ public class DeviceAndSensorUtil {
     * @throws SystemException if a system exception occurred
     */
     public static es.eina.tfg.model.DeviceAndSensor[] findBydeviceId_PrevAndNext(
-        es.eina.tfg.service.persistence.DeviceAndSensorPK deviceAndSensorPK,
-        long idDevice,
+        DeviceAndSensorPK deviceAndSensorPK, long idDevice,
         com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchDeviceAndSensorException {
@@ -394,8 +393,7 @@ public class DeviceAndSensorUtil {
     * @throws SystemException if a system exception occurred
     */
     public static es.eina.tfg.model.DeviceAndSensor[] findByactiveSensors_PrevAndNext(
-        es.eina.tfg.service.persistence.DeviceAndSensorPK deviceAndSensorPK,
-        long idDevice,
+        DeviceAndSensorPK deviceAndSensorPK, long idDevice,
         com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchDeviceAndSensorException {
@@ -454,7 +452,7 @@ public class DeviceAndSensorUtil {
     * @return the new device and sensor
     */
     public static es.eina.tfg.model.DeviceAndSensor create(
-        es.eina.tfg.service.persistence.DeviceAndSensorPK deviceAndSensorPK) {
+        DeviceAndSensorPK deviceAndSensorPK) {
         return getPersistence().create(deviceAndSensorPK);
     }
 
@@ -467,7 +465,7 @@ public class DeviceAndSensorUtil {
     * @throws SystemException if a system exception occurred
     */
     public static es.eina.tfg.model.DeviceAndSensor remove(
-        es.eina.tfg.service.persistence.DeviceAndSensorPK deviceAndSensorPK)
+        DeviceAndSensorPK deviceAndSensorPK)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchDeviceAndSensorException {
         return getPersistence().remove(deviceAndSensorPK);
@@ -488,7 +486,7 @@ public class DeviceAndSensorUtil {
     * @throws SystemException if a system exception occurred
     */
     public static es.eina.tfg.model.DeviceAndSensor findByPrimaryKey(
-        es.eina.tfg.service.persistence.DeviceAndSensorPK deviceAndSensorPK)
+        DeviceAndSensorPK deviceAndSensorPK)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchDeviceAndSensorException {
         return getPersistence().findByPrimaryKey(deviceAndSensorPK);
@@ -502,7 +500,7 @@ public class DeviceAndSensorUtil {
     * @throws SystemException if a system exception occurred
     */
     public static es.eina.tfg.model.DeviceAndSensor fetchByPrimaryKey(
-        es.eina.tfg.service.persistence.DeviceAndSensorPK deviceAndSensorPK)
+        DeviceAndSensorPK deviceAndSensorPK)
         throws com.liferay.portal.kernel.exception.SystemException {
         return getPersistence().fetchByPrimaryKey(deviceAndSensorPK);
     }

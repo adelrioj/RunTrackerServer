@@ -291,6 +291,12 @@ public class RouteLocationLocalServiceWrapper
     }
 
     @Override
+    public void deleteByIdRoute(long idRoute)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        _routeLocationLocalService.deleteByIdRoute(idRoute);
+    }
+
+    @Override
     public java.util.List<es.eina.tfg.model.RouteLocation> getByidRoute(
         java.lang.Long idRoute)
         throws com.liferay.portal.kernel.exception.SystemException {

@@ -25,6 +25,7 @@ public class RouteLocationClp extends BaseModelImpl<RouteLocation>
     private long _idRoute;
     private double _latitude;
     private double _longitude;
+    private double _elevation;
     private BaseModel<?> _routeLocationRemoteModel;
     private Class<?> _clpSerializerClass = es.eina.tfg.service.ClpSerializer.class;
 
@@ -70,6 +71,7 @@ public class RouteLocationClp extends BaseModelImpl<RouteLocation>
         attributes.put("idRoute", getIdRoute());
         attributes.put("latitude", getLatitude());
         attributes.put("longitude", getLongitude());
+        attributes.put("elevation", getElevation());
 
         return attributes;
     }
@@ -98,6 +100,12 @@ public class RouteLocationClp extends BaseModelImpl<RouteLocation>
 
         if (longitude != null) {
             setLongitude(longitude);
+        }
+
+        Double elevation = (Double) attributes.get("elevation");
+
+        if (elevation != null) {
+            setElevation(elevation);
         }
     }
 
@@ -189,6 +197,28 @@ public class RouteLocationClp extends BaseModelImpl<RouteLocation>
         }
     }
 
+    @Override
+    public double getElevation() {
+        return _elevation;
+    }
+
+    @Override
+    public void setElevation(double elevation) {
+        _elevation = elevation;
+
+        if (_routeLocationRemoteModel != null) {
+            try {
+                Class<?> clazz = _routeLocationRemoteModel.getClass();
+
+                Method method = clazz.getMethod("setElevation", double.class);
+
+                method.invoke(_routeLocationRemoteModel, elevation);
+            } catch (Exception e) {
+                throw new UnsupportedOperationException(e);
+            }
+        }
+    }
+
     public BaseModel<?> getRouteLocationRemoteModel() {
         return _routeLocationRemoteModel;
     }
@@ -261,6 +291,7 @@ public class RouteLocationClp extends BaseModelImpl<RouteLocation>
         clone.setIdRoute(getIdRoute());
         clone.setLatitude(getLatitude());
         clone.setLongitude(getLongitude());
+        clone.setElevation(getElevation());
 
         return clone;
     }
@@ -316,7 +347,7 @@ public class RouteLocationClp extends BaseModelImpl<RouteLocation>
 
     @Override
     public String toString() {
-        StringBundler sb = new StringBundler(9);
+        StringBundler sb = new StringBundler(11);
 
         sb.append("{idRouteLocation=");
         sb.append(getIdRouteLocation());
@@ -326,6 +357,8 @@ public class RouteLocationClp extends BaseModelImpl<RouteLocation>
         sb.append(getLatitude());
         sb.append(", longitude=");
         sb.append(getLongitude());
+        sb.append(", elevation=");
+        sb.append(getElevation());
         sb.append("}");
 
         return sb.toString();
@@ -333,7 +366,7 @@ public class RouteLocationClp extends BaseModelImpl<RouteLocation>
 
     @Override
     public String toXmlString() {
-        StringBundler sb = new StringBundler(16);
+        StringBundler sb = new StringBundler(19);
 
         sb.append("<model><model-name>");
         sb.append("es.eina.tfg.model.RouteLocation");
@@ -354,6 +387,10 @@ public class RouteLocationClp extends BaseModelImpl<RouteLocation>
         sb.append(
             "<column><column-name>longitude</column-name><column-value><![CDATA[");
         sb.append(getLongitude());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>elevation</column-name><column-value><![CDATA[");
+        sb.append(getElevation());
         sb.append("]]></column-value></column>");
 
         sb.append("</model>");
