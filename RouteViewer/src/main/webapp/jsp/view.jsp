@@ -11,13 +11,15 @@
         <br />
         <liferay-util:include page="/jsp/route_list.jsp" servletContext="${pageContext.servletContext}" />
     </div>
-    <div id="routeSelectedDiv" >
-        <div id="routeNameDiv">
-            <liferay-util:include page="/jsp/selected_route_title.jsp" servletContext="${pageContext.servletContext}" />
+    <c:if test="${not empty requestScope.routeToEdit}">
+        <div id="routeSelectedDiv" >
+            <div id="routeNameDiv">
+                <liferay-util:include page="/jsp/selected_route_title.jsp" servletContext="${pageContext.servletContext}" />
+            </div>
+            <liferay-util:include page="/jsp/route_map.jsp" servletContext="${pageContext.servletContext}" />
+            <div id="routeDescriptionDiv">
+                <liferay-util:include page="/jsp/selected_route_details.jsp" servletContext="${pageContext.servletContext}" />
+            </div>
         </div>
-        <liferay-util:include page="/jsp/route_map.jsp" servletContext="${pageContext.servletContext}" />
-        <div id="routeDescriptionDiv">
-            <liferay-util:include page="/jsp/selected_route_details.jsp" servletContext="${pageContext.servletContext}" />
-        </div>
-    </div>
+    </c:if>
 </div>
