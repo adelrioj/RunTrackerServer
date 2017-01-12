@@ -227,7 +227,8 @@ public class RouteLocationUtil {
     * @throws SystemException if a system exception occurred
     */
     public static es.eina.tfg.model.RouteLocation[] findByrouteId_PrevAndNext(
-        RouteLocationPK routeLocationPK, long idRoute,
+        es.eina.tfg.service.persistence.RouteLocationPK routeLocationPK,
+        long idRoute,
         com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchRouteLocationException {
@@ -286,7 +287,7 @@ public class RouteLocationUtil {
     * @return the new route location
     */
     public static es.eina.tfg.model.RouteLocation create(
-        RouteLocationPK routeLocationPK) {
+        es.eina.tfg.service.persistence.RouteLocationPK routeLocationPK) {
         return getPersistence().create(routeLocationPK);
     }
 
@@ -299,7 +300,7 @@ public class RouteLocationUtil {
     * @throws SystemException if a system exception occurred
     */
     public static es.eina.tfg.model.RouteLocation remove(
-        RouteLocationPK routeLocationPK)
+        es.eina.tfg.service.persistence.RouteLocationPK routeLocationPK)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchRouteLocationException {
         return getPersistence().remove(routeLocationPK);
@@ -320,7 +321,7 @@ public class RouteLocationUtil {
     * @throws SystemException if a system exception occurred
     */
     public static es.eina.tfg.model.RouteLocation findByPrimaryKey(
-        RouteLocationPK routeLocationPK)
+        es.eina.tfg.service.persistence.RouteLocationPK routeLocationPK)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchRouteLocationException {
         return getPersistence().findByPrimaryKey(routeLocationPK);
@@ -334,7 +335,7 @@ public class RouteLocationUtil {
     * @throws SystemException if a system exception occurred
     */
     public static es.eina.tfg.model.RouteLocation fetchByPrimaryKey(
-        RouteLocationPK routeLocationPK)
+        es.eina.tfg.service.persistence.RouteLocationPK routeLocationPK)
         throws com.liferay.portal.kernel.exception.SystemException {
         return getPersistence().fetchByPrimaryKey(routeLocationPK);
     }

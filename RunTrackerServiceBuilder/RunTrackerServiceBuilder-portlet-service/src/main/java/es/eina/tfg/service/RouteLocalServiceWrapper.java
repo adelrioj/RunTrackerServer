@@ -318,6 +318,22 @@ public class RouteLocalServiceWrapper implements RouteLocalService,
         return _routeLocalService.getByIdUserAndNameCount(idUser, name);
     }
 
+    @Override
+    public java.util.List<es.eina.tfg.model.Route> getPublicRoutesNotSelectedByUser(
+        long idUser, java.lang.String name, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _routeLocalService.getPublicRoutesNotSelectedByUser(idUser,
+            name, start, end);
+    }
+
+    @Override
+    public long getPublicRoutesNotSelectedByUserCount(long idUser,
+        java.lang.String name)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _routeLocalService.getPublicRoutesNotSelectedByUserCount(idUser,
+            name);
+    }
+
     /**
      * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
      */

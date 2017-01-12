@@ -226,7 +226,8 @@ public class UserAndEventUtil {
     * @throws SystemException if a system exception occurred
     */
     public static es.eina.tfg.model.UserAndEvent[] findByuserId_PrevAndNext(
-        UserAndEventPK userAndEventPK, long idUser,
+        es.eina.tfg.service.persistence.UserAndEventPK userAndEventPK,
+        long idUser,
         com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchUserAndEventException {
@@ -387,7 +388,8 @@ public class UserAndEventUtil {
     * @throws SystemException if a system exception occurred
     */
     public static es.eina.tfg.model.UserAndEvent[] findByidEvent_PrevAndNext(
-        UserAndEventPK userAndEventPK, long idEvent,
+        es.eina.tfg.service.persistence.UserAndEventPK userAndEventPK,
+        long idEvent,
         com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchUserAndEventException {
@@ -547,7 +549,8 @@ public class UserAndEventUtil {
     * @throws SystemException if a system exception occurred
     */
     public static es.eina.tfg.model.UserAndEvent[] findByraceId_PrevAndNext(
-        UserAndEventPK userAndEventPK, long idRace,
+        es.eina.tfg.service.persistence.UserAndEventPK userAndEventPK,
+        long idRace,
         com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchUserAndEventException {
@@ -605,7 +608,7 @@ public class UserAndEventUtil {
     * @return the new user and event
     */
     public static es.eina.tfg.model.UserAndEvent create(
-        UserAndEventPK userAndEventPK) {
+        es.eina.tfg.service.persistence.UserAndEventPK userAndEventPK) {
         return getPersistence().create(userAndEventPK);
     }
 
@@ -618,7 +621,7 @@ public class UserAndEventUtil {
     * @throws SystemException if a system exception occurred
     */
     public static es.eina.tfg.model.UserAndEvent remove(
-        UserAndEventPK userAndEventPK)
+        es.eina.tfg.service.persistence.UserAndEventPK userAndEventPK)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchUserAndEventException {
         return getPersistence().remove(userAndEventPK);
@@ -639,7 +642,7 @@ public class UserAndEventUtil {
     * @throws SystemException if a system exception occurred
     */
     public static es.eina.tfg.model.UserAndEvent findByPrimaryKey(
-        UserAndEventPK userAndEventPK)
+        es.eina.tfg.service.persistence.UserAndEventPK userAndEventPK)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchUserAndEventException {
         return getPersistence().findByPrimaryKey(userAndEventPK);
@@ -653,7 +656,7 @@ public class UserAndEventUtil {
     * @throws SystemException if a system exception occurred
     */
     public static es.eina.tfg.model.UserAndEvent fetchByPrimaryKey(
-        UserAndEventPK userAndEventPK)
+        es.eina.tfg.service.persistence.UserAndEventPK userAndEventPK)
         throws com.liferay.portal.kernel.exception.SystemException {
         return getPersistence().fetchByPrimaryKey(userAndEventPK);
     }

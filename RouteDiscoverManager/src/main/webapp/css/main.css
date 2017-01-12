@@ -1,0 +1,43 @@
+#map_canvas {
+    height: 500px;
+    width: 100%;
+}
+#RouteContentDiv {
+    border: 3px;
+    position: relative;
+    width: 100%;
+}
+#routeListDiv {
+    border: 3px;
+    position: absolute;
+    margin-right: 25px;
+    left: 5px;
+    top: 5px;
+    bottom: 5px;
+    right: 60%;
+}
+#routeSelectedDiv{
+    border: 3px;
+    position: absolute;
+    margin-left: 15px;
+    right: 5px;
+    top: 5px;
+    bottom: 5px;
+    left: 40%;
+}
+#routeNameDiv{
+    text-align: center;
+    background-color: darkgray;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#routeDescriptionDiv{
+    background-color: darkgray;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}

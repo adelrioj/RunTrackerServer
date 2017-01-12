@@ -226,7 +226,8 @@ public class UserAndRouteUtil {
     * @throws SystemException if a system exception occurred
     */
     public static es.eina.tfg.model.UserAndRoute[] findByuserId_PrevAndNext(
-        UserAndRoutePK userAndRoutePK, long idUser,
+        es.eina.tfg.service.persistence.UserAndRoutePK userAndRoutePK,
+        long idUser,
         com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchUserAndRouteException {
@@ -284,7 +285,7 @@ public class UserAndRouteUtil {
     * @return the new user and route
     */
     public static es.eina.tfg.model.UserAndRoute create(
-        UserAndRoutePK userAndRoutePK) {
+        es.eina.tfg.service.persistence.UserAndRoutePK userAndRoutePK) {
         return getPersistence().create(userAndRoutePK);
     }
 
@@ -297,7 +298,7 @@ public class UserAndRouteUtil {
     * @throws SystemException if a system exception occurred
     */
     public static es.eina.tfg.model.UserAndRoute remove(
-        UserAndRoutePK userAndRoutePK)
+        es.eina.tfg.service.persistence.UserAndRoutePK userAndRoutePK)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchUserAndRouteException {
         return getPersistence().remove(userAndRoutePK);
@@ -318,7 +319,7 @@ public class UserAndRouteUtil {
     * @throws SystemException if a system exception occurred
     */
     public static es.eina.tfg.model.UserAndRoute findByPrimaryKey(
-        UserAndRoutePK userAndRoutePK)
+        es.eina.tfg.service.persistence.UserAndRoutePK userAndRoutePK)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchUserAndRouteException {
         return getPersistence().findByPrimaryKey(userAndRoutePK);
@@ -332,7 +333,7 @@ public class UserAndRouteUtil {
     * @throws SystemException if a system exception occurred
     */
     public static es.eina.tfg.model.UserAndRoute fetchByPrimaryKey(
-        UserAndRoutePK userAndRoutePK)
+        es.eina.tfg.service.persistence.UserAndRoutePK userAndRoutePK)
         throws com.liferay.portal.kernel.exception.SystemException {
         return getPersistence().fetchByPrimaryKey(userAndRoutePK);
     }

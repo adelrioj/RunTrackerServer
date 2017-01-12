@@ -108,10 +108,21 @@ public class RouteLocalServiceImpl extends RouteLocalServiceBaseImpl {
         return RouteFinderUtil.getByIdUserAndNameCount(idUser, name);
     }
 
+    public List<Route> getPublicRoutesNotSelectedByUser(long idUser, String name, int start, int end)
+            throws SystemException {
+        return RouteFinderUtil.getPublicRoutesNotSelectedByUser(idUser, name, start, end);
+    }
+
+    public long getPublicRoutesNotSelectedByUserCount(long idUser, String name)
+            throws SystemException {
+        return RouteFinderUtil.getPublicRoutesNotSelectedByUserCount(idUser, name);
+    }
+
     private DynamicQuery buildGetRoutesByNameDynamicQuery(String name){
         DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(Route.class);
         if (isNotNull(name)){
-            dynamicQuery.add(RestrictionsFactoryUtil.ilike("name", (new StringBuilder("%")).append(name).append("%").toString()));
+            dynamicQuery.add(RestrictionsFactoryUtil.ilike("name",
+                    (new StringBuilder("%")).append(name).append("%").toString()));
         }
         return dynamicQuery;
     }

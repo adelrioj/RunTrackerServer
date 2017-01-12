@@ -225,7 +225,7 @@ public class PowerUtil {
     * @throws SystemException if a system exception occurred
     */
     public static es.eina.tfg.model.Power[] findByraceId_PrevAndNext(
-        PowerPK powerPK, java.lang.Long idRace,
+        es.eina.tfg.service.persistence.PowerPK powerPK, java.lang.Long idRace,
         com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchPowerException {
@@ -281,7 +281,8 @@ public class PowerUtil {
     * @param powerPK the primary key for the new power
     * @return the new power
     */
-    public static es.eina.tfg.model.Power create(PowerPK powerPK) {
+    public static es.eina.tfg.model.Power create(
+        es.eina.tfg.service.persistence.PowerPK powerPK) {
         return getPersistence().create(powerPK);
     }
 
@@ -293,7 +294,8 @@ public class PowerUtil {
     * @throws es.eina.tfg.NoSuchPowerException if a power with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
-    public static es.eina.tfg.model.Power remove(PowerPK powerPK)
+    public static es.eina.tfg.model.Power remove(
+        es.eina.tfg.service.persistence.PowerPK powerPK)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchPowerException {
         return getPersistence().remove(powerPK);
@@ -313,7 +315,8 @@ public class PowerUtil {
     * @throws es.eina.tfg.NoSuchPowerException if a power with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
-    public static es.eina.tfg.model.Power findByPrimaryKey(PowerPK powerPK)
+    public static es.eina.tfg.model.Power findByPrimaryKey(
+        es.eina.tfg.service.persistence.PowerPK powerPK)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchPowerException {
         return getPersistence().findByPrimaryKey(powerPK);
@@ -326,7 +329,8 @@ public class PowerUtil {
     * @return the power, or <code>null</code> if a power with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
-    public static es.eina.tfg.model.Power fetchByPrimaryKey(PowerPK powerPK)
+    public static es.eina.tfg.model.Power fetchByPrimaryKey(
+        es.eina.tfg.service.persistence.PowerPK powerPK)
         throws com.liferay.portal.kernel.exception.SystemException {
         return getPersistence().fetchByPrimaryKey(powerPK);
     }

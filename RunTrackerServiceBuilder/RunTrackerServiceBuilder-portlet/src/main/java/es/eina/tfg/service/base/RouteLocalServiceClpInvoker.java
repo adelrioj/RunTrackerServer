@@ -65,6 +65,10 @@ public class RouteLocalServiceClpInvoker {
     private String[] _methodParameterTypes113;
     private String _methodName114;
     private String[] _methodParameterTypes114;
+    private String _methodName115;
+    private String[] _methodParameterTypes115;
+    private String _methodName116;
+    private String[] _methodParameterTypes116;
 
     public RouteLocalServiceClpInvoker() {
         _methodName0 = "addRoute";
@@ -195,6 +199,16 @@ public class RouteLocalServiceClpInvoker {
         _methodName114 = "getByIdUserAndNameCount";
 
         _methodParameterTypes114 = new String[] { "long", "java.lang.String" };
+
+        _methodName115 = "getPublicRoutesNotSelectedByUser";
+
+        _methodParameterTypes115 = new String[] {
+                "long", "java.lang.String", "int", "int"
+            };
+
+        _methodName116 = "getPublicRoutesNotSelectedByUserCount";
+
+        _methodParameterTypes116 = new String[] { "long", "java.lang.String" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -354,6 +368,20 @@ public class RouteLocalServiceClpInvoker {
         if (_methodName114.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes114, parameterTypes)) {
             return RouteLocalServiceUtil.getByIdUserAndNameCount(((Long) arguments[0]).longValue(),
+                (java.lang.String) arguments[1]);
+        }
+
+        if (_methodName115.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes115, parameterTypes)) {
+            return RouteLocalServiceUtil.getPublicRoutesNotSelectedByUser(((Long) arguments[0]).longValue(),
+                (java.lang.String) arguments[1],
+                ((Integer) arguments[2]).intValue(),
+                ((Integer) arguments[3]).intValue());
+        }
+
+        if (_methodName116.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes116, parameterTypes)) {
+            return RouteLocalServiceUtil.getPublicRoutesNotSelectedByUserCount(((Long) arguments[0]).longValue(),
                 (java.lang.String) arguments[1]);
         }
 

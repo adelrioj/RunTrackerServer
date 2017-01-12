@@ -305,6 +305,19 @@ public class RouteLocalServiceUtil {
         return getService().getByIdUserAndNameCount(idUser, name);
     }
 
+    public static java.util.List<es.eina.tfg.model.Route> getPublicRoutesNotSelectedByUser(
+        long idUser, java.lang.String name, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService()
+                   .getPublicRoutesNotSelectedByUser(idUser, name, start, end);
+    }
+
+    public static long getPublicRoutesNotSelectedByUserCount(long idUser,
+        java.lang.String name)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService().getPublicRoutesNotSelectedByUserCount(idUser, name);
+    }
+
     public static void clearService() {
         _service = null;
     }

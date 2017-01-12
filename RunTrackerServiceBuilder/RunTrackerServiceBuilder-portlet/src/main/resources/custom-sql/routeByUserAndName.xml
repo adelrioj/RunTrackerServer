@@ -22,4 +22,30 @@
             (gl_route.name LIKE ?)
 ]]>
     </sql>
+    <sql id="es.eina.tfg.service.persistence.RouteFinder.findPublicRoutesNotSelectedByUser">
+        <![CDATA[
+        SELECT r.*
+        FROM gl_route r
+        WHERE NOT EXISTS (
+                        SELECT *
+                        FROM gl_userandroute uar
+                        WHERE uar.idRoute = r.idRoute
+                        AND uar.idUser = ?)
+            AND (r.name LIKE ?)
+            AND r.isPublic = 1
+]]>
+    </sql>
+    <sql id="es.eina.tfg.service.persistence.RouteFinder.findPublicRoutesNotSelectedByUserCount">
+        <![CDATA[
+        SELECT COUNT(*)
+        FROM gl_route r
+        WHERE NOT EXISTS (
+                        SELECT *
+                        FROM gl_userandroute uar
+                        WHERE uar.idRoute = r.idRoute
+                        AND uar.idUser = ?)
+            AND (r.name LIKE ?)
+            AND r.isPublic = 1
+]]>
+    </sql>
 </custom-sql>
