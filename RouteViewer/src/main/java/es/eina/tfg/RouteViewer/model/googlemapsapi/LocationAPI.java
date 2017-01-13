@@ -3,7 +3,7 @@ package es.eina.tfg.RouteViewer.model.googlemapsapi;
 import com.google.maps.ElevationApi;
 import com.google.maps.model.ElevationResult;
 import com.google.maps.model.LatLng;
-import es.eina.tfg.RouteViewer.model.RouteLocation;
+import es.eina.tfg.RunTrackerBL.entity.RouteLocation;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,14 +39,6 @@ public class LocationAPI extends GoogleAuthenticationAPI {
         }
 
         return toReturn;
-    }
-
-    public static Double calculateDistanceInMeters(List<RouteLocation> locations){
-        Double distance = 0d;
-        for (int i=0; i < (locations.size() - 1); i++){
-            distance += MathUtil.distance(locations.get(i), locations.get(i+1));
-        }
-        return distance;
     }
 
     private static LatLng toLatLng(final RouteLocation location){

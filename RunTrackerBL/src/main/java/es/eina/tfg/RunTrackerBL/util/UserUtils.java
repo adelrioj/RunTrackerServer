@@ -1,6 +1,5 @@
-package es.eina.tfg.RouteDiscoverManager.util;
+package es.eina.tfg.RunTrackerBL.util;
 
-import com.liferay.docs.route.util.WebKeys;
 import com.liferay.portal.model.User;
 
 import javax.portlet.PortletRequest;
@@ -13,11 +12,11 @@ import javax.portlet.PortletRequest;
 public class UserUtils {
 
     public static Long getCurrentUserId(PortletRequest request){
-        User user = (User) request.getAttribute(WebKeys.USER);
+        User user = (User) request.getAttribute("USER");
         return user.getUserId();
     }
 
     public static User getCurrentUser(PortletRequest request){
-        return (User) request.getAttribute(WebKeys.USER);
+        return (User) request.getAttribute("USER");
     }
 }

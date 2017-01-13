@@ -14,8 +14,8 @@ import com.liferay.util.bridges.mvc.MVCPortlet;
 import es.eina.tfg.RouteViewer.exception.UnableToAddException;
 import es.eina.tfg.RouteViewer.exception.UnableToDeleteException;
 import es.eina.tfg.RouteViewer.exception.UnableToUpdateException;
-import es.eina.tfg.RouteViewer.model.Route;
-import es.eina.tfg.RouteViewer.util.UserUtils;
+import es.eina.tfg.RunTrackerBL.entity.Route;
+import es.eina.tfg.RunTrackerBL.util.UserUtils;
 
 import javax.portlet.*;
 import java.io.File;

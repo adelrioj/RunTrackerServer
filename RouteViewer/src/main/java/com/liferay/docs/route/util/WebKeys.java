@@ -1,6 +1,6 @@
 package com.liferay.docs.route.util;
 
-import es.eina.tfg.RouteViewer.model.Route;
+import es.eina.tfg.RunTrackerBL.entity.Route;
 
 /**
  * This class holds constants that contain the names of objects used to pass info between request or session operations.

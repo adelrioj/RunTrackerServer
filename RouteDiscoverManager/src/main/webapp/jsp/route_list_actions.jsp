@@ -2,7 +2,7 @@
 
 <%@ page import="com.liferay.docs.route.util.WebKeys" %>
 <%@ page import="com.liferay.portal.kernel.dao.search.ResultRow" %>
-<%@ page import="es.eina.tfg.RouteDiscoverManager.model.Route" %>
+<%@ page import="es.eina.tfg.RunTrackerBL.entity.Route" %>
 
 <%
     ResultRow row = (ResultRow)request.getAttribute(WebKeys.SEARCH_CONTAINER_RESULT_ROW);

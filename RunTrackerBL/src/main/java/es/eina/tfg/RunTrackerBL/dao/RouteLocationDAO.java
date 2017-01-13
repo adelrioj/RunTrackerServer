@@ -1,8 +1,9 @@
-package es.eina.tfg.RouteViewer.model;
+package es.eina.tfg.RunTrackerBL.dao;
 
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import es.eina.tfg.RunTrackerBL.entity.RouteLocation;
 import es.eina.tfg.service.RouteLocationLocalServiceUtil;
 
 import java.util.ArrayList;
@@ -54,9 +55,9 @@ public class RouteLocationDAO {
         return localLocations;
     }
 
-    private static es.eina.tfg.RouteViewer.model.RouteLocation toLocalRouteLocation(
+    private static es.eina.tfg.RunTrackerBL.entity.RouteLocation toLocalRouteLocation(
             final es.eina.tfg.model.RouteLocation toConvert){
-        es.eina.tfg.RouteViewer.model.RouteLocation location = new es.eina.tfg.RouteViewer.model.RouteLocation();
+        es.eina.tfg.RunTrackerBL.entity.RouteLocation location = new es.eina.tfg.RunTrackerBL.entity.RouteLocation();
         location.setId(toConvert.getIdRouteLocation());
         location.setLongitude(toConvert.getLongitude());
         location.setLatitude(toConvert.getLatitude());
@@ -66,7 +67,7 @@ public class RouteLocationDAO {
 
     private static es.eina.tfg.model.RouteLocation toSBRouteLocation(
             final Long relatedIdRoute,
-            final es.eina.tfg.RouteViewer.model.RouteLocation toConvert){
+            final es.eina.tfg.RunTrackerBL.entity.RouteLocation toConvert){
         es.eina.tfg.model.RouteLocation locationToInsert =
                 RouteLocationLocalServiceUtil.createRouteLocation(relatedIdRoute, toConvert.getId());
         locationToInsert.setLongitude(toConvert.getLongitude());

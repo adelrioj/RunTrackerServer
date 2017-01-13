@@ -3,7 +3,7 @@ package es.eina.tfg.RouteViewer.model;
 import com.liferay.portal.kernel.dao.search.DisplayTerms;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.model.User;
-import es.eina.tfg.RouteViewer.util.UserUtils;
+import es.eina.tfg.RunTrackerBL.util.UserUtils;
 
 import javax.portlet.PortletRequest;
 

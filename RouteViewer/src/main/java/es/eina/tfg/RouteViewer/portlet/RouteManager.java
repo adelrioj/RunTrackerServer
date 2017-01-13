@@ -6,9 +6,13 @@ import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.util.Validator;
 import es.eina.tfg.RouteViewer.exception.*;
-import es.eina.tfg.RouteViewer.model.*;
+import es.eina.tfg.RouteViewer.model.RouteDisplayTerms;
 import es.eina.tfg.RouteViewer.model.parser.RouteParserFactory;
-import es.eina.tfg.RouteViewer.util.RouteUtils;
+import es.eina.tfg.RunTrackerBL.converter.RouteUtils;
+import es.eina.tfg.RunTrackerBL.dao.RouteDAO;
+import es.eina.tfg.RunTrackerBL.dao.RouteLocationDAO;
+import es.eina.tfg.RunTrackerBL.entity.Route;
+import es.eina.tfg.RunTrackerBL.entity.RouteLocation;
 
 import java.io.File;
 import java.util.Collections;
@@ -52,7 +56,7 @@ public class RouteManager {
         Route addedRoute = RouteDAO.insert(route);
         RouteLocationDAO.insertMany(addedRoute.getIdRoute(), locationList);
 
-        RouteUtils.setLocationBasedPRoperties(addedRoute, locationList);
+        RouteUtils.setLocationBasedProperties(addedRoute, locationList);
 
         _log.info("Added route: " + addedRoute);
         return addedRoute;
@@ -95,7 +99,7 @@ public class RouteManager {
     }
 
     public static Route getRouteToRender(final Long idRoute, final Long idUser) {
-        es.eina.tfg.RouteViewer.model.Route route = null;
+        es.eina.tfg.RunTrackerBL.entity.Route route = null;
         if (isNull(idRoute) || idRoute == 0){
             try {
                 route = RouteDAO.getFirstRoute(idUser);

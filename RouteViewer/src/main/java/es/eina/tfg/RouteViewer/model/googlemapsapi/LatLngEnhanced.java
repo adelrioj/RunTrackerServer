@@ -1,5 +1,7 @@
 package es.eina.tfg.RouteViewer.model.googlemapsapi;
 
+import es.eina.tfg.RouteViewer.util.MathUtil;
+
 public class LatLngEnhanced{
 
     private static final double DELTA = .00001;

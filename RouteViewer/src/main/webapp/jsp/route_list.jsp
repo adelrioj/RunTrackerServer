@@ -1,5 +1,5 @@
 <%@ page import="com.liferay.portal.kernel.util.Validator" %>
-<%@ page import="es.eina.tfg.RouteViewer.model.Route" %>
+<%@ page import="es.eina.tfg.RunTrackerBL.entity.Route" %>
 <%@ page import="es.eina.tfg.RouteViewer.model.RouteDisplayTerms" %>
 <%@ page import="es.eina.tfg.RouteViewer.portlet.RouteManager" %>
 <%@ page import="java.util.List" %>

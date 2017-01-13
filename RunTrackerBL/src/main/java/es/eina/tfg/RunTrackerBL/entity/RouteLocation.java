@@ -1,4 +1,4 @@
-package es.eina.tfg.RouteDiscoverManager.model;
+package es.eina.tfg.RunTrackerBL.entity;
 
 public class RouteLocation {
 

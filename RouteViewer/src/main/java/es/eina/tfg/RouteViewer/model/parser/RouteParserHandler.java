@@ -2,7 +2,7 @@ package es.eina.tfg.RouteViewer.model.parser;
 
 import es.eina.tfg.RouteViewer.exception.UnableToObtainElevationException;
 import es.eina.tfg.RouteViewer.exception.UnableToParseGPXException;
-import es.eina.tfg.RouteViewer.model.RouteLocation;
+import es.eina.tfg.RunTrackerBL.entity.RouteLocation;
 
 import java.io.File;
 import java.util.List;

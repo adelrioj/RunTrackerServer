@@ -1,11 +1,13 @@
-package es.eina.tfg.RouteViewer.model;
+package es.eina.tfg.RunTrackerBL.dao;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.service.UserLocalServiceUtil;
-import es.eina.tfg.RouteViewer.util.RouteUtils;
+import es.eina.tfg.RunTrackerBL.entity.Route;
+import es.eina.tfg.RunTrackerBL.entity.RouteLocation;
+import es.eina.tfg.RunTrackerBL.converter.RouteUtils;
 import es.eina.tfg.service.RouteLocalServiceUtil;
 import es.eina.tfg.service.UserAndRouteLocalServiceUtil;
 
@@ -51,7 +53,7 @@ public class RouteDAO {
 
     public static Route getFirstRoute(final Long idUser)
             throws SystemException, PortalException {
-        es.eina.tfg.RouteViewer.model.Route resultRoute = null;
+        es.eina.tfg.RunTrackerBL.entity.Route resultRoute = null;
         List<es.eina.tfg.model.Route> routes = RouteLocalServiceUtil.getByIdUserAndName(idUser, "", 0, 19);
         if (routes!= null && routes.size() >0){
             es.eina.tfg.model.Route firstSBRoute = routes.get(0);
@@ -85,8 +87,27 @@ public class RouteDAO {
         return RouteLocalServiceUtil.getByIdUserAndNameCount(idUser, name);
     }
 
+    public static List<Route> getPublicRoutesNotSelectedByUser(final long idUser,
+                                                               final String name,
+                                                               final int start,
+                                                               final int end)
+            throws SystemException, PortalException {
+        List<Route> foundRoutes = new ArrayList<Route>();
+        List<es.eina.tfg.model.Route> sbRoutes = RouteLocalServiceUtil.getPublicRoutesNotSelectedByUser(idUser, name, start, end);
+        for (es.eina.tfg.model.Route sbRoute : sbRoutes) {
+            foundRoutes.add(toLocalRoute(sbRoute));
+        }
+        return foundRoutes;
+    }
+
+    public static long getPublicRoutesNotSelectedByUserCount(final long idUser,
+                                                             final String name)
+            throws SystemException {
+        return RouteLocalServiceUtil.getPublicRoutesNotSelectedByUserCount(idUser, name);
+    }
+
     private static es.eina.tfg.model.Route createSBRouteFromLocalRoute(
-            final es.eina.tfg.RouteViewer.model.Route localRoute)
+            final es.eina.tfg.RunTrackerBL.entity.Route localRoute)
             throws SystemException {
         Long idRoute = RouteLocalServiceUtil.generateNewIdRoute();
         es.eina.tfg.model.Route SBRoute = RouteLocalServiceUtil.createRoute(idRoute);
@@ -98,10 +119,10 @@ public class RouteDAO {
         return SBRoute;
     }
 
-    private static es.eina.tfg.RouteViewer.model.Route toLocalRoute(final es.eina.tfg.model.Route toConvert)
+    private static es.eina.tfg.RunTrackerBL.entity.Route toLocalRoute(final es.eina.tfg.model.Route toConvert)
             throws PortalException, SystemException {
         try {
-            es.eina.tfg.RouteViewer.model.Route localRoute = new es.eina.tfg.RouteViewer.model.Route();
+            es.eina.tfg.RunTrackerBL.entity.Route localRoute = new es.eina.tfg.RunTrackerBL.entity.Route();
             localRoute.setIdRoute(toConvert.getIdRoute());
             localRoute.setAuthor(UserLocalServiceUtil.getUser(toConvert.getIdAuthor()));
             localRoute.setType(toConvert.getType());
@@ -112,7 +133,7 @@ public class RouteDAO {
             List<RouteLocation> locations = RouteLocationDAO.getByIdRoute(localRoute.getIdRoute());
             boolean locationsIsNotEmpty = locations != null && !locations.isEmpty();
             if (locationsIsNotEmpty){
-                RouteUtils.setLocationBasedPRoperties(localRoute, locations);
+                RouteUtils.setLocationBasedProperties(localRoute, locations);
             }
 
             return localRoute;

@@ -5,8 +5,8 @@ import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import es.eina.tfg.RouteDiscoverManager.exception.UnableToAddRouteToUserException;
-import es.eina.tfg.RouteDiscoverManager.model.Route;
-import es.eina.tfg.RouteDiscoverManager.model.RouteDAO;
+import es.eina.tfg.RunTrackerBL.entity.Route;
+import es.eina.tfg.RunTrackerBL.dao.RouteDAO;
 import es.eina.tfg.RouteDiscoverManager.model.RouteDisplayTerms;
 import es.eina.tfg.service.UserAndRouteLocalServiceUtil;
 

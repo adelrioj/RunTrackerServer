@@ -9,7 +9,7 @@ import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import es.eina.tfg.RouteViewer.exception.UnableToObtainElevationException;
 import es.eina.tfg.RouteViewer.exception.UnableToParseGPXException;
-import es.eina.tfg.RouteViewer.model.RouteLocation;
+import es.eina.tfg.RunTrackerBL.entity.RouteLocation;
 import es.eina.tfg.RouteViewer.model.googlemapsapi.LocationAPI;
 
 import java.io.File;

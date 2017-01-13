@@ -8,8 +8,8 @@ import com.liferay.portal.kernel.servlet.SessionMessages;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.util.bridges.mvc.MVCPortlet;
 import es.eina.tfg.RouteDiscoverManager.exception.UnableToAddRouteToUserException;
-import es.eina.tfg.RouteDiscoverManager.model.Route;
-import es.eina.tfg.RouteDiscoverManager.util.UserUtils;
+import es.eina.tfg.RunTrackerBL.entity.Route;
+import es.eina.tfg.RunTrackerBL.util.UserUtils;
 
 import javax.portlet.*;
 import java.io.IOException;
