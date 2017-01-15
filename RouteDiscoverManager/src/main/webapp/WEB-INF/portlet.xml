@@ -22,7 +22,7 @@
 		<!-- copy all action parameters directly as render parameters -->
 		<init-param>
 			<name>copy-request-parameters</name>
-			<value>true</value>
+			<value>false</value>
 		</init-param>
 
 		<expiration-cache>0</expiration-cache>

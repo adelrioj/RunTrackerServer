@@ -51,17 +51,6 @@ public class RouteDAO {
         UserAndRouteLocalServiceUtil.deleteUserAndRoute(route.getAuthor().getUserId(), route.getIdRoute());
     }
 
-    public static Route getFirstRoute(final Long idUser)
-            throws SystemException, PortalException {
-        es.eina.tfg.RunTrackerBL.entity.Route resultRoute = null;
-        List<es.eina.tfg.model.Route> routes = RouteLocalServiceUtil.getByIdUserAndName(idUser, "", 0, 19);
-        if (routes!= null && routes.size() >0){
-            es.eina.tfg.model.Route firstSBRoute = routes.get(0);
-            resultRoute = toLocalRoute(firstSBRoute);
-        }
-        return resultRoute;
-    }
-
     public static Route getByIdRoute(final Long idRoute)
             throws SystemException, PortalException {
         es.eina.tfg.model.Route sbRoute = RouteLocalServiceUtil.getRoute(idRoute);

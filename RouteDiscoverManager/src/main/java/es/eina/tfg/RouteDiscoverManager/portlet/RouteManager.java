@@ -5,9 +5,9 @@ import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import es.eina.tfg.RouteDiscoverManager.exception.UnableToAddRouteToUserException;
-import es.eina.tfg.RunTrackerBL.entity.Route;
-import es.eina.tfg.RunTrackerBL.dao.RouteDAO;
 import es.eina.tfg.RouteDiscoverManager.model.RouteDisplayTerms;
+import es.eina.tfg.RunTrackerBL.dao.RouteDAO;
+import es.eina.tfg.RunTrackerBL.entity.Route;
 import es.eina.tfg.service.UserAndRouteLocalServiceUtil;
 
 import java.util.Collections;
@@ -31,7 +31,7 @@ public class RouteManager {
         Route route = null;
         if (isNull(idRoute) || idRoute == 0){
             try {
-                route = RouteDAO.getFirstRoute(idUser);
+                route = getFirstRoute(idUser);
             } catch (SystemException e) {
                 _log.error("Cannot obtain first route of the list on start.", e);
             } catch (PortalException e) {
@@ -47,6 +47,16 @@ public class RouteManager {
             }
         }
         return route;
+    }
+
+    private static Route getFirstRoute(final Long idUser)
+            throws SystemException, PortalException {
+        List<Route> routes = RouteDAO.getPublicRoutesNotSelectedByUser(idUser, "", 0, 19);
+        Route firstRoute = null;
+        if (routes!= null && routes.size() >0){
+            firstRoute = routes.get(0);
+        }
+        return firstRoute;
     }
 
     public static List<Route> getRouteByDisplayTerms(final RouteDisplayTerms displayTerms,

@@ -102,7 +102,7 @@ public class RouteManager {
         es.eina.tfg.RunTrackerBL.entity.Route route = null;
         if (isNull(idRoute) || idRoute == 0){
             try {
-                route = RouteDAO.getFirstRoute(idUser);
+                route = getFirstRoute(idUser);
             } catch (SystemException e) {
                 _log.error("Cannot obtain first route of the list on start.", e);
             } catch (PortalException e) {
@@ -118,6 +118,16 @@ public class RouteManager {
             }
         }
         return route;
+    }
+
+    private static Route getFirstRoute(final Long idUser)
+            throws SystemException, PortalException {
+        List<Route> routes = RouteDAO.getByIdUserAndName(idUser, "", 0, 19);
+        Route firstRoute = null;
+        if (routes!= null && routes.size() >0){
+            firstRoute = routes.get(0);
+        }
+        return firstRoute;
     }
 
     public static List<Route> getRouteByDisplayTerms(final RouteDisplayTerms displayTerms,

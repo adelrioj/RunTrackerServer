@@ -6,6 +6,7 @@ import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.servlet.SessionErrors;
 import com.liferay.portal.kernel.servlet.SessionMessages;
 import com.liferay.portal.kernel.util.ParamUtil;
+import com.liferay.portal.kernel.util.Validator;
 import com.liferay.util.bridges.mvc.MVCPortlet;
 import es.eina.tfg.RouteDiscoverManager.exception.UnableToAddRouteToUserException;
 import es.eina.tfg.RunTrackerBL.entity.Route;
@@ -13,8 +14,6 @@ import es.eina.tfg.RunTrackerBL.util.UserUtils;
 
 import javax.portlet.*;
 import java.io.IOException;
-
-import static com.liferay.portal.kernel.util.Validator.isNotNull;
 
 public class PortletController extends MVCPortlet {
 
@@ -26,12 +25,16 @@ public class PortletController extends MVCPortlet {
         Long idRoute = ParamUtil.getLong(request, WebKeys.PARAM_ROUTEID);
         Long idUser = UserUtils.getCurrentUserId(request);
 
-        Route route = RouteManager.getRouteToRender(idRoute, idUser);
-        if (isNotNull(route)){
+        if (isValid(idRoute) && isValid(idUser)){
+            Route route = RouteManager.getRouteToRender(idRoute, idUser);
             request.setAttribute(WebKeys.PARAM_ROUTE_TO_EDIT, route);
         }
 
         this.include(viewTemplate, request, response);
+    }
+
+    private boolean isValid(Long idToCheck) {
+        return (Validator.isNotNull(idToCheck) && idToCheck != 0);
     }
 
     public void addRouteAction(ActionRequest request, ActionResponse response) {

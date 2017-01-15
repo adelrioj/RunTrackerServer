@@ -53,7 +53,7 @@
         </liferay-ui:search-container-results>
 
         <liferay-ui:search-container-row
-                className="es.eina.tfg.RouteDiscoverManager.model.Route"
+                className="es.eina.tfg.RunTrackerBL.entity.Route"
                 keyProperty="idRoute"
                 modelVar="aRoute">
             <liferay-ui:search-container-column-text

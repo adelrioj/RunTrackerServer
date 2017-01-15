@@ -15,7 +15,6 @@
     <liferay-portlet:renderURLParams varImpl="routeListSearchURL" />
 
     <liferay-portlet:renderURL varImpl="iteratorURL">
-        <portlet:param name="routeId" value="${requestScope.routeId}" /> <%-- Posible eliminar? --%>
         <portlet:param name="mvcPath" value="/jsp/view.jsp" />
     </liferay-portlet:renderURL>
 
@@ -53,7 +52,7 @@
         </liferay-ui:search-container-results>
 
         <liferay-ui:search-container-row
-                className="es.eina.tfg.RouteViewer.model.Route"
+                className="es.eina.tfg.RunTrackerBL.entity.Route"
                 keyProperty="idRoute"
                 modelVar="aRoute">
             <liferay-ui:search-container-column-text

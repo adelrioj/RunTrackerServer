@@ -132,7 +132,7 @@ public class Route {
     public String toString() {
         return "Route{" +
                 "idRoute=" + idRoute +
-                ", author=" + author +
+                ", idAuthor=" + author.getUserId() +
                 ", type='" + type + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
@@ -143,7 +143,7 @@ public class Route {
                 ", maxElevationDifference=" + maxElevationDifference +
                 ", startLocation=" + startLocation +
                 ", endLocation=" + endLocation +
-                ", locations=" + locations +
+                ", locationsSize=" + locations.size() +
                 '}';
     }
 }
