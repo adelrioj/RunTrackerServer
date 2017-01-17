@@ -16,6 +16,13 @@
     bottom: 5px;
     right: 60%;
 }
+#routeListDivEmpty {
+    border: 3px;
+    margin-right: 25px;
+    left: 5px;
+    top: 5px;
+    bottom: 5px;
+}
 #routeSelectedDiv{
     border: 3px;
     position: absolute;

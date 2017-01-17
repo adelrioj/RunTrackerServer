@@ -9,6 +9,11 @@
     Route route = (Route)row.getObject();
 %>
 <liferay-ui:icon-menu>
+    <!-- View section -->
+    <portlet:renderURL var="viewRouteURL">
+        <portlet:param name="${constants.PARAM_ROUTEID}" value="<%= String.valueOf(route.getIdRoute()) %>" />
+    </portlet:renderURL>
+    <liferay-ui:icon image="view" message="view" url="${viewRouteURL}" />
     <%-- Add section--%>
     <portlet:actionURL name="addRouteAction" var="addRouteURL">
         <portlet:param name="${constants.PARAM_ROUTEID}" value="<%= String.valueOf(route.getIdRoute()) %>" />
