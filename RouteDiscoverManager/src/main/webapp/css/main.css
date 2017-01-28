@@ -1,6 +1,7 @@
 #map_canvas {
     height: 500px;
     width: 100%;
+    border: 3px solid black;
 }
 #RouteContentDiv {
     border: 3px;
@@ -26,7 +27,7 @@
 #routeSelectedDiv{
     border: 3px;
     position: absolute;
-    margin-left: 15px;
+    margin-left: 25px;
     right: 5px;
     top: 5px;
     bottom: 5px;
@@ -35,16 +36,19 @@
 #routeNameDiv{
     text-align: center;
     background-color: darkgray;
+    border: 3px solid black;
+    border-radius: 25px;
     margin-top: 5px;
     margin-bottom: 5px;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 #routeDescriptionDiv{
-    background-color: darkgray;
+    background-color: lightgray;
+    border-radius: 25px;
     margin-top: 5px;
     margin-bottom: 5px;
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-left: 10px;
+    padding-left: 4%;
 }

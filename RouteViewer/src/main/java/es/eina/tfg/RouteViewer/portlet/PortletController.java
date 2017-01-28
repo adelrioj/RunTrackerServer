@@ -9,6 +9,7 @@ import com.liferay.portal.kernel.servlet.SessionMessages;
 import com.liferay.portal.kernel.upload.UploadPortletRequest;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.StringPool;
+import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.util.PortalUtil;
 import com.liferay.util.bridges.mvc.MVCPortlet;
 import es.eina.tfg.RouteViewer.exception.UnableToAddException;
@@ -16,10 +17,12 @@ import es.eina.tfg.RouteViewer.exception.UnableToDeleteException;
 import es.eina.tfg.RouteViewer.exception.UnableToUpdateException;
 import es.eina.tfg.RunTrackerBL.entity.Route;
 import es.eina.tfg.RunTrackerBL.util.UserUtils;
+import es.eina.tfg.service.RouteLocalServiceUtil;
 
 import javax.portlet.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import static com.liferay.portal.kernel.util.Validator.isNotNull;
 import static es.eina.tfg.RouteViewer.util.FileValidator.validateFileParamNotEmpty;
@@ -38,7 +41,7 @@ public class PortletController extends MVCPortlet {
     private static final String MESSAGE_ROUTE_FILE_NOT_VALID = "Ha ocurrido un error al añadir la ruta con el archivo proporcionado";
 
     @Override
-    public void doView(RenderRequest request, RenderResponse response)
+    public void render(RenderRequest request, RenderResponse response)
             throws PortletException, IOException {
         Long idRoute = ParamUtil.getLong(request, WebKeys.PARAM_ROUTEID);
         Long idUser = UserUtils.getCurrentUserId(request);
@@ -47,8 +50,7 @@ public class PortletController extends MVCPortlet {
         if (isNotNull(route)){
             request.setAttribute(WebKeys.PARAM_ROUTE_TO_EDIT, route);
         }
-
-        this.include(viewTemplate, request, response);
+        super.render(request, response);
     }
 
     public void addRouteAction(ActionRequest request, ActionResponse response) {

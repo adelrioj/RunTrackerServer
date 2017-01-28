@@ -25,16 +25,12 @@ public class PortletController extends MVCPortlet {
         Long idRoute = ParamUtil.getLong(request, WebKeys.PARAM_ROUTEID);
         Long idUser = UserUtils.getCurrentUserId(request);
 
-        if (isValid(idRoute) && isValid(idUser)){
-            Route route = RouteManager.getRouteToRender(idRoute, idUser);
+        Route route = RouteManager.getRouteToRender(idRoute, idUser);
+        if (Validator.isNotNull(route)){
             request.setAttribute(WebKeys.PARAM_ROUTE_TO_EDIT, route);
         }
 
         this.include(viewTemplate, request, response);
-    }
-
-    private boolean isValid(Long idToCheck) {
-        return (Validator.isNotNull(idToCheck) && idToCheck != 0);
     }
 
     public void addRouteAction(ActionRequest request, ActionResponse response) {

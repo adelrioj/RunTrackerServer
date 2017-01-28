@@ -66,13 +66,6 @@
 			<version>1.0</version>
 		</dependency>
 
-		<!-- ServiceBuilder dependencies -->
-		<dependency>
-			<groupId>es.eina.tfg</groupId>
-			<artifactId>RunTrackerServiceBuilder-portlet-service</artifactId>
-			<version>2.1</version>
-		</dependency>
-
 		<!-- JSTL dependencies, including tld -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
