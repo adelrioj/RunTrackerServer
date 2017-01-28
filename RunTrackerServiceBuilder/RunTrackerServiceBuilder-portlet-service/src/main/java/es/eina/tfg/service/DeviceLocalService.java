@@ -273,4 +273,14 @@ public interface DeviceLocalService extends BaseLocalService,
     public java.util.List<es.eina.tfg.model.Device> getByStatus(
         java.lang.String status, int start, int end)
         throws com.liferay.portal.kernel.exception.SystemException;
+
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public java.util.List<es.eina.tfg.model.Device> getByDescriptionAndIdUser(
+        long idUser, java.lang.String description, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public int getByDescriptionAndIdUserCount(long idUser,
+        java.lang.String description)
+        throws com.liferay.portal.kernel.exception.SystemException;
 }

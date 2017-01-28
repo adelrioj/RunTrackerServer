@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<custom-sql>
+    <sql id="es.eina.tfg.service.persistence.RaceFinder.findRaceByIdUserAndTimeRange">
+        <![CDATA[
+        SELECT race.*
+        FROM gl_race race
+        INNER JOIN
+            (
+            SELECT gl_location.idRace idRace, MIN(gl_location.time) time
+            FROM gl_location
+            ) location
+            ON location.idRace = race.idRace
+        WHERE
+            (race.idUser = ?) AND
+            (location.time BETWEEN ? AND ?)
+]]>
+    </sql>
+</custom-sql>

@@ -25,6 +25,7 @@ import es.eina.tfg.service.persistence.DevicePersistence;
 import es.eina.tfg.service.persistence.EventPersistence;
 import es.eina.tfg.service.persistence.LocationPersistence;
 import es.eina.tfg.service.persistence.PowerPersistence;
+import es.eina.tfg.service.persistence.RaceFinder;
 import es.eina.tfg.service.persistence.RacePersistence;
 import es.eina.tfg.service.persistence.RouteFinder;
 import es.eina.tfg.service.persistence.RouteLocationFinder;
@@ -90,6 +91,8 @@ public abstract class DeviceAndSensorLocalServiceBaseImpl
     protected es.eina.tfg.service.RaceService raceService;
     @BeanReference(type = RacePersistence.class)
     protected RacePersistence racePersistence;
+    @BeanReference(type = RaceFinder.class)
+    protected RaceFinder raceFinder;
     @BeanReference(type = es.eina.tfg.service.RouteLocalService.class)
     protected es.eina.tfg.service.RouteLocalService routeLocalService;
     @BeanReference(type = es.eina.tfg.service.RouteService.class)
@@ -680,6 +683,24 @@ public abstract class DeviceAndSensorLocalServiceBaseImpl
      */
     public void setRacePersistence(RacePersistence racePersistence) {
         this.racePersistence = racePersistence;
+    }
+
+    /**
+     * Returns the race finder.
+     *
+     * @return the race finder
+     */
+    public RaceFinder getRaceFinder() {
+        return raceFinder;
+    }
+
+    /**
+     * Sets the race finder.
+     *
+     * @param raceFinder the race finder
+     */
+    public void setRaceFinder(RaceFinder raceFinder) {
+        this.raceFinder = raceFinder;
     }
 
     /**

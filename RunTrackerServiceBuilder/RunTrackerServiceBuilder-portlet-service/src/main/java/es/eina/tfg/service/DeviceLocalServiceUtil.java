@@ -308,6 +308,19 @@ public class DeviceLocalServiceUtil {
         return getService().getByStatus(status, start, end);
     }
 
+    public static java.util.List<es.eina.tfg.model.Device> getByDescriptionAndIdUser(
+        long idUser, java.lang.String description, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService()
+                   .getByDescriptionAndIdUser(idUser, description, start, end);
+    }
+
+    public static int getByDescriptionAndIdUserCount(long idUser,
+        java.lang.String description)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService().getByDescriptionAndIdUserCount(idUser, description);
+    }
+
     public static void clearService() {
         _service = null;
     }

@@ -322,6 +322,22 @@ public class DeviceLocalServiceWrapper implements DeviceLocalService,
         return _deviceLocalService.getByStatus(status, start, end);
     }
 
+    @Override
+    public java.util.List<es.eina.tfg.model.Device> getByDescriptionAndIdUser(
+        long idUser, java.lang.String description, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _deviceLocalService.getByDescriptionAndIdUser(idUser,
+            description, start, end);
+    }
+
+    @Override
+    public int getByDescriptionAndIdUserCount(long idUser,
+        java.lang.String description)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _deviceLocalService.getByDescriptionAndIdUserCount(idUser,
+            description);
+    }
+
     /**
      * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
      */

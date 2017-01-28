@@ -8,6 +8,8 @@
 	<name>DeviceManager Portlet</name>
 	<version>1.0</version>
 	<build>
+		<!-- Maven name ends in version number. Liferay does not like it-->
+		<finalName>${project.name}-portlet</finalName>
 		<plugins>
 			<plugin>
 				<groupId>com.liferay.maven.plugins</groupId>
@@ -49,6 +51,39 @@
 		</plugins>
 	</build>
 	<dependencies>
+		<!-- JUnit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
+
+		<!-- RunTracker DAL & utils-->
+		<dependency>
+			<groupId>es.eina.tfg</groupId>
+			<artifactId>RunTrackerBL</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<!-- JSTL dependencies, including tld -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.taglibs</groupId>
+			<artifactId>taglibs-standard-impl</artifactId>
+			<version>1.2.5</version>
+		</dependency>
+		<!-- Java constants in JSTL -->
+		<dependency>
+			<groupId>org.bibeault.jrjournal</groupId>
+			<artifactId>ccc</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<!-- Default Liferay dependencies -->
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
 			<artifactId>portal-service</artifactId>

@@ -241,6 +241,10 @@ public interface DeviceAndSensorLocalService extends BaseLocalService,
         java.lang.String[] parameterTypes, java.lang.Object[] arguments)
         throws java.lang.Throwable;
 
+    public es.eina.tfg.model.DeviceAndSensor delete(long idDevice, long idSensor)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException;
+
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public java.util.List<es.eina.tfg.model.DeviceAndSensor> getSensorsByDevice(
         java.lang.Long deviceId)

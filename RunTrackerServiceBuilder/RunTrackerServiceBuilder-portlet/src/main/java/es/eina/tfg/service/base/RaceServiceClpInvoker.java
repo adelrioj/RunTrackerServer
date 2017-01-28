@@ -9,79 +9,79 @@ import java.util.Arrays;
  * @generated
  */
 public class RaceServiceClpInvoker {
-    private String _methodName82;
-    private String[] _methodParameterTypes82;
-    private String _methodName83;
-    private String[] _methodParameterTypes83;
-    private String _methodName88;
-    private String[] _methodParameterTypes88;
-    private String _methodName89;
-    private String[] _methodParameterTypes89;
+    private String _methodName84;
+    private String[] _methodParameterTypes84;
+    private String _methodName85;
+    private String[] _methodParameterTypes85;
     private String _methodName90;
     private String[] _methodParameterTypes90;
     private String _methodName91;
     private String[] _methodParameterTypes91;
+    private String _methodName92;
+    private String[] _methodParameterTypes92;
+    private String _methodName93;
+    private String[] _methodParameterTypes93;
 
     public RaceServiceClpInvoker() {
-        _methodName82 = "getBeanIdentifier";
+        _methodName84 = "getBeanIdentifier";
 
-        _methodParameterTypes82 = new String[] {  };
+        _methodParameterTypes84 = new String[] {  };
 
-        _methodName83 = "setBeanIdentifier";
+        _methodName85 = "setBeanIdentifier";
 
-        _methodParameterTypes83 = new String[] { "java.lang.String" };
+        _methodParameterTypes85 = new String[] { "java.lang.String" };
 
-        _methodName88 = "add";
+        _methodName90 = "add";
 
-        _methodParameterTypes88 = new String[] {
+        _methodParameterTypes90 = new String[] {
                 "java.lang.Long", "java.lang.Long", "java.lang.String"
             };
 
-        _methodName89 = "delete";
-
-        _methodParameterTypes89 = new String[] { "java.lang.Long" };
-
-        _methodName90 = "getRace";
-
-        _methodParameterTypes90 = new String[] { "java.lang.Long" };
-
-        _methodName91 = "findByUserId";
+        _methodName91 = "delete";
 
         _methodParameterTypes91 = new String[] { "java.lang.Long" };
+
+        _methodName92 = "getRace";
+
+        _methodParameterTypes92 = new String[] { "java.lang.Long" };
+
+        _methodName93 = "findByUserId";
+
+        _methodParameterTypes93 = new String[] { "java.lang.Long" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
         Object[] arguments) throws Throwable {
-        if (_methodName82.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes82, parameterTypes)) {
+        if (_methodName84.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes84, parameterTypes)) {
             return RaceServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName83.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes83, parameterTypes)) {
+        if (_methodName85.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes85, parameterTypes)) {
             RaceServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }
 
-        if (_methodName88.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes88, parameterTypes)) {
+        if (_methodName90.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes90, parameterTypes)) {
             return RaceServiceUtil.add((java.lang.Long) arguments[0],
                 (java.lang.Long) arguments[1], (java.lang.String) arguments[2]);
         }
 
-        if (_methodName89.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes89, parameterTypes)) {
+        if (_methodName91.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes91, parameterTypes)) {
             return RaceServiceUtil.delete((java.lang.Long) arguments[0]);
         }
 
-        if (_methodName90.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes90, parameterTypes)) {
+        if (_methodName92.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes92, parameterTypes)) {
             return RaceServiceUtil.getRace((java.lang.Long) arguments[0]);
         }
 
-        if (_methodName91.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes91, parameterTypes)) {
+        if (_methodName93.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes93, parameterTypes)) {
             return RaceServiceUtil.findByUserId((java.lang.Long) arguments[0]);
         }
 

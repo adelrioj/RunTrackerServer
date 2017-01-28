@@ -278,6 +278,13 @@ public class DeviceAndSensorLocalServiceWrapper
     }
 
     @Override
+    public es.eina.tfg.model.DeviceAndSensor delete(long idDevice, long idSensor)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        return _deviceAndSensorLocalService.delete(idDevice, idSensor);
+    }
+
+    @Override
     public java.util.List<es.eina.tfg.model.DeviceAndSensor> getSensorsByDevice(
         java.lang.Long deviceId)
         throws com.liferay.portal.kernel.exception.SystemException {

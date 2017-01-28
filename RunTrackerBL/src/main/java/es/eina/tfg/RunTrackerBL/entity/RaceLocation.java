@@ -15,7 +15,7 @@ public class RaceLocation {
     private Double longitude;
     private Double speed;
     private Double distance;
-    private Double altitude;
+    private Double elevation; //elevation
 
     public Long getIdMeasurement() {
         return idMeasurement;
@@ -94,11 +94,11 @@ public class RaceLocation {
         this.distance = distance;
     }
 
-    public Double getAltitude() {
-        return altitude;
+    public Double getElevation() {
+        return elevation;
     }
-    public void setAltitude(Double altitude) {
-        this.altitude = altitude;
+    public void setElevation(Double elevation) {
+        this.elevation = elevation;
     }
 
     @Override
@@ -115,7 +115,7 @@ public class RaceLocation {
                 ", longitude=" + longitude +
                 ", speed=" + speed +
                 ", distance=" + distance +
-                ", altitude=" + altitude +
+                ", elevation=" + elevation +
                 '}';
     }
 }

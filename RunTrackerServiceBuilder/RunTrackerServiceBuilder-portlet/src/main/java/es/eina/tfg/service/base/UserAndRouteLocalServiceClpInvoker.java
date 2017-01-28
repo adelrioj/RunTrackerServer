@@ -41,16 +41,16 @@ public class UserAndRouteLocalServiceClpInvoker {
     private String[] _methodParameterTypes14;
     private String _methodName15;
     private String[] _methodParameterTypes15;
-    private String _methodName98;
-    private String[] _methodParameterTypes98;
-    private String _methodName99;
-    private String[] _methodParameterTypes99;
-    private String _methodName104;
-    private String[] _methodParameterTypes104;
-    private String _methodName105;
-    private String[] _methodParameterTypes105;
+    private String _methodName100;
+    private String[] _methodParameterTypes100;
+    private String _methodName101;
+    private String[] _methodParameterTypes101;
+    private String _methodName106;
+    private String[] _methodParameterTypes106;
     private String _methodName107;
     private String[] _methodParameterTypes107;
+    private String _methodName109;
+    private String[] _methodParameterTypes109;
 
     public UserAndRouteLocalServiceClpInvoker() {
         _methodName0 = "addUserAndRoute";
@@ -137,29 +137,29 @@ public class UserAndRouteLocalServiceClpInvoker {
 
         _methodParameterTypes15 = new String[] { "es.eina.tfg.model.UserAndRoute" };
 
-        _methodName98 = "getBeanIdentifier";
+        _methodName100 = "getBeanIdentifier";
 
-        _methodParameterTypes98 = new String[] {  };
+        _methodParameterTypes100 = new String[] {  };
 
-        _methodName99 = "setBeanIdentifier";
+        _methodName101 = "setBeanIdentifier";
 
-        _methodParameterTypes99 = new String[] { "java.lang.String" };
+        _methodParameterTypes101 = new String[] { "java.lang.String" };
 
-        _methodName104 = "addUserAndRoute";
+        _methodName106 = "addUserAndRoute";
 
-        _methodParameterTypes104 = new String[] {
+        _methodParameterTypes106 = new String[] {
                 "java.lang.Long", "java.lang.Long"
             };
 
-        _methodName105 = "deleteUserAndRoute";
+        _methodName107 = "deleteUserAndRoute";
 
-        _methodParameterTypes105 = new String[] {
+        _methodParameterTypes107 = new String[] {
                 "java.lang.Long", "java.lang.Long"
             };
 
-        _methodName107 = "getByidUser";
+        _methodName109 = "getByidUser";
 
-        _methodParameterTypes107 = new String[] { "java.lang.Long" };
+        _methodParameterTypes109 = new String[] { "java.lang.Long" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -251,32 +251,32 @@ public class UserAndRouteLocalServiceClpInvoker {
             return UserAndRouteLocalServiceUtil.updateUserAndRoute((es.eina.tfg.model.UserAndRoute) arguments[0]);
         }
 
-        if (_methodName98.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes98, parameterTypes)) {
+        if (_methodName100.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes100, parameterTypes)) {
             return UserAndRouteLocalServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName99.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes99, parameterTypes)) {
+        if (_methodName101.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes101, parameterTypes)) {
             UserAndRouteLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }
 
-        if (_methodName104.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes104, parameterTypes)) {
+        if (_methodName106.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes106, parameterTypes)) {
             return UserAndRouteLocalServiceUtil.addUserAndRoute((java.lang.Long) arguments[0],
-                (java.lang.Long) arguments[1]);
-        }
-
-        if (_methodName105.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes105, parameterTypes)) {
-            return UserAndRouteLocalServiceUtil.deleteUserAndRoute((java.lang.Long) arguments[0],
                 (java.lang.Long) arguments[1]);
         }
 
         if (_methodName107.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes107, parameterTypes)) {
+            return UserAndRouteLocalServiceUtil.deleteUserAndRoute((java.lang.Long) arguments[0],
+                (java.lang.Long) arguments[1]);
+        }
+
+        if (_methodName109.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes109, parameterTypes)) {
             return UserAndRouteLocalServiceUtil.getByidUser((java.lang.Long) arguments[0]);
         }
 

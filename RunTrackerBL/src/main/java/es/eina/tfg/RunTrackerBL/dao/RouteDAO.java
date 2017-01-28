@@ -4,10 +4,11 @@ import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.model.User;
 import com.liferay.portal.service.UserLocalServiceUtil;
+import es.eina.tfg.RunTrackerBL.converter.RouteConverter;
 import es.eina.tfg.RunTrackerBL.entity.Route;
 import es.eina.tfg.RunTrackerBL.entity.RouteLocation;
-import es.eina.tfg.RunTrackerBL.converter.RouteUtils;
 import es.eina.tfg.service.RouteLocalServiceUtil;
 import es.eina.tfg.service.UserAndRouteLocalServiceUtil;
 
@@ -21,29 +22,54 @@ public class RouteDAO {
         es.eina.tfg.model.Route toInsert = createSBRouteFromLocalRoute(route);
         es.eina.tfg.model.Route inserted = RouteLocalServiceUtil.addRoute(toInsert);
         UserAndRouteLocalServiceUtil.addUserAndRoute(inserted.getIdAuthor(), inserted.getIdRoute());
-        return toLocalRoute(inserted);
+
+        Route routeToReturn;
+        try{
+            List<RouteLocation> locations = RouteLocationDAO.getByIdRoute(inserted.getIdRoute());
+            User author = UserLocalServiceUtil.getUser(inserted.getIdAuthor());
+            routeToReturn = RouteConverter.toLocalRoute(inserted, author, locations);
+        } catch (SystemException e) {
+            _log.error("SystemException while getByIdRoute for route: " + inserted);
+            throw e;
+        } catch (PortalException e) {
+            _log.error("PortalException while getUser for route: " + inserted, e);
+            throw e;
+        }
+        return routeToReturn;
     }
 
     public static Route update(final Route route)
             throws SystemException, PortalException {
-        es.eina.tfg.model.Route storedRoute = RouteLocalServiceUtil.getRoute(route.getIdRoute());
+        es.eina.tfg.model.Route toUpdate = RouteLocalServiceUtil.getRoute(route.getIdRoute());
+        toUpdate.setName(route.getName());
+        toUpdate.setDescription(route.getDescription());
+        toUpdate.setType(route.getType());
+        es.eina.tfg.model.Route updated = RouteLocalServiceUtil.updateRoute(toUpdate);
 
-        storedRoute.setName(route.getName());
-        storedRoute.setDescription(route.getDescription());
-        storedRoute.setType(route.getType());
-
-        return toLocalRoute(RouteLocalServiceUtil.updateRoute(storedRoute));
+        Route routeToReturn;
+        try{
+            List<RouteLocation> locations = RouteLocationDAO.getByIdRoute(updated.getIdRoute());
+            User author = UserLocalServiceUtil.getUser(updated.getIdAuthor());
+            routeToReturn = RouteConverter.toLocalRoute(updated, author, locations);
+        } catch (SystemException e) {
+            _log.error("SystemException while getByIdRoute for route: " + updated);
+            throw e;
+        } catch (PortalException e) {
+            _log.error("PortalException while getUser for route: " + updated, e);
+            throw e;
+        }
+        return routeToReturn;
     }
 
-    public static void delete(final Long idRoute)
+    public static Route delete(final Long idRoute)
             throws PortalException, SystemException {
-        Route route = getByIdRoute(idRoute);
-        deleteUserAndRouteRelation(route);
-
-        if (!route.isPublic()){
-            RouteLocationDAO.deleteByIdRoute(route.getIdRoute());
-            RouteLocalServiceUtil.deleteRoute(route.getIdRoute());
+        Route toDelete = getByIdRoute(idRoute);
+        deleteUserAndRouteRelation(toDelete);
+        if (!toDelete.isPublic()){
+            RouteLocationDAO.deleteByIdRoute(toDelete.getIdRoute());
+            RouteLocalServiceUtil.deleteRoute(toDelete.getIdRoute());
         }
+        return toDelete;
     }
 
     private static void deleteUserAndRouteRelation(Route route)
@@ -53,8 +79,30 @@ public class RouteDAO {
 
     public static Route getByIdRoute(final Long idRoute)
             throws SystemException, PortalException {
-        es.eina.tfg.model.Route sbRoute = RouteLocalServiceUtil.getRoute(idRoute);
-        return toLocalRoute(sbRoute);
+        es.eina.tfg.model.Route sbRoute;
+        try {
+            sbRoute = RouteLocalServiceUtil.getRoute(idRoute);
+        } catch (SystemException e) {
+            _log.error("SystemException while RouteLocalServiceUtil.getRoute for route: " + idRoute);
+            throw e;
+        } catch (PortalException e) {
+            _log.error("PortalException while RouteLocalServiceUtil.getRoute for route: " + idRoute, e);
+            throw e;
+        }
+
+        Route routeToReturn;
+        try{
+            List<RouteLocation> locations = RouteLocationDAO.getByIdRoute(sbRoute.getIdRoute());
+            User author = UserLocalServiceUtil.getUser(sbRoute.getIdAuthor());
+            routeToReturn = RouteConverter.toLocalRoute(sbRoute, author, locations);
+        } catch (SystemException e) {
+            _log.error("SystemException while getByIdRoute for route: " + sbRoute);
+            throw e;
+        } catch (PortalException e) {
+            _log.error("PortalException while getUser for route: " + sbRoute, e);
+            throw e;
+        }
+        return routeToReturn;
     }
 
     public static List<Route> getByIdUserAndName(final long idUser,
@@ -62,10 +110,23 @@ public class RouteDAO {
                                                  final int start,
                                                  final int end)
             throws SystemException, PortalException {
-        List<Route> foundRoutes = new ArrayList<Route>();
         List<es.eina.tfg.model.Route> sbRoutes = RouteLocalServiceUtil.getByIdUserAndName(idUser, name, start, end);
-        for (es.eina.tfg.model.Route sbRoute : sbRoutes) {
-            foundRoutes.add(toLocalRoute(sbRoute));
+
+        List<Route> foundRoutes = new ArrayList<Route>();
+        try {
+            User author = UserLocalServiceUtil.getUser(idUser);
+            for (es.eina.tfg.model.Route sbRoute : sbRoutes) {
+                try {
+                    List<RouteLocation> locations = RouteLocationDAO.getByIdRoute(sbRoute.getIdRoute());
+                    foundRoutes.add(RouteConverter.toLocalRoute(sbRoute, author, locations));
+                } catch (SystemException e) {
+                    _log.error("SystemException while getByIdRoute for route: " + sbRoute);
+                    throw e;
+                }
+            }
+        } catch (PortalException e) {
+            _log.error("PortalException while getUser for idUser: " + idUser, e);
+            throw e;
         }
         return foundRoutes;
     }
@@ -81,10 +142,23 @@ public class RouteDAO {
                                                                final int start,
                                                                final int end)
             throws SystemException, PortalException {
-        List<Route> foundRoutes = new ArrayList<Route>();
         List<es.eina.tfg.model.Route> sbRoutes = RouteLocalServiceUtil.getPublicRoutesNotSelectedByUser(idUser, name, start, end);
-        for (es.eina.tfg.model.Route sbRoute : sbRoutes) {
-            foundRoutes.add(toLocalRoute(sbRoute));
+
+        List<Route> foundRoutes = new ArrayList<Route>();
+        try {
+            User author = UserLocalServiceUtil.getUser(idUser);
+            for (es.eina.tfg.model.Route sbRoute : sbRoutes) {
+                try {
+                    List<RouteLocation> locations = RouteLocationDAO.getByIdRoute(sbRoute.getIdRoute());
+                    foundRoutes.add(RouteConverter.toLocalRoute(sbRoute, author, locations));
+                } catch (SystemException e) {
+                    _log.error("SystemException while getByIdRoute for route: " + sbRoute);
+                    throw e;
+                }
+            }
+        } catch (PortalException e) {
+            _log.error("PortalException while getUser for idUser: " + idUser, e);
+            throw e;
         }
         return foundRoutes;
     }
@@ -106,33 +180,6 @@ public class RouteDAO {
         SBRoute.setDescription(localRoute.getDescription());
         SBRoute.setIsPublic(localRoute.isPublic());
         return SBRoute;
-    }
-
-    private static es.eina.tfg.RunTrackerBL.entity.Route toLocalRoute(final es.eina.tfg.model.Route toConvert)
-            throws PortalException, SystemException {
-        try {
-            es.eina.tfg.RunTrackerBL.entity.Route localRoute = new es.eina.tfg.RunTrackerBL.entity.Route();
-            localRoute.setIdRoute(toConvert.getIdRoute());
-            localRoute.setAuthor(UserLocalServiceUtil.getUser(toConvert.getIdAuthor()));
-            localRoute.setType(toConvert.getType());
-            localRoute.setName(toConvert.getName());
-            localRoute.setDescription(toConvert.getDescription());
-            localRoute.setPublic(toConvert.getIsPublic());
-
-            List<RouteLocation> locations = RouteLocationDAO.getByIdRoute(localRoute.getIdRoute());
-            boolean locationsIsNotEmpty = locations != null && !locations.isEmpty();
-            if (locationsIsNotEmpty){
-                RouteUtils.setLocationBasedProperties(localRoute, locations);
-            }
-
-            return localRoute;
-        } catch (SystemException e) {
-            _log.error("SystemException while getByIdRoute for route: " + toConvert);
-            throw e;
-        } catch (PortalException e) {
-            _log.error("PortalException while getUser for route: " + toConvert, e);
-            throw e;
-        }
     }
 
     private static Log _log = LogFactoryUtil.getLog(RouteDAO.class);

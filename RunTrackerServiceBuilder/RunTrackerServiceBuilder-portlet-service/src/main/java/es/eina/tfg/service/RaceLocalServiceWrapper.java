@@ -278,6 +278,15 @@ public class RaceLocalServiceWrapper implements RaceLocalService,
     }
 
     @Override
+    public java.util.List<es.eina.tfg.model.Race> getByIdUserAndTimeRange(
+        long idUser, java.util.Date startTime, java.util.Date endTime,
+        int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _raceLocalService.getByIdUserAndTimeRange(idUser, startTime,
+            endTime, start, end);
+    }
+
+    @Override
     public java.util.List<es.eina.tfg.model.Location> getLocations(long idRace)
         throws com.liferay.portal.kernel.exception.SystemException {
         return _raceLocalService.getLocations(idRace);

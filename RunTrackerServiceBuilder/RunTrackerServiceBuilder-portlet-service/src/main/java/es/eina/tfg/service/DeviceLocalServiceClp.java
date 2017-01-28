@@ -60,6 +60,10 @@ public class DeviceLocalServiceClp implements DeviceLocalService {
     private String[] _methodParameterTypes25;
     private String _methodName26;
     private String[] _methodParameterTypes26;
+    private String _methodName27;
+    private String[] _methodParameterTypes27;
+    private String _methodName28;
+    private String[] _methodParameterTypes28;
 
     public DeviceLocalServiceClp(InvokableLocalService invokableLocalService) {
         _invokableLocalService = invokableLocalService;
@@ -179,6 +183,16 @@ public class DeviceLocalServiceClp implements DeviceLocalService {
         _methodName26 = "getByStatus";
 
         _methodParameterTypes26 = new String[] { "java.lang.String", "int", "int" };
+
+        _methodName27 = "getByDescriptionAndIdUser";
+
+        _methodParameterTypes27 = new String[] {
+                "long", "java.lang.String", "int", "int"
+            };
+
+        _methodName28 = "getByDescriptionAndIdUserCount";
+
+        _methodParameterTypes28 = new String[] { "long", "java.lang.String" };
     }
 
     @Override
@@ -924,5 +938,73 @@ public class DeviceLocalServiceClp implements DeviceLocalService {
         }
 
         return (java.util.List<es.eina.tfg.model.Device>) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
+    public java.util.List<es.eina.tfg.model.Device> getByDescriptionAndIdUser(
+        long idUser, java.lang.String description, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName27,
+                    _methodParameterTypes27,
+                    new Object[] {
+                        idUser,
+                        
+                    ClpSerializer.translateInput(description),
+                        
+                    start,
+                        
+                    end
+                    });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (java.util.List<es.eina.tfg.model.Device>) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
+    public int getByDescriptionAndIdUserCount(long idUser,
+        java.lang.String description)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName28,
+                    _methodParameterTypes28,
+                    new Object[] {
+                        idUser,
+                        
+                    ClpSerializer.translateInput(description)
+                    });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return ((Integer) returnObj).intValue();
     }
 }

@@ -266,6 +266,15 @@ public class RaceLocalServiceUtil {
         return getService().getByUserId(userId);
     }
 
+    public static java.util.List<es.eina.tfg.model.Race> getByIdUserAndTimeRange(
+        long idUser, java.util.Date startTime, java.util.Date endTime,
+        int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService()
+                   .getByIdUserAndTimeRange(idUser, startTime, endTime, start,
+            end);
+    }
+
     public static java.util.List<es.eina.tfg.model.Location> getLocations(
         long idRace) throws com.liferay.portal.kernel.exception.SystemException {
         return getService().getLocations(idRace);

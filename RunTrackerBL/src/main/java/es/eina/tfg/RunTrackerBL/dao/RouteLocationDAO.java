@@ -3,6 +3,7 @@ package es.eina.tfg.RunTrackerBL.dao;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import es.eina.tfg.RunTrackerBL.converter.RouteConverter;
 import es.eina.tfg.RunTrackerBL.entity.RouteLocation;
 import es.eina.tfg.service.RouteLocationLocalServiceUtil;
 
@@ -16,13 +17,13 @@ public class RouteLocationDAO {
         es.eina.tfg.model.RouteLocation insertedRouteLocation;
         try {
             insertedRouteLocation = RouteLocationLocalServiceUtil.addRouteLocation(
-                    toSBRouteLocation(relatedIdRoute, location));
+                    createSBRouteLocation(relatedIdRoute, location));
         } catch (SystemException e) {
             _log.error("SystemException while adding RouteLocation: " + location.getId()
                     + " to route: " + relatedIdRoute + " on DB", e);
             throw e;
         }
-        return toLocalRouteLocation(insertedRouteLocation);
+        return RouteConverter.toLocalRouteLocation(insertedRouteLocation);
     }
 
     public static List<RouteLocation> insertMany(final Long relatedIdRoute, final List<RouteLocation> routeLocations)
@@ -41,31 +42,21 @@ public class RouteLocationDAO {
 
     public static List<RouteLocation> getByIdRoute(final Long idRoute)
             throws SystemException {
-        List<es.eina.tfg.model.RouteLocation> SBLocations;
+        List<es.eina.tfg.model.RouteLocation> sbLocations;
         try {
-            SBLocations = RouteLocationLocalServiceUtil.getByidRoute(idRoute);
+            sbLocations = RouteLocationLocalServiceUtil.getByidRoute(idRoute);
         } catch (SystemException e) {
             _log.error("SystemException while getByidRoute for id: " + idRoute);
             throw e;
         }
         List<RouteLocation> localLocations = new ArrayList<RouteLocation>();
-        for (es.eina.tfg.model.RouteLocation sbLocation : SBLocations) {
-            localLocations.add(toLocalRouteLocation(sbLocation));
+        for (es.eina.tfg.model.RouteLocation sbLocation : sbLocations) {
+            localLocations.add(RouteConverter.toLocalRouteLocation(sbLocation));
         }
         return localLocations;
     }
 
-    private static es.eina.tfg.RunTrackerBL.entity.RouteLocation toLocalRouteLocation(
-            final es.eina.tfg.model.RouteLocation toConvert){
-        es.eina.tfg.RunTrackerBL.entity.RouteLocation location = new es.eina.tfg.RunTrackerBL.entity.RouteLocation();
-        location.setId(toConvert.getIdRouteLocation());
-        location.setLongitude(toConvert.getLongitude());
-        location.setLatitude(toConvert.getLatitude());
-        location.setElevation(toConvert.getElevation());
-        return location;
-    }
-
-    private static es.eina.tfg.model.RouteLocation toSBRouteLocation(
+    private static es.eina.tfg.model.RouteLocation createSBRouteLocation(
             final Long relatedIdRoute,
             final es.eina.tfg.RunTrackerBL.entity.RouteLocation toConvert){
         es.eina.tfg.model.RouteLocation locationToInsert =

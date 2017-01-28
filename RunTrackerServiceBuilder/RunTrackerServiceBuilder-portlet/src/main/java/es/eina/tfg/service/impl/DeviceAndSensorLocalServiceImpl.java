@@ -1,8 +1,10 @@
 package es.eina.tfg.service.impl;
 
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import es.eina.tfg.model.DeviceAndSensor;
 import es.eina.tfg.service.base.DeviceAndSensorLocalServiceBaseImpl;
+import es.eina.tfg.service.persistence.DeviceAndSensorPK;
 import es.eina.tfg.service.persistence.DeviceAndSensorUtil;
 
 import java.util.List;
@@ -28,6 +30,12 @@ import java.util.List;
  */
 public class DeviceAndSensorLocalServiceImpl
         extends DeviceAndSensorLocalServiceBaseImpl {
+
+    public DeviceAndSensor delete(long idDevice, long idSensor)
+            throws SystemException, PortalException {
+        DeviceAndSensorPK deviceAndSensorPK = new DeviceAndSensorPK(idDevice, idSensor);
+        return deleteDeviceAndSensor(deviceAndSensorPK);
+    }
 
     public List<DeviceAndSensor> getSensorsByDevice(Long deviceId)
             throws SystemException {

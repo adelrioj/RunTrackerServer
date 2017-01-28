@@ -263,6 +263,13 @@ public class DeviceAndSensorLocalServiceUtil {
         return getService().invokeMethod(name, parameterTypes, arguments);
     }
 
+    public static es.eina.tfg.model.DeviceAndSensor delete(long idDevice,
+        long idSensor)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        return getService().delete(idDevice, idSensor);
+    }
+
     public static java.util.List<es.eina.tfg.model.DeviceAndSensor> getSensorsByDevice(
         java.lang.Long deviceId)
         throws com.liferay.portal.kernel.exception.SystemException {

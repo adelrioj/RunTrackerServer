@@ -1,5 +1,9 @@
 package es.eina.tfg.service.impl;
 
+import com.liferay.portal.kernel.dao.orm.DynamicQuery;
+import com.liferay.portal.kernel.dao.orm.DynamicQueryFactoryUtil;
+import com.liferay.portal.kernel.dao.orm.Junction;
+import com.liferay.portal.kernel.dao.orm.RestrictionsFactoryUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
@@ -125,8 +129,31 @@ public class DeviceLocalServiceImpl extends DeviceLocalServiceBaseImpl {
         return DeviceUtil.findBystatus(status, start, end);
     }
 
+    public List<Device> getByDescriptionAndIdUser(long idUser, String description, int start, int end)
+            throws SystemException {
+        DynamicQuery dynamicQuery = buildGetDevicesByDescriptionAndIdUserDynamicQuery(idUser, description);
+        return DeviceUtil.findWithDynamicQuery(dynamicQuery, start, end);
+    }
+
+    public int getByDescriptionAndIdUserCount(long idUser, String description)
+            throws SystemException {
+        DynamicQuery dynamicQuery = buildGetDevicesByDescriptionAndIdUserDynamicQuery(idUser, description);
+        return (int) DeviceUtil.countWithDynamicQuery(dynamicQuery);
+    }
+
+    private DynamicQuery buildGetDevicesByDescriptionAndIdUserDynamicQuery(long idUser, String description){
+        DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(Device.class);
+        Junction junction = RestrictionsFactoryUtil.conjunction();
+        junction.add(RestrictionsFactoryUtil.eq("idUser", idUser));
+        junction.add(RestrictionsFactoryUtil.ilike("description",
+                (new StringBuilder("%")).append(description).append("%").toString()));
+        dynamicQuery.add(junction);
+        return dynamicQuery;
+    }
+
     public static final String STATUS_SMSMODE = "SMSMODE";
     public static final String STATUS_3GMODE = "3GMODE";
+    public static final String STATUS_DISABLED = "DISABLED";
 
     private static Log _log = LogFactoryUtil.getLog(DeviceLocalServiceImpl.class);
 }

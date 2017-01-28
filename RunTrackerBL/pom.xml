@@ -15,7 +15,14 @@
 
   <dependencies>
 
-    <!-- Custom dependencies -->
+    <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
+    <dependency>
+      <groupId>commons-beanutils</groupId>
+      <artifactId>commons-beanutils</artifactId>
+      <version>1.9.3</version>
+    </dependency>
+
+    <!-- Joda time -->
     <dependency>
       <groupId>joda-time</groupId>
       <artifactId>joda-time</artifactId>

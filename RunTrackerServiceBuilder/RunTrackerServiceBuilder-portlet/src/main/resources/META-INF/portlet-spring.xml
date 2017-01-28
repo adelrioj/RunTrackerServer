@@ -18,6 +18,7 @@
 	<bean id="es.eina.tfg.service.RaceLocalService" class="es.eina.tfg.service.impl.RaceLocalServiceImpl" />
 	<bean id="es.eina.tfg.service.RaceService" class="es.eina.tfg.service.impl.RaceServiceImpl" />
 	<bean id="es.eina.tfg.service.persistence.RacePersistence" class="es.eina.tfg.service.persistence.RacePersistenceImpl" parent="basePersistence" />
+	<bean id="es.eina.tfg.service.persistence.RaceFinder" class="es.eina.tfg.service.persistence.RaceFinderImpl" parent="basePersistence" />
 	<bean id="es.eina.tfg.service.RouteLocalService" class="es.eina.tfg.service.impl.RouteLocalServiceImpl" />
 	<bean id="es.eina.tfg.service.RouteService" class="es.eina.tfg.service.impl.RouteServiceImpl" />
 	<bean id="es.eina.tfg.service.persistence.RoutePersistence" class="es.eina.tfg.service.persistence.RoutePersistenceImpl" parent="basePersistence" />

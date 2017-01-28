@@ -11,8 +11,10 @@ import es.eina.tfg.model.Race;
 import es.eina.tfg.service.LocationLocalServiceUtil;
 import es.eina.tfg.service.PowerLocalServiceUtil;
 import es.eina.tfg.service.base.RaceLocalServiceBaseImpl;
+import es.eina.tfg.service.persistence.RaceFinderUtil;
 import es.eina.tfg.service.persistence.RaceUtil;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -67,8 +69,14 @@ public class RaceLocalServiceImpl extends RaceLocalServiceBaseImpl {
         }
     }
 
-    public List<Race> getByUserId (Long userId) throws SystemException {
+    public List<Race> getByUserId (Long userId)
+            throws SystemException {
         return RaceUtil.findByuserId(userId);
+    }
+
+    public List<Race> getByIdUserAndTimeRange(long idUser, Date startTime, Date endTime, int start, int end)
+            throws SystemException {
+        return RaceFinderUtil.getByIdUserAndTimeRange(idUser, startTime, endTime, start, end);
     }
 
     public List<Location> getLocations (long idRace)
