@@ -39,6 +39,22 @@
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.4.0</version>
+				<configuration>
+					<executable>mvn</executable>
+					<arguments>
+						<argument>liferay:build-service</argument>
+						<argument>clean</argument>
+						<argument>compile</argument>
+						<argument>package</argument>
+						<argument>install</argument>
+						<argument>liferay:deploy</argument>
+					</arguments>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<modules>
