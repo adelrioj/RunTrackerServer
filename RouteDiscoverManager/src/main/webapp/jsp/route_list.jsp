@@ -6,23 +6,22 @@
 <%@ page import="com.liferay.docs.route.util.WebKeys" %>
 <%@include file="custom_init.jsp"%>
 
-<liferay-portlet:renderURL varImpl="routeListSearchURL">
+<liferay-portlet:renderURL varImpl="routeDiscoverListSearchURL">
     <portlet:param name="mvcPath" value="/jsp/view.jsp" />
 </liferay-portlet:renderURL>
 
-<aui:form action="${routeListSearchURL}" method="post" name="RouteListForm">
+<aui:form action="${routeDiscoverListSearchURL}" method="post" name="RouteDiscoverListForm">
 
-    <liferay-portlet:renderURLParams varImpl="routeListSearchURL" />
+    <liferay-portlet:renderURLParams varImpl="routeDiscoverListSearchURL" />
 
     <liferay-portlet:renderURL varImpl="iteratorURL">
-        <portlet:param name="routeId" value="${requestScope.routeId}" /> <%-- Posible eliminar? --%>
         <portlet:param name="mvcPath" value="/jsp/view.jsp" />
     </liferay-portlet:renderURL>
 
     <liferay-ui:search-container
             delta="10"
             hover="false"
-            curParam="routeListCurParam"
+            curParam="routeDiscoverListCurParam"
             emptyResultsMessage="noRoutesFound"
             displayTerms="<%= new RouteDisplayTerms(renderRequest) %>"
             iteratorURL="<%= iteratorURL %>" >
