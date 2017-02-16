@@ -2,17 +2,40 @@
 <custom-sql>
     <sql id="es.eina.tfg.service.persistence.RaceFinder.findRaceByIdUserAndTimeRange">
         <![CDATA[
-        SELECT race.*
+        SELECT DISTINCT race.*
         FROM gl_race race
         INNER JOIN
             (
-            SELECT gl_location.idRace idRace, MIN(gl_location.time) time
+            SELECT gl_location.idRace idRace, gl_location.time_ time
             FROM gl_location
             ) location
             ON location.idRace = race.idRace
         WHERE
             (race.idUser = ?) AND
             (location.time BETWEEN ? AND ?)
+]]>
+    </sql>
+    <sql id="es.eina.tfg.service.persistence.RaceFinder.findLastRace">
+        <![CDATA[
+        SELECT race.*
+        FROM gl_race race
+        INNER JOIN (
+            SELECT gl_location.idRace idRace, gl_location.time_ time
+            FROM gl_location
+        ) location
+            ON location.idRace = race.idRace
+        WHERE
+            (race.idUser = ?) AND
+            location.time = (
+                SELECT MAX(location2.time_)
+                FROM gl_location location2
+                INNER JOIN(
+                    SELECT gl_race.*
+                    FROM gl_race
+                ) race2
+                ON location2.idRace = race2.idRace
+                WHERE (race2.idUser = ?)
+            )
 ]]>
     </sql>
 </custom-sql>

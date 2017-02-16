@@ -280,6 +280,18 @@ public class LocationLocalServiceWrapper implements LocationLocalService,
     }
 
     @Override
+    public es.eina.tfg.model.Location createLocation(long idRace,
+        long idLocation) {
+        return _locationLocalService.createLocation(idRace, idLocation);
+    }
+
+    @Override
+    public void deleteByIdRace(long idRace)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        _locationLocalService.deleteByIdRace(idRace);
+    }
+
+    @Override
     public java.util.List<es.eina.tfg.model.Location> getByRaceId(
         java.lang.Long raceId)
         throws com.liferay.portal.kernel.exception.SystemException {

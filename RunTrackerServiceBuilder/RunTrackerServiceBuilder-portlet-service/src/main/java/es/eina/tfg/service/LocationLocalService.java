@@ -243,6 +243,12 @@ public interface LocationLocalService extends BaseLocalService,
     public es.eina.tfg.service.persistence.LocationPK generateNewIdLocation(
         long idRace) throws com.liferay.portal.kernel.exception.SystemException;
 
+    public es.eina.tfg.model.Location createLocation(long idRace,
+        long idLocation);
+
+    public void deleteByIdRace(long idRace)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public java.util.List<es.eina.tfg.model.Location> getByRaceId(
         java.lang.Long raceId)

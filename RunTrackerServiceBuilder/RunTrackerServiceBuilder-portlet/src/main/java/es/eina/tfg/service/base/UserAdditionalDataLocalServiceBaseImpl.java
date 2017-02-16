@@ -22,6 +22,7 @@ import es.eina.tfg.service.UserAdditionalDataLocalService;
 import es.eina.tfg.service.persistence.DeviceAndSensorPersistence;
 import es.eina.tfg.service.persistence.DevicePersistence;
 import es.eina.tfg.service.persistence.EventPersistence;
+import es.eina.tfg.service.persistence.LocationFinder;
 import es.eina.tfg.service.persistence.LocationPersistence;
 import es.eina.tfg.service.persistence.PowerPersistence;
 import es.eina.tfg.service.persistence.RaceFinder;
@@ -78,6 +79,8 @@ public abstract class UserAdditionalDataLocalServiceBaseImpl
     protected es.eina.tfg.service.LocationService locationService;
     @BeanReference(type = LocationPersistence.class)
     protected LocationPersistence locationPersistence;
+    @BeanReference(type = LocationFinder.class)
+    protected LocationFinder locationFinder;
     @BeanReference(type = es.eina.tfg.service.PowerLocalService.class)
     protected es.eina.tfg.service.PowerLocalService powerLocalService;
     @BeanReference(type = es.eina.tfg.service.PowerService.class)
@@ -569,6 +572,24 @@ public abstract class UserAdditionalDataLocalServiceBaseImpl
      */
     public void setLocationPersistence(LocationPersistence locationPersistence) {
         this.locationPersistence = locationPersistence;
+    }
+
+    /**
+     * Returns the location finder.
+     *
+     * @return the location finder
+     */
+    public LocationFinder getLocationFinder() {
+        return locationFinder;
+    }
+
+    /**
+     * Sets the location finder.
+     *
+     * @param locationFinder the location finder
+     */
+    public void setLocationFinder(LocationFinder locationFinder) {
+        this.locationFinder = locationFinder;
     }
 
     /**

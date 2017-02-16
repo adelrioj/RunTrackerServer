@@ -9,14 +9,10 @@ import java.util.Arrays;
  * @generated
  */
 public class DeviceServiceClpInvoker {
-    private String _methodName84;
-    private String[] _methodParameterTypes84;
-    private String _methodName85;
-    private String[] _methodParameterTypes85;
-    private String _methodName90;
-    private String[] _methodParameterTypes90;
-    private String _methodName91;
-    private String[] _methodParameterTypes91;
+    private String _methodName86;
+    private String[] _methodParameterTypes86;
+    private String _methodName87;
+    private String[] _methodParameterTypes87;
     private String _methodName92;
     private String[] _methodParameterTypes92;
     private String _methodName93;
@@ -35,85 +31,89 @@ public class DeviceServiceClpInvoker {
     private String[] _methodParameterTypes99;
     private String _methodName100;
     private String[] _methodParameterTypes100;
+    private String _methodName101;
+    private String[] _methodParameterTypes101;
+    private String _methodName102;
+    private String[] _methodParameterTypes102;
 
     public DeviceServiceClpInvoker() {
-        _methodName84 = "getBeanIdentifier";
+        _methodName86 = "getBeanIdentifier";
 
-        _methodParameterTypes84 = new String[] {  };
+        _methodParameterTypes86 = new String[] {  };
 
-        _methodName85 = "setBeanIdentifier";
+        _methodName87 = "setBeanIdentifier";
 
-        _methodParameterTypes85 = new String[] { "java.lang.String" };
+        _methodParameterTypes87 = new String[] { "java.lang.String" };
 
-        _methodName90 = "add";
+        _methodName92 = "add";
 
-        _methodParameterTypes90 = new String[] {
+        _methodParameterTypes92 = new String[] {
                 "java.lang.Long", "java.lang.String", "java.lang.String",
                 "java.lang.String", "java.lang.String", "java.lang.String",
                 "java.lang.String", "java.lang.String", "java.lang.String",
                 "java.lang.String", "java.lang.String"
             };
 
-        _methodName91 = "update";
+        _methodName93 = "update";
 
-        _methodParameterTypes91 = new String[] {
+        _methodParameterTypes93 = new String[] {
                 "java.lang.Long", "java.lang.String", "java.lang.String",
                 "java.lang.String", "java.lang.String", "java.lang.String"
             };
 
-        _methodName92 = "delete";
-
-        _methodParameterTypes92 = new String[] { "java.lang.Long" };
-
-        _methodName93 = "getDevice";
-
-        _methodParameterTypes93 = new String[] { "java.lang.Long" };
-
-        _methodName94 = "getSensors";
+        _methodName94 = "delete";
 
         _methodParameterTypes94 = new String[] { "java.lang.Long" };
 
-        _methodName95 = "getActiveSensors";
+        _methodName95 = "getDevice";
 
         _methodParameterTypes95 = new String[] { "java.lang.Long" };
 
-        _methodName96 = "getDeviceByPhoneNumber";
+        _methodName96 = "getSensors";
 
-        _methodParameterTypes96 = new String[] { "java.lang.String" };
+        _methodParameterTypes96 = new String[] { "java.lang.Long" };
 
-        _methodName97 = "getByUserId";
+        _methodName97 = "getActiveSensors";
 
         _methodParameterTypes97 = new String[] { "java.lang.Long" };
 
-        _methodName98 = "getByDeviceUUID";
+        _methodName98 = "getDeviceByPhoneNumber";
 
         _methodParameterTypes98 = new String[] { "java.lang.String" };
 
-        _methodName99 = "getByStatus";
+        _methodName99 = "getByUserId";
 
-        _methodParameterTypes99 = new String[] { "java.lang.String" };
+        _methodParameterTypes99 = new String[] { "java.lang.Long" };
 
-        _methodName100 = "getByStatus";
+        _methodName100 = "getByDeviceUUID";
 
-        _methodParameterTypes100 = new String[] { "java.lang.String", "int", "int" };
+        _methodParameterTypes100 = new String[] { "java.lang.String" };
+
+        _methodName101 = "getByStatus";
+
+        _methodParameterTypes101 = new String[] { "java.lang.String" };
+
+        _methodName102 = "getByStatus";
+
+        _methodParameterTypes102 = new String[] { "java.lang.String", "int", "int" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
         Object[] arguments) throws Throwable {
-        if (_methodName84.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes84, parameterTypes)) {
+        if (_methodName86.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes86, parameterTypes)) {
             return DeviceServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName85.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes85, parameterTypes)) {
+        if (_methodName87.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes87, parameterTypes)) {
             DeviceServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }
 
-        if (_methodName90.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes90, parameterTypes)) {
+        if (_methodName92.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes92, parameterTypes)) {
             return DeviceServiceUtil.add((java.lang.Long) arguments[0],
                 (java.lang.String) arguments[1],
                 (java.lang.String) arguments[2],
@@ -127,8 +127,8 @@ public class DeviceServiceClpInvoker {
                 (java.lang.String) arguments[10]);
         }
 
-        if (_methodName91.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes91, parameterTypes)) {
+        if (_methodName93.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes93, parameterTypes)) {
             return DeviceServiceUtil.update((java.lang.Long) arguments[0],
                 (java.lang.String) arguments[1],
                 (java.lang.String) arguments[2],
@@ -136,48 +136,48 @@ public class DeviceServiceClpInvoker {
                 (java.lang.String) arguments[4], (java.lang.String) arguments[5]);
         }
 
-        if (_methodName92.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes92, parameterTypes)) {
-            return DeviceServiceUtil.delete((java.lang.Long) arguments[0]);
-        }
-
-        if (_methodName93.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes93, parameterTypes)) {
-            return DeviceServiceUtil.getDevice((java.lang.Long) arguments[0]);
-        }
-
         if (_methodName94.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
-            return DeviceServiceUtil.getSensors((java.lang.Long) arguments[0]);
+            return DeviceServiceUtil.delete((java.lang.Long) arguments[0]);
         }
 
         if (_methodName95.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes95, parameterTypes)) {
-            return DeviceServiceUtil.getActiveSensors((java.lang.Long) arguments[0]);
+            return DeviceServiceUtil.getDevice((java.lang.Long) arguments[0]);
         }
 
         if (_methodName96.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes96, parameterTypes)) {
-            return DeviceServiceUtil.getDeviceByPhoneNumber((java.lang.String) arguments[0]);
+            return DeviceServiceUtil.getSensors((java.lang.Long) arguments[0]);
         }
 
         if (_methodName97.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes97, parameterTypes)) {
-            return DeviceServiceUtil.getByUserId((java.lang.Long) arguments[0]);
+            return DeviceServiceUtil.getActiveSensors((java.lang.Long) arguments[0]);
         }
 
         if (_methodName98.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes98, parameterTypes)) {
-            return DeviceServiceUtil.getByDeviceUUID((java.lang.String) arguments[0]);
+            return DeviceServiceUtil.getDeviceByPhoneNumber((java.lang.String) arguments[0]);
         }
 
         if (_methodName99.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes99, parameterTypes)) {
-            return DeviceServiceUtil.getByStatus((java.lang.String) arguments[0]);
+            return DeviceServiceUtil.getByUserId((java.lang.Long) arguments[0]);
         }
 
         if (_methodName100.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes100, parameterTypes)) {
+            return DeviceServiceUtil.getByDeviceUUID((java.lang.String) arguments[0]);
+        }
+
+        if (_methodName101.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes101, parameterTypes)) {
+            return DeviceServiceUtil.getByStatus((java.lang.String) arguments[0]);
+        }
+
+        if (_methodName102.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes102, parameterTypes)) {
             return DeviceServiceUtil.getByStatus((java.lang.String) arguments[0],
                 ((Integer) arguments[1]).intValue(),
                 ((Integer) arguments[2]).intValue());

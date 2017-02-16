@@ -2,4 +2,6 @@
 <custom-sql>
     <sql file="custom-sql/routeByUserAndName.xml" />
     <sql file="custom-sql/routeLocationCustomSQL.xml" />
+    <sql file="custom-sql/RaceCustomSQL.xml" />
+    <sql file="custom-sql/LocationCustomSQL.xml" />
 </custom-sql>

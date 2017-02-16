@@ -12,6 +12,7 @@
 	<bean id="es.eina.tfg.service.LocationLocalService" class="es.eina.tfg.service.impl.LocationLocalServiceImpl" />
 	<bean id="es.eina.tfg.service.LocationService" class="es.eina.tfg.service.impl.LocationServiceImpl" />
 	<bean id="es.eina.tfg.service.persistence.LocationPersistence" class="es.eina.tfg.service.persistence.LocationPersistenceImpl" parent="basePersistence" />
+	<bean id="es.eina.tfg.service.persistence.LocationFinder" class="es.eina.tfg.service.persistence.LocationFinderImpl" parent="basePersistence" />
 	<bean id="es.eina.tfg.service.PowerLocalService" class="es.eina.tfg.service.impl.PowerLocalServiceImpl" />
 	<bean id="es.eina.tfg.service.PowerService" class="es.eina.tfg.service.impl.PowerServiceImpl" />
 	<bean id="es.eina.tfg.service.persistence.PowerPersistence" class="es.eina.tfg.service.persistence.PowerPersistenceImpl" parent="basePersistence" />

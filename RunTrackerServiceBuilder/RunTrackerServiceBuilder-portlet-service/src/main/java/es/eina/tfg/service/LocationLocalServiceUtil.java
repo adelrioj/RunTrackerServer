@@ -268,6 +268,16 @@ public class LocationLocalServiceUtil {
         return getService().generateNewIdLocation(idRace);
     }
 
+    public static es.eina.tfg.model.Location createLocation(long idRace,
+        long idLocation) {
+        return getService().createLocation(idRace, idLocation);
+    }
+
+    public static void deleteByIdRace(long idRace)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        getService().deleteByIdRace(idRace);
+    }
+
     public static java.util.List<es.eina.tfg.model.Location> getByRaceId(
         java.lang.Long raceId)
         throws com.liferay.portal.kernel.exception.SystemException {

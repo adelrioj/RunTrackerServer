@@ -46,8 +46,8 @@
 				<configuration>
 					<executable>mvn</executable>
 					<arguments>
-						<argument>liferay:build-service</argument>
 						<argument>clean</argument>
+						<argument>liferay:build-service</argument>
 						<argument>compile</argument>
 						<argument>package</argument>
 						<argument>install</argument>

@@ -21,6 +21,8 @@ public class RaceFinderImpl
 
     private static final String GET_BY_IDUSER_AND_TIME_RANGE = RaceFinder.class.getName() + "."
             + "findRaceByIdUserAndTimeRange";
+    private static final String GET_LAST_RACE = RaceFinder.class.getName() + "."
+            + "findLastRace";
 
     public List<Race> getByIdUserAndTimeRange(long idUser, Date startTime, Date endTime, int start, int end)
             throws SystemException {
@@ -47,6 +49,30 @@ public class RaceFinderImpl
             closeSession(session);
         }
         return resultList;
+    }
+    public Race getLastRace(long idUser)
+            throws SystemException {
+        Session session = null;
+        Race result;
+        try {
+            session = openSession();
+            String sql = CustomSQLUtil.get(GET_LAST_RACE);
+            SQLQuery query = session.createSQLQuery(sql);
+            query.setCacheable(false);
+            query.addEntity("RACE", RaceImpl.class);
+
+            QueryPos queryPos = QueryPos.getInstance(query);
+            queryPos.add(idUser);
+            queryPos.add(idUser);
+
+            result = (Race) query.uniqueResult();
+        } catch (Exception e) {
+            _log.error("Exception while getLastRace process for idUser: " + idUser);
+            throw new SystemException(e);
+        } finally {
+            closeSession(session);
+        }
+        return result;
     }
 
     private static Log _log = LogFactoryUtil.getLog(RaceFinderImpl.class);

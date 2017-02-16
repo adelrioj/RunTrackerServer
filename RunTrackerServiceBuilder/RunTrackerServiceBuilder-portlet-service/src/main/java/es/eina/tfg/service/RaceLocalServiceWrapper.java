@@ -287,6 +287,12 @@ public class RaceLocalServiceWrapper implements RaceLocalService,
     }
 
     @Override
+    public es.eina.tfg.model.Race getLastRace(long idUser)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _raceLocalService.getLastRace(idUser);
+    }
+
+    @Override
     public java.util.List<es.eina.tfg.model.Location> getLocations(long idRace)
         throws com.liferay.portal.kernel.exception.SystemException {
         return _raceLocalService.getLocations(idRace);

@@ -133,8 +133,7 @@ public interface RouteLocationPersistence extends BasePersistence<RouteLocation>
     * @throws SystemException if a system exception occurred
     */
     public es.eina.tfg.model.RouteLocation[] findByrouteId_PrevAndNext(
-        es.eina.tfg.service.persistence.RouteLocationPK routeLocationPK,
-        long idRoute,
+        RouteLocationPK routeLocationPK, long idRoute,
         com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchRouteLocationException;
@@ -180,7 +179,7 @@ public interface RouteLocationPersistence extends BasePersistence<RouteLocation>
     * @return the new route location
     */
     public es.eina.tfg.model.RouteLocation create(
-        es.eina.tfg.service.persistence.RouteLocationPK routeLocationPK);
+        RouteLocationPK routeLocationPK);
 
     /**
     * Removes the route location with the primary key from the database. Also notifies the appropriate model listeners.
@@ -191,7 +190,7 @@ public interface RouteLocationPersistence extends BasePersistence<RouteLocation>
     * @throws SystemException if a system exception occurred
     */
     public es.eina.tfg.model.RouteLocation remove(
-        es.eina.tfg.service.persistence.RouteLocationPK routeLocationPK)
+        RouteLocationPK routeLocationPK)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchRouteLocationException;
 
@@ -208,7 +207,7 @@ public interface RouteLocationPersistence extends BasePersistence<RouteLocation>
     * @throws SystemException if a system exception occurred
     */
     public es.eina.tfg.model.RouteLocation findByPrimaryKey(
-        es.eina.tfg.service.persistence.RouteLocationPK routeLocationPK)
+        RouteLocationPK routeLocationPK)
         throws com.liferay.portal.kernel.exception.SystemException,
             es.eina.tfg.NoSuchRouteLocationException;
 
@@ -220,7 +219,7 @@ public interface RouteLocationPersistence extends BasePersistence<RouteLocation>
     * @throws SystemException if a system exception occurred
     */
     public es.eina.tfg.model.RouteLocation fetchByPrimaryKey(
-        es.eina.tfg.service.persistence.RouteLocationPK routeLocationPK)
+        RouteLocationPK routeLocationPK)
         throws com.liferay.portal.kernel.exception.SystemException;
 
     /**

@@ -10,6 +10,7 @@ import es.eina.tfg.service.DeviceAndSensorLocalServiceUtil;
 import es.eina.tfg.service.RaceLocalServiceUtil;
 import es.eina.tfg.service.base.LocationLocalServiceBaseImpl;
 import es.eina.tfg.service.persistence.DeviceAndSensorPK;
+import es.eina.tfg.service.persistence.LocationFinderUtil;
 import es.eina.tfg.service.persistence.LocationPK;
 import es.eina.tfg.service.persistence.LocationUtil;
 
@@ -46,6 +47,11 @@ public class LocationLocalServiceImpl extends LocationLocalServiceBaseImpl {
         }
     }
 
+    public Location createLocation (long idRace, long idLocation){
+        LocationPK locationPK = new LocationPK(idRace, idLocation);
+        return createLocation(locationPK);
+    }
+
     @Override
     public Location addLocation(Location location)
             throws SystemException {
@@ -57,6 +63,11 @@ public class LocationLocalServiceImpl extends LocationLocalServiceBaseImpl {
     public Location updateLocation(Location location) throws SystemException {
         checkMadatoryAttributes(location);
         return super.updateLocation(location);
+    }
+
+    public void deleteByIdRace(long idRace)
+            throws SystemException {
+        LocationFinderUtil.deleteByIdRace(idRace);
     }
 
     private void checkMadatoryAttributes(Location location)

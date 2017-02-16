@@ -16,7 +16,8 @@ public class RouteLocationFinderImpl
 
     private static final String DELETE_BY_ID_ROUTE = RouteLocationFinder.class.getName() + "." + "deleteByIdRoute";
 
-    public void deleteByIdRoute(long idRoute) throws SystemException {
+    public void deleteByIdRoute(long idRoute)
+            throws SystemException {
         Session session = null;
         try {
             session = openSession();
@@ -27,7 +28,7 @@ public class RouteLocationFinderImpl
             QueryPos queryPos = QueryPos.getInstance(query);
             queryPos.add(idRoute);
 
-            query.uniqueResult();
+            query.executeUpdate();
         } catch (Exception e) {
             _log.error("Exception while getByIdUserAndName process for idRoute: " + idRoute);
             throw new SystemException(e);

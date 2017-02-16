@@ -9,12 +9,15 @@ public class Race {
 
     private Long idRace;
     private Long idUser;
-    private Long idRoute;
+    private Route route;
     private String type;
 
     private List<RaceLocation> locations;
 
     private Double distanceInMeters;
+    private RaceLocation minElevation;
+    private RaceLocation maxElevation;
+    private Double maxElevationDifference;
     private RaceLocation startLocation;
     private RaceLocation endLocation;
 
@@ -32,11 +35,11 @@ public class Race {
         this.idUser = idUser;
     }
 
-    public Long getIdRoute() {
-        return idRoute;
+    public Route getRoute() {
+        return route;
     }
-    public void setIdRoute(Long idRoute) {
-        this.idRoute = idRoute;
+    public void setRoute(Route route) {
+        this.route = route;
     }
 
     public String getType() {
@@ -60,6 +63,27 @@ public class Race {
         this.distanceInMeters = distanceInMeters;
     }
 
+    public RaceLocation getMinElevation() {
+        return minElevation;
+    }
+    public void setMinElevation(RaceLocation minElevation) {
+        this.minElevation = minElevation;
+    }
+
+    public RaceLocation getMaxElevation() {
+        return maxElevation;
+    }
+    public void setMaxElevation(RaceLocation maxElevation) {
+        this.maxElevation = maxElevation;
+    }
+
+    public Double getMaxElevationDifference() {
+        return maxElevationDifference;
+    }
+    public void setMaxElevationDifference(Double maxElevationDifference) {
+        this.maxElevationDifference = maxElevationDifference;
+    }
+
     public RaceLocation getStartLocation() {
         return startLocation;
     }
@@ -79,10 +103,13 @@ public class Race {
         return "Race{" +
                 "idRace=" + idRace +
                 ", idUser=" + idUser +
-                ", idRoute=" + idRoute +
+                ", route=" + route +
                 ", type='" + type + '\'' +
                 ", locations=" + locations +
                 ", distanceInMeters=" + distanceInMeters +
+                ", minElevation=" + minElevation +
+                ", maxElevation=" + maxElevation +
+                ", maxElevationDifference=" + maxElevationDifference +
                 ", startLocation=" + startLocation +
                 ", endLocation=" + endLocation +
                 '}';

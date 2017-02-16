@@ -9,14 +9,10 @@ import java.util.Arrays;
  * @generated
  */
 public class RouteServiceClpInvoker {
-    private String _methodName84;
-    private String[] _methodParameterTypes84;
-    private String _methodName85;
-    private String[] _methodParameterTypes85;
-    private String _methodName90;
-    private String[] _methodParameterTypes90;
-    private String _methodName91;
-    private String[] _methodParameterTypes91;
+    private String _methodName86;
+    private String[] _methodParameterTypes86;
+    private String _methodName87;
+    private String[] _methodParameterTypes87;
     private String _methodName92;
     private String[] _methodParameterTypes92;
     private String _methodName93;
@@ -27,75 +23,79 @@ public class RouteServiceClpInvoker {
     private String[] _methodParameterTypes95;
     private String _methodName96;
     private String[] _methodParameterTypes96;
+    private String _methodName97;
+    private String[] _methodParameterTypes97;
+    private String _methodName98;
+    private String[] _methodParameterTypes98;
 
     public RouteServiceClpInvoker() {
-        _methodName84 = "getBeanIdentifier";
+        _methodName86 = "getBeanIdentifier";
 
-        _methodParameterTypes84 = new String[] {  };
+        _methodParameterTypes86 = new String[] {  };
 
-        _methodName85 = "setBeanIdentifier";
+        _methodName87 = "setBeanIdentifier";
 
-        _methodParameterTypes85 = new String[] { "java.lang.String" };
+        _methodParameterTypes87 = new String[] { "java.lang.String" };
 
-        _methodName90 = "add";
+        _methodName92 = "add";
 
-        _methodParameterTypes90 = new String[] {
+        _methodParameterTypes92 = new String[] {
                 "java.lang.String", "java.lang.String", "java.lang.String",
                 "java.lang.Long", "boolean"
             };
 
-        _methodName91 = "update";
+        _methodName93 = "update";
 
-        _methodParameterTypes91 = new String[] {
+        _methodParameterTypes93 = new String[] {
                 "java.lang.Long", "java.lang.String", "java.lang.String",
                 "java.lang.String", "boolean"
             };
 
-        _methodName92 = "delete";
-
-        _methodParameterTypes92 = new String[] { "java.lang.Long" };
-
-        _methodName93 = "getRoute";
-
-        _methodParameterTypes93 = new String[] { "java.lang.Long" };
-
-        _methodName94 = "getByAuthor";
+        _methodName94 = "delete";
 
         _methodParameterTypes94 = new String[] { "java.lang.Long" };
 
-        _methodName95 = "getByisPublic";
+        _methodName95 = "getRoute";
 
-        _methodParameterTypes95 = new String[] { "boolean" };
+        _methodParameterTypes95 = new String[] { "java.lang.Long" };
 
-        _methodName96 = "getPublicRoutes";
+        _methodName96 = "getByAuthor";
 
-        _methodParameterTypes96 = new String[] { "boolean", "int", "int" };
+        _methodParameterTypes96 = new String[] { "java.lang.Long" };
+
+        _methodName97 = "getByisPublic";
+
+        _methodParameterTypes97 = new String[] { "boolean" };
+
+        _methodName98 = "getPublicRoutes";
+
+        _methodParameterTypes98 = new String[] { "boolean", "int", "int" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
         Object[] arguments) throws Throwable {
-        if (_methodName84.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes84, parameterTypes)) {
+        if (_methodName86.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes86, parameterTypes)) {
             return RouteServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName85.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes85, parameterTypes)) {
+        if (_methodName87.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes87, parameterTypes)) {
             RouteServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }
 
-        if (_methodName90.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes90, parameterTypes)) {
+        if (_methodName92.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes92, parameterTypes)) {
             return RouteServiceUtil.add((java.lang.String) arguments[0],
                 (java.lang.String) arguments[1],
                 (java.lang.String) arguments[2], (java.lang.Long) arguments[3],
                 ((Boolean) arguments[4]).booleanValue());
         }
 
-        if (_methodName91.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes91, parameterTypes)) {
+        if (_methodName93.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes93, parameterTypes)) {
             return RouteServiceUtil.update((java.lang.Long) arguments[0],
                 (java.lang.String) arguments[1],
                 (java.lang.String) arguments[2],
@@ -103,28 +103,28 @@ public class RouteServiceClpInvoker {
                 ((Boolean) arguments[4]).booleanValue());
         }
 
-        if (_methodName92.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes92, parameterTypes)) {
-            return RouteServiceUtil.delete((java.lang.Long) arguments[0]);
-        }
-
-        if (_methodName93.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes93, parameterTypes)) {
-            return RouteServiceUtil.getRoute((java.lang.Long) arguments[0]);
-        }
-
         if (_methodName94.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
-            return RouteServiceUtil.getByAuthor((java.lang.Long) arguments[0]);
+            return RouteServiceUtil.delete((java.lang.Long) arguments[0]);
         }
 
         if (_methodName95.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes95, parameterTypes)) {
-            return RouteServiceUtil.getByisPublic(((Boolean) arguments[0]).booleanValue());
+            return RouteServiceUtil.getRoute((java.lang.Long) arguments[0]);
         }
 
         if (_methodName96.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes96, parameterTypes)) {
+            return RouteServiceUtil.getByAuthor((java.lang.Long) arguments[0]);
+        }
+
+        if (_methodName97.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes97, parameterTypes)) {
+            return RouteServiceUtil.getByisPublic(((Boolean) arguments[0]).booleanValue());
+        }
+
+        if (_methodName98.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes98, parameterTypes)) {
             return RouteServiceUtil.getPublicRoutes(((Boolean) arguments[0]).booleanValue(),
                 ((Integer) arguments[1]).intValue(),
                 ((Integer) arguments[2]).intValue());

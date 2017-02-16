@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<custom-sql>
+    <sql id="es.eina.tfg.service.persistence.LocationFinder.deleteByIdRace">
+        <![CDATA[
+            DELETE FROM gl_location
+            WHERE gl_location.idRace = ?
+        ]]>
+    </sql>
+</custom-sql>

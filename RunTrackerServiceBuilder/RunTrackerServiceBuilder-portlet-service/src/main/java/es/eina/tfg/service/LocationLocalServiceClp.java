@@ -48,6 +48,10 @@ public class LocationLocalServiceClp implements LocationLocalService {
     private String[] _methodParameterTypes19;
     private String _methodName20;
     private String[] _methodParameterTypes20;
+    private String _methodName21;
+    private String[] _methodParameterTypes21;
+    private String _methodName22;
+    private String[] _methodParameterTypes22;
 
     public LocationLocalServiceClp(InvokableLocalService invokableLocalService) {
         _invokableLocalService = invokableLocalService;
@@ -148,9 +152,17 @@ public class LocationLocalServiceClp implements LocationLocalService {
 
         _methodParameterTypes19 = new String[] { "long" };
 
-        _methodName20 = "getByRaceId";
+        _methodName20 = "createLocation";
 
-        _methodParameterTypes20 = new String[] { "java.lang.Long" };
+        _methodParameterTypes20 = new String[] { "long", "long" };
+
+        _methodName21 = "deleteByIdRace";
+
+        _methodParameterTypes21 = new String[] { "long" };
+
+        _methodName22 = "getByRaceId";
+
+        _methodParameterTypes22 = new String[] { "java.lang.Long" };
     }
 
     @Override
@@ -697,14 +709,58 @@ public class LocationLocalServiceClp implements LocationLocalService {
     }
 
     @Override
+    public es.eina.tfg.model.Location createLocation(long idRace,
+        long idLocation) {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName20,
+                    _methodParameterTypes20, new Object[] { idRace, idLocation });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (es.eina.tfg.model.Location) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
+    public void deleteByIdRace(long idRace)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        try {
+            _invokableLocalService.invokeMethod(_methodName21,
+                _methodParameterTypes21, new Object[] { idRace });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+    }
+
+    @Override
     public java.util.List<es.eina.tfg.model.Location> getByRaceId(
         java.lang.Long raceId)
         throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName20,
-                    _methodParameterTypes20,
+            returnObj = _invokableLocalService.invokeMethod(_methodName22,
+                    _methodParameterTypes22,
                     new Object[] { ClpSerializer.translateInput(raceId) });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);

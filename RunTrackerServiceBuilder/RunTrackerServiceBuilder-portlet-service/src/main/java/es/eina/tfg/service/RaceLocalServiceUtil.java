@@ -275,6 +275,11 @@ public class RaceLocalServiceUtil {
             end);
     }
 
+    public static es.eina.tfg.model.Race getLastRace(long idUser)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService().getLastRace(idUser);
+    }
+
     public static java.util.List<es.eina.tfg.model.Location> getLocations(
         long idRace) throws com.liferay.portal.kernel.exception.SystemException {
         return getService().getLocations(idRace);
