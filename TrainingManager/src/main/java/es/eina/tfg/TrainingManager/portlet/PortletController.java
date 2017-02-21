@@ -56,6 +56,7 @@ public class PortletController extends MVCPortlet {
         try {
             TrainingManager.deleteRace(idRace);
             _log.info("Successfully deleted Race for idRace: " + idRace);
+            //response.setRenderParameter(WebKeys.PARAM_EVENT_ID, "0");
             SessionMessages.add(request, WebKeys.MESSAGE_DELETE_ACTION_SUCCESS);
         } catch (UnableToDeleteRaceException e) {
             _log.error("UnableToDeleteRaceException while TrainingManager.deleteRace for: " + idRace, e);
