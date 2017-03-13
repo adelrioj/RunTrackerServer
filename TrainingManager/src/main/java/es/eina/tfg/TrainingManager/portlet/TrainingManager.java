@@ -17,7 +17,6 @@ import es.eina.tfg.TrainingManager.exception.UnableToObtainRaceException;
 import es.eina.tfg.TrainingManager.exception.UnableToParseJSONDataException;
 import es.eina.tfg.TrainingManager.model.DTO.FullcalendarEventRequest;
 import es.eina.tfg.TrainingManager.model.DTO.FullcalendarEventResponse;
-import es.eina.tfg.TrainingManager.model.converter.FullcalendarConverter;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -148,12 +147,16 @@ public class TrainingManager {
             throws IOException {
         List<FullcalendarEventResponse> calendarDTOList = new ArrayList<FullcalendarEventResponse>();
         for (Race race : races) {
-            FullcalendarEventResponse calendar =
-                    FullcalendarConverter.convert(race,
-                            "white",
-                            "white",
-                            "white",
-                            imageNamespace + "/images/icon_race.png");
+            FullcalendarEventResponse calendar = new FullcalendarEventResponse();
+            calendar.setId(String.valueOf(race.getIdRace()));
+
+            calendar.setStart(YEAR_TO_DAY_DTFORMATTER.print(race.getStartLocation().getTime()));
+            calendar.setEnd(YEAR_TO_DAY_DTFORMATTER.print(race.getEndLocation().getTime()));
+            calendar.setBorderColor("white");
+            calendar.setBackgroundColor("white");
+            calendar.setTextColor("white");
+            calendar.setIconURL(imageNamespace + "/images/icon_race.png");
+
             calendarDTOList.add(calendar);
         }
         return calendarDTOList;

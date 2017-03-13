@@ -1,3 +1,6 @@
+.fc-widget-header{
+    background-color: darkgray;
+}
 #calendar {
     max-width: 95%;
     margin: 50px auto;
@@ -68,7 +71,8 @@
     padding-bottom: 10px;
     padding-left: 4%;
 }
-
-.fc-widget-header{
-    background-color: darkgray;
+.flexCentered{
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }

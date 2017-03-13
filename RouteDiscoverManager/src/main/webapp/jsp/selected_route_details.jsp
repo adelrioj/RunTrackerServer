@@ -8,7 +8,17 @@
             </em>
         </td>
         <td>
-            <c:out value="${requestScope.routeToEdit.description}" />
+            <c:out value="${requestScope.routeToEdit.description}" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </td>
+        <td colspan="2">
+            <portlet:actionURL name="addRouteAction" var="addRouteURL">
+                <portlet:param name="${constants.PARAM_ROUTEID}" value="${requestScope.routeToEdit.idRoute}" />
+            </portlet:actionURL>
+            <aui:button cssClass="btn-info fillCell"
+                        icon="icon-plus"
+                        iconAlign="left"
+                        value="addRoute"
+                        onClick="${addRouteURL}"/>
         </td>
     </tr>
     <tr>
@@ -52,7 +62,7 @@
     <tr>
         <td align="right">
             <em>
-                <liferay-ui:message key="start" />:&nbsp;&nbsp;&nbsp;
+                <liferay-ui:message key="startLocationMarkerLabel" />:&nbsp;&nbsp;&nbsp;
             </em>
         </td>
         <td align="left">
@@ -60,7 +70,7 @@
         </td>
         <td align="right">
             <em>
-                <liferay-ui:message key="end" />:&nbsp;&nbsp;&nbsp;
+                <liferay-ui:message key="finishLocationMarkerLabel" />:&nbsp;&nbsp;&nbsp;
             </em>
         </td>
         <td align="left">

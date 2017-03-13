@@ -9,6 +9,7 @@
         <c:when test="${not empty requestScope.routeToEdit}">
             <div id="routeListDiv" >
                 <liferay-util:include page="/jsp/route_add.jsp" servletContext="${pageContext.servletContext}" />
+                <liferay-util:include page="/jsp/discover_view_button.jsp" servletContext="${pageContext.servletContext}" />
                 <br />
                 <br />
                 <liferay-util:include page="/jsp/route_list.jsp" servletContext="${pageContext.servletContext}" />

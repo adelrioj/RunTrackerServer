@@ -1,5 +1,7 @@
 <%@include file="custom_init.jsp"%>
 
+<liferay-ui:success key="${constants.MESSAGE_DELETE_ACTION_SUCCESS}" message="messageDeleteActionSuccess" />
+
 <div id="trainingManagerDiv">
     <c:choose>
         <c:when test="${not empty requestScope.requestedRace}">
@@ -13,7 +15,7 @@
                 <div id="trainingMapDiv" >
                     <liferay-util:include page="/jsp/training_detail_map.jsp" servletContext="${pageContext.servletContext}" />
                 </div>
-                <div id="trainingDetailsDiv" >
+                <div id="trainingDetailsDiv" class="flexCentered">
                     <liferay-util:include page="/jsp/training_detail_description.jsp" servletContext="${pageContext.servletContext}" />
                 </div>
             </div>

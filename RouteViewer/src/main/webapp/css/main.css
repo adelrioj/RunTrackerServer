@@ -44,6 +44,9 @@
     padding-bottom: 10px;
 }
 #routeDescriptionDiv{
+    display:flex;
+    justify-content:center;
+    align-items:center;
     background-color: lightgray;
     border-radius: 25px;
     margin-top: 5px;
@@ -52,9 +55,11 @@
     padding-bottom: 10px;
     padding-left: 4%;
 }
-
-.aui button.btn, .aui input[type="submit"].btn{
-    background: #2AAAE6 !important;
-    color: #FFF;
-    text-shadow: -1px -1px rgba(0, 0, 0, 0.3);
+.flexCentered{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.fillCell{
+    width: 100%;
 }

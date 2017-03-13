@@ -15,7 +15,7 @@
                     <liferay-util:include page="/jsp/selected_route_title.jsp" servletContext="${pageContext.servletContext}" />
                 </div>
                 <liferay-util:include page="/jsp/route_map.jsp" servletContext="${pageContext.servletContext}" />
-                <div id="routeDescriptionDiv">
+                <div id="routeDescriptionDiv" class="flexCentered">
                     <liferay-util:include page="/jsp/selected_route_details.jsp" servletContext="${pageContext.servletContext}" />
                 </div>
             </div>

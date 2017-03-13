@@ -11,6 +11,7 @@ import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.util.PortalUtil;
+import com.liferay.portlet.PortletURLFactoryUtil;
 import com.liferay.util.bridges.mvc.MVCPortlet;
 import es.eina.tfg.RouteViewer.exception.UnableToAddException;
 import es.eina.tfg.RouteViewer.exception.UnableToDeleteException;
@@ -106,6 +107,15 @@ public class PortletController extends MVCPortlet {
             _log.error("UnableToDeleteException when trying to delete Route " + idRoute);
             SessionErrors.add(request, MESSAGE_ROUTE_DELETE_ERROR);
         }
+    }
+
+    public void redirectToDiscoverAction(ActionRequest request, ActionResponse response)
+            throws IOException {
+        String portletName = "RouteDiscoverManager_WAR_RouteDiscoverManagerPortletportlet_";
+        long plid = 20979;
+        PortletURL redirectURL = PortletURLFactoryUtil.create(
+                PortalUtil.getHttpServletRequest(request), portletName, plid, PortletRequest.RENDER_PHASE);
+        response.sendRedirect(redirectURL.toString());
     }
 
     private static Log _log = LogFactoryUtil.getLog(PortletController.class);
