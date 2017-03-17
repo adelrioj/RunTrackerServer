@@ -7,6 +7,7 @@ create index IX_800EF80C on GL_DeviceAndSensor (idDevice);
 
 create index IX_39ECAEE0 on GL_Event (idAuthor);
 create index IX_8340A1F8 on GL_Event (idRoute);
+create index IX_94A4AA5B on GL_Event (plannedStartingTime);
 
 create index IX_3859D3F5 on GL_Location (idRace);
 

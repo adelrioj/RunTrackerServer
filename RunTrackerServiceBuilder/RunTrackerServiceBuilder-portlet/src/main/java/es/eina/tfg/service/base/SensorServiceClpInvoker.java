@@ -9,43 +9,43 @@ import java.util.Arrays;
  * @generated
  */
 public class SensorServiceClpInvoker {
-    private String _methodName86;
-    private String[] _methodParameterTypes86;
-    private String _methodName87;
-    private String[] _methodParameterTypes87;
-    private String _methodName92;
-    private String[] _methodParameterTypes92;
+    private String _methodName88;
+    private String[] _methodParameterTypes88;
+    private String _methodName89;
+    private String[] _methodParameterTypes89;
+    private String _methodName94;
+    private String[] _methodParameterTypes94;
 
     public SensorServiceClpInvoker() {
-        _methodName86 = "getBeanIdentifier";
+        _methodName88 = "getBeanIdentifier";
 
-        _methodParameterTypes86 = new String[] {  };
+        _methodParameterTypes88 = new String[] {  };
 
-        _methodName87 = "setBeanIdentifier";
+        _methodName89 = "setBeanIdentifier";
 
-        _methodParameterTypes87 = new String[] { "java.lang.String" };
+        _methodParameterTypes89 = new String[] { "java.lang.String" };
 
-        _methodName92 = "getSensor";
+        _methodName94 = "getSensor";
 
-        _methodParameterTypes92 = new String[] { "java.lang.Long" };
+        _methodParameterTypes94 = new String[] { "java.lang.Long" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
         Object[] arguments) throws Throwable {
-        if (_methodName86.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes86, parameterTypes)) {
+        if (_methodName88.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes88, parameterTypes)) {
             return SensorServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName87.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes87, parameterTypes)) {
+        if (_methodName89.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes89, parameterTypes)) {
             SensorServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }
 
-        if (_methodName92.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes92, parameterTypes)) {
+        if (_methodName94.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
             return SensorServiceUtil.getSensor((java.lang.Long) arguments[0]);
         }
 

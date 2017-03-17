@@ -9,6 +9,7 @@
 	<bean id="es.eina.tfg.service.EventLocalService" class="es.eina.tfg.service.impl.EventLocalServiceImpl" />
 	<bean id="es.eina.tfg.service.EventService" class="es.eina.tfg.service.impl.EventServiceImpl" />
 	<bean id="es.eina.tfg.service.persistence.EventPersistence" class="es.eina.tfg.service.persistence.EventPersistenceImpl" parent="basePersistence" />
+	<bean id="es.eina.tfg.service.persistence.EventFinder" class="es.eina.tfg.service.persistence.EventFinderImpl" parent="basePersistence" />
 	<bean id="es.eina.tfg.service.LocationLocalService" class="es.eina.tfg.service.impl.LocationLocalServiceImpl" />
 	<bean id="es.eina.tfg.service.LocationService" class="es.eina.tfg.service.impl.LocationServiceImpl" />
 	<bean id="es.eina.tfg.service.persistence.LocationPersistence" class="es.eina.tfg.service.persistence.LocationPersistenceImpl" parent="basePersistence" />

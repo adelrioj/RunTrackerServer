@@ -41,20 +41,16 @@ public class RouteLocalServiceClpInvoker {
     private String[] _methodParameterTypes14;
     private String _methodName15;
     private String[] _methodParameterTypes15;
-    private String _methodName102;
-    private String[] _methodParameterTypes102;
-    private String _methodName103;
-    private String[] _methodParameterTypes103;
-    private String _methodName108;
-    private String[] _methodParameterTypes108;
-    private String _methodName109;
-    private String[] _methodParameterTypes109;
+    private String _methodName104;
+    private String[] _methodParameterTypes104;
+    private String _methodName105;
+    private String[] _methodParameterTypes105;
     private String _methodName110;
     private String[] _methodParameterTypes110;
+    private String _methodName111;
+    private String[] _methodParameterTypes111;
     private String _methodName112;
     private String[] _methodParameterTypes112;
-    private String _methodName113;
-    private String[] _methodParameterTypes113;
     private String _methodName114;
     private String[] _methodParameterTypes114;
     private String _methodName115;
@@ -69,6 +65,10 @@ public class RouteLocalServiceClpInvoker {
     private String[] _methodParameterTypes119;
     private String _methodName120;
     private String[] _methodParameterTypes120;
+    private String _methodName121;
+    private String[] _methodParameterTypes121;
+    private String _methodName122;
+    private String[] _methodParameterTypes122;
 
     public RouteLocalServiceClpInvoker() {
         _methodName0 = "addRoute";
@@ -147,68 +147,68 @@ public class RouteLocalServiceClpInvoker {
 
         _methodParameterTypes15 = new String[] { "es.eina.tfg.model.Route" };
 
-        _methodName102 = "getBeanIdentifier";
+        _methodName104 = "getBeanIdentifier";
 
-        _methodParameterTypes102 = new String[] {  };
+        _methodParameterTypes104 = new String[] {  };
 
-        _methodName103 = "setBeanIdentifier";
+        _methodName105 = "setBeanIdentifier";
 
-        _methodParameterTypes103 = new String[] { "java.lang.String" };
+        _methodParameterTypes105 = new String[] { "java.lang.String" };
 
-        _methodName108 = "generateNewIdRoute";
+        _methodName110 = "generateNewIdRoute";
 
-        _methodParameterTypes108 = new String[] {  };
+        _methodParameterTypes110 = new String[] {  };
 
-        _methodName109 = "addRoute";
+        _methodName111 = "addRoute";
 
-        _methodParameterTypes109 = new String[] { "es.eina.tfg.model.Route" };
+        _methodParameterTypes111 = new String[] { "es.eina.tfg.model.Route" };
 
-        _methodName110 = "updateRoute";
+        _methodName112 = "updateRoute";
 
-        _methodParameterTypes110 = new String[] { "es.eina.tfg.model.Route" };
+        _methodParameterTypes112 = new String[] { "es.eina.tfg.model.Route" };
 
-        _methodName112 = "getByAuthor";
+        _methodName114 = "getByAuthor";
 
-        _methodParameterTypes112 = new String[] { "java.lang.Long" };
+        _methodParameterTypes114 = new String[] { "java.lang.Long" };
 
-        _methodName113 = "getByisPublic";
+        _methodName115 = "getByisPublic";
 
-        _methodParameterTypes113 = new String[] { "boolean" };
+        _methodParameterTypes115 = new String[] { "boolean" };
 
-        _methodName114 = "getByisPublic";
+        _methodName116 = "getByisPublic";
 
-        _methodParameterTypes114 = new String[] { "boolean", "int", "int" };
+        _methodParameterTypes116 = new String[] { "boolean", "int", "int" };
 
-        _methodName115 = "getByName";
+        _methodName117 = "getByName";
 
-        _methodParameterTypes115 = new String[] {
+        _methodParameterTypes117 = new String[] {
                 "java.lang.String", "int", "int",
                 "com.liferay.portal.kernel.util.OrderByComparator"
             };
 
-        _methodName116 = "getByNameCount";
+        _methodName118 = "getByNameCount";
 
-        _methodParameterTypes116 = new String[] { "java.lang.String" };
+        _methodParameterTypes118 = new String[] { "java.lang.String" };
 
-        _methodName117 = "getByIdUserAndName";
-
-        _methodParameterTypes117 = new String[] {
-                "long", "java.lang.String", "int", "int"
-            };
-
-        _methodName118 = "getByIdUserAndNameCount";
-
-        _methodParameterTypes118 = new String[] { "long", "java.lang.String" };
-
-        _methodName119 = "getPublicRoutesNotSelectedByUser";
+        _methodName119 = "getByIdUserAndName";
 
         _methodParameterTypes119 = new String[] {
                 "long", "java.lang.String", "int", "int"
             };
 
-        _methodName120 = "getPublicRoutesNotSelectedByUserCount";
+        _methodName120 = "getByIdUserAndNameCount";
 
         _methodParameterTypes120 = new String[] { "long", "java.lang.String" };
+
+        _methodName121 = "getPublicRoutesNotSelectedByUser";
+
+        _methodParameterTypes121 = new String[] {
+                "long", "java.lang.String", "int", "int"
+            };
+
+        _methodName122 = "getPublicRoutesNotSelectedByUserCount";
+
+        _methodParameterTypes122 = new String[] { "long", "java.lang.String" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -300,80 +300,66 @@ public class RouteLocalServiceClpInvoker {
             return RouteLocalServiceUtil.updateRoute((es.eina.tfg.model.Route) arguments[0]);
         }
 
-        if (_methodName102.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes102, parameterTypes)) {
+        if (_methodName104.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes104, parameterTypes)) {
             return RouteLocalServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName103.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes103, parameterTypes)) {
+        if (_methodName105.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes105, parameterTypes)) {
             RouteLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }
 
-        if (_methodName108.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes108, parameterTypes)) {
+        if (_methodName110.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes110, parameterTypes)) {
             return RouteLocalServiceUtil.generateNewIdRoute();
         }
 
-        if (_methodName109.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes109, parameterTypes)) {
+        if (_methodName111.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes111, parameterTypes)) {
             return RouteLocalServiceUtil.addRoute((es.eina.tfg.model.Route) arguments[0]);
-        }
-
-        if (_methodName110.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes110, parameterTypes)) {
-            return RouteLocalServiceUtil.updateRoute((es.eina.tfg.model.Route) arguments[0]);
         }
 
         if (_methodName112.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes112, parameterTypes)) {
-            return RouteLocalServiceUtil.getByAuthor((java.lang.Long) arguments[0]);
-        }
-
-        if (_methodName113.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes113, parameterTypes)) {
-            return RouteLocalServiceUtil.getByisPublic(((Boolean) arguments[0]).booleanValue());
+            return RouteLocalServiceUtil.updateRoute((es.eina.tfg.model.Route) arguments[0]);
         }
 
         if (_methodName114.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes114, parameterTypes)) {
+            return RouteLocalServiceUtil.getByAuthor((java.lang.Long) arguments[0]);
+        }
+
+        if (_methodName115.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes115, parameterTypes)) {
+            return RouteLocalServiceUtil.getByisPublic(((Boolean) arguments[0]).booleanValue());
+        }
+
+        if (_methodName116.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes116, parameterTypes)) {
             return RouteLocalServiceUtil.getByisPublic(((Boolean) arguments[0]).booleanValue(),
                 ((Integer) arguments[1]).intValue(),
                 ((Integer) arguments[2]).intValue());
         }
 
-        if (_methodName115.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes115, parameterTypes)) {
+        if (_methodName117.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes117, parameterTypes)) {
             return RouteLocalServiceUtil.getByName((java.lang.String) arguments[0],
                 ((Integer) arguments[1]).intValue(),
                 ((Integer) arguments[2]).intValue(),
                 (com.liferay.portal.kernel.util.OrderByComparator) arguments[3]);
         }
 
-        if (_methodName116.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes116, parameterTypes)) {
-            return RouteLocalServiceUtil.getByNameCount((java.lang.String) arguments[0]);
-        }
-
-        if (_methodName117.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes117, parameterTypes)) {
-            return RouteLocalServiceUtil.getByIdUserAndName(((Long) arguments[0]).longValue(),
-                (java.lang.String) arguments[1],
-                ((Integer) arguments[2]).intValue(),
-                ((Integer) arguments[3]).intValue());
-        }
-
         if (_methodName118.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes118, parameterTypes)) {
-            return RouteLocalServiceUtil.getByIdUserAndNameCount(((Long) arguments[0]).longValue(),
-                (java.lang.String) arguments[1]);
+            return RouteLocalServiceUtil.getByNameCount((java.lang.String) arguments[0]);
         }
 
         if (_methodName119.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes119, parameterTypes)) {
-            return RouteLocalServiceUtil.getPublicRoutesNotSelectedByUser(((Long) arguments[0]).longValue(),
+            return RouteLocalServiceUtil.getByIdUserAndName(((Long) arguments[0]).longValue(),
                 (java.lang.String) arguments[1],
                 ((Integer) arguments[2]).intValue(),
                 ((Integer) arguments[3]).intValue());
@@ -381,6 +367,20 @@ public class RouteLocalServiceClpInvoker {
 
         if (_methodName120.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes120, parameterTypes)) {
+            return RouteLocalServiceUtil.getByIdUserAndNameCount(((Long) arguments[0]).longValue(),
+                (java.lang.String) arguments[1]);
+        }
+
+        if (_methodName121.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes121, parameterTypes)) {
+            return RouteLocalServiceUtil.getPublicRoutesNotSelectedByUser(((Long) arguments[0]).longValue(),
+                (java.lang.String) arguments[1],
+                ((Integer) arguments[2]).intValue(),
+                ((Integer) arguments[3]).intValue());
+        }
+
+        if (_methodName122.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes122, parameterTypes)) {
             return RouteLocalServiceUtil.getPublicRoutesNotSelectedByUserCount(((Long) arguments[0]).longValue(),
                 (java.lang.String) arguments[1]);
         }

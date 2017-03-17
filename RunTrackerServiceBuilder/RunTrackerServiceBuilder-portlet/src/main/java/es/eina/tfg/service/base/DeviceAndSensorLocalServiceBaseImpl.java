@@ -22,6 +22,7 @@ import es.eina.tfg.service.DeviceAndSensorLocalService;
 import es.eina.tfg.service.persistence.DeviceAndSensorPK;
 import es.eina.tfg.service.persistence.DeviceAndSensorPersistence;
 import es.eina.tfg.service.persistence.DevicePersistence;
+import es.eina.tfg.service.persistence.EventFinder;
 import es.eina.tfg.service.persistence.EventPersistence;
 import es.eina.tfg.service.persistence.LocationFinder;
 import es.eina.tfg.service.persistence.LocationPersistence;
@@ -74,6 +75,8 @@ public abstract class DeviceAndSensorLocalServiceBaseImpl
     protected es.eina.tfg.service.EventService eventService;
     @BeanReference(type = EventPersistence.class)
     protected EventPersistence eventPersistence;
+    @BeanReference(type = EventFinder.class)
+    protected EventFinder eventFinder;
     @BeanReference(type = es.eina.tfg.service.LocationLocalService.class)
     protected es.eina.tfg.service.LocationLocalService locationLocalService;
     @BeanReference(type = es.eina.tfg.service.LocationService.class)
@@ -520,6 +523,24 @@ public abstract class DeviceAndSensorLocalServiceBaseImpl
      */
     public void setEventPersistence(EventPersistence eventPersistence) {
         this.eventPersistence = eventPersistence;
+    }
+
+    /**
+     * Returns the event finder.
+     *
+     * @return the event finder
+     */
+    public EventFinder getEventFinder() {
+        return eventFinder;
+    }
+
+    /**
+     * Sets the event finder.
+     *
+     * @param eventFinder the event finder
+     */
+    public void setEventFinder(EventFinder eventFinder) {
+        this.eventFinder = eventFinder;
     }
 
     /**

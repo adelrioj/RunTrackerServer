@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<custom-sql>
+    <sql id="es.eina.tfg.service.persistence.EventFinder.findEventByIdUserAndTimeRange">
+        <![CDATA[
+        SELECT DISTINCT event.*
+        FROM gl_event event, gl_userandevent userandevent
+        WHERE
+            (
+                (userandevent.idEvent = event.idEvent AND userandevent.idUser = ? )
+                OR event.idAuthor = ?
+            )
+            AND (event.plannedStartingTime BETWEEN ? AND ?)
+]]>
+    </sql>
+    <sql id="es.eina.tfg.service.persistence.EventFinder.findUnselectedEventsByIdUserAndTimeRange">
+        <![CDATA[
+        SELECT event.*
+        FROM gl_event event
+        WHERE event.realStartingTime IS NULL
+            AND event.realFinishTime IS NULL
+            AND event.idAuthor != ?
+            AND NOT EXISTS (SELECT uae.*
+                            FROM gl_userandevent uae
+                            WHERE uae.idEvent = event.idEvent
+                                AND uae.idUser = ?)
+            AND (event.plannedStartingTime BETWEEN ? AND ?)
+]]>
+    </sql>
+    <sql id="es.eina.tfg.service.persistence.EventFinder.findLastEvent">
+        <![CDATA[
+        SELECT DISTINCT event.*
+        FROM gl_event event, gl_userandevent userandevent
+        WHERE userandevent.idEvent = event.idEvent
+            AND (userandevent.idUser = ?
+                    OR event.idAuthor = ?)
+            AND event.plannedStartingTime = (
+                SELECT MAX(event2.plannedStartingTime)
+                FROM gl_event event2, gl_userandevent userandevent2
+                WHERE userandevent2.idEvent = event2.idEvent
+                    AND (userandevent2.idUser = ?
+                            OR event2.idAuthor = ?))
+]]>
+    </sql>
+    <sql id="es.eina.tfg.service.persistence.EventFinder.findLastUnselectedEvent">
+        <![CDATA[
+        SELECT event.*
+        FROM gl_event event
+        WHERE event.realStartingTime IS NULL
+            AND event.realFinishTime IS NULL
+            AND event.idAuthor != ?
+            AND NOT EXISTS (SELECT uae.*
+                            FROM gl_userandevent uae
+                            WHERE uae.idEvent = event.idEvent
+                                AND uae.idUser = ?)
+            AND event.plannedStartingTime = (
+                SELECT MAX(event2.plannedStartingTime)
+                FROM gl_event event2
+                WHERE event2.realStartingTime IS NULL
+                    AND event2.realFinishTime IS NULL
+                    AND event2.idAuthor != ?
+                    AND NOT EXISTS (SELECT uae2.*
+                                    FROM gl_userandevent uae2
+                                    WHERE uae2.idEvent = event2.idEvent
+                                        AND uae2.idUser = ?))
+]]>
+    </sql>
+    <sql id="es.eina.tfg.service.persistence.EventFinder.findUserAndEventByIdEvent">
+        <![CDATA[
+        SELECT DISTINCT uae.*
+        FROM gl_userandevent uae
+        INNER JOIN gl_event event
+        ON event.idEvent = uae.idEvent
+        WHERE uae.idEvent = ?
+            AND event.idAuthor != uae.idUser
+            AND event.name LIKE ?
+]]>
+    </sql>
+</custom-sql>

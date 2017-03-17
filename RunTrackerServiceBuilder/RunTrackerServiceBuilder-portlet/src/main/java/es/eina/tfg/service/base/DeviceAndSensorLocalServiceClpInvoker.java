@@ -41,16 +41,16 @@ public class DeviceAndSensorLocalServiceClpInvoker {
     private String[] _methodParameterTypes14;
     private String _methodName15;
     private String[] _methodParameterTypes15;
-    private String _methodName102;
-    private String[] _methodParameterTypes102;
-    private String _methodName103;
-    private String[] _methodParameterTypes103;
-    private String _methodName108;
-    private String[] _methodParameterTypes108;
-    private String _methodName109;
-    private String[] _methodParameterTypes109;
+    private String _methodName104;
+    private String[] _methodParameterTypes104;
+    private String _methodName105;
+    private String[] _methodParameterTypes105;
     private String _methodName110;
     private String[] _methodParameterTypes110;
+    private String _methodName111;
+    private String[] _methodParameterTypes111;
+    private String _methodName112;
+    private String[] _methodParameterTypes112;
 
     public DeviceAndSensorLocalServiceClpInvoker() {
         _methodName0 = "addDeviceAndSensor";
@@ -143,25 +143,25 @@ public class DeviceAndSensorLocalServiceClpInvoker {
                 "es.eina.tfg.model.DeviceAndSensor"
             };
 
-        _methodName102 = "getBeanIdentifier";
+        _methodName104 = "getBeanIdentifier";
 
-        _methodParameterTypes102 = new String[] {  };
+        _methodParameterTypes104 = new String[] {  };
 
-        _methodName103 = "setBeanIdentifier";
+        _methodName105 = "setBeanIdentifier";
 
-        _methodParameterTypes103 = new String[] { "java.lang.String" };
+        _methodParameterTypes105 = new String[] { "java.lang.String" };
 
-        _methodName108 = "delete";
+        _methodName110 = "delete";
 
-        _methodParameterTypes108 = new String[] { "long", "long" };
+        _methodParameterTypes110 = new String[] { "long", "long" };
 
-        _methodName109 = "getSensorsByDevice";
+        _methodName111 = "getSensorsByDevice";
 
-        _methodParameterTypes109 = new String[] { "java.lang.Long" };
+        _methodParameterTypes111 = new String[] { "java.lang.Long" };
 
-        _methodName110 = "getActiveSensorsByDevice";
+        _methodName112 = "getActiveSensorsByDevice";
 
-        _methodParameterTypes110 = new String[] { "java.lang.Long" };
+        _methodParameterTypes112 = new String[] { "java.lang.Long" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -253,31 +253,31 @@ public class DeviceAndSensorLocalServiceClpInvoker {
             return DeviceAndSensorLocalServiceUtil.updateDeviceAndSensor((es.eina.tfg.model.DeviceAndSensor) arguments[0]);
         }
 
-        if (_methodName102.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes102, parameterTypes)) {
+        if (_methodName104.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes104, parameterTypes)) {
             return DeviceAndSensorLocalServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName103.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes103, parameterTypes)) {
+        if (_methodName105.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes105, parameterTypes)) {
             DeviceAndSensorLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }
 
-        if (_methodName108.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes108, parameterTypes)) {
+        if (_methodName110.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes110, parameterTypes)) {
             return DeviceAndSensorLocalServiceUtil.delete(((Long) arguments[0]).longValue(),
                 ((Long) arguments[1]).longValue());
         }
 
-        if (_methodName109.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes109, parameterTypes)) {
+        if (_methodName111.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes111, parameterTypes)) {
             return DeviceAndSensorLocalServiceUtil.getSensorsByDevice((java.lang.Long) arguments[0]);
         }
 
-        if (_methodName110.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes110, parameterTypes)) {
+        if (_methodName112.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes112, parameterTypes)) {
             return DeviceAndSensorLocalServiceUtil.getActiveSensorsByDevice((java.lang.Long) arguments[0]);
         }
 

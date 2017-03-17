@@ -282,6 +282,49 @@ public class EventLocalServiceUtil {
         return getService().getByidRoute(idRoute);
     }
 
+    public static java.util.List<es.eina.tfg.model.Event> getByPlannedStartTime(
+        java.util.Date plannedStartTime, int start, int end,
+        com.liferay.portal.kernel.util.OrderByComparator comparator)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService()
+                   .getByPlannedStartTime(plannedStartTime, start, end,
+            comparator);
+    }
+
+    public static java.util.List<es.eina.tfg.model.Event> getByIdUserAndTimeRange(
+        long idUser, java.util.Date startPlannedStartingTime,
+        java.util.Date endPlannedStartingTime, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService()
+                   .getByIdUserAndTimeRange(idUser, startPlannedStartingTime,
+            endPlannedStartingTime, start, end);
+    }
+
+    public static es.eina.tfg.model.Event getLastEvent(long idUser)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService().getLastEvent(idUser);
+    }
+
+    public static es.eina.tfg.model.Event getLastUnselectedEvent(long idUser)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService().getLastUnselectedEvent(idUser);
+    }
+
+    public static java.util.List<es.eina.tfg.model.UserAndEvent> getUserAndEventByIdEvent(
+        long idEvent, java.lang.String name, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService().getUserAndEventByIdEvent(idEvent, name, start, end);
+    }
+
+    public static java.util.List<es.eina.tfg.model.Event> getUnselectedEventsByIdUserAndTimeRange(
+        long idUser, java.util.Date startPlannedStartingTime,
+        java.util.Date endPlannedStartingTime, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService()
+                   .getUnselectedEventsByIdUserAndTimeRange(idUser,
+            startPlannedStartingTime, endPlannedStartingTime, start, end);
+    }
+
     public static void clearService() {
         _service = null;
     }

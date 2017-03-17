@@ -4,4 +4,5 @@
     <sql file="custom-sql/routeLocationCustomSQL.xml" />
     <sql file="custom-sql/RaceCustomSQL.xml" />
     <sql file="custom-sql/LocationCustomSQL.xml" />
+    <sql file="custom-sql/EventCustomSQL.xml" />
 </custom-sql>

@@ -4,6 +4,7 @@ import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.model.User;
 import com.liferay.portal.service.UserLocalServiceUtil;
 import es.eina.tfg.model.Event;
@@ -12,9 +13,11 @@ import es.eina.tfg.model.UserAndEvent;
 import es.eina.tfg.service.RouteLocalServiceUtil;
 import es.eina.tfg.service.UserAndEventLocalServiceUtil;
 import es.eina.tfg.service.base.EventLocalServiceBaseImpl;
+import es.eina.tfg.service.persistence.EventFinderUtil;
 import es.eina.tfg.service.persistence.EventUtil;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -97,5 +100,41 @@ public class EventLocalServiceImpl extends EventLocalServiceBaseImpl {
         return EventUtil.findByrouteId(idRoute);
     }
 
+    public List<Event> getByPlannedStartTime(Date plannedStartTime, int start, int end, OrderByComparator comparator)
+            throws SystemException {
+        return EventUtil.findByplannedStartingTime(plannedStartTime, start, end, comparator);
+    }
+
+    public List<Event> getByIdUserAndTimeRange(long idUser, Date startPlannedStartingTime,
+                                               Date endPlannedStartingTime, int start, int end)
+            throws SystemException {
+        return EventFinderUtil.getByIdUserAndTimeRange(idUser, startPlannedStartingTime,
+                endPlannedStartingTime, start, end);
+    }
+
+    public Event getLastEvent(long idUser)
+            throws SystemException {
+        return EventFinderUtil.getLastEvent(idUser);
+    }
+
+    public Event getLastUnselectedEvent(long idUser)
+            throws SystemException {
+        return EventFinderUtil.getLastUnselectedEvent(idUser);
+    }
+
+    public List<UserAndEvent> getUserAndEventByIdEvent(long idEvent, String name, int start, int end)
+            throws SystemException{
+        return EventFinderUtil.getUserAndEventByIdEvent(idEvent, name, start, end);
+    }
+
+    public List<Event> getUnselectedEventsByIdUserAndTimeRange(long idUser,
+                                                               Date startPlannedStartingTime,
+                                                               Date endPlannedStartingTime,
+                                                               int start,
+                                                               int end)
+            throws SystemException {
+        return eventFinder.getUnselectedEventsByIdUserAndTimeRange(idUser, startPlannedStartingTime,
+                endPlannedStartingTime, start, end);
+    }
     private static Log _log = LogFactoryUtil.getLog(EventLocalServiceImpl.class);
 }

@@ -249,4 +249,35 @@ public interface EventLocalService extends BaseLocalService,
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public java.util.List<es.eina.tfg.model.Event> getByidRoute(long idRoute)
         throws com.liferay.portal.kernel.exception.SystemException;
+
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public java.util.List<es.eina.tfg.model.Event> getByPlannedStartTime(
+        java.util.Date plannedStartTime, int start, int end,
+        com.liferay.portal.kernel.util.OrderByComparator comparator)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public java.util.List<es.eina.tfg.model.Event> getByIdUserAndTimeRange(
+        long idUser, java.util.Date startPlannedStartingTime,
+        java.util.Date endPlannedStartingTime, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public es.eina.tfg.model.Event getLastEvent(long idUser)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public es.eina.tfg.model.Event getLastUnselectedEvent(long idUser)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public java.util.List<es.eina.tfg.model.UserAndEvent> getUserAndEventByIdEvent(
+        long idEvent, java.lang.String name, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public java.util.List<es.eina.tfg.model.Event> getUnselectedEventsByIdUserAndTimeRange(
+        long idUser, java.util.Date startPlannedStartingTime,
+        java.util.Date endPlannedStartingTime, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException;
 }

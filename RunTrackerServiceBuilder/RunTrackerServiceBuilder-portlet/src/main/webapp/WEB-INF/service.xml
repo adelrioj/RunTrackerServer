@@ -273,6 +273,9 @@
 		<finder name="routeId" return-type="Collection">
 			<finder-column name="idRoute" />
 		</finder>
+		<finder name="plannedStartingTime" return-type="Collection">
+			<finder-column name="plannedStartingTime" />
+		</finder>
 	</entity>
 
 	<entity name="UserAndEvent" uuid="false" local-service="true" remote-service="false" >

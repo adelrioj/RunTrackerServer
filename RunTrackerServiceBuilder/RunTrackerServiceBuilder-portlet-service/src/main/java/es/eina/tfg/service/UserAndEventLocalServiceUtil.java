@@ -263,6 +263,19 @@ public class UserAndEventLocalServiceUtil {
         return getService().invokeMethod(name, parameterTypes, arguments);
     }
 
+    public static es.eina.tfg.model.UserAndEvent addUserAndEvent(long idUser,
+        long idEvent)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService().addUserAndEvent(idUser, idEvent);
+    }
+
+    public static es.eina.tfg.model.UserAndEvent deleteUserAndEvent(
+        long idEvent, long idUser)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        return getService().deleteUserAndEvent(idEvent, idUser);
+    }
+
     public static java.util.List<es.eina.tfg.model.UserAndEvent> getByidUser(
         long userId) throws com.liferay.portal.kernel.exception.SystemException {
         return getService().getByidUser(userId);

@@ -290,6 +290,144 @@ public interface EventPersistence extends BasePersistence<Event> {
         throws com.liferay.portal.kernel.exception.SystemException;
 
     /**
+    * Returns all the events where plannedStartingTime = &#63;.
+    *
+    * @param plannedStartingTime the planned starting time
+    * @return the matching events
+    * @throws SystemException if a system exception occurred
+    */
+    public java.util.List<es.eina.tfg.model.Event> findByplannedStartingTime(
+        java.util.Date plannedStartingTime)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    /**
+    * Returns a range of all the events where plannedStartingTime = &#63;.
+    *
+    * <p>
+    * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link es.eina.tfg.model.impl.EventModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+    * </p>
+    *
+    * @param plannedStartingTime the planned starting time
+    * @param start the lower bound of the range of events
+    * @param end the upper bound of the range of events (not inclusive)
+    * @return the range of matching events
+    * @throws SystemException if a system exception occurred
+    */
+    public java.util.List<es.eina.tfg.model.Event> findByplannedStartingTime(
+        java.util.Date plannedStartingTime, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    /**
+    * Returns an ordered range of all the events where plannedStartingTime = &#63;.
+    *
+    * <p>
+    * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link es.eina.tfg.model.impl.EventModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+    * </p>
+    *
+    * @param plannedStartingTime the planned starting time
+    * @param start the lower bound of the range of events
+    * @param end the upper bound of the range of events (not inclusive)
+    * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+    * @return the ordered range of matching events
+    * @throws SystemException if a system exception occurred
+    */
+    public java.util.List<es.eina.tfg.model.Event> findByplannedStartingTime(
+        java.util.Date plannedStartingTime, int start, int end,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    /**
+    * Returns the first event in the ordered set where plannedStartingTime = &#63;.
+    *
+    * @param plannedStartingTime the planned starting time
+    * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+    * @return the first matching event
+    * @throws es.eina.tfg.NoSuchEventException if a matching event could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public es.eina.tfg.model.Event findByplannedStartingTime_First(
+        java.util.Date plannedStartingTime,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+        throws com.liferay.portal.kernel.exception.SystemException,
+            es.eina.tfg.NoSuchEventException;
+
+    /**
+    * Returns the first event in the ordered set where plannedStartingTime = &#63;.
+    *
+    * @param plannedStartingTime the planned starting time
+    * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+    * @return the first matching event, or <code>null</code> if a matching event could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public es.eina.tfg.model.Event fetchByplannedStartingTime_First(
+        java.util.Date plannedStartingTime,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    /**
+    * Returns the last event in the ordered set where plannedStartingTime = &#63;.
+    *
+    * @param plannedStartingTime the planned starting time
+    * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+    * @return the last matching event
+    * @throws es.eina.tfg.NoSuchEventException if a matching event could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public es.eina.tfg.model.Event findByplannedStartingTime_Last(
+        java.util.Date plannedStartingTime,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+        throws com.liferay.portal.kernel.exception.SystemException,
+            es.eina.tfg.NoSuchEventException;
+
+    /**
+    * Returns the last event in the ordered set where plannedStartingTime = &#63;.
+    *
+    * @param plannedStartingTime the planned starting time
+    * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+    * @return the last matching event, or <code>null</code> if a matching event could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public es.eina.tfg.model.Event fetchByplannedStartingTime_Last(
+        java.util.Date plannedStartingTime,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    /**
+    * Returns the events before and after the current event in the ordered set where plannedStartingTime = &#63;.
+    *
+    * @param idEvent the primary key of the current event
+    * @param plannedStartingTime the planned starting time
+    * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+    * @return the previous, current, and next event
+    * @throws es.eina.tfg.NoSuchEventException if a event with the primary key could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public es.eina.tfg.model.Event[] findByplannedStartingTime_PrevAndNext(
+        long idEvent, java.util.Date plannedStartingTime,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+        throws com.liferay.portal.kernel.exception.SystemException,
+            es.eina.tfg.NoSuchEventException;
+
+    /**
+    * Removes all the events where plannedStartingTime = &#63; from the database.
+    *
+    * @param plannedStartingTime the planned starting time
+    * @throws SystemException if a system exception occurred
+    */
+    public void removeByplannedStartingTime(java.util.Date plannedStartingTime)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    /**
+    * Returns the number of events where plannedStartingTime = &#63;.
+    *
+    * @param plannedStartingTime the planned starting time
+    * @return the number of matching events
+    * @throws SystemException if a system exception occurred
+    */
+    public int countByplannedStartingTime(java.util.Date plannedStartingTime)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    /**
     * Caches the event in the entity cache if it is enabled.
     *
     * @param event the event

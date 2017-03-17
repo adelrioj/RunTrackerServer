@@ -41,24 +41,20 @@ public class DeviceLocalServiceClpInvoker {
     private String[] _methodParameterTypes14;
     private String _methodName15;
     private String[] _methodParameterTypes15;
-    private String _methodName102;
-    private String[] _methodParameterTypes102;
-    private String _methodName103;
-    private String[] _methodParameterTypes103;
-    private String _methodName108;
-    private String[] _methodParameterTypes108;
-    private String _methodName109;
-    private String[] _methodParameterTypes109;
+    private String _methodName104;
+    private String[] _methodParameterTypes104;
+    private String _methodName105;
+    private String[] _methodParameterTypes105;
     private String _methodName110;
     private String[] _methodParameterTypes110;
+    private String _methodName111;
+    private String[] _methodParameterTypes111;
     private String _methodName112;
     private String[] _methodParameterTypes112;
-    private String _methodName113;
-    private String[] _methodParameterTypes113;
+    private String _methodName114;
+    private String[] _methodParameterTypes114;
     private String _methodName115;
     private String[] _methodParameterTypes115;
-    private String _methodName116;
-    private String[] _methodParameterTypes116;
     private String _methodName117;
     private String[] _methodParameterTypes117;
     private String _methodName118;
@@ -69,6 +65,10 @@ public class DeviceLocalServiceClpInvoker {
     private String[] _methodParameterTypes120;
     private String _methodName121;
     private String[] _methodParameterTypes121;
+    private String _methodName122;
+    private String[] _methodParameterTypes122;
+    private String _methodName123;
+    private String[] _methodParameterTypes123;
 
     public DeviceLocalServiceClpInvoker() {
         _methodName0 = "addDevice";
@@ -147,63 +147,63 @@ public class DeviceLocalServiceClpInvoker {
 
         _methodParameterTypes15 = new String[] { "es.eina.tfg.model.Device" };
 
-        _methodName102 = "getBeanIdentifier";
+        _methodName104 = "getBeanIdentifier";
 
-        _methodParameterTypes102 = new String[] {  };
+        _methodParameterTypes104 = new String[] {  };
 
-        _methodName103 = "setBeanIdentifier";
+        _methodName105 = "setBeanIdentifier";
 
-        _methodParameterTypes103 = new String[] { "java.lang.String" };
+        _methodParameterTypes105 = new String[] { "java.lang.String" };
 
-        _methodName108 = "generateNewIdDevice";
+        _methodName110 = "generateNewIdDevice";
 
-        _methodParameterTypes108 = new String[] {  };
+        _methodParameterTypes110 = new String[] {  };
 
-        _methodName109 = "addDevice";
+        _methodName111 = "addDevice";
 
-        _methodParameterTypes109 = new String[] { "es.eina.tfg.model.Device" };
+        _methodParameterTypes111 = new String[] { "es.eina.tfg.model.Device" };
 
-        _methodName110 = "updateDevice";
+        _methodName112 = "updateDevice";
 
-        _methodParameterTypes110 = new String[] { "es.eina.tfg.model.Device" };
+        _methodParameterTypes112 = new String[] { "es.eina.tfg.model.Device" };
 
-        _methodName112 = "getSensors";
+        _methodName114 = "getSensors";
 
-        _methodParameterTypes112 = new String[] { "java.lang.Long" };
+        _methodParameterTypes114 = new String[] { "java.lang.Long" };
 
-        _methodName113 = "getActiveSensors";
+        _methodName115 = "getActiveSensors";
 
-        _methodParameterTypes113 = new String[] { "java.lang.Long" };
+        _methodParameterTypes115 = new String[] { "java.lang.Long" };
 
-        _methodName115 = "getDeviceByPhoneNumber";
-
-        _methodParameterTypes115 = new String[] { "java.lang.String" };
-
-        _methodName116 = "getByUserId";
-
-        _methodParameterTypes116 = new String[] { "java.lang.Long" };
-
-        _methodName117 = "getBydeviceUUID";
+        _methodName117 = "getDeviceByPhoneNumber";
 
         _methodParameterTypes117 = new String[] { "java.lang.String" };
 
-        _methodName118 = "getByStatus";
+        _methodName118 = "getByUserId";
 
-        _methodParameterTypes118 = new String[] { "java.lang.String" };
+        _methodParameterTypes118 = new String[] { "java.lang.Long" };
 
-        _methodName119 = "getByStatus";
+        _methodName119 = "getBydeviceUUID";
 
-        _methodParameterTypes119 = new String[] { "java.lang.String", "int", "int" };
+        _methodParameterTypes119 = new String[] { "java.lang.String" };
 
-        _methodName120 = "getByDescriptionAndIdUser";
+        _methodName120 = "getByStatus";
 
-        _methodParameterTypes120 = new String[] {
+        _methodParameterTypes120 = new String[] { "java.lang.String" };
+
+        _methodName121 = "getByStatus";
+
+        _methodParameterTypes121 = new String[] { "java.lang.String", "int", "int" };
+
+        _methodName122 = "getByDescriptionAndIdUser";
+
+        _methodParameterTypes122 = new String[] {
                 "long", "java.lang.String", "int", "int"
             };
 
-        _methodName121 = "getByDescriptionAndIdUserCount";
+        _methodName123 = "getByDescriptionAndIdUserCount";
 
-        _methodParameterTypes121 = new String[] { "long", "java.lang.String" };
+        _methodParameterTypes123 = new String[] { "long", "java.lang.String" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -295,80 +295,80 @@ public class DeviceLocalServiceClpInvoker {
             return DeviceLocalServiceUtil.updateDevice((es.eina.tfg.model.Device) arguments[0]);
         }
 
-        if (_methodName102.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes102, parameterTypes)) {
+        if (_methodName104.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes104, parameterTypes)) {
             return DeviceLocalServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName103.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes103, parameterTypes)) {
+        if (_methodName105.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes105, parameterTypes)) {
             DeviceLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }
 
-        if (_methodName108.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes108, parameterTypes)) {
+        if (_methodName110.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes110, parameterTypes)) {
             return DeviceLocalServiceUtil.generateNewIdDevice();
         }
 
-        if (_methodName109.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes109, parameterTypes)) {
+        if (_methodName111.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes111, parameterTypes)) {
             return DeviceLocalServiceUtil.addDevice((es.eina.tfg.model.Device) arguments[0]);
-        }
-
-        if (_methodName110.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes110, parameterTypes)) {
-            return DeviceLocalServiceUtil.updateDevice((es.eina.tfg.model.Device) arguments[0]);
         }
 
         if (_methodName112.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes112, parameterTypes)) {
-            return DeviceLocalServiceUtil.getSensors((java.lang.Long) arguments[0]);
+            return DeviceLocalServiceUtil.updateDevice((es.eina.tfg.model.Device) arguments[0]);
         }
 
-        if (_methodName113.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes113, parameterTypes)) {
-            return DeviceLocalServiceUtil.getActiveSensors((java.lang.Long) arguments[0]);
+        if (_methodName114.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes114, parameterTypes)) {
+            return DeviceLocalServiceUtil.getSensors((java.lang.Long) arguments[0]);
         }
 
         if (_methodName115.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes115, parameterTypes)) {
-            return DeviceLocalServiceUtil.getDeviceByPhoneNumber((java.lang.String) arguments[0]);
-        }
-
-        if (_methodName116.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes116, parameterTypes)) {
-            return DeviceLocalServiceUtil.getByUserId((java.lang.Long) arguments[0]);
+            return DeviceLocalServiceUtil.getActiveSensors((java.lang.Long) arguments[0]);
         }
 
         if (_methodName117.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes117, parameterTypes)) {
-            return DeviceLocalServiceUtil.getBydeviceUUID((java.lang.String) arguments[0]);
+            return DeviceLocalServiceUtil.getDeviceByPhoneNumber((java.lang.String) arguments[0]);
         }
 
         if (_methodName118.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes118, parameterTypes)) {
-            return DeviceLocalServiceUtil.getByStatus((java.lang.String) arguments[0]);
+            return DeviceLocalServiceUtil.getByUserId((java.lang.Long) arguments[0]);
         }
 
         if (_methodName119.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes119, parameterTypes)) {
+            return DeviceLocalServiceUtil.getBydeviceUUID((java.lang.String) arguments[0]);
+        }
+
+        if (_methodName120.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes120, parameterTypes)) {
+            return DeviceLocalServiceUtil.getByStatus((java.lang.String) arguments[0]);
+        }
+
+        if (_methodName121.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes121, parameterTypes)) {
             return DeviceLocalServiceUtil.getByStatus((java.lang.String) arguments[0],
                 ((Integer) arguments[1]).intValue(),
                 ((Integer) arguments[2]).intValue());
         }
 
-        if (_methodName120.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes120, parameterTypes)) {
+        if (_methodName122.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes122, parameterTypes)) {
             return DeviceLocalServiceUtil.getByDescriptionAndIdUser(((Long) arguments[0]).longValue(),
                 (java.lang.String) arguments[1],
                 ((Integer) arguments[2]).intValue(),
                 ((Integer) arguments[3]).intValue());
         }
 
-        if (_methodName121.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes121, parameterTypes)) {
+        if (_methodName123.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes123, parameterTypes)) {
             return DeviceLocalServiceUtil.getByDescriptionAndIdUserCount(((Long) arguments[0]).longValue(),
                 (java.lang.String) arguments[1]);
         }

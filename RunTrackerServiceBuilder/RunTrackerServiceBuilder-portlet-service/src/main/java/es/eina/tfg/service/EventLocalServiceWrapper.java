@@ -290,6 +290,53 @@ public class EventLocalServiceWrapper implements EventLocalService,
         return _eventLocalService.getByidRoute(idRoute);
     }
 
+    @Override
+    public java.util.List<es.eina.tfg.model.Event> getByPlannedStartTime(
+        java.util.Date plannedStartTime, int start, int end,
+        com.liferay.portal.kernel.util.OrderByComparator comparator)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _eventLocalService.getByPlannedStartTime(plannedStartTime,
+            start, end, comparator);
+    }
+
+    @Override
+    public java.util.List<es.eina.tfg.model.Event> getByIdUserAndTimeRange(
+        long idUser, java.util.Date startPlannedStartingTime,
+        java.util.Date endPlannedStartingTime, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _eventLocalService.getByIdUserAndTimeRange(idUser,
+            startPlannedStartingTime, endPlannedStartingTime, start, end);
+    }
+
+    @Override
+    public es.eina.tfg.model.Event getLastEvent(long idUser)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _eventLocalService.getLastEvent(idUser);
+    }
+
+    @Override
+    public es.eina.tfg.model.Event getLastUnselectedEvent(long idUser)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _eventLocalService.getLastUnselectedEvent(idUser);
+    }
+
+    @Override
+    public java.util.List<es.eina.tfg.model.UserAndEvent> getUserAndEventByIdEvent(
+        long idEvent, java.lang.String name, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _eventLocalService.getUserAndEventByIdEvent(idEvent, name,
+            start, end);
+    }
+
+    @Override
+    public java.util.List<es.eina.tfg.model.Event> getUnselectedEventsByIdUserAndTimeRange(
+        long idUser, java.util.Date startPlannedStartingTime,
+        java.util.Date endPlannedStartingTime, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _eventLocalService.getUnselectedEventsByIdUserAndTimeRange(idUser,
+            startPlannedStartingTime, endPlannedStartingTime, start, end);
+    }
+
     /**
      * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
      */

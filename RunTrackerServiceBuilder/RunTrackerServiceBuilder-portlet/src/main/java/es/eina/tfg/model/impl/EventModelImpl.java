@@ -76,7 +76,8 @@ public class EventModelImpl extends BaseModelImpl<Event> implements EventModel {
             true);
     public static long IDAUTHOR_COLUMN_BITMASK = 1L;
     public static long IDROUTE_COLUMN_BITMASK = 2L;
-    public static long IDEVENT_COLUMN_BITMASK = 4L;
+    public static long PLANNEDSTARTINGTIME_COLUMN_BITMASK = 4L;
+    public static long IDEVENT_COLUMN_BITMASK = 8L;
     public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
                 "lock.expiration.time.es.eina.tfg.model.Event"));
     private static ClassLoader _classLoader = Event.class.getClassLoader();
@@ -90,6 +91,7 @@ public class EventModelImpl extends BaseModelImpl<Event> implements EventModel {
     private boolean _setOriginalIdAuthor;
     private String _name;
     private Date _plannedStartingTime;
+    private Date _originalPlannedStartingTime;
     private Date _plannedFinishTime;
     private Date _realStartingTime;
     private Date _realFinishTime;
@@ -321,7 +323,17 @@ public class EventModelImpl extends BaseModelImpl<Event> implements EventModel {
 
     @Override
     public void setPlannedStartingTime(Date plannedStartingTime) {
+        _columnBitmask |= PLANNEDSTARTINGTIME_COLUMN_BITMASK;
+
+        if (_originalPlannedStartingTime == null) {
+            _originalPlannedStartingTime = _plannedStartingTime;
+        }
+
         _plannedStartingTime = plannedStartingTime;
+    }
+
+    public Date getOriginalPlannedStartingTime() {
+        return _originalPlannedStartingTime;
     }
 
     @JSON
@@ -452,6 +464,8 @@ public class EventModelImpl extends BaseModelImpl<Event> implements EventModel {
         eventModelImpl._originalIdAuthor = eventModelImpl._idAuthor;
 
         eventModelImpl._setOriginalIdAuthor = false;
+
+        eventModelImpl._originalPlannedStartingTime = eventModelImpl._plannedStartingTime;
 
         eventModelImpl._columnBitmask = 0;
     }

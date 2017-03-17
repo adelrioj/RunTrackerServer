@@ -1,14 +1,15 @@
 package es.eina.tfg.service.impl;
 
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import es.eina.tfg.model.Event;
 import es.eina.tfg.model.Route;
 import es.eina.tfg.model.UserAdditionalData;
 import es.eina.tfg.model.UserAndEvent;
-import es.eina.tfg.service.EventLocalServiceUtil;
-import es.eina.tfg.service.RouteLocalServiceUtil;
-import es.eina.tfg.service.UserAdditionalDataLocalServiceUtil;
+import es.eina.tfg.service.*;
 import es.eina.tfg.service.base.UserAndEventLocalServiceBaseImpl;
+import es.eina.tfg.service.persistence.UserAndEventPK;
+import es.eina.tfg.service.persistence.UserAndEventPersistence;
 import es.eina.tfg.service.persistence.UserAndEventUtil;
 
 import java.util.List;
@@ -36,18 +37,26 @@ public class UserAndEventLocalServiceImpl
         return super.addUserAndEvent(userAndEvent);
     }
 
+    public UserAndEvent addUserAndEvent(long idUser, long idEvent)
+            throws SystemException {
+        UserAndEventPK userAndEventPK = new UserAndEventPK(idUser, idEvent);
+        UserAndEvent userAndEvent = UserAndEventLocalServiceUtil.createUserAndEvent(userAndEventPK);
+        checkMadatoryAttributes(userAndEvent);
+        return super.addUserAndEvent(userAndEvent);
+    }
+
+    public UserAndEvent deleteUserAndEvent(long idEvent, long idUser)
+            throws SystemException, PortalException {
+        UserAndEventPK userAndEventPK = new UserAndEventPK(idUser, idEvent);
+        return deleteUserAndEvent(userAndEventPK);
+    }
+
     private void checkMadatoryAttributes(UserAndEvent userAndEvent)
             throws SystemException {
         UserAdditionalData user = UserAdditionalDataLocalServiceUtil.fetchUserAdditionalData(userAndEvent.getIdUser());
         if (user == null){
             throw new SystemException("The user: "
                     + userAndEvent.getIdUser() + " does not exists on the database");
-        }
-
-        Route route = RouteLocalServiceUtil.fetchRoute(userAndEvent.getIdRace());
-        if (route == null){
-            throw new SystemException("The route: "
-                    + userAndEvent.getIdRace() + " does no exists on the database");
         }
 
         Event event = EventLocalServiceUtil.fetchEvent(userAndEvent.getIdEvent());

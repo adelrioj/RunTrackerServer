@@ -50,6 +50,10 @@ public class UserAndEventLocalServiceClp implements UserAndEventLocalService {
     private String[] _methodParameterTypes20;
     private String _methodName21;
     private String[] _methodParameterTypes21;
+    private String _methodName22;
+    private String[] _methodParameterTypes22;
+    private String _methodName23;
+    private String[] _methodParameterTypes23;
 
     public UserAndEventLocalServiceClp(
         InvokableLocalService invokableLocalService) {
@@ -147,17 +151,25 @@ public class UserAndEventLocalServiceClp implements UserAndEventLocalService {
 
         _methodParameterTypes17 = new String[] { "java.lang.String" };
 
-        _methodName19 = "getByidUser";
+        _methodName19 = "addUserAndEvent";
 
-        _methodParameterTypes19 = new String[] { "long" };
+        _methodParameterTypes19 = new String[] { "long", "long" };
 
-        _methodName20 = "getByidEvent";
+        _methodName20 = "deleteUserAndEvent";
 
-        _methodParameterTypes20 = new String[] { "long" };
+        _methodParameterTypes20 = new String[] { "long", "long" };
 
-        _methodName21 = "getByRace";
+        _methodName21 = "getByidUser";
 
         _methodParameterTypes21 = new String[] { "long" };
+
+        _methodName22 = "getByidEvent";
+
+        _methodParameterTypes22 = new String[] { "long" };
+
+        _methodName23 = "getByRace";
+
+        _methodParameterTypes23 = new String[] { "long" };
     }
 
     @Override
@@ -679,13 +691,72 @@ public class UserAndEventLocalServiceClp implements UserAndEventLocalService {
     }
 
     @Override
+    public es.eina.tfg.model.UserAndEvent addUserAndEvent(long idUser,
+        long idEvent)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName19,
+                    _methodParameterTypes19, new Object[] { idUser, idEvent });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (es.eina.tfg.model.UserAndEvent) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
+    public es.eina.tfg.model.UserAndEvent deleteUserAndEvent(long idEvent,
+        long idUser)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName20,
+                    _methodParameterTypes20, new Object[] { idEvent, idUser });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+                throw (com.liferay.portal.kernel.exception.PortalException) t;
+            }
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (es.eina.tfg.model.UserAndEvent) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
     public java.util.List<es.eina.tfg.model.UserAndEvent> getByidUser(
         long userId) throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName19,
-                    _methodParameterTypes19, new Object[] { userId });
+            returnObj = _invokableLocalService.invokeMethod(_methodName21,
+                    _methodParameterTypes21, new Object[] { userId });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -711,8 +782,8 @@ public class UserAndEventLocalServiceClp implements UserAndEventLocalService {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName20,
-                    _methodParameterTypes20, new Object[] { idEvent });
+            returnObj = _invokableLocalService.invokeMethod(_methodName22,
+                    _methodParameterTypes22, new Object[] { idEvent });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -737,8 +808,8 @@ public class UserAndEventLocalServiceClp implements UserAndEventLocalService {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName21,
-                    _methodParameterTypes21, new Object[] { idRace });
+            returnObj = _invokableLocalService.invokeMethod(_methodName23,
+                    _methodParameterTypes23, new Object[] { idRace });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
