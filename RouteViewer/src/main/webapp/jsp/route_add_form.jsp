@@ -16,6 +16,24 @@
             <aui:option value="${constants.TYPE_CYCLING}" ><liferay-ui:message key="type-cycling" /></aui:option>
         </aui:select>
         <aui:input type="checkbox" name="${constants.PARAM_ISPUBLIC}" value="true" label="route-is-public"/>
-        <aui:button name="addRouteBtn" value="save" type="submit" />
+        <div class="align-right" >
+            <portlet:renderURL var="backToViewURL">
+                <portlet:param name="mvcPath" value="/jsp/view.jsp" />
+            </portlet:renderURL>
+            <aui:button name="backBtn"
+                        value="backBtn"
+                        onClick="${backToViewURL}"
+                        cssClass="btn-info"
+                        icon="icon-arrow-left"
+                        iconAlign="left"
+            />
+            <aui:button name="addRouteBtn"
+                        value="save"
+                        type="submit"
+                        cssClass="btn-success"
+                        icon="icon-plus"
+                        iconAlign="left"
+            />
+        </div>
     </aui:form>
 </div>
