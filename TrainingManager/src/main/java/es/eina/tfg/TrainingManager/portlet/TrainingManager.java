@@ -1,5 +1,6 @@
 package es.eina.tfg.TrainingManager.portlet;
 
+import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
@@ -31,7 +32,7 @@ public class TrainingManager {
 
     public static void addSampleData(User user)
             throws PortalException, SystemException {
-        List<Route> routes = RouteDAO.getByIdUserAndName(user.getUserId(), "", 0, 999);
+        List<Route> routes = RouteDAO.getByIdUserAndName(user.getUserId(), "", QueryUtil.ALL_POS, QueryUtil.ALL_POS);
 
         DateTime start = new DateTime().withYear(2017).withMonthOfYear(1).withDayOfMonth(1);
         DateTime end = new DateTime().withYear(2017).withMonthOfYear(2).withDayOfMonth(15);
@@ -96,7 +97,7 @@ public class TrainingManager {
         List events;
         try {
             List<Race> races = RaceDAO.getByIdUserAndDate(eventRequest.getIdUser(),
-                    eventRequest.getStart(), eventRequest.getEnd(), 0, 999);
+                    eventRequest.getStart(), eventRequest.getEnd(), QueryUtil.ALL_POS, QueryUtil.ALL_POS);
             events = convert(races, eventRequest.getContextPath());
         } catch (IOException e) {
             _log.error("IOException while convert for: " + eventRequest, e);
