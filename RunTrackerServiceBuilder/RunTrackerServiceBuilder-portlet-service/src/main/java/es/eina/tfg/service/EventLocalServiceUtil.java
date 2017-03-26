@@ -263,13 +263,6 @@ public class EventLocalServiceUtil {
         return getService().generateNewIdEvent();
     }
 
-    public static java.util.List<com.liferay.portal.model.User> getParticipants(
-        long idEvent)
-        throws com.liferay.portal.kernel.exception.PortalException,
-            com.liferay.portal.kernel.exception.SystemException {
-        return getService().getParticipants(idEvent);
-    }
-
     public static java.util.List<es.eina.tfg.model.Event> getByidAuthor(
         long idAuthor)
         throws com.liferay.portal.kernel.exception.SystemException {
@@ -310,12 +303,6 @@ public class EventLocalServiceUtil {
         return getService().getLastUnselectedEvent(idUser);
     }
 
-    public static java.util.List<es.eina.tfg.model.UserAndEvent> getUserAndEventByIdEvent(
-        long idEvent, java.lang.String name, int start, int end)
-        throws com.liferay.portal.kernel.exception.SystemException {
-        return getService().getUserAndEventByIdEvent(idEvent, name, start, end);
-    }
-
     public static java.util.List<es.eina.tfg.model.Event> getUnselectedEventsByIdUserAndTimeRange(
         long idUser, java.util.Date startPlannedStartingTime,
         java.util.Date endPlannedStartingTime, int start, int end)
@@ -323,6 +310,16 @@ public class EventLocalServiceUtil {
         return getService()
                    .getUnselectedEventsByIdUserAndTimeRange(idUser,
             startPlannedStartingTime, endPlannedStartingTime, start, end);
+    }
+
+    public static java.util.List<es.eina.tfg.model.Event> getLiveEvents(
+        java.lang.String name, boolean isConjunction, int start, int end,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        return getService()
+                   .getLiveEvents(name, isConjunction, start, end,
+            orderByComparator);
     }
 
     public static void clearService() {

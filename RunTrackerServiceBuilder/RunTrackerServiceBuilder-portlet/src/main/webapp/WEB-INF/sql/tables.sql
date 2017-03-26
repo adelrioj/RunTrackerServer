@@ -107,6 +107,7 @@ create table GL_UserAndEvent (
 	idUser LONG not null,
 	idEvent LONG not null,
 	idRace LONG,
+	participationNumber INTEGER,
 	primary key (idUser, idEvent)
 );
 

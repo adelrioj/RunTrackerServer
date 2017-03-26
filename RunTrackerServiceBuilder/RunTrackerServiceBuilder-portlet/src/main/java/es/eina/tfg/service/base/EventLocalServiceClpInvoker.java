@@ -41,20 +41,16 @@ public class EventLocalServiceClpInvoker {
     private String[] _methodParameterTypes14;
     private String _methodName15;
     private String[] _methodParameterTypes15;
-    private String _methodName104;
-    private String[] _methodParameterTypes104;
-    private String _methodName105;
-    private String[] _methodParameterTypes105;
-    private String _methodName110;
-    private String[] _methodParameterTypes110;
-    private String _methodName111;
-    private String[] _methodParameterTypes111;
+    private String _methodName106;
+    private String[] _methodParameterTypes106;
+    private String _methodName107;
+    private String[] _methodParameterTypes107;
     private String _methodName112;
     private String[] _methodParameterTypes112;
+    private String _methodName113;
+    private String[] _methodParameterTypes113;
     private String _methodName114;
     private String[] _methodParameterTypes114;
-    private String _methodName115;
-    private String[] _methodParameterTypes115;
     private String _methodName116;
     private String[] _methodParameterTypes116;
     private String _methodName117;
@@ -69,6 +65,8 @@ public class EventLocalServiceClpInvoker {
     private String[] _methodParameterTypes121;
     private String _methodName122;
     private String[] _methodParameterTypes122;
+    private String _methodName123;
+    private String[] _methodParameterTypes123;
 
     public EventLocalServiceClpInvoker() {
         _methodName0 = "addEvent";
@@ -147,69 +145,66 @@ public class EventLocalServiceClpInvoker {
 
         _methodParameterTypes15 = new String[] { "es.eina.tfg.model.Event" };
 
-        _methodName104 = "getBeanIdentifier";
+        _methodName106 = "getBeanIdentifier";
 
-        _methodParameterTypes104 = new String[] {  };
+        _methodParameterTypes106 = new String[] {  };
 
-        _methodName105 = "setBeanIdentifier";
+        _methodName107 = "setBeanIdentifier";
 
-        _methodParameterTypes105 = new String[] { "java.lang.String" };
+        _methodParameterTypes107 = new String[] { "java.lang.String" };
 
-        _methodName110 = "generateNewIdEvent";
+        _methodName112 = "generateNewIdEvent";
 
-        _methodParameterTypes110 = new String[] {  };
+        _methodParameterTypes112 = new String[] {  };
 
-        _methodName111 = "addEvent";
+        _methodName113 = "addEvent";
 
-        _methodParameterTypes111 = new String[] { "es.eina.tfg.model.Event" };
+        _methodParameterTypes113 = new String[] { "es.eina.tfg.model.Event" };
 
-        _methodName112 = "updateEvent";
+        _methodName114 = "updateEvent";
 
-        _methodParameterTypes112 = new String[] { "es.eina.tfg.model.Event" };
+        _methodParameterTypes114 = new String[] { "es.eina.tfg.model.Event" };
 
-        _methodName114 = "getParticipants";
-
-        _methodParameterTypes114 = new String[] { "long" };
-
-        _methodName115 = "getByidAuthor";
-
-        _methodParameterTypes115 = new String[] { "long" };
-
-        _methodName116 = "getByidRoute";
+        _methodName116 = "getByidAuthor";
 
         _methodParameterTypes116 = new String[] { "long" };
 
-        _methodName117 = "getByPlannedStartTime";
+        _methodName117 = "getByidRoute";
 
-        _methodParameterTypes117 = new String[] {
+        _methodParameterTypes117 = new String[] { "long" };
+
+        _methodName118 = "getByPlannedStartTime";
+
+        _methodParameterTypes118 = new String[] {
                 "java.util.Date", "int", "int",
                 "com.liferay.portal.kernel.util.OrderByComparator"
             };
 
-        _methodName118 = "getByIdUserAndTimeRange";
+        _methodName119 = "getByIdUserAndTimeRange";
 
-        _methodParameterTypes118 = new String[] {
+        _methodParameterTypes119 = new String[] {
                 "long", "java.util.Date", "java.util.Date", "int", "int"
             };
 
-        _methodName119 = "getLastEvent";
-
-        _methodParameterTypes119 = new String[] { "long" };
-
-        _methodName120 = "getLastUnselectedEvent";
+        _methodName120 = "getLastEvent";
 
         _methodParameterTypes120 = new String[] { "long" };
 
-        _methodName121 = "getUserAndEventByIdEvent";
+        _methodName121 = "getLastUnselectedEvent";
 
-        _methodParameterTypes121 = new String[] {
-                "long", "java.lang.String", "int", "int"
-            };
+        _methodParameterTypes121 = new String[] { "long" };
 
         _methodName122 = "getUnselectedEventsByIdUserAndTimeRange";
 
         _methodParameterTypes122 = new String[] {
                 "long", "java.util.Date", "java.util.Date", "int", "int"
+            };
+
+        _methodName123 = "getLiveEvents";
+
+        _methodParameterTypes123 = new String[] {
+                "java.lang.String", "boolean", "int", "int",
+                "com.liferay.portal.kernel.util.OrderByComparator"
             };
     }
 
@@ -302,80 +297,67 @@ public class EventLocalServiceClpInvoker {
             return EventLocalServiceUtil.updateEvent((es.eina.tfg.model.Event) arguments[0]);
         }
 
-        if (_methodName104.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes104, parameterTypes)) {
+        if (_methodName106.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes106, parameterTypes)) {
             return EventLocalServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName105.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes105, parameterTypes)) {
+        if (_methodName107.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes107, parameterTypes)) {
             EventLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }
 
-        if (_methodName110.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes110, parameterTypes)) {
+        if (_methodName112.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes112, parameterTypes)) {
             return EventLocalServiceUtil.generateNewIdEvent();
         }
 
-        if (_methodName111.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes111, parameterTypes)) {
+        if (_methodName113.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes113, parameterTypes)) {
             return EventLocalServiceUtil.addEvent((es.eina.tfg.model.Event) arguments[0]);
-        }
-
-        if (_methodName112.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes112, parameterTypes)) {
-            return EventLocalServiceUtil.updateEvent((es.eina.tfg.model.Event) arguments[0]);
         }
 
         if (_methodName114.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes114, parameterTypes)) {
-            return EventLocalServiceUtil.getParticipants(((Long) arguments[0]).longValue());
-        }
-
-        if (_methodName115.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes115, parameterTypes)) {
-            return EventLocalServiceUtil.getByidAuthor(((Long) arguments[0]).longValue());
+            return EventLocalServiceUtil.updateEvent((es.eina.tfg.model.Event) arguments[0]);
         }
 
         if (_methodName116.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes116, parameterTypes)) {
-            return EventLocalServiceUtil.getByidRoute(((Long) arguments[0]).longValue());
+            return EventLocalServiceUtil.getByidAuthor(((Long) arguments[0]).longValue());
         }
 
         if (_methodName117.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes117, parameterTypes)) {
+            return EventLocalServiceUtil.getByidRoute(((Long) arguments[0]).longValue());
+        }
+
+        if (_methodName118.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes118, parameterTypes)) {
             return EventLocalServiceUtil.getByPlannedStartTime((java.util.Date) arguments[0],
                 ((Integer) arguments[1]).intValue(),
                 ((Integer) arguments[2]).intValue(),
                 (com.liferay.portal.kernel.util.OrderByComparator) arguments[3]);
         }
 
-        if (_methodName118.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes118, parameterTypes)) {
+        if (_methodName119.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes119, parameterTypes)) {
             return EventLocalServiceUtil.getByIdUserAndTimeRange(((Long) arguments[0]).longValue(),
                 (java.util.Date) arguments[1], (java.util.Date) arguments[2],
                 ((Integer) arguments[3]).intValue(),
                 ((Integer) arguments[4]).intValue());
         }
 
-        if (_methodName119.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes119, parameterTypes)) {
-            return EventLocalServiceUtil.getLastEvent(((Long) arguments[0]).longValue());
-        }
-
         if (_methodName120.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes120, parameterTypes)) {
-            return EventLocalServiceUtil.getLastUnselectedEvent(((Long) arguments[0]).longValue());
+            return EventLocalServiceUtil.getLastEvent(((Long) arguments[0]).longValue());
         }
 
         if (_methodName121.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes121, parameterTypes)) {
-            return EventLocalServiceUtil.getUserAndEventByIdEvent(((Long) arguments[0]).longValue(),
-                (java.lang.String) arguments[1],
-                ((Integer) arguments[2]).intValue(),
-                ((Integer) arguments[3]).intValue());
+            return EventLocalServiceUtil.getLastUnselectedEvent(((Long) arguments[0]).longValue());
         }
 
         if (_methodName122.equals(name) &&
@@ -384,6 +366,15 @@ public class EventLocalServiceClpInvoker {
                 (java.util.Date) arguments[1], (java.util.Date) arguments[2],
                 ((Integer) arguments[3]).intValue(),
                 ((Integer) arguments[4]).intValue());
+        }
+
+        if (_methodName123.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes123, parameterTypes)) {
+            return EventLocalServiceUtil.getLiveEvents((java.lang.String) arguments[0],
+                ((Boolean) arguments[1]).booleanValue(),
+                ((Integer) arguments[2]).intValue(),
+                ((Integer) arguments[3]).intValue(),
+                (com.liferay.portal.kernel.util.OrderByComparator) arguments[4]);
         }
 
         throw new UnsupportedOperationException();

@@ -86,6 +86,20 @@ public interface UserAndEventModel extends BaseModel<UserAndEvent> {
      */
     public void setIdRace(long idRace);
 
+    /**
+     * Returns the participation number of this user and event.
+     *
+     * @return the participation number of this user and event
+     */
+    public int getParticipationNumber();
+
+    /**
+     * Sets the participation number of this user and event.
+     *
+     * @param participationNumber the participation number of this user and event
+     */
+    public void setParticipationNumber(int participationNumber);
+
     @Override
     public boolean isNew();
 

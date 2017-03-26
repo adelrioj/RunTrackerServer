@@ -40,6 +40,7 @@ public class UserAndEventWrapper implements UserAndEvent,
         attributes.put("idUser", getIdUser());
         attributes.put("idEvent", getIdEvent());
         attributes.put("idRace", getIdRace());
+        attributes.put("participationNumber", getParticipationNumber());
 
         return attributes;
     }
@@ -62,6 +63,13 @@ public class UserAndEventWrapper implements UserAndEvent,
 
         if (idRace != null) {
             setIdRace(idRace);
+        }
+
+        Integer participationNumber = (Integer) attributes.get(
+                "participationNumber");
+
+        if (participationNumber != null) {
+            setParticipationNumber(participationNumber);
         }
     }
 
@@ -144,6 +152,26 @@ public class UserAndEventWrapper implements UserAndEvent,
     @Override
     public void setIdRace(long idRace) {
         _userAndEvent.setIdRace(idRace);
+    }
+
+    /**
+    * Returns the participation number of this user and event.
+    *
+    * @return the participation number of this user and event
+    */
+    @Override
+    public int getParticipationNumber() {
+        return _userAndEvent.getParticipationNumber();
+    }
+
+    /**
+    * Sets the participation number of this user and event.
+    *
+    * @param participationNumber the participation number of this user and event
+    */
+    @Override
+    public void setParticipationNumber(int participationNumber) {
+        _userAndEvent.setParticipationNumber(participationNumber);
     }
 
     @Override

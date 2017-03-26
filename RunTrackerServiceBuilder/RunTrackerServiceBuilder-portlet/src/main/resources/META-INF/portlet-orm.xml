@@ -180,6 +180,7 @@
 			<id name="idUser" />
 			<id name="idEvent" />
 			<basic name="idRace" />
+			<basic name="participationNumber" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />

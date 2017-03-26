@@ -16,8 +16,4 @@ public interface EventFinder {
 
     public es.eina.tfg.model.Event getLastUnselectedEvent(long idUser)
         throws com.liferay.portal.kernel.exception.SystemException;
-
-    public java.util.List<es.eina.tfg.model.UserAndEvent> getUserAndEventByIdEvent(
-        long idEvent, java.lang.String name, int start, int end)
-        throws com.liferay.portal.kernel.exception.SystemException;
 }

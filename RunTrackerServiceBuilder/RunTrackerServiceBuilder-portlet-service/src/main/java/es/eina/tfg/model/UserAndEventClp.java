@@ -24,6 +24,7 @@ public class UserAndEventClp extends BaseModelImpl<UserAndEvent>
     private long _idUser;
     private long _idEvent;
     private long _idRace;
+    private int _participationNumber;
     private BaseModel<?> _userAndEventRemoteModel;
     private Class<?> _clpSerializerClass = es.eina.tfg.service.ClpSerializer.class;
 
@@ -68,6 +69,7 @@ public class UserAndEventClp extends BaseModelImpl<UserAndEvent>
         attributes.put("idUser", getIdUser());
         attributes.put("idEvent", getIdEvent());
         attributes.put("idRace", getIdRace());
+        attributes.put("participationNumber", getParticipationNumber());
 
         return attributes;
     }
@@ -90,6 +92,13 @@ public class UserAndEventClp extends BaseModelImpl<UserAndEvent>
 
         if (idRace != null) {
             setIdRace(idRace);
+        }
+
+        Integer participationNumber = (Integer) attributes.get(
+                "participationNumber");
+
+        if (participationNumber != null) {
+            setParticipationNumber(participationNumber);
         }
     }
 
@@ -153,6 +162,29 @@ public class UserAndEventClp extends BaseModelImpl<UserAndEvent>
                 Method method = clazz.getMethod("setIdRace", long.class);
 
                 method.invoke(_userAndEventRemoteModel, idRace);
+            } catch (Exception e) {
+                throw new UnsupportedOperationException(e);
+            }
+        }
+    }
+
+    @Override
+    public int getParticipationNumber() {
+        return _participationNumber;
+    }
+
+    @Override
+    public void setParticipationNumber(int participationNumber) {
+        _participationNumber = participationNumber;
+
+        if (_userAndEventRemoteModel != null) {
+            try {
+                Class<?> clazz = _userAndEventRemoteModel.getClass();
+
+                Method method = clazz.getMethod("setParticipationNumber",
+                        int.class);
+
+                method.invoke(_userAndEventRemoteModel, participationNumber);
             } catch (Exception e) {
                 throw new UnsupportedOperationException(e);
             }
@@ -229,6 +261,7 @@ public class UserAndEventClp extends BaseModelImpl<UserAndEvent>
         clone.setIdUser(getIdUser());
         clone.setIdEvent(getIdEvent());
         clone.setIdRace(getIdRace());
+        clone.setParticipationNumber(getParticipationNumber());
 
         return clone;
     }
@@ -272,7 +305,7 @@ public class UserAndEventClp extends BaseModelImpl<UserAndEvent>
 
     @Override
     public String toString() {
-        StringBundler sb = new StringBundler(7);
+        StringBundler sb = new StringBundler(9);
 
         sb.append("{idUser=");
         sb.append(getIdUser());
@@ -280,6 +313,8 @@ public class UserAndEventClp extends BaseModelImpl<UserAndEvent>
         sb.append(getIdEvent());
         sb.append(", idRace=");
         sb.append(getIdRace());
+        sb.append(", participationNumber=");
+        sb.append(getParticipationNumber());
         sb.append("}");
 
         return sb.toString();
@@ -287,7 +322,7 @@ public class UserAndEventClp extends BaseModelImpl<UserAndEvent>
 
     @Override
     public String toXmlString() {
-        StringBundler sb = new StringBundler(13);
+        StringBundler sb = new StringBundler(16);
 
         sb.append("<model><model-name>");
         sb.append("es.eina.tfg.model.UserAndEvent");
@@ -304,6 +339,10 @@ public class UserAndEventClp extends BaseModelImpl<UserAndEvent>
         sb.append(
             "<column><column-name>idRace</column-name><column-value><![CDATA[");
         sb.append(getIdRace());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>participationNumber</column-name><column-value><![CDATA[");
+        sb.append(getParticipationNumber());
         sb.append("]]></column-value></column>");
 
         sb.append("</model>");

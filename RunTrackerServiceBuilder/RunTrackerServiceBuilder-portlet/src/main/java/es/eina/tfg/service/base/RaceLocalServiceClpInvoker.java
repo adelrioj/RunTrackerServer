@@ -41,26 +41,26 @@ public class RaceLocalServiceClpInvoker {
     private String[] _methodParameterTypes14;
     private String _methodName15;
     private String[] _methodParameterTypes15;
-    private String _methodName104;
-    private String[] _methodParameterTypes104;
-    private String _methodName105;
-    private String[] _methodParameterTypes105;
-    private String _methodName110;
-    private String[] _methodParameterTypes110;
-    private String _methodName111;
-    private String[] _methodParameterTypes111;
+    private String _methodName106;
+    private String[] _methodParameterTypes106;
+    private String _methodName107;
+    private String[] _methodParameterTypes107;
     private String _methodName112;
     private String[] _methodParameterTypes112;
+    private String _methodName113;
+    private String[] _methodParameterTypes113;
     private String _methodName114;
     private String[] _methodParameterTypes114;
-    private String _methodName115;
-    private String[] _methodParameterTypes115;
     private String _methodName116;
     private String[] _methodParameterTypes116;
     private String _methodName117;
     private String[] _methodParameterTypes117;
     private String _methodName118;
     private String[] _methodParameterTypes118;
+    private String _methodName119;
+    private String[] _methodParameterTypes119;
+    private String _methodName120;
+    private String[] _methodParameterTypes120;
 
     public RaceLocalServiceClpInvoker() {
         _methodName0 = "addRace";
@@ -139,47 +139,47 @@ public class RaceLocalServiceClpInvoker {
 
         _methodParameterTypes15 = new String[] { "es.eina.tfg.model.Race" };
 
-        _methodName104 = "getBeanIdentifier";
+        _methodName106 = "getBeanIdentifier";
 
-        _methodParameterTypes104 = new String[] {  };
+        _methodParameterTypes106 = new String[] {  };
 
-        _methodName105 = "setBeanIdentifier";
+        _methodName107 = "setBeanIdentifier";
 
-        _methodParameterTypes105 = new String[] { "java.lang.String" };
+        _methodParameterTypes107 = new String[] { "java.lang.String" };
 
-        _methodName110 = "generateNewIdRace";
+        _methodName112 = "generateNewIdRace";
 
-        _methodParameterTypes110 = new String[] {  };
+        _methodParameterTypes112 = new String[] {  };
 
-        _methodName111 = "addRace";
+        _methodName113 = "addRace";
 
-        _methodParameterTypes111 = new String[] { "es.eina.tfg.model.Race" };
+        _methodParameterTypes113 = new String[] { "es.eina.tfg.model.Race" };
 
-        _methodName112 = "updateRace";
+        _methodName114 = "updateRace";
 
-        _methodParameterTypes112 = new String[] { "es.eina.tfg.model.Race" };
+        _methodParameterTypes114 = new String[] { "es.eina.tfg.model.Race" };
 
-        _methodName114 = "getByUserId";
+        _methodName116 = "getByUserId";
 
-        _methodParameterTypes114 = new String[] { "java.lang.Long" };
+        _methodParameterTypes116 = new String[] { "java.lang.Long" };
 
-        _methodName115 = "getByIdUserAndTimeRange";
+        _methodName117 = "getByIdUserAndTimeRange";
 
-        _methodParameterTypes115 = new String[] {
+        _methodParameterTypes117 = new String[] {
                 "long", "java.util.Date", "java.util.Date", "int", "int"
             };
 
-        _methodName116 = "getLastRace";
-
-        _methodParameterTypes116 = new String[] { "long" };
-
-        _methodName117 = "getLocations";
-
-        _methodParameterTypes117 = new String[] { "long" };
-
-        _methodName118 = "getPowerMeasurements";
+        _methodName118 = "getLastRace";
 
         _methodParameterTypes118 = new String[] { "long" };
+
+        _methodName119 = "getLocations";
+
+        _methodParameterTypes119 = new String[] { "long" };
+
+        _methodName120 = "getPowerMeasurements";
+
+        _methodParameterTypes120 = new String[] { "long" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -271,58 +271,58 @@ public class RaceLocalServiceClpInvoker {
             return RaceLocalServiceUtil.updateRace((es.eina.tfg.model.Race) arguments[0]);
         }
 
-        if (_methodName104.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes104, parameterTypes)) {
+        if (_methodName106.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes106, parameterTypes)) {
             return RaceLocalServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName105.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes105, parameterTypes)) {
+        if (_methodName107.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes107, parameterTypes)) {
             RaceLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }
 
-        if (_methodName110.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes110, parameterTypes)) {
+        if (_methodName112.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes112, parameterTypes)) {
             return RaceLocalServiceUtil.generateNewIdRace();
         }
 
-        if (_methodName111.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes111, parameterTypes)) {
+        if (_methodName113.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes113, parameterTypes)) {
             return RaceLocalServiceUtil.addRace((es.eina.tfg.model.Race) arguments[0]);
-        }
-
-        if (_methodName112.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes112, parameterTypes)) {
-            return RaceLocalServiceUtil.updateRace((es.eina.tfg.model.Race) arguments[0]);
         }
 
         if (_methodName114.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes114, parameterTypes)) {
+            return RaceLocalServiceUtil.updateRace((es.eina.tfg.model.Race) arguments[0]);
+        }
+
+        if (_methodName116.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes116, parameterTypes)) {
             return RaceLocalServiceUtil.getByUserId((java.lang.Long) arguments[0]);
         }
 
-        if (_methodName115.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes115, parameterTypes)) {
+        if (_methodName117.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes117, parameterTypes)) {
             return RaceLocalServiceUtil.getByIdUserAndTimeRange(((Long) arguments[0]).longValue(),
                 (java.util.Date) arguments[1], (java.util.Date) arguments[2],
                 ((Integer) arguments[3]).intValue(),
                 ((Integer) arguments[4]).intValue());
         }
 
-        if (_methodName116.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes116, parameterTypes)) {
+        if (_methodName118.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes118, parameterTypes)) {
             return RaceLocalServiceUtil.getLastRace(((Long) arguments[0]).longValue());
         }
 
-        if (_methodName117.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes117, parameterTypes)) {
+        if (_methodName119.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes119, parameterTypes)) {
             return RaceLocalServiceUtil.getLocations(((Long) arguments[0]).longValue());
         }
 
-        if (_methodName118.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes118, parameterTypes)) {
+        if (_methodName120.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes120, parameterTypes)) {
             return RaceLocalServiceUtil.getPowerMeasurements(((Long) arguments[0]).longValue());
         }
 

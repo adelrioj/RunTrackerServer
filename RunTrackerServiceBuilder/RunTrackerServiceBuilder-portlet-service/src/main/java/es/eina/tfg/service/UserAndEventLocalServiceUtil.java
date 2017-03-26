@@ -265,7 +265,8 @@ public class UserAndEventLocalServiceUtil {
 
     public static es.eina.tfg.model.UserAndEvent addUserAndEvent(long idUser,
         long idEvent)
-        throws com.liferay.portal.kernel.exception.SystemException {
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
         return getService().addUserAndEvent(idUser, idEvent);
     }
 
@@ -290,6 +291,27 @@ public class UserAndEventLocalServiceUtil {
     public static java.util.List<es.eina.tfg.model.UserAndEvent> getByRace(
         long idRace) throws com.liferay.portal.kernel.exception.SystemException {
         return getService().getByRace(idRace);
+    }
+
+    public static java.util.List<es.eina.tfg.model.UserAndEvent> getByIdEventAndName(
+        long idEvent, java.lang.String name)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService().getByIdEventAndName(idEvent, name);
+    }
+
+    public static java.util.List<es.eina.tfg.model.UserAndEvent> getByIdEventAndName(
+        long idEvent, java.lang.String name, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService().getByIdEventAndName(idEvent, name, start, end);
+    }
+
+    public static java.util.List<es.eina.tfg.model.UserAndEvent> getByIdEventAndName(
+        long idEvent, java.lang.String name, int start, int end,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService()
+                   .getByIdEventAndName(idEvent, name, start, end,
+            orderByComparator);
     }
 
     public static void clearService() {

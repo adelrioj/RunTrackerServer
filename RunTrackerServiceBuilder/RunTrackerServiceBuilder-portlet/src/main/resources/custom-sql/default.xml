@@ -5,4 +5,5 @@
     <sql file="custom-sql/RaceCustomSQL.xml" />
     <sql file="custom-sql/LocationCustomSQL.xml" />
     <sql file="custom-sql/EventCustomSQL.xml" />
+    <sql file="custom-sql/UserAndEventCustomSQL.xml" />
 </custom-sql>

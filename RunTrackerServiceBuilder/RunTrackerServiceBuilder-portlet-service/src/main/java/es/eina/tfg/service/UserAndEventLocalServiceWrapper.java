@@ -278,7 +278,8 @@ public class UserAndEventLocalServiceWrapper implements UserAndEventLocalService
     @Override
     public es.eina.tfg.model.UserAndEvent addUserAndEvent(long idUser,
         long idEvent)
-        throws com.liferay.portal.kernel.exception.SystemException {
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
         return _userAndEventLocalService.addUserAndEvent(idUser, idEvent);
     }
 
@@ -307,6 +308,30 @@ public class UserAndEventLocalServiceWrapper implements UserAndEventLocalService
     public java.util.List<es.eina.tfg.model.UserAndEvent> getByRace(long idRace)
         throws com.liferay.portal.kernel.exception.SystemException {
         return _userAndEventLocalService.getByRace(idRace);
+    }
+
+    @Override
+    public java.util.List<es.eina.tfg.model.UserAndEvent> getByIdEventAndName(
+        long idEvent, java.lang.String name)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _userAndEventLocalService.getByIdEventAndName(idEvent, name);
+    }
+
+    @Override
+    public java.util.List<es.eina.tfg.model.UserAndEvent> getByIdEventAndName(
+        long idEvent, java.lang.String name, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _userAndEventLocalService.getByIdEventAndName(idEvent, name,
+            start, end);
+    }
+
+    @Override
+    public java.util.List<es.eina.tfg.model.UserAndEvent> getByIdEventAndName(
+        long idEvent, java.lang.String name, int start, int end,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _userAndEventLocalService.getByIdEventAndName(idEvent, name,
+            start, end, orderByComparator);
     }
 
     /**

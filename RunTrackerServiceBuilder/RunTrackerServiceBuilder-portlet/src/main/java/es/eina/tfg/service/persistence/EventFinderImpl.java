@@ -31,11 +31,13 @@ public class EventFinderImpl
             + "findLastEvent";
     private static final String GET_LAST_UNSELECTED_EVENT = EventFinder.class.getName() + "."
             + "findLastUnselectedEvent";
-    private static final String GET_USER_AND_EVENT_BY_ID_EVENT = EventFinder.class.getName() + "."
-            + "findUserAndEventByIdEvent";
 
-    public List<Event> getByIdUserAndTimeRange(long idUser, Date startPlannedStartingTime,
-                                               Date endPlannedStartingTime, int start, int end)
+
+    public List<Event> getByIdUserAndTimeRange(long idUser,
+                                               Date startPlannedStartingTime,
+                                               Date endPlannedStartingTime,
+                                               int start,
+                                               int end)
             throws SystemException {
         Session session = null;
         List<Event> resultList;
@@ -149,31 +151,6 @@ public class EventFinderImpl
             closeSession(session);
         }
         return result;
-    }
-
-    public List<UserAndEvent> getUserAndEventByIdEvent(long idEvent, String name, int start, int end)
-            throws SystemException {
-        Session session = null;
-        List<UserAndEvent> resultList;
-        try {
-            session = openSession();
-            String sql = CustomSQLUtil.get(GET_USER_AND_EVENT_BY_ID_EVENT);
-            SQLQuery query = session.createSQLQuery(sql);
-            query.setCacheable(false);
-            query.addEntity("USER_AND_EVENT", UserAndEventImpl.class);
-
-            QueryPos queryPos = QueryPos.getInstance(query);
-            queryPos.add(idEvent);
-            queryPos.add("%" + name + "%");
-
-            resultList = (List<UserAndEvent>) QueryUtil.list(query, getDialect(), start, end);
-        } catch (Exception e) {
-            _log.error("Exception while getUserAndEventByIdEvent process for idEvent: " + idEvent, e);
-            throw new com.liferay.portal.kernel.exception.SystemException(e);
-        } finally {
-            closeSession(session);
-        }
-        return resultList;
     }
 
     private static Log _log = LogFactoryUtil.getLog(EventFinderImpl.class);

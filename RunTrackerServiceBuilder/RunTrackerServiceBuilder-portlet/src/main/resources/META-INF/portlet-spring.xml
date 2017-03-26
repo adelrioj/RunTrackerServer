@@ -37,6 +37,7 @@
 	<bean id="es.eina.tfg.service.persistence.UserAdditionalDataPersistence" class="es.eina.tfg.service.persistence.UserAdditionalDataPersistenceImpl" parent="basePersistence" />
 	<bean id="es.eina.tfg.service.UserAndEventLocalService" class="es.eina.tfg.service.impl.UserAndEventLocalServiceImpl" />
 	<bean id="es.eina.tfg.service.persistence.UserAndEventPersistence" class="es.eina.tfg.service.persistence.UserAndEventPersistenceImpl" parent="basePersistence" />
+	<bean id="es.eina.tfg.service.persistence.UserAndEventFinder" class="es.eina.tfg.service.persistence.UserAndEventFinderImpl" parent="basePersistence" />
 	<bean id="es.eina.tfg.service.UserAndRouteLocalService" class="es.eina.tfg.service.impl.UserAndRouteLocalServiceImpl" />
 	<bean id="es.eina.tfg.service.persistence.UserAndRoutePersistence" class="es.eina.tfg.service.persistence.UserAndRoutePersistenceImpl" parent="basePersistence" />
 </beans>

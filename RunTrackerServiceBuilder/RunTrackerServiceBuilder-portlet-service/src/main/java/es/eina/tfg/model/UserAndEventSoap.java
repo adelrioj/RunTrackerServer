@@ -17,6 +17,7 @@ public class UserAndEventSoap implements Serializable {
     private long _idUser;
     private long _idEvent;
     private long _idRace;
+    private int _participationNumber;
 
     public UserAndEventSoap() {
     }
@@ -27,6 +28,7 @@ public class UserAndEventSoap implements Serializable {
         soapModel.setIdUser(model.getIdUser());
         soapModel.setIdEvent(model.getIdEvent());
         soapModel.setIdRace(model.getIdRace());
+        soapModel.setParticipationNumber(model.getParticipationNumber());
 
         return soapModel;
     }
@@ -98,5 +100,13 @@ public class UserAndEventSoap implements Serializable {
 
     public void setIdRace(long idRace) {
         _idRace = idRace;
+    }
+
+    public int getParticipationNumber() {
+        return _participationNumber;
+    }
+
+    public void setParticipationNumber(int participationNumber) {
+        _participationNumber = participationNumber;
     }
 }

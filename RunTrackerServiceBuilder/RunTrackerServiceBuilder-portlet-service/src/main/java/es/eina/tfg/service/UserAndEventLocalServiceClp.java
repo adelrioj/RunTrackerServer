@@ -54,6 +54,12 @@ public class UserAndEventLocalServiceClp implements UserAndEventLocalService {
     private String[] _methodParameterTypes22;
     private String _methodName23;
     private String[] _methodParameterTypes23;
+    private String _methodName24;
+    private String[] _methodParameterTypes24;
+    private String _methodName25;
+    private String[] _methodParameterTypes25;
+    private String _methodName26;
+    private String[] _methodParameterTypes26;
 
     public UserAndEventLocalServiceClp(
         InvokableLocalService invokableLocalService) {
@@ -170,6 +176,23 @@ public class UserAndEventLocalServiceClp implements UserAndEventLocalService {
         _methodName23 = "getByRace";
 
         _methodParameterTypes23 = new String[] { "long" };
+
+        _methodName24 = "getByIdEventAndName";
+
+        _methodParameterTypes24 = new String[] { "long", "java.lang.String" };
+
+        _methodName25 = "getByIdEventAndName";
+
+        _methodParameterTypes25 = new String[] {
+                "long", "java.lang.String", "int", "int"
+            };
+
+        _methodName26 = "getByIdEventAndName";
+
+        _methodParameterTypes26 = new String[] {
+                "long", "java.lang.String", "int", "int",
+                "com.liferay.portal.kernel.util.OrderByComparator"
+            };
     }
 
     @Override
@@ -693,7 +716,8 @@ public class UserAndEventLocalServiceClp implements UserAndEventLocalService {
     @Override
     public es.eina.tfg.model.UserAndEvent addUserAndEvent(long idUser,
         long idEvent)
-        throws com.liferay.portal.kernel.exception.SystemException {
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
@@ -701,6 +725,10 @@ public class UserAndEventLocalServiceClp implements UserAndEventLocalService {
                     _methodParameterTypes19, new Object[] { idUser, idEvent });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+                throw (com.liferay.portal.kernel.exception.PortalException) t;
+            }
 
             if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
                 throw (com.liferay.portal.kernel.exception.SystemException) t;
@@ -810,6 +838,109 @@ public class UserAndEventLocalServiceClp implements UserAndEventLocalService {
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName23,
                     _methodParameterTypes23, new Object[] { idRace });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (java.util.List<es.eina.tfg.model.UserAndEvent>) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
+    public java.util.List<es.eina.tfg.model.UserAndEvent> getByIdEventAndName(
+        long idEvent, java.lang.String name)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName24,
+                    _methodParameterTypes24,
+                    new Object[] { idEvent, ClpSerializer.translateInput(name) });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (java.util.List<es.eina.tfg.model.UserAndEvent>) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
+    public java.util.List<es.eina.tfg.model.UserAndEvent> getByIdEventAndName(
+        long idEvent, java.lang.String name, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName25,
+                    _methodParameterTypes25,
+                    new Object[] {
+                        idEvent,
+                        
+                    ClpSerializer.translateInput(name),
+                        
+                    start,
+                        
+                    end
+                    });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (java.util.List<es.eina.tfg.model.UserAndEvent>) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
+    public java.util.List<es.eina.tfg.model.UserAndEvent> getByIdEventAndName(
+        long idEvent, java.lang.String name, int start, int end,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName26,
+                    _methodParameterTypes26,
+                    new Object[] {
+                        idEvent,
+                        
+                    ClpSerializer.translateInput(name),
+                        
+                    start,
+                        
+                    end,
+                        
+                    ClpSerializer.translateInput(orderByComparator)
+                    });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 

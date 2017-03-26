@@ -286,6 +286,9 @@
 		<!-- Foreign keys -->
 		<column name="idRace" type="long" />
 
+		<!-- Other fields -->
+		<column name="participationNumber" type="int" />
+
 		<!-- Finder methods -->
 		<finder name="userId" return-type="Collection">
 			<finder-column name="idUser" />
@@ -295,6 +298,9 @@
 		</finder>
 		<finder name="raceId" return-type="Collection">
 			<finder-column name="idRace" />
+		</finder>
+		<finder name="participationNumber" return-type="Collection">
+			<finder-column name="participationNumber" />
 		</finder>
 	</entity>
 

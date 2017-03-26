@@ -62,8 +62,6 @@ public class EventLocalServiceClp implements EventLocalService {
     private String[] _methodParameterTypes26;
     private String _methodName27;
     private String[] _methodParameterTypes27;
-    private String _methodName28;
-    private String[] _methodParameterTypes28;
 
     public EventLocalServiceClp(InvokableLocalService invokableLocalService) {
         _invokableLocalService = invokableLocalService;
@@ -156,49 +154,46 @@ public class EventLocalServiceClp implements EventLocalService {
 
         _methodParameterTypes19 = new String[] {  };
 
-        _methodName20 = "getParticipants";
+        _methodName20 = "getByidAuthor";
 
         _methodParameterTypes20 = new String[] { "long" };
 
-        _methodName21 = "getByidAuthor";
+        _methodName21 = "getByidRoute";
 
         _methodParameterTypes21 = new String[] { "long" };
 
-        _methodName22 = "getByidRoute";
+        _methodName22 = "getByPlannedStartTime";
 
-        _methodParameterTypes22 = new String[] { "long" };
-
-        _methodName23 = "getByPlannedStartTime";
-
-        _methodParameterTypes23 = new String[] {
+        _methodParameterTypes22 = new String[] {
                 "java.util.Date", "int", "int",
                 "com.liferay.portal.kernel.util.OrderByComparator"
             };
 
-        _methodName24 = "getByIdUserAndTimeRange";
+        _methodName23 = "getByIdUserAndTimeRange";
 
-        _methodParameterTypes24 = new String[] {
+        _methodParameterTypes23 = new String[] {
                 "long", "java.util.Date", "java.util.Date", "int", "int"
             };
 
-        _methodName25 = "getLastEvent";
+        _methodName24 = "getLastEvent";
+
+        _methodParameterTypes24 = new String[] { "long" };
+
+        _methodName25 = "getLastUnselectedEvent";
 
         _methodParameterTypes25 = new String[] { "long" };
 
-        _methodName26 = "getLastUnselectedEvent";
+        _methodName26 = "getUnselectedEventsByIdUserAndTimeRange";
 
-        _methodParameterTypes26 = new String[] { "long" };
-
-        _methodName27 = "getUserAndEventByIdEvent";
-
-        _methodParameterTypes27 = new String[] {
-                "long", "java.lang.String", "int", "int"
+        _methodParameterTypes26 = new String[] {
+                "long", "java.util.Date", "java.util.Date", "int", "int"
             };
 
-        _methodName28 = "getUnselectedEventsByIdUserAndTimeRange";
+        _methodName27 = "getLiveEvents";
 
-        _methodParameterTypes28 = new String[] {
-                "long", "java.util.Date", "java.util.Date", "int", "int"
+        _methodParameterTypes27 = new String[] {
+                "java.lang.String", "boolean", "int", "int",
+                "com.liferay.portal.kernel.util.OrderByComparator"
             };
     }
 
@@ -735,45 +730,13 @@ public class EventLocalServiceClp implements EventLocalService {
     }
 
     @Override
-    public java.util.List<com.liferay.portal.model.User> getParticipants(
-        long idEvent)
-        throws com.liferay.portal.kernel.exception.PortalException,
-            com.liferay.portal.kernel.exception.SystemException {
-        Object returnObj = null;
-
-        try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName20,
-                    _methodParameterTypes20, new Object[] { idEvent });
-        } catch (Throwable t) {
-            t = ClpSerializer.translateThrowable(t);
-
-            if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
-                throw (com.liferay.portal.kernel.exception.PortalException) t;
-            }
-
-            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
-                throw (com.liferay.portal.kernel.exception.SystemException) t;
-            }
-
-            if (t instanceof RuntimeException) {
-                throw (RuntimeException) t;
-            } else {
-                throw new RuntimeException(t.getClass().getName() +
-                    " is not a valid exception");
-            }
-        }
-
-        return (java.util.List<com.liferay.portal.model.User>) ClpSerializer.translateOutput(returnObj);
-    }
-
-    @Override
     public java.util.List<es.eina.tfg.model.Event> getByidAuthor(long idAuthor)
         throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName21,
-                    _methodParameterTypes21, new Object[] { idAuthor });
+            returnObj = _invokableLocalService.invokeMethod(_methodName20,
+                    _methodParameterTypes20, new Object[] { idAuthor });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -798,8 +761,8 @@ public class EventLocalServiceClp implements EventLocalService {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName22,
-                    _methodParameterTypes22, new Object[] { idRoute });
+            returnObj = _invokableLocalService.invokeMethod(_methodName21,
+                    _methodParameterTypes21, new Object[] { idRoute });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -826,8 +789,8 @@ public class EventLocalServiceClp implements EventLocalService {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName23,
-                    _methodParameterTypes23,
+            returnObj = _invokableLocalService.invokeMethod(_methodName22,
+                    _methodParameterTypes22,
                     new Object[] {
                         ClpSerializer.translateInput(plannedStartTime),
                         
@@ -863,8 +826,8 @@ public class EventLocalServiceClp implements EventLocalService {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName24,
-                    _methodParameterTypes24,
+            returnObj = _invokableLocalService.invokeMethod(_methodName23,
+                    _methodParameterTypes23,
                     new Object[] {
                         idUser,
                         
@@ -900,8 +863,8 @@ public class EventLocalServiceClp implements EventLocalService {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName25,
-                    _methodParameterTypes25, new Object[] { idUser });
+            returnObj = _invokableLocalService.invokeMethod(_methodName24,
+                    _methodParameterTypes24, new Object[] { idUser });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -926,8 +889,8 @@ public class EventLocalServiceClp implements EventLocalService {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName26,
-                    _methodParameterTypes26, new Object[] { idUser });
+            returnObj = _invokableLocalService.invokeMethod(_methodName25,
+                    _methodParameterTypes25, new Object[] { idUser });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -947,18 +910,21 @@ public class EventLocalServiceClp implements EventLocalService {
     }
 
     @Override
-    public java.util.List<es.eina.tfg.model.UserAndEvent> getUserAndEventByIdEvent(
-        long idEvent, java.lang.String name, int start, int end)
+    public java.util.List<es.eina.tfg.model.Event> getUnselectedEventsByIdUserAndTimeRange(
+        long idUser, java.util.Date startPlannedStartingTime,
+        java.util.Date endPlannedStartingTime, int start, int end)
         throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName27,
-                    _methodParameterTypes27,
+            returnObj = _invokableLocalService.invokeMethod(_methodName26,
+                    _methodParameterTypes26,
                     new Object[] {
-                        idEvent,
+                        idUser,
                         
-                    ClpSerializer.translateInput(name),
+                    ClpSerializer.translateInput(startPlannedStartingTime),
+                        
+                    ClpSerializer.translateInput(endPlannedStartingTime),
                         
                     start,
                         
@@ -979,32 +945,37 @@ public class EventLocalServiceClp implements EventLocalService {
             }
         }
 
-        return (java.util.List<es.eina.tfg.model.UserAndEvent>) ClpSerializer.translateOutput(returnObj);
+        return (java.util.List<es.eina.tfg.model.Event>) ClpSerializer.translateOutput(returnObj);
     }
 
     @Override
-    public java.util.List<es.eina.tfg.model.Event> getUnselectedEventsByIdUserAndTimeRange(
-        long idUser, java.util.Date startPlannedStartingTime,
-        java.util.Date endPlannedStartingTime, int start, int end)
-        throws com.liferay.portal.kernel.exception.SystemException {
+    public java.util.List<es.eina.tfg.model.Event> getLiveEvents(
+        java.lang.String name, boolean isConjunction, int start, int end,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName28,
-                    _methodParameterTypes28,
+            returnObj = _invokableLocalService.invokeMethod(_methodName27,
+                    _methodParameterTypes27,
                     new Object[] {
-                        idUser,
+                        ClpSerializer.translateInput(name),
                         
-                    ClpSerializer.translateInput(startPlannedStartingTime),
-                        
-                    ClpSerializer.translateInput(endPlannedStartingTime),
+                    isConjunction,
                         
                     start,
                         
-                    end
+                    end,
+                        
+                    ClpSerializer.translateInput(orderByComparator)
                     });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+                throw (com.liferay.portal.kernel.exception.PortalException) t;
+            }
 
             if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
                 throw (com.liferay.portal.kernel.exception.SystemException) t;

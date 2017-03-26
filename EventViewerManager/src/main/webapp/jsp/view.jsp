@@ -2,7 +2,6 @@
 
 <liferay-ui:success key="${constants.MESSAGE_ADD_EVENT_ACTION_SUCCESS}" message="messageAddEventActionSuccess" />
 <liferay-ui:success key="${constants.MESSAGE_DELETE_EVENT_ACTION_SUCCESS}" message="messageDeleteEventActionSuccess" />
-<liferay-ui:success key="${constants.MESSAGE_DELETE_PARTICIPANT_ACTION_SUCCESS}" message="messageDeleteParticipantActionSuccess" />
 
 <div id="EventViewerManagerDiv">
     <div id="addEventDiv">

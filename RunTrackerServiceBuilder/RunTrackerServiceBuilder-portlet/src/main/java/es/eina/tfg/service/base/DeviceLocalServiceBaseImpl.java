@@ -34,6 +34,7 @@ import es.eina.tfg.service.persistence.RouteLocationPersistence;
 import es.eina.tfg.service.persistence.RoutePersistence;
 import es.eina.tfg.service.persistence.SensorPersistence;
 import es.eina.tfg.service.persistence.UserAdditionalDataPersistence;
+import es.eina.tfg.service.persistence.UserAndEventFinder;
 import es.eina.tfg.service.persistence.UserAndEventPersistence;
 import es.eina.tfg.service.persistence.UserAndRoutePersistence;
 
@@ -129,6 +130,8 @@ public abstract class DeviceLocalServiceBaseImpl extends BaseLocalServiceImpl
     protected es.eina.tfg.service.UserAndEventLocalService userAndEventLocalService;
     @BeanReference(type = UserAndEventPersistence.class)
     protected UserAndEventPersistence userAndEventPersistence;
+    @BeanReference(type = UserAndEventFinder.class)
+    protected UserAndEventFinder userAndEventFinder;
     @BeanReference(type = es.eina.tfg.service.UserAndRouteLocalService.class)
     protected es.eina.tfg.service.UserAndRouteLocalService userAndRouteLocalService;
     @BeanReference(type = UserAndRoutePersistence.class)
@@ -1031,6 +1034,24 @@ public abstract class DeviceLocalServiceBaseImpl extends BaseLocalServiceImpl
     public void setUserAndEventPersistence(
         UserAndEventPersistence userAndEventPersistence) {
         this.userAndEventPersistence = userAndEventPersistence;
+    }
+
+    /**
+     * Returns the user and event finder.
+     *
+     * @return the user and event finder
+     */
+    public UserAndEventFinder getUserAndEventFinder() {
+        return userAndEventFinder;
+    }
+
+    /**
+     * Sets the user and event finder.
+     *
+     * @param userAndEventFinder the user and event finder
+     */
+    public void setUserAndEventFinder(UserAndEventFinder userAndEventFinder) {
+        this.userAndEventFinder = userAndEventFinder;
     }
 
     /**

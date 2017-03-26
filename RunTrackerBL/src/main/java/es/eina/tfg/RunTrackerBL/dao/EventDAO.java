@@ -9,11 +9,8 @@ import com.liferay.portal.model.User;
 import com.liferay.portal.service.UserLocalServiceUtil;
 import es.eina.tfg.RunTrackerBL.converter.EventConverter;
 import es.eina.tfg.RunTrackerBL.entity.Event;
-import es.eina.tfg.RunTrackerBL.entity.Race;
 import es.eina.tfg.RunTrackerBL.entity.Route;
-import es.eina.tfg.RunTrackerBL.entity.UserAndEvent;
 import es.eina.tfg.service.EventLocalServiceUtil;
-import es.eina.tfg.service.UserAndEventLocalServiceUtil;
 import org.joda.time.DateTime;
 
 import java.util.ArrayList;
@@ -63,28 +60,6 @@ public class EventDAO {
 
         return EventConverter.convert(sbEvent, toUpdate.getRoute(), toUpdate.getAuthor());
     }
-
-    public static void deleteUserAndEvent(Long idEvent, Long idUser)
-            throws SystemException, PortalException {
-        UserAndEventLocalServiceUtil.deleteUserAndEvent(idEvent, idUser);
-    }
-
-    public static List<Event> getByPlannedStartTime(DateTime plannedStartTime,
-                                                    int start,
-                                                    int end,
-                                                    OrderByComparator comparator)
-            throws SystemException, PortalException {
-        List<es.eina.tfg.model.Event> sbEvents =  EventLocalServiceUtil.getByPlannedStartTime(plannedStartTime.toDate(), start, end, comparator);
-        List<Event> localEvents = new ArrayList<Event>();
-        for (es.eina.tfg.model.Event sbEvent : sbEvents) {
-            Route route = RouteDAO.getByIdRoute(sbEvent.getIdRoute());
-            User author = UserLocalServiceUtil.getUserById(sbEvent.getIdAuthor());
-            localEvents.add(EventConverter.convert(sbEvent, route, author));
-        }
-        return localEvents;
-    }
-
-
 
     public static List<Event> getByIdUserAndTimeRange(long idUser,
                                                       DateTime startPlannedStartingTime,
@@ -163,42 +138,23 @@ public class EventDAO {
         return localEvent;
     }
 
-    public static List<UserAndEvent> getParticipants(Long idEvent,
-                                                     String name,
-                                                     int start,
-                                                     int end)
+    public static List<Event> getLiveEvents(String name,
+                                            boolean isConjunction,
+                                            int start, int end,
+                                            OrderByComparator orderByComparator)
             throws SystemException, PortalException {
-        List<es.eina.tfg.model.UserAndEvent> sbUserAndEvents = EventLocalServiceUtil.getUserAndEventByIdEvent(idEvent, name, start, end);
-        List<UserAndEvent> userAndEvents = new ArrayList<UserAndEvent>();
-        for (es.eina.tfg.model.UserAndEvent sbUserAndEvent : sbUserAndEvents) {
-            userAndEvents.add(convertUserAndEvent(sbUserAndEvent));
-        }
-        return userAndEvents;
-    }
+        List<es.eina.tfg.model.Event> sbEvents = EventLocalServiceUtil
+                .getLiveEvents(name, isConjunction, start, end, orderByComparator);
 
-    public static UserAndEvent addParticipation(Long idUser, Long idEvent)
-            throws SystemException, PortalException {
-        es.eina.tfg.model.UserAndEvent sbUserAndEvent = UserAndEventLocalServiceUtil.addUserAndEvent(idUser, idEvent);
-        return convertUserAndEvent(sbUserAndEvent);
-    }
+        List<Event> localEvents = new ArrayList<Event>();
+        for (es.eina.tfg.model.Event sbEvent : sbEvents) {
+            User author = UserLocalServiceUtil.getUser(sbEvent.getIdAuthor());
+            Route route = RouteDAO.getByIdRoute(sbEvent.getIdRoute());
 
-    private static UserAndEvent convertUserAndEvent(es.eina.tfg.model.UserAndEvent sbUserAndEvent)
-            throws PortalException, SystemException {
-        if (sbUserAndEvent == null) return null;
-
-        User participant = UserLocalServiceUtil.getUser(sbUserAndEvent.getIdUser());
-        Event event = getByIdEvent(sbUserAndEvent.getIdEvent());
-        Race race = null;
-        if (sbUserAndEvent.getIdRace() != 0 ) {
-            race = RaceDAO.getByIdRace(sbUserAndEvent.getIdRace());
+            localEvents.add(EventConverter.convert(sbEvent, route, author));
         }
 
-        UserAndEvent localUserAndEvent = new UserAndEvent();
-        localUserAndEvent.setEvent(event);
-        localUserAndEvent.setParticipant(participant);
-        localUserAndEvent.setRace(race);
-
-        return localUserAndEvent;
+        return localEvents;
     }
 
     private static Log _log = LogFactoryUtil.getLog(EventDAO.class);

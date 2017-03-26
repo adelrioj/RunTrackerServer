@@ -25,5 +25,6 @@ create index IX_4484A55B on GL_Sensor (type_);
 create index IX_30769E81 on GL_UserAndEvent (idEvent);
 create index IX_BBBF7FEE on GL_UserAndEvent (idRace);
 create index IX_C1DCCA68 on GL_UserAndEvent (idUser);
+create index IX_79596C on GL_UserAndEvent (participationNumber);
 
 create index IX_81E47B57 on GL_UserAndRoute (idUser);

@@ -64,15 +64,4 @@
                                         AND uae2.idUser = ?))
 ]]>
     </sql>
-    <sql id="es.eina.tfg.service.persistence.EventFinder.findUserAndEventByIdEvent">
-        <![CDATA[
-        SELECT DISTINCT uae.*
-        FROM gl_userandevent uae
-        INNER JOIN gl_event event
-        ON event.idEvent = uae.idEvent
-        WHERE uae.idEvent = ?
-            AND event.idAuthor != uae.idUser
-            AND event.name LIKE ?
-]]>
-    </sql>
 </custom-sql>

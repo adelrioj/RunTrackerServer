@@ -35,12 +35,6 @@ public class EventFinderUtil {
         return getFinder().getLastUnselectedEvent(idUser);
     }
 
-    public static java.util.List<es.eina.tfg.model.UserAndEvent> getUserAndEventByIdEvent(
-        long idEvent, java.lang.String name, int start, int end)
-        throws com.liferay.portal.kernel.exception.SystemException {
-        return getFinder().getUserAndEventByIdEvent(idEvent, name, start, end);
-    }
-
     public static EventFinder getFinder() {
         if (_finder == null) {
             _finder = (EventFinder) PortletBeanLocatorUtil.locate(es.eina.tfg.service.ClpSerializer.getServletContextName(),

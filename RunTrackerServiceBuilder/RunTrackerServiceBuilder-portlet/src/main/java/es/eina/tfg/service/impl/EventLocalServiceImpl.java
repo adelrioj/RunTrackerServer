@@ -1,15 +1,18 @@
 package es.eina.tfg.service.impl;
 
+import com.liferay.portal.kernel.dao.orm.*;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.util.OrderByComparator;
+import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.model.User;
 import com.liferay.portal.service.UserLocalServiceUtil;
 import es.eina.tfg.model.Event;
 import es.eina.tfg.model.Route;
 import es.eina.tfg.model.UserAndEvent;
+import es.eina.tfg.service.EventLocalServiceUtil;
 import es.eina.tfg.service.RouteLocalServiceUtil;
 import es.eina.tfg.service.UserAndEventLocalServiceUtil;
 import es.eina.tfg.service.base.EventLocalServiceBaseImpl;
@@ -19,6 +22,8 @@ import es.eina.tfg.service.persistence.EventUtil;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import static com.liferay.portal.kernel.util.Validator.isNotNull;
 
 /**
  * The implementation of the event local service.
@@ -79,7 +84,7 @@ public class EventLocalServiceImpl extends EventLocalServiceBaseImpl {
         }
     }
 
-    public List<User> getParticipants(long idEvent)
+    /*public List<User> getParticipants(long idEvent)
             throws SystemException, PortalException {
         List<UserAndEvent> userAndEvents = UserAndEventLocalServiceUtil.getByidEvent(idEvent);
         List<User> users = new ArrayList<User>();
@@ -88,7 +93,7 @@ public class EventLocalServiceImpl extends EventLocalServiceBaseImpl {
         }
 
         return users;
-    }
+    }*/
 
     public List<Event> getByidAuthor(long idAuthor)
             throws SystemException {
@@ -122,11 +127,6 @@ public class EventLocalServiceImpl extends EventLocalServiceBaseImpl {
         return EventFinderUtil.getLastUnselectedEvent(idUser);
     }
 
-    public List<UserAndEvent> getUserAndEventByIdEvent(long idEvent, String name, int start, int end)
-            throws SystemException{
-        return EventFinderUtil.getUserAndEventByIdEvent(idEvent, name, start, end);
-    }
-
     public List<Event> getUnselectedEventsByIdUserAndTimeRange(long idUser,
                                                                Date startPlannedStartingTime,
                                                                Date endPlannedStartingTime,
@@ -136,5 +136,61 @@ public class EventLocalServiceImpl extends EventLocalServiceBaseImpl {
         return eventFinder.getUnselectedEventsByIdUserAndTimeRange(idUser, startPlannedStartingTime,
                 endPlannedStartingTime, start, end);
     }
+
+    public List<Event> getLiveEvents(String name,
+                                        boolean isConjunction,
+                                        int start,
+                                        int end,
+                                        OrderByComparator orderByComparator)
+            throws SystemException, PortalException {
+        DynamicQuery dynamicQuery = getEventDynamicQuery(null, null, name,
+                null, null,
+                null, null,
+                isConjunction);
+
+        dynamicQuery.add(PropertyFactoryUtil.forName("realStartingTime").isNotNull());
+        dynamicQuery.add(PropertyFactoryUtil.forName("realFinishTime").isNull());
+
+        return EventLocalServiceUtil.dynamicQuery(dynamicQuery, start, end, orderByComparator);
+    }
+
+    private DynamicQuery getEventDynamicQuery(Long idRoute,
+                                              Long idAuthor,
+                                              String name,
+                                              Date plannedStartTimeMin, Date plannedStartTimeMax,
+                                              Date plannedFinishTimeMin, Date plannedFinishTimeMax,
+                                              boolean isConjunction)
+            throws SystemException {
+        Junction junction =
+                isConjunction ? RestrictionsFactoryUtil.conjunction() : RestrictionsFactoryUtil.disjunction();
+
+        if (isNotNull(idRoute)){
+            Property property = PropertyFactoryUtil.forName("idRoute");
+            junction.add(property.eq(idRoute));
+        }
+        if (isNotNull(idAuthor)){
+            Property property = PropertyFactoryUtil.forName("idAuthor");
+            junction.add(property.eq(idAuthor));
+        }
+        if (isNotNull(name)){
+            Property property = PropertyFactoryUtil.forName("name");
+            String value = (new StringBuilder(StringPool.PERCENT)).append(name).append(StringPool.PERCENT).toString();
+            junction.add(property.like(value));
+        }
+        if (isNotNull(plannedStartTimeMin) && isNotNull(plannedStartTimeMax)){
+            Property property = PropertyFactoryUtil.forName("plannedStartingTime");
+            junction.add(property.between(plannedStartTimeMin, plannedStartTimeMax));
+        }
+        if (isNotNull(plannedFinishTimeMin) && isNotNull(plannedFinishTimeMax)){
+            Property property = PropertyFactoryUtil.forName("plannedFinishTime");
+            junction.add(property.between(plannedFinishTimeMin, plannedFinishTimeMax));
+        }
+
+        DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(es.eina.tfg.model.Event.class);
+        dynamicQuery.add(junction);
+
+        return dynamicQuery;
+    }
+
     private static Log _log = LogFactoryUtil.getLog(EventLocalServiceImpl.class);
 }

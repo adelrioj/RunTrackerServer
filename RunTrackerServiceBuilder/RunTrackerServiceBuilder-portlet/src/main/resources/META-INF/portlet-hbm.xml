@@ -142,6 +142,7 @@
 			<key-property name="idEvent" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		</composite-id>
 		<property name="idRace" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="participationNumber" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 	</class>
 	<class name="es.eina.tfg.model.impl.UserAndRouteImpl" table="GL_UserAndRoute">
 		<cache usage="read-write" />

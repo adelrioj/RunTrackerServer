@@ -42,9 +42,10 @@ public class UserAndEventModelImpl extends BaseModelImpl<UserAndEvent>
     public static final Object[][] TABLE_COLUMNS = {
             { "idUser", Types.BIGINT },
             { "idEvent", Types.BIGINT },
-            { "idRace", Types.BIGINT }
+            { "idRace", Types.BIGINT },
+            { "participationNumber", Types.INTEGER }
         };
-    public static final String TABLE_SQL_CREATE = "create table GL_UserAndEvent (idUser LONG not null,idEvent LONG not null,idRace LONG,primary key (idUser, idEvent))";
+    public static final String TABLE_SQL_CREATE = "create table GL_UserAndEvent (idUser LONG not null,idEvent LONG not null,idRace LONG,participationNumber INTEGER,primary key (idUser, idEvent))";
     public static final String TABLE_SQL_DROP = "drop table GL_UserAndEvent";
     public static final String ORDER_BY_JPQL = " ORDER BY userAndEvent.id.idUser ASC, userAndEvent.id.idEvent ASC";
     public static final String ORDER_BY_SQL = " ORDER BY GL_UserAndEvent.idUser ASC, GL_UserAndEvent.idEvent ASC";
@@ -63,6 +64,7 @@ public class UserAndEventModelImpl extends BaseModelImpl<UserAndEvent>
     public static long IDEVENT_COLUMN_BITMASK = 1L;
     public static long IDRACE_COLUMN_BITMASK = 2L;
     public static long IDUSER_COLUMN_BITMASK = 4L;
+    public static long PARTICIPATIONNUMBER_COLUMN_BITMASK = 8L;
     public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
                 "lock.expiration.time.es.eina.tfg.model.UserAndEvent"));
     private static ClassLoader _classLoader = UserAndEvent.class.getClassLoader();
@@ -78,6 +80,9 @@ public class UserAndEventModelImpl extends BaseModelImpl<UserAndEvent>
     private long _idRace;
     private long _originalIdRace;
     private boolean _setOriginalIdRace;
+    private int _participationNumber;
+    private int _originalParticipationNumber;
+    private boolean _setOriginalParticipationNumber;
     private long _columnBitmask;
     private UserAndEvent _escapedModel;
 
@@ -122,6 +127,7 @@ public class UserAndEventModelImpl extends BaseModelImpl<UserAndEvent>
         attributes.put("idUser", getIdUser());
         attributes.put("idEvent", getIdEvent());
         attributes.put("idRace", getIdRace());
+        attributes.put("participationNumber", getParticipationNumber());
 
         return attributes;
     }
@@ -144,6 +150,13 @@ public class UserAndEventModelImpl extends BaseModelImpl<UserAndEvent>
 
         if (idRace != null) {
             setIdRace(idRace);
+        }
+
+        Integer participationNumber = (Integer) attributes.get(
+                "participationNumber");
+
+        if (participationNumber != null) {
+            setParticipationNumber(participationNumber);
         }
     }
 
@@ -213,6 +226,28 @@ public class UserAndEventModelImpl extends BaseModelImpl<UserAndEvent>
         return _originalIdRace;
     }
 
+    @Override
+    public int getParticipationNumber() {
+        return _participationNumber;
+    }
+
+    @Override
+    public void setParticipationNumber(int participationNumber) {
+        _columnBitmask |= PARTICIPATIONNUMBER_COLUMN_BITMASK;
+
+        if (!_setOriginalParticipationNumber) {
+            _setOriginalParticipationNumber = true;
+
+            _originalParticipationNumber = _participationNumber;
+        }
+
+        _participationNumber = participationNumber;
+    }
+
+    public int getOriginalParticipationNumber() {
+        return _originalParticipationNumber;
+    }
+
     public long getColumnBitmask() {
         return _columnBitmask;
     }
@@ -234,6 +269,7 @@ public class UserAndEventModelImpl extends BaseModelImpl<UserAndEvent>
         userAndEventImpl.setIdUser(getIdUser());
         userAndEventImpl.setIdEvent(getIdEvent());
         userAndEventImpl.setIdRace(getIdRace());
+        userAndEventImpl.setParticipationNumber(getParticipationNumber());
 
         userAndEventImpl.resetOriginalValues();
 
@@ -289,6 +325,10 @@ public class UserAndEventModelImpl extends BaseModelImpl<UserAndEvent>
 
         userAndEventModelImpl._setOriginalIdRace = false;
 
+        userAndEventModelImpl._originalParticipationNumber = userAndEventModelImpl._participationNumber;
+
+        userAndEventModelImpl._setOriginalParticipationNumber = false;
+
         userAndEventModelImpl._columnBitmask = 0;
     }
 
@@ -302,12 +342,14 @@ public class UserAndEventModelImpl extends BaseModelImpl<UserAndEvent>
 
         userAndEventCacheModel.idRace = getIdRace();
 
+        userAndEventCacheModel.participationNumber = getParticipationNumber();
+
         return userAndEventCacheModel;
     }
 
     @Override
     public String toString() {
-        StringBundler sb = new StringBundler(7);
+        StringBundler sb = new StringBundler(9);
 
         sb.append("{idUser=");
         sb.append(getIdUser());
@@ -315,6 +357,8 @@ public class UserAndEventModelImpl extends BaseModelImpl<UserAndEvent>
         sb.append(getIdEvent());
         sb.append(", idRace=");
         sb.append(getIdRace());
+        sb.append(", participationNumber=");
+        sb.append(getParticipationNumber());
         sb.append("}");
 
         return sb.toString();
@@ -322,7 +366,7 @@ public class UserAndEventModelImpl extends BaseModelImpl<UserAndEvent>
 
     @Override
     public String toXmlString() {
-        StringBundler sb = new StringBundler(13);
+        StringBundler sb = new StringBundler(16);
 
         sb.append("<model><model-name>");
         sb.append("es.eina.tfg.model.UserAndEvent");
@@ -339,6 +383,10 @@ public class UserAndEventModelImpl extends BaseModelImpl<UserAndEvent>
         sb.append(
             "<column><column-name>idRace</column-name><column-value><![CDATA[");
         sb.append(getIdRace());
+        sb.append("]]></column-value></column>");
+        sb.append(
+            "<column><column-name>participationNumber</column-name><column-value><![CDATA[");
+        sb.append(getParticipationNumber());
         sb.append("]]></column-value></column>");
 
         sb.append("</model>");

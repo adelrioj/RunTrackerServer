@@ -78,6 +78,9 @@ public class PortletController extends MVCPortlet {
         }
     }
 
+    /*
+     * Action that deletes user's participation on event
+     */
     public void deleteParticipationEventAction(ActionRequest request, ActionResponse response){
         Long idEvent = ParamUtil.getLong(request, WebKeys.PARAM_EVENT_ID);
         Long idUser = UserUtils.getCurrentUserId(request);
@@ -92,6 +95,9 @@ public class PortletController extends MVCPortlet {
         }
     }
 
+    /*
+     * Action that deletes a participant from event, as ADMIN user
+     */
     public void deleteParticipantAction(ActionRequest request, ActionResponse response)
             throws IOException, PortletException {
         Long idEvent = ParamUtil.getLong(request, WebKeys.PARAM_EVENT_ID);
@@ -100,7 +106,7 @@ public class PortletController extends MVCPortlet {
 
         try {
             EventManager.deleteParticipation(idEvent, idUser);
-            response.setRenderParameter(WebKeys.PARAM_EVENT_ID, "0");
+            response.setRenderParameter(WebKeys.PARAM_EVENT_ID, String.valueOf(idEvent));
             SessionMessages.add(request, WebKeys.MESSAGE_DELETE_PARTICIPANT_ACTION_SUCCESS);
         } catch (UnableToProcessActionException e) {
             SessionErrors.add(request, "Ha ocurrido un error al eliminar el evento");

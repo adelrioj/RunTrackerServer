@@ -22,10 +22,11 @@ public class UserAndEventCacheModel implements CacheModel<UserAndEvent>,
     public long idUser;
     public long idEvent;
     public long idRace;
+    public int participationNumber;
 
     @Override
     public String toString() {
-        StringBundler sb = new StringBundler(7);
+        StringBundler sb = new StringBundler(9);
 
         sb.append("{idUser=");
         sb.append(idUser);
@@ -33,6 +34,8 @@ public class UserAndEventCacheModel implements CacheModel<UserAndEvent>,
         sb.append(idEvent);
         sb.append(", idRace=");
         sb.append(idRace);
+        sb.append(", participationNumber=");
+        sb.append(participationNumber);
         sb.append("}");
 
         return sb.toString();
@@ -45,6 +48,7 @@ public class UserAndEventCacheModel implements CacheModel<UserAndEvent>,
         userAndEventImpl.setIdUser(idUser);
         userAndEventImpl.setIdEvent(idEvent);
         userAndEventImpl.setIdRace(idRace);
+        userAndEventImpl.setParticipationNumber(participationNumber);
 
         userAndEventImpl.resetOriginalValues();
 
@@ -56,6 +60,7 @@ public class UserAndEventCacheModel implements CacheModel<UserAndEvent>,
         idUser = objectInput.readLong();
         idEvent = objectInput.readLong();
         idRace = objectInput.readLong();
+        participationNumber = objectInput.readInt();
     }
 
     @Override
@@ -64,5 +69,6 @@ public class UserAndEventCacheModel implements CacheModel<UserAndEvent>,
         objectOutput.writeLong(idUser);
         objectOutput.writeLong(idEvent);
         objectOutput.writeLong(idRace);
+        objectOutput.writeInt(participationNumber);
     }
 }

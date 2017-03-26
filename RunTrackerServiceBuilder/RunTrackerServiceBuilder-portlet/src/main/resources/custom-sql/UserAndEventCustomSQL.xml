@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<custom-sql>
+    <sql id="es.eina.tfg.service.persistence.UserAndEventFinder.findByIdEventAndName">
+        <![CDATA[
+        SELECT DISTINCT userandevent.*
+        FROM gl_userandevent userandevent
+        INNER JOIN gl_event event
+        ON event.idEvent = userandevent.idEvent
+        INNER JOIN user_ user
+            ON user.userId = userandevent.idUser
+        WHERE userandevent.idEvent = ?
+            AND event.idAuthor != userandevent.idUser
+            AND (user.firstName LIKE ?
+                OR user.middleName LIKE ?
+                OR user.lastName LIKE ?)
+]]>
+    </sql>
+    <sql id="es.eina.tfg.service.persistence.UserAndEventFinder.addUserAndEvent">
+        <![CDATA[
+        INSERT INTO gl_userandevent (idUser, idEvent, idRace, participationNumber)
+        VALUES (?, ?, 0, (SELECT COALESCE(MAX(uae.participationNumber), 0) as id FROM gl_userandevent uae) + 1)
+]]>
+    </sql>
+</custom-sql>

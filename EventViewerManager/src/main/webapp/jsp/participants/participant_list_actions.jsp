@@ -9,11 +9,15 @@
 %>
 
 <liferay-ui:icon-menu>
-    <!-- Delete section -->
-    <portlet:actionURL name="deleteParticipantAction" var="deleteParticipantURL">
-        <portlet:param name="${constants.PARAM_EVENT_ID}" value="${requestScope.requestedEvent.idEvent}" />
-        <portlet:param name="${constants.PARAM_SELECTED_PARTICIPANT_ID}" value="<%= String.valueOf(participant.getIdUser()) %>" />
-        <portlet:param name="mvcPath" value="/jsp/participants/view_participants.jsp" />
-    </portlet:actionURL>
-    <liferay-ui:icon-delete url="${deleteParticipantURL}" label="deleteEvent" />
+    <c:choose>
+        <c:when test="${empty requestScope.requestedEvent.realStartTime}">
+            <!-- Delete section -->
+            <portlet:actionURL name="deleteParticipantAction" var="deleteParticipantURL">
+                <portlet:param name="${constants.PARAM_EVENT_ID}" value="${requestScope.requestedEvent.idEvent}" />
+                <portlet:param name="${constants.PARAM_SELECTED_PARTICIPANT_ID}" value="<%= String.valueOf(participant.getIdUser()) %>" />
+                <portlet:param name="mvcPath" value="/jsp/participants/view_participants.jsp" />
+            </portlet:actionURL>
+            <liferay-ui:icon-delete url="${deleteParticipantURL}" label="deleteEvent" />
+        </c:when>
+    </c:choose>
 </liferay-ui:icon-menu>

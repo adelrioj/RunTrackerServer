@@ -96,6 +96,7 @@
 		<field name="idUser" type="long" />
 		<field name="idEvent" type="long" />
 		<field name="idRace" type="long" />
+		<field name="participationNumber" type="int" />
 	</model>
 	<model name="es.eina.tfg.model.UserAndRoute">
 		<field name="idUser" type="long" />

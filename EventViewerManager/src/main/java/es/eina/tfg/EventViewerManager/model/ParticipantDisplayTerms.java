@@ -9,8 +9,9 @@ import javax.portlet.PortletRequest;
 
 public class ParticipantDisplayTerms extends DisplayTerms{
 
-    public static final String NAME = "name";
     private static final String IDEVENT = "idEvent";
+    private static final String NAME = "name";
+    public static final String PARTICIPATION_NUMBER = "participationNumber";
 
     private String name;
     private Long idEvent;

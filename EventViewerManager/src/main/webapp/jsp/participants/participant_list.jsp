@@ -5,18 +5,43 @@
 <%@ page import="es.eina.tfg.EventViewerManager.model.ParticipantManager" %>
 <%@ page import="es.eina.tfg.RunTrackerBL.entity.Event" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.liferay.portal.kernel.util.OrderByComparator" %>
+<%@ page import="com.liferay.portal.kernel.util.ParamUtil" %>
+<%@ page import="com.liferay.portlet.PortletPreferencesFactoryUtil" %>
+<%@ page import="com.liferay.portlet.PortalPreferences" %>
+<%@ page import="es.eina.tfg.RunTrackerBL.comparator.userAndEvent.UserAndEventOrderComparatorFactory" %>
 <%@include file="../custom_init.jsp"%>
 
 <liferay-portlet:renderURL varImpl="participantsSearchURL">
-    <portlet:param name="mvcPath" value="/jsp/view.jsp" />
+    <portlet:param name="${constants.PARAM_EVENT_ID}" value="${requestScope.requestedEvent.idEvent}" />
+    <portlet:param name="mvcPath" value="/jsp/participants/view_participants.jsp" />
 </liferay-portlet:renderURL>
+
+<%
+    String orderByCol = ParamUtil.getString(request, "orderByCol");
+    String orderByType = ParamUtil.getString(request, "orderByType");
+
+    PortalPreferences portalPrefs = PortletPreferencesFactoryUtil.getPortalPreferences(request);
+
+    if (Validator.isNotNull(orderByCol) && Validator.isNotNull(orderByType)) {
+        portalPrefs.setValue("EVENT_SEARCH_PARTICIPANT_LIST", "participantList-order-by-col", orderByCol);
+        portalPrefs.setValue("EVENT_SEARCH_PARTICIPANT_LIST", "participantList-order-by-type", orderByType);
+
+    } else {
+        orderByCol = portalPrefs.getValue("EVENT_SEARCH_PARTICIPANT_LIST", "participantList-order-by-col", UserAndEventOrderComparatorFactory.ORDER_BY_COL_PARTICIPATION_NUMBER);
+        orderByType = portalPrefs.getValue("EVENT_SEARCH_PARTICIPANT_LIST", "participantList-order-by-type", UserAndEventOrderComparatorFactory.ORDER_BY_TYPE_ASC);
+    }
+
+    OrderByComparator orderByComparator = UserAndEventOrderComparatorFactory.getUserAndEventOrderByComparator(orderByCol, orderByType);
+%>
 
 <aui:form action="${participantsSearchURL}" method="post" name="participantsForm">
 
     <liferay-portlet:renderURLParams varImpl="participantsSearchURL" />
 
     <liferay-portlet:renderURL varImpl="iteratorURL">
-        <portlet:param name="mvcPath" value="/jsp/participants/participant_list.jsp" />
+        <portlet:param name="mvcPath" value="/jsp/participants/view_participants.jsp" />
+        <portlet:param name="${constants.PARAM_EVENT_ID}" value="${requestScope.requestedEvent.idEvent}" />
     </liferay-portlet:renderURL>
 
     <liferay-ui:search-container
@@ -25,7 +50,14 @@
             curParam="participantsCurParam"
             emptyResultsMessage="noparticipantsFound"
             displayTerms="<%= new ParticipantDisplayTerms(renderRequest) %>"
-            iteratorURL="<%= iteratorURL %>" >
+            iteratorURL="<%= iteratorURL %>"
+            orderByCol="<%= orderByCol %>"
+            orderByType="<%= orderByType %>">
+
+        <liferay-ui:search-form
+                page="/jsp/participants/participant_list_search.jsp"
+                servletContext="<%= application %>"
+        />
 
         <liferay-ui:search-container-results >
             <%
@@ -35,18 +67,11 @@
                 displayTerms.setIdEvent(requestedEvent.getIdEvent());
 
                 List<Participant> resultsSearch = ParticipantManager.getParticipantsByDisplayTerms(displayTerms,
-                        searchContainer.getStart(), searchContainer.getEnd());
+                        searchContainer.getStart(), searchContainer.getEnd(), orderByComparator);
                 int totalSearch = ParticipantManager.getParticipantsByDisplayTermsCount(displayTerms);
 
                 searchContainer.setResults(resultsSearch);
                 searchContainer.setTotal(totalSearch);
-
-
-                if (Validator.isNull(requestedEvent)
-                        && Validator.isNotNull(resultsSearch)
-                        && resultsSearch.size()>0){
-                    request.setAttribute(WebKeys.REQUESTED_EVENT, resultsSearch.get(0));
-                }
             %>
         </liferay-ui:search-container-results>
 
@@ -57,7 +82,8 @@
             <liferay-ui:search-container-column-text
                     property="participationNumber"
                     name="participationNumber"
-                    orderable="false" />
+                    orderable="true"
+                    orderableProperty="participationNumber"/>
             <liferay-ui:search-container-column-text
                     property="name"
                     name="name"
