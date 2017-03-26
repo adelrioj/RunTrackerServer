@@ -1,6 +1,7 @@
 package es.eina.tfg.EventDiscoverManager.model;
 
 import com.liferay.docs.route.util.WebKeys;
+import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
@@ -13,6 +14,7 @@ import es.eina.tfg.EventDiscoverManager.model.DTO.FullcalendarEventRequest;
 import es.eina.tfg.EventDiscoverManager.model.DTO.FullcalendarEventResponse;
 import es.eina.tfg.RunTrackerBL.dao.EventDAO;
 import es.eina.tfg.RunTrackerBL.dao.RouteDAO;
+import es.eina.tfg.RunTrackerBL.dao.UserAndEventDAO;
 import es.eina.tfg.RunTrackerBL.entity.Event;
 import es.eina.tfg.RunTrackerBL.entity.UserAndEvent;
 import org.joda.time.DateTime;
@@ -44,7 +46,7 @@ public class EventManager {
                             eventRequest.getIdUser(),
                             eventRequest.getStart(),
                             eventRequest.getEnd(),
-                            0, 9999);
+                            QueryUtil.ALL_POS, QueryUtil.ALL_POS);
             events = convert(toConvert, eventRequest.getContextPath());
         } catch (IOException e) {
             _log.error("IOException while convert for: " + eventRequest, e);
@@ -71,7 +73,7 @@ public class EventManager {
 
     public static UserAndEvent addParticipation(Long idUser, Long idEvent) throws UnableToProcessActionException {
         try {
-            return EventDAO.addParticipation(idUser, idEvent);
+            return UserAndEventDAO.addParticipation(idUser, idEvent);
         } catch (SystemException e) {
             throw new UnableToProcessActionException(e);
         } catch (PortalException e) {
