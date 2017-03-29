@@ -60,6 +60,8 @@ public class UserAndEventLocalServiceClp implements UserAndEventLocalService {
     private String[] _methodParameterTypes25;
     private String _methodName26;
     private String[] _methodParameterTypes26;
+    private String _methodName27;
+    private String[] _methodParameterTypes27;
 
     public UserAndEventLocalServiceClp(
         InvokableLocalService invokableLocalService) {
@@ -165,31 +167,35 @@ public class UserAndEventLocalServiceClp implements UserAndEventLocalService {
 
         _methodParameterTypes20 = new String[] { "long", "long" };
 
-        _methodName21 = "getByidUser";
+        _methodName21 = "getById";
 
-        _methodParameterTypes21 = new String[] { "long" };
+        _methodParameterTypes21 = new String[] { "long", "long" };
 
-        _methodName22 = "getByidEvent";
+        _methodName22 = "getByidUser";
 
         _methodParameterTypes22 = new String[] { "long" };
 
-        _methodName23 = "getByRace";
+        _methodName23 = "getByidEvent";
 
         _methodParameterTypes23 = new String[] { "long" };
 
-        _methodName24 = "getByIdEventAndName";
+        _methodName24 = "getByRace";
 
-        _methodParameterTypes24 = new String[] { "long", "java.lang.String" };
+        _methodParameterTypes24 = new String[] { "long" };
 
         _methodName25 = "getByIdEventAndName";
 
-        _methodParameterTypes25 = new String[] {
-                "long", "java.lang.String", "int", "int"
-            };
+        _methodParameterTypes25 = new String[] { "long", "java.lang.String" };
 
         _methodName26 = "getByIdEventAndName";
 
         _methodParameterTypes26 = new String[] {
+                "long", "java.lang.String", "int", "int"
+            };
+
+        _methodName27 = "getByIdEventAndName";
+
+        _methodParameterTypes27 = new String[] {
                 "long", "java.lang.String", "int", "int",
                 "com.liferay.portal.kernel.util.OrderByComparator"
             };
@@ -778,13 +784,44 @@ public class UserAndEventLocalServiceClp implements UserAndEventLocalService {
     }
 
     @Override
+    public es.eina.tfg.model.UserAndEvent getById(long userId, long idEvent)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName21,
+                    _methodParameterTypes21, new Object[] { userId, idEvent });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+                throw (com.liferay.portal.kernel.exception.PortalException) t;
+            }
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (es.eina.tfg.model.UserAndEvent) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
     public java.util.List<es.eina.tfg.model.UserAndEvent> getByidUser(
         long userId) throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName21,
-                    _methodParameterTypes21, new Object[] { userId });
+            returnObj = _invokableLocalService.invokeMethod(_methodName22,
+                    _methodParameterTypes22, new Object[] { userId });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -810,8 +847,8 @@ public class UserAndEventLocalServiceClp implements UserAndEventLocalService {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName22,
-                    _methodParameterTypes22, new Object[] { idEvent });
+            returnObj = _invokableLocalService.invokeMethod(_methodName23,
+                    _methodParameterTypes23, new Object[] { idEvent });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -836,8 +873,8 @@ public class UserAndEventLocalServiceClp implements UserAndEventLocalService {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName23,
-                    _methodParameterTypes23, new Object[] { idRace });
+            returnObj = _invokableLocalService.invokeMethod(_methodName24,
+                    _methodParameterTypes24, new Object[] { idRace });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -863,8 +900,8 @@ public class UserAndEventLocalServiceClp implements UserAndEventLocalService {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName24,
-                    _methodParameterTypes24,
+            returnObj = _invokableLocalService.invokeMethod(_methodName25,
+                    _methodParameterTypes25,
                     new Object[] { idEvent, ClpSerializer.translateInput(name) });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
@@ -891,8 +928,8 @@ public class UserAndEventLocalServiceClp implements UserAndEventLocalService {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName25,
-                    _methodParameterTypes25,
+            returnObj = _invokableLocalService.invokeMethod(_methodName26,
+                    _methodParameterTypes26,
                     new Object[] {
                         idEvent,
                         
@@ -928,8 +965,8 @@ public class UserAndEventLocalServiceClp implements UserAndEventLocalService {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName26,
-                    _methodParameterTypes26,
+            returnObj = _invokableLocalService.invokeMethod(_methodName27,
+                    _methodParameterTypes27,
                     new Object[] {
                         idEvent,
                         

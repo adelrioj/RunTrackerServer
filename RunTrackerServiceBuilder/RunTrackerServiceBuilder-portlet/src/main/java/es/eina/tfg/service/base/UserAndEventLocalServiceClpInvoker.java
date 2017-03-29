@@ -61,6 +61,8 @@ public class UserAndEventLocalServiceClpInvoker {
     private String[] _methodParameterTypes119;
     private String _methodName120;
     private String[] _methodParameterTypes120;
+    private String _methodName121;
+    private String[] _methodParameterTypes121;
 
     public UserAndEventLocalServiceClpInvoker() {
         _methodName0 = "addUserAndEvent";
@@ -163,31 +165,35 @@ public class UserAndEventLocalServiceClpInvoker {
 
         _methodParameterTypes113 = new String[] { "long", "long" };
 
-        _methodName115 = "getByidUser";
+        _methodName115 = "getById";
 
-        _methodParameterTypes115 = new String[] { "long" };
+        _methodParameterTypes115 = new String[] { "long", "long" };
 
-        _methodName116 = "getByidEvent";
+        _methodName116 = "getByidUser";
 
         _methodParameterTypes116 = new String[] { "long" };
 
-        _methodName117 = "getByRace";
+        _methodName117 = "getByidEvent";
 
         _methodParameterTypes117 = new String[] { "long" };
 
-        _methodName118 = "getByIdEventAndName";
+        _methodName118 = "getByRace";
 
-        _methodParameterTypes118 = new String[] { "long", "java.lang.String" };
+        _methodParameterTypes118 = new String[] { "long" };
 
         _methodName119 = "getByIdEventAndName";
 
-        _methodParameterTypes119 = new String[] {
-                "long", "java.lang.String", "int", "int"
-            };
+        _methodParameterTypes119 = new String[] { "long", "java.lang.String" };
 
         _methodName120 = "getByIdEventAndName";
 
         _methodParameterTypes120 = new String[] {
+                "long", "java.lang.String", "int", "int"
+            };
+
+        _methodName121 = "getByIdEventAndName";
+
+        _methodParameterTypes121 = new String[] {
                 "long", "java.lang.String", "int", "int",
                 "com.liferay.portal.kernel.util.OrderByComparator"
             };
@@ -308,35 +314,41 @@ public class UserAndEventLocalServiceClpInvoker {
 
         if (_methodName115.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes115, parameterTypes)) {
-            return UserAndEventLocalServiceUtil.getByidUser(((Long) arguments[0]).longValue());
+            return UserAndEventLocalServiceUtil.getById(((Long) arguments[0]).longValue(),
+                ((Long) arguments[1]).longValue());
         }
 
         if (_methodName116.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes116, parameterTypes)) {
-            return UserAndEventLocalServiceUtil.getByidEvent(((Long) arguments[0]).longValue());
+            return UserAndEventLocalServiceUtil.getByidUser(((Long) arguments[0]).longValue());
         }
 
         if (_methodName117.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes117, parameterTypes)) {
-            return UserAndEventLocalServiceUtil.getByRace(((Long) arguments[0]).longValue());
+            return UserAndEventLocalServiceUtil.getByidEvent(((Long) arguments[0]).longValue());
         }
 
         if (_methodName118.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes118, parameterTypes)) {
-            return UserAndEventLocalServiceUtil.getByIdEventAndName(((Long) arguments[0]).longValue(),
-                (java.lang.String) arguments[1]);
+            return UserAndEventLocalServiceUtil.getByRace(((Long) arguments[0]).longValue());
         }
 
         if (_methodName119.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes119, parameterTypes)) {
+            return UserAndEventLocalServiceUtil.getByIdEventAndName(((Long) arguments[0]).longValue(),
+                (java.lang.String) arguments[1]);
+        }
+
+        if (_methodName120.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes120, parameterTypes)) {
             return UserAndEventLocalServiceUtil.getByIdEventAndName(((Long) arguments[0]).longValue(),
                 (java.lang.String) arguments[1],
                 ((Integer) arguments[2]).intValue(),
                 ((Integer) arguments[3]).intValue());
         }
 
-        if (_methodName120.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes120, parameterTypes)) {
+        if (_methodName121.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes121, parameterTypes)) {
             return UserAndEventLocalServiceUtil.getByIdEventAndName(((Long) arguments[0]).longValue(),
                 (java.lang.String) arguments[1],
                 ((Integer) arguments[2]).intValue(),

@@ -18,3 +18,4 @@
 <liferay-theme:defineObjects />
 
 <ccc:constantsMap className="com.liferay.docs.route.util.WebKeys" var="constants" />
+<ccc:constantsMap className="es.eina.tfg.liveRouteTracker.model.EventDisplayTerms" var="eventDisplayTerms" />

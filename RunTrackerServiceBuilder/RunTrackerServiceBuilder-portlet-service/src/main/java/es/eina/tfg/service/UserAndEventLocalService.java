@@ -252,6 +252,11 @@ public interface UserAndEventLocalService extends BaseLocalService,
             com.liferay.portal.kernel.exception.SystemException;
 
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public es.eina.tfg.model.UserAndEvent getById(long userId, long idEvent)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException;
+
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public java.util.List<es.eina.tfg.model.UserAndEvent> getByidUser(
         long userId) throws com.liferay.portal.kernel.exception.SystemException;
 

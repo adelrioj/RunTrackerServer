@@ -28,17 +28,14 @@ public class ParticipantManager {
         try {
             userAndEvents = UserAndEventDAO.getByIdEventAndName(idEvent, name, start, end, orderByComparator);
         } catch (SystemException e) {
-            _log.error("SystemException throwed for: " + displayTerms);
+            _log.error("SystemException throwed for: " + displayTerms, e);
         } catch (PortalException e) {
-            _log.error("PortalException throwed for: " + displayTerms);
+            _log.error("PortalException throwed for: " + displayTerms, e);
         }
 
         List<Participant> participants = new ArrayList<Participant>();
         for (UserAndEvent userAndEvent : userAndEvents) {
-            Participant participant = new Participant();
-            participant.setIdUser(userAndEvent.getParticipant().getUserId());
-            participant.setName(userAndEvent.getParticipant().getFullName());
-            participant.setParticipationNumber(userAndEvent.getParticipationNumber());
+            Participant participant = convert(userAndEvent);
             participants.add(participant);
         }
 
@@ -54,11 +51,19 @@ public class ParticipantManager {
         try {
             userAndEvents = UserAndEventDAO.getByIdEventAndName(idEvent, name);
         } catch (SystemException e) {
-            _log.error("SystemException throwed for: " + displayTerms);
+            _log.error("SystemException throwed for: " + displayTerms, e);
         } catch (PortalException e) {
-            _log.error("PortalException throwed for: " + displayTerms);
+            _log.error("PortalException throwed for: " + displayTerms, e);
         }
         return userAndEvents.size();
+    }
+
+    private static Participant convert(UserAndEvent userAndEvent) {
+        Participant participant = new Participant();
+        participant.setIdUser(userAndEvent.getParticipant().getUserId());
+        participant.setName(userAndEvent.getParticipant().getFullName());
+        participant.setParticipationNumber(userAndEvent.getParticipationNumber());
+        return participant;
     }
 
     private static Log _log = LogFactoryUtil.getLog(ParticipantManager.class);

@@ -61,6 +61,12 @@ public class UserAndEventLocalServiceImpl
         }
     }
 
+    public UserAndEvent getById(long userId, long idEvent)
+            throws SystemException, PortalException {
+        UserAndEventPK userAndEventPK = new UserAndEventPK(userId, idEvent);
+        return getUserAndEvent(userAndEventPK);
+    }
+
     public List<UserAndEvent> getByidUser(long userId)
             throws SystemException {
         return UserAndEventUtil.findByuserId(userId);

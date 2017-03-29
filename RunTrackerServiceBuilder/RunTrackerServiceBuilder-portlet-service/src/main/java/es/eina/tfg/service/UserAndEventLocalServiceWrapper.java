@@ -292,6 +292,13 @@ public class UserAndEventLocalServiceWrapper implements UserAndEventLocalService
     }
 
     @Override
+    public es.eina.tfg.model.UserAndEvent getById(long userId, long idEvent)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        return _userAndEventLocalService.getById(userId, idEvent);
+    }
+
+    @Override
     public java.util.List<es.eina.tfg.model.UserAndEvent> getByidUser(
         long userId) throws com.liferay.portal.kernel.exception.SystemException {
         return _userAndEventLocalService.getByidUser(userId);

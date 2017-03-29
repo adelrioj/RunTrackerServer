@@ -23,6 +23,16 @@ public class UserAndEventDAO {
         return convert(sbUserAndEvent);
     }
 
+    public static UserAndEvent update(UserAndEvent toUpdate)
+            throws SystemException, PortalException {
+        es.eina.tfg.model.UserAndEvent sbUserAndEvent =
+                UserAndEventLocalServiceUtil.getById(toUpdate.getParticipant().getUserId(), toUpdate.getEvent().getIdEvent());
+        sbUserAndEvent.setIdRace(toUpdate.getRace().getIdRace());
+        sbUserAndEvent.setParticipationNumber(toUpdate.getParticipationNumber());
+        sbUserAndEvent = UserAndEventLocalServiceUtil.updateUserAndEvent(sbUserAndEvent);
+        return convert(sbUserAndEvent);
+    }
+
     public static UserAndEvent deleteUserAndEvent(Long idEvent, Long idUser)
             throws SystemException, PortalException {
         es.eina.tfg.model.UserAndEvent sbUserAndEvent =
@@ -37,25 +47,29 @@ public class UserAndEventDAO {
         return convertList(sbUserAndEvents);
     }
 
-    public static List<UserAndEvent> getByIdEventAndName(Long idEvent,
-                                                     String name,
-                                                     int start,
-                                                     int end)
-            throws SystemException, PortalException {
-        List<es.eina.tfg.model.UserAndEvent> sbUserAndEvents =
-                UserAndEventLocalServiceUtil.getByIdEventAndName(idEvent, name, start, end);
-        return convertList(sbUserAndEvents);
-    }
-
-    public static List<UserAndEvent> getByIdEventAndName(Long idEvent,
-                                                         String name,
-                                                         int start,
-                                                         int end,
-                                                         OrderByComparator orderByComparator)
+    public static List<UserAndEvent> getByIdEventAndName(Long idEvent, String name, int start, int end, OrderByComparator orderByComparator)
             throws SystemException, PortalException {
         List<es.eina.tfg.model.UserAndEvent> sbUserAndEvents =
                 UserAndEventLocalServiceUtil.getByIdEventAndName(idEvent, name, start, end, orderByComparator);
         return convertList(sbUserAndEvents);
+    }
+
+    public static UserAndEvent getById(Long idEvent, Long idUser)
+            throws SystemException, PortalException {
+        es.eina.tfg.model.UserAndEvent sbUserAndEvent = UserAndEventLocalServiceUtil.getById(idUser, idEvent);
+        return convert(sbUserAndEvent);
+    }
+
+    public static List<UserAndEvent> getByIdEvent(Long idEvent)
+            throws SystemException, PortalException {
+        List<es.eina.tfg.model.UserAndEvent> sbUserAndEvens = UserAndEventLocalServiceUtil.getByidEvent(idEvent);
+
+        List<UserAndEvent> localUserAndEvents = new ArrayList<UserAndEvent>();
+        for (es.eina.tfg.model.UserAndEvent sbUserAndEven : sbUserAndEvens) {
+            UserAndEvent localUserAndEvent = convert(sbUserAndEven);
+            localUserAndEvents.add(localUserAndEvent);
+        }
+        return localUserAndEvents;
     }
 
     private static List<UserAndEvent> convertList(List<es.eina.tfg.model.UserAndEvent> sbUserAndEvents)
