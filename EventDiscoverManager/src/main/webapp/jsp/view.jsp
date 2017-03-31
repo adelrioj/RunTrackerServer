@@ -14,7 +14,7 @@
                     <liferay-util:include page="/jsp/eventDetail/event_detail_name.jsp" servletContext="${pageContext.servletContext}" />
                 </div>
                 <liferay-util:include page="/jsp/eventDetail/event_detail_map.jsp" servletContext="${pageContext.servletContext}" />
-                <div id="eventDetailsDiv" >
+                <div id="eventDetailsDiv" class="flexCentered" >
                     <liferay-util:include page="/jsp/eventDetail/event_detail_description.jsp" servletContext="${pageContext.servletContext}" />
                 </div>
             </div>

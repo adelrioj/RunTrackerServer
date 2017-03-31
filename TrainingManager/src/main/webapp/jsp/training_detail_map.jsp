@@ -17,13 +17,7 @@
 
         map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
-        var raceCoordinates =
-            [
-                <c:forEach items="${requestScope.requestedRace.locations}" var="raceLocation" >
-                {lat: ${raceLocation.latitude}, lng:${raceLocation.longitude}},
-                </c:forEach>
-            ];
-        setPolyLine(raceCoordinates, '#389145', 1.0, 4);
+
 
 
         var routeCoordinates =
@@ -33,6 +27,14 @@
                 </c:forEach>
             ];
         setPolyLine(routeCoordinates, '#FF0000', 0.5, 4);
+
+        var raceCoordinates =
+            [
+                <c:forEach items="${requestScope.requestedRace.locations}" var="raceLocation" >
+                {lat: ${raceLocation.latitude}, lng:${raceLocation.longitude}},
+                </c:forEach>
+            ];
+        setPolyLine(raceCoordinates, '#389145', 1.0, 4);
 
 
         setMarker(

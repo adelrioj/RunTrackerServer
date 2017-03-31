@@ -55,7 +55,7 @@
             orderByType="<%= orderByType %>" >
 
         <liferay-ui:search-form
-                page="/jsp/participants/participant_list_search.jsp"
+                page="/jsp/liveEventDetail/live_event_participant_list_search.jsp"
                 servletContext="<%= application %>"
         />
 

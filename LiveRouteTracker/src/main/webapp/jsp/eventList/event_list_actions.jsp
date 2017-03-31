@@ -7,11 +7,14 @@
     ResultRow row = (ResultRow)request.getAttribute(WebKeys.SEARCH_CONTAINER_RESULT_ROW);
     Event event = (Event)row.getObject();
 %>
-<liferay-ui:icon-menu>
-    <!-- View section -->
     <portlet:renderURL var="viewEventURL">
         <portlet:param name="${constants.PARAM_SELECTED_IDEVENT}" value="<%= String.valueOf(event.getIdEvent()) %>" />
         <portlet:param name="mvcPath" value="/jsp/live_event_view.jsp" />
     </portlet:renderURL>
-    <liferay-ui:icon image="view" message="view" url="${viewEventURL}" />
-</liferay-ui:icon-menu>
+
+    <aui:button cssClass="btn-info"
+                icon="icon-eye-open"
+                iconAlign="left"
+                value="view-live"
+                onClick="${viewEventURL}"/>
+
