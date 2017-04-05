@@ -8,7 +8,7 @@
     Date startLocationTime = requestedRace.getStartLocation().getTime().toDate();
 %>
 
-<h1>
+<h1 class="text-center">
     <c:choose>
         <c:when test="${not empty requestScope.requestedRace.route.name}" >
             <c:out value="${requestScope.requestedRace.route.name}" />

@@ -1,8 +1,14 @@
 <%@include file="custom_init.jsp"%>
 
-<table>
+<h4 class="text-center">
+    <liferay-ui:message key="detailsTitle" />
+</h4>
+
+<hr/>
+
+<table class="table table-condensed">
     <tr>
-        <td align="right">
+        <td class="text-right">
             <em>
                 <liferay-ui:message key="description" />:&nbsp;&nbsp;&nbsp;
             </em>
@@ -10,7 +16,7 @@
         <td>
             <c:out value="${requestScope.routeToEdit.description}" />&nbsp;&nbsp;&nbsp;
         </td>
-        <td colspan="2" align="left">
+        <td class="text-right" >
             <c:choose>
                 <c:when test="${requestScope.routeToEdit.author.userId eq requestScope.USER.userId}">
                     <portlet:renderURL var="editRouteDescURL">
@@ -36,9 +42,10 @@
                 </c:otherwise>
             </c:choose>
         </td>
+        <td></td>
     </tr>
     <tr>
-        <td align="right">
+        <td class="text-right">
             <em>
                 <liferay-ui:message key="type" />:&nbsp;&nbsp;&nbsp;
             </em>
@@ -46,7 +53,7 @@
         <td>
             <c:out value="${requestScope.routeToEdit.type}" />
         </td>
-        <td colspan="2" align="left">
+        <td class="text-right">
             <c:choose>
                 <c:when test="${requestScope.routeToEdit.author.userId eq requestScope.USER.userId}">
                     <portlet:actionURL name="deleteRouteAction" var="deleteRouteDescURL">
@@ -60,9 +67,10 @@
                 </c:when>
             </c:choose>
         </td>
+        <td></td>
     </tr>
     <tr>
-        <td align="right">
+        <td class="text-right">
             <em>
                 <liferay-ui:message key="routeDistance" />:&nbsp;&nbsp;&nbsp;
             </em>
@@ -74,9 +82,10 @@
             />
             <liferay-ui:message key="kilometers" />
         </td>
+        <td colspan="2"></td>
     </tr>
     <tr>
-        <td align="right">
+        <td class="text-right">
             <em>
                 <liferay-ui:message key="elevationDifference" />:&nbsp;&nbsp;&nbsp;
             </em>
@@ -88,22 +97,23 @@
             />
             <liferay-ui:message key="meters" />
         </td>
+        <td colspan="2"></td>
     </tr>
     <tr>
-        <td align="right">
+        <td class="text-right">
             <em>
                 <liferay-ui:message key="startLocationMarkerLabel" />:&nbsp;&nbsp;&nbsp;
             </em>
         </td>
-        <td align="left">
+        <td >
             <img src="${pageContext.request.contextPath}/images/green-dot.png" />
         </td>
-        <td align="right">
+        <td class="text-right">
             <em>
                 <liferay-ui:message key="finishLocationMarkerLabel" />:&nbsp;&nbsp;&nbsp;
             </em>
         </td>
-        <td align="left">
+        <td >
             <img src="${pageContext.request.contextPath}/images/yellow-dot.png" />
         </td>
     </tr>

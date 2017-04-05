@@ -88,9 +88,13 @@
                     property="name"
                     name="name"
                     orderable="false" />
-            <liferay-ui:search-container-column-jsp
-                    path="/jsp/participants/participant_list_actions.jsp"
-                    align="right" />
+            <c:choose>
+                <c:when test="${empty requestScope.requestedEvent.realStartTime}">
+                    <liferay-ui:search-container-column-jsp
+                            path="/jsp/participants/participant_list_actions.jsp"
+                            align="right" />
+                </c:when>
+            </c:choose>
         </liferay-ui:search-container-row>
         <liferay-ui:search-iterator searchContainer="${searchContainer}" />
     </liferay-ui:search-container>

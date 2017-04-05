@@ -7,22 +7,36 @@
 <div id="RouteContentDiv">
     <c:choose>
         <c:when test="${not empty requestScope.routeToEdit}">
-            <div id="routeListDiv" >
-                <liferay-util:include page="/jsp/route_list.jsp" servletContext="${pageContext.servletContext}" />
-            </div>
-            <div id="routeSelectedDiv" >
-                <div id="routeNameDiv">
-                    <liferay-util:include page="/jsp/selected_route_title.jsp" servletContext="${pageContext.servletContext}" />
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <h1 class="text-center">
+                            <c:out value="${requestScope.routeToEdit.name}" />
+                        </h1>
+
+                        <hr />
+                    </div>
                 </div>
-                <liferay-util:include page="/jsp/route_map.jsp" servletContext="${pageContext.servletContext}" />
-                <div id="routeDescriptionDiv" class="flexCentered">
-                    <liferay-util:include page="/jsp/selected_route_details.jsp" servletContext="${pageContext.servletContext}" />
+                <div class="row-fluid" >
+                    <div class="span5">
+                        <liferay-util:include page="/jsp/route_list.jsp" servletContext="${pageContext.servletContext}" />
+                    </div>
+                    <div class="span7">
+                        <liferay-util:include page="/jsp/route_map.jsp" servletContext="${pageContext.servletContext}" />
+                        <br />
+                        <br />
+                        <liferay-util:include page="/jsp/selected_route_details.jsp" servletContext="${pageContext.servletContext}" />
+                    </div>
                 </div>
             </div>
         </c:when>
         <c:otherwise>
-            <div id="routeListDivEmpty" >
-                <liferay-util:include page="/jsp/route_list.jsp" servletContext="${pageContext.servletContext}" />
+            <div class="container">
+                <div class="row">
+                    <div class="span12">
+                        <liferay-util:include page="/jsp/route_list.jsp" servletContext="${pageContext.servletContext}" />
+                    </div>
+                </div>
             </div>
         </c:otherwise>
     </c:choose>

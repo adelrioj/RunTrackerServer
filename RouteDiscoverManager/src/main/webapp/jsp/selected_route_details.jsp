@@ -1,8 +1,14 @@
 <%@include file="custom_init.jsp"%>
 
-<table>
+<h4 class="text-center">
+    <liferay-ui:message key="detailsTitle" />
+</h4>
+
+<hr/>
+
+<table class="table table-condensed">
     <tr>
-        <td align="right">
+        <td class="text-right">
             <em>
                 <liferay-ui:message key="description" />:&nbsp;&nbsp;&nbsp;
             </em>
@@ -10,7 +16,7 @@
         <td>
             <c:out value="${requestScope.routeToEdit.description}" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </td>
-        <td colspan="2">
+        <td class="text-right">
             <portlet:actionURL name="addRouteAction" var="addRouteURL">
                 <portlet:param name="${constants.PARAM_ROUTEID}" value="${requestScope.routeToEdit.idRoute}" />
             </portlet:actionURL>
@@ -20,9 +26,10 @@
                         value="addRoute"
                         onClick="${addRouteURL}"/>
         </td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td align="right">
+        <td class="text-right">
             <em>
                 <liferay-ui:message key="type" />:&nbsp;&nbsp;&nbsp;
             </em>
@@ -30,9 +37,10 @@
         <td>
             <c:out value="${requestScope.routeToEdit.type}" />
         </td>
+        <td colspan="2">&nbsp;</td>
     </tr>
     <tr>
-        <td align="right">
+        <td class="text-right">
             <em>
                 <liferay-ui:message key="routeDistance" />:&nbsp;&nbsp;&nbsp;
             </em>
@@ -44,9 +52,10 @@
             />
             <liferay-ui:message key="kilometers" />
         </td>
+        <td colspan="2">&nbsp;</td>
     </tr>
     <tr>
-        <td align="right">
+        <td class="text-right">
             <em>
                 <liferay-ui:message key="elevationDifference" />:&nbsp;&nbsp;&nbsp;
             </em>
@@ -58,9 +67,10 @@
             />
             <liferay-ui:message key="meters" />
         </td>
+        <td colspan="2">&nbsp;</td>
     </tr>
     <tr>
-        <td align="right">
+        <td class="text-right">
             <em>
                 <liferay-ui:message key="startLocationMarkerLabel" />:&nbsp;&nbsp;&nbsp;
             </em>
@@ -68,7 +78,7 @@
         <td align="left">
             <img src="${pageContext.request.contextPath}/images/green-dot.png" />
         </td>
-        <td align="right">
+        <td class="text-right">
             <em>
                 <liferay-ui:message key="finishLocationMarkerLabel" />:&nbsp;&nbsp;&nbsp;
             </em>

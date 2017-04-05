@@ -1,9 +1,10 @@
 <%@include file="custom_init.jsp"%>
-<div class="title" >
-    <h4>
-        <c:out value="${requestScope.selectedDevice.description}" />
-    </h4>
-</div>
+
+<h4 class="text-center">
+    <c:out value="${requestScope.selectedDevice.description}" />
+</h4>
+
+<hr/>
 <div class="props" >
     <table>
         <tr>
@@ -32,11 +33,12 @@
         </tr>
     </table>
 </div>
-<div class="title" >
-    <h5>
-        <liferay-ui:message key="sensorTitle" />
-    </h5>
-</div>
+
+<h5 class="text-center">
+    <liferay-ui:message key="sensorTitle" />
+</h5>
+
+<hr/>
 <c:forEach items="${requestScope.selectedDevice.sensors}" var="deviceAndSensor">
     <div class="props" >
         <table id="sensorTable">

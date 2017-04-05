@@ -9,9 +9,15 @@
     Date endLocationTime = requestedRace.getEndLocation().getTime().toDate();
 %>
 
-<table>
+<h4 class="text-center">
+    <liferay-ui:message key="detailsTitle" />
+</h4>
+
+<hr/>
+
+<table class="table table-condensed">
     <tr>
-        <td align="right">
+        <td class="text-right">
             <em>
                 <liferay-ui:message key="raceStartingTime" />:&nbsp;&nbsp;&nbsp;
             </em>
@@ -19,7 +25,7 @@
         <td>
             <fmt:formatDate type="both" dateStyle="short" value="<%= startLocationTime%>" />
         </td>
-        <td align="right">
+        <td class="text-right">
             <em>
                 <liferay-ui:message key="raceFinishTime" />:&nbsp;&nbsp;&nbsp;
             </em>
@@ -27,13 +33,12 @@
         <td>
             <fmt:formatDate type="both" dateStyle="short" value="<%= endLocationTime%>" />
         </td>
-        <td align="right">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <td class="text-right">
             <liferay-util:include page="/jsp/training_detail_description_actions.jsp" servletContext="${pageContext.servletContext}" />
         </td>
     </tr>
     <tr>
-        <td align="right">
+        <td class="text-right">
             <em>
                 <liferay-ui:message key="type" />:&nbsp;&nbsp;&nbsp;
             </em>
@@ -41,7 +46,7 @@
         <td>
             <c:out value="${requestScope.requestedRace.type}" />
         </td>
-        <td align="right">
+        <td class="text-right">
             <em>
                 <liferay-ui:message key="routeName" />:&nbsp;&nbsp;&nbsp;
             </em>
@@ -49,9 +54,10 @@
         <td>
             <c:out value="${requestScope.requestedRace.route.name}" />
         </td>
+        <td></td>
     </tr>
     <tr>
-        <td align="right">
+        <td class="text-right">
             <em>
                 <liferay-ui:message key="raceDistance" />:&nbsp;&nbsp;&nbsp;
             </em>
@@ -63,7 +69,7 @@
             />
             <liferay-ui:message key="kilometers" />
         </td>
-        <td align="right">
+        <td class="text-right">
             <em>
                 <liferay-ui:message key="routeDistance" />:&nbsp;&nbsp;&nbsp;
             </em>
@@ -75,9 +81,10 @@
             />
             <liferay-ui:message key="kilometers" />
         </td>
+        <td></td>
     </tr>
     <tr>
-        <td align="right">
+        <td class="text-right">
             <em>
                 <liferay-ui:message key="elevationDifference" />:&nbsp;&nbsp;&nbsp;
             </em>
@@ -89,9 +96,10 @@
             />
             <liferay-ui:message key="meters" />
         </td>
+        <td colspan="3"></td>
     </tr>
     <tr>
-        <td align="right">
+        <td class="text-right">
             <em>
                 <liferay-ui:message key="race.start" />:&nbsp;&nbsp;&nbsp;
             </em>
@@ -99,7 +107,7 @@
         <td align="left">
             <img src="${pageContext.request.contextPath}/images/green-dot.png" />
         </td>
-        <td align="right">
+        <td class="text-right">
             <em>
                 <liferay-ui:message key="race.end" />:&nbsp;&nbsp;&nbsp;
             </em>
@@ -107,5 +115,6 @@
         <td align="left">
             <img src="${pageContext.request.contextPath}/images/yellow-dot.png" />
         </td>
+        <td></td>
     </tr>
 </table>

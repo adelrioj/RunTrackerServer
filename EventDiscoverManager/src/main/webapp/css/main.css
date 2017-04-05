@@ -1,17 +1,8 @@
-.center-div {
-    margin: 0 auto;
-    width: 18%;
-}
-.align-right {
-    text-align: right;
-}
 .fc-widget-header{
     background-color: darkgray;
 }
-.flexCentered{
-    display:flex;
-    justify-content:center;
-    align-items:center;
+.table th.text-right, .table td.text-right {
+    text-align: right;
 }
 #calendar {
     max-width: 95%;
@@ -22,77 +13,4 @@
     height: 500px;
     width: 100%;
     border: 3px solid black;
-}
-#EventViewerManagerDiv {
-    border: 3px;
-    position: relative;
-    width: 100%;
-}
-#addEventDiv{
-    margin-left: 25px;
-}
-#calendarWrapperDiv {
-    border: 3px;
-    position: absolute;
-    margin-right: 25px;
-    left: 5px;
-    top: 5px;
-    bottom: 5px;
-    right: 60%;
-}
-#calendarWrapperDivEmpty {
-    margin:0 auto;
-    width: 60%;
-    border: 3px;
-    left: 5px;
-    top: 5px;
-    bottom: 5px;
-}
-#emptyTitleDiv{
-    text-align: center;
-    background-color: darkgray;
-    border: 3px solid black;
-    border-radius: 25px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-#eventDetailDiv{
-    border: 3px;
-    position: absolute;
-    margin-left: 25px;
-    right: 5px;
-    top: 5px;
-    bottom: 5px;
-    left: 40%;
-}
-#eventNameDiv{
-    text-align: center;
-    background-color: darkgray;
-    border: 3px solid black;
-    border-radius: 25px;
-    margin-top: 25px;
-    margin-bottom: 5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-#eventActionsAdminDiv{
-    text-align: center;
-    background-color: darkgray;
-    border: 3px solid black;
-    border-radius: 25px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-#eventDetailsDiv{
-    background-color: lightgray;
-    border-radius: 25px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 4%;
 }
