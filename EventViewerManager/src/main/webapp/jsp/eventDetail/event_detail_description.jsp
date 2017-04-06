@@ -1,10 +1,35 @@
 <%@ page import="com.liferay.docs.route.util.WebKeys" %>
 <%@ page import="es.eina.tfg.RunTrackerBL.entity.Event" %>
+<%@ page import="org.joda.time.DateTime" %>
+<%@ page import="org.joda.time.Seconds" %>
+<%@ page import="org.joda.time.format.DateTimeFormat" %>
 <%@include file="../custom_init.jsp"%>
 
 <%
     Event requestedEvent = (Event) request.getAttribute(WebKeys.REQUESTED_EVENT);
+
+    int timerStartSeconds = 0;
+    if (requestedEvent.getRealStartTime() != null){
+        timerStartSeconds = Seconds.secondsBetween(requestedEvent.getRealStartTime(), DateTime.now()).getSeconds();
+
+    }
+
+    String output = "00:00:00";
+    if (requestedEvent.getRealStartTime() != null && requestedEvent.getRealFinishTime() != null){
+        output = DateTimeFormat.forPattern("HH:mm:ss").print(timerStartSeconds);
+    }
 %>
+
+<script type="text/javascript">
+    $(function() { // document ready
+        var timer = new Timer();
+        timer.start({precision: 'seconds', startValues: {seconds: <%= timerStartSeconds %>}});
+        $('#timer .values').html(timer.getTimeValues().toString());
+        timer.addEventListener('secondsUpdated', function (e) {
+            $('#timer').html(timer.getTimeValues().toString());
+        });
+    })
+</script>
 
 <h4 class="text-center">
     <liferay-ui:message key="detailsTitle" />
@@ -34,7 +59,25 @@
                 </c:choose>
             </b>
         </td>
-        <td colspan="3"></td>
+        <c:choose>
+            <c:when test="${not empty requestScope.requestedEvent.realStartTime && empty requestScope.requestedEvent.realFinishTime}" >
+                <td class="text-right">
+                    <em>
+                        <liferay-ui:message key="timerLabel" />:&nbsp;&nbsp;&nbsp;
+                    </em>
+                </td>
+                <td id="timer">00:00:00</td>
+                <td></td>
+            </c:when>
+            <c:when test="${not empty requestScope.requestedEvent.realStartTime && not empty requestScope.requestedEvent.realFinishTime}" >
+                <td class="text-right"><liferay-ui:message key="timerLabel" />:&nbsp;&nbsp;&nbsp;</td>
+                <td><%= output %></td>
+                <td></td>
+            </c:when>
+            <c:otherwise>
+                <td colspan="3"></td>
+            </c:otherwise>
+        </c:choose>
     </tr>
     <tr>
         <td class="text-right">
