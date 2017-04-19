@@ -10,6 +10,7 @@ import es.eina.tfg.service.EventLocalServiceUtil;
 import es.eina.tfg.service.UserAdditionalDataLocalServiceUtil;
 import es.eina.tfg.service.UserAndEventLocalServiceUtil;
 import es.eina.tfg.service.base.UserAndEventLocalServiceBaseImpl;
+import es.eina.tfg.service.persistence.UserAndEventFinderImpl;
 import es.eina.tfg.service.persistence.UserAndEventFinderUtil;
 import es.eina.tfg.service.persistence.UserAndEventPK;
 import es.eina.tfg.service.persistence.UserAndEventUtil;
@@ -99,5 +100,10 @@ public class UserAndEventLocalServiceImpl
                                                   OrderByComparator orderByComparator)
             throws SystemException{
         return UserAndEventFinderUtil.getByIdEventAndName(idEvent, name, start, end, orderByComparator);
+    }
+
+    public long countParticipationByIdUser(long idAuthor)
+            throws SystemException {
+        return UserAndEventFinderUtil.countParticipationByIdUser(idAuthor);
     }
 }

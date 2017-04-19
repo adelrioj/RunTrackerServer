@@ -61,6 +61,10 @@ public class RaceLocalServiceClpInvoker {
     private String[] _methodParameterTypes119;
     private String _methodName120;
     private String[] _methodParameterTypes120;
+    private String _methodName121;
+    private String[] _methodParameterTypes121;
+    private String _methodName122;
+    private String[] _methodParameterTypes122;
 
     public RaceLocalServiceClpInvoker() {
         _methodName0 = "addRace";
@@ -180,6 +184,14 @@ public class RaceLocalServiceClpInvoker {
         _methodName120 = "getPowerMeasurements";
 
         _methodParameterTypes120 = new String[] { "long" };
+
+        _methodName121 = "getRacesOrderByStartTime";
+
+        _methodParameterTypes121 = new String[] { "long", "int", "int" };
+
+        _methodName122 = "countByIdUser";
+
+        _methodParameterTypes122 = new String[] { "long" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -324,6 +336,18 @@ public class RaceLocalServiceClpInvoker {
         if (_methodName120.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes120, parameterTypes)) {
             return RaceLocalServiceUtil.getPowerMeasurements(((Long) arguments[0]).longValue());
+        }
+
+        if (_methodName121.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes121, parameterTypes)) {
+            return RaceLocalServiceUtil.getRacesOrderByStartTime(((Long) arguments[0]).longValue(),
+                ((Integer) arguments[1]).intValue(),
+                ((Integer) arguments[2]).intValue());
+        }
+
+        if (_methodName122.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes122, parameterTypes)) {
+            return RaceLocalServiceUtil.countByIdUser(((Long) arguments[0]).longValue());
         }
 
         throw new UnsupportedOperationException();

@@ -38,4 +38,24 @@
             )
 ]]>
     </sql>
+    <sql id="es.eina.tfg.service.persistence.RaceFinder.findRacesOrderByStartTime">
+        <![CDATA[
+        SELECT DISTINCT race.*
+        FROM gl_race race
+        INNER JOIN (
+            SELECT gl_location.*
+            FROM gl_location
+          ) location
+        ON location.idRace = race.idRace
+        WHERE race.idUser = ?
+        ORDER BY location.time_ DESC
+]]>
+    </sql>
+    <sql id="es.eina.tfg.service.persistence.RaceFinder.countByIdUser">
+        <![CDATA[
+        SELECT COUNT(*)
+        FROM gl_race race
+        WHERE race.idUser = ?
+]]>
+    </sql>
 </custom-sql>

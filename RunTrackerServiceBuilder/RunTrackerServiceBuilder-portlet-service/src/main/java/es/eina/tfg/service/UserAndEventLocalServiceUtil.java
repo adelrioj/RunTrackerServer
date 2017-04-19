@@ -321,6 +321,11 @@ public class UserAndEventLocalServiceUtil {
             orderByComparator);
     }
 
+    public static long countParticipationByIdUser(long idAuthor)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService().countParticipationByIdUser(idAuthor);
+    }
+
     public static void clearService() {
         _service = null;
     }

@@ -4,15 +4,27 @@
 	<portlet>
 		<portlet-name>RunTrackerFrontPage</portlet-name>
 		<display-name>RunTrackerFrontPage</display-name>
-		<portlet-class>com.liferay.util.bridges.mvc.MVCPortlet</portlet-class>
+		<portlet-class>es.eina.tfg.RunTrackerFrontPage.portlet.PortletController</portlet-class>
+
 		<init-param>
 			<name>view-template</name>
-			<value>/view.jsp</value>
+			<value>/jsp/view.jsp</value>
 		</init-param>
+
+		<!-- Prevent Default Success Messages in JSP after action perform -->
+		<init-param>
+			<name>add-process-action-success-action</name>
+			<value>false</value>
+		</init-param>
+
 		<expiration-cache>0</expiration-cache>
 		<supports>
 			<mime-type>text/html</mime-type>
 		</supports>
+
+		<!-- Added custom language keys support -->
+		<resource-bundle>Language</resource-bundle>
+
 		<portlet-info>
 			<title>RunTrackerFrontPage</title>
 			<short-title>RunTrackerFrontPage</short-title>

@@ -262,6 +262,11 @@ public class UserAdditionalDataLocalServiceUtil {
         return getService().invokeMethod(name, parameterTypes, arguments);
     }
 
+    public static es.eina.tfg.model.UserAdditionalData add(long idUser)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService().add(idUser);
+    }
+
     public static es.eina.tfg.model.UserAdditionalData add(
         es.eina.tfg.model.UserAdditionalData userAdditionalData)
         throws com.liferay.portal.kernel.exception.SystemException {

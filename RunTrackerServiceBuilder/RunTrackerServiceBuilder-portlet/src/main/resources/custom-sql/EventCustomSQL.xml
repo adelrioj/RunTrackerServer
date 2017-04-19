@@ -64,4 +64,11 @@
                                         AND uae2.idUser = ?))
 ]]>
     </sql>
+    <sql id="es.eina.tfg.service.persistence.EventFinder.countByIdAuthor">
+        <![CDATA[
+        SELECT COUNT(*)
+        FROM gl_event event
+        WHERE event.idAuthor = ?
+]]>
+    </sql>
 </custom-sql>

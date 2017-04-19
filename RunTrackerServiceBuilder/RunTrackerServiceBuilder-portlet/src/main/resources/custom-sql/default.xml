@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <custom-sql>
-    <sql file="custom-sql/routeByUserAndName.xml" />
+    <sql file="custom-sql/RouteCustomSQL.xml" />
     <sql file="custom-sql/routeLocationCustomSQL.xml" />
     <sql file="custom-sql/RaceCustomSQL.xml" />
     <sql file="custom-sql/LocationCustomSQL.xml" />

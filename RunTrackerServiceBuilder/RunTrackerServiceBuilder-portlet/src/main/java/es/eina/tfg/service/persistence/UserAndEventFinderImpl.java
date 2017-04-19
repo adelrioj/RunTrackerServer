@@ -14,6 +14,7 @@ import com.liferay.util.dao.orm.CustomSQLUtil;
 import es.eina.tfg.model.UserAndEvent;
 import es.eina.tfg.model.impl.UserAndEventImpl;
 
+import java.math.BigInteger;
 import java.util.List;
 
 public class UserAndEventFinderImpl
@@ -24,6 +25,8 @@ public class UserAndEventFinderImpl
             + "findByIdEventAndName";
     private static final String ADD = UserAndEventFinder.class.getName() + "."
             + "addUserAndEvent";
+    private static final String COUNT_PARTICIPATION_BY_ID_USER = UserAndEventFinder.class.getName() + "."
+            + "countParticipationByIdUser";
 
     public void add(long idUser, long idEvent)
             throws SystemException {
@@ -99,6 +102,30 @@ public class UserAndEventFinderImpl
             closeSession(session);
         }
         return resultList;
+    }
+
+    public long countParticipationByIdUser(long idAuthor)
+            throws SystemException {
+        Session session = null;
+        Long result;
+        try {
+            session = openSession();
+            String sql = CustomSQLUtil.get(COUNT_PARTICIPATION_BY_ID_USER);
+            SQLQuery query = session.createSQLQuery(sql);
+            query.setCacheable(false);
+
+            QueryPos queryPos = QueryPos.getInstance(query);
+            queryPos.add(idAuthor);
+
+            BigInteger biResult = (BigInteger) query.uniqueResult();
+            result = biResult.longValue();
+        } catch (Exception e) {
+            _log.error("Exception while countParticipationByIdUser process for idAuthor: " + idAuthor);
+            throw new SystemException(e);
+        } finally {
+            closeSession(session);
+        }
+        return result;
     }
 
     private static final String _ORDER_BY_ENTITY_ALIAS = "userAndEvent.";

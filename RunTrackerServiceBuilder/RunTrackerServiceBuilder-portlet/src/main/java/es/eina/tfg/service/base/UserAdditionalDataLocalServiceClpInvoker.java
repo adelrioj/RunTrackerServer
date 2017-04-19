@@ -49,6 +49,8 @@ public class UserAdditionalDataLocalServiceClpInvoker {
     private String[] _methodParameterTypes112;
     private String _methodName113;
     private String[] _methodParameterTypes113;
+    private String _methodName114;
+    private String[] _methodParameterTypes114;
 
     public UserAdditionalDataLocalServiceClpInvoker() {
         _methodName0 = "addUserAdditionalData";
@@ -143,13 +145,17 @@ public class UserAdditionalDataLocalServiceClpInvoker {
 
         _methodName112 = "add";
 
-        _methodParameterTypes112 = new String[] {
+        _methodParameterTypes112 = new String[] { "long" };
+
+        _methodName113 = "add";
+
+        _methodParameterTypes113 = new String[] {
                 "es.eina.tfg.model.UserAdditionalData"
             };
 
-        _methodName113 = "update";
+        _methodName114 = "update";
 
-        _methodParameterTypes113 = new String[] {
+        _methodParameterTypes114 = new String[] {
                 "es.eina.tfg.model.UserAdditionalData"
             };
     }
@@ -257,11 +263,16 @@ public class UserAdditionalDataLocalServiceClpInvoker {
 
         if (_methodName112.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes112, parameterTypes)) {
-            return UserAdditionalDataLocalServiceUtil.add((es.eina.tfg.model.UserAdditionalData) arguments[0]);
+            return UserAdditionalDataLocalServiceUtil.add(((Long) arguments[0]).longValue());
         }
 
         if (_methodName113.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes113, parameterTypes)) {
+            return UserAdditionalDataLocalServiceUtil.add((es.eina.tfg.model.UserAdditionalData) arguments[0]);
+        }
+
+        if (_methodName114.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes114, parameterTypes)) {
             return UserAdditionalDataLocalServiceUtil.update((es.eina.tfg.model.UserAdditionalData) arguments[0]);
         }
 

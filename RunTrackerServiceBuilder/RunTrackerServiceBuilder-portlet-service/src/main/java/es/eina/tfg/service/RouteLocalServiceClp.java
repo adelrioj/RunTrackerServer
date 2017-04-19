@@ -64,6 +64,8 @@ public class RouteLocalServiceClp implements RouteLocalService {
     private String[] _methodParameterTypes27;
     private String _methodName28;
     private String[] _methodParameterTypes28;
+    private String _methodName29;
+    private String[] _methodParameterTypes29;
 
     public RouteLocalServiceClp(InvokableLocalService invokableLocalService) {
         _invokableLocalService = invokableLocalService;
@@ -198,6 +200,10 @@ public class RouteLocalServiceClp implements RouteLocalService {
         _methodName28 = "getPublicRoutesNotSelectedByUserCount";
 
         _methodParameterTypes28 = new String[] { "long", "java.lang.String" };
+
+        _methodName29 = "countByIdAuthor";
+
+        _methodParameterTypes29 = new String[] { "long" };
     }
 
     @Override
@@ -988,6 +994,32 @@ public class RouteLocalServiceClp implements RouteLocalService {
             returnObj = _invokableLocalService.invokeMethod(_methodName28,
                     _methodParameterTypes28,
                     new Object[] { idUser, ClpSerializer.translateInput(name) });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return ((Long) returnObj).longValue();
+    }
+
+    @Override
+    public long countByIdAuthor(long idAuthor)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName29,
+                    _methodParameterTypes29, new Object[] { idAuthor });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 

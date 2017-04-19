@@ -49,6 +49,8 @@ public class UserAdditionalDataLocalServiceClp
     private String[] _methodParameterTypes19;
     private String _methodName20;
     private String[] _methodParameterTypes20;
+    private String _methodName21;
+    private String[] _methodParameterTypes21;
 
     public UserAdditionalDataLocalServiceClp(
         InvokableLocalService invokableLocalService) {
@@ -146,13 +148,17 @@ public class UserAdditionalDataLocalServiceClp
 
         _methodName19 = "add";
 
-        _methodParameterTypes19 = new String[] {
+        _methodParameterTypes19 = new String[] { "long" };
+
+        _methodName20 = "add";
+
+        _methodParameterTypes20 = new String[] {
                 "es.eina.tfg.model.UserAdditionalData"
             };
 
-        _methodName20 = "update";
+        _methodName21 = "update";
 
-        _methodParameterTypes20 = new String[] {
+        _methodParameterTypes21 = new String[] {
                 "es.eina.tfg.model.UserAdditionalData"
             };
     }
@@ -677,14 +683,40 @@ public class UserAdditionalDataLocalServiceClp
     }
 
     @Override
+    public es.eina.tfg.model.UserAdditionalData add(long idUser)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName19,
+                    _methodParameterTypes19, new Object[] { idUser });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (es.eina.tfg.model.UserAdditionalData) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
     public es.eina.tfg.model.UserAdditionalData add(
         es.eina.tfg.model.UserAdditionalData userAdditionalData)
         throws com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName19,
-                    _methodParameterTypes19,
+            returnObj = _invokableLocalService.invokeMethod(_methodName20,
+                    _methodParameterTypes20,
                     new Object[] {
                         ClpSerializer.translateInput(userAdditionalData)
                     });
@@ -713,8 +745,8 @@ public class UserAdditionalDataLocalServiceClp
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName20,
-                    _methodParameterTypes20,
+            returnObj = _invokableLocalService.invokeMethod(_methodName21,
+                    _methodParameterTypes21,
                     new Object[] {
                         ClpSerializer.translateInput(userAdditionalData)
                     });

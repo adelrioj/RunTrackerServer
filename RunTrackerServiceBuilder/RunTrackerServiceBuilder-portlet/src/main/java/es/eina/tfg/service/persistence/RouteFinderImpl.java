@@ -29,6 +29,8 @@ public class RouteFinderImpl
             + "findPublicRoutesNotSelectedByUser";
     private static final String GET_PUBLIC_NOT_SELECTED_BY_USER_COUNT = RouteFinder.class.getName() + "."
             + "findPublicRoutesNotSelectedByUserCount";
+    private static final String COUNT_BY_ID_AUTHOR = RouteFinder.class.getName() + "."
+            + "countByIdAuthor";
 
     public List<Route> getByIdUserAndName(long idUser, String name, int start, int end)
             throws SystemException{
@@ -135,6 +137,30 @@ public class RouteFinderImpl
         } catch (Exception e) {
             _log.error("Exception while getByIdUserAndName process for idUser: " + idUser
                     + " and name: " + name);
+            throw new SystemException(e);
+        } finally {
+            closeSession(session);
+        }
+        return result;
+    }
+
+    public long countByIdAuthor(long idAuthor)
+            throws SystemException {
+        Session session = null;
+        Long result;
+        try {
+            session = openSession();
+            String sql = CustomSQLUtil.get(COUNT_BY_ID_AUTHOR);
+            SQLQuery query = session.createSQLQuery(sql);
+            query.setCacheable(false);
+
+            QueryPos queryPos = QueryPos.getInstance(query);
+            queryPos.add(idAuthor);
+
+            BigInteger biResult = (BigInteger) query.uniqueResult();
+            result = biResult.longValue();
+        } catch (Exception e) {
+            _log.error("Exception while countByIdAuthor process for idAuthor: " + idAuthor);
             throw new SystemException(e);
         } finally {
             closeSession(session);

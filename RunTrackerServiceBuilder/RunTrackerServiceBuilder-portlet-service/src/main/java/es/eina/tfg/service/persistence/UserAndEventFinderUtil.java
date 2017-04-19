@@ -33,6 +33,11 @@ public class UserAndEventFinderUtil {
             orderByComparator);
     }
 
+    public static long countParticipationByIdUser(long idAuthor)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getFinder().countParticipationByIdUser(idAuthor);
+    }
+
     public static UserAndEventFinder getFinder() {
         if (_finder == null) {
             _finder = (UserAndEventFinder) PortletBeanLocatorUtil.locate(es.eina.tfg.service.ClpSerializer.getServletContextName(),

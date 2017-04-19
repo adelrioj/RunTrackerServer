@@ -32,6 +32,11 @@ public class RouteFinderUtil {
         return getFinder().getPublicRoutesNotSelectedByUserCount(idUser, name);
     }
 
+    public static long countByIdAuthor(long idAuthor)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getFinder().countByIdAuthor(idAuthor);
+    }
+
     public static RouteFinder getFinder() {
         if (_finder == null) {
             _finder = (RouteFinder) PortletBeanLocatorUtil.locate(es.eina.tfg.service.ClpSerializer.getServletContextName(),

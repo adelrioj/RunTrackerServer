@@ -56,6 +56,10 @@ public class RaceLocalServiceClp implements RaceLocalService {
     private String[] _methodParameterTypes23;
     private String _methodName24;
     private String[] _methodParameterTypes24;
+    private String _methodName25;
+    private String[] _methodParameterTypes25;
+    private String _methodName26;
+    private String[] _methodParameterTypes26;
 
     public RaceLocalServiceClp(InvokableLocalService invokableLocalService) {
         _invokableLocalService = invokableLocalService;
@@ -169,6 +173,14 @@ public class RaceLocalServiceClp implements RaceLocalService {
         _methodName24 = "getPowerMeasurements";
 
         _methodParameterTypes24 = new String[] { "long" };
+
+        _methodName25 = "getRacesOrderByStartTime";
+
+        _methodParameterTypes25 = new String[] { "long", "int", "int" };
+
+        _methodName26 = "countByIdUser";
+
+        _methodParameterTypes26 = new String[] { "long" };
     }
 
     @Override
@@ -846,5 +858,58 @@ public class RaceLocalServiceClp implements RaceLocalService {
         }
 
         return (java.util.List<es.eina.tfg.model.Power>) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
+    public java.util.List<es.eina.tfg.model.Race> getRacesOrderByStartTime(
+        long idUser, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName25,
+                    _methodParameterTypes25, new Object[] { idUser, start, end });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (java.util.List<es.eina.tfg.model.Race>) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
+    public long countByIdUser(long idUser)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName26,
+                    _methodParameterTypes26, new Object[] { idUser });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return ((Long) returnObj).longValue();
     }
 }

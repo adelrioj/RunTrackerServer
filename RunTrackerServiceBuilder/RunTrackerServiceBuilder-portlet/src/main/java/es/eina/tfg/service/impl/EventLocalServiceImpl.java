@@ -18,6 +18,7 @@ import es.eina.tfg.service.UserAndEventLocalServiceUtil;
 import es.eina.tfg.service.base.EventLocalServiceBaseImpl;
 import es.eina.tfg.service.persistence.EventFinderUtil;
 import es.eina.tfg.service.persistence.EventUtil;
+import es.eina.tfg.service.persistence.UserAndEventFinderImpl;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -84,17 +85,6 @@ public class EventLocalServiceImpl extends EventLocalServiceBaseImpl {
         }
     }
 
-    /*public List<User> getParticipants(long idEvent)
-            throws SystemException, PortalException {
-        List<UserAndEvent> userAndEvents = UserAndEventLocalServiceUtil.getByidEvent(idEvent);
-        List<User> users = new ArrayList<User>();
-        for (UserAndEvent userAndEvent : userAndEvents) {
-            users.add(UserLocalServiceUtil.getUser(userAndEvent.getIdUser()));
-        }
-
-        return users;
-    }*/
-
     public List<Event> getByidAuthor(long idAuthor)
             throws SystemException {
         return EventUtil.findByauthor(idAuthor);
@@ -152,6 +142,11 @@ public class EventLocalServiceImpl extends EventLocalServiceBaseImpl {
         dynamicQuery.add(PropertyFactoryUtil.forName("realFinishTime").isNull());
 
         return EventLocalServiceUtil.dynamicQuery(dynamicQuery, start, end, orderByComparator);
+    }
+
+    public long countByIdAuthor(long idAuthor)
+            throws SystemException {
+        return EventFinderUtil.countByIdAuthor(idAuthor);
     }
 
     private DynamicQuery getEventDynamicQuery(Long idRoute,

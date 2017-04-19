@@ -157,5 +157,10 @@ public class EventDAO {
         return localEvents;
     }
 
+    public static long countByIdAuthor(long idAuthor)
+            throws SystemException {
+        return EventLocalServiceUtil.countByIdAuthor(idAuthor);
+    }
+
     private static Log _log = LogFactoryUtil.getLog(EventDAO.class);
 }

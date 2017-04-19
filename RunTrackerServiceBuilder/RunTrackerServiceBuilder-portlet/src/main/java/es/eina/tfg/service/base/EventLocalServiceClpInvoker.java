@@ -67,6 +67,8 @@ public class EventLocalServiceClpInvoker {
     private String[] _methodParameterTypes122;
     private String _methodName123;
     private String[] _methodParameterTypes123;
+    private String _methodName124;
+    private String[] _methodParameterTypes124;
 
     public EventLocalServiceClpInvoker() {
         _methodName0 = "addEvent";
@@ -206,6 +208,10 @@ public class EventLocalServiceClpInvoker {
                 "java.lang.String", "boolean", "int", "int",
                 "com.liferay.portal.kernel.util.OrderByComparator"
             };
+
+        _methodName124 = "countByIdAuthor";
+
+        _methodParameterTypes124 = new String[] { "long" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -375,6 +381,11 @@ public class EventLocalServiceClpInvoker {
                 ((Integer) arguments[2]).intValue(),
                 ((Integer) arguments[3]).intValue(),
                 (com.liferay.portal.kernel.util.OrderByComparator) arguments[4]);
+        }
+
+        if (_methodName124.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes124, parameterTypes)) {
+            return EventLocalServiceUtil.countByIdAuthor(((Long) arguments[0]).longValue());
         }
 
         throw new UnsupportedOperationException();

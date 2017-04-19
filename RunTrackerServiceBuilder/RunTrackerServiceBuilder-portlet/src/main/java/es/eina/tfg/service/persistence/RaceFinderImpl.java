@@ -12,6 +12,7 @@ import com.liferay.util.dao.orm.CustomSQLUtil;
 import es.eina.tfg.model.Race;
 import es.eina.tfg.model.impl.RaceImpl;
 
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 
@@ -23,6 +24,10 @@ public class RaceFinderImpl
             + "findRaceByIdUserAndTimeRange";
     private static final String GET_LAST_RACE = RaceFinder.class.getName() + "."
             + "findLastRace";
+    private static final String GET_RACES_ORDER_BY_START_TIME = RaceFinder.class.getName() + "."
+            + "findRacesOrderByStartTime";
+    private static final String COUNT_BY_ID_USER = RaceFinder.class.getName() + "."
+            + "countByIdUser";
 
     public List<Race> getByIdUserAndTimeRange(long idUser, Date startTime, Date endTime, int start, int end)
             throws SystemException {
@@ -50,6 +55,7 @@ public class RaceFinderImpl
         }
         return resultList;
     }
+
     public Race getLastRace(long idUser)
             throws SystemException {
         Session session = null;
@@ -68,6 +74,54 @@ public class RaceFinderImpl
             result = (Race) query.uniqueResult();
         } catch (Exception e) {
             _log.error("Exception while getLastRace process for idUser: " + idUser);
+            throw new SystemException(e);
+        } finally {
+            closeSession(session);
+        }
+        return result;
+    }
+
+    public List<Race> getRacesOrderByStartTime(long idUser, int start, int end)
+            throws SystemException {
+        Session session = null;
+        List<Race> result;
+        try {
+            session = openSession();
+            String sql = CustomSQLUtil.get(GET_RACES_ORDER_BY_START_TIME);
+            SQLQuery query = session.createSQLQuery(sql);
+            query.setCacheable(false);
+            query.addEntity("RACE", RaceImpl.class);
+
+            QueryPos queryPos = QueryPos.getInstance(query);
+            queryPos.add(idUser);
+
+            result = (List<Race>) QueryUtil.list(query, getDialect(), start, end);
+        } catch (Exception e) {
+            _log.error("Exception while getRacesOrderByStartTime process for idUser: " + idUser);
+            throw new SystemException(e);
+        } finally {
+            closeSession(session);
+        }
+        return result;
+    }
+
+    public long countByIdUser(long idUser)
+            throws SystemException {
+        Session session = null;
+        Long result;
+        try {
+            session = openSession();
+            String sql = CustomSQLUtil.get(COUNT_BY_ID_USER);
+            SQLQuery query = session.createSQLQuery(sql);
+            query.setCacheable(false);
+
+            QueryPos queryPos = QueryPos.getInstance(query);
+            queryPos.add(idUser);
+
+            BigInteger biResult = (BigInteger) query.uniqueResult();
+            result = biResult.longValue();
+        } catch (Exception e) {
+            _log.error("Exception while countByIdUser process for idAuthor: " + idUser);
             throw new SystemException(e);
         } finally {
             closeSession(session);

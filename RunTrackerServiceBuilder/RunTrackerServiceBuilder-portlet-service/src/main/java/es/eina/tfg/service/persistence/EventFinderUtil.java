@@ -35,6 +35,11 @@ public class EventFinderUtil {
         return getFinder().getLastUnselectedEvent(idUser);
     }
 
+    public static long countByIdAuthor(long idAuthor)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getFinder().countByIdAuthor(idAuthor);
+    }
+
     public static EventFinder getFinder() {
         if (_finder == null) {
             _finder = (EventFinder) PortletBeanLocatorUtil.locate(es.eina.tfg.service.ClpSerializer.getServletContextName(),

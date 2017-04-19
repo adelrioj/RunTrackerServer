@@ -69,6 +69,8 @@ public class RouteLocalServiceClpInvoker {
     private String[] _methodParameterTypes123;
     private String _methodName124;
     private String[] _methodParameterTypes124;
+    private String _methodName125;
+    private String[] _methodParameterTypes125;
 
     public RouteLocalServiceClpInvoker() {
         _methodName0 = "addRoute";
@@ -209,6 +211,10 @@ public class RouteLocalServiceClpInvoker {
         _methodName124 = "getPublicRoutesNotSelectedByUserCount";
 
         _methodParameterTypes124 = new String[] { "long", "java.lang.String" };
+
+        _methodName125 = "countByIdAuthor";
+
+        _methodParameterTypes125 = new String[] { "long" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -383,6 +389,11 @@ public class RouteLocalServiceClpInvoker {
                 Arrays.deepEquals(_methodParameterTypes124, parameterTypes)) {
             return RouteLocalServiceUtil.getPublicRoutesNotSelectedByUserCount(((Long) arguments[0]).longValue(),
                 (java.lang.String) arguments[1]);
+        }
+
+        if (_methodName125.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes125, parameterTypes)) {
+            return RouteLocalServiceUtil.countByIdAuthor(((Long) arguments[0]).longValue());
         }
 
         throw new UnsupportedOperationException();

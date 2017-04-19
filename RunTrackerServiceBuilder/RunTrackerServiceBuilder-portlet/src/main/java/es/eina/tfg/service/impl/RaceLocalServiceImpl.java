@@ -95,6 +95,16 @@ public class RaceLocalServiceImpl extends RaceLocalServiceBaseImpl {
         return PowerLocalServiceUtil.getByRaceId(idRace);
     }
 
+    public List<Race> getRacesOrderByStartTime(long idUser, int start, int end)
+            throws SystemException {
+        return RaceFinderUtil.getRacesOrderByStartTime(idUser, start, end);
+    }
+
+    public long countByIdUser(long idUser)
+            throws SystemException {
+        return RaceFinderUtil.countByIdUser(idUser);
+    }
+
     public static final String TYPE_WALKING = RouteLocalServiceImpl.TYPE_WALKING;
     public static final String TYPE_RUNNING = RouteLocalServiceImpl.TYPE_RUNNING;
     public static final String TYPE_CYCLING = RouteLocalServiceImpl.TYPE_CYCLING;

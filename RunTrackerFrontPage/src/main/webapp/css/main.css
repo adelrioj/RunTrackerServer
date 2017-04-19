@@ -1,0 +1,22 @@
+div.lightgrayBG{
+    background: lightgray;
+}
+.table th.text-right, .table td.text-right {
+    text-align: right;
+}
+.table th.text-center, .table td.text-center {
+    text-align: center;
+}
+.map_canvas {
+    height: 200px;
+    width: 100%;
+}
+.aui .control-group {
+    margin-bottom: 0 !important;
+}
+.aui .input-append, .aui .input-prepend {
+    margin-bottom: 0 !important;
+}
+.aui input[type="text"]{
+    margin-bottom: 0 !important;
+}

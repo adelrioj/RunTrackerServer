@@ -63,6 +63,8 @@ public class UserAndEventLocalServiceClpInvoker {
     private String[] _methodParameterTypes120;
     private String _methodName121;
     private String[] _methodParameterTypes121;
+    private String _methodName122;
+    private String[] _methodParameterTypes122;
 
     public UserAndEventLocalServiceClpInvoker() {
         _methodName0 = "addUserAndEvent";
@@ -197,6 +199,10 @@ public class UserAndEventLocalServiceClpInvoker {
                 "long", "java.lang.String", "int", "int",
                 "com.liferay.portal.kernel.util.OrderByComparator"
             };
+
+        _methodName122 = "countParticipationByIdUser";
+
+        _methodParameterTypes122 = new String[] { "long" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -354,6 +360,11 @@ public class UserAndEventLocalServiceClpInvoker {
                 ((Integer) arguments[2]).intValue(),
                 ((Integer) arguments[3]).intValue(),
                 (com.liferay.portal.kernel.util.OrderByComparator) arguments[4]);
+        }
+
+        if (_methodName122.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes122, parameterTypes)) {
+            return UserAndEventLocalServiceUtil.countParticipationByIdUser(((Long) arguments[0]).longValue());
         }
 
         throw new UnsupportedOperationException();

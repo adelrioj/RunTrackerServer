@@ -72,6 +72,11 @@ public class UserAndEventDAO {
         return localUserAndEvents;
     }
 
+    public static long countParticipationByIdUser(long idUser)
+            throws SystemException {
+        return UserAndEventLocalServiceUtil.countParticipationByIdUser(idUser);
+    }
+
     private static List<UserAndEvent> convertList(List<es.eina.tfg.model.UserAndEvent> sbUserAndEvents)
             throws PortalException, SystemException {
         List<UserAndEvent> userAndEvents = new ArrayList<UserAndEvent>();

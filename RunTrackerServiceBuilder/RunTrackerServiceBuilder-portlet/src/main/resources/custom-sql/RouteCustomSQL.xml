@@ -48,4 +48,11 @@
             AND r.isPublic = 1
 ]]>
     </sql>
+    <sql id="es.eina.tfg.service.persistence.RouteFinder.countByIdAuthor">
+        <![CDATA[
+        SELECT COUNT(*)
+        FROM gl_route route
+        WHERE route.idAuthor = ?
+]]>
+    </sql>
 </custom-sql>

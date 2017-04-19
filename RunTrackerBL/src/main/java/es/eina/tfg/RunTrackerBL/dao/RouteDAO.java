@@ -9,6 +9,8 @@ import com.liferay.portal.service.UserLocalServiceUtil;
 import es.eina.tfg.RunTrackerBL.converter.RouteConverter;
 import es.eina.tfg.RunTrackerBL.entity.Route;
 import es.eina.tfg.RunTrackerBL.entity.RouteLocation;
+import es.eina.tfg.service.RaceLocalServiceUtil;
+import es.eina.tfg.service.RouteLocalService;
 import es.eina.tfg.service.RouteLocalServiceUtil;
 import es.eina.tfg.service.UserAndRouteLocalServiceUtil;
 
@@ -167,6 +169,11 @@ public class RouteDAO {
                                                              final String name)
             throws SystemException {
         return RouteLocalServiceUtil.getPublicRoutesNotSelectedByUserCount(idUser, name);
+    }
+
+    public static long countByIdAuthor(long idAuthor)
+            throws SystemException {
+        return RouteLocalServiceUtil.countByIdAuthor(idAuthor);
     }
 
     private static es.eina.tfg.model.Route createSBRouteFromLocalRoute(

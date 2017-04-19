@@ -21,4 +21,11 @@
         VALUES (?, ?, 0, (SELECT COALESCE(MAX(uae.participationNumber), 0) as id FROM gl_userandevent uae) + 1)
 ]]>
     </sql>
+    <sql id="es.eina.tfg.service.persistence.UserAndEventFinder.countParticipationByIdUser">
+        <![CDATA[
+        SELECT COUNT(*)
+        FROM gl_userandevent uae
+        WHERE uae.idUser = ?
+]]>
+    </sql>
 </custom-sql>

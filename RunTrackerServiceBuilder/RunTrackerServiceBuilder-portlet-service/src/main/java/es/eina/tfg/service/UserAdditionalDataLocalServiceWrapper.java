@@ -277,6 +277,12 @@ public class UserAdditionalDataLocalServiceWrapper
     }
 
     @Override
+    public es.eina.tfg.model.UserAdditionalData add(long idUser)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _userAdditionalDataLocalService.add(idUser);
+    }
+
+    @Override
     public es.eina.tfg.model.UserAdditionalData add(
         es.eina.tfg.model.UserAdditionalData userAdditionalData)
         throws com.liferay.portal.kernel.exception.SystemException {

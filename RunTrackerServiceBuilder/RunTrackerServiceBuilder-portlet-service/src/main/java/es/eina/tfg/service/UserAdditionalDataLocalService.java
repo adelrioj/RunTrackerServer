@@ -240,6 +240,9 @@ public interface UserAdditionalDataLocalService extends BaseLocalService,
         java.lang.String[] parameterTypes, java.lang.Object[] arguments)
         throws java.lang.Throwable;
 
+    public es.eina.tfg.model.UserAdditionalData add(long idUser)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
     public es.eina.tfg.model.UserAdditionalData add(
         es.eina.tfg.model.UserAdditionalData userAdditionalData)
         throws com.liferay.portal.kernel.exception.SystemException;

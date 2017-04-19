@@ -341,6 +341,12 @@ public class UserAndEventLocalServiceWrapper implements UserAndEventLocalService
             start, end, orderByComparator);
     }
 
+    @Override
+    public long countParticipationByIdUser(long idAuthor)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _userAndEventLocalService.countParticipationByIdUser(idAuthor);
+    }
+
     /**
      * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
      */

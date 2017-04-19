@@ -8,4 +8,11 @@ public interface RaceFinder {
 
     public es.eina.tfg.model.Race getLastRace(long idUser)
         throws com.liferay.portal.kernel.exception.SystemException;
+
+    public java.util.List<es.eina.tfg.model.Race> getRacesOrderByStartTime(
+        long idUser, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    public long countByIdUser(long idUser)
+        throws com.liferay.portal.kernel.exception.SystemException;
 }

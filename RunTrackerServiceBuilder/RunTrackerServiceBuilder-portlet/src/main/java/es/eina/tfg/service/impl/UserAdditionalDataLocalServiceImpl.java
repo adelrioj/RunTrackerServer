@@ -26,6 +26,15 @@ import es.eina.tfg.service.base.UserAdditionalDataLocalServiceBaseImpl;
 public class UserAdditionalDataLocalServiceImpl
     extends UserAdditionalDataLocalServiceBaseImpl {
 
+    public UserAdditionalData add(long idUser)
+            throws SystemException {
+        UserAdditionalData data = createUserAdditionalData(idUser);
+        data.setHeight(0);
+        data.setWeight(0);
+        data.setSmsCount(0);
+        return add(data);
+    }
+
     public UserAdditionalData add(UserAdditionalData userAdditionalData)
             throws SystemException {
         checkMadatoryAttributes(userAdditionalData);

@@ -284,4 +284,7 @@ public interface UserAndEventLocalService extends BaseLocalService,
         long idEvent, java.lang.String name, int start, int end,
         com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException;
+
+    public long countParticipationByIdUser(long idAuthor)
+        throws com.liferay.portal.kernel.exception.SystemException;
 }

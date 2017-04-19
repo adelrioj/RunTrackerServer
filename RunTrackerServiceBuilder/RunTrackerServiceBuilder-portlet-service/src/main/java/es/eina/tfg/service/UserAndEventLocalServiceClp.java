@@ -62,6 +62,8 @@ public class UserAndEventLocalServiceClp implements UserAndEventLocalService {
     private String[] _methodParameterTypes26;
     private String _methodName27;
     private String[] _methodParameterTypes27;
+    private String _methodName28;
+    private String[] _methodParameterTypes28;
 
     public UserAndEventLocalServiceClp(
         InvokableLocalService invokableLocalService) {
@@ -199,6 +201,10 @@ public class UserAndEventLocalServiceClp implements UserAndEventLocalService {
                 "long", "java.lang.String", "int", "int",
                 "com.liferay.portal.kernel.util.OrderByComparator"
             };
+
+        _methodName28 = "countParticipationByIdUser";
+
+        _methodParameterTypes28 = new String[] { "long" };
     }
 
     @Override
@@ -994,5 +1000,31 @@ public class UserAndEventLocalServiceClp implements UserAndEventLocalService {
         }
 
         return (java.util.List<es.eina.tfg.model.UserAndEvent>) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
+    public long countParticipationByIdUser(long idAuthor)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName28,
+                    _methodParameterTypes28, new Object[] { idAuthor });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return ((Long) returnObj).longValue();
     }
 }

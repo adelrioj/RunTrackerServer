@@ -15,4 +15,7 @@ public interface RouteFinder {
     public long getPublicRoutesNotSelectedByUserCount(long idUser,
         java.lang.String name)
         throws com.liferay.portal.kernel.exception.SystemException;
+
+    public long countByIdAuthor(long idAuthor)
+        throws com.liferay.portal.kernel.exception.SystemException;
 }

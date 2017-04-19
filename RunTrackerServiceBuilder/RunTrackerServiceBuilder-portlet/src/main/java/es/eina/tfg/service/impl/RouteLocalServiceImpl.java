@@ -118,6 +118,11 @@ public class RouteLocalServiceImpl extends RouteLocalServiceBaseImpl {
         return RouteFinderUtil.getPublicRoutesNotSelectedByUserCount(idUser, name);
     }
 
+    public long countByIdAuthor(long idAuthor)
+            throws SystemException {
+        return RouteFinderUtil.countByIdAuthor(idAuthor);
+    }
+
     private DynamicQuery buildGetRoutesByNameDynamicQuery(String name){
         DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(Route.class);
         if (isNotNull(name)){

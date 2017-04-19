@@ -334,6 +334,12 @@ public class RouteLocalServiceWrapper implements RouteLocalService,
             name);
     }
 
+    @Override
+    public long countByIdAuthor(long idAuthor)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _routeLocalService.countByIdAuthor(idAuthor);
+    }
+
     /**
      * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
      */

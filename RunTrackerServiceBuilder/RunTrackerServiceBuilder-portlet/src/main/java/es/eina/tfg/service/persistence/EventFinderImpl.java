@@ -16,6 +16,7 @@ import es.eina.tfg.model.impl.EventImpl;
 import es.eina.tfg.model.impl.RaceImpl;
 import es.eina.tfg.model.impl.UserAndEventImpl;
 
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 
@@ -31,7 +32,8 @@ public class EventFinderImpl
             + "findLastEvent";
     private static final String GET_LAST_UNSELECTED_EVENT = EventFinder.class.getName() + "."
             + "findLastUnselectedEvent";
-
+    private static final String COUNT_BY_ID_AUTHOR = EventFinder.class.getName() + "."
+            + "countByIdAuthor";
 
     public List<Event> getByIdUserAndTimeRange(long idUser,
                                                Date startPlannedStartingTime,
@@ -146,6 +148,30 @@ public class EventFinderImpl
             result = (Event) query.uniqueResult();
         } catch (Exception e) {
             _log.error("Exception while getLastUnselectedEvent process for idUser: " + idUser);
+            throw new SystemException(e);
+        } finally {
+            closeSession(session);
+        }
+        return result;
+    }
+
+    public long countByIdAuthor(long idAuthor)
+            throws SystemException {
+        Session session = null;
+        Long result;
+        try {
+            session = openSession();
+            String sql = CustomSQLUtil.get(COUNT_BY_ID_AUTHOR);
+            SQLQuery query = session.createSQLQuery(sql);
+            query.setCacheable(false);
+
+            QueryPos queryPos = QueryPos.getInstance(query);
+            queryPos.add(idAuthor);
+
+            BigInteger biResult = (BigInteger) query.uniqueResult();
+            result = biResult.longValue();
+        } catch (Exception e) {
+            _log.error("Exception while countByIdAuthor process for idAuthor: " + idAuthor);
             throw new SystemException(e);
         } finally {
             closeSession(session);

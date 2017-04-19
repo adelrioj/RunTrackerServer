@@ -4,6 +4,7 @@ import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.util.OrderByComparator;
 import es.eina.tfg.RunTrackerBL.converter.RaceConverter;
 import es.eina.tfg.RunTrackerBL.entity.Race;
 import es.eina.tfg.RunTrackerBL.entity.RaceLocation;
@@ -35,6 +36,19 @@ public class RaceDAO {
         } catch (PortalException e) {
             throw new SystemException(e);
         }
+    }
+
+    public static List<Race> getRacesOrderByStartTime(long idUser, int start, int end)
+            throws SystemException, PortalException {
+        List<es.eina.tfg.model.Race> sbRaces = RaceLocalServiceUtil.getRacesOrderByStartTime(idUser, start, end);
+
+        List<Race> localRaces = new ArrayList<Race>();
+        for (es.eina.tfg.model.Race sbRace : sbRaces) {
+            List<RaceLocation> locations = RaceLocationDAO.getByIdRace(sbRace.getIdRace());
+            Route route = RouteDAO.getByIdRoute(sbRace.getIdRoute());
+            localRaces.add(RaceConverter.toLocalRace(sbRace, route, locations));
+        }
+        return localRaces;
     }
 
     public static Race getByIdRace(Long idRace)
@@ -113,6 +127,11 @@ public class RaceDAO {
             throw new SystemException(e);
         }
         return localRace;
+    }
+
+    public static long countByIdUser(long idUser)
+            throws SystemException {
+        return RaceLocalServiceUtil.countByIdUser(idUser);
     }
 
     private static es.eina.tfg.model.Race createSbRaceFromLocalRace(Race race)

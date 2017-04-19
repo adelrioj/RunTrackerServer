@@ -277,4 +277,7 @@ public interface EventLocalService extends BaseLocalService,
         com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException;
+
+    public long countByIdAuthor(long idAuthor)
+        throws com.liferay.portal.kernel.exception.SystemException;
 }

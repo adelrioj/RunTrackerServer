@@ -258,4 +258,12 @@ public interface RaceLocalService extends BaseLocalService, InvokableLocalServic
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public java.util.List<es.eina.tfg.model.Power> getPowerMeasurements(
         long idRace) throws com.liferay.portal.kernel.exception.SystemException;
+
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public java.util.List<es.eina.tfg.model.Race> getRacesOrderByStartTime(
+        long idUser, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    public long countByIdUser(long idUser)
+        throws com.liferay.portal.kernel.exception.SystemException;
 }

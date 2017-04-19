@@ -304,6 +304,19 @@ public class RaceLocalServiceWrapper implements RaceLocalService,
         return _raceLocalService.getPowerMeasurements(idRace);
     }
 
+    @Override
+    public java.util.List<es.eina.tfg.model.Race> getRacesOrderByStartTime(
+        long idUser, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _raceLocalService.getRacesOrderByStartTime(idUser, start, end);
+    }
+
+    @Override
+    public long countByIdUser(long idUser)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _raceLocalService.countByIdUser(idUser);
+    }
+
     /**
      * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
      */

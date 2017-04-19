@@ -290,6 +290,17 @@ public class RaceLocalServiceUtil {
         return getService().getPowerMeasurements(idRace);
     }
 
+    public static java.util.List<es.eina.tfg.model.Race> getRacesOrderByStartTime(
+        long idUser, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService().getRacesOrderByStartTime(idUser, start, end);
+    }
+
+    public static long countByIdUser(long idUser)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService().countByIdUser(idUser);
+    }
+
     public static void clearService() {
         _service = null;
     }

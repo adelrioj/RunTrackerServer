@@ -21,6 +21,17 @@ public class RaceFinderUtil {
         return getFinder().getLastRace(idUser);
     }
 
+    public static java.util.List<es.eina.tfg.model.Race> getRacesOrderByStartTime(
+        long idUser, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getFinder().getRacesOrderByStartTime(idUser, start, end);
+    }
+
+    public static long countByIdUser(long idUser)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getFinder().countByIdUser(idUser);
+    }
+
     public static RaceFinder getFinder() {
         if (_finder == null) {
             _finder = (RaceFinder) PortletBeanLocatorUtil.locate(es.eina.tfg.service.ClpSerializer.getServletContextName(),
