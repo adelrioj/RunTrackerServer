@@ -10,7 +10,7 @@
             iconAlign="left"
 />
 
-<portlet:actionURL name="addSampleDataAction" var="addSampleDataURL" >
+<%--<portlet:actionURL name="addSampleDataAction" var="addSampleDataURL" >
     <portlet:param name="${constants.PARAM_SELECTED_IDEVENT}" value="${requestScope.selectedEvent.idEvent}" />
     <portlet:param name="mvcPath" value="/jsp/live_event_view.jsp" />
 </portlet:actionURL>
@@ -22,4 +22,4 @@
             icon="icon-flag"
             iconAlign="left"
 />
-<% } %>
+<% } %>--%>
